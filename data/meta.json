@@ -1,0 +1,19 @@
+{
+  "mode": "demo",
+  "updatedAt": "demo-local",
+  "status": "demo",
+  "sources": {
+    "metadata": {
+      "name": "TMDB",
+      "active": false
+    },
+    "streaming": {
+      "name": "JustWatch via TMDB",
+      "active": false
+    },
+    "theatrical": {
+      "name": "TMDB now_playing (KR)",
+      "active": false
+    }
+  }
+}

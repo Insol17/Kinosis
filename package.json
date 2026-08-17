@@ -1,0 +1,11 @@
+{
+  "name":"kinosis-mvp",
+  "private":true,
+  "version":"0.2.1",
+  "type":"module",
+  "scripts":{
+    "serve":"npx --yes serve . -l 4173",
+    "update":"node scripts/update-catalog.mjs"
+  },
+  "engines":{"node":">=20"}
+}

@@ -1,0 +1,41 @@
+name: Refresh movie catalog
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Thursday 06:30 KST = Wednesday 21:30 UTC.
+    - cron: '30 21 * * 3'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kinosis-catalog-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Refresh validated TMDB catalog
+        env:
+          TMDB_READ_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN }}
+          KINOSIS_REGION: KR
+          KINOSIS_LANGUAGE: ko-KR
+        run: node scripts/update-catalog.mjs
+      - name: Commit only when catalog changed
+        run: |
+          if git diff --quiet -- data/catalog.json data/catalog.js data/meta.json; then
+            echo "No catalog changes."
+            exit 0
+          fi
+          git config user.name "kinosis-catalog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/catalog.json data/catalog.js data/meta.json
+          git commit -m "chore: refresh movie catalog"
+          git push
