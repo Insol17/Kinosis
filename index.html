@@ -13,7 +13,7 @@
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./assets/css/app.css" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.0" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -103,6 +103,7 @@
             <button class="my-tab is-active" data-my="profile">PROFILE</button>
             <button class="my-tab" data-my="diary">DIARY</button>
             <button class="my-tab" data-my="reviews">REVIEWS</button>
+            <button class="my-tab" data-my="ratings">RATINGS</button>
             <button class="my-tab" data-my="calendar">CALENDAR</button>
             <button class="my-tab" data-my="stats">STATS</button>
             <button class="my-tab" data-my="subscriptions">SUBSCRIPTIONS</button>
@@ -130,10 +131,10 @@
   <dialog id="searchDialog" class="sheet-dialog search-dialog">
     <div class="dialog-shell">
       <div class="dialog-topline">
-        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="제목, 감독으로 검색" /></label>
+        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="영화 제목 검색" /></label>
         <button class="ghost-close" data-close="searchDialog">닫기</button>
       </div>
-      <div class="search-hint"><b>빠른 추가</b> — 입력하는 즉시 카탈로그에서 자동완성합니다. 결과에서 바로 저장하거나 LOG할 수 있습니다.</div>
+      <div class="search-hint"><b>전체 영화 검색</b> — KINOSIS 카탈로그를 먼저 찾고, 2글자부터 Netlify Function을 통해 TMDB 전체 DB를 검색합니다. 결과에서 바로 저장하거나 LOG할 수 있습니다.</div>
       <div id="searchResults" class="search-results"></div>
     </div>
   </dialog>
@@ -158,7 +159,7 @@
     <div class="form-card about-card">
       <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>데이터 출처</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
-      <div class="credit-block"><b>TMDB</b><p>영화 제목, 개봉정보, 감독/장르, 평점, 포스터 및 배경 이미지의 기본 소스로 사용합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
+      <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 제목, 개봉정보, 감독/장르, 평점, 포스터 및 배경 이미지의 기본 소스로 사용합니다. Netlify 배포에서는 서버리스 Function이 TMDB 전체 영화 검색과 상세정보 조회를 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍/무료/대여/구매 제공처 정보는 TMDB Watch Providers가 제공하는 JustWatch 데이터를 사용합니다.</p></div>
       <div class="credit-block"><b>Collectio / 콜렉티오</b><p>MY → Subscriptions에서 구독 상태를 수동으로 관리할 수 있습니다. 현재 KINOSIS는 콜렉티오 작품 availability를 자동 수집하거나 크롤링하지 않습니다.</p></div>
       <div class="credit-block"><b>현재 MVP 범위</b><p>KOBIS·KMDb는 한국 극장/한국영화 데이터 보강 후보지만, 현재 빌드의 자동 동기화에는 넣지 않았습니다. 별도 키와 이용조건을 확인한 뒤 독립 어댑터로 추가하는 구조입니다.</p></div>
@@ -169,7 +170,7 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js"></script>
-  <script src="./assets/js/app.js"></script>
+  <script src="./data/catalog.js?v=0.4.0"></script>
+  <script src="./assets/js/app.js?v=0.4.0"></script>
 </body>
 </html>

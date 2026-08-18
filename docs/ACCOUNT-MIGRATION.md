@@ -19,3 +19,6 @@ Enable cloud accounts only after the Library / Diary loop is worth syncing acros
 
 ## Conflict rule candidate
 For the MVP migration, prefer explicit user choice when both local and cloud contain data. Do not silently resolve destructive conflicts by timestamp alone.
+
+## Subscription identity
+Use a stable text `provider_key` for user preferences and keep TMDB `provider_id` nullable. This allows manual-only providers such as Collectio to sync without inventing a TMDB provider ID.

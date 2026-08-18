@@ -1,37 +1,87 @@
-# API and attribution policy
+# KINOSIS API and attribution policy — 0.4.0
 
-## Active in 0.2
+## TMDB: active
 
-### TMDB
-Used for movie metadata, release information, ratings, poster/backdrop paths, credits, and the KR `now_playing` list.
+TMDB is the canonical external movie source for the MVP.
 
-Required product notice is shown inside **Data sources & credits**:
+Used for:
+
+- movie search
+- titles / original titles / release dates
+- overview / runtime / genres
+- director via credits
+- TMDB rating
+- poster / backdrop / title artwork for the generated Discover catalog
+- IMDb external ID
+- KR now-playing / trending / streaming / top-rated Discover cache
+
+Required product notice is visible inside **Data sources & credits**:
 
 > This product uses the TMDB API but is not endorsed or certified by TMDB.
 
-The API token belongs only in GitHub Actions Secrets / local shell environment. It must never be embedded in `index.html`, `catalog.js`, or browser JavaScript.
+### Secret handling
 
-### JustWatch via TMDB Watch Providers
-Used for KR availability grouped into subscription, free, ads, rent, and buy. The UI labels the source near provider information and in the credits surface.
+`TMDB_READ_ACCESS_TOKEN` must exist only in trusted runtimes:
 
-The provider endpoint does not prove a user's entitlement and does not guarantee final price or availability at the moment of purchase. The app therefore says "내 구독에서 제공됨" only after intersecting provider availability with the user's manually selected subscriptions.
+- GitHub Actions Secret for scheduled catalog generation
+- Netlify Environment Variable for live serverless search/detail
+- local shell/Netlify CLI for development
 
-## Not active yet
+Never place it in `index.html`, `catalog.js`, frontend JavaScript, commits, screenshots or documentation examples containing the actual value.
 
-### KOBIS
-Candidate for Korean box-office / theatrical validation. Do not merge it into the production sync until its API key, exact endpoint contract, update cadence, and attribution/use conditions have been verified for the intended deployment.
+## Netlify Functions: active in 0.4.0
 
-### KMDb
-Candidate for deeper Korean film archival metadata. It is intentionally kept as a separate future adapter rather than silently mixing identifiers into TMDB records.
+Frontend browser requests:
+
+```text
+/api/movie-search?q=...
+/api/movie-detail?id=...
+```
+
+Netlify Functions then call TMDB using the server-side environment variable. Search results are normalized before being returned to the browser; the token is never returned.
+
+`movie-search` is short CDN-cacheable. `movie-detail` is longer CDN-cacheable. The PWA service worker explicitly does not intercept `/api/*`.
+
+## JustWatch via TMDB Watch Providers: active
+
+TMDB Watch Providers supplies KR availability originating from JustWatch.
+
+KINOSIS groups offers into:
+
+- subscription
+- free
+- ads
+- rent
+- buy
+
+Provider information is attributed as **JustWatch via TMDB** near relevant UI and in credits.
+
+The data does not prove a user's entitlement and is not guaranteed to represent final price/availability at the instant of purchase. KINOSIS therefore says a title is on **MY STREAMING** only after intersecting KR subscription/flatrate availability with subscriptions manually selected by the user.
+
+## Collectio: manual subscription only
+
+Collectio is available as a user preference in `MY → SUBSCRIPTIONS`.
+
+KINOSIS does not scrape Collectio and does not automatically claim that a specific title is available there until a stable and permitted data integration is verified.
+
+## KOBIS: planned adapter, inactive
+
+Candidate for Korean theatrical / box-office validation. Keep separate from TMDB identifiers and verify API terms before activating.
+
+## KMDb: planned adapter, inactive
+
+Candidate for deeper Korean film archival metadata. Keep as an independent adapter rather than silently merging identifiers into TMDB records.
 
 ## Failure policy
 
-The scheduled updater follows fetch → enrich → validate → replace. Any failed fetch or failed minimum-data validation aborts before replacing the last known-good catalog. The frontend can always fall back to the existing generated `catalog.js`.
+### Scheduled Discover refresh
 
-## Hero artwork policy (0.3.1)
+fetch → enrich → validate → replace. Failure aborts before replacing the last known-good catalog.
 
-KINOSIS does not scrape arbitrary promotional images. For Discover hero candidates it queries the official TMDB movie Images endpoint, filters for landscape backdrops, and selects a high-rated image. It also prefers Korean, then English, title logos when TMDB provides them. This keeps the banner tied to the same canonical TMDB movie ID as the displayed metadata.
+### Live Search
 
-## Collectio
+local KINOSIS search renders first. If the Netlify/TMDB request fails, the search UI explicitly reports that global search is unavailable while preserving local results.
 
-Collectio is exposed as a user-selectable subscription in KINOSIS because it is an active Korean art-film OTT. It is currently a **manual subscription flag only**. KINOSIS does not claim automatic Collectio title availability until a stable, permitted data integration is verified. Do not scrape Collectio pages into the catalog without reviewing its terms and an appropriate integration contract.
+### Saved movie durability
+
+A Library item must not depend on remaining in the current weekly Discover catalog. When a movie is saved/logged/watchlisted/favorited, KINOSIS stores a normalized movie snapshot in local state keyed by TMDB ID.

@@ -123,3 +123,46 @@ a.hero-provider{text-decoration:none;color:#121417}
   .hero-watch-copy{min-width:88px}.hero-watch-copy small{display:none}
   .hero-provider{width:38px;height:38px;border-radius:10px}
 }
+
+/* 0.4.0 — dense Library + live TMDB search */
+.library-poster-row{grid-auto-columns:132px;gap:12px;padding-bottom:12px}
+.library-grid{grid-template-columns:repeat(auto-fill,minmax(118px,138px));justify-content:start;align-items:start;gap:18px 14px}
+.library-movie-card .poster-wrap{border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.library-movie-card:hover .poster-wrap{transform:translateY(-3px) scale(1.008);box-shadow:0 16px 34px rgba(0,0,0,.32)}
+.library-movie-card .card-info{padding:8px 2px 0}
+.library-movie-card .card-title{font-size:11px;line-height:1.35}
+.library-movie-card .card-meta{margin-top:3px;font-size:9px;gap:4px;flex-wrap:wrap;line-height:1.35}
+.library-movie-card .card-overlay{padding:7px}
+.library-movie-card .tiny-button{padding:5px 7px;border-radius:7px;font-size:9px}
+.library-movie-card .poster-fallback{padding:11px;font-size:11px}
+
+.search-title-row{display:flex;align-items:center;gap:7px;min-width:0}
+.search-title-row h3{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-badge{flex:0 0 auto;padding:3px 5px;border:1px solid rgba(243,170,60,.26);border-radius:999px;background:rgba(243,170,60,.08);color:var(--accent2);font-size:7px;font-weight:950;letter-spacing:.1em}
+.search-live-status{color:var(--accent2)}
+.search-error{color:#d88f83}
+.detail-loading{min-height:420px;display:grid;place-items:center;align-content:center;gap:10px;padding:34px;text-align:center;color:var(--sub)}
+.detail-loading b{color:var(--text);font-size:18px}
+.detail-loading span{font-size:11px}
+.loading-ring{width:30px;height:30px;border:2px solid rgba(255,255,255,.12);border-top-color:var(--accent);border-radius:50%;animation:kinosisSpin .8s linear infinite}
+@keyframes kinosisSpin{to{transform:rotate(360deg)}}
+.detail-original{margin-top:3px;color:var(--muted);font-size:11px}
+.provider-pill{display:inline-flex;align-items:center;gap:6px}
+.provider-inline-logo{width:20px;height:20px;border-radius:5px;object-fit:cover;background:#fff}
+
+@media(max-width:860px){
+  .library-poster-row{grid-auto-columns:122px}
+  .library-grid{grid-template-columns:repeat(auto-fill,minmax(112px,132px));gap:16px 12px}
+}
+@media(max-width:680px){
+  .library-poster-row{grid-auto-columns:clamp(104px,30vw,124px)}
+  .library-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 9px}
+  .library-movie-card .card-meta span:not(:first-child):not(.provider-dot){display:none}
+  .library-movie-card .poster-wrap{border-radius:10px}
+}
+@media(max-width:360px){.library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rating-groups{display:grid;gap:28px}.rating-group{min-width:0}.rating-group-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}.rating-group-head strong{font-size:18px;color:var(--accent2)}.rating-group-head span{color:var(--muted);font-size:10px}
+.library-filterbar input{flex:1 1 220px}.library-filterbar select{flex:0 1 auto}.filter-reset{padding-inline:8px;white-space:nowrap}
+@media(max-width:680px){.library-filterbar select{flex:1 1 calc(50% - 8px)}.filter-reset{width:100%;text-align:center}}
+/* TMDB attribution — approved TMDB mark, intentionally subordinate to KINOSIS branding */
+.credit-brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}.credit-brand b{margin:0}.tmdb-logo{display:block;width:42px;height:30px;object-fit:contain;object-position:center}.tmdb-credit .legal{margin-top:9px;font-size:11px;line-height:1.55;color:var(--muted)}

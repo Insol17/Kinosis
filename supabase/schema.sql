@@ -34,9 +34,10 @@ create table if not exists public.viewing_logs (
 
 create table if not exists public.user_subscriptions (
   user_id uuid not null references auth.users(id) on delete cascade,
-  provider_id integer not null,
+  provider_key text not null,
+  provider_id integer,
   provider_name text not null,
-  primary key (user_id, provider_id)
+  primary key (user_id, provider_key)
 );
 
 create table if not exists public.collections (
