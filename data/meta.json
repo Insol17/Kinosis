@@ -1,19 +1,26 @@
 {
-  "mode": "demo",
-  "updatedAt": "demo-local",
-  "status": "demo",
+  "status": "ok",
+  "mode": "live",
+  "updatedAt": "2026-08-18T08:11:23.110Z",
+  "region": "KR",
+  "counts": {
+    "theatres": 20,
+    "trending": 20,
+    "streaming": 20,
+    "rated": 20
+  },
   "sources": {
     "metadata": {
       "name": "TMDB",
-      "active": false
+      "active": true
     },
     "streaming": {
       "name": "JustWatch via TMDB",
-      "active": false
+      "active": true
     },
     "theatrical": {
       "name": "TMDB now_playing (KR)",
-      "active": false
+      "active": true
     }
   }
 }
