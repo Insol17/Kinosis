@@ -1,60 +1,84 @@
-# KINOSIS 0.4.1 — Supabase/Auth setup
+# Supabase/Auth setup — KINOSIS 0.4.2
 
-## Already configured in this project
+## Existing project values
 
-- Production Site URL: `https://kinosis.netlify.app/`
-- Production redirect allow-list is expected to include the KINOSIS Netlify URL.
-- Frontend Project URL + Publishable Key are in `assets/js/config.js`.
+The frontend uses the Supabase Project URL + Publishable Key in `assets/js/config.js`. These are public client values; security is enforced through RLS.
 
-## 1. Create the database surface
+Never put `service_role`, `sb_secret_...`, or database passwords in frontend files.
 
-Open Supabase Dashboard -> SQL Editor and run:
+## URL configuration
 
-`supabase/001_kinosis_041.sql`
+Site URL:
 
-Without this step sign-in may work, but Library/MY cloud loading will fail because `user_state` does not exist.
+```text
+https://kinosis.netlify.app/
+```
 
-## 2. Google provider
+Redirect allow list:
 
-Supabase -> Authentication -> Sign In / Providers -> Google.
+```text
+https://kinosis.netlify.app/**
+http://localhost:8888/**
+```
 
-In Google Cloud / Google Auth Platform:
+0.4.2 uses Supabase PKCE auth flow.
 
-1. Create a **Web application** OAuth client.
-2. Add the KINOSIS site origin.
-3. Add the exact callback URL shown on the Supabase Google provider page as an Authorized redirect URI.
-4. Put the Client ID + Client Secret into Supabase and enable Google.
-5. Configure the Audience for the people who should be able to sign in. Development/testing settings can restrict access; use an External/public configuration when the service is actually opened to general users.
+## SQL
 
-KINOSIS only needs the basic identity scopes used by Supabase Auth.
+Fresh project:
 
-## 3. Kakao provider
+```text
+supabase/SETUP_ALL.sql
+```
 
-Supabase -> Authentication -> Sign In / Providers -> Kakao.
+Already ran 0.4.1:
 
-In Kakao Developers:
+```text
+supabase/002_kinosis_042.sql
+```
 
-1. Create the KINOSIS app.
-2. Get the REST API key (client ID).
-3. Register the exact Supabase callback URL in Kakao Login Redirect URI.
-4. Create/activate the Kakao Login Client Secret.
-5. Enable Kakao Login.
-6. Configure nickname/profile image consent; email is optional. If email is not requested, configure Supabase Kakao to allow users without email.
-7. Add the REST API key + client secret to Supabase and enable Kakao.
+## Google provider
 
-## 4. Email
+Create a Google OAuth Web Application.
 
-KINOSIS 0.4.1 uses Supabase email magic links as a fallback. For small development use the built-in mail service may be enough; a real public service should configure SMTP and review email rate limits/deliverability.
+Authorized JavaScript origin:
 
-## 5. What users experience
+```text
+https://kinosis.netlify.app
+```
 
-Guest:
-- Discover
-- global TMDB Search
-- ART MODE
-- cannot use Library/MY or Save/Log
+Authorized redirect URI:
 
-Signed in:
-- all personal functions
-- account state synced through `user_state`
-- local device cache retained for temporary network failures
+```text
+https://uqntdtjqeernzqpbymex.supabase.co/auth/v1/callback
+```
+
+Paste the Google Client ID/Secret into Supabase Authentication → Sign In / Providers → Google.
+
+## Kakao provider
+
+Create the Kakao Developers app, enable Kakao Login, register the Supabase callback URL shown in the Supabase Kakao provider settings, then enter the REST API credentials in Supabase.
+
+## Admin assignment
+
+Sign in once so the user exists in `auth.users`, then run:
+
+```sql
+insert into public.user_roles (user_id, role)
+select id, 'admin' from auth.users where email = 'YOUR_EMAIL@example.com'
+on conflict (user_id) do update
+set role = excluded.role, updated_at = now();
+```
+
+The browser cannot promote itself because authenticated clients have no INSERT/UPDATE permission on `user_roles`.
+
+## Netlify health environment
+
+Add:
+
+```text
+SUPABASE_URL
+SUPABASE_PUBLISHABLE_KEY
+```
+
+The scheduled health check uses these values three times per day. 0.4.2 does not hard-code fallback credentials in the Function source.

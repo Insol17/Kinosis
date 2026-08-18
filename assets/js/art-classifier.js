@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  // KINOSIS ART MODE v1 is deliberately deterministic and explainable.
+  // KINOSIS ARTHOUSE classifier v1 is deliberately deterministic and explainable.
   // It treats canon lists as seed signals, not as a definitive definition of "art film".
   const TITLE_SEEDS = [
     ['The Rules of the Game',1939],['Citizen Kane',1941],['Breathless',1960],['Tokyo Story',1953],
@@ -50,7 +50,7 @@
     if(genres.includes('documentary')){ score+=6; reasons.push('다큐멘터리'); }
     if(year && year<1970 && Number(movie.voteCount||0)>=100){ score+=9; reasons.push('영화사적 고전 후보'); }
     if(movie.artSeed===true){ score=Math.max(score,70); if(!reasons.includes('KINOSIS 큐레이션 시드')) reasons.push('KINOSIS 큐레이션 시드'); }
-    const threshold=Number(opts.threshold||window.KINOSIS_CONFIG?.artMode?.threshold||36);
+    const threshold=Number(opts.threshold||window.KINOSIS_CONFIG?.arthouse?.threshold||36);
     return {isArt:score>=threshold,score,reasons:[...new Set(reasons)].slice(0,3)};
   }
   window.KINOSIS_ART = Object.freeze({ classify, titleSeeds:TITLE_SEEDS, directorSeeds:DIRECTOR_SEEDS });

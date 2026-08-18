@@ -1,58 +1,86 @@
-# KINOSIS 0.4.1 MVP Specification
+# KINOSIS MVP 0.4.2
 
-## Product loop
+## Product promise
+
+KINOSIS connects four different film activities without turning them into one overloaded screen:
+
+1. **Discover** — find something to watch.
+2. **Arthouse** — explore cinema through editorial/auteur context.
+3. **Library** — manage saved films efficiently.
+4. **My** — review personal viewing history.
+
+A film detail page is the bridge between public movie data and the user's activity.
+
+## Core loop
 
 ```text
-DISCOVER / ART MODE
+Discover / Arthouse
         ↓
-GLOBAL SEARCH
+      Detail
         ↓
-SIGN IN
+ Where to Watch
         ↓
-SAVE / LOG
+   Save / Log
         ↓
-LIBRARY
+     Library
         ↓
-MY (Diary / Reviews / Ratings / Calendar / Stats / Subscriptions)
+        My
         ↓
-SUPABASE CLOUD SYNC
-        ↓
-PC ↔ Mobile/PWA
+  Return to discovery
 ```
 
-## Public vs personal surfaces
+## Guest policy
 
-### Guest
-- DISCOVER
-- ART MODE
-- global TMDB Search
-- film detail / where-to-watch
+Guests can browse Discover, Arthouse, Search, and Detail. Personal data surfaces require authentication.
 
-### Signed in
-- everything above
-- Save / Log / Watchlist / Favorite / Collections
-- LIBRARY
-- MY
-- OTT preferences
-- cross-device sync
+## Discover
 
-The gate is intentional: 0.4.1 treats Library/MY as account-bound personal data rather than a browser-only demo.
+One content-first page. No secondary tabs.
+- Featured
+- Now in Theatres
+- My Streaming (signed in) / Streaming (guest)
+- one KINOSIS Curation
+- Trending
+- Highly Rated
 
-## ART MODE
+Cards expose at-a-glance theatre and OTT availability.
 
-ART MODE changes **content selection**, not the visual theme. Normal and Art share the same KINOSIS interaction grammar.
+## Arthouse
 
-The classifier emits an internal score and boolean from deterministic metadata features. It is explicitly not an objective measure of artistic quality.
+Editorial destination combining deterministic candidate classification with human curation.
+- Featured Curation
+- Art-theatre candidates
+- Director's Archive / other curations
+- From the Archive
+- My Streaming intersection
 
-## Data responsibilities
+## Library
 
-- TMDB: movie identity/metadata/images
-- JustWatch via TMDB: KR provider availability
-- KINOSIS: personal state and ART MODE classification
-- Supabase: Auth + RLS-protected user state
-- Netlify: production hosting + TMDB proxy + scheduled Supabase health request
-- GitHub Actions: weekly Discover catalog refresh
+Management-oriented UI.
+- Home dashboard
+- All / Watchlist / Favorites / Collections
+- compact grid and list view
+- persistent search/filter/sort
+- smaller poster density than Discover
 
-## Sync model
+## My
 
-0.4.1 uses a single per-user JSONB state row as the MVP synchronization boundary. Local signed-in cache is retained for temporary outages. Cloud is loaded on sign-in, local dirty state is retried when connectivity returns, and 0.4.0 local data can be imported once into the authenticated account.
+Autobiographical UI inspired by personal media profiles rather than asset management.
+- Overview
+- Diary
+- Reviews
+- Calendar
+- Stats
+- Settings
+
+## Editorial admin
+
+Admin/editor role is stored in Supabase and cannot be changed from the browser. The Curation Studio manages public editorial programming without code changes.
+
+## Success criteria
+
+- A guest understands what KINOSIS is before signing in.
+- A signed-in user can find a saved film within seconds even with hundreds of titles.
+- A film detail page explains both "what is this?" and "what is my relationship with it?"
+- Discover and Arthouse feel edited, not like raw API result arrays.
+- Navigation remains stable across desktop/mobile.

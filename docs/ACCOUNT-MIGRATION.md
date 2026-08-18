@@ -1,11 +1,12 @@
-# Account migration — 0.4.1
+# Account migration — 0.4.2
 
-KINOSIS 0.4.0 stored personal data in `kinosis.mvp.v2.state` / legacy `film.mvp.v2.state`.
+Personal surfaces remain account-gated. On first sign-in KINOSIS checks two sources:
 
-0.4.1 blocks personal surfaces for guests. After a user signs in for the first time, KINOSIS checks for old local data and asks whether to import it into the signed-in cloud state.
+1. signed-in per-user local cache
+2. legacy pre-account KINOSIS local state
 
-- import accepted: legacy Library/Diary/Collections/Subscriptions/movie snapshots are merged and synced
-- import declined: legacy storage remains on the device but is not shown as the signed-in account's Library
-- migration decision is recorded per Supabase user ID to avoid repeated prompts
+If legacy data exists, KINOSIS uses its own dialog (not a browser `confirm`) to ask whether it should be merged into the cloud state.
 
-Signed-in device caches use a user-specific localStorage key and are not shown after sign-out.
+The merge keeps movie snapshots, library rows, logs, collections, subscriptions, and the user's profile fields. Cloud and local timestamps remain the basic MVP conflict-resolution mechanism.
+
+Guests do not create new Library/MY data in 0.4.2 by product policy.

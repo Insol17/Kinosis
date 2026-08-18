@@ -1,12 +1,12 @@
 {
   "name": "kinosis-mvp",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "type": "module",
   "scripts": {
     "serve": "npx --yes serve . -l 4173",
     "update": "node scripts/update-catalog.mjs",
-    "test": "node --check assets/js/app.js && node --check assets/js/cloud.js && node --check assets/js/art-classifier.js && node --check sw.js && node --check netlify/functions/movie-search.mjs && node --check netlify/functions/movie-detail.mjs && node --check netlify/functions/supabase-health.mjs && node tests/catalog.test.mjs && node tests/static.test.mjs && node tests/netlify-functions.test.mjs && node tests/art-mode.test.mjs",
+    "test": "node --check assets/js/app.js && node --check assets/js/cloud.js && node --check assets/js/ui.js && node --check assets/js/art-classifier.js && node --check sw.js && node --check netlify/functions/movie-search.mjs && node --check netlify/functions/movie-detail.mjs && node --check netlify/functions/supabase-health.mjs && node tests/catalog.test.mjs && node tests/static.test.mjs && node tests/netlify-functions.test.mjs && node tests/art-mode.test.mjs",
     "dev": "npx --yes netlify-cli dev"
   },
   "engines": {

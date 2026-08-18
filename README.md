@@ -1,117 +1,124 @@
-# KINOSIS 0.4.1 MVP
+# KINOSIS 0.4.2
 
-Movie discovery + account-synced personal film library for Netlify.
+KINOSIS is a film discovery, editorial curation, personal library, and viewing-history web MVP.
 
-## What changed in 0.4.1
-
-- **Account required for LIBRARY / MY**. Guests can browse DISCOVER and use global TMDB search, but Save / Log / Watchlist / Favorite / Collections require sign-in.
-- **Supabase Auth** using Google, Kakao, or email magic-link UI.
-- **Cross-device cloud sync** for Library, Diary, ratings/reviews, collections, subscriptions, cached movie snapshots and preferences.
-- **Offline/local cache** remains on each signed-in device. Failed sync does not erase local work; reconnect triggers another sync attempt.
-- **Legacy migration**: after first sign-in, 0.4.0-and-earlier local data can be imported into the account.
-- **ART MODE**: same visual design, different DISCOVER lens. KINOSIS computes an explainable boolean classification from cinephile-canon title seeds, auteur/director seeds, keywords, production/distribution signals, and manual seed flags.
-- **ART MODE is not an AI black box in 0.4.1**. The classifier is deterministic, free, inspectable, and replaceable later by embeddings/model inference if that proves useful.
-- **ART Library filter**.
-- **Supabase health scheduled function**: three external reads per day from Netlify to reduce inactivity risk and double as a database health check. This is not a contractual guarantee against Free-plan pausing.
-- Existing **Netlify TMDB live search**, weekly GitHub Discover refresh, compact Library posters, PWA cache-busting, TMDB/JustWatch attribution and Collectio subscription entry remain.
-
-## Architecture
+## Product structure
 
 ```text
-TMDB
- ├─ GitHub Actions -> weekly Discover catalog
- └─ Netlify Functions -> live movie search/detail
-
-Supabase
- ├─ Auth (Google / Kakao / Email)
- └─ user_state JSONB row protected by RLS
-        ↕
-KINOSIS signed-in device cache
-
-Guest
- └─ Discover + Search only
+DISCOVER  → content-first everyday discovery
+ARTHOUSE  → auteur / art-cinema / editorial curations
+LIBRARY   → logged-in film management
+MY        → logged-in personal film history
 ```
 
-`user_state` is intentionally a single versioned JSONB snapshot for the MVP. It lets KINOSIS validate account gating and cross-device sync without prematurely creating a social-data schema. Public reviews/follows can later split this into normalized tables.
+The product intentionally separates these four jobs. Search is a global action, not a fifth destination.
 
-## Required one-time Supabase step
+## Stack
 
-Run this file in **Supabase Dashboard -> SQL Editor**:
+- Static HTML/CSS/vanilla JS
+- Netlify hosting + Functions
+- TMDB live search/detail proxy
+- GitHub Actions catalog refresh
+- Supabase Auth + per-user cloud state
+- Supabase RLS-protected curation/admin tables
+- PWA service worker
+
+## Deploy update
+
+1. Replace the repository contents with this folder (keep `.git`).
+2. Push to GitHub.
+3. Netlify deploys automatically from GitHub.
+4. Run the Supabase SQL described below.
+5. Run the GitHub `Refresh movie catalog` workflow once after deployment.
+
+## Supabase SQL
+
+If you have not run any KINOSIS schema yet, run:
 
 ```text
-supabase/001_kinosis_041.sql
+supabase/SETUP_ALL.sql
 ```
 
-It creates:
-
-- `public.user_state` with per-user RLS
-- `public.app_health` with a single non-sensitive read-only health row
-
-Do **not** put a Supabase Secret key or `service_role` key in the browser.
-
-The frontend currently uses the project's public configuration in `assets/js/config.js`:
-
-- Supabase Project URL
-- Supabase Publishable Key
-
-Both are intended for client use when RLS is correctly configured.
-
-## OAuth providers
-
-The UI already contains Google and Kakao buttons. To make them work for other people, enable each provider in **Supabase -> Authentication -> Sign In / Providers** and add the provider credentials.
-
-Additional provider-side settings still matter:
-
-- Google: configure a Web OAuth client, the Supabase callback URL, allowed origins, and an External audience/publishing state suitable for your users.
-- Kakao: enable Kakao Login, register the Supabase callback URL, activate the client secret, and configure consent items.
-
-See `docs/SUPABASE-AUTH-SETUP.md`.
-
-## ART MODE
-
-0.4.1 does **not** call an LLM or embedding API. `assets/js/art-classifier.js` computes a feature score and returns an internal boolean.
-
-Signals include:
-
-- selected film-canon title seeds
-- director/auteur seeds
-- TMDB keywords
-- production/distribution names
-- classic-film heuristic
-- `artSeed` emitted by the weekly updater
-- future manual override support
-
-The user sees only the inclusion reasons, not an “art score.”
-
-The official KMDb article by Jung Sung-il, **[시네필 안내서]100편의 영화**, is used as a conceptual seed reference; KINOSIS does not reproduce article text or copy Watcha/Letterboxd datasets.
-
-## Run
-
-For static UI fallback:
+If 0.4.1 schema is already installed, run only:
 
 ```text
-open index.html
+supabase/002_kinosis_042.sql
 ```
 
-Auth and Netlify Functions require HTTP/HTTPS. For real local development:
+### Assign your admin account
 
-```bash
-npm run dev
+After signing in once, run this manually in Supabase SQL Editor with your actual email:
+
+```sql
+insert into public.user_roles (user_id, role)
+select id, 'admin' from auth.users where email = 'YOUR_EMAIL@example.com'
+on conflict (user_id) do update
+set role = excluded.role, updated_at = now();
 ```
 
-Production is the connected Netlify deployment.
+Never expose a service-role/secret key in frontend code.
 
-## Tests
+## Netlify environment variables
+
+Existing TMDB live-search setup:
+
+```text
+TMDB_READ_ACCESS_TOKEN
+```
+
+For the scheduled Supabase health request, add these public client values to Netlify Environment Variables:
+
+```text
+SUPABASE_URL=https://uqntdtjqeernzqpbymex.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
+```
+
+The health function intentionally has no hard-coded fallback in 0.4.2.
+
+## Google / Kakao login
+
+The frontend is ready for Google, Kakao, and Email magic-link auth. Google/Kakao only work for ordinary users after their provider credentials and public OAuth settings are completed in Supabase + the provider console.
+
+Supabase Site URL currently expected by the shipped config:
+
+```text
+https://kinosis.netlify.app/
+```
+
+## Admin Curation Studio
+
+Editors/admins get **MY → Settings → KINOSIS Admin**.
+
+A curation contains:
+- title / subtitle / description
+- surface: Discover / Arthouse / Both
+- type: Director's Archive / Selection / Theme
+- status: Draft / Published
+- ordered TMDB movie list
+
+Published curations are publicly readable. Drafts and write operations are restricted by RLS to editor/admin accounts.
+
+## Guest policy
+
+This version intentionally keeps personal surfaces gated:
+
+- Guest: Discover / Arthouse / Search / Detail
+- Signed-in: Library / My / Save / Log / Watchlist / Favorite / Collections
+
+This is a product decision, not a technical limitation.
+
+## Test
 
 ```bash
 npm test
 ```
 
-## Data source attribution
+Expected suites:
+- catalog
+- static/product-surface checks
+- Netlify TMDB function contract
+- Arthouse classifier
 
-- TMDB — movie metadata and imagery
-- JustWatch via TMDB Watch Providers — KR availability
-- KINOSIS ART MODE — local deterministic classifier / curated seed rules
-- Collectio — manual subscription preference only; no automatic availability scraping
+## Data-source notice
 
-The product UI includes the required TMDB notice and JustWatch attribution.
+Movie metadata/images: TMDB. Watch-provider availability: JustWatch via TMDB. The site includes the required TMDB non-endorsement notice and JustWatch attribution surface.

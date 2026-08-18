@@ -30,6 +30,7 @@ export default async (request) => {
       voteAverage: detail.vote_average ?? null,
       voteCount: detail.vote_count ?? 0,
       director,
+      cast: (credits.cast || []).slice(0, 12).map((person) => ({ id: person.id, name: person.name, character: person.character || '' })),
       genres: (detail.genres || []).map((genre) => ({ id: genre.id, name: genre.name })),
       keywords: (keywordsPayload.keywords || keywordsPayload.results || []).map((keyword) => keyword.name).filter(Boolean),
       productionCompanies: (detail.production_companies || []).map((company) => company.name).filter(Boolean),
