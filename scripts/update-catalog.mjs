@@ -62,6 +62,27 @@ async function pool(items, size, mapper) {
   return out.filter(Boolean);
 }
 function clean(s){ return typeof s === 'string' ? s.trim() : ''; }
+function imageScore(image, preferredLanguage = false) {
+  const votes = Math.min(Number(image?.vote_count || 0), 50);
+  const avg = Number(image?.vote_average || 0);
+  const width = Math.min(Number(image?.width || 0) / 1000, 4);
+  return avg * 10 + votes + width + (preferredLanguage ? 8 : 0);
+}
+function pickHeroBackdrop(images, fallbackPath, imageBase) {
+  const candidates = (images?.backdrops || [])
+    .filter(x => x?.file_path && Number(x.width || 0) >= 1000 && Number(x.aspect_ratio || 0) >= 1.6 && Number(x.aspect_ratio || 0) <= 2.15)
+    .sort((a,b) => imageScore(b, b.iso_639_1 == null) - imageScore(a, a.iso_639_1 == null));
+  const path = candidates[0]?.file_path || fallbackPath;
+  return path ? `${imageBase}w1280${path}` : null;
+}
+function pickLogo(images, imageBase) {
+  const langRank = lang => lang === 'ko' ? 3 : lang === 'en' ? 2 : lang == null ? 1 : 0;
+  const candidates = (images?.logos || []).filter(x => x?.file_path).sort((a,b) => {
+    const language = langRank(b.iso_639_1) - langRank(a.iso_639_1);
+    return language || imageScore(b, true) - imageScore(a, true);
+  });
+  return candidates[0]?.file_path ? `${imageBase}original${candidates[0].file_path}` : null;
+}
 
 async function atomicReplace(filePath, content) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -103,13 +124,18 @@ const rawSections = {
 };
 const rawMovies = uniq(Object.values(rawSections).flat());
 if (rawMovies.length < 12) throw new Error(`Validation failed before enrichment: only ${rawMovies.length} unique movies.`);
+// Only the few movies that can become a Discover hero need the heavier images query.
+// This keeps the weekly refresh inexpensive while still giving banner-quality art and title logos.
+const heroCandidateIds = new Set(Object.values(rawSections).flatMap(list => (list || []).slice(0,3)).map(m => Number(m.id)));
 
 console.log(`Enriching ${rawMovies.length} movies…`);
 const enriched = await pool(rawMovies, 4, async base => {
-  const [detail, providers, external] = await Promise.all([
+  const needsHeroImages = heroCandidateIds.has(Number(base.id));
+  const [detail, providers, external, images] = await Promise.all([
     tmdb(`/movie/${base.id}`, { language:LANGUAGE, append_to_response:'credits' }),
     tmdb(`/movie/${base.id}/watch/providers`),
-    tmdb(`/movie/${base.id}/external_ids`)
+    tmdb(`/movie/${base.id}/external_ids`),
+    needsHeroImages ? tmdb(`/movie/${base.id}/images`, { include_image_language:'ko,en,null' }) : Promise.resolve(null)
   ]);
   const director = detail.credits?.crew?.find(p => p.job === 'Director')?.name || '';
   const kr = providers.results?.[REGION];
@@ -125,8 +151,11 @@ const enriched = await pool(rawMovies, 4, async base => {
     voteAverage:Number(detail.vote_average || 0), voteCount:Number(detail.vote_count || 0),
     popularity:Number(detail.popularity || base.popularity || 0),
     overview:clean(detail.overview || base.overview),
+    tagline:clean(detail.tagline),
     posterUrl:detail.poster_path ? `${imageBase}w500${detail.poster_path}` : null,
     backdropUrl:detail.backdrop_path ? `${imageBase}w1280${detail.backdrop_path}` : (detail.poster_path ? `${imageBase}w780${detail.poster_path}` : null),
+    heroBackdropUrl:needsHeroImages ? pickHeroBackdrop(images, detail.backdrop_path, imageBase) : null,
+    logoUrl:needsHeroImages ? pickLogo(images, imageBase) : null,
     providers:providerRows(kr, imageBase),
     watchLink:kr?.link || null,
     tmdbUrl:`https://www.themoviedb.org/movie/${detail.id}`,
@@ -138,7 +167,15 @@ const enriched = await pool(rawMovies, 4, async base => {
 const byId = new Map(enriched.map(m => [m.id,m]));
 const materialize = list => list.map(x => byId.get(x.id)).filter(Boolean);
 const sections = Object.fromEntries(Object.entries(rawSections).map(([k,v]) => [k, materialize(v)]));
-const featured = [...sections.trending,...sections.theatres,...sections.streaming].find(m => m.backdropUrl && m.overview) || enriched[0];
+const featuredPool = uniq([...sections.trending,...sections.streaming,...sections.theatres]);
+const featuredScore = m => Number(m.popularity || 0) + Math.min(Number(m.voteCount || 0) / 12, 260) + Number(m.voteAverage || 0) * 18;
+const streamableHero = featuredPool
+  .filter(m => (m.heroBackdropUrl || m.backdropUrl) && m.overview && (m.providers || []).some(p => p.type === 'subscription'))
+  .sort((a,b) => featuredScore(b) - featuredScore(a))[0];
+const visualHero = featuredPool
+  .filter(m => (m.heroBackdropUrl || m.backdropUrl) && m.overview)
+  .sort((a,b) => featuredScore(b) - featuredScore(a))[0];
+const featured = streamableHero || visualHero || enriched[0];
 const catalog = {
   version:2, updatedAt:new Date().toISOString(), region:REGION, language:LANGUAGE, mode:'live',
   sources:{

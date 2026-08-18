@@ -16,6 +16,24 @@
   <link rel="stylesheet" href="./assets/css/app.css" />
 </head>
 <body>
+  <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.8a5 5 0 0 0-7.1 0L12 7.5l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21l8.8-8.1a5 5 0 0 0 0-7.1Z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7h7l2 2h9v10H3z"/><path d="M3 7V5h7l2 2"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-4.4 3.4-7 8-7s7.3 2.6 8 7"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2 7.5 14 3 9.6l6.2-.9z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V3m0 0 4 4m-4-4-4 4"/><path d="M4 19h16"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h11a4 4 0 0 0 .4-8 7 7 0 0 0-13.5 2A3.5 3.5 0 0 0 7 18Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+  </svg>
   <div class="app-shell">
     <header class="topbar">
       <button class="brand" data-nav="discover" aria-label="KINOSIS 홈"><img class="brand-mark" src="./icons/icon.svg" alt="" /><span class="brand-word">KINOSIS</span></button>
@@ -26,7 +44,7 @@
       </nav>
       <div class="top-actions">
         <button class="search-trigger" id="searchTrigger" aria-label="영화 검색">
-          <span class="search-icon">⌕</span><span>영화 검색</span><kbd>/</kbd>
+          <svg class="ui-icon"><use href="#i-search"/></svg><span>영화 검색</span><kbd>/</kbd>
         </button>
         <button class="status-pill" id="dataStatusButton" title="데이터 출처와 갱신 상태 보기"><span class="status-dot"></span><span id="dataStatusText">LOCAL</span></button>
         <button class="avatar-button" data-nav="my" aria-label="MY로 이동"><span id="topAvatar">T</span></button>
@@ -56,14 +74,14 @@
         <div class="library-shell">
           <aside class="library-sidebar" aria-label="라이브러리 메뉴">
             <div class="side-title-row"><p class="eyebrow">LIBRARY</p><span id="libraryCount" class="count-badge">0</span></div>
-            <button class="side-link is-active" data-library="home"><span>⌂</span>Library Home</button>
-            <button class="side-link" data-library="all"><span>▦</span>All Films</button>
-            <button class="side-link" data-library="watchlist"><span>＋</span>Watchlist</button>
-            <button class="side-link" data-library="favorites"><span>♥</span>Favorites</button>
+            <button class="side-link is-active" data-library="home"><svg class="ui-icon"><use href="#i-home"/></svg>Library Home</button>
+            <button class="side-link" data-library="all"><svg class="ui-icon"><use href="#i-grid"/></svg>All Films</button>
+            <button class="side-link" data-library="watchlist"><svg class="ui-icon"><use href="#i-plus"/></svg>Watchlist</button>
+            <button class="side-link" data-library="favorites"><svg class="ui-icon"><use href="#i-heart"/></svg>Favorites</button>
             <div class="side-rule"></div>
             <p class="side-label">COLLECTIONS</p>
             <div id="collectionSideLinks"></div>
-            <button class="side-link subtle" id="newCollectionButton"><span>＋</span>New Collection</button>
+            <button class="side-link subtle" id="newCollectionButton"><svg class="ui-icon"><use href="#i-plus"/></svg>New Collection</button>
           </aside>
           <div class="library-content">
             <div class="mobile-library-nav" id="mobileLibraryNav">
@@ -88,6 +106,7 @@
             <button class="my-tab" data-my="calendar">CALENDAR</button>
             <button class="my-tab" data-my="stats">STATS</button>
             <button class="my-tab" data-my="subscriptions">SUBSCRIPTIONS</button>
+            <button class="my-tab" data-my="account">ACCOUNT</button>
           </nav>
           <div id="myContent"></div>
         </div>
@@ -102,19 +121,19 @@
   </div>
 
   <nav class="mobile-nav" aria-label="모바일 주요 메뉴">
-    <button class="mobile-nav-item is-active" data-nav="discover"><span>◈</span><small>Discover</small></button>
-    <button class="mobile-nav-item" id="mobileSearch"><span>⌕</span><small>Search</small></button>
-    <button class="mobile-nav-item" data-nav="library"><span>▦</span><small>Library</small></button>
-    <button class="mobile-nav-item" data-nav="my"><span>●</span><small>My</small></button>
+    <button class="mobile-nav-item is-active" data-nav="discover"><svg class="ui-icon"><use href="#i-compass"/></svg><small>Discover</small></button>
+    <button class="mobile-nav-item" id="mobileSearch"><svg class="ui-icon"><use href="#i-search"/></svg><small>Search</small></button>
+    <button class="mobile-nav-item" data-nav="library"><svg class="ui-icon"><use href="#i-grid"/></svg><small>Library</small></button>
+    <button class="mobile-nav-item" data-nav="my"><svg class="ui-icon"><use href="#i-user"/></svg><small>My</small></button>
   </nav>
 
   <dialog id="searchDialog" class="sheet-dialog search-dialog">
     <div class="dialog-shell">
       <div class="dialog-topline">
-        <label class="dialog-search"><span>⌕</span><input id="searchInput" autocomplete="off" placeholder="제목, 감독으로 검색" /></label>
+        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="제목, 감독으로 검색" /></label>
         <button class="ghost-close" data-close="searchDialog">닫기</button>
       </div>
-      <div class="search-hint">검색 결과에서 <b>＋</b>로 바로 보관하거나 <b>LOG</b>로 감상을 즉시 기록할 수 있습니다.</div>
+      <div class="search-hint"><b>빠른 추가</b> — 입력하는 즉시 카탈로그에서 자동완성합니다. 결과에서 바로 저장하거나 LOG할 수 있습니다.</div>
       <div id="searchResults" class="search-results"></div>
     </div>
   </dialog>
@@ -141,9 +160,10 @@
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block"><b>TMDB</b><p>영화 제목, 개봉정보, 감독/장르, 평점, 포스터 및 배경 이미지의 기본 소스로 사용합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍/무료/대여/구매 제공처 정보는 TMDB Watch Providers가 제공하는 JustWatch 데이터를 사용합니다.</p></div>
+      <div class="credit-block"><b>Collectio / 콜렉티오</b><p>MY → Subscriptions에서 구독 상태를 수동으로 관리할 수 있습니다. 현재 KINOSIS는 콜렉티오 작품 availability를 자동 수집하거나 크롤링하지 않습니다.</p></div>
       <div class="credit-block"><b>현재 MVP 범위</b><p>KOBIS·KMDb는 한국 극장/한국영화 데이터 보강 후보지만, 현재 빌드의 자동 동기화에는 넣지 않았습니다. 별도 키와 이용조건을 확인한 뒤 독립 어댑터로 추가하는 구조입니다.</p></div>
-      <button class="secondary-button wide" id="exportButton">내 데이터 JSON 내보내기</button>
-      <label class="secondary-button wide file-label">내 데이터 JSON 가져오기<input type="file" id="importInput" accept="application/json" hidden /></label>
+      <button class="secondary-button wide" id="exportButton"><svg class="ui-icon"><use href="#i-download"/></svg> 내 데이터 JSON 내보내기</button>
+      <label class="secondary-button wide file-label"><svg class="ui-icon"><use href="#i-upload"/></svg> 내 데이터 JSON 가져오기<input type="file" id="importInput" accept="application/json" hidden /></label>
     </div>
   </dialog>
 

@@ -4,7 +4,16 @@
   const movieMap = new Map((CATALOG.movies || []).map(m => [String(m.id), m]));
   const STORAGE_KEY = 'kinosis.mvp.v2.state';
   const LEGACY_STORAGE_KEY = 'film.mvp.v2.state';
-  const PROVIDERS = ['Netflix','TVING','Coupang Play','Disney+','WATCHA','Wavve','Apple TV Plus'];
+  const PROVIDERS = [
+    {key:'Netflix', label:'Netflix', aliases:['Netflix','Netflix Standard with Ads'], url:'https://www.netflix.com/kr/'},
+    {key:'TVING', label:'TVING', aliases:['TVING'], url:'https://www.tving.com/'},
+    {key:'Coupang Play', label:'Coupang Play', aliases:['Coupang Play'], url:'https://www.coupangplay.com/'},
+    {key:'Disney+', label:'Disney+', aliases:['Disney Plus','Disney+'], url:'https://www.disneyplus.com/ko-kr'},
+    {key:'WATCHA', label:'WATCHA', aliases:['Watcha','WATCHA'], url:'https://watcha.com/'},
+    {key:'Wavve', label:'Wavve', aliases:['wavve','Wavve'], url:'https://www.wavve.com/'},
+    {key:'Apple TV Plus', label:'Apple TV+', aliases:['Apple TV Plus','Apple TV+'], url:'https://tv.apple.com/kr'},
+    {key:'Collectio', label:'콜렉티오', aliases:['Collectio','COLLECTIO','콜렉티오'], url:'https://collectio.co.kr/', manualOnly:true}
+  ];
   let activeView = 'discover';
   let discoverMode = 'home';
   let libraryMode = 'home';
@@ -35,6 +44,7 @@
     return {
       profile:{name:'Local User',handle:'@local',bio:'영화를 발견하고 기록하는 로컬 프로필'},
       subscriptions:['Netflix','WATCHA'],
+      settings:{lastExportAt:null,backupNudgeDismissedAt:null},
       library, logs,
       collections:[
         {id:'col-favorites',name:'다시 보고 싶은 영화',type:'manual',movieIds:ids.slice(0,2)},
@@ -47,23 +57,36 @@
       const raw=localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
       if(!raw) return initialState();
       const parsed=JSON.parse(raw);
-      return Object.assign(initialState(),parsed,{profile:Object.assign(initialState().profile,parsed.profile||{})});
+      return Object.assign(initialState(),parsed,{profile:Object.assign(initialState().profile,parsed.profile||{}),settings:Object.assign(initialState().settings,parsed.settings||{})});
     }catch(e){ console.warn(e); return initialState(); }
   }
   let state = loadState();
   function saveState(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); }
+  function icon(name){ return `<svg class="ui-icon" aria-hidden="true"><use href="#i-${name}"/></svg>`; }
+  function formatDateTime(value){ if(!value)return '아직 백업하지 않음'; try{return new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeStyle:'short'}).format(new Date(value));}catch{return value;} }
+  function needsBackup(){ return Object.keys(state.library).length>=3 && !state.settings?.lastExportAt && !state.settings?.backupNudgeDismissedAt; }
   function movie(id){ return movieMap.get(String(id)); }
   function lib(id){ return state.library[String(id)] || null; }
   function ensureLib(id){ const key=String(id); if(!state.library[key]) state.library[key]={savedAt:isoDate(new Date()),watched:false,watchlist:false,favorite:false,rating:null,review:''}; return state.library[key]; }
   function escapeHtml(s){ return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
   function poster(m){ return m?.posterUrl || './icons/icon.svg'; }
-  function backdrop(m){ return m?.backdropUrl || m?.posterUrl || './icons/icon.svg'; }
+  function backdrop(m){ return m?.heroBackdropUrl || m?.backdropUrl || m?.posterUrl || './icons/icon.svg'; }
   function fmtRuntime(n){ if(!n) return ''; const h=Math.floor(n/60),min=n%60; return h ? `${h}h ${min}m` : `${min}m`; }
   function fmtRating(v){ return v ? `★ ${Number(v).toFixed(1)}` : '평점 없음'; }
   function stars(v){ if(!v) return '—'; return `★ ${Number(v).toFixed(1)}`; }
+  function normalizeProviderName(value){ return String(value||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,''); }
+  function providerConfigForName(name){ const n=normalizeProviderName(name); return PROVIDERS.find(p=>[p.key,p.label,...(p.aliases||[])].some(v=>normalizeProviderName(v)===n)) || null; }
+  function isSubscriptionEnabled(key){ const n=normalizeProviderName(key); return (state.subscriptions||[]).some(v=>normalizeProviderName(v)===n); }
+  function isSubscribedProvider(name){ const cfg=providerConfigForName(name); return cfg ? isSubscriptionEnabled(cfg.key) : isSubscriptionEnabled(name); }
   function subscriptionProviders(m){ return (m?.providers||[]).filter(p=>p.type==='subscription'); }
-  function availableOnMine(m){ return subscriptionProviders(m).some(p=>state.subscriptions.includes(p.name)); }
-  function providersText(m){ const names=subscriptionProviders(m).map(p=>p.name); return names.slice(0,2).join(' · '); }
+  function availableOnMine(m){ return subscriptionProviders(m).some(p=>isSubscribedProvider(p.name)); }
+  function providersText(m){ const names=subscriptionProviders(m).map(p=>providerConfigForName(p.name)?.label||p.name); return names.slice(0,2).join(' · '); }
+  function providerTypeLabel(type){ return ({subscription:'구독',free:'무료',ads:'광고 포함',rent:'대여',buy:'구매'})[type] || type; }
+  function heroProviders(m){
+    const rank={subscription:0,free:1,ads:2,rent:3,buy:4}; const seen=new Set();
+    return [...(m?.providers||[])].sort((a,b)=>(rank[a.type]??9)-(rank[b.type]??9)).filter(p=>{const cfg=providerConfigForName(p.name); const k=normalizeProviderName(cfg?.key||p.name||p.id); if(seen.has(k)) return false; seen.add(k); return true;}).slice(0,5);
+  }
+  function heroTitleClass(title){ const n=[...String(title||'').replace(/\s/g,'')].length; return n>24?'hero-title is-xlong':n>15?'hero-title is-long':'hero-title'; }
   function uniqueById(list){ const seen=new Set(); return list.filter(x=>x&&!seen.has(String(x.id))&&seen.add(String(x.id))); }
   function allSavedMovies(){ return Object.keys(state.library).map(movie).filter(Boolean); }
   function latestLogs(){ return [...state.logs].sort((a,b)=>String(b.watchedAt).localeCompare(String(a.watchedAt))); }
@@ -84,15 +107,20 @@
   }
   function rowSection(title,subtitle,movies,limit=12){
     const list=uniqueById(movies||[]).slice(0,limit);
-    return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2>${subtitle?`<p>${escapeHtml(subtitle)}</p>`:''}</div></div>${list.length?`<div class="poster-row">${list.map(card).join('')}</div>`:'<div class="empty-state">표시할 영화가 없습니다.</div>'}</section>`;
+    return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2>${subtitle?`<p>${escapeHtml(subtitle)}</p>`:''}</div></div>${list.length?`<div class="poster-row">${list.map(card).join('')}</div>`:`<div class="empty-state"><div class="empty-icon">${icon('search')}</div><b>아직 표시할 영화가 없습니다.</b><span>검색에서 영화를 저장하거나 감상 기록을 추가해보세요.</span><button class="secondary-button" data-open-search>영화 찾기</button></div>`}</section>`;
   }
   function renderHero(m){
     const el=document.getElementById('hero'); if(!m){el.innerHTML='<div class="empty-state">카탈로그를 불러오지 못했습니다.</div>';return;}
-    const l=lib(m.id); const mine=availableOnMine(m); const provider=subscriptionProviders(m).find(p=>state.subscriptions.includes(p.name));
+    const providers=heroProviders(m); const mine=availableOnMine(m);
+    const titleVisual=m.logoUrl
+      ? `<div class="hero-title-wrap"><img class="hero-title-logo" src="${escapeHtml(m.logoUrl)}" alt="${escapeHtml(m.title)}" onerror="this.style.display='none';this.nextElementSibling.hidden=false"/><h2 class="${heroTitleClass(m.title)} hero-title-fallback" hidden>${escapeHtml(m.title)}</h2></div>`
+      : `<h2 class="${heroTitleClass(m.title)}">${escapeHtml(m.title)}</h2>`;
+    const providerHtml=providers.length?`<div class="hero-watch"><div class="hero-watch-copy"><span>WHERE TO WATCH</span><small>KR · JustWatch via TMDB</small></div><div class="hero-provider-list">${providers.map(p=>{const owned=p.type==='subscription'&&isSubscribedProvider(p.name);const cfg=providerConfigForName(p.name);const label=cfg?.label||p.name;const inner=p.logoUrl?`<img src="${escapeHtml(p.logoUrl)}" alt="${escapeHtml(label)}"/>`:`<span class="provider-monogram">${escapeHtml(label.slice(0,1))}</span>`;return m.watchLink?`<a class="hero-provider ${owned?'is-mine':''}" href="${escapeHtml(m.watchLink)}" target="_blank" rel="noopener" title="${escapeHtml(label)} · ${escapeHtml(providerTypeLabel(p.type))}">${inner}</a>`:`<span class="hero-provider ${owned?'is-mine':''}" title="${escapeHtml(label)} · ${escapeHtml(providerTypeLabel(p.type))}">${inner}</span>`;}).join('')}</div></div>`:'';
+    const copy=m.tagline||m.overview||'';
     el.innerHTML=`<img class="hero-bg" src="${escapeHtml(backdrop(m))}" alt="" onerror="this.style.display='none'"/><div class="hero-content">
-      <div class="hero-badges"><span class="mini-badge accent">FEATURED</span>${mine?`<span class="mini-badge">✓ ${escapeHtml(provider?.name||'MY STREAMING')}</span>`:''}${CATALOG.mode==='demo'?'<span class="mini-badge">DEMO DATA</span>':''}</div>
-      <h2>${escapeHtml(m.title)}</h2><div class="hero-meta"><span>${m.director?escapeHtml(m.director):'Director —'}</span><span>·</span><span>${m.year||'—'}</span>${m.runtime?`<span>·</span><span>${fmtRuntime(m.runtime)}</span>`:''}<span>·</span><span>TMDB ${fmtRating(m.voteAverage)}</span></div>
-      <p class="hero-copy">${escapeHtml(m.overview||'')}</p><div class="hero-actions"><button class="primary-button" data-action="save" data-id="${escapeHtml(m.id)}">${l?'✓ IN LIBRARY':'＋ LIBRARY'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG FILM</button><button class="secondary-button" data-action="detail" data-id="${escapeHtml(m.id)}">DETAIL</button></div>
+      <div class="hero-badges"><span class="mini-badge accent">FEATURED</span>${mine?'<span class="mini-badge">✓ MY STREAMING</span>':''}${CATALOG.mode==='demo'?'<span class="mini-badge">DEMO DATA</span>':''}</div>
+      ${titleVisual}<div class="hero-meta"><span>${m.director?escapeHtml(m.director):'Director —'}</span><span>·</span><span>${m.year||'—'}</span>${m.runtime?`<span>·</span><span>${fmtRuntime(m.runtime)}</span>`:''}<span>·</span><span>TMDB ${fmtRating(m.voteAverage)}</span></div>
+      ${copy?`<p class="hero-copy">${escapeHtml(copy)}</p>`:''}${providerHtml}
     </div>`;
   }
   function myStreamingMovies(){ return (CATALOG.movies||[]).filter(availableOnMine); }
@@ -118,7 +146,7 @@
   }
 
   function renderCollectionsSide(){
-    document.getElementById('collectionSideLinks').innerHTML=state.collections.map(c=>`<button class="side-link" data-collection="${escapeHtml(c.id)}"><span>◇</span>${escapeHtml(c.name)}</button>`).join('');
+    document.getElementById('collectionSideLinks').innerHTML=state.collections.map(c=>`<button class="side-link" data-collection="${escapeHtml(c.id)}">${icon('folder')}${escapeHtml(c.name)}</button>`).join('');
   }
   function collectionCards(){
     const dynamicCount=watchlistAvailable().length;
@@ -145,7 +173,7 @@
     const filtered=filterLibrary(list);
     return `<div class="library-head"><div><p class="eyebrow">LIBRARY</p><h1>${escapeHtml(title)}</h1><p class="library-summary">${escapeHtml(subtitle)}</p></div><button class="secondary-button" id="librarySearchButton">＋ 영화 찾기</button></div>
       <div class="filterbar"><input id="libraryQuery" value="${escapeHtml(libraryFilter.q)}" placeholder="내 라이브러리 검색"/><select id="librarySort"><option value="recent" ${libraryFilter.sort==='recent'?'selected':''}>최근 추가</option><option value="title" ${libraryFilter.sort==='title'?'selected':''}>제목</option><option value="rating" ${libraryFilter.sort==='rating'?'selected':''}>내 평점</option><option value="year" ${libraryFilter.sort==='year'?'selected':''}>개봉연도</option></select></div>
-      ${filtered.length?`<div class="all-grid">${filtered.map(card).join('')}</div>`:'<div class="empty-state">조건에 맞는 영화가 없습니다.</div>'}`;
+      ${filtered.length?`<div class="all-grid">${filtered.map(card).join('')}</div>`:`<div class="empty-state"><div class="empty-icon">${icon('search')}</div><b>조건에 맞는 영화가 없습니다.</b><span>필터를 지우거나 새 영화를 빠르게 추가해보세요.</span><button class="secondary-button" data-open-search>영화 찾기</button></div>`}`;
   }
   function renderCollectionsPage(){ return `<div class="library-head"><div><p class="eyebrow">COLLECTIONS</p><h1>컬렉션</h1><p class="library-summary">수동 컬렉션과 자동으로 바뀌는 Dynamic Collection을 함께 관리합니다.</p></div><button class="secondary-button" id="newCollectionInline">＋ New Collection</button></div><div class="collection-grid">${collectionCards()}</div>`; }
   function renderCollectionDetail(c){ const list=c.movieIds.map(movie).filter(Boolean); return listPage(c.name,'직접 만든 컬렉션.',list); }
@@ -199,27 +227,43 @@
     const watchedIds=Object.keys(state.library).filter(id=>state.library[id].watched); const watchedMovies=watchedIds.map(movie).filter(Boolean); const totalMinutes=watchedMovies.reduce((s,m)=>s+(m.runtime||0),0); const ratings=Object.values(state.library).map(x=>Number(x.rating)).filter(Boolean); const avg=ratings.length?(ratings.reduce((a,b)=>a+b,0)/ratings.length).toFixed(1):'—'; const genres={}; watchedMovies.forEach(m=>(m.genres||[]).forEach(g=>genres[g]=(genres[g]||0)+1)); const entries=Object.entries(genres).sort((a,b)=>b[1]-a[1]).slice(0,6); const max=entries[0]?.[1]||1;
     return `<div class="stats-grid"><div class="stat-card"><strong>${watchedCount()}</strong><span>Watched films</span></div><div class="stat-card"><strong>${Math.round(totalMinutes/60)}h</strong><span>Approx. runtime</span></div><div class="stat-card"><strong>${avg}</strong><span>Average rating</span></div><div class="stat-card"><strong>${state.logs.length}</strong><span>Diary logs</span></div></div><div class="panel" style="margin-top:16px"><h2>장르 분포</h2><div class="bar-list">${entries.map(([g,n])=>`<div class="bar-row"><span>${escapeHtml(g)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/max*100)}%"></div></div><b>${n}</b></div>`).join('')||'<span class="library-summary">감상 기록이 필요합니다.</span>'}</div></div>`;
   }
-  function subscriptionsHtml(){ return `<div class="library-head"><div><p class="eyebrow">MY STREAMING</p><h1>구독 중인 서비스</h1><p class="library-summary">여기서 켠 서비스가 Discover의 MY STREAMING과 Library의 Available Watchlist에 반영됩니다. 실제 결제 여부를 확인하지는 않습니다.</p></div></div><div class="subscription-grid">${PROVIDERS.map(p=>{const on=state.subscriptions.includes(p);return `<div class="subscription"><div><b>${escapeHtml(p)}</b><small>${on?'내 구독으로 사용':'구독 안 함'}</small></div><button class="toggle ${on?'is-on':''}" data-subscription="${escapeHtml(p)}" aria-label="${escapeHtml(p)} 구독 토글"></button></div>`}).join('')}</div>`; }
+  function subscriptionsHtml(){ return `<div class="library-head"><div><p class="eyebrow">MY STREAMING</p><h1>구독 중인 서비스</h1><p class="library-summary">여기서 켠 서비스가 Discover의 MY STREAMING과 Library의 Available Watchlist에 반영됩니다. 실제 결제 여부를 확인하지는 않습니다.</p></div></div><div class="subscription-grid">${PROVIDERS.map(p=>{const on=isSubscriptionEnabled(p.key);return `<div class="subscription"><div><b>${escapeHtml(p.label)}</b><small>${p.manualOnly?'구독 표시 지원 · 자동 작품 매칭은 아직 미지원':on?'내 구독으로 사용':'구독 안 함'}</small></div><button class="toggle ${on?'is-on':''}" data-subscription="${escapeHtml(p.key)}" aria-label="${escapeHtml(p.label)} 구독 토글"></button></div>`}).join('')}</div><p class="source-note">콜렉티오는 예술영화 전문 OTT로 구독 서비스 목록에 포함했습니다. 현재 TMDB/JustWatch의 KR 제공처 데이터에서 자동 availability를 확인할 수 없어, 구독 상태만 수동 관리합니다.</p>`; }
+  function backupNudgeHtml(){
+    if(!needsBackup()) return '';
+    return `<div class="backup-nudge"><div class="backup-nudge-icon">${icon('download')}</div><div><b>이 브라우저에만 저장되고 있습니다.</b><p>현재는 계정 동기화가 없으므로 브라우저 데이터 삭제 전에 JSON 백업을 권장합니다.</p></div><div class="backup-nudge-actions"><button class="primary-button" id="backupNowButton">지금 백업</button><button class="text-button" id="dismissBackupNudge">나중에</button></div></div>`;
+  }
+  function accountHtml(){
+    const count=allSavedMovies().length;
+    return `<div class="library-head"><div><p class="eyebrow">ACCOUNT & DATA</p><h1>계정과 데이터</h1><p class="library-summary">0.3 MVP는 로그인 서버를 흉내 내지 않습니다. 현재 데이터는 이 브라우저에 저장되며, Cloud Sync는 실제 Auth가 준비된 뒤 활성화합니다.</p></div></div>
+      ${backupNudgeHtml()}
+      <div class="account-grid">
+        <section class="account-card"><div class="account-icon">${icon('user')}</div><div><p class="eyebrow">CURRENT MODE</p><h2>Local profile</h2><p>이 기기의 브라우저에 Library, Diary, Reviews, Collections, Subscriptions를 저장합니다.</p></div><span class="account-status good">ACTIVE</span></section>
+        <section class="account-card"><div class="account-icon">${icon('cloud')}</div><div><p class="eyebrow">CLOUD SYNC</p><h2>계정 동기화</h2><p>Supabase Auth + RLS 전환 스키마는 준비되어 있지만, 실제 인증을 검증하기 전에는 켜지 않습니다.</p></div><span class="account-status">PHASE 2</span></section>
+      </div>
+      <section class="panel data-safety"><div class="section-head"><div><h2>내 데이터 백업</h2><p>마지막 백업: ${escapeHtml(formatDateTime(state.settings?.lastExportAt))}</p></div></div><div class="data-actions"><button class="secondary-button" id="accountExportButton">${icon('download')} JSON 내보내기</button><label class="secondary-button file-label">${icon('upload')} JSON 가져오기<input type="file" id="accountImportInput" accept="application/json" hidden></label></div><p class="source-note">현재 웹사이트가 없어지더라도 JSON 파일은 사용자가 직접 보관할 수 있습니다. 계정 전환 시에도 이 포맷을 마이그레이션 입력으로 유지합니다.</p></section>`;
+  }
   function renderMy(){
     renderProfileCard(); let html='';
-    if(myMode==='profile') html=`<div class="dashboard-grid"><section class="panel"><h2>최근 감상</h2>${diaryHtml(5)}</section><section class="panel"><h2>최근 리뷰</h2>${reviewsHtml(4)}</section></div><div style="margin-top:18px">${calendarHtml(calendarCursor,true)}</div>`;
+    if(myMode==='profile') html=`${backupNudgeHtml()}<div class="dashboard-grid"><section class="panel"><h2>최근 감상</h2>${diaryHtml(5)}</section><section class="panel"><h2>최근 리뷰</h2>${reviewsHtml(4)}</section></div><div style="margin-top:18px">${calendarHtml(calendarCursor,true)}</div>`;
     else if(myMode==='diary') html=`<div class="library-head"><div><p class="eyebrow">DIARY</p><h1>감상 기록</h1><p class="library-summary">같은 영화를 여러 번 봐도 각각의 감상일을 별도 기록합니다.</p></div><button class="secondary-button" id="myLogButton">＋ Log Film</button></div>${diaryHtml()}`;
     else if(myMode==='reviews') html=`<div class="library-head"><div><p class="eyebrow">REVIEWS</p><h1>내 리뷰</h1><p class="library-summary">작성한 한줄평을 한곳에서 다시 봅니다.</p></div></div>${reviewsHtml()}`;
     else if(myMode==='calendar') html=`<div class="library-head"><div><p class="eyebrow">CALENDAR</p><h1>감상 캘린더</h1><p class="library-summary">Viewing Log의 감상일을 달력에 투영합니다.</p></div></div>${calendarHtml(calendarCursor)}`;
     else if(myMode==='stats') html=`<div class="library-head"><div><p class="eyebrow">STATS</p><h1>내 영화 기록</h1><p class="library-summary">경쟁이나 streak가 아니라 회고를 위한 통계입니다.</p></div></div>${statsHtml()}`;
     else if(myMode==='subscriptions') html=subscriptionsHtml();
+    else if(myMode==='account') html=accountHtml();
     document.getElementById('myContent').innerHTML=html;
+    const accountImport=document.getElementById('accountImportInput'); if(accountImport) accountImport.addEventListener('change',handleImport);
     document.querySelectorAll('[data-my]').forEach(b=>b.classList.toggle('is-active',b.dataset.my===myMode));
   }
 
   function renderSearch(q=''){
     const query=q.trim().toLowerCase(); let list=query?(CATALOG.movies||[]).filter(m=>(m.title+' '+(m.originalTitle||'')+' '+(m.director||'')).toLowerCase().includes(query)):(CATALOG.sections?.trending||[]);
-    document.getElementById('searchResults').innerHTML=list.slice(0,30).map(m=>`<article class="search-result" data-movie="${escapeHtml(m.id)}"><img src="${escapeHtml(poster(m))}" alt=""/><div><h3>${escapeHtml(m.title)}</h3><p>${m.year||'—'} · ${escapeHtml(m.director||'')} ${availableOnMine(m)?'· ✓ 내 구독':''}</p></div><div class="result-actions"><button class="tiny-button ${lib(m.id)?'':'accent'}" data-action="save" data-id="${escapeHtml(m.id)}">${lib(m.id)?'✓':'＋'}</button><button class="tiny-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG</button></div></article>`).join('')||'<div class="empty-state">검색 결과가 없습니다. 현재 GitHub Pages MVP 검색은 동기화된 카탈로그 범위에서 동작합니다.</div>';
+    const resultHtml=list.slice(0,30).map(m=>`<article class="search-result" data-movie="${escapeHtml(m.id)}"><img src="${escapeHtml(poster(m))}" alt=""/><div><h3>${escapeHtml(m.title)}</h3><p>${m.year||'—'} · ${escapeHtml(m.director||'')} ${availableOnMine(m)?'· ✓ 내 구독':''}</p></div><div class="result-actions"><button class="tiny-button ${lib(m.id)?'':'accent'}" data-action="save" data-id="${escapeHtml(m.id)}">${lib(m.id)?'✓':'＋'}</button><button class="tiny-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG</button></div></article>`).join(''); document.getElementById('searchResults').innerHTML=`<div class="search-summary">${query?`<b>${escapeHtml(q.trim())}</b> · ${list.length}개 결과`:'추천 영화 · 입력하면 즉시 검색됩니다.'}</div>${resultHtml||`<div class="empty-state"><div class="empty-icon">${icon('search')}</div><b>동기화된 카탈로그에서 찾지 못했습니다.</b><span>현재 GitHub Pages 빌드는 로컬 카탈로그 검색입니다. Netlify/API 프록시를 붙이면 전체 TMDB 실시간 검색으로 확장할 수 있습니다.</span></div>`}`;
   }
   function openSearch(){ showDialog('searchDialog'); const input=document.getElementById('searchInput'); renderSearch(input.value); setTimeout(()=>input.focus(),60); }
   function openMovie(id){
     const m=movie(id); if(!m)return; const l=lib(id); const groups={subscription:[],free:[],ads:[],rent:[],buy:[]}; (m.providers||[]).forEach(p=>(groups[p.type]||(groups[p.type]=[])).push(p));
-    const group=(key,label)=>groups[key]?.length?`<div class="provider-group"><h4>${label}</h4><div class="providers">${groups[key].map(p=>`<span class="provider-pill ${state.subscriptions.includes(p.name)&&key==='subscription'?'owned':''}">${state.subscriptions.includes(p.name)&&key==='subscription'?'✓ ':''}${escapeHtml(p.name)}</span>`).join('')}</div></div>`:'';
+    const group=(key,label)=>groups[key]?.length?`<div class="provider-group"><h4>${label}</h4><div class="providers">${groups[key].map(p=>{const owned=isSubscribedProvider(p.name)&&key==='subscription';return `<span class="provider-pill ${owned?'owned':''}">${owned?'✓ ':''}${escapeHtml(providerConfigForName(p.name)?.label||p.name)}</span>`}).join('')}</div></div>`:'';
     document.getElementById('movieDialogContent').innerHTML=`<div class="movie-sheet"><img class="movie-sheet-bg" src="${escapeHtml(backdrop(m))}" alt=""/><button class="movie-close" data-close="movieDialog">×</button><div class="movie-sheet-content"><img class="detail-poster" src="${escapeHtml(poster(m))}" alt="${escapeHtml(m.title)} 포스터"/><div class="detail-main"><p class="eyebrow">${l?.watched?'WATCHED':l?'IN LIBRARY':'FILM'}</p><h2>${escapeHtml(m.title)}</h2><div class="detail-meta">${escapeHtml(m.director||'')} · ${m.year||'—'} ${m.runtime?`· ${fmtRuntime(m.runtime)}`:''} · TMDB ${fmtRating(m.voteAverage)}</div><p class="detail-overview">${escapeHtml(m.overview||'')}</p><div class="provider-groups">${group('subscription','SUBSCRIPTION / FLATRATE')}${group('free','FREE')}${group('ads','WITH ADS')}${group('rent','RENT')}${group('buy','BUY')}</div><p class="source-note">스트리밍 제공 정보: JustWatch via TMDB · 지역 KR · 실제 제공 여부와 요금은 각 서비스에서 최종 확인하세요.</p><div class="detail-actions"><button class="primary-button" data-action="save" data-id="${escapeHtml(m.id)}">${l?'✓ IN LIBRARY':'＋ LIBRARY'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG FILM</button><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(m.id)}">${l?.watchlist?'✓ WATCHLIST':'＋ WATCHLIST'}</button><button class="secondary-button" data-action="favorite" data-id="${escapeHtml(m.id)}">${l?.favorite?'♥ FAVORITE':'♡ FAVORITE'}</button><button class="secondary-button" data-action="collection-add" data-id="${escapeHtml(m.id)}">＋ COLLECTION</button>${m.watchLink?`<a class="secondary-button" href="${escapeHtml(m.watchLink)}" target="_blank" rel="noopener">WHERE TO WATCH ↗</a>`:''}</div></div></div></div>`;
     showDialog('movieDialog');
   }
@@ -250,9 +294,11 @@
     const collection=e.target.closest('[data-collection],[data-collection-card]'); if(collection){ const id=collection.dataset.collection||collection.dataset.collectionCard; libraryMode=`collection:${id}`; setView('library'); renderLibrary(); return; }
     const dyn=e.target.closest('[data-dynamic]'); if(dyn){ libraryMode='dynamic:my-streaming'; setView('library'); renderLibrary(); return; }
     const mov=e.target.closest('[data-movie]'); if(mov){ openMovie(mov.dataset.movie); return; }
-    const sub=e.target.closest('[data-subscription]'); if(sub){ const p=sub.dataset.subscription; state.subscriptions=state.subscriptions.includes(p)?state.subscriptions.filter(x=>x!==p):[...state.subscriptions,p]; saveState(); renderAll(); toast(`${p}: ${state.subscriptions.includes(p)?'구독 중':'구독 안 함'}`); return; }
+    const sub=e.target.closest('[data-subscription]'); if(sub){ const p=sub.dataset.subscription; const on=isSubscriptionEnabled(p); state.subscriptions=on?state.subscriptions.filter(x=>normalizeProviderName(x)!==normalizeProviderName(p)):[...(state.subscriptions||[]),p]; saveState(); renderAll(); toast(`${providerConfigForName(p)?.label||p}: ${isSubscriptionEnabled(p)?'구독 중':'구독 안 함'}`); return; }
     const cal=e.target.closest('[data-cal]'); if(cal){ calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()+(cal.dataset.cal==='next'?1:-1),1); renderMy(); return; }
-    if(e.target.closest('#searchTrigger')||e.target.closest('#mobileSearch')||e.target.closest('#librarySearchButton')||e.target.closest('#myLogButton')){ openSearch(); return; }
+    if(e.target.closest('#searchTrigger')||e.target.closest('#mobileSearch')||e.target.closest('#librarySearchButton')||e.target.closest('#myLogButton')||e.target.closest('[data-open-search]')){ openSearch(); return; }
+    if(e.target.closest('#backupNowButton')||e.target.closest('#accountExportButton')){ exportData(); return; }
+    if(e.target.closest('#dismissBackupNudge')){ state.settings.backupNudgeDismissedAt=new Date().toISOString(); saveState(); renderMy(); return; }
     if(e.target.closest('#newCollectionButton')||e.target.closest('#newCollectionInline')){ newCollection(); return; }
     if(e.target.closest('#editProfile')){ editProfile(); return; }
     if(e.target.closest('#aboutButton')||e.target.closest('#dataStatusButton')){ showDialog('aboutDialog'); return; }
@@ -265,8 +311,9 @@
   document.addEventListener('keydown',e=>{ if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();openSearch();} if(e.key==='Escape'){/* native dialog handles */} if((e.key==='Enter'||e.key===' ')&&document.activeElement?.matches('.movie-card')){e.preventDefault();openMovie(document.activeElement.dataset.movie);} });
   document.getElementById('mobileSearch').addEventListener('click',openSearch);
 
-  function exportData(){ const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`kinosis-library-${isoDate(new Date())}.json`; a.click(); URL.revokeObjectURL(a.href); toast('내 데이터를 내보냈습니다.'); }
-  document.getElementById('importInput').addEventListener('change',async e=>{ const file=e.target.files?.[0]; if(!file)return; try{const parsed=JSON.parse(await file.text()); if(!parsed.state?.library)throw new Error('invalid'); state=parsed.state; saveState(); renderAll(); closeDialog('aboutDialog'); toast('데이터를 가져왔습니다.');}catch(err){alert('KINOSIS 내보내기 파일을 읽지 못했습니다.');} e.target.value=''; });
+  function exportData(){ state.settings=state.settings||{}; state.settings.lastExportAt=new Date().toISOString(); saveState(); const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`kinosis-library-${isoDate(new Date())}.json`; a.click(); URL.revokeObjectURL(a.href); renderMy(); toast('내 데이터를 내보냈습니다.'); }
+  async function handleImport(e){ const file=e.target.files?.[0]; if(!file)return; try{const parsed=JSON.parse(await file.text()); if(!parsed.state?.library)throw new Error('invalid'); state=Object.assign(initialState(),parsed.state,{profile:Object.assign(initialState().profile,parsed.state.profile||{}),settings:Object.assign(initialState().settings,parsed.state.settings||{})}); saveState(); renderAll(); closeDialog('aboutDialog'); toast('데이터를 가져왔습니다.');}catch(err){alert('KINOSIS 내보내기 파일을 읽지 못했습니다.');} e.target.value=''; }
+  document.getElementById('importInput').addEventListener('change',handleImport);
 
   renderAll(); setView('discover');
   if(location.protocol==='http:'||location.protocol==='https:'){ if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{}); }

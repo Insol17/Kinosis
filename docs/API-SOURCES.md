@@ -27,3 +27,11 @@ Candidate for deeper Korean film archival metadata. It is intentionally kept as 
 ## Failure policy
 
 The scheduled updater follows fetch → enrich → validate → replace. Any failed fetch or failed minimum-data validation aborts before replacing the last known-good catalog. The frontend can always fall back to the existing generated `catalog.js`.
+
+## Hero artwork policy (0.3.1)
+
+KINOSIS does not scrape arbitrary promotional images. For Discover hero candidates it queries the official TMDB movie Images endpoint, filters for landscape backdrops, and selects a high-rated image. It also prefers Korean, then English, title logos when TMDB provides them. This keeps the banner tied to the same canonical TMDB movie ID as the displayed metadata.
+
+## Collectio
+
+Collectio is exposed as a user-selectable subscription in KINOSIS because it is an active Korean art-film OTT. It is currently a **manual subscription flag only**. KINOSIS does not claim automatic Collectio title availability until a stable, permitted data integration is verified. Do not scrape Collectio pages into the catalog without reviewing its terms and an appropriate integration contract.

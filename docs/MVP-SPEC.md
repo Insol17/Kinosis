@@ -1,4 +1,4 @@
-# KINOSIS 0.2.1 MVP — Product Spec
+# KINOSIS 0.3.1 MVP — Product Spec
 
 ## Product definition
 
@@ -86,3 +86,12 @@ A native wrapper can be considered after the mobile web flow is validated; the d
 - Library remains navigable with at least 100 saved films through search/sort/collections.
 - Calendar correctly shows multiple viewing logs for the same film.
 - Mobile flow is usable without desktop-only hover interactions.
+
+
+## 0.3 usability constraints
+- Navigation icons must be vector SVG, not font-dependent Unicode glyphs.
+- Empty states must always offer the next relevant action.
+- Account UI must truthfully identify local-only storage until real Auth is enabled.
+- Backup/export remains available even after future cloud sync is introduced.
+- The first mobile breakpoint must be usable without hover.
+- `index.html` remains a local smoke-test entry point; production behavior is verified over HTTP/HTTPS before release.

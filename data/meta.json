@@ -6,8 +6,8 @@
   "counts": {
     "theatres": 20,
     "trending": 20,
-    "streaming": 20,
-    "rated": 20
+    "rated": 20,
+    "streaming": 20
   },
   "sources": {
     "metadata": {

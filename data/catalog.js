@@ -19,28 +19,71 @@ window.KINOSIS_CATALOG = {
     }
   },
   "featured": {
-    "id": 969681,
-    "title": "스파이더맨: 브랜드 뉴 데이",
-    "originalTitle": "Spider-Man: Brand New Day",
-    "year": 2026,
-    "releaseDate": "2026-07-29",
-    "director": "데스틴 대니얼 크레턴",
-    "runtime": 145,
+    "id": 315635,
+    "title": "스파이더맨: 홈커밍",
+    "originalTitle": "Spider-Man: Homecoming",
+    "year": 2017,
+    "releaseDate": "2017-07-05",
+    "director": "존 왓츠",
+    "runtime": 133,
     "genres": [
-      "SF",
       "액션",
-      "모험"
+      "모험",
+      "SF"
     ],
-    "voteAverage": 7.9,
-    "voteCount": 1862,
-    "popularity": 1911.7361,
-    "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-    "posterUrl": "https://image.tmdb.org/t/p/w500/78eMFkcvlPcfWCe1GNgNiBpFIDz.jpg",
-    "backdropUrl": "https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
-    "providers": [],
-    "watchLink": null,
-    "tmdbUrl": "https://www.themoviedb.org/movie/969681",
-    "imdbId": "tt22084616",
+    "voteAverage": 7.333,
+    "voteCount": 23667,
+    "popularity": 141.0317,
+    "overview": "토니 스타크의 제안을 받고 시빌 워에 참여한 피터 파커는 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한 이웃에 머무는 것은 피터의 성에 차지 않는다. 한편 어벤져스 군단과 외계 세력의 전투로 생긴 산업폐기물을 처리하던 아드리안 툼즈는 그 일이 토니 스타크와 정부에 넘어가면서 하루아침에 빈털터리가 된다. 이에 앙심을 품은 아드리안은 외계 첨단무기를 훔쳐서 개조하는 빌런이 되고, 그의 존재를 알게 된 피터는 도움을 빌리지 않고 자기가 일을 해결해보려고 한다.",
+    "posterUrl": "https://image.tmdb.org/t/p/w500/hjki9weYYVABvkpZbX5jBOmKXXv.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/fn4n6uOYcB6Uh89nbNPoU2w80RV.jpg",
+    "providers": [
+      {
+        "id": 8,
+        "name": "Netflix",
+        "type": "subscription",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+      },
+      {
+        "id": 356,
+        "name": "wavve",
+        "type": "subscription",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+      },
+      {
+        "id": 97,
+        "name": "Watcha",
+        "type": "subscription",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+      },
+      {
+        "id": 1796,
+        "name": "Netflix Standard with Ads",
+        "type": "subscription",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+      },
+      {
+        "id": 356,
+        "name": "wavve",
+        "type": "rent",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Google Play Movies",
+        "type": "rent",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Google Play Movies",
+        "type": "buy",
+        "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+      }
+    ],
+    "watchLink": "https://www.themoviedb.org/movie/315635-spider-man-homecoming/watch?locale=KR",
+    "tmdbUrl": "https://www.themoviedb.org/movie/315635",
+    "imdbId": "tt2250912",
     "demo": false
   },
   "movies": [
