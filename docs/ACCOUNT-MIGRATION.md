@@ -1,24 +1,11 @@
-# Account / cloud-sync migration plan
+# Account migration — 0.4.1
 
-## Current MVP
-- Browser-local profile and user data.
-- JSON export/import is the recovery and migration contract.
-- No fake login UI and no password storage.
+KINOSIS 0.4.0 stored personal data in `kinosis.mvp.v2.state` / legacy `film.mvp.v2.state`.
 
-## Phase 2 trigger
-Enable cloud accounts only after the Library / Diary loop is worth syncing across devices.
+0.4.1 blocks personal surfaces for guests. After a user signs in for the first time, KINOSIS checks for old local data and asks whether to import it into the signed-in cloud state.
 
-## Planned migration
-1. Configure Supabase Auth.
-2. Enable RLS on all user-owned tables.
-3. Create an authenticated profile row on first sign-in.
-4. Offer **Merge local data into account** rather than silently replacing local data.
-5. Upload `user_films`, `viewing_logs`, `collections`, and `user_subscriptions` in one explicit migration transaction.
-6. Keep JSON export available after cloud sync is enabled.
-7. Test account deletion and full data export before public launch.
+- import accepted: legacy Library/Diary/Collections/Subscriptions/movie snapshots are merged and synced
+- import declined: legacy storage remains on the device but is not shown as the signed-in account's Library
+- migration decision is recorded per Supabase user ID to avoid repeated prompts
 
-## Conflict rule candidate
-For the MVP migration, prefer explicit user choice when both local and cloud contain data. Do not silently resolve destructive conflicts by timestamp alone.
-
-## Subscription identity
-Use a stable text `provider_key` for user preferences and keep TMDB `provider_id` nullable. This allows manual-only providers such as Collectio to sync without inventing a TMDB provider ID.
+Signed-in device caches use a user-specific localStorage key and are not shown after sign-out.

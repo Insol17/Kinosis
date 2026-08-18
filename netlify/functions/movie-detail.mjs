@@ -7,11 +7,12 @@ export default async (request) => {
   if (!/^\d+$/.test(id)) return json({ error: 'Invalid movie ID.' }, 400);
 
   try {
-    const [detail, credits, externalIds, providerPayload] = await Promise.all([
+    const [detail, credits, externalIds, providerPayload, keywordsPayload] = await Promise.all([
       tmdb(`/movie/${id}`, { language: 'ko-KR' }),
       tmdb(`/movie/${id}/credits`, { language: 'ko-KR' }).catch(() => ({ crew: [], cast: [] })),
       tmdb(`/movie/${id}/external_ids`).catch(() => ({})),
       tmdb(`/movie/${id}/watch/providers`).catch(() => ({ results: {} })),
+      tmdb(`/movie/${id}/keywords`).catch(() => ({ keywords: [] })),
     ]);
 
     const director = (credits.crew || []).find((person) => person.job === 'Director')?.name || null;
@@ -30,6 +31,8 @@ export default async (request) => {
       voteCount: detail.vote_count ?? 0,
       director,
       genres: (detail.genres || []).map((genre) => ({ id: genre.id, name: genre.name })),
+      keywords: (keywordsPayload.keywords || keywordsPayload.results || []).map((keyword) => keyword.name).filter(Boolean),
+      productionCompanies: (detail.production_companies || []).map((company) => company.name).filter(Boolean),
       posterUrl: imageUrl(detail.poster_path, 'w500'),
       backdropUrl: imageUrl(detail.backdrop_path, 'w1280'),
       heroBackdropUrl: imageUrl(detail.backdrop_path, 'original'),

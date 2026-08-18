@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const source=fs.readFileSync(path.join(root,'assets/js/art-classifier.js'),'utf8');
+const context={window:{KINOSIS_CONFIG:{artMode:{threshold:36}}}};
+vm.createContext(context); vm.runInContext(source,context);
+const art=context.window.KINOSIS_ART;
+assert.equal(art.classify({title:'Citizen Kane',originalTitle:'Citizen Kane',year:1941,director:'Orson Welles',voteCount:1000}).isArt,true);
+assert.equal(art.classify({title:'기생충',originalTitle:'기생충',year:2019,director:'봉준호'}).isArt,true);
+assert.equal(art.classify({title:'Generic Movie',year:2026,director:'Unknown',genres:['Action']}).isArt,false);
+assert.ok(art.classify({title:'Citizen Kane',originalTitle:'Citizen Kane',year:1941,director:'Orson Welles'}).reasons.length>0);
+console.log('art-mode.test: deterministic boolean classifier OK');

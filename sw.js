@@ -1,10 +1,13 @@
-const VERSION='0.4.0';
+const VERSION='0.4.1';
 const CACHE=`kinosis-shell-${VERSION}`;
 const CORE=[
   './',
   './index.html',
   `./assets/css/app.css?v=${VERSION}`,
   `./assets/js/app.js?v=${VERSION}`,
+  `./assets/js/config.js?v=${VERSION}`,
+  `./assets/js/art-classifier.js?v=${VERSION}`,
+  `./assets/js/cloud.js?v=${VERSION}`, 
   `./data/catalog.js?v=${VERSION}`,
   './icons/icon.svg',
   './icons/icon-192.png',

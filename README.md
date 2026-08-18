@@ -1,145 +1,105 @@
-# KINOSIS 0.4.0 MVP
+# KINOSIS 0.4.1 MVP
 
-KINOSIS is a Korean-first film discovery / library / diary web MVP.
+Movie discovery + account-synced personal film library for Netlify.
 
-Production target: **GitHub repository + Netlify deploy + Netlify Functions + TMDB**.
+## What changed in 0.4.1
 
-## What changed in 0.4.0
+- **Account required for LIBRARY / MY**. Guests can browse DISCOVER and use global TMDB search, but Save / Log / Watchlist / Favorite / Collections require sign-in.
+- **Supabase Auth** using Google, Kakao, or email magic-link UI.
+- **Cross-device cloud sync** for Library, Diary, ratings/reviews, collections, subscriptions, cached movie snapshots and preferences.
+- **Offline/local cache** remains on each signed-in device. Failed sync does not erase local work; reconnect triggers another sync attempt.
+- **Legacy migration**: after first sign-in, 0.4.0-and-earlier local data can be imported into the account.
+- **ART MODE**: same visual design, different DISCOVER lens. KINOSIS computes an explainable boolean classification from cinephile-canon title seeds, auteur/director seeds, keywords, production/distribution signals, and manual seed flags.
+- **ART MODE is not an AI black box in 0.4.1**. The classifier is deterministic, free, inspectable, and replaceable later by embeddings/model inference if that proves useful.
+- **ART Library filter**.
+- **Supabase health scheduled function**: three external reads per day from Netlify to reduce inactivity risk and double as a database health check. This is not a contractual guarantee against Free-plan pausing.
+- Existing **Netlify TMDB live search**, weekly GitHub Discover refresh, compact Library posters, PWA cache-busting, TMDB/JustWatch attribution and Collectio subscription entry remain.
 
-- Global TMDB live movie search through Netlify Functions.
-- Search checks the local KINOSIS catalog immediately, then merges TMDB results after a short debounce.
-- Search results can be saved or logged without opening the detail page.
-- Live-search films are persisted as movie snapshots in local state, so a saved film does not disappear when the weekly Discover catalog changes.
-- Live detail fetch adds director, runtime, genres, IMDb ID and KR watch-provider data.
-- Library poster cards are substantially smaller and denser than Discover cards.
-- PWA shell uses versioned assets and clears old KINOSIS caches; `/api/*` is never served from the service-worker cache.
-- Existing Thursday GitHub Action catalog refresh remains in place for Discover.
-- Collectio remains a manually selectable subscription; KINOSIS does not invent automatic availability for it.
-
-## Product IA
-
-- **DISCOVER** — Home / In Theatres / My Streaming / Streaming / Top Rated
-- **LIBRARY** — Steam-inspired Home shelves / compact cards / All Films / Watchlist / Favorites / Collections / Dynamic Collection / filters
-- **MY** — Profile / Diary / Reviews / Ratings / Calendar / Stats / Subscriptions / Account & Data
-- **SEARCH** — local-first + TMDB live search, one-click Save / Log
-- **MOBILE** — touch-first bottom navigation and responsive layouts
-- **PWA** — installable over HTTPS
-
-## Production deployment: Netlify
-
-The GitHub repository remains the source of truth. Push changes to GitHub; the connected Netlify project deploys them automatically.
-
-### 1. Netlify environment variable
-
-Set this in **Netlify → Project configuration → Environment variables**:
+## Architecture
 
 ```text
-TMDB_READ_ACCESS_TOKEN
+TMDB
+ ├─ GitHub Actions -> weekly Discover catalog
+ └─ Netlify Functions -> live movie search/detail
+
+Supabase
+ ├─ Auth (Google / Kakao / Email)
+ └─ user_state JSONB row protected by RLS
+        ↕
+KINOSIS signed-in device cache
+
+Guest
+ └─ Discover + Search only
 ```
 
-Use the TMDB **API Read Access Token** value. Keep **Contains secret values** enabled. On plans where specific scopes are unavailable, All scopes is acceptable; Functions must be able to read the variable.
+`user_state` is intentionally a single versioned JSONB snapshot for the MVP. It lets KINOSIS validate account gating and cross-device sync without prematurely creating a social-data schema. Public reviews/follows can later split this into normalized tables.
 
-After changing an environment variable, trigger a new deploy.
+## Required one-time Supabase step
 
-### 2. Netlify Functions
-
-This repository contains:
+Run this file in **Supabase Dashboard -> SQL Editor**:
 
 ```text
-netlify/
-├─ functions/
-│  ├─ movie-search.mjs   -> /api/movie-search?q=...
-│  └─ movie-detail.mjs   -> /api/movie-detail?id=...
-└─ lib/
-   └─ tmdb.mjs
+supabase/001_kinosis_041.sql
 ```
 
-`netlify.toml` points Netlify at the function directory. The TMDB token exists only in the function runtime; it is never embedded in frontend JavaScript.
+It creates:
 
-After deployment, verify:
+- `public.user_state` with per-user RLS
+- `public.app_health` with a single non-sensitive read-only health row
+
+Do **not** put a Supabase Secret key or `service_role` key in the browser.
+
+The frontend currently uses the project's public configuration in `assets/js/config.js`:
+
+- Supabase Project URL
+- Supabase Publishable Key
+
+Both are intended for client use when RLS is correctly configured.
+
+## OAuth providers
+
+The UI already contains Google and Kakao buttons. To make them work for other people, enable each provider in **Supabase -> Authentication -> Sign In / Providers** and add the provider credentials.
+
+Additional provider-side settings still matter:
+
+- Google: configure a Web OAuth client, the Supabase callback URL, allowed origins, and an External audience/publishing state suitable for your users.
+- Kakao: enable Kakao Login, register the Supabase callback URL, activate the client secret, and configure consent items.
+
+See `docs/SUPABASE-AUTH-SETUP.md`.
+
+## ART MODE
+
+0.4.1 does **not** call an LLM or embedding API. `assets/js/art-classifier.js` computes a feature score and returns an internal boolean.
+
+Signals include:
+
+- selected film-canon title seeds
+- director/auteur seeds
+- TMDB keywords
+- production/distribution names
+- classic-film heuristic
+- `artSeed` emitted by the weekly updater
+- future manual override support
+
+The user sees only the inclusion reasons, not an “art score.”
+
+The official KMDb article by Jung Sung-il, **[시네필 안내서]100편의 영화**, is used as a conceptual seed reference; KINOSIS does not reproduce article text or copy Watcha/Letterboxd datasets.
+
+## Run
+
+For static UI fallback:
 
 ```text
-https://YOUR-SITE.netlify.app/api/movie-search?q=시민 케인
+open index.html
 ```
 
-A JSON search result means Netlify → TMDB live search is working.
-
-## Local development
-
-### Fast UI smoke test
-
-Double-click `index.html`.
-
-This still works without a build step. Because `file://` cannot run Netlify Functions, search falls back to the synced/local catalog only.
-
-### Full local Netlify test
+Auth and Netlify Functions require HTTP/HTTPS. For real local development:
 
 ```bash
 npm run dev
 ```
 
-This runs `netlify dev` through the Netlify CLI. Link the folder to the Netlify project when prompted so local functions can use the site's environment variables.
-
-## Discover catalog sync
-
-Live Search and Discover have different jobs.
-
-```text
-GitHub Actions -> TMDB -> data/catalog.js
-               (curated Discover cache)
-
-Browser -> Netlify Function -> TMDB
-          (global live movie search)
-```
-
-The scheduled workflow `.github/workflows/refresh-catalog.yml` still runs Thursday 06:30 KST and can be triggered manually. It fetches KR now-playing / trending / streaming / top-rated data, enriches entries, validates them, then replaces the catalog only after validation succeeds.
-
-A failed sync leaves the last known-good catalog intact.
-
-## Personal data
-
-0.4.0 remains anonymous/local-first. New visitors start with an empty Library and no assumed subscriptions:
-
-- Library
-- Viewing Logs
-- Reviews
-- Collections
-- Subscriptions
-- Movie snapshots required by saved live-search films
-
-are stored in `localStorage` and can be exported/imported as JSON.
-
-There is no fake cloud account. `supabase/schema.sql` and `docs/ACCOUNT-MIGRATION.md` remain the Phase 2 migration path for optional cross-device sync.
-
-## Streaming semantics
-
-KINOSIS distinguishes:
-
-- subscription / flatrate
-- free
-- ads
-- rent
-- buy
-
-`MY STREAMING` is computed only by intersecting the user's manually selected subscriptions with KR subscription/flatrate provider data.
-
-Collectio is present as a manual subscription preference, but automatic title availability is not claimed until a stable permitted integration exists.
-
-## Data-source disclosure
-
-The website includes **Data sources & credits**.
-
-Active sources:
-
-- TMDB — film metadata and imagery
-- JustWatch via TMDB Watch Providers — KR streaming/rental/purchase availability
-
-Planned adapters, not active:
-
-- KOBIS — Korean theatrical/box-office validation
-- KMDb — deeper Korean film archival metadata
-
-Read `docs/API-SOURCES.md` before adding another source.
+Production is the connected Netlify deployment.
 
 ## Tests
 
@@ -147,12 +107,11 @@ Read `docs/API-SOURCES.md` before adding another source.
 npm test
 ```
 
-Checks:
+## Data source attribution
 
-- frontend/function JavaScript syntax
-- generated catalog schema
-- required product surfaces and Netlify files
-- live-search/detail function contract with mocked TMDB responses
-- API token is not returned in function payloads
+- TMDB — movie metadata and imagery
+- JustWatch via TMDB Watch Providers — KR availability
+- KINOSIS ART MODE — local deterministic classifier / curated seed rules
+- Collectio — manual subscription preference only; no automatic availability scraping
 
-GitHub CI runs the same checks on push/PR.
+The product UI includes the required TMDB notice and JustWatch attribution.

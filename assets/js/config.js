@@ -1,0 +1,10 @@
+window.KINOSIS_CONFIG = Object.freeze({
+  version: '0.4.1',
+  supabaseUrl: 'https://uqntdtjqeernzqpbymex.supabase.co',
+  supabasePublishableKey: 'sb_publishable_lEWx9szNW7vSaXnPL1zd1g_WRW-FGZq',
+  authRedirectUrl: 'https://kinosis.netlify.app/',
+  artMode: {
+    threshold: 36,
+    sourceVersion: 'cinephile-seed-v1'
+  }
+});

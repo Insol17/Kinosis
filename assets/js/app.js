@@ -1,9 +1,13 @@
 (function(){
   'use strict';
-  const CATALOG = window.KINOSIS_CATALOG || {mode:'demo',updatedAt:'missing',movies:[],sections:{trending:[],theatres:[],streaming:[],rated:[]},featured:null};
+  const CATALOG = window.KINOSIS_CATALOG || {mode:'demo',updatedAt:'missing',movies:[],sections:{trending:[],theatres:[],streaming:[],rated:[],art:[]},featured:null};
+  const CLOUD = window.KINOSIS_CLOUD || null;
+  const ART = window.KINOSIS_ART || {classify:()=>({isArt:false,score:0,reasons:[]})};
   const movieMap = new Map((CATALOG.movies || []).map(m => [String(m.id), m]));
-  const STORAGE_KEY = 'kinosis.mvp.v2.state';
+  const STORAGE_KEY = 'kinosis.mvp.v2.state'; // 0.4.0 and earlier import source
   const LEGACY_STORAGE_KEY = 'film.mvp.v2.state';
+  const GUEST_PREF_KEY = 'kinosis.guest.preferences.v1';
+  const MIGRATION_PREFIX = 'kinosis.legacy.migrated.';
   const PROVIDERS = [
     {key:'Netflix', label:'Netflix', aliases:['Netflix','Netflix Standard with Ads'], url:'https://www.netflix.com/kr/'},
     {key:'TVING', label:'TVING', aliases:['TVING'], url:'https://www.tving.com/'},
@@ -15,10 +19,15 @@
     {key:'Collectio', label:'콜렉티오', aliases:['Collectio','COLLECTIO','콜렉티오'], url:'https://collectio.co.kr/', manualOnly:true}
   ];
   let activeView = 'discover';
+  let authReady = false;
+  let currentUser = null;
+  let syncTimer = null;
+  let syncState = {status:'guest',lastSyncedAt:null,message:''};
+  let suppressCloudSync = true;
   let discoverMode = 'home';
   let libraryMode = 'home';
   let myMode = 'profile';
-  let libraryFilter = {q:'', sort:'recent', status:'all', rating:'all', availability:'all', genre:'all', decade:'all'};
+  let libraryFilter = {q:'', sort:'recent', status:'all', rating:'all', availability:'all', genre:'all', decade:'all', art:'all'};
   let calendarCursor = new Date();
   let toastTimer;
   let searchTimer = null;
@@ -36,30 +45,101 @@
       profile:{name:'Local User',handle:'@local',bio:'영화를 발견하고 기록하는 로컬 프로필'},
       subscriptions:[],
       settings:{lastExportAt:null,backupNudgeDismissedAt:null},
+      preferences:{artMode:false},
+      meta:{modifiedAt:null,lastSyncedAt:null,dirtySince:null},
       movieCache:{},
       library:{},
       logs:[],
       collections:[]
     };
   }
-  function loadState(){
-    try{
-      const raw=localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
-      if(!raw) return initialState();
-      const parsed=JSON.parse(raw);
-      const base=initialState();
-      return Object.assign(base,parsed,{
-        profile:Object.assign(base.profile,parsed.profile||{}),
-        settings:Object.assign(base.settings,parsed.settings||{}),
-        movieCache:Object.assign({},parsed.movieCache||{})
-      });
-    }catch(e){ console.warn(e); return initialState(); }
+  function readJson(key){ try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):null;}catch{return null;} }
+  function normalizeState(parsed){
+    const base=initialState(); parsed=parsed||{};
+    return Object.assign(base,parsed,{
+      profile:Object.assign(base.profile,parsed.profile||{}),
+      settings:Object.assign(base.settings,parsed.settings||{}),
+      preferences:Object.assign(base.preferences,parsed.preferences||{}),
+      meta:Object.assign(base.meta,parsed.meta||{}),
+      movieCache:Object.assign({},parsed.movieCache||{}),
+      library:Object.assign({},parsed.library||{}),
+      logs:Array.isArray(parsed.logs)?parsed.logs:[],
+      collections:Array.isArray(parsed.collections)?parsed.collections:[],
+      subscriptions:Array.isArray(parsed.subscriptions)?parsed.subscriptions:[]
+    });
   }
-  let state = loadState();
-  state.movieCache=state.movieCache||{};
-  Object.keys(state.library||{}).forEach(id=>{ const catalogMovie=movieMap.get(String(id)); if(catalogMovie&&!state.movieCache[String(id)]) state.movieCache[String(id)]=catalogMovie; });
-  Object.values(state.movieCache||{}).forEach(m=>{ if(m?.id!=null) movieMap.set(String(m.id),m); });
-  function saveState(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); }
+  function legacyState(){ return normalizeState(readJson(STORAGE_KEY)||readJson(LEGACY_STORAGE_KEY)); }
+  function guestPreferences(){ return Object.assign({artMode:false},readJson(GUEST_PREF_KEY)||{}); }
+  function userCacheKey(){ return currentUser?.id?`kinosis.user.${currentUser.id}.state.v1`:null; }
+  function hasPersonalData(value){ return !!(Object.keys(value?.library||{}).length || value?.logs?.length || value?.collections?.length || value?.subscriptions?.length || Object.keys(value?.movieCache||{}).length); }
+  function mergeImport(base,incoming){
+    const out=normalizeState(base); const src=normalizeState(incoming);
+    out.profile=Object.assign({},out.profile,src.profile);
+    out.library=Object.assign({},out.library,src.library);
+    out.movieCache=Object.assign({},out.movieCache,src.movieCache);
+    const logMap=new Map([...(out.logs||[]),...(src.logs||[])].map(x=>[String(x.id),x])); out.logs=[...logMap.values()];
+    const colMap=new Map([...(out.collections||[]),...(src.collections||[])].map(x=>[String(x.id),x])); out.collections=[...colMap.values()];
+    out.subscriptions=[...new Set([...(out.subscriptions||[]),...(src.subscriptions||[])])];
+    out.preferences=Object.assign({},out.preferences,src.preferences);
+    out.meta.modifiedAt=new Date().toISOString(); out.meta.dirtySince=out.meta.modifiedAt;
+    return out;
+  }
+  let state=initialState(); state.preferences=guestPreferences();
+  function isSignedIn(){ return !!currentUser; }
+  function persistLocalCache(){
+    if(isSignedIn()){ const key=userCacheKey(); if(key)localStorage.setItem(key,JSON.stringify(state)); }
+    else localStorage.setItem(GUEST_PREF_KEY,JSON.stringify({artMode:!!state.preferences?.artMode}));
+  }
+  function saveState({sync=true,mark=true}={}){
+    if(mark){ state.meta=state.meta||{}; state.meta.modifiedAt=new Date().toISOString(); if(isSignedIn())state.meta.dirtySince=state.meta.dirtySince||state.meta.modifiedAt; }
+    persistLocalCache();
+    if(sync && isSignedIn() && !suppressCloudSync) scheduleCloudSync();
+  }
+  function rememberCachedMovies(){ Object.values(state.movieCache||{}).forEach(m=>{if(m?.id!=null)movieMap.set(String(m.id),m);}); }
+  function scheduleCloudSync(delay=500){ clearTimeout(syncTimer); syncState.status='pending'; renderAccountChrome(); syncTimer=setTimeout(pushCloudState,delay); }
+  async function pushCloudState(){
+    if(!isSignedIn()||!CLOUD)return; clearTimeout(syncTimer);
+    syncState.status=navigator.onLine?'syncing':'offline'; renderAccountChrome();
+    if(!navigator.onLine)return;
+    try{
+      const payload=JSON.parse(JSON.stringify(state));
+      const row=await CLOUD.writeUserState(payload);
+      const stamp=row?.updated_at||new Date().toISOString(); state.meta.lastSyncedAt=stamp; state.meta.dirtySince=null; persistLocalCache();
+      syncState={status:'online',lastSyncedAt:stamp,message:''};
+    }catch(error){ console.warn('KINOSIS cloud sync:',error); syncState={status:'offline',lastSyncedAt:state.meta?.lastSyncedAt||null,message:error.message||'Sync failed'}; }
+    renderAccountChrome(); if(activeView==='my'&&myMode==='account')renderMy();
+  }
+  async function hydrateSignedInUser(){
+    if(!isSignedIn()||!CLOUD)return; suppressCloudSync=true; syncState.status='syncing'; renderAccountChrome();
+    try{
+      const cloud=await CLOUD.readUserState();
+      const cached=normalizeState(readJson(userCacheKey()));
+      let next=cloud?.payload?normalizeState(cloud.payload):(hasPersonalData(cached)?cached:initialState());
+      const cloudTime=Date.parse(cloud?.updated_at||0)||0, cacheTime=Date.parse(cached.meta?.modifiedAt||0)||0;
+      if(hasPersonalData(cached)&&cacheTime>cloudTime) next=mergeImport(next,cached);
+      const old=legacyState(); const migrationKey=MIGRATION_PREFIX+currentUser.id;
+      if(hasPersonalData(old)&&!localStorage.getItem(migrationKey)){
+        const count=Object.keys(old.library||{}).length;
+        if(confirm(`이 브라우저에서 이전 KINOSIS 기록 ${count}편을 찾았습니다. 현재 계정으로 가져올까요?`)){ next=mergeImport(next,old); }
+        localStorage.setItem(migrationKey,new Date().toISOString());
+      }
+      state=normalizeState(next); rememberCachedMovies(); state.meta.lastSyncedAt=cloud?.updated_at||state.meta.lastSyncedAt||null;
+      persistLocalCache(); suppressCloudSync=false;
+      if(!cloud || state.meta.dirtySince) await pushCloudState(); else syncState={status:'online',lastSyncedAt:state.meta.lastSyncedAt,message:''};
+    }catch(error){
+      console.warn('KINOSIS cloud hydrate:',error); const cached=readJson(userCacheKey()); state=normalizeState(cached||initialState()); rememberCachedMovies(); suppressCloudSync=false; syncState={status:'offline',lastSyncedAt:state.meta?.lastSyncedAt||null,message:error.message||'Cloud unavailable'};
+    }
+    renderAll(); renderAccountChrome();
+  }
+  function gateHtml(area){ return `<div class="gate-card"><div class="gate-card-inner"><div class="gate-icon">${icon('cloud')}</div><p class="eyebrow">ACCOUNT REQUIRED</p><h1>${escapeHtml(area)}</h1><p>개인 영화 기록은 계정과 연결됩니다. 로그인하면 Library, Diary, Reviews, Calendar, Collections와 OTT 설정을 여러 기기에서 이어서 사용할 수 있습니다.</p><button class="primary-button" data-open-auth>로그인하고 시작하기</button></div></div>`; }
+  function requireAuth(message='이 기능은 로그인 후 사용할 수 있습니다.'){ if(isSignedIn())return true; toast(message); showDialog('authDialog'); return false; }
+  function renderAccountChrome(){
+    const avatar=document.getElementById('topAvatar'); if(!avatar)return;
+    if(isSignedIn()){ const label=currentUser?.user_metadata?.full_name||currentUser?.user_metadata?.name||currentUser?.email||'U'; avatar.textContent=String(label).trim()[0]?.toUpperCase()||'U'; avatar.classList.add('auth-avatar'); }
+    else{ avatar.textContent='K'; avatar.classList.remove('auth-avatar'); }
+    document.querySelectorAll('[data-nav="library"],[data-nav="my"]').forEach(el=>el.classList.toggle('nav-locked',!isSignedIn()));
+  }
+
   function icon(name){ return `<svg class="ui-icon" aria-hidden="true"><use href="#i-${name}"/></svg>`; }
   function formatDateTime(value){ if(!value)return '아직 백업하지 않음'; try{return new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeStyle:'short'}).format(new Date(value));}catch{return value;} }
   function needsBackup(){ return Object.keys(state.library).length>=3 && !state.settings?.lastExportAt && !state.settings?.backupNudgeDismissedAt; }
@@ -74,12 +154,16 @@
   function stars(v){ if(!v) return '—'; return `★ ${Number(v).toFixed(1)}`; }
   function normalizeProviderName(value){ return String(value||'').toLowerCase().replace(/[^a-z0-9가-힣]+/g,''); }
   function providerConfigForName(name){ const n=normalizeProviderName(name); return PROVIDERS.find(p=>[p.key,p.label,...(p.aliases||[])].some(v=>normalizeProviderName(v)===n)) || null; }
-  function isSubscriptionEnabled(key){ const n=normalizeProviderName(key); return (state.subscriptions||[]).some(v=>normalizeProviderName(v)===n); }
+  function isSubscriptionEnabled(key){ if(!isSignedIn())return false; const n=normalizeProviderName(key); return (state.subscriptions||[]).some(v=>normalizeProviderName(v)===n); }
   function isSubscribedProvider(name){ const cfg=providerConfigForName(name); return cfg ? isSubscriptionEnabled(cfg.key) : isSubscriptionEnabled(name); }
   function subscriptionProviders(m){ return (m?.providers||[]).filter(p=>p.type==='subscription'); }
   function availableOnMine(m){ return subscriptionProviders(m).some(p=>isSubscribedProvider(p.name)); }
   function providersText(m){ const names=subscriptionProviders(m).map(p=>providerConfigForName(p.name)?.label||p.name); return names.slice(0,2).join(' · '); }
   function genreNames(m){ return (m?.genres||[]).map(g=>typeof g==='string'?g:g?.name).filter(Boolean); }
+  function artInfo(m){ return ART.classify(m,{threshold:window.KINOSIS_CONFIG?.artMode?.threshold||36}); }
+  function isArtMovie(m){ return !!artInfo(m).isArt; }
+  function artReasons(m){ return artInfo(m).reasons||[]; }
+  function artPool(){ return uniqueById([...(CATALOG.sections?.art||[]),...(CATALOG.movies||[])]).filter(isArtMovie); }
   function providerTypeLabel(type){ return ({subscription:'구독',free:'무료',ads:'광고 포함',rent:'대여',buy:'구매'})[type] || type; }
   function heroProviders(m){
     const rank={subscription:0,free:1,ads:2,rent:3,buy:4}; const seen=new Set();
@@ -175,16 +259,30 @@
   }
   function myStreamingMovies(){ return (CATALOG.movies||[]).filter(availableOnMine); }
   function watchlistAvailable(){ return allSavedMovies().filter(m=>lib(m.id)?.watchlist && availableOnMine(m)); }
-  function myStreamingSection(title='MY STREAMING',subtitle='내가 구독 중인 서비스에서 바로 볼 수 있는 영화.',limit=12){
+  function myStreamingSection(title='MY STREAMING',subtitle='내가 구독 중인 서비스에서 바로 볼 수 있는 영화.',limit=12,sourceList=null){
+    if(!isSignedIn()) return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>${escapeHtml(subtitle)}</p></div></div><div class="empty-state"><div class="empty-icon">${icon('cloud')}</div><b>로그인하면 내 OTT 기준으로 볼 수 있습니다.</b><span>구독 서비스 설정은 계정과 함께 여러 기기에 동기화됩니다.</span><button class="secondary-button" data-open-auth>로그인</button></div></section>`;
     if(!(state.subscriptions||[]).length){
       return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>${escapeHtml(subtitle)}</p></div></div><div class="empty-state"><div class="empty-icon">${icon('grid')}</div><b>먼저 구독 중인 OTT를 선택하세요.</b><span>Netflix, TVING, WATCHA, Wavve, Disney+, Coupang Play, Apple TV+, 콜렉티오를 MY에서 관리할 수 있습니다.</span><button class="secondary-button" data-open-subscriptions>구독 서비스 설정</button></div></section>`;
     }
-    return rowSection(title,subtitle,myStreamingMovies(),limit);
+    const list=(sourceList||myStreamingMovies()).filter(availableOnMine);
+    return rowSection(title,subtitle,list,limit);
   }
   function renderDiscover(){
-    let hero=CATALOG.featured;
+    const artMode=!!state.preferences?.artMode;
+    const artMovies=artPool();
+    let hero=artMode?(artMovies[0]||CATALOG.featured):CATALOG.featured;
     let html='';
-    if(discoverMode==='home'){
+    if(artMode){
+      const artTheatres=(CATALOG.sections?.theatres||[]).filter(isArtMovie);
+      const modern=artMovies.filter(m=>Number(m.year||0)>=1990);
+      const archive=artMovies.filter(m=>Number(m.year||0)>0&&Number(m.year)<1990);
+      const artStreaming=artMovies.filter(m=>subscriptionProviders(m).length);
+      html += rowSection('SELECTED FOR ART MODE','시네필 캐논을 시드로 감독·키워드·제작/배급 메타데이터를 계산한 작품 중심 큐레이션.',artMovies,18);
+      html += artTheatres.length?rowSection('NOW IN ART THEATRES','현재 상영 목록 중 ART MODE 분류를 통과한 작품.',artTheatres,14):`<section class="content-section"><div class="section-head"><div><h2>NOW IN ART THEATRES</h2><p>현재 동기화 목록에서는 확실한 후보가 없습니다.</p></div></div></section>`;
+      html += rowSection('MODERN MASTERS','1990년 이후 작가·독립·영화제 신호가 강한 작품.',modern,18);
+      html += rowSection('FROM THE ARCHIVE','영화사적 캐논과 고전 후보.',archive,18);
+      html += myStreamingSection('ART · AVAILABLE ON YOUR SERVICES','ART MODE 작품 중 내가 구독 중인 서비스에서 볼 수 있는 영화.',18,artStreaming);
+    }else if(discoverMode==='home'){
       html += rowSection('지금 주목할 영화','트렌드와 극장·스트리밍 데이터를 한곳에서 봅니다.',CATALOG.sections?.trending||[]);
       html += rowSection('IN THEATRES','대한민국 지역 현재 상영 목록.',CATALOG.sections?.theatres||[]);
       html += myStreamingSection();
@@ -192,12 +290,14 @@
     }else if(discoverMode==='theatres'){
       hero=(CATALOG.sections?.theatres||[])[0]||hero; html=rowSection('IN THEATRES','대한민국 지역의 현재 상영 영화. 실제 상영관 편성은 극장별로 다를 수 있습니다.',CATALOG.sections?.theatres||[],30);
     }else if(discoverMode==='mystreaming'){
-      hero=myStreamingMovies()[0]||hero; html=myStreamingSection('MY STREAMING','내 구독 서비스와 flatrate 제공 정보를 교차한 결과입니다.',30)+rowSection('WATCHLIST · AVAILABLE NOW','보고 싶다고 저장한 영화 중 지금 내 구독으로 볼 수 있습니다.',watchlistAvailable(),20,'library');
+      hero=myStreamingMovies()[0]||hero; html=myStreamingSection('MY STREAMING','내 구독 서비스와 flatrate 제공 정보를 교차한 결과입니다.',30)+ (isSignedIn()?rowSection('WATCHLIST · AVAILABLE NOW','보고 싶다고 저장한 영화 중 지금 내 구독으로 볼 수 있습니다.',watchlistAvailable(),20,'library'):'');
     }else if(discoverMode==='streaming'){
       hero=(CATALOG.sections?.streaming||[])[0]||hero; html=rowSection('STREAMING','대한민국 지역 구독형 스트리밍 제공 영화.',CATALOG.sections?.streaming||[],30);
     }else{
       hero=(CATALOG.sections?.rated||[])[0]||hero; html=rowSection('TOP RATED','TMDB 사용자 평점 기반. 개인 평점과는 분리해 표시합니다.',CATALOG.sections?.rated||[],30);
     }
+    const toggle=document.getElementById('artModeToggle'); if(toggle){toggle.classList.toggle('is-on',artMode);toggle.setAttribute('aria-pressed',String(artMode));}
+    document.querySelectorAll('[data-discover]').forEach(b=>{b.disabled=artMode;b.style.opacity=artMode?'.46':'';});
     renderHero(hero); document.getElementById('discoverContent').innerHTML=html;
   }
 
@@ -227,6 +327,7 @@
     if(libraryFilter.rating!=='all') out=out.filter(m=>(lib(m.id)?.rating||0)>=Number(libraryFilter.rating));
     if(libraryFilter.availability==='mine') out=out.filter(availableOnMine);
     if(libraryFilter.genre!=='all') out=out.filter(m=>genreNames(m).includes(libraryFilter.genre));
+    if(libraryFilter.art==='art') out=out.filter(isArtMovie);
     if(libraryFilter.decade!=='all'){
       const start=Number(libraryFilter.decade); out=out.filter(m=>Number(m.year)>=start&&Number(m.year)<start+10);
     }
@@ -248,6 +349,7 @@
         <select id="libraryAvailability"><option value="all">감상처 전체</option><option value="mine" ${libraryFilter.availability==='mine'?'selected':''}>내 구독에서 가능</option></select>
         <select id="libraryGenre"><option value="all">장르 전체</option>${genres.map(g=>`<option value="${escapeHtml(g)}" ${libraryFilter.genre===g?'selected':''}>${escapeHtml(g)}</option>`).join('')}</select>
         <select id="libraryDecade"><option value="all">연대 전체</option>${decades.map(d=>`<option value="${d}" ${String(libraryFilter.decade)===String(d)?'selected':''}>${d}s</option>`).join('')}</select>
+        <select id="libraryArt"><option value="all">분류 전체</option><option value="art" ${libraryFilter.art==='art'?'selected':''}>Art Cinema</option></select>
         <select id="librarySort"><option value="recent" ${libraryFilter.sort==='recent'?'selected':''}>최근 추가</option><option value="title" ${libraryFilter.sort==='title'?'selected':''}>제목</option><option value="rating" ${libraryFilter.sort==='rating'?'selected':''}>내 평점</option><option value="year" ${libraryFilter.sort==='year'?'selected':''}>개봉연도</option></select>
         <button class="text-button filter-reset" data-library-filter-reset>필터 초기화</button>
       </div>
@@ -257,10 +359,11 @@
   function renderCollectionDetail(c){ const list=c.movieIds.map(movie).filter(Boolean); return listPage(c.name,'직접 만든 컬렉션.',list); }
   function bindLibraryControls(){
     const q=document.getElementById('libraryQuery'); if(q) q.addEventListener('input',e=>{libraryFilter.q=e.target.value; renderLibrary();});
-    const binds={librarySort:'sort',libraryStatus:'status',libraryRating:'rating',libraryAvailability:'availability',libraryGenre:'genre',libraryDecade:'decade'};
+    const binds={librarySort:'sort',libraryStatus:'status',libraryRating:'rating',libraryAvailability:'availability',libraryGenre:'genre',libraryDecade:'decade',libraryArt:'art'};
     Object.entries(binds).forEach(([id,key])=>{const el=document.getElementById(id);if(el)el.addEventListener('change',e=>{libraryFilter[key]=e.target.value;renderLibrary();});});
   }
   function renderLibrary(){
+    if(!isSignedIn()){ document.getElementById('libraryContent').innerHTML=gateHtml('Library는 로그인 후 사용할 수 있습니다.'); document.getElementById('libraryCount').textContent='—'; return; }
     renderCollectionsSide(); document.getElementById('libraryCount').textContent=allSavedMovies().length;
     let html='';
     if(libraryMode==='home') html=renderLibraryHome();
@@ -280,7 +383,7 @@
   function reviewCount(){ return state.logs.filter(x=>x.review?.trim()).length; }
   function watchedCount(){ return Object.values(state.library).filter(x=>x.watched).length; }
   function renderProfileCard(){
-    const p=state.profile; const initial=(p.name||'U').trim()[0]?.toUpperCase()||'U'; document.getElementById('topAvatar').textContent=initial;
+    const p=state.profile; const authName=currentUser?.user_metadata?.full_name||currentUser?.user_metadata?.name||''; if(authName&&(!p.name||p.name==='Local User')) p.name=authName; if((!p.handle||p.handle==='@local')&&currentUser?.email)p.handle=currentUser.email; const initial=(p.name||currentUser?.email||'U').trim()[0]?.toUpperCase()||'U'; document.getElementById('topAvatar').textContent=initial;
     document.getElementById('profileCard').innerHTML=`<div class="profile-inner"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-main"><p class="eyebrow">MY PROFILE</p><h1>${escapeHtml(p.name)}</h1><p>${escapeHtml(p.handle)} · ${escapeHtml(p.bio)}</p><button class="text-button" id="editProfile">프로필 수정</button></div><div class="profile-stats"><div class="profile-stat"><b>${watchedCount()}</b><span>FILMS</span></div><div class="profile-stat"><b>${reviewCount()}</b><span>REVIEWS</span></div><div class="profile-stat"><b>${state.collections.length}</b><span>COLLECTIONS</span></div></div></div>`;
   }
   function diaryHtml(limit){
@@ -315,19 +418,22 @@
   function subscriptionsHtml(){ return `<div class="library-head"><div><p class="eyebrow">MY STREAMING</p><h1>구독 중인 서비스</h1><p class="library-summary">여기서 켠 서비스가 Discover의 MY STREAMING과 Library의 Available Watchlist에 반영됩니다. 실제 결제 여부를 확인하지는 않습니다.</p></div></div><div class="subscription-grid">${PROVIDERS.map(p=>{const on=isSubscriptionEnabled(p.key);return `<div class="subscription"><div><b>${escapeHtml(p.label)}</b><small>${p.manualOnly?'구독 표시 지원 · 자동 작품 매칭은 아직 미지원':on?'내 구독으로 사용':'구독 안 함'}</small></div><button class="toggle ${on?'is-on':''}" data-subscription="${escapeHtml(p.key)}" aria-label="${escapeHtml(p.label)} 구독 토글"></button></div>`}).join('')}</div><p class="source-note">콜렉티오는 예술영화 전문 OTT로 구독 서비스 목록에 포함했습니다. 현재 TMDB/JustWatch의 KR 제공처 데이터에서 자동 availability를 확인할 수 없어, 구독 상태만 수동 관리합니다.</p>`; }
   function backupNudgeHtml(){
     if(!needsBackup()) return '';
-    return `<div class="backup-nudge"><div class="backup-nudge-icon">${icon('download')}</div><div><b>이 브라우저에만 저장되고 있습니다.</b><p>현재는 계정 동기화가 없으므로 브라우저 데이터 삭제 전에 JSON 백업을 권장합니다.</p></div><div class="backup-nudge-actions"><button class="primary-button" id="backupNowButton">지금 백업</button><button class="text-button" id="dismissBackupNudge">나중에</button></div></div>`;
+    return `<div class="backup-nudge"><div class="backup-nudge-icon">${icon('download')}</div><div><b>클라우드 동기화와 별개로 내보내기를 권장합니다.</b><p>무료 인프라 장애나 계정 문제에 대비해 사용자가 직접 보관할 수 있는 JSON 백업을 유지합니다.</p></div><div class="backup-nudge-actions"><button class="primary-button" id="backupNowButton">지금 백업</button><button class="text-button" id="dismissBackupNudge">나중에</button></div></div>`;
   }
   function accountHtml(){
-    const count=allSavedMovies().length;
-    return `<div class="library-head"><div><p class="eyebrow">ACCOUNT & DATA</p><h1>계정과 데이터</h1><p class="library-summary">0.4 MVP는 로그인 서버를 흉내 내지 않습니다. 현재 데이터는 이 브라우저에 저장되며, Cloud Sync는 실제 Auth가 준비된 뒤 활성화합니다.</p></div></div>
-      ${backupNudgeHtml()}
-      <div class="account-grid">
-        <section class="account-card"><div class="account-icon">${icon('user')}</div><div><p class="eyebrow">CURRENT MODE</p><h2>Local profile</h2><p>이 기기의 브라우저에 Library, Diary, Reviews, Collections, Subscriptions를 저장합니다.</p></div><span class="account-status good">ACTIVE</span></section>
-        <section class="account-card"><div class="account-icon">${icon('cloud')}</div><div><p class="eyebrow">CLOUD SYNC</p><h2>계정 동기화</h2><p>Supabase Auth + RLS 전환 스키마는 준비되어 있지만, 실제 인증을 검증하기 전에는 켜지 않습니다.</p></div><span class="account-status">PHASE 2</span></section>
+    const user=currentUser; const label=user?.user_metadata?.full_name||user?.user_metadata?.name||user?.email||'KINOSIS User';
+    const statusLabel=syncState.status==='online'?'SYNCED':syncState.status==='syncing'?'SYNCING':syncState.status==='pending'?'PENDING':'OFFLINE';
+    const statusClass=syncState.status==='online'?'good':syncState.status==='offline'?'bad':'pending';
+    return `<div class="library-head"><div><p class="eyebrow">ACCOUNT & DATA</p><h1>계정과 동기화</h1><p class="library-summary">Library와 MY 데이터는 Supabase 계정에 연결되고, 현재 기기에는 오프라인 캐시를 남깁니다.</p></div></div>
+      <div class="cloud-account-grid">
+        <section class="account-card"><div class="account-icon">${icon('user')}</div><div><p class="eyebrow">SIGNED IN</p><h2>${escapeHtml(label)}</h2><p class="account-email">${escapeHtml(user?.email||'소셜 로그인 계정')}</p></div><span class="account-status good">ACTIVE</span></section>
+        <section class="account-card"><div class="account-icon">${icon('cloud')}</div><div><p class="eyebrow">CLOUD SYNC</p><h2 class="sync-pill"><span class="sync-dot ${syncState.status}"></span>${statusLabel}</h2><p>마지막 동기화: ${escapeHtml(formatDateTime(syncState.lastSyncedAt||state.meta?.lastSyncedAt))}${syncState.message?` · ${escapeHtml(syncState.message)}`:''}</p></div><span class="account-status ${statusClass}">${statusLabel}</span></section>
       </div>
-      <section class="panel data-safety"><div class="section-head"><div><h2>내 데이터 백업</h2><p>마지막 백업: ${escapeHtml(formatDateTime(state.settings?.lastExportAt))}</p></div></div><div class="data-actions"><button class="secondary-button" id="accountExportButton">${icon('download')} JSON 내보내기</button><label class="secondary-button file-label">${icon('upload')} JSON 가져오기<input type="file" id="accountImportInput" accept="application/json" hidden></label></div><p class="source-note">현재 웹사이트가 없어지더라도 JSON 파일은 사용자가 직접 보관할 수 있습니다. 계정 전환 시에도 이 포맷을 마이그레이션 입력으로 유지합니다.</p></section>`;
+      <section class="panel data-safety" style="margin-top:16px"><div class="section-head"><div><h2>내 데이터</h2><p>클라우드 동기화와 별개로 JSON 내보내기를 계속 지원합니다.</p></div></div><div class="data-actions"><button class="secondary-button" id="accountExportButton">${icon('download')} JSON 내보내기</button><label class="secondary-button file-label">${icon('upload')} JSON 가져오기<input type="file" id="accountImportInput" accept="application/json" hidden></label><button class="secondary-button" id="syncNowButton">${icon('cloud')} 지금 동기화</button><button class="secondary-button danger-button" id="signOutButton">로그아웃</button></div></section>`;
   }
+
   function renderMy(){
+    if(!isSignedIn()){ document.getElementById('profileCard').innerHTML=''; document.getElementById('myContent').innerHTML=gateHtml('MY는 로그인 후 사용할 수 있습니다.'); return; }
     renderProfileCard(); let html='';
     if(myMode==='profile') html=`${backupNudgeHtml()}<div class="dashboard-grid"><section class="panel"><h2>최근 감상</h2>${diaryHtml(5)}</section><section class="panel"><h2>최근 리뷰</h2>${reviewsHtml(4)}</section></div><div style="margin-top:18px">${calendarHtml(calendarCursor,true)}</div>`;
     else if(myMode==='diary') html=`<div class="library-head"><div><p class="eyebrow">DIARY</p><h1>감상 기록</h1><p class="library-summary">같은 영화를 여러 번 봐도 각각의 감상일을 별도 기록합니다.</p></div><button class="secondary-button" id="myLogButton">＋ Log Film</button></div>${diaryHtml()}`;
@@ -404,8 +510,8 @@
     if(!m)return;
     const l=lib(m.id); const groups={subscription:[],free:[],ads:[],rent:[],buy:[]}; (m.providers||[]).forEach(p=>(groups[p.type]||(groups[p.type]=[])).push(p));
     const group=(key,label)=>groups[key]?.length?`<div class="provider-group"><h4>${label}</h4><div class="providers">${groups[key].map(p=>{const owned=isSubscribedProvider(p.name)&&key==='subscription';const cfg=providerConfigForName(p.name);const labelText=cfg?.label||p.name;const logo=p.logoUrl?`<img class="provider-inline-logo" src="${escapeHtml(p.logoUrl)}" alt=""/>`:'';return `<span class="provider-pill ${owned?'owned':''}">${logo}${owned?'✓ ':''}${escapeHtml(labelText)}</span>`}).join('')}</div></div>`:'';
-    const original=m.originalTitle&&m.originalTitle!==m.title?`<div class="detail-original">${escapeHtml(m.originalTitle)}</div>`:'';
-    document.getElementById('movieDialogContent').innerHTML=`<div class="movie-sheet"><img class="movie-sheet-bg" src="${escapeHtml(backdrop(m))}" alt=""/><button class="movie-close" data-close="movieDialog" aria-label="닫기">×</button><div class="movie-sheet-content"><img class="detail-poster" src="${escapeHtml(poster(m))}" alt="${escapeHtml(m.title)} 포스터"/><div class="detail-main"><p class="eyebrow">${l?.watched?'WATCHED':l?'IN LIBRARY':'FILM'}</p><h2>${escapeHtml(m.title)}</h2>${original}<div class="detail-meta">${escapeHtml(m.director||'Director —')} · ${m.year||'—'} ${m.runtime?`· ${fmtRuntime(m.runtime)}`:''} · TMDB ${fmtRating(m.voteAverage??m.rating)}</div><p class="detail-overview">${escapeHtml(m.overview||'줄거리 정보가 없습니다.')}</p><div class="provider-groups">${group('subscription','SUBSCRIPTION / FLATRATE')}${group('free','FREE')}${group('ads','WITH ADS')}${group('rent','RENT')}${group('buy','BUY')}</div><p class="source-note">스트리밍 제공 정보: JustWatch via TMDB · 지역 KR · 실제 제공 여부와 요금은 각 서비스에서 최종 확인하세요.</p><div class="detail-actions"><button class="primary-button" data-action="save" data-id="${escapeHtml(m.id)}">${l?'✓ IN LIBRARY':'＋ LIBRARY'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG FILM</button><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(m.id)}">${l?.watchlist?'✓ WATCHLIST':'＋ WATCHLIST'}</button><button class="secondary-button" data-action="favorite" data-id="${escapeHtml(m.id)}">${l?.favorite?'♥ FAVORITE':'♡ FAVORITE'}</button><button class="secondary-button" data-action="collection-add" data-id="${escapeHtml(m.id)}">＋ COLLECTION</button>${m.watchLink?`<a class="secondary-button" href="${escapeHtml(m.watchLink)}" target="_blank" rel="noopener">WHERE TO WATCH ↗</a>`:''}${m.imdbId?`<a class="secondary-button" href="https://www.imdb.com/title/${escapeHtml(m.imdbId)}/" target="_blank" rel="noopener">IMDb ↗</a>`:''}</div></div></div></div>`;
+    const original=m.originalTitle&&m.originalTitle!==m.title?`<div class="detail-original">${escapeHtml(m.originalTitle)}</div>`:''; const art=artInfo(m); const artNote=art.isArt?`<div class="art-note"><b>ART MODE</b>${art.reasons.map(r=>`<span class="art-reason">${escapeHtml(r)}</span>`).join('')}</div>`:'';
+    document.getElementById('movieDialogContent').innerHTML=`<div class="movie-sheet"><img class="movie-sheet-bg" src="${escapeHtml(backdrop(m))}" alt=""/><button class="movie-close" data-close="movieDialog" aria-label="닫기">×</button><div class="movie-sheet-content"><img class="detail-poster" src="${escapeHtml(poster(m))}" alt="${escapeHtml(m.title)} 포스터"/><div class="detail-main"><p class="eyebrow">${l?.watched?'WATCHED':l?'IN LIBRARY':'FILM'}</p><h2>${escapeHtml(m.title)}</h2>${original}<div class="detail-meta">${escapeHtml(m.director||'Director —')} · ${m.year||'—'} ${m.runtime?`· ${fmtRuntime(m.runtime)}`:''} · TMDB ${fmtRating(m.voteAverage??m.rating)}</div>${artNote}<p class="detail-overview">${escapeHtml(m.overview||'줄거리 정보가 없습니다.')}</p><div class="provider-groups">${group('subscription','SUBSCRIPTION / FLATRATE')}${group('free','FREE')}${group('ads','WITH ADS')}${group('rent','RENT')}${group('buy','BUY')}</div><p class="source-note">스트리밍 제공 정보: JustWatch via TMDB · 지역 KR · 실제 제공 여부와 요금은 각 서비스에서 최종 확인하세요.</p><div class="detail-actions"><button class="primary-button" data-action="save" data-id="${escapeHtml(m.id)}">${l?'✓ IN LIBRARY':'＋ LIBRARY'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(m.id)}">LOG FILM</button><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(m.id)}">${l?.watchlist?'✓ WATCHLIST':'＋ WATCHLIST'}</button><button class="secondary-button" data-action="favorite" data-id="${escapeHtml(m.id)}">${l?.favorite?'♥ FAVORITE':'♡ FAVORITE'}</button><button class="secondary-button" data-action="collection-add" data-id="${escapeHtml(m.id)}">＋ COLLECTION</button>${m.watchLink?`<a class="secondary-button" href="${escapeHtml(m.watchLink)}" target="_blank" rel="noopener">WHERE TO WATCH ↗</a>`:''}${m.imdbId?`<a class="secondary-button" href="https://www.imdb.com/title/${escapeHtml(m.imdbId)}/" target="_blank" rel="noopener">IMDb ↗</a>`:''}</div></div></div></div>`;
   }
   async function openMovie(id){
     let m=movie(id); if(!m)return;
@@ -416,32 +522,32 @@
     }
     renderMovieDialog(m);
   }
-  async function openLog(id){
+  async function openLog(id){ if(!requireAuth())return;
     let m=movie(id); if(!m)return;
     m=await ensureMovieDetail(id,{persist:true})||m;
     rememberMovie(m,{persist:true}); saveState();
     document.getElementById('logMovieId').value=String(id); document.getElementById('logMovieTitle').textContent=m.title; document.getElementById('logDate').value=isoDate(new Date()); const l=lib(id); document.getElementById('logRating').value=l?.rating||''; document.getElementById('logReview').value=l?.review||''; document.getElementById('logFavorite').checked=!!l?.favorite; showDialog('logDialog');
   }
-  async function saveMovie(id){
+  async function saveMovie(id){ if(!requireAuth())return;
     const existed=!!lib(id); let m=movie(id); if(!m)return;
     m=await ensureMovieDetail(id,{persist:true})||m; rememberMovie(m,{persist:true});
     ensureLib(id); saveState(); renderAll(); if(document.getElementById('searchDialog')?.open) renderSearch(document.getElementById('searchInput').value);
     toast(existed?'이미 Library에 있습니다.':'Library에 추가했습니다.');
   }
-  function toggleWatchlist(id){ const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.watchlist=!l.watchlist; saveState(); renderAll(); openMovie(id); toast(l.watchlist?'Watchlist에 추가했습니다.':'Watchlist에서 제거했습니다.'); }
-  function toggleFavorite(id){ const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.favorite=!l.favorite; saveState(); renderAll(); openMovie(id); toast(l.favorite?'Favorite로 표시했습니다.':'Favorite를 해제했습니다.'); }
-  function addToCollection(id){
+  function toggleWatchlist(id){ if(!requireAuth())return; const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.watchlist=!l.watchlist; saveState(); renderAll(); openMovie(id); toast(l.watchlist?'Watchlist에 추가했습니다.':'Watchlist에서 제거했습니다.'); }
+  function toggleFavorite(id){ if(!requireAuth())return; const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.favorite=!l.favorite; saveState(); renderAll(); openMovie(id); toast(l.favorite?'Favorite로 표시했습니다.':'Favorite를 해제했습니다.'); }
+  function addToCollection(id){ if(!requireAuth())return;
     if(!state.collections.length){ newCollection(); return; }
     const names=state.collections.map((c,i)=>`${i+1}. ${c.name}`).join('\n');
     const raw=prompt(`추가할 컬렉션 번호를 입력하세요.\n${names}`); const idx=Number(raw)-1;
     const c=state.collections[idx]; if(!c)return; if(!c.movieIds.includes(String(id)))c.movieIds.push(String(id)); const m=movie(id); if(m)rememberMovie(m,{persist:true}); ensureLib(id); saveState(); renderAll(); toast(`${c.name}에 추가했습니다.`);
   }
-  function newCollection(){ const name=prompt('새 컬렉션 이름'); if(!name?.trim())return; state.collections.push({id:'col-'+Date.now(),name:name.trim(),type:'manual',movieIds:[]}); saveState(); libraryMode='collections'; renderAll(); }
-  function editProfile(){ const name=prompt('표시 이름',state.profile.name); if(name?.trim()) state.profile.name=name.trim(); const bio=prompt('한줄 소개',state.profile.bio); if(bio!==null) state.profile.bio=bio.trim(); saveState(); renderAll(); }
+  function newCollection(){ if(!requireAuth())return; const name=prompt('새 컬렉션 이름'); if(!name?.trim())return; state.collections.push({id:'col-'+Date.now(),name:name.trim(),type:'manual',movieIds:[]}); saveState(); libraryMode='collections'; renderAll(); }
+  function editProfile(){ if(!requireAuth())return; const name=prompt('표시 이름',state.profile.name); if(name?.trim()) state.profile.name=name.trim(); const bio=prompt('한줄 소개',state.profile.bio); if(bio!==null) state.profile.bio=bio.trim(); saveState(); renderAll(); }
 
-  function setView(view){ activeView=view; document.querySelectorAll('.view').forEach(v=>v.classList.toggle('is-active',v.dataset.view===view)); document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('is-active',b.dataset.nav===view)); document.querySelectorAll('.mobile-nav-item[data-nav]').forEach(b=>b.classList.toggle('is-active',b.dataset.nav===view)); window.scrollTo({top:0,behavior:'smooth'}); }
-  function renderStatus(){ const live=CATALOG.mode==='live'; document.getElementById('dataStatusText').textContent=live?'SYNCED':'LOCAL DEMO'; document.getElementById('sourceStatus').innerHTML=`현재 모드: <b>${live?'LIVE API SYNC':'LOCAL DEMO'}</b><br>마지막 카탈로그 갱신: ${escapeHtml(CATALOG.updatedAt||'unknown')}<br>지역: ${escapeHtml(CATALOG.region||'KR')}`; }
-  function renderAll(){ renderDiscover(); renderLibrary(); renderMy(); renderStatus(); }
+  function setView(view){ if((view==='library'||view==='my')&&!requireAuth('Library와 MY는 로그인 후 사용할 수 있습니다.'))return; activeView=view; document.querySelectorAll('.view').forEach(v=>v.classList.toggle('is-active',v.dataset.view===view)); document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('is-active',b.dataset.nav===view)); document.querySelectorAll('.mobile-nav-item[data-nav]').forEach(b=>b.classList.toggle('is-active',b.dataset.nav===view)); window.scrollTo({top:0,behavior:'smooth'}); }
+  function renderStatus(){ const live=CATALOG.mode==='live'; document.getElementById('dataStatusText').textContent=live?'SYNCED':'LOCAL DEMO'; document.getElementById('sourceStatus').innerHTML=`현재 모드: <b>${live?'LIVE API SYNC':'LOCAL DEMO'}</b><br>마지막 카탈로그 갱신: ${escapeHtml(CATALOG.updatedAt||'unknown')}<br>지역: ${escapeHtml(CATALOG.region||'KR')}<br>계정: ${isSignedIn()?'SIGNED IN · '+escapeHtml(syncState.status.toUpperCase()):'SIGNED OUT'}`; }
+  function renderAll(){ renderDiscover(); renderLibrary(); renderMy(); renderStatus(); renderAccountChrome(); }
 
   document.addEventListener('click',e=>{
     const close=e.target.closest('[data-close]'); if(close){ closeDialog(close.dataset.close); return; }
@@ -450,14 +556,20 @@
     const lt=e.target.closest('[data-library]'); if(lt){ libraryMode=lt.dataset.library; renderLibrary(); return; }
     const mt=e.target.closest('[data-my]'); if(mt){ myMode=mt.dataset.my; renderMy(); return; }
     const action=e.target.closest('[data-action]'); if(action){ e.stopPropagation(); const id=action.dataset.id; const a=action.dataset.action; if(a==='save')saveMovie(id); else if(a==='log')openLog(id); else if(a==='detail')openMovie(id); else if(a==='watchlist')toggleWatchlist(id); else if(a==='favorite')toggleFavorite(id); else if(a==='collection-add')addToCollection(id); return; }
-    if(e.target.closest('[data-library-filter-reset]')){ libraryFilter={q:'',sort:'recent',status:'all',rating:'all',availability:'all',genre:'all',decade:'all'}; renderLibrary(); return; }
+    if(e.target.closest('[data-library-filter-reset]')){ libraryFilter={q:'',sort:'recent',status:'all',rating:'all',availability:'all',genre:'all',decade:'all',art:'all'}; renderLibrary(); return; }
     const collection=e.target.closest('[data-collection],[data-collection-card]'); if(collection){ const id=collection.dataset.collection||collection.dataset.collectionCard; libraryMode=`collection:${id}`; setView('library'); renderLibrary(); return; }
     const dyn=e.target.closest('[data-dynamic]'); if(dyn){ libraryMode='dynamic:my-streaming'; setView('library'); renderLibrary(); return; }
     const mov=e.target.closest('[data-movie]'); if(mov){ openMovie(mov.dataset.movie); return; }
     const sub=e.target.closest('[data-subscription]'); if(sub){ const p=sub.dataset.subscription; const on=isSubscriptionEnabled(p); state.subscriptions=on?state.subscriptions.filter(x=>normalizeProviderName(x)!==normalizeProviderName(p)):[...(state.subscriptions||[]),p]; saveState(); renderAll(); toast(`${providerConfigForName(p)?.label||p}: ${isSubscriptionEnabled(p)?'구독 중':'구독 안 함'}`); return; }
     const cal=e.target.closest('[data-cal]'); if(cal){ calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()+(cal.dataset.cal==='next'?1:-1),1); renderMy(); return; }
     if(e.target.closest('#searchTrigger')||e.target.closest('#mobileSearch')||e.target.closest('#librarySearchButton')||e.target.closest('#myLogButton')||e.target.closest('[data-open-search]')){ openSearch(); return; }
-    if(e.target.closest('[data-open-subscriptions]')){ myMode='subscriptions'; setView('my'); renderMy(); return; }
+    if(e.target.closest('[data-open-subscriptions]')){ if(!requireAuth())return; myMode='subscriptions'; setView('my'); renderMy(); return; }
+    if(e.target.closest('[data-open-auth]')){ showDialog('authDialog'); return; }
+    const authProvider=e.target.closest('[data-auth-provider]'); if(authProvider){ const provider=authProvider.dataset.authProvider; const msg=document.getElementById('authMessage'); msg.textContent='로그인 페이지로 이동합니다…'; msg.classList.remove('is-error'); CLOUD?.signInOAuth(provider).catch(err=>{msg.textContent=err.message||'로그인 설정을 확인하세요.';msg.classList.add('is-error');}); return; }
+    if(e.target.closest('#topAccountButton')){ if(isSignedIn()){myMode='account';setView('my');renderMy();}else showDialog('authDialog'); return; }
+    if(e.target.closest('#artModeToggle')){ state.preferences=state.preferences||{}; state.preferences.artMode=!state.preferences.artMode; saveState({sync:isSignedIn(),mark:isSignedIn()}); renderDiscover(); toast(state.preferences.artMode?'ART MODE ON':'ART MODE OFF'); return; }
+    if(e.target.closest('#syncNowButton')){ pushCloudState(); return; }
+    if(e.target.closest('#signOutButton')){ CLOUD?.signOut().catch(err=>toast(err.message||'로그아웃 실패')); return; }
     if(e.target.closest('#backupNowButton')||e.target.closest('#accountExportButton')){ exportData(); return; }
     if(e.target.closest('#dismissBackupNudge')){ state.settings.backupNudgeDismissedAt=new Date().toISOString(); saveState(); renderMy(); return; }
     if(e.target.closest('#newCollectionButton')||e.target.closest('#newCollectionInline')){ newCollection(); return; }
@@ -470,16 +582,34 @@
   searchInput.addEventListener('compositionend',e=>{ searchComposing=false; queueSearch(e.target.value); });
   searchInput.addEventListener('input',e=>{ if(!searchComposing) queueSearch(e.target.value); });
   document.getElementById('logForm').addEventListener('submit',e=>{
-    e.preventDefault(); const id=document.getElementById('logMovieId').value; const watchedAt=document.getElementById('logDate').value; if(!id||!watchedAt)return; const rating=document.getElementById('logRating').value; const review=document.getElementById('logReview').value.trim(); const favorite=document.getElementById('logFavorite').checked; const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.watched=true; l.watchlist=false; l.favorite=favorite; if(rating)l.rating=Number(rating); if(review||l.review)l.review=review; state.logs.push({id:'log-'+Date.now(),movieId:String(id),watchedAt,rating:rating?Number(rating):null,review}); saveState(); closeDialog('logDialog'); closeDialog('movieDialog'); renderAll(); toast('감상 기록을 저장했습니다.');
+    e.preventDefault(); if(!requireAuth())return; const id=document.getElementById('logMovieId').value; const watchedAt=document.getElementById('logDate').value; if(!id||!watchedAt)return; const rating=document.getElementById('logRating').value; const review=document.getElementById('logReview').value.trim(); const favorite=document.getElementById('logFavorite').checked; const m=movie(id); if(m)rememberMovie(m,{persist:true}); const l=ensureLib(id); l.watched=true; l.watchlist=false; l.favorite=favorite; if(rating)l.rating=Number(rating); if(review||l.review)l.review=review; state.logs.push({id:'log-'+Date.now(),movieId:String(id),watchedAt,rating:rating?Number(rating):null,review}); saveState(); closeDialog('logDialog'); closeDialog('movieDialog'); renderAll(); toast('감상 기록을 저장했습니다.');
   });
   document.addEventListener('keydown',e=>{ if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();openSearch();} if(e.key==='Escape'){/* native dialog handles */} if((e.key==='Enter'||e.key===' ')&&document.activeElement?.matches('.movie-card,.search-result')){e.preventDefault();openMovie(document.activeElement.dataset.movie);} });
   document.getElementById('mobileSearch').addEventListener('click',openSearch);
+  document.getElementById('emailAuthForm').addEventListener('submit',async e=>{ e.preventDefault(); const email=document.getElementById('authEmail').value.trim(); const msg=document.getElementById('authMessage'); if(!email)return; msg.textContent='로그인 링크를 보내는 중…'; msg.classList.remove('is-error'); try{await CLOUD.sendMagicLink(email);msg.textContent='이메일을 확인하세요. 로그인 링크를 보냈습니다.';}catch(error){msg.textContent=error.message||'이메일 로그인 요청에 실패했습니다.';msg.classList.add('is-error');} });
 
-  function exportData(){ state.settings=state.settings||{}; state.settings.lastExportAt=new Date().toISOString(); saveState(); const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`kinosis-library-${isoDate(new Date())}.json`; a.click(); URL.revokeObjectURL(a.href); renderMy(); toast('내 데이터를 내보냈습니다.'); }
-  async function handleImport(e){ const file=e.target.files?.[0]; if(!file)return; try{const parsed=JSON.parse(await file.text()); if(!parsed.state?.library)throw new Error('invalid'); const base=initialState(); state=Object.assign(base,parsed.state,{profile:Object.assign(base.profile,parsed.state.profile||{}),settings:Object.assign(base.settings,parsed.state.settings||{}),movieCache:Object.assign({},parsed.state.movieCache||{})}); Object.values(state.movieCache||{}).forEach(m=>rememberMovie(m)); saveState(); renderAll(); closeDialog('aboutDialog'); toast('데이터를 가져왔습니다.');}catch(err){alert('KINOSIS 내보내기 파일을 읽지 못했습니다.');} e.target.value=''; }
+  function exportData(){ if(!requireAuth())return; state.settings=state.settings||{}; state.settings.lastExportAt=new Date().toISOString(); saveState(); const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`kinosis-library-${isoDate(new Date())}.json`; a.click(); URL.revokeObjectURL(a.href); renderMy(); toast('내 데이터를 내보냈습니다.'); }
+  async function handleImport(e){ if(!requireAuth())return; const file=e.target.files?.[0]; if(!file)return; try{const parsed=JSON.parse(await file.text()); if(!parsed.state?.library)throw new Error('invalid'); const base=initialState(); state=Object.assign(base,parsed.state,{profile:Object.assign(base.profile,parsed.state.profile||{}),settings:Object.assign(base.settings,parsed.state.settings||{}),movieCache:Object.assign({},parsed.state.movieCache||{})}); Object.values(state.movieCache||{}).forEach(m=>rememberMovie(m)); saveState(); renderAll(); closeDialog('aboutDialog'); toast('데이터를 가져왔습니다.');}catch(err){alert('KINOSIS 내보내기 파일을 읽지 못했습니다.');} e.target.value=''; }
   document.getElementById('importInput').addEventListener('change',handleImport);
 
-  renderAll(); setView('discover');
+  let hydratedUserId=null;
+  if(CLOUD){
+    CLOUD.onChange(async ({event,user,error})=>{
+      authReady=true; currentUser=user||null;
+      if(error){syncState={status:'offline',lastSyncedAt:null,message:error.message||'Auth unavailable'};}
+      if(currentUser){
+        closeDialog('authDialog');
+        if(hydratedUserId!==currentUser.id || event==='SIGNED_IN'){ hydratedUserId=currentUser.id; await hydrateSignedInUser(); }
+        else { renderAll(); }
+      }else{
+        hydratedUserId=null; suppressCloudSync=true; state=initialState(); state.preferences=guestPreferences(); syncState={status:'guest',lastSyncedAt:null,message:''}; renderAll(); setView('discover');
+      }
+    });
+    CLOUD.init().catch(error=>{authReady=true;syncState={status:'offline',lastSyncedAt:null,message:error.message||'Auth init failed'};renderAll();});
+  }else{authReady=true;}
+  window.addEventListener('online',()=>{ if(isSignedIn()&&state.meta?.dirtySince)pushCloudState(); });
+  window.addEventListener('offline',()=>{ if(isSignedIn()){syncState.status='offline';renderAccountChrome();} });
+  renderAll(); activeView='discover'; document.querySelectorAll('.view').forEach(v=>v.classList.toggle('is-active',v.dataset.view==='discover'));
   if(location.protocol==='http:'||location.protocol==='https:'){
     if('serviceWorker' in navigator){
       navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{});

@@ -13,7 +13,7 @@
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.0" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.1" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -47,7 +47,7 @@
           <svg class="ui-icon"><use href="#i-search"/></svg><span>영화 검색</span><kbd>/</kbd>
         </button>
         <button class="status-pill" id="dataStatusButton" title="데이터 출처와 갱신 상태 보기"><span class="status-dot"></span><span id="dataStatusText">LOCAL</span></button>
-        <button class="avatar-button" data-nav="my" aria-label="MY로 이동"><span id="topAvatar">T</span></button>
+        <button class="avatar-button" id="topAccountButton" aria-label="계정"><span id="topAvatar">K</span></button>
       </div>
     </header>
 
@@ -58,12 +58,15 @@
             <p class="eyebrow">DISCOVER</p>
             <h1>오늘 볼 영화를 찾습니다.</h1>
           </div>
-          <div class="discover-tabs" id="discoverTabs" role="tablist">
-            <button class="seg is-active" data-discover="home">HOME</button>
-            <button class="seg" data-discover="theatres">IN THEATRES</button>
-            <button class="seg" data-discover="mystreaming">MY STREAMING</button>
-            <button class="seg" data-discover="streaming">STREAMING</button>
-            <button class="seg" data-discover="rated">TOP RATED</button>
+          <div class="discover-controls">
+            <div class="discover-tabs" id="discoverTabs" role="tablist">
+              <button class="seg is-active" data-discover="home">HOME</button>
+              <button class="seg" data-discover="theatres">IN THEATRES</button>
+              <button class="seg" data-discover="mystreaming">MY STREAMING</button>
+              <button class="seg" data-discover="streaming">STREAMING</button>
+              <button class="seg" data-discover="rated">TOP RATED</button>
+            </div>
+            <button class="art-mode-toggle" id="artModeToggle" aria-pressed="false" title="예술·작가 중심 Discover로 전환">ART MODE</button>
           </div>
         </div>
         <section class="hero" id="hero"></section>
@@ -128,6 +131,25 @@
     <button class="mobile-nav-item" data-nav="my"><svg class="ui-icon"><use href="#i-user"/></svg><small>My</small></button>
   </nav>
 
+
+  <dialog id="authDialog" class="compact-dialog auth-dialog">
+    <div class="form-card auth-card">
+      <div class="form-head"><div><p class="eyebrow">KINOSIS ACCOUNT</p><h2>로그인하고 기록을 동기화하세요.</h2></div><button class="ghost-close" data-close="authDialog">닫기</button></div>
+      <p class="auth-copy">Library와 MY는 계정에 연결됩니다. 같은 계정으로 PC·모바일·PWA에서 로그인하면 같은 기록을 불러옵니다.</p>
+      <div class="auth-provider-grid">
+        <button class="auth-provider google" data-auth-provider="google">Google로 계속하기</button>
+        <button class="auth-provider kakao" data-auth-provider="kakao">Kakao로 계속하기</button>
+      </div>
+      <div class="auth-divider"><span>또는</span></div>
+      <form id="emailAuthForm" class="email-auth-form">
+        <label>이메일<input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+        <button class="secondary-button wide" type="submit">이메일 로그인 링크 보내기</button>
+      </form>
+      <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
+      <p class="source-note">Google/Kakao는 해당 Provider가 Supabase에서 활성화되어 있어야 합니다. 공개용 OAuth 앱 설정이 완료되기 전에는 개발자/테스트 계정만 허용될 수 있습니다.</p>
+    </div>
+  </dialog>
+
   <dialog id="searchDialog" class="sheet-dialog search-dialog">
     <div class="dialog-shell">
       <div class="dialog-topline">
@@ -162,7 +184,7 @@
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 제목, 개봉정보, 감독/장르, 평점, 포스터 및 배경 이미지의 기본 소스로 사용합니다. Netlify 배포에서는 서버리스 Function이 TMDB 전체 영화 검색과 상세정보 조회를 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍/무료/대여/구매 제공처 정보는 TMDB Watch Providers가 제공하는 JustWatch 데이터를 사용합니다.</p></div>
       <div class="credit-block"><b>Collectio / 콜렉티오</b><p>MY → Subscriptions에서 구독 상태를 수동으로 관리할 수 있습니다. 현재 KINOSIS는 콜렉티오 작품 availability를 자동 수집하거나 크롤링하지 않습니다.</p></div>
-      <div class="credit-block"><b>현재 MVP 범위</b><p>KOBIS·KMDb는 한국 극장/한국영화 데이터 보강 후보지만, 현재 빌드의 자동 동기화에는 넣지 않았습니다. 별도 키와 이용조건을 확인한 뒤 독립 어댑터로 추가하는 구조입니다.</p></div>
+      <div class="credit-block"><b>ART MODE</b><p>예술영화를 단일 장르로 간주하지 않습니다. 정성일의 한국영상자료원 「시네필 안내서」 같은 캐논 목록을 시드로 삼고, 감독·키워드·제작/배급 메타데이터를 가중해 KINOSIS 내부에서 설명 가능한 boolean 분류를 계산합니다. 숫자 점수는 내부 판정에만 사용합니다.</p></div><div class="credit-block"><b>Supabase</b><p>로그인 사용자 Library/MY 데이터의 기기 간 동기화에 사용합니다. 브라우저에는 Publishable Key만 사용하며 RLS로 사용자별 데이터를 격리합니다.</p></div><div class="credit-block"><b>현재 MVP 범위</b><p>KOBIS·KMDb는 한국 극장/한국영화 데이터 보강 후보입니다. ART MODE 시드 참고는 KMDb 공개 「시네필 안내서」를 사용하지만 작품 설명문을 복제하지 않습니다.</p></div>
       <button class="secondary-button wide" id="exportButton"><svg class="ui-icon"><use href="#i-download"/></svg> 내 데이터 JSON 내보내기</button>
       <label class="secondary-button wide file-label"><svg class="ui-icon"><use href="#i-upload"/></svg> 내 데이터 JSON 가져오기<input type="file" id="importInput" accept="application/json" hidden /></label>
     </div>
@@ -170,7 +192,11 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.0"></script>
-  <script src="./assets/js/app.js?v=0.4.0"></script>
+  <script src="./data/catalog.js?v=0.4.1"></script>
+  <script src="./assets/js/config.js?v=0.4.1"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/js/cloud.js?v=0.4.1"></script>
+  <script src="./assets/js/app.js?v=0.4.1"></script>
 </body>
 </html>

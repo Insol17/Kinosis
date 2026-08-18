@@ -1,62 +1,29 @@
-# KINOSIS 0.4.0 — Netlify deployment
+# Netlify deployment — KINOSIS 0.4.1
 
-## Keep editing in GitHub
+GitHub remains the source repository. Push to the connected branch; Netlify deploys the static site and Functions automatically.
 
-GitHub remains the source repository. Do not manually upload replacement builds to Netlify after each change.
+## Existing secret
 
-```text
-local files -> git push -> GitHub -> Netlify automatic deploy
-```
-
-## One-time Netlify setup
-
-1. Import/connect the GitHub Kinosis repository.
-2. Build command: leave empty.
-3. Publish directory: `.`
-4. The repository `netlify.toml` sets `netlify/functions` as the Functions directory.
-5. Add environment variable:
-   - Key: `TMDB_READ_ACCESS_TOKEN`
-   - Secret: enabled
-   - Value: your TMDB API Read Access Token
-6. Trigger a new deploy after creating/changing the environment variable.
-
-Do not put the token in this repository.
-
-## Verify live search
-
-After deployment, open:
+Keep:
 
 ```text
-https://YOUR-SITE.netlify.app/api/movie-search?q=시민 케인
+TMDB_READ_ACCESS_TOKEN
 ```
 
-Expected: JSON with one or more movie results. Then search the same title from the KINOSIS UI.
+This is required by the TMDB live search/detail Functions.
 
-## GitHub secret still matters
+## Supabase
 
-Keep `TMDB_READ_ACCESS_TOKEN` in **GitHub Actions Secrets** as well. It serves a different purpose:
+The Supabase Project URL and Publishable Key are public client configuration and currently live in `assets/js/config.js`. No Supabase Secret or service-role key is required by 0.4.1.
 
-- GitHub Secret → Thursday Discover catalog refresh
-- Netlify Environment Variable → live user search/detail requests
+Optional Netlify variables `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` may override the scheduled health function, but the checked-in fallbacks are public values and are not credentials that bypass RLS.
 
-## Updating KINOSIS
+## Scheduled health request
 
-Replace/update files in the GitHub repository and push normally. Netlify detects the commit and deploys the website/functions together.
+`netlify/functions/supabase-health.mjs` runs at 00:17 / 08:17 / 16:17 UTC (09:17 / 17:17 / 01:17 KST) and performs a tiny external SELECT on `app_health`.
 
-## Local tests
+This is a reliability/health measure, not a guarantee that Supabase Free will never pause.
 
-```bash
-npm test
-```
+## Required database install
 
-UI-only:
-
-```text
-open index.html
-```
-
-Full Netlify Function behavior:
-
-```bash
-npm run dev
-```
+Run `supabase/001_kinosis_041.sql` before testing signed-in Library/MY.

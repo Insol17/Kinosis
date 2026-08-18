@@ -14,6 +14,17 @@ const JS_OUT = path.join(ROOT, 'data/catalog.js');
 const META_OUT = path.join(ROOT, 'data/meta.json');
 const headers = { Authorization: `Bearer ${TOKEN}`, accept: 'application/json' };
 
+const ART_SEED_TITLES = [
+  ['The Rules of the Game',1939],['Citizen Kane',1941],['Breathless',1960],['Tokyo Story',1953],
+  ['Journey to Italy',1954],['Night and Fog',1956],['Sherlock Jr.',1924],['Greed',1924],
+  ['Battleship Potemkin',1925],['Mulholland Drive',2001],['10',2002]
+];
+const ART_DIRECTOR_QUERIES = [
+  'David Lynch','Abbas Kiarostami','Wong Kar-wai','Edward Yang','Hou Hsiao-hsien','Apichatpong Weerasethakul',
+  'Hong Sang-soo','Lee Chang-dong','Park Chan-wook','Bong Joon-ho','Hirokazu Kore-eda','Ryusuke Hamaguchi',
+  'Victor Erice','Pedro Costa','Jia Zhangke','Claire Denis','Kelly Reichardt','Celine Sciamma','Jonathan Glazer','Kleber Mendonca Filho'
+];
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function tmdb(endpoint, params = {}, attempt = 0) {
@@ -101,6 +112,21 @@ async function atomicReplace(filePath, content) {
   }
 }
 
+async function fetchArtSeedCandidates() {
+  const titleRows = await pool(ART_SEED_TITLES, 4, async ([title,year]) => {
+    const data = await tmdb('/search/movie', { query:title, language:LANGUAGE, include_adult:false, page:1 });
+    const rows = data.results || [];
+    return rows.find(m => Number((m.release_date||'').slice(0,4)) === year) || rows[0] || null;
+  });
+  const people = await pool(ART_DIRECTOR_QUERIES, 4, async name => {
+    const data = await tmdb('/search/person', { query:name, language:LANGUAGE, include_adult:false, page:1 });
+    return data.results?.[0] || null;
+  });
+  const knownFor = people.flatMap(person => (person?.known_for || []).filter(item => item?.media_type === 'movie' || item?.title || item?.original_title));
+  return uniq([...titleRows,...knownFor]).slice(0,30).map(m => ({...m,artSeed:true}));
+}
+
+
 console.log('Fetching TMDB configuration and KR lists…');
 const config = await tmdb('/configuration');
 const imageBase = config?.images?.secure_base_url || 'https://image.tmdb.org/t/p/';
@@ -115,12 +141,15 @@ const [nowPlaying, trending, topRated, streaming] = await Promise.all([
     sort_by:'popularity.desc', page:1
   })
 ]);
+const artCandidates = await fetchArtSeedCandidates();
+const artSeedIds = new Set(artCandidates.map(m => Number(m.id)));
 
 const rawSections = {
   theatres:(nowPlaying.results || []).slice(0,24),
   trending:(trending.results || []).slice(0,24),
   rated:(topRated.results || []).filter(m => Number(m.vote_count || 0) >= 250).slice(0,24),
-  streaming:(streaming.results || []).slice(0,24)
+  streaming:(streaming.results || []).slice(0,24),
+  art:artCandidates.slice(0,24)
 };
 const rawMovies = uniq(Object.values(rawSections).flat());
 if (rawMovies.length < 12) throw new Error(`Validation failed before enrichment: only ${rawMovies.length} unique movies.`);
@@ -132,7 +161,7 @@ console.log(`Enriching ${rawMovies.length} movies…`);
 const enriched = await pool(rawMovies, 4, async base => {
   const needsHeroImages = heroCandidateIds.has(Number(base.id));
   const [detail, providers, external, images] = await Promise.all([
-    tmdb(`/movie/${base.id}`, { language:LANGUAGE, append_to_response:'credits' }),
+    tmdb(`/movie/${base.id}`, { language:LANGUAGE, append_to_response:'credits,keywords' }),
     tmdb(`/movie/${base.id}/watch/providers`),
     tmdb(`/movie/${base.id}/external_ids`),
     needsHeroImages ? tmdb(`/movie/${base.id}/images`, { include_image_language:'ko,en,null' }) : Promise.resolve(null)
@@ -148,6 +177,9 @@ const enriched = await pool(rawMovies, 4, async base => {
     director,
     runtime:Number(detail.runtime || 0) || null,
     genres:(detail.genres || []).map(g => g.name),
+    keywords:(detail.keywords?.keywords || detail.keywords?.results || []).map(k => k.name).filter(Boolean),
+    productionCompanies:(detail.production_companies || []).map(c => c.name).filter(Boolean),
+    artSeed:!!base.artSeed || artSeedIds.has(Number(detail.id)),
     voteAverage:Number(detail.vote_average || 0), voteCount:Number(detail.vote_count || 0),
     popularity:Number(detail.popularity || base.popularity || 0),
     overview:clean(detail.overview || base.overview),
@@ -181,13 +213,14 @@ const catalog = {
   sources:{
     metadata:{name:'TMDB',active:true},
     streaming:{name:'JustWatch via TMDB',active:true},
-    theatrical:{name:`TMDB now_playing (${REGION})`,active:true}
+    theatrical:{name:`TMDB now_playing (${REGION})`,active:true},
+    art:{name:'KINOSIS curated seed engine · KMDb cinephile canon inspired',active:true}
   },
   featured, movies:enriched, sections
 };
 
 // Guard against a bad API response replacing the last known-good catalog.
-const required = ['theatres','trending','streaming','rated'];
+const required = ['theatres','trending','streaming','rated','art'];
 for (const key of required) if (!Array.isArray(catalog.sections[key]) || catalog.sections[key].length < 3) throw new Error(`Validation failed: section ${key} has ${catalog.sections[key]?.length || 0} movies.`);
 if (!catalog.featured?.id || catalog.movies.length < 12) throw new Error('Validation failed: featured/movie count missing.');
 
