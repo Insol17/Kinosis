@@ -1,4 +1,4 @@
-# Netlify deployment — KINOSIS 0.4.3.2
+# Netlify deployment — KINOSIS 0.4.4
 
 KINOSIS source remains in GitHub. Netlify deploys the repository and runs the serverless TMDB proxy Functions.
 
@@ -12,7 +12,7 @@ SUPABASE_PUBLISHABLE_KEY
 
 ## Deploy
 
-Push 0.4.3.2 to the linked GitHub branch. Netlify deploys the site and Functions automatically.
+Push 0.4.4 to the linked GitHub branch. Netlify deploys the site and Functions automatically.
 
 After deployment test:
 
@@ -27,7 +27,7 @@ The first should return movie/person search data; the second should return recom
 
 Keep `TMDB_READ_ACCESS_TOKEN` in GitHub Actions Secrets as well. Run **Refresh movie catalog** once after upgrading so the new multi-page theatre sync and expanded Arthouse seed pool are written to `data/catalog.js/json`.
 
-PWA cache version is 0.4.3.2 and old `kinosis-*` shell caches are removed on activation.
+PWA cache version is 0.4.4 and old `kinosis-*` shell caches are removed on activation.
 
 
 ## Editorial Curation build

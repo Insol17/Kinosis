@@ -1,0 +1,14 @@
+{
+  "slug": "tarantino",
+  "eyebrow": "DIRECTOR'S ARCHIVE",
+  "title": "폭발하는 도파민: 쿠엔틴 타란티노 컬렉션",
+  "subtitle": "Quentin Tarantino",
+  "description": "장르의 쾌감, 대사, 폭력과 리듬을 밀어붙이는 쿠엔틴 타란티노의 감독 필모그래피.",
+  "credit": "Curated by KINOSIS",
+  "priority": 40,
+  "source": {
+    "type": "director",
+    "name": "Quentin Tarantino",
+    "sort": "release_asc"
+  }
+}

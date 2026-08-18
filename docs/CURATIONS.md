@@ -1,4 +1,4 @@
-# KINOSIS 0.4.3.2 — Curation Architecture
+# KINOSIS 0.4.4 — Curation Architecture
 
 ## Decision
 

@@ -1,4 +1,4 @@
-# Supabase/Auth setup — KINOSIS 0.4.3
+# Supabase/Auth setup — KINOSIS 0.4.4
 
 ## Browser client
 
@@ -8,7 +8,7 @@ KINOSIS uses the Supabase Project URL and Publishable Key from `assets/js/config
 
 Fresh project: run `supabase/SETUP_ALL.sql` once.
 
-Already on the 0.4.1 core schema: there is no additional 0.4.3 migration. If the 0.4.2 curation experiment was installed, those unused tables can remain; the current app does not query them.
+Already on the 0.4.1 core schema: there is no additional 0.4.4 migration. If the 0.4.2 curation experiment was installed, those unused tables can remain; the current app does not query them.
 
 ## Auth
 

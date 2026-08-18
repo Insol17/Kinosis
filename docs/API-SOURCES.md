@@ -1,4 +1,4 @@
-# KINOSIS API and attribution policy — 0.4.0
+# KINOSIS API and attribution policy — 0.4.4
 
 ## TMDB: active
 
@@ -64,9 +64,11 @@ Collectio is available as a user preference in `MY → SUBSCRIPTIONS`.
 
 KINOSIS does not scrape Collectio and does not automatically claim that a specific title is available there until a stable and permitted data integration is verified.
 
-## KOBIS: planned adapter, inactive
+## KOBIS: optional exact box-office adapter
 
-Candidate for Korean theatrical / box-office validation. Keep separate from TMDB identifiers and verify API terms before activating.
+When `KOBIS_API_KEY` is configured in GitHub Actions, the catalog updater reads the previous Korean calendar day's daily box-office ranking from KOBIS, matches those titles to TMDB movie IDs, and stores the rank in the generated catalog.
+
+When the key is absent or the KOBIS request cannot be matched reliably, KINOSIS does **not** invent box-office numbers: the same Discover slot falls back to TMDB now-playing popularity and the UI labels it `극장 인기 순위` rather than `박스오피스`.
 
 ## KMDb: planned adapter, inactive
 

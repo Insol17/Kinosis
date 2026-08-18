@@ -12,7 +12,7 @@
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.3.2" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -62,16 +62,12 @@
 
     <main>
       <section class="view is-active" id="discoverView" data-view="discover">
-        <section class="hero" id="hero"></section>
+        <section class="hero hero-carousel" id="hero"></section>
         <div id="discoverContent" class="section-stack home-stack"></div>
       </section>
 
       <section class="view" id="arthouseView" data-view="arthouse">
-        <header class="surface-intro">
-          <div><p class="eyebrow">ARTHOUSE</p><h1>영화를 작품으로 탐색합니다.</h1></div>
-          <p>작가, 영화사, 독립·영화제 신호와 KINOSIS의 편집 기획전을 함께 엮은 공간입니다.</p>
-        </header>
-        <section class="arthouse-hero" id="arthouseHero"></section>
+        <section class="hero hero-carousel" id="arthouseHero"></section>
         <div id="arthouseContent" class="section-stack"></div>
       </section>
 
@@ -79,8 +75,7 @@
         <div class="library-shell">
           <aside class="library-sidebar" aria-label="라이브러리 메뉴">
             <div class="side-title-row"><p class="eyebrow">LIBRARY</p><span id="libraryCount" class="count-badge">0</span></div>
-            <button class="side-link is-active" data-library="home"><svg class="ui-icon"><use href="#i-home"/></svg>Home</button>
-            <button class="side-link" data-library="all"><svg class="ui-icon"><use href="#i-grid"/></svg>All Films</button>
+            <button class="side-link is-active" data-library="all"><svg class="ui-icon"><use href="#i-grid"/></svg>All Films</button>
             <button class="side-link" data-library="watchlist"><svg class="ui-icon"><use href="#i-plus"/></svg>Watchlist</button>
             <button class="side-link" data-library="favorites"><svg class="ui-icon"><use href="#i-heart"/></svg>Favorites</button>
             <div class="side-rule"></div>
@@ -91,8 +86,7 @@
           </aside>
           <div class="library-content">
             <div class="mobile-library-nav" id="mobileLibraryNav">
-              <button class="chip is-active" data-library="home">Home</button>
-              <button class="chip" data-library="all">All</button>
+              <button class="chip is-active" data-library="all">All</button>
               <button class="chip" data-library="watchlist">Watchlist</button>
               <button class="chip" data-library="favorites">Favorites</button>
               <button class="chip" data-library="collections">Collections</button>
@@ -126,7 +120,7 @@
     </main>
 
     <footer class="footer">
-      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.3.2</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
+      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.4</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
     </footer>
   </div>
 
@@ -227,7 +221,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.3.2</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -240,16 +234,16 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.3.2"></script>
-  <script src="./data/curations.js?v=0.4.3.2"></script>
-  <script src="./assets/js/config.js?v=0.4.3.2"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.3.2"></script>
+  <script src="./data/catalog.js?v=0.4.4"></script>
+  <script src="./data/curations.js?v=0.4.4"></script>
+  <script src="./assets/js/config.js?v=0.4.4"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.4"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./assets/js/cloud.js?v=0.4.3.2"></script>
-  <script src="./assets/js/ui.js?v=0.4.3.2"></script>
-  <script src="./assets/js/recommender.js?v=0.4.3.2"></script>
-  <script src="./assets/js/importers.js?v=0.4.3.2"></script>
-  <script src="./assets/js/curations.js?v=0.4.3.2"></script>
-  <script src="./assets/js/app.js?v=0.4.3.2"></script>
+  <script src="./assets/js/cloud.js?v=0.4.4"></script>
+  <script src="./assets/js/ui.js?v=0.4.4"></script>
+  <script src="./assets/js/recommender.js?v=0.4.4"></script>
+  <script src="./assets/js/importers.js?v=0.4.4"></script>
+  <script src="./assets/js/curations.js?v=0.4.4"></script>
+  <script src="./assets/js/app.js?v=0.4.4"></script>
 </body>
 </html>

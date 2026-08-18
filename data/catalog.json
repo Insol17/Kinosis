@@ -16,6 +16,11 @@
     "theatrical": {
       "name": "TMDB now_playing (KR)",
       "active": true
+    },
+    "boxOffice": {
+      "name": "TMDB theatrical popularity fallback",
+      "active": true,
+      "mode": "fallback"
     }
   },
   "featured": {
@@ -2503,7 +2508,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/969681",
         "imdbId": "tt22084616",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 1
       },
       {
         "id": 1368337,
@@ -2528,7 +2534,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
         "imdbId": "tt33764258",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 2
       },
       {
         "id": 1315772,
@@ -2555,7 +2562,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
         "imdbId": "tt32890033",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 3
       },
       {
         "id": 1108427,
@@ -2581,7 +2589,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
         "imdbId": "tt27419466",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 4
       },
       {
         "id": 1083381,
@@ -2606,7 +2615,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
         "imdbId": "tt26657236",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 5
       },
       {
         "id": 1612018,
@@ -2631,7 +2641,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
         "imdbId": "tt39316472",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 6
       },
       {
         "id": 1185806,
@@ -2658,7 +2669,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1185806",
         "imdbId": "tt29356163",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 7
       },
       {
         "id": 1430077,
@@ -2681,7 +2693,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1430077",
         "imdbId": "tt35672862",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 8
       },
       {
         "id": 1058424,
@@ -2706,7 +2719,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1058424",
         "imdbId": "tt27369017",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 9
       },
       {
         "id": 1307247,
@@ -2780,7 +2794,8 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1545621",
         "imdbId": "tt39123115",
-        "demo": false
+        "demo": false,
+        "boxOfficeRank": 10
       },
       {
         "id": 1220564,
@@ -5209,6 +5224,434 @@
         "imdbId": "tt1757678",
         "demo": false
       }
+    ],
+    "boxOffice": [
+      {
+        "id": 969681,
+        "title": "스파이더맨: 브랜드 뉴 데이",
+        "originalTitle": "Spider-Man: Brand New Day",
+        "year": 2026,
+        "releaseDate": "2026-07-29",
+        "director": "데스틴 대니얼 크레턴",
+        "runtime": 145,
+        "genres": [
+          "SF",
+          "액션",
+          "모험"
+        ],
+        "voteAverage": 7.9,
+        "voteCount": 1862,
+        "popularity": 1911.7361,
+        "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/78eMFkcvlPcfWCe1GNgNiBpFIDz.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/969681",
+        "imdbId": "tt22084616",
+        "demo": false,
+        "boxOfficeRank": 1
+      },
+      {
+        "id": 1368337,
+        "title": "오디세이",
+        "originalTitle": "The Odyssey",
+        "year": 2026,
+        "releaseDate": "2026-07-15",
+        "director": "크리스토퍼 놀란",
+        "runtime": 173,
+        "genres": [
+          "모험",
+          "액션",
+          "판타지"
+        ],
+        "voteAverage": 8,
+        "voteCount": 2872,
+        "popularity": 850.2382,
+        "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8ze9OcVuFiy94s6FFPvsn4oC2e1.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/r57L2UBLPKcHdZQYg8tagv9XqK2.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
+        "imdbId": "tt33764258",
+        "demo": false,
+        "boxOfficeRank": 2
+      },
+      {
+        "id": 1315772,
+        "title": "미니언즈 & 몬스터즈",
+        "originalTitle": "Minions & Monsters",
+        "year": 2026,
+        "releaseDate": "2026-06-24",
+        "director": "피에르 코팽",
+        "runtime": 90,
+        "genres": [
+          "모험",
+          "애니메이션",
+          "코미디",
+          "가족",
+          "판타지"
+        ],
+        "voteAverage": 7.498,
+        "voteCount": 715,
+        "popularity": 319.7902,
+        "overview": "영화 배우로 성공했던 미니언즈들은 모든 것을 잃고 뜻하지 않게 몬스터를 세상에 소환한다. 예상치 못한 대혼란이 벌어지자 미니언즈들은 사태를 해결하기 위해 힘을 모은다. 새롭게 등장한 캐릭터들과 함께 좌충우돌 모험이 이어진다. 지구를 구하기 위한 미니언즈들의 유쾌한 작전이 시작된다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8uvgppq5obV06X9X8SogQiU79Kd.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kkcwhgSFd81QDlXo8ytrpHPQjhy.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
+        "imdbId": "tt32890033",
+        "demo": false,
+        "boxOfficeRank": 3
+      },
+      {
+        "id": 1108427,
+        "title": "모아나",
+        "originalTitle": "Moana",
+        "year": 2026,
+        "releaseDate": "2026-07-08",
+        "director": "토마스 카일",
+        "runtime": 115,
+        "genres": [
+          "가족",
+          "판타지",
+          "코미디",
+          "모험"
+        ],
+        "voteAverage": 6.025,
+        "voteCount": 198,
+        "popularity": 191.637,
+        "overview": "끝없는 바다 너머 새로운 세상을 꿈꾸던 모투누이 섬의 소녀 모아나. 어느 날 모투누이에 깊은 어둠이 드리우자, 모아나는 저주에 빠진 섬을 구하기 위해 전설의 영웅 마우이를 찾아, 그와 함께 운명을 건 항해에 나선다. 눈부신 파도, 거대한 모험, 그리고 운명을 바꿀 항해! 오감을 깨울 환상적인 바다가 생생하게 펼쳐진다!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/etJXeoQovaAcQD8gG0vebtoIlMH.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
+        "imdbId": "tt27419466",
+        "demo": false,
+        "boxOfficeRank": 4
+      },
+      {
+        "id": 1083381,
+        "title": "백룸",
+        "originalTitle": "Backrooms",
+        "year": 2026,
+        "releaseDate": "2026-05-27",
+        "director": "케인 파슨스",
+        "runtime": 111,
+        "genres": [
+          "공포",
+          "미스터리",
+          "SF"
+        ],
+        "voteAverage": 7.1,
+        "voteCount": 2826,
+        "popularity": 138.8061,
+        "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/c3Cb7h4ecFsGfUM02KF638kbbtC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
+        "imdbId": "tt26657236",
+        "demo": false,
+        "boxOfficeRank": 5
+      },
+      {
+        "id": 1612018,
+        "title": "잭애스: 베스트 앤드 라스트",
+        "originalTitle": "Jackass: Best and Last",
+        "year": 2026,
+        "releaseDate": "2026-06-25",
+        "director": "Jeff Tremaine",
+        "runtime": 92,
+        "genres": [
+          "액션",
+          "코미디",
+          "다큐멘터리"
+        ],
+        "voteAverage": 7.5,
+        "voteCount": 157,
+        "popularity": 112.7685,
+        "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
+        "imdbId": "tt39316472",
+        "demo": false,
+        "boxOfficeRank": 6
+      },
+      {
+        "id": 1185806,
+        "title": "퍼피 구조대: 더 다이노 무비",
+        "originalTitle": "PAW Patrol: The Dino Movie",
+        "year": 2026,
+        "releaseDate": "2026-07-23",
+        "director": "Cal Brunker",
+        "runtime": 89,
+        "genres": [
+          "애니메이션",
+          "모험",
+          "가족",
+          "판타지",
+          "코미디"
+        ],
+        "voteAverage": 7.016,
+        "voteCount": 31,
+        "popularity": 36.542,
+        "overview": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/AnG0YQdnIf3mMYEVc2onMeAROzU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/6TSxLmwT7j1ugtKi8NyMmdzWAGj.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1185806",
+        "imdbId": "tt29356163",
+        "demo": false,
+        "boxOfficeRank": 7
+      },
+      {
+        "id": 1430077,
+        "title": "호컴",
+        "originalTitle": "Hokum",
+        "year": 2026,
+        "releaseDate": "2026-04-29",
+        "director": "다미안 맥카시",
+        "runtime": 108,
+        "genres": [
+          "공포"
+        ],
+        "voteAverage": 6.927,
+        "voteCount": 741,
+        "popularity": 28.33,
+        "overview": "소설가 옴 바우만은 부모님의 유골을 뿌리기 위해 외딴 숙소를 찾지만, 이내 허니문 스위트룸에 출몰한다는 마녀의 이야기에 사로잡힌다. 기괴한 환영과 충격적인 실종 사건이 이어지면서, 그는 결국 자신의 과거 속 어두운 구석을 마주해야만 하는 상황에 직면한다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/o4iZdeHACk0wN4nycY9VubPnJjL.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qY7zVZ7liULhfRoXg4c9Xl83LcR.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1430077",
+        "imdbId": "tt35672862",
+        "demo": false,
+        "boxOfficeRank": 8
+      },
+      {
+        "id": 1058424,
+        "title": "호프",
+        "originalTitle": "호프",
+        "year": 2026,
+        "releaseDate": "2026-07-15",
+        "director": "나홍진",
+        "runtime": 156,
+        "genres": [
+          "SF",
+          "미스터리",
+          "액션"
+        ],
+        "voteAverage": 8.1,
+        "voteCount": 22,
+        "popularity": 19.1391,
+        "overview": "지원해 줄 인력들은 산불을 끄러 갔고, 이젠 통신도 두절됐다. 호포 출장소의 범석과 성애는 노인들뿐인 마을을 지키기 위해 사투를 벌이고, 놈을 쫓아서  산으로 향했던 청년들과 성기는 되려 놈들의 사냥감이 되어 버린다. 무지가 빚어낸 불행의 씨앗은 입장의 차이를 거쳐 온 우주의 비극이 되고야  만다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ptqlN6mDIAqJjVA86J5eOoG82zc.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/i0lipAm0VHFA3EH0CPV0s5LJMIE.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1058424",
+        "imdbId": "tt27369017",
+        "demo": false,
+        "boxOfficeRank": 9
+      },
+      {
+        "id": 1545621,
+        "title": "명탐정 코난: 하이웨이의 타천사",
+        "originalTitle": "名探偵コナン ハイウェイの堕天使",
+        "year": 2026,
+        "releaseDate": "2026-04-10",
+        "director": "蓮井隆弘",
+        "runtime": 110,
+        "genres": [
+          "애니메이션",
+          "액션",
+          "미스터리",
+          "범죄"
+        ],
+        "voteAverage": 7.6,
+        "voteCount": 16,
+        "popularity": 17.4681,
+        "overview": "‘모터 사이클 페스티벌’이 열리는 요코하마로 향하던 코난 일행은 폭주하는 검은 오토바이 사건에 휘말리고 범인을 쫓던 ‘바람의 여신’ 가나가와현경 교통기동대 하기와라 치하야 경부보와 재회한다. 경찰의 추적을 모두 뿌리친 폭주 오토바이는 도쿄 시내에도 출물하고, 연쇄적으로 사상자가 발생한다. 이러한 가운데 최첨단 AI 기술을 탑재한 싸이카 ‘엔젤’과 폭주 오토바이가 매우 유사하다는 점이 밝혀지고, 이 정체불명의 존재를 ‘루시퍼’라고 명명, 점차 포위망을 좁혀간다. 한편, 사건을 쫓던 치하야는 문득 7년 전 11월 7일, 폭탄을 해체하다 순직한 남동생 하기와라 켄지와, 그의 죽음으로부터 4년 후 11월 7일, 같은 범인을 쫓다가 순직한 켄지의 친구이자 동료 마츠다 진페이에 대한 기억이 떠오르는데….",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/uvhDoTtOyoUO0hn02buTv2rxyf8.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/zT5S4GNs8Eu2gIkGORoN6yC1uE2.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1545621",
+        "imdbId": "tt39123115",
+        "demo": false,
+        "boxOfficeRank": 10
+      }
+    ],
+    "upcoming": [
+      {
+        "id": 1003596,
+        "title": "어벤져스: 둠스데이",
+        "originalTitle": "Avengers: Doomsday",
+        "year": 2026,
+        "releaseDate": "2026-12-16",
+        "director": "조 루소",
+        "runtime": 165,
+        "genres": [
+          "SF",
+          "액션",
+          "모험"
+        ],
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 112.1566,
+        "overview": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/z0JdEEe4SyR1OGJRbe0ckZ1jvoU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1003596",
+        "imdbId": "tt21357150",
+        "demo": false
+      }
     ]
-  }
+  },
+  "featuredSlides": [
+    {
+      "id": 969681,
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "originalTitle": "Spider-Man: Brand New Day",
+      "year": 2026,
+      "releaseDate": "2026-07-29",
+      "director": "데스틴 대니얼 크레턴",
+      "runtime": 145,
+      "genres": [
+        "SF",
+        "액션",
+        "모험"
+      ],
+      "voteAverage": 7.9,
+      "voteCount": 1862,
+      "popularity": 1911.7361,
+      "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/78eMFkcvlPcfWCe1GNgNiBpFIDz.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/969681",
+      "imdbId": "tt22084616",
+      "demo": false,
+      "boxOfficeRank": 1
+    },
+    {
+      "id": 1368337,
+      "title": "오디세이",
+      "originalTitle": "The Odyssey",
+      "year": 2026,
+      "releaseDate": "2026-07-15",
+      "director": "크리스토퍼 놀란",
+      "runtime": 173,
+      "genres": [
+        "모험",
+        "액션",
+        "판타지"
+      ],
+      "voteAverage": 8,
+      "voteCount": 2872,
+      "popularity": 850.2382,
+      "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8ze9OcVuFiy94s6FFPvsn4oC2e1.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/r57L2UBLPKcHdZQYg8tagv9XqK2.jpg",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
+      "imdbId": "tt33764258",
+      "demo": false,
+      "boxOfficeRank": 2
+    },
+    {
+      "id": 1315772,
+      "title": "미니언즈 & 몬스터즈",
+      "originalTitle": "Minions & Monsters",
+      "year": 2026,
+      "releaseDate": "2026-06-24",
+      "director": "피에르 코팽",
+      "runtime": 90,
+      "genres": [
+        "모험",
+        "애니메이션",
+        "코미디",
+        "가족",
+        "판타지"
+      ],
+      "voteAverage": 7.498,
+      "voteCount": 715,
+      "popularity": 319.7902,
+      "overview": "영화 배우로 성공했던 미니언즈들은 모든 것을 잃고 뜻하지 않게 몬스터를 세상에 소환한다. 예상치 못한 대혼란이 벌어지자 미니언즈들은 사태를 해결하기 위해 힘을 모은다. 새롭게 등장한 캐릭터들과 함께 좌충우돌 모험이 이어진다. 지구를 구하기 위한 미니언즈들의 유쾌한 작전이 시작된다.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8uvgppq5obV06X9X8SogQiU79Kd.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kkcwhgSFd81QDlXo8ytrpHPQjhy.jpg",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
+      "imdbId": "tt32890033",
+      "demo": false,
+      "boxOfficeRank": 3
+    },
+    {
+      "id": 1108427,
+      "title": "모아나",
+      "originalTitle": "Moana",
+      "year": 2026,
+      "releaseDate": "2026-07-08",
+      "director": "토마스 카일",
+      "runtime": 115,
+      "genres": [
+        "가족",
+        "판타지",
+        "코미디",
+        "모험"
+      ],
+      "voteAverage": 6.025,
+      "voteCount": 198,
+      "popularity": 191.637,
+      "overview": "끝없는 바다 너머 새로운 세상을 꿈꾸던 모투누이 섬의 소녀 모아나. 어느 날 모투누이에 깊은 어둠이 드리우자, 모아나는 저주에 빠진 섬을 구하기 위해 전설의 영웅 마우이를 찾아, 그와 함께 운명을 건 항해에 나선다. 눈부신 파도, 거대한 모험, 그리고 운명을 바꿀 항해! 오감을 깨울 환상적인 바다가 생생하게 펼쳐진다!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/etJXeoQovaAcQD8gG0vebtoIlMH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
+      "imdbId": "tt27419466",
+      "demo": false,
+      "boxOfficeRank": 4
+    },
+    {
+      "id": 1083381,
+      "title": "백룸",
+      "originalTitle": "Backrooms",
+      "year": 2026,
+      "releaseDate": "2026-05-27",
+      "director": "케인 파슨스",
+      "runtime": 111,
+      "genres": [
+        "공포",
+        "미스터리",
+        "SF"
+      ],
+      "voteAverage": 7.1,
+      "voteCount": 2826,
+      "popularity": 138.8061,
+      "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/c3Cb7h4ecFsGfUM02KF638kbbtC.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
+      "imdbId": "tt26657236",
+      "demo": false,
+      "boxOfficeRank": 5
+    }
+  ]
 }

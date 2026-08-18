@@ -7,7 +7,9 @@
     "theatres": 20,
     "trending": 20,
     "rated": 20,
-    "streaming": 20
+    "streaming": 20,
+    "boxOffice": 10,
+    "upcoming": 1
   },
   "sources": {
     "metadata": {
@@ -21,6 +23,11 @@
     "theatrical": {
       "name": "TMDB now_playing (KR)",
       "active": true
+    },
+    "boxOffice": {
+      "name": "TMDB theatrical popularity fallback",
+      "active": true,
+      "mode": "fallback"
     }
   }
 }

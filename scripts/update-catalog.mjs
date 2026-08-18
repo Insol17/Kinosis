@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const TOKEN = process.env.TMDB_READ_ACCESS_TOKEN;
+const KOBIS_KEY = process.env.KOBIS_API_KEY || '';
 if (!TOKEN) throw new Error('TMDB_READ_ACCESS_TOKEN is required. Keep it in GitHub Actions Secrets; never place it in frontend code.');
 
 const API = 'https://api.themoviedb.org/3';
@@ -142,26 +143,46 @@ async function fetchArtSeedCandidates() {
   return uniq([...titleRows,...directorCredits.flat()]).slice(0,56).map(m => ({...m,artSeed:true}));
 }
 
+function kstDateOffset(days) {
+  const now = new Date(Date.now() + days * 86400000);
+  const parts = new Intl.DateTimeFormat('en-CA', { timeZone:'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit' }).formatToParts(now);
+  const get=t=>parts.find(p=>p.type===t)?.value||''; return `${get('year')}${get('month')}${get('day')}`;
+}
+async function fetchBoxOffice(nowPlayingResults) {
+  const fallback = [...nowPlayingResults].sort((a,b)=>Number(b.popularity||0)-Number(a.popularity||0)).slice(0,10).map((m,i)=>({...m,boxOfficeRank:i+1}));
+  if (!KOBIS_KEY) return { mode:'fallback', rows:fallback };
+  try {
+    const targetDt = kstDateOffset(-1);
+    const url = new URL('https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json');
+    url.searchParams.set('key',KOBIS_KEY); url.searchParams.set('targetDt',targetDt);
+    const res=await fetch(url,{signal:AbortSignal.timeout(15000)}); if(!res.ok)throw new Error(`KOBIS ${res.status}`);
+    const body=await res.json(); const ranks=body?.boxOfficeResult?.dailyBoxOfficeList||[];
+    const matched=await pool(ranks.slice(0,10),4,async row=>{const data=await tmdb('/search/movie',{query:row.movieNm,language:LANGUAGE,region:REGION,include_adult:false,page:1});const list=data.results||[];const openYear=String(row.openDt||'').slice(0,4);const found=list.find(m=>String(m.release_date||'').slice(0,4)===openYear)||list[0];return found?{...found,boxOfficeRank:Number(row.rank)||null,boxOfficeAudience:Number(row.audiAcc)||null,boxOfficeSalesShare:Number(row.salesShare)||null}:null;});
+    const rows=uniq([...matched,...fallback]).slice(0,10); return { mode:matched.length>=3?'kobis':'fallback', rows };
+  } catch(e) { console.warn(`KOBIS box office fallback: ${e.message}`); return { mode:'fallback', rows:fallback }; }
+}
+
 
 console.log('Fetching TMDB configuration and KR lists…');
 const config = await tmdb('/configuration');
 const imageBase = config?.images?.secure_base_url || 'https://image.tmdb.org/t/p/';
 
-const [nowPlayingPages, trending, topRated, streaming] = await Promise.all([
+const [nowPlayingPages, upcomingPages, trending, topRated, streaming] = await Promise.all([
   Promise.all([1,2,3,4].map(page => tmdb('/movie/now_playing', { language:LANGUAGE, region:REGION, page }))),
+  Promise.all([1,2].map(page => tmdb('/movie/upcoming', { language:LANGUAGE, region:REGION, page }))),
   tmdb('/trending/movie/week', { language:LANGUAGE }),
   tmdb('/movie/top_rated', { language:LANGUAGE, region:REGION, page:1 }),
-  tmdb('/discover/movie', {
-    language:LANGUAGE, region:REGION, watch_region:REGION,
-    with_watch_monetization_types:'flatrate', include_adult:false, include_video:false,
-    sort_by:'popularity.desc', page:1
-  })
+  tmdb('/discover/movie', { language:LANGUAGE, region:REGION, watch_region:REGION, with_watch_monetization_types:'flatrate', include_adult:false, include_video:false, sort_by:'popularity.desc', page:1 })
 ]);
 const nowPlayingResults = uniq(nowPlayingPages.flatMap(page => page.results || []));
+const upcomingResults = uniq(upcomingPages.flatMap(page => page.results || []));
+const boxOffice = await fetchBoxOffice(nowPlayingResults);
 const artCandidates = await fetchArtSeedCandidates();
 const artSeedIds = new Set(artCandidates.map(m => Number(m.id)));
 
 const rawSections = {
+  boxOffice:boxOffice.rows.slice(0,10),
+  upcoming:upcomingResults.slice(0,30),
   theatres:nowPlayingResults.slice(0,72),
   trending:(trending.results || []).slice(0,24),
   rated:(topRated.results || []).filter(m => Number(m.vote_count || 0) >= 250).slice(0,24),
@@ -172,7 +193,7 @@ const rawMovies = uniq(Object.values(rawSections).flat());
 if (rawMovies.length < 12) throw new Error(`Validation failed before enrichment: only ${rawMovies.length} unique movies.`);
 // Only the few movies that can become a Discover hero need the heavier images query.
 // This keeps the weekly refresh inexpensive while still giving banner-quality art and title logos.
-const heroCandidateIds = new Set(Object.values(rawSections).flatMap(list => (list || []).slice(0,3)).map(m => Number(m.id)));
+const heroCandidateIds = new Set(Object.values(rawSections).flatMap(list => (list || []).slice(0,5)).map(m => Number(m.id)));
 
 console.log(`Enriching ${rawMovies.length} movies…`);
 const enriched = await pool(rawMovies, 4, async base => {
@@ -199,6 +220,8 @@ const enriched = await pool(rawMovies, 4, async base => {
     artSeed:!!base.artSeed || artSeedIds.has(Number(detail.id)),
     voteAverage:Number(detail.vote_average || 0), voteCount:Number(detail.vote_count || 0),
     popularity:Number(detail.popularity || base.popularity || 0),
+    boxOfficeRank:Number(base.boxOfficeRank || 0) || null,
+    boxOfficeAudience:Number(base.boxOfficeAudience || 0) || null,
     overview:clean(detail.overview || base.overview),
     tagline:clean(detail.tagline),
     posterUrl:detail.poster_path ? `${imageBase}w500${detail.poster_path}` : null,
@@ -225,19 +248,21 @@ const visualHero = featuredPool
   .filter(m => (m.heroBackdropUrl || m.backdropUrl) && m.overview)
   .sort((a,b) => featuredScore(b) - featuredScore(a))[0];
 const featured = streamableHero || visualHero || enriched[0];
+const featuredSlides = uniq([...sections.boxOffice,...sections.upcoming,...sections.rated,...sections.streaming]).filter(m => (m.heroBackdropUrl || m.backdropUrl)).sort((a,b)=>featuredScore(b)-featuredScore(a)).slice(0,5);
 const catalog = {
   version:2, updatedAt:new Date().toISOString(), region:REGION, language:LANGUAGE, mode:'live',
   sources:{
     metadata:{name:'TMDB',active:true},
     streaming:{name:'JustWatch via TMDB',active:true},
     theatrical:{name:`TMDB now_playing (${REGION})`,active:true},
+    boxOffice:{name:boxOffice.mode==='kobis'?'KOBIS daily box office':'TMDB theatrical popularity fallback',active:true,mode:boxOffice.mode},
     art:{name:'KINOSIS curated seed engine · KMDb cinephile canon inspired',active:true}
   },
-  featured, movies:enriched, sections
+  featured, featuredSlides, movies:enriched, sections
 };
 
 // Guard against a bad API response replacing the last known-good catalog.
-const required = ['theatres','trending','streaming','rated','art'];
+const required = ['boxOffice','upcoming','theatres','trending','streaming','rated','art'];
 for (const key of required) if (!Array.isArray(catalog.sections[key]) || catalog.sections[key].length < 3) throw new Error(`Validation failed: section ${key} has ${catalog.sections[key]?.length || 0} movies.`);
 if (!catalog.featured?.id || catalog.movies.length < 12) throw new Error('Validation failed: featured/movie count missing.');
 

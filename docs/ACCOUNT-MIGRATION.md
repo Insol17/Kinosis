@@ -1,4 +1,4 @@
-# Account migration — 0.4.3
+# Account migration — 0.4.4
 
 Library and MY remain account-gated by product policy. Existing historical local KINOSIS data may still be detected after sign-in and merged into the user's Supabase-backed `user_state`.
 

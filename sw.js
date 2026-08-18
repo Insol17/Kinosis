@@ -1,4 +1,4 @@
-const VERSION='0.4.3.2';
+const VERSION='0.4.4';
 const CACHE=`kinosis-shell-${VERSION}`;
 const CORE=[
   './','./index.html',

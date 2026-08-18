@@ -34,8 +34,9 @@
   async function signInOAuth(provider){const c=create();const {error}=await c.auth.signInWithOAuth({provider,options:{redirectTo:redirectUrl()}});if(error)throw error;}
   async function sendMagicLink(email){const c=create();const {error}=await c.auth.signInWithOtp({email,options:{emailRedirectTo:redirectUrl(),shouldCreateUser:true}});if(error)throw error;}
   async function signOut(){const c=create();const {error}=await c.auth.signOut();if(error)throw error;}
-  async function readUserState(){if(!isAuthenticated())return null;const c=create();const {data,error}=await c.from('user_state').select('payload,updated_at').eq('user_id',user().id).maybeSingle();if(error)throw error;return data||null;}
-  async function writeUserState(payload){if(!isAuthenticated())throw new Error('Sign in required.');const c=create();const row={user_id:user().id,payload,updated_at:new Date().toISOString()};const {data,error}=await c.from('user_state').upsert(row,{onConflict:'user_id'}).select('updated_at').single();if(error)throw error;return data;}
+  function dbError(error){if(!error)return new Error('Unknown cloud error.');if(error.code==='42P01'||/user_state.*does not exist/i.test(error.message||''))return new Error('Cloud schema is missing. Run supabase/SETUP_ALL.sql once.');if(error.code==='42501')return new Error('Cloud permission denied. Check Supabase RLS policies.');return error;}
+  async function readUserState(){if(!isAuthenticated())return null;const c=create();const {data,error}=await c.from('user_state').select('payload,updated_at').eq('user_id',user().id).maybeSingle();if(error)throw dbError(error);return data||null;}
+  async function writeUserState(payload){if(!isAuthenticated())throw new Error('Sign in required.');const c=create();const row={user_id:user().id,payload,updated_at:new Date().toISOString()};const {data,error}=await c.from('user_state').upsert(row,{onConflict:'user_id'}).select('updated_at').single();if(error)throw dbError(error);return data;}
   async function health(){const c=create();const {data,error}=await c.from('app_health').select('id').limit(1);if(error)throw error;return data;}
   window.KINOSIS_CLOUD=Object.freeze({init,onChange,isAuthenticated,user,signInOAuth,sendMagicLink,signOut,readUserState,writeUserState,health,redirectUrl});
 })();

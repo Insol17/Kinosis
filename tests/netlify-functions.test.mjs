@@ -4,6 +4,7 @@ const searchModule=await import('../netlify/functions/movie-search.mjs');
 const detailModule=await import('../netlify/functions/movie-detail.mjs');
 const recommendationModule=await import('../netlify/functions/movie-recommendations.mjs');
 const personModule=await import('../netlify/functions/person-films.mjs');
+const directorModule=await import('../netlify/functions/director-filmography.mjs');
 const availabilityModule=await import('../netlify/functions/watchlist-availability.mjs');
 
 const realFetch=globalThis.fetch;
@@ -42,10 +43,15 @@ try{
   assert.equal(personResponse.status,200); const personData=await personResponse.json();
   assert.equal(personData.person.name,'Orson Welles'); assert.equal(personData.results[0].personRole,'Director');
 
+
+  const directorResponse=await directorModule.default(new Request('https://kinosis.test/api/director-filmography?name=Orson%20Welles'));
+  assert.equal(directorResponse.status,200); const directorData=await directorResponse.json();
+  assert.equal(directorData.person.name,'Orson Welles'); assert.equal(directorData.results[0].id,'15');
+
   const availabilityResponse=await availabilityModule.default(new Request('https://kinosis.test/api/watchlist-availability?ids=15'));
   assert.equal(availabilityResponse.status,200); const availabilityData=await availabilityResponse.json();
   assert.equal(availabilityData.results[0].providers[0].name,'Netflix');
 
-  for(const payload of [searchData,detailData,recommendationData,personData,availabilityData]) assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'secret leaked in API response');
-  console.log('netlify-functions.test: search/detail/recommendations/person/availability contracts OK');
+  for(const payload of [searchData,detailData,recommendationData,personData,directorData,availabilityData]) assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'secret leaked in API response');
+  console.log('netlify-functions.test: search/detail/recommendations/person/director/availability contracts OK');
 }finally{globalThis.fetch=realFetch;}

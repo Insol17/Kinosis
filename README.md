@@ -1,4 +1,4 @@
-# KINOSIS 0.4.3.2
+# KINOSIS 0.4.4
 
 KINOSIS is a responsive film discovery and personal film-life web MVP.
 
@@ -11,7 +11,7 @@ MY        → what has my film life looked like?
 
 Search is global. Movie detail has a shareable URL. Library and MY require an account; guests can freely use Discover, Arthouse, Search and film detail.
 
-## What changed in 0.4.3 / 0.4.3.2
+## What changed in 0.4.4 / 0.4.4
 
 - Shareable movie URLs and browser back/forward routing.
 - Viewing logs can be edited and deleted.
@@ -25,7 +25,7 @@ Search is global. Movie detail has a shareable URL. Library and MY require an ac
 - Watchlist availability is periodically rechecked and newly available subscription titles are surfaced in Library.
 - Personal Collections now support descriptions, visual covers and explicit movie ordering.
 - Letterboxd CSV import beta supports watched/ratings/diary/reviews/watchlist exports.
-- Curation returns in 0.4.3.2 as **content-as-code**: no Admin account or Supabase editor. Files under `content/curations/{discover,arthouse,both}` are indexed automatically at Netlify build time.
+- Curation returns in 0.4.4 as **content-as-code**: no Admin account or Supabase editor. Files under `content/curations/{discover,arthouse,both}` are indexed automatically at Netlify build time.
 
 
 ## File-based Curation
@@ -78,7 +78,7 @@ Do not put the TMDB token or a Supabase Secret/Service Role key in frontend Java
 
 Fresh project: run `supabase/SETUP_ALL.sql` once in Supabase SQL Editor.
 
-If the 0.4.1 core schema is already installed, **0.4.3 requires no additional DB migration**. `supabase/003_kinosis_043.sql` documents that fact.
+If the 0.4.1 core schema is already installed, **0.4.4 requires no additional DB migration**. `supabase/003_kinosis_043.sql` documents that fact.
 
 The app uses:
 
@@ -97,7 +97,7 @@ The product includes visible attribution and the required TMDB non-endorsement n
 
 ## Automatic catalog refresh
 
-`.github/workflows/refresh-catalog.yml` runs the catalog updater. 0.4.3 fetches up to four pages of KR now-playing results and a broader Arthouse seed set before enriching the catalog. Failed validation leaves the last known-good catalog intact.
+`.github/workflows/refresh-catalog.yml` runs the catalog updater. 0.4.4 fetches up to four pages of KR now-playing results and a broader Arthouse seed set before enriching the catalog. Failed validation leaves the last known-good catalog intact.
 
 ## Test
 

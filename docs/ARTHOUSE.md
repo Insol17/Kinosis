@@ -1,4 +1,4 @@
-# ARTHOUSE — 0.4.3.2
+# ARTHOUSE — 0.4.4
 
 ARTHOUSE is a permanent KINOSIS destination for cinema explored through auteur, canon, independent/film-festival and historical signals.
 

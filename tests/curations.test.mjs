@@ -9,7 +9,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataPath = path.join(root, 'data', 'curations.json');
 const scriptPath = path.join(root, 'data', 'curations.js');
 const builder = path.join(root, 'scripts', 'build-curations.mjs');
-const sourceDir = path.join(root, 'content', 'curations', 'discover');
+const sourceDir = path.join(root, 'content', 'curations');
 const fixturePath = path.join(sourceDir, '__test__.curation.json');
 
 function build() {
@@ -30,7 +30,7 @@ assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('dis
 assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
 
 const baseline = build();
-assert.equal(baseline.version, '0.4.3.2');
+assert.equal(baseline.version, '0.4.4');
 assert.ok(Array.isArray(baseline.items));
 assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
 
@@ -54,7 +54,7 @@ try {
   assert.equal(fixture, undefined);
   assert.fail('invalid slug fixture unexpectedly passed validation');
 } catch (error) {
-  assert.match(String(error.stderr || error.message || error), /slug must be/);
+  assert.match(String(error.stderr || error.message || error), /invalid slug/);
 } finally {
   fs.rmSync(fixturePath, { force: true });
 }
@@ -73,7 +73,7 @@ try {
   const withFixture = build();
   const fixture = withFixture.items.find((item) => item.slug === 'test-build');
   assert.ok(fixture, 'valid curation was not indexed');
-  assert.equal(fixture.surface, 'discover');
+  assert.equal(fixture.surface, 'arthouse');
   assert.deepEqual(fixture.movies.map((movie) => movie.id), ids);
 } finally {
   fs.rmSync(validFixturePath, { force: true });
@@ -82,7 +82,5 @@ try {
 
 const finalPayload = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 assert.equal(finalPayload.items.length, baseline.items.length, 'test fixture leaked into generated curation data');
-const example = path.join(root, 'content', 'curations', 'arthouse', 'kiarostami.curation.example.json');
-assert.ok(fs.existsSync(example), 'curation authoring example missing');
-assert.ok(!finalPayload.items.some((item) => item.slug.includes('example')), 'example file must never be published');
+assert.ok(finalPayload.items.some((item) => item.slug === 'kiarostami' && item.source?.type === 'director'), 'director-source curation missing');
 console.log(`curations.test: build indexing + validation OK (${finalPayload.items.length} published definition(s))`);

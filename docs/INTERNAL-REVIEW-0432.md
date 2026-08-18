@@ -1,8 +1,8 @@
-# KINOSIS 0.4.3.2 — Internal code review
+# KINOSIS 0.4.4 — Internal code review
 
 ## Scope
 
-Review focused on the reintroduced editorial Curation pipeline and regression risk against 0.4.3.
+Review focused on the reintroduced editorial Curation pipeline and regression risk against 0.4.4.
 
 ## Checks performed
 
@@ -32,7 +32,7 @@ Build fails on invalid JSON, duplicate slugs, duplicate TMDB IDs, invalid slugs/
 Curation pages use `?curation=<slug>`. Movie links opened from a Curation carry `from=curation&fromCuration=<slug>` so fallback/back navigation can restore the editorial page.
 
 ### 6. PWA serves stale editorial data
-0.4.3.2 bumps the shell cache and includes both generated Curation data and the Curation helper module. API responses remain excluded from service-worker caching.
+0.4.4 bumps the shell cache and includes both generated Curation data and the Curation helper module. API responses remain excluded from service-worker caching.
 
 ## Deliberately not reintroduced
 

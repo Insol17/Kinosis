@@ -1,68 +1,48 @@
 # Changelog
 
-## 0.4.3.2 — File-based editorial curation
+## 0.4.4 — Discovery rails, reliable cloud sync, simpler Library
 
-### Curation authoring
-- Restored KINOSIS editorial Curation without restoring Admin/Curation Studio or database roles.
-- `content/curations/discover`, `arthouse`, and `both` now act as the editorial source folders.
-- Any `*.curation.json` placed in those folders is validated and indexed by `scripts/build-curations.mjs`.
-- Netlify now runs `npm run build` automatically, so a Git push is enough to publish a valid curation definition.
-- Added a safe authoring example and schema notes under `content/curations/README.md`.
-
-### Product surface
-- DISCOVER shows at most one editorial curation, preserving the content-first/simple home hierarchy.
-- ARTHOUSE can show a compact horizontal rail of editorial curations before its algorithmic shelves.
-- Curation has its own shareable `?curation=<slug>` page with hero context and ordered films.
-- Movies referenced by a curation can live outside the weekly catalog cache; KINOSIS hydrates missing TMDB IDs through the existing server-side detail proxy.
-
-### Architecture / safety
-- Curation is content-as-code, not account authority: no admin client flag, no editor role, no Supabase Curation tables are required.
-- Folder placement determines surface, reducing repetitive config and preventing Discover/Arthouse placement drift.
-- Duplicate slugs, malformed IDs, oversized lists, invalid JSON, and duplicate movie IDs are validated at build time.
-- Added `curations.test.mjs`, curation assets to the PWA shell, and cache version 0.4.3.2.
-
-## 0.4.3 — Film-life integrity + retrieval
-
-### MY / viewing history
-- Merged Diary and Review into a single **Reviews** timeline.
-- Reduced MY navigation to Overview / Reviews / Stats / Settings.
-- Calendar now lives inside Overview rather than as a separate destination.
-- Viewing logs can be edited or deleted.
-- Rewatch is an explicit per-viewing state and viewing history is visible on movie detail.
-- Each viewing keeps its own rating/review; the Library rating is recomputed from the latest viewing with a rating.
-- Calendar dates with multiple films open a complete day list.
-
-### Web navigation / film detail
-- Movie pages now use `?movie=<tmdbId>` deep links.
-- Browser back/forward navigation is supported with History API state.
-- Film links can be copied and opened directly.
-- Similar-film candidates use live TMDB recommendations/similarity, with the old local genre fallback only when necessary.
-
-### Discover / personalization
-- Added a lightweight **For You** shelf for signed-in users with enough rating history.
-- Recommendation seeds come from the user's highest-rated films; KINOSIS explains the broad taste signal instead of claiming an opaque AI score.
-- Watchlist provider availability is periodically checked; newly available subscription titles are surfaced in Library.
-
-### Search
-- Search now combines movie, person and common genre intent.
-- Director/actor results open filmographies through a Netlify Function.
+### Discover
+- Featured is now a 3–5 film carousel with arrows, indicators, 6.5s autoplay, hover/focus pause, and reduced-motion opt-out.
+- Default section order is now: Box Office / Upcoming / My Services / Highly Rated.
+- Added generated `boxOffice` and `upcoming` catalog sections.
+- Exact Korean daily box-office ranks use optional KOBIS data. Without a KOBIS key, KINOSIS falls back to TMDB theatrical popularity and labels the shelf `극장 인기 순위` rather than inventing box-office ranks.
 
 ### Arthouse
-- Poster rows are substantially denser and fixed-width, so a short result set no longer stretches into giant cards.
-- KR now-playing sync fetches multiple pages instead of only page 1.
-- Arthouse seed generation resolves curated directors to multiple actual directing credits for a wider pool.
-- Current-theatre candidates are ranked with Arthouse signals first while avoiding the old two-card oversized layout.
+- Uses the same carousel and poster-card grammar as Discover.
+- Default order is Latest Releases / Highly Rated / four Arthouse curations.
+- Removed the sparse `지금 아트시네마에서` rail and the separate compact Arthouse card sizing.
 
-### Library / portability
-- Collections support descriptions, visual covers and explicit movie order controls.
-- Letterboxd CSV import beta supports watched, ratings, diary, reviews and watchlist exports.
-- Existing Watchlist × subscription dynamic behavior is preserved.
+### Poster density
+- Desktop horizontal rails are capped at exactly seven visible poster cards within the 1600px content shell.
+- Wider monitors do not reveal additional cards; they preserve the same seven-card composition.
+- Library and curation grids also cap at seven columns on desktop.
 
-### Scope cleanup
-- Removed the 0.4.2 Curation Studio/Admin product surface for now.
-- Fresh Supabase setup returns to the small RLS-protected user-state + health schema; old curation SQL is kept only under `supabase/legacy/`.
+### Library
+- Removed Library Home, stats cards, explanatory feed sections, and the large multi-filter bar.
+- Default Library opens directly to All Films.
+- Steam-like left navigation: All Films / Watchlist / Favorites / Collections + personal collection shortcuts.
+- Main surface keeps only search, sort, Grid/List view, and the selected library content.
+
+### Cloud Sync v2
+- Sync is now bidirectional instead of push-only after initial login.
+- Pulls cloud state on focus, visibility return, reconnect, manual sync, and a low-frequency foreground interval.
+- Before a push, KINOSIS checks for a newer remote row and merges item-level timestamps instead of blindly overwriting another device.
+- Added viewing-log deletion tombstones so a deleted log does not reappear from another device's stale state.
+- Added subscription and profile update timestamps for safer conflict resolution.
+- Cloud Settings now exposes the actual Supabase error message; missing schema/RLS errors are translated into actionable messages.
+
+### Curations
+- Curations remain Git-authored and Arthouse-only; no Admin account is required.
+- `source.type = "director"` can now resolve every TMDB movie directing credit for a named director at runtime.
+- Added four built-in Director's Archives:
+  - 그럼에도 삶은 계속된다: 키아로스타미 컬렉션
+  - 셀룰로이드의 정령: 빅토르 에리세 컬렉션
+  - 파도치는 시대를 관조하는 시선: 허우샤오시엔 컬렉션
+  - 폭발하는 도파민: 쿠엔틴 타란티노 컬렉션
+- Director curations auto-expand when TMDB adds a new directing credit; static TMDB-ID curation files remain supported.
 
 ### Operations
-- PWA cache version bumped to 0.4.3.
-- New recommendation/person/availability Netlify Functions are excluded from Service Worker API caching.
-- Tests expanded for new API contracts and 0.4.3 UX markers.
+- Added `/api/director-filmography` Netlify Function.
+- Catalog refresh supports optional `KOBIS_API_KEY` GitHub Secret.
+- PWA cache version bumped to 0.4.4.

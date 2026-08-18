@@ -25,6 +25,7 @@ jobs:
       - name: Refresh validated TMDB catalog
         env:
           TMDB_READ_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN }}
+          KOBIS_API_KEY: ${{ secrets.KOBIS_API_KEY }}
           KINOSIS_REGION: KR
           KINOSIS_LANGUAGE: ko-KR
         run: node scripts/update-catalog.mjs
