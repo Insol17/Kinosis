@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.4.2 — Korean-first visual redesign
+
+### Visual system
+- Replaced the previous mixed editorial/system typography with one Korean-first Pretendard-based type system across navigation, cards, detail, Library and MY.
+- Increased small UI copy to readable Korean-oriented sizes; removed most 8–10px microcopy from the active visual layer.
+- Preserved DISCOVER / ARTHOUSE / LIBRARY / MY layouts while rebuilding spacing, hierarchy, radii, borders and component surfaces.
+- Flattened dashboard-like cards in film detail and MY into a continuous editorial page rhythm separated by rules and whitespace.
+- Replaced heavy black/glass chrome with graphite surfaces and transparent icon controls.
+
+### Icons / brand
+- Rebuilt the inline SVG sprite with a consistent rounded-stroke icon grammar.
+- Added dedicated chevron icons for Hero navigation instead of text glyph arrows.
+- Rebuilt the KINOSIS brand mark with a transparent background and regenerated PNG/ICO variants with alpha.
+- Cinema and utility icons no longer sit on black square/circular backgrounds; provider logos remain their own brand artwork.
+
+### Korean UX copy
+- Library secondary navigation is now Korean-first: 전체 영화 / 보고싶어요 / 좋아요 / 컬렉션.
+- MY tabs are now 개요 / 리뷰 / 통계 / 설정.
+- Film-detail actions use Korean labels such as 감상 기록 / 보고싶어요 / 좋아요 / 컬렉션.
+- Korean copy uses `word-break: keep-all` and larger body/metadata sizing to avoid awkward word fragmentation.
+
+### Cleanup / regression fixes
+- Removed the stale `recommender.js` script include that remained after the hidden recommender client was deleted.
+- Replaced the unused 0.4.4.1 visual layer file with `design-0442.css` and updated the static regression tests accordingly.
+- Long content sections retain paint containment and reduced-motion behavior.
+
 ## 0.4.4.1 — Detail, performance and theatrical-data pass
 
 ### Performance / cleanup

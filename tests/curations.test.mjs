@@ -30,7 +30,7 @@ assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('dis
 assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
 
 const baseline = build();
-assert.equal(baseline.version, '0.4.4.1');
+assert.equal(baseline.version, '0.4.4.2');
 assert.ok(Array.isArray(baseline.items));
 assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
 

@@ -772,7 +772,7 @@
     previous.slides = slides; previous.index = requestedIndex == null ? Math.min(previous.index, slides.length - 1) : ((requestedIndex % slides.length) + slides.length) % slides.length;
     heroState.set(key, previous); const record = slides[previous.index]; const providers = heroProviders(record);
     const title = record.logoUrl ? `<div class="hero-title-wrap"><img class="hero-title-logo" src="${escapeHtml(record.logoUrl)}" alt="${escapeHtml(record.title)}" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><h2 class="${heroTitleClass(record.title)}" hidden>${escapeHtml(record.title)}</h2></div>` : `<h2 class="${heroTitleClass(record.title)}">${escapeHtml(record.title)}</h2>`;
-    element.innerHTML = `<img class="hero-bg" src="${escapeHtml(backdrop(record))}" alt=""><button class="hero-arrow hero-prev" data-hero-dir="-1" aria-label="이전 영화">‹</button><button class="hero-arrow hero-next" data-hero-dir="1" aria-label="다음 영화">›</button><div class="hero-content"><div class="hero-badges"><span class="mini-badge accent">${key === 'arthouse' ? 'ARTHOUSE' : 'FEATURED'}</span>${isInTheatres(record) ? '<span class="mini-badge">IN THEATRES</span>' : ''}</div>${title}<div class="hero-meta"><span>${escapeHtml(record.director || 'Director —')}</span><span>·</span><span>${record.year || '—'}</span>${record.runtime ? `<span>·</span><span>${fmtRuntime(record.runtime)}</span>` : ''}</div><div class="hero-watch"><div class="hero-provider-list">${providers.map((provider) => `<span class="hero-provider ${provider.type === 'subscription' && isSubscribedProvider(provider.name) ? 'is-mine' : ''}" title="${escapeHtml(providerConfigForName(provider.name)?.label || provider.name)}"><img src="${escapeHtml(provider.logoUrl || './icons/icon.svg')}" alt=""></span>`).join('')}</div>${isInTheatres(record) ? `<span class="hero-cinema">${icon('cinema')} 극장 상영</span>` : ''}</div><span class="hero-open-hint">영화 상세 보기 →</span></div><div class="hero-dots">${slides.map((_,i)=>`<button class="hero-dot ${i===previous.index?'is-active':''}" data-hero-index="${i}" aria-label="${i+1}번째 배너"></button>`).join('')}</div>`;
+    element.innerHTML = `<img class="hero-bg" src="${escapeHtml(backdrop(record))}" alt=""><button class="hero-arrow hero-prev" data-hero-dir="-1" aria-label="이전 영화">${icon('chevron-left')}</button><button class="hero-arrow hero-next" data-hero-dir="1" aria-label="다음 영화">${icon('chevron-right')}</button><div class="hero-content"><div class="hero-badges"><span class="mini-badge accent">${key === 'arthouse' ? 'ARTHOUSE' : 'FEATURED'}</span>${isInTheatres(record) ? '<span class="mini-badge">IN THEATRES</span>' : ''}</div>${title}<div class="hero-meta"><span>${escapeHtml(record.director || 'Director —')}</span><span>·</span><span>${record.year || '—'}</span>${record.runtime ? `<span>·</span><span>${fmtRuntime(record.runtime)}</span>` : ''}</div><div class="hero-watch"><div class="hero-provider-list">${providers.map((provider) => `<span class="hero-provider ${provider.type === 'subscription' && isSubscribedProvider(provider.name) ? 'is-mine' : ''}" title="${escapeHtml(providerConfigForName(provider.name)?.label || provider.name)}"><img src="${escapeHtml(provider.logoUrl || './icons/icon.svg')}" alt=""></span>`).join('')}</div>${isInTheatres(record) ? `<span class="hero-cinema">${icon('cinema')} 극장 상영</span>` : ''}</div><span class="hero-open-hint">영화 상세 보기 →</span></div><div class="hero-dots">${slides.map((_,i)=>`<button class="hero-dot ${i===previous.index?'is-active':''}" data-hero-index="${i}" aria-label="${i+1}번째 배너"></button>`).join('')}</div>`;
     element.dataset.heroMovie = String(record.id);
     element.tabIndex = 0;
     element.setAttribute('role', 'link');
@@ -795,7 +795,7 @@
         <img src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터" loading="lazy" onerror="this.style.display='none'">
         <div class="poster-fallback">${escapeHtml(record.title)}</div>
         ${availabilityBadges(record)}
-        <div class="card-overlay">${isSignedIn() ? `<div class="quick-actions"><button class="tiny-button ${entry ? '' : 'accent'}" data-action="save" data-id="${record.id}">${entry ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${record.id}">LOG</button></div>` : ''}</div>
+        <div class="card-overlay">${isSignedIn() ? `<div class="quick-actions"><button class="tiny-button ${entry ? '' : 'accent'}" data-action="save" data-id="${record.id}">${entry ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${record.id}">감상 기록</button></div>` : ''}</div>
       </div>
       <div class="card-info"><p class="card-title">${escapeHtml(record.title)}</p><div class="card-meta"><span>${record.year || '—'}</span>${availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div></div>
     </article>`;
@@ -841,7 +841,7 @@
     const heroMovie = curationHeroMovie(item);
     const image = heroMovie ? backdrop(heroMovie) : '';
     const filmCount = curationMovieIds(item).length;
-    const countLabel = filmCount ? `${filmCount} films` : item.source?.type === 'director' ? 'Director filmography' : 'Curation';
+    const countLabel = filmCount ? `${filmCount}편` : item.source?.type === 'director' ? '감독 필모그래피' : 'Curation';
     return `<section class="curation-feature ${compact ? 'is-compact' : ''}" data-curation="${escapeHtml(item.slug)}" tabindex="0" role="link" aria-label="${escapeHtml(item.title)} 기획전 열기">
       ${image ? `<img class="curation-feature-bg" src="${escapeHtml(image)}" alt="">` : '<div class="curation-feature-placeholder"></div>'}
       <div class="curation-feature-copy">
@@ -948,7 +948,7 @@
 
   function listPage(title, summary, list) {
     const filtered=filterLibrary(list);
-    return `${libraryHeader(title, `${filtered.length} films`)}${libraryToolbar(list)}${filtered.length?(libraryView==='grid'?`<div class="library-grid">${filtered.map(record=>card(record,'library')).join('')}</div>`:libraryListRows(filtered)):`<div class="empty-state"><b>영화가 없습니다.</b></div>`}`;
+    return `${libraryHeader(title, `${filtered.length}편`)}${libraryToolbar(list)}${filtered.length?(libraryView==='grid'?`<div class="library-grid">${filtered.map(record=>card(record,'library')).join('')}</div>`:libraryListRows(filtered)):`<div class="empty-state"><b>영화가 없습니다.</b></div>`}`;
   }
 
   function renderCollectionDetail(collection) {
@@ -964,12 +964,12 @@
     if(!isSignedIn()){content.innerHTML=gateHtml('Library');document.getElementById('libraryCount').textContent='0';return;}
     document.getElementById('libraryCount').textContent=allSavedMovies().length; renderCollectionsSide();
     document.querySelectorAll('[data-library]').forEach(button=>button.classList.toggle('is-active',button.dataset.library===libraryMode));
-    if(libraryMode==='all')content.innerHTML=listPage('All Films','',allSavedMovies());
-    else if(libraryMode==='watchlist')content.innerHTML=listPage('Watchlist','',allSavedMovies().filter(record=>lib(record.id)?.watchlist));
-    else if(libraryMode==='favorites')content.innerHTML=listPage('Favorites','',allSavedMovies().filter(record=>lib(record.id)?.favorite));
-    else if(libraryMode==='collections')content.innerHTML=`${libraryHeader('Collections',`${state.collections.length} collections`,'<button class="primary-button" id="newCollectionButton">＋ New</button>')}<div class="collection-grid">${state.collections.map(collection=>{const cover=collectionCover(collection);return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover?`<img src="${escapeHtml(cover)}" alt="">`:''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length} films</p></div></article>`}).join('')}</div>`;
-    else if(libraryMode.startsWith('collection:')){const collection=state.collections.find(item=>item.id===libraryMode.split(':')[1]);content.innerHTML=collection?renderCollectionDetail(collection):listPage('All Films','',allSavedMovies());}
-    else {libraryMode='all';content.innerHTML=listPage('All Films','',allSavedMovies());}
+    if(libraryMode==='all')content.innerHTML=listPage('전체 영화','',allSavedMovies());
+    else if(libraryMode==='watchlist')content.innerHTML=listPage('보고싶어요','',allSavedMovies().filter(record=>lib(record.id)?.watchlist));
+    else if(libraryMode==='favorites')content.innerHTML=listPage('좋아요','',allSavedMovies().filter(record=>lib(record.id)?.favorite));
+    else if(libraryMode==='collections')content.innerHTML=`${libraryHeader('컬렉션',`${state.collections.length}개 컬렉션`,'<button class="primary-button" id="newCollectionButton">＋ 새 컬렉션</button>')}<div class="collection-grid">${state.collections.map(collection=>{const cover=collectionCover(collection);return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover?`<img src="${escapeHtml(cover)}" alt="">`:''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length}편</p></div></article>`}).join('')}</div>`;
+    else if(libraryMode.startsWith('collection:')){const collection=state.collections.find(item=>item.id===libraryMode.split(':')[1]);content.innerHTML=collection?renderCollectionDetail(collection):listPage('전체 영화','',allSavedMovies());}
+    else {libraryMode='all';content.innerHTML=listPage('전체 영화','',allSavedMovies());}
   }
 
   function profileCounts() {
@@ -1055,9 +1055,9 @@
     if (myMode === 'overview') {
       const recent = latestUniqueMovies();
       const reviews = latestLogs().filter((log) => String(log.review || '').trim());
-      content.innerHTML = `${recent.length ? rowSection('최근 본 영화', '내 최근 감상 기록.', recent, 8, 'library') : ''}${reviews.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 리뷰</h2><p>Diary와 Review를 하나의 감상 기록으로 관리합니다.</p></div><button class="section-action" data-my="reviews">전체 보기</button></div>${viewingTimeline(reviews.slice(0, 4))}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
+      content.innerHTML = `${recent.length ? rowSection('최근 본 영화', '내 최근 감상 기록.', recent, 8, 'library') : ''}${reviews.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 리뷰</h2><p>평점과 리뷰, 재관람 기록을 한 흐름에서 관리합니다.</p></div><button class="section-action" data-my="reviews">전체 보기</button></div>${viewingTimeline(reviews.slice(0, 4))}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
     } else if (myMode === 'reviews') {
-      content.innerHTML = `<section class="my-section"><div class="section-head"><div><h2>Reviews</h2><p>평점, 리뷰, 재관람을 시간순으로 한곳에서 관리합니다.</p></div></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 LOG로 기록해보세요.</span></div>'}</section>`;
+      content.innerHTML = `<section class="my-section"><div class="section-head"><div><h2>리뷰</h2><p>평점, 리뷰, 재관람을 시간순으로 한곳에서 관리합니다.</p></div></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
     } else if (myMode === 'stats') {
       content.innerHTML = `<section class="my-section">${statsHtml()}</section>`;
     } else {
@@ -1152,14 +1152,14 @@
             </div>
             <div class="film-score-row">
               <div class="film-score"><span>TMDB</span><strong>${record.voteAverage ? Number(record.voteAverage).toFixed(1) : '—'}</strong><small>${record.voteCount ? `${Number(record.voteCount).toLocaleString()} ratings` : ''}</small></div>
-              ${entry?.rating ? `<div class="film-score personal"><span>MY RATING</span><strong>★ ${entry.rating}</strong><small>${logs.length ? `${logs.length}회 감상` : 'Library'}</small></div>` : ''}
+              ${entry?.rating ? `<div class="film-score personal"><span>내 평점</span><strong>★ ${entry.rating}</strong><small>${logs.length ? `${logs.length}회 감상` : 'Library'}</small></div>` : ''}
             </div>
             <div class="film-actions">
-              <button class="primary-button detail-action" data-action="log" data-id="${record.id}">LOG</button>
-              <button class="film-action ${entry?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${record.id}">${entry?.watchlist ? '✓' : '＋'} Watchlist</button>
-              <button class="film-action ${entry?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${record.id}">${entry?.favorite ? '♥' : '♡'} Favorite</button>
-              <button class="film-action" data-action="collection-add" data-id="${record.id}">＋ Collection</button>
-              ${!entry ? `<button class="film-action" data-action="save" data-id="${record.id}">＋ Library</button>` : ''}
+              <button class="primary-button detail-action" data-action="log" data-id="${record.id}">감상 기록</button>
+              <button class="film-action ${entry?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${record.id}">${entry?.watchlist ? '✓' : '＋'} 보고싶어요</button>
+              <button class="film-action ${entry?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${record.id}">${entry?.favorite ? '♥' : '♡'} 좋아요</button>
+              <button class="film-action" data-action="collection-add" data-id="${record.id}">＋ 컬렉션</button>
+              ${!entry ? `<button class="film-action" data-action="save" data-id="${record.id}">＋ 라이브러리</button>` : ''}
             </div>
           </div>
         </div>
@@ -1187,7 +1187,7 @@
         <aside class="film-side-column">
           <section class="film-section my-film-section">
             <div class="film-section-title"><span>MY</span><h2>내 기록</h2></div>
-            ${isSignedIn() ? (entry ? `<div class="my-activity"><div class="activity-rating">${entry.rating ? `★ ${entry.rating}` : '아직 평점 없음'}</div>${entry.review ? `<div class="activity-review">${escapeHtml(entry.review)}</div>` : ''}<div class="activity-empty">${logs.length ? `${logs.length}회 감상 · 최근 ${formatDate(last.watchedAt)}` : 'Library에 저장됨'}</div>${viewingHistoryHtml(record)}<button class="danger-text-button" data-remove-library="${record.id}">Library에서 완전히 제거</button></div>` : '<div class="activity-empty">아직 이 영화에 대한 기록이 없습니다.</div>') : '<button class="streaming-signin compact" data-open-auth>로그인하고 평가와 감상 기록 남기기</button>'}
+            ${isSignedIn() ? (entry ? `<div class="my-activity"><div class="activity-rating">${entry.rating ? `★ ${entry.rating}` : '아직 평점 없음'}</div>${entry.review ? `<div class="activity-review">${escapeHtml(entry.review)}</div>` : ''}<div class="activity-empty">${logs.length ? `${logs.length}회 감상 · 최근 ${formatDate(last.watchedAt)}` : '라이브러리에 저장됨'}</div>${viewingHistoryHtml(record)}<button class="danger-text-button" data-remove-library="${record.id}">라이브러리에서 완전히 제거</button></div>` : '<div class="activity-empty">아직 이 영화에 대한 기록이 없습니다.</div>') : '<button class="streaming-signin compact" data-open-auth>로그인하고 평가와 감상 기록 남기기</button>'}
           </section>
         </aside>
       </div>
@@ -1205,8 +1205,8 @@
     const sourceLabel = item.surface === 'discover' ? 'Discover' : item.surface === 'both' ? 'Discover / Arthouse' : 'Arthouse';
     document.title = `${item.title} — KINOSIS`;
     document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${curationPreviousView === 'discover' ? 'Discover' : 'Arthouse'}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">링크 복사</button></div>
-      <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || 'KINOSIS CURATION')}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length} films` : 'Director filmography'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
-      <section class="content-section curation-film-section"><div class="section-head"><div><h2>Films</h2><p>기획전의 순서 자체가 편집 의도입니다.</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span>TMDB 상세정보가 준비되면 자동으로 채워집니다.</span></div>`}</section>`;
+      <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || 'KINOSIS CURATION')}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length}편` : '감독 필모그래피'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
+      <section class="content-section curation-film-section"><div class="section-head"><div><h2>작품</h2><p>기획전의 순서 자체가 편집 의도입니다.</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span>TMDB 상세정보가 준비되면 자동으로 채워집니다.</span></div>`}</section>`;
   }
 
   function routeUrlForCuration(slug, from) {
@@ -1361,7 +1361,7 @@
   }
 
   function searchRow(record) {
-    const action = isSignedIn() ? `<button class="secondary-button" data-action="save" data-id="${record.id}">${lib(record.id) ? '✓ Saved' : '＋ Save'}</button><button class="secondary-button" data-action="log" data-id="${record.id}">LOG</button>` : '';
+    const action = isSignedIn() ? `<button class="secondary-button" data-action="save" data-id="${record.id}">${lib(record.id) ? '✓ 저장됨' : '＋ 저장'}</button><button class="secondary-button" data-action="log" data-id="${record.id}">감상 기록</button>` : '';
     return `<article class="search-result" data-movie="${record.id}" tabindex="0"><img src="${escapeHtml(poster(record))}" alt=""><div><h3>${escapeHtml(record.title)}</h3><p>${record.originalTitle && record.originalTitle !== record.title ? `${escapeHtml(record.originalTitle)} · ` : ''}${record.year || '—'}${record.director ? ` · ${escapeHtml(record.director)}` : ''}${record.personRole ? ` · ${escapeHtml(record.personRole)}` : ''}</p></div><div class="search-actions">${action}</div></article>`;
   }
 
@@ -1541,7 +1541,7 @@
     const logs = logsForMovie(id);
     const answer = await UI.ask({
       eyebrow: 'LIBRARY',
-      title: '이 영화를 Library에서 완전히 제거할까요?',
+      title: '이 영화를 라이브러리에서 완전히 제거할까요?',
       message: logs.length
         ? `${record?.title || '영화'}의 감상 기록 ${logs.length}개와 Watchlist/Favorite/Collection 정보가 함께 삭제됩니다.`
         : `${record?.title || '영화'}의 Watchlist/Favorite/Collection 정보가 삭제됩니다.`,
