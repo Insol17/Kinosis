@@ -1,4 +1,4 @@
-const VERSION='0.4.2';
+const VERSION='0.4.3.2';
 const CACHE=`kinosis-shell-${VERSION}`;
 const CORE=[
   './','./index.html',
@@ -8,7 +8,11 @@ const CORE=[
   `./assets/js/art-classifier.js?v=${VERSION}`,
   `./assets/js/cloud.js?v=${VERSION}`,
   `./assets/js/ui.js?v=${VERSION}`,
+  `./assets/js/recommender.js?v=${VERSION}`,
+  `./assets/js/importers.js?v=${VERSION}`,
   `./data/catalog.js?v=${VERSION}`,
+  `./data/curations.js?v=${VERSION}`,
+  `./assets/js/curations.js?v=${VERSION}`,
   './icons/icon.svg','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./assets/branding/tmdb-logo.svg'
 ];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));});

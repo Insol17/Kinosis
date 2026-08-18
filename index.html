@@ -12,7 +12,7 @@
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.2" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.3.2" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -107,9 +107,7 @@
           <div id="profileCard"></div>
           <nav class="my-tabs" id="myTabs" aria-label="내 기록 메뉴">
             <button class="my-tab is-active" data-my="overview">OVERVIEW</button>
-            <button class="my-tab" data-my="diary">DIARY</button>
             <button class="my-tab" data-my="reviews">REVIEWS</button>
-            <button class="my-tab" data-my="calendar">CALENDAR</button>
             <button class="my-tab" data-my="stats">STATS</button>
             <button class="my-tab" data-my="settings">SETTINGS</button>
           </nav>
@@ -121,13 +119,14 @@
         <div id="moviePage"></div>
       </section>
 
-      <section class="view" id="adminView" data-view="admin">
-        <div id="adminContent"></div>
+      <section class="view" id="curationView" data-view="curation">
+        <div id="curationPage"></div>
       </section>
+
     </main>
 
     <footer class="footer">
-      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.2</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
+      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.3.2</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
     </footer>
   </div>
 
@@ -143,7 +142,7 @@
     <div class="form-card auth-card">
       <div class="form-head"><div><p class="eyebrow">KINOSIS ACCOUNT</p><h2>로그인하면 영화생활이 이어집니다.</h2></div><button class="ghost-close" data-close="authDialog">닫기</button></div>
       <p class="auth-copy">Library와 MY는 계정에 연결됩니다. 같은 계정으로 PC·모바일·PWA에서 로그인하면 기록과 컬렉션이 동기화됩니다.</p>
-      <div class="auth-benefits"><span>Library 동기화</span><span>Diary · Calendar</span><span>Collections</span><span>OTT 설정</span></div>
+      <div class="auth-benefits"><span>Library 동기화</span><span>Reviews · Calendar</span><span>Collections</span><span>OTT 설정</span></div>
       <div class="auth-provider-grid">
         <button class="auth-provider google" data-auth-provider="google">Google로 계속하기</button>
         <button class="auth-provider kakao" data-auth-provider="kakao">Kakao로 계속하기</button>
@@ -160,24 +159,51 @@
   <dialog id="searchDialog" class="sheet-dialog search-dialog">
     <div class="dialog-shell">
       <div class="dialog-topline">
-        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="영화 제목, 원제, 감독 검색" /></label>
+        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="영화, 감독, 배우, 장르 검색" /></label>
         <button class="ghost-close" data-close="searchDialog">닫기</button>
       </div>
-      <div id="searchContext" class="search-hint">KINOSIS 카탈로그와 TMDB 전체 DB를 함께 검색합니다.</div>
+      <div id="searchContext" class="search-hint">영화·감독·배우·장르를 KINOSIS 카탈로그와 TMDB에서 함께 검색합니다.</div>
       <div id="searchResults" class="search-results"></div>
     </div>
   </dialog>
 
   <dialog id="logDialog" class="compact-dialog">
     <form id="logForm" method="dialog" class="form-card">
-      <input type="hidden" id="logMovieId" />
+      <input type="hidden" id="logMovieId" /><input type="hidden" id="logEntryId" />
       <div class="form-head"><div><p class="eyebrow">LOG FILM</p><h2 id="logMovieTitle">영화 기록</h2></div><button type="button" class="ghost-close" data-close="logDialog">닫기</button></div>
       <label>감상일<input id="logDate" type="date" required /></label>
       <label>내 평점<select id="logRating"><option value="">평점 없음</option><option>5</option><option>4.5</option><option>4</option><option>3.5</option><option>3</option><option>2.5</option><option>2</option><option>1.5</option><option>1</option><option>0.5</option></select></label>
       <label>한줄평<textarea id="logReview" rows="3" maxlength="500" placeholder="선택 사항"></textarea></label>
-      <label class="check-row"><input id="logFavorite" type="checkbox" /><span>Favorite로 표시</span></label>
-      <div class="form-actions"><button type="button" class="secondary-button" data-close="logDialog">취소</button><button class="primary-button" value="save">기록 저장</button></div>
+      <div id="logRewatchHint" class="log-rewatch-hint"></div><label class="check-row"><input id="logFavorite" type="checkbox" /><span>Favorite로 표시</span></label>
+      <div class="form-actions split-actions"><button type="button" class="secondary-button danger-button" id="deleteLogButton" hidden>기록 삭제</button><span class="form-spacer"></span><button type="button" class="secondary-button" data-close="logDialog">취소</button><button class="primary-button" value="save">기록 저장</button></div>
     </form>
+  </dialog>
+
+  <dialog id="dayDialog" class="compact-dialog">
+    <div class="form-card day-card">
+      <div class="form-head"><div><p class="eyebrow">VIEWING DAY</p><h2 id="dayDialogTitle">감상 기록</h2></div><button class="ghost-close" data-close="dayDialog">닫기</button></div>
+      <div id="dayDialogSummary" class="activity-empty"></div>
+      <div id="dayDialogList" class="day-log-list"></div>
+    </div>
+  </dialog>
+
+  <dialog id="collectionDialog" class="compact-dialog">
+    <form id="collectionForm" class="form-card">
+      <input type="hidden" id="collectionId" />
+      <div class="form-head"><div><p class="eyebrow">COLLECTION</p><h2 id="collectionDialogTitle">컬렉션 만들기</h2></div><button type="button" class="ghost-close" data-close="collectionDialog">닫기</button></div>
+      <label>이름<input id="collectionName" maxlength="60" required placeholder="예: 여름 밤에 다시 볼 영화" /></label>
+      <label>설명<textarea id="collectionDescription" rows="3" maxlength="280" placeholder="이 컬렉션을 만든 이유나 분위기를 적어보세요."></textarea></label>
+      <div class="form-actions"><button type="button" class="secondary-button" data-close="collectionDialog">취소</button><button class="primary-button" type="submit">저장</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="letterboxdDialog" class="compact-dialog">
+    <div class="form-card">
+      <div class="form-head"><div><p class="eyebrow">IMPORT</p><h2>Letterboxd CSV 가져오기</h2></div><button class="ghost-close" data-close="letterboxdDialog">닫기</button></div>
+      <p class="auth-copy">Letterboxd export의 watched.csv, ratings.csv, diary.csv, reviews.csv, watchlist.csv를 여러 개 선택할 수 있습니다. 영화 제목과 연도로 TMDB를 매칭합니다.</p>
+      <label class="secondary-button wide file-label">CSV 파일 선택<input type="file" id="letterboxdInput" accept=".csv,text/csv" multiple hidden /></label>
+      <div id="letterboxdProgress" class="import-progress">아직 파일을 선택하지 않았습니다.</div>
+    </div>
   </dialog>
 
   <dialog id="profileDialog" class="compact-dialog">
@@ -201,25 +227,29 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.2</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.3.2</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
-      <div class="credit-block"><b>ARTHOUSE</b><p>단일 장르가 아니라 작가·영화사·독립/영화제·제작/배급 신호와 KINOSIS 큐레이션을 결합한 편집 공간입니다. 내부 판정 수치는 사용자에게 예술성 점수로 표시하지 않습니다.</p></div>
-      <div class="credit-block"><b>Supabase</b><p>로그인, 사용자 기록 동기화, 관리자 권한과 기획전 데이터에 사용합니다. 브라우저에는 Publishable Key만 사용하고 RLS로 접근을 제한합니다.</p></div>
+      <div class="credit-block"><b>ARTHOUSE</b><p>단일 장르가 아니라 작가·영화사·독립/영화제·제작/배급 신호를 조합해 후보를 구성하는 탐색 공간입니다. 내부 판정 수치는 사용자에게 예술성 점수로 표시하지 않습니다.</p></div>
+      <div class="credit-block"><b>Supabase</b><p>로그인과 사용자 기록 동기화에 사용합니다. 브라우저에는 Publishable Key만 사용하고 RLS로 접근을 제한합니다.</p></div>
       <button class="secondary-button wide" id="exportButton"><svg class="ui-icon"><use href="#i-download"/></svg> 내 데이터 JSON 내보내기</button>
-      <label class="secondary-button wide file-label"><svg class="ui-icon"><use href="#i-upload"/></svg> 내 데이터 JSON 가져오기<input type="file" id="importInput" accept="application/json" hidden /></label>
+      <label class="secondary-button wide file-label"><svg class="ui-icon"><use href="#i-upload"/></svg> 내 데이터 JSON 가져오기<input type="file" id="importInput" accept="application/json" hidden /></label><button class="secondary-button wide" id="openLetterboxdImport">Letterboxd CSV 가져오기 (Beta)</button>
     </div>
   </dialog>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.2"></script>
-  <script src="./assets/js/config.js?v=0.4.2"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.2"></script>
+  <script src="./data/catalog.js?v=0.4.3.2"></script>
+  <script src="./data/curations.js?v=0.4.3.2"></script>
+  <script src="./assets/js/config.js?v=0.4.3.2"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.3.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./assets/js/cloud.js?v=0.4.2"></script>
-  <script src="./assets/js/ui.js?v=0.4.2"></script>
-  <script src="./assets/js/app.js?v=0.4.2"></script>
+  <script src="./assets/js/cloud.js?v=0.4.3.2"></script>
+  <script src="./assets/js/ui.js?v=0.4.3.2"></script>
+  <script src="./assets/js/recommender.js?v=0.4.3.2"></script>
+  <script src="./assets/js/importers.js?v=0.4.3.2"></script>
+  <script src="./assets/js/curations.js?v=0.4.3.2"></script>
+  <script src="./assets/js/app.js?v=0.4.3.2"></script>
 </body>
 </html>

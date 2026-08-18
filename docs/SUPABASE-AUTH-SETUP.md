@@ -1,84 +1,28 @@
-# Supabase/Auth setup — KINOSIS 0.4.2
+# Supabase/Auth setup — KINOSIS 0.4.3
 
-## Existing project values
+## Browser client
 
-The frontend uses the Supabase Project URL + Publishable Key in `assets/js/config.js`. These are public client values; security is enforced through RLS.
+KINOSIS uses the Supabase Project URL and Publishable Key from `assets/js/config.js`. The Publishable Key is a client credential; RLS is the security boundary. Never put a Supabase Secret/Service Role key in frontend code.
 
-Never put `service_role`, `sb_secret_...`, or database passwords in frontend files.
+## Database
 
-## URL configuration
+Fresh project: run `supabase/SETUP_ALL.sql` once.
 
-Site URL:
+Already on the 0.4.1 core schema: there is no additional 0.4.3 migration. If the 0.4.2 curation experiment was installed, those unused tables can remain; the current app does not query them.
 
-```text
-https://kinosis.netlify.app/
-```
+## Auth
 
-Redirect allow list:
+The browser client uses PKCE. Configure Supabase Authentication URL Configuration with the production Netlify URL and allowed redirects.
 
-```text
-https://kinosis.netlify.app/**
-http://localhost:8888/**
-```
+Google/Kakao become available to ordinary users once each provider has been enabled in Supabase and its provider credentials/callback settings are configured in the corresponding developer console. Email magic-link sign-in remains available through Supabase Auth.
 
-0.4.2 uses Supabase PKCE auth flow.
+## Netlify health request
 
-## SQL
-
-Fresh project:
-
-```text
-supabase/SETUP_ALL.sql
-```
-
-Already ran 0.4.1:
-
-```text
-supabase/002_kinosis_042.sql
-```
-
-## Google provider
-
-Create a Google OAuth Web Application.
-
-Authorized JavaScript origin:
-
-```text
-https://kinosis.netlify.app
-```
-
-Authorized redirect URI:
-
-```text
-https://uqntdtjqeernzqpbymex.supabase.co/auth/v1/callback
-```
-
-Paste the Google Client ID/Secret into Supabase Authentication → Sign In / Providers → Google.
-
-## Kakao provider
-
-Create the Kakao Developers app, enable Kakao Login, register the Supabase callback URL shown in the Supabase Kakao provider settings, then enter the REST API credentials in Supabase.
-
-## Admin assignment
-
-Sign in once so the user exists in `auth.users`, then run:
-
-```sql
-insert into public.user_roles (user_id, role)
-select id, 'admin' from auth.users where email = 'YOUR_EMAIL@example.com'
-on conflict (user_id) do update
-set role = excluded.role, updated_at = now();
-```
-
-The browser cannot promote itself because authenticated clients have no INSERT/UPDATE permission on `user_roles`.
-
-## Netlify health environment
-
-Add:
+Set:
 
 ```text
 SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
-The scheduled health check uses these values three times per day. 0.4.2 does not hard-code fallback credentials in the Function source.
+The scheduled health Function performs a tiny read against `app_health`; it has no hard-coded fallback credentials.

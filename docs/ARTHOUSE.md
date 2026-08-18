@@ -1,25 +1,25 @@
-# ARTHOUSE
+# ARTHOUSE — 0.4.3.2
 
-ARTHOUSE replaces the old ART MODE toggle.
+ARTHOUSE is a permanent KINOSIS destination for cinema explored through auteur, canon, independent/film-festival and historical signals.
 
-## Classification role
+It is not a visual theme and it does not hide mainstream films from Search or Library.
 
-The deterministic classifier remains a candidate-selection tool. It combines:
-- cinephile/canon title seeds
-- auteur director seeds
-- independent / experimental / festival keywords
-- art-house production/distribution signals
+## Candidate engine
+
+The deterministic classifier uses signals such as:
+- seeded/canonical titles
+- auteur director list
+- metadata keywords
+- production/distribution signals
 - classic-film signals
-- manual overrides
 
-Its internal score is never presented as an "artistic quality score".
+The weekly updater also resolves seeded directors to several actual directing credits so the Arthouse pool is not limited to the small general Discover cache.
 
-## Curation role
+## Current-theatre shelf
 
-Classifier output is not the final editorial decision. Supabase Curations let KINOSIS editors/admins create explicit programs such as:
-- Director's Archive
-- Retrospectives
-- Seasonal selections
-- Festival-focused selections
+`지금 극장에서 만나는 Arthouse` ranks current KR theatrical titles by Arthouse affinity. The updater fetches multiple `now_playing` pages to improve coverage. Cards are fixed and smaller than Discover cards so two or three results never stretch into oversized posters.
 
-Curations can appear on Discover, Arthouse, or both.
+
+## Editorial Curation
+
+ARTHOUSE also accepts repository-authored Curation definitions from `content/curations/arthouse` and `content/curations/both`. These appear as a compact rail before algorithmic shelves. Curation membership is editorial and can intentionally override the classifier; the classifier is a candidate engine, not the final authority.

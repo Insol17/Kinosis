@@ -1,0 +1,4 @@
+window.KINOSIS_CURATIONS = {
+  "version": "0.4.3.2",
+  "items": []
+};

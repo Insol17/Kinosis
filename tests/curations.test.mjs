@@ -1,0 +1,88 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const dataPath = path.join(root, 'data', 'curations.json');
+const scriptPath = path.join(root, 'data', 'curations.js');
+const builder = path.join(root, 'scripts', 'build-curations.mjs');
+const sourceDir = path.join(root, 'content', 'curations', 'discover');
+const fixturePath = path.join(sourceDir, '__test__.curation.json');
+
+function build() {
+  execFileSync(process.execPath, [builder], { cwd: root, stdio: 'pipe' });
+  return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+}
+
+
+const helperSource = fs.readFileSync(path.join(root, 'assets', 'js', 'curations.js'), 'utf8');
+const sandbox = { window: { KINOSIS_CURATIONS: { version: 'test', items: [
+  { slug: 'discover-one', surface: 'discover', priority: 20 },
+  { slug: 'both-one', surface: 'both', priority: 10 },
+  { slug: 'arthouse-one', surface: 'arthouse', priority: 5 },
+] } } };
+vm.createContext(sandbox);
+vm.runInContext(helperSource, sandbox);
+assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('discover'), (item) => item.slug), ['both-one', 'discover-one']);
+assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
+
+const baseline = build();
+assert.equal(baseline.version, '0.4.3.2');
+assert.ok(Array.isArray(baseline.items));
+assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
+
+const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'catalog.json'), 'utf8'));
+const ids = (catalog.movies || []).slice(0, 2).map((movie) => String(movie.id));
+assert.equal(ids.length, 2, 'catalog fixture needs two movie ids');
+
+fs.writeFileSync(fixturePath, `${JSON.stringify({
+  eyebrow: 'TEST CURATION',
+  title: 'Build Pipeline Test',
+  description: 'Temporary test definition.',
+  priority: -999,
+  heroMovieId: ids[0],
+  movies: ids,
+}, null, 2)}\n`);
+
+try {
+  const withFixture = build();
+  const fixture = withFixture.items.find((item) => item.slug === '__test__');
+  // Leading underscore is intentionally invalid; rename fixture to a valid slug if validation is working.
+  assert.equal(fixture, undefined);
+  assert.fail('invalid slug fixture unexpectedly passed validation');
+} catch (error) {
+  assert.match(String(error.stderr || error.message || error), /slug must be/);
+} finally {
+  fs.rmSync(fixturePath, { force: true });
+}
+
+const validFixturePath = path.join(sourceDir, 'test-build.curation.json');
+fs.writeFileSync(validFixturePath, `${JSON.stringify({
+  eyebrow: 'TEST CURATION',
+  title: 'Build Pipeline Test',
+  description: 'Temporary test definition.',
+  priority: -999,
+  heroMovieId: ids[0],
+  movies: ids,
+}, null, 2)}\n`);
+
+try {
+  const withFixture = build();
+  const fixture = withFixture.items.find((item) => item.slug === 'test-build');
+  assert.ok(fixture, 'valid curation was not indexed');
+  assert.equal(fixture.surface, 'discover');
+  assert.deepEqual(fixture.movies.map((movie) => movie.id), ids);
+} finally {
+  fs.rmSync(validFixturePath, { force: true });
+  build();
+}
+
+const finalPayload = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+assert.equal(finalPayload.items.length, baseline.items.length, 'test fixture leaked into generated curation data');
+const example = path.join(root, 'content', 'curations', 'arthouse', 'kiarostami.curation.example.json');
+assert.ok(fs.existsSync(example), 'curation authoring example missing');
+assert.ok(!finalPayload.items.some((item) => item.slug.includes('example')), 'example file must never be published');
+console.log(`curations.test: build indexing + validation OK (${finalPayload.items.length} published definition(s))`);

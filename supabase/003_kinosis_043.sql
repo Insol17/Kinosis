@@ -1,0 +1,4 @@
+-- KINOSIS 0.4.3
+-- No database migration is required from the 0.4.1 core schema.
+-- 0.4.3 stores its additional review/rewatch/availability/recommendation state inside user_state.payload.
+-- If you previously ran the 0.4.2 curation experiment, those unused tables may remain; the 0.4.3 app does not read or write them.

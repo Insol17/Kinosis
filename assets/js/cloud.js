@@ -37,32 +37,5 @@
   async function readUserState(){if(!isAuthenticated())return null;const c=create();const {data,error}=await c.from('user_state').select('payload,updated_at').eq('user_id',user().id).maybeSingle();if(error)throw error;return data||null;}
   async function writeUserState(payload){if(!isAuthenticated())throw new Error('Sign in required.');const c=create();const row={user_id:user().id,payload,updated_at:new Date().toISOString()};const {data,error}=await c.from('user_state').upsert(row,{onConflict:'user_id'}).select('updated_at').single();if(error)throw error;return data;}
   async function health(){const c=create();const {data,error}=await c.from('app_health').select('id').limit(1);if(error)throw error;return data;}
-  async function readMyRole(){
-    if(!isAuthenticated())return 'guest';
-    const c=create();const {data,error}=await c.from('user_roles').select('role').eq('user_id',user().id).maybeSingle();
-    if(error){if(String(error.message||'').includes('user_roles'))return 'user';throw error;}return data?.role||'user';
-  }
-  function normalizeCuration(row){
-    const items=[...(row.curation_movies||[])].sort((a,b)=>(a.position||0)-(b.position||0)).map(x=>({position:x.position||0,tmdbId:String(x.tmdb_id),movie:x.movie_snapshot||{id:String(x.tmdb_id)}}));
-    return {...row,items};
-  }
-  async function listCurations({includeDrafts=false}={}){
-    const c=create();
-    let q=c.from('curations').select('id,slug,title,subtitle,description,surface,type,status,starts_at,ends_at,sort_order,created_at,updated_at,curation_movies(position,tmdb_id,movie_snapshot)').order('sort_order',{ascending:true}).order('created_at',{ascending:false});
-    if(!includeDrafts)q=q.eq('status','published');
-    const {data,error}=await q;if(error)throw error;return (data||[]).map(normalizeCuration);
-  }
-  async function saveCuration(meta,items=[]){
-    if(!isAuthenticated())throw new Error('Sign in required.');
-    const c=create();
-    const payload={slug:meta.slug,title:meta.title,subtitle:meta.subtitle||'',description:meta.description||'',surface:meta.surface||'arthouse',type:meta.type||'selection',status:meta.status||'draft',starts_at:meta.starts_at||null,ends_at:meta.ends_at||null,sort_order:Number(meta.sort_order||0),updated_at:new Date().toISOString()};
-    let id=meta.id;
-    if(id){const {error}=await c.from('curations').update(payload).eq('id',id);if(error)throw error;}
-    else{const {data,error}=await c.from('curations').insert(payload).select('id').single();if(error)throw error;id=data.id;}
-    const {error:deleteError}=await c.from('curation_movies').delete().eq('curation_id',id);if(deleteError)throw deleteError;
-    if(items.length){const rows=items.map((x,i)=>({curation_id:id,tmdb_id:Number(x.tmdbId||x.movie?.id),position:i,movie_snapshot:x.movie||x.movie_snapshot||{id:String(x.tmdbId)}}));const {error}=await c.from('curation_movies').insert(rows);if(error)throw error;}
-    return id;
-  }
-  async function deleteCuration(id){if(!isAuthenticated())throw new Error('Sign in required.');const c=create();const {error}=await c.from('curations').delete().eq('id',id);if(error)throw error;}
-  window.KINOSIS_CLOUD=Object.freeze({init,onChange,isAuthenticated,user,signInOAuth,sendMagicLink,signOut,readUserState,writeUserState,health,readMyRole,listCurations,saveCuration,deleteCuration,redirectUrl});
+  window.KINOSIS_CLOUD=Object.freeze({init,onChange,isAuthenticated,user,signInOAuth,sendMagicLink,signOut,readUserState,writeUserState,health,redirectUrl});
 })();

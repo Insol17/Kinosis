@@ -1,0 +1,13 @@
+{
+  "eyebrow": "DIRECTOR'S ARCHIVE",
+  "title": "Abbas Kiarostami",
+  "subtitle": "길, 얼굴, 그리고 영화",
+  "description": "이 파일은 형식 예시입니다. 실제 TMDB movie id를 입력한 뒤 파일명을 kiarostami.curation.json으로 바꾸면 자동으로 ARTHOUSE에 추가됩니다.",
+  "credit": "Curated by KINOSIS",
+  "priority": 20,
+  "movies": [
+    12345,
+    67890,
+    13579
+  ]
+}

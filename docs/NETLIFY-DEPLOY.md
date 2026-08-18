@@ -1,6 +1,6 @@
-# Netlify deployment — KINOSIS 0.4.2
+# Netlify deployment — KINOSIS 0.4.3.2
 
-GitHub remains the source repository. Netlify continuously deploys the connected branch.
+KINOSIS source remains in GitHub. Netlify deploys the repository and runs the serverless TMDB proxy Functions.
 
 ## Required Netlify environment variables
 
@@ -10,28 +10,26 @@ SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
-`TMDB_READ_ACCESS_TOKEN` is secret and must never be shipped to the browser.
+## Deploy
 
-The Supabase URL/Publishable Key are public client configuration values, but Netlify needs them separately because the scheduled health Function no longer contains source-code fallbacks.
+Push 0.4.3.2 to the linked GitHub branch. Netlify deploys the site and Functions automatically.
 
-## Production deploy
-
-1. Replace repository files with the 0.4.2 package.
-2. Commit and push to GitHub.
-3. Netlify automatically deploys static files and Functions.
-4. Run the Supabase SQL migration.
-5. Run GitHub `Refresh movie catalog` once.
-
-## Verify
-
-TMDB search:
+After deployment test:
 
 ```text
-https://kinosis.netlify.app/api/movie-search?q=시민%20케인
+/api/movie-search?q=시민 케인
+/api/movie-recommendations?id=15
 ```
 
-Supabase auth:
-- Google/Kakao provider must be enabled separately.
-- Email magic link works once Supabase email auth is enabled and redirect URLs are correct.
+The first should return movie/person search data; the second should return recommendation candidates.
 
-PWA cache version is 0.4.2 and old KINOSIS caches are removed during service-worker activation.
+## Catalog refresh
+
+Keep `TMDB_READ_ACCESS_TOKEN` in GitHub Actions Secrets as well. Run **Refresh movie catalog** once after upgrading so the new multi-page theatre sync and expanded Arthouse seed pool are written to `data/catalog.js/json`.
+
+PWA cache version is 0.4.3.2 and old `kinosis-*` shell caches are removed on activation.
+
+
+## Editorial Curation build
+
+Netlify now runs `npm run build` before publish. That command validates `content/curations/*/*.curation.json` and generates `data/curations.js`. Do not remove the build command from `netlify.toml` if file-based curations are in use.

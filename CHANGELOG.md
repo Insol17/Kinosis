@@ -1,53 +1,68 @@
 # Changelog
 
-## 0.4.2 — Unified Product UX
+## 0.4.3.2 — File-based editorial curation
 
-### Information architecture
-- Top-level navigation is now fixed to **DISCOVER / ARTHOUSE / LIBRARY / MY**.
-- Removed Discover's old HOME / IN THEATRES / MY STREAMING / STREAMING / TOP RATED secondary tabs.
-- **ARTHOUSE** replaces ART MODE and becomes a permanent editorial destination.
-- Movie detail is now a full page in the SPA instead of a large modal.
+### Curation authoring
+- Restored KINOSIS editorial Curation without restoring Admin/Curation Studio or database roles.
+- `content/curations/discover`, `arthouse`, and `both` now act as the editorial source folders.
+- Any `*.curation.json` placed in those folders is validated and indexed by `scripts/build-curations.mjs`.
+- Netlify now runs `npm run build` automatically, so a Git push is enough to publish a valid curation definition.
+- Added a safe authoring example and schema notes under `content/curations/README.md`.
 
-### Discover
-- Rebuilt as a content-first home rather than a feature menu.
-- Sections: Featured / Now in Theatres / My Streaming (or Streaming for guests) / one KINOSIS Curation / Trending / Highly Rated.
-- Movie cards show up to two OTT provider logos and an in-theatres film icon directly on the poster.
-- Featured banner remains promotional: no Library / Log buttons inside the banner.
+### Product surface
+- DISCOVER shows at most one editorial curation, preserving the content-first/simple home hierarchy.
+- ARTHOUSE can show a compact horizontal rail of editorial curations before its algorithmic shelves.
+- Curation has its own shareable `?curation=<slug>` page with hero context and ordered films.
+- Movies referenced by a curation can live outside the weekly catalog cache; KINOSIS hydrates missing TMDB IDs through the existing server-side detail proxy.
+
+### Architecture / safety
+- Curation is content-as-code, not account authority: no admin client flag, no editor role, no Supabase Curation tables are required.
+- Folder placement determines surface, reducing repetitive config and preventing Discover/Arthouse placement drift.
+- Duplicate slugs, malformed IDs, oversized lists, invalid JSON, and duplicate movie IDs are validated at build time.
+- Added `curations.test.mjs`, curation assets to the PWA shell, and cache version 0.4.3.2.
+
+## 0.4.3 — Film-life integrity + retrieval
+
+### MY / viewing history
+- Merged Diary and Review into a single **Reviews** timeline.
+- Reduced MY navigation to Overview / Reviews / Stats / Settings.
+- Calendar now lives inside Overview rather than as a separate destination.
+- Viewing logs can be edited or deleted.
+- Rewatch is an explicit per-viewing state and viewing history is visible on movie detail.
+- Each viewing keeps its own rating/review; the Library rating is recomputed from the latest viewing with a rating.
+- Calendar dates with multiple films open a complete day list.
+
+### Web navigation / film detail
+- Movie pages now use `?movie=<tmdbId>` deep links.
+- Browser back/forward navigation is supported with History API state.
+- Film links can be copied and opened directly.
+- Similar-film candidates use live TMDB recommendations/similarity, with the old local genre fallback only when necessary.
+
+### Discover / personalization
+- Added a lightweight **For You** shelf for signed-in users with enough rating history.
+- Recommendation seeds come from the user's highest-rated films; KINOSIS explains the broad taste signal instead of claiming an opaque AI score.
+- Watchlist provider availability is periodically checked; newly available subscription titles are surfaced in Library.
+
+### Search
+- Search now combines movie, person and common genre intent.
+- Director/actor results open filmographies through a Netlify Function.
 
 ### Arthouse
-- Combines the previous ART MODE classifier and editorial curation system.
-- Sections support Featured Curation, art-theatre titles, Director's Archive, From the Archive, and subscribed-service availability.
-- The deterministic classifier remains an internal candidate generator; it is no longer a user-facing toggle.
+- Poster rows are substantially denser and fixed-width, so a short result set no longer stretches into giant cards.
+- KR now-playing sync fetches multiple pages instead of only page 1.
+- Arthouse seed generation resolves curated directors to multiple actual directing credits for a wider pool.
+- Current-theatre candidates are ranked with Arthouse signals first while avoiding the old two-card oversized layout.
 
-### Library
-- Rebuilt around management, not browsing.
-- Smaller, denser poster grid.
-- Added compact list view.
-- Added persistent search/filter/sort toolbar.
-- Library Home prioritizes recent viewing, watchlist titles available on subscribed OTTs, collections, and favorites.
+### Library / portability
+- Collections support descriptions, visual covers and explicit movie order controls.
+- Letterboxd CSV import beta supports watched, ratings, diary, reviews and watchlist exports.
+- Existing Watchlist × subscription dynamic behavior is preserved.
 
-### My
-- Reworked into a Watcha-inspired personal film-life surface.
-- Profile cover, avatar, film/rating/review/collection counts.
-- Reduced navigation to Overview / Diary / Reviews / Calendar / Stats / Settings.
-- Subscriptions and Account moved into Settings to reduce navigation clutter.
-
-### Detail
-- Full-page film hub with backdrop, poster, metadata, actions, Where to Watch, About, My Activity, and related films.
-- Netlify detail API now returns top cast data.
-
-### Curation / Admin
-- Added Supabase-backed `user_roles`, `curations`, and `curation_movies` schema.
-- Added RLS-protected editor/admin write access.
-- Added hidden **Curation Studio** accessible from MY → Settings for editor/admin accounts.
-- Curations can target Discover, Arthouse, or both, and can be Draft/Published.
-- Admins can search TMDB through the existing KINOSIS live-search proxy and add films without entering metadata manually.
-
-### Auth / UX consistency
-- Supabase Auth switched from implicit flow to PKCE.
-- Removed native `prompt()`, `confirm()`, and `alert()` usage; KINOSIS dialogs/toasts are used instead.
-- Guests can browse Discover, Arthouse, Search, and Detail. Library/MY and personal actions remain account-gated by product policy.
+### Scope cleanup
+- Removed the 0.4.2 Curation Studio/Admin product surface for now.
+- Fresh Supabase setup returns to the small RLS-protected user-state + health schema; old curation SQL is kept only under `supabase/legacy/`.
 
 ### Operations
-- Supabase health function now requires Netlify environment variables instead of shipping fallback values.
-- PWA shell cache bumped to 0.4.2 and old KINOSIS caches continue to be removed on activation.
+- PWA cache version bumped to 0.4.3.
+- New recommendation/person/availability Netlify Functions are excluded from Service Worker API caching.
+- Tests expanded for new API contracts and 0.4.3 UX markers.

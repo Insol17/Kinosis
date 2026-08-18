@@ -1,13 +1,14 @@
 {
   "name": "kinosis-mvp",
   "private": true,
-  "version": "0.4.2",
+  "version": "0.4.3.2",
   "type": "module",
   "scripts": {
     "serve": "npx --yes serve . -l 4173",
     "update": "node scripts/update-catalog.mjs",
-    "test": "node --check assets/js/app.js && node --check assets/js/cloud.js && node --check assets/js/ui.js && node --check assets/js/art-classifier.js && node --check sw.js && node --check netlify/functions/movie-search.mjs && node --check netlify/functions/movie-detail.mjs && node --check netlify/functions/supabase-health.mjs && node tests/catalog.test.mjs && node tests/static.test.mjs && node tests/netlify-functions.test.mjs && node tests/art-mode.test.mjs",
-    "dev": "npx --yes netlify-cli dev"
+    "test": "npm run build && node --check assets/js/app.js && node --check assets/js/cloud.js && node --check assets/js/ui.js && node --check assets/js/art-classifier.js && node --check assets/js/recommender.js && node --check assets/js/importers.js && node --check assets/js/curations.js && node --check scripts/build-curations.mjs && node --check sw.js && node --check netlify/functions/movie-search.mjs && node --check netlify/functions/movie-detail.mjs && node --check netlify/functions/movie-recommendations.mjs && node --check netlify/functions/person-films.mjs && node --check netlify/functions/watchlist-availability.mjs && node --check netlify/functions/supabase-health.mjs && node tests/catalog.test.mjs && node tests/static.test.mjs && node tests/netlify-functions.test.mjs && node tests/art-mode.test.mjs && node tests/curations.test.mjs",
+    "dev": "npx --yes netlify-cli dev",
+    "build": "node scripts/build-curations.mjs"
   },
   "engines": {
     "node": ">=24"

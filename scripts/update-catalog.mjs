@@ -118,12 +118,28 @@ async function fetchArtSeedCandidates() {
     const rows = data.results || [];
     return rows.find(m => Number((m.release_date||'').slice(0,4)) === year) || rows[0] || null;
   });
+
+  // A person's `known_for` list is too shallow for an Arthouse shelf. Resolve each
+  // director and take several actual directing credits so the weekly catalog has
+  // enough breadth for archive / modern-master sections without pretending that
+  // every current theatrical title is an art-film.
   const people = await pool(ART_DIRECTOR_QUERIES, 4, async name => {
     const data = await tmdb('/search/person', { query:name, language:LANGUAGE, include_adult:false, page:1 });
     return data.results?.[0] || null;
   });
-  const knownFor = people.flatMap(person => (person?.known_for || []).filter(item => item?.media_type === 'movie' || item?.title || item?.original_title));
-  return uniq([...titleRows,...knownFor]).slice(0,30).map(m => ({...m,artSeed:true}));
+  const directorCredits = await pool(people.filter(Boolean), 4, async person => {
+    const credits = await tmdb(`/person/${person.id}/movie_credits`, { language:LANGUAGE });
+    return (credits.crew || [])
+      .filter(row => row.job === 'Director' && row.id && row.release_date)
+      .sort((a,b) => {
+        const aScore = Number(a.vote_average || 0) * Math.log10(Number(a.vote_count || 0) + 10) + Number(a.popularity || 0) / 12;
+        const bScore = Number(b.vote_average || 0) * Math.log10(Number(b.vote_count || 0) + 10) + Number(b.popularity || 0) / 12;
+        return bScore - aScore;
+      })
+      .slice(0,4);
+  });
+
+  return uniq([...titleRows,...directorCredits.flat()]).slice(0,56).map(m => ({...m,artSeed:true}));
 }
 
 
@@ -131,8 +147,8 @@ console.log('Fetching TMDB configuration and KR lists…');
 const config = await tmdb('/configuration');
 const imageBase = config?.images?.secure_base_url || 'https://image.tmdb.org/t/p/';
 
-const [nowPlaying, trending, topRated, streaming] = await Promise.all([
-  tmdb('/movie/now_playing', { language:LANGUAGE, region:REGION, page:1 }),
+const [nowPlayingPages, trending, topRated, streaming] = await Promise.all([
+  Promise.all([1,2,3,4].map(page => tmdb('/movie/now_playing', { language:LANGUAGE, region:REGION, page }))),
   tmdb('/trending/movie/week', { language:LANGUAGE }),
   tmdb('/movie/top_rated', { language:LANGUAGE, region:REGION, page:1 }),
   tmdb('/discover/movie', {
@@ -141,15 +157,16 @@ const [nowPlaying, trending, topRated, streaming] = await Promise.all([
     sort_by:'popularity.desc', page:1
   })
 ]);
+const nowPlayingResults = uniq(nowPlayingPages.flatMap(page => page.results || []));
 const artCandidates = await fetchArtSeedCandidates();
 const artSeedIds = new Set(artCandidates.map(m => Number(m.id)));
 
 const rawSections = {
-  theatres:(nowPlaying.results || []).slice(0,24),
+  theatres:nowPlayingResults.slice(0,72),
   trending:(trending.results || []).slice(0,24),
   rated:(topRated.results || []).filter(m => Number(m.vote_count || 0) >= 250).slice(0,24),
   streaming:(streaming.results || []).slice(0,24),
-  art:artCandidates.slice(0,24)
+  art:artCandidates.slice(0,48)
 };
 const rawMovies = uniq(Object.values(rawSections).flat());
 if (rawMovies.length < 12) throw new Error(`Validation failed before enrichment: only ${rawMovies.length} unique movies.`);

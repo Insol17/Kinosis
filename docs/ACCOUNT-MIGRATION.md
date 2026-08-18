@@ -1,12 +1,5 @@
-# Account migration — 0.4.2
+# Account migration — 0.4.3
 
-Personal surfaces remain account-gated. On first sign-in KINOSIS checks two sources:
+Library and MY remain account-gated by product policy. Existing historical local KINOSIS data may still be detected after sign-in and merged into the user's Supabase-backed `user_state`.
 
-1. signed-in per-user local cache
-2. legacy pre-account KINOSIS local state
-
-If legacy data exists, KINOSIS uses its own dialog (not a browser `confirm`) to ask whether it should be merged into the cloud state.
-
-The merge keeps movie snapshots, library rows, logs, collections, subscriptions, and the user's profile fields. Cloud and local timestamps remain the basic MVP conflict-resolution mechanism.
-
-Guests do not create new Library/MY data in 0.4.2 by product policy.
+The signed-in cloud payload is canonical, with a per-user local cache used for offline resilience. Viewing-log edits, rewatch history, availability state, Collections and preferences are included in the same versioned MVP payload.
