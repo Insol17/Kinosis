@@ -1,4 +1,4 @@
-# KINOSIS 0.4.4.2 — Design system
+# KINOSIS — Design system (0.4.4.3)
 
 ## Goal
 

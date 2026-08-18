@@ -1,4 +1,4 @@
-# KINOSIS API and attribution policy — 0.4.4.1
+# KINOSIS API and attribution policy — 0.4.4.3
 
 ## TMDB
 
@@ -15,6 +15,12 @@ Required notice remains visible in **Data sources & credits**:
 KINOSIS normalizes provider rows into subscription / free / ads / rent / buy. Client UI then consolidates variants that belong to the same canonical brand so an ad tier does not render as a second Netflix service.
 
 Where to Watch links to the regional provider page returned by TMDB when available. Provider availability is attributed as **JustWatch via TMDB** and is treated as advisory rather than a transaction guarantee.
+
+### Provider marks
+
+Availability remains sourced from TMDB/JustWatch, but KINOSIS normalizes provider brand identity in `data/providers.js`. Provider tiers that represent the same brand are consolidated before rendering.
+
+WATCHA is the explicit presentation exception: KINOSIS uses the official transparent WATCHA wordmark stored in `assets/branding/providers/watcha-logo-white.png` instead of the current upstream provider tile. This does not change availability data; it only corrects the displayed brand asset.
 
 ## KOBIS — exact Korean box office
 

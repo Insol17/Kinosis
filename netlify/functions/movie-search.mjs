@@ -111,4 +111,5 @@ export default async (request) => {
 export const config = {
   path: '/api/movie-search',
   method: 'GET',
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 80 },
 };

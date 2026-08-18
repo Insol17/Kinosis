@@ -1,4 +1,4 @@
-# Netlify deployment — KINOSIS 0.4.4.1
+# Netlify deployment — KINOSIS 0.4.4.3
 
 ## Required environment variables
 
@@ -8,36 +8,41 @@ SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
-For the actual Korean box-office ranking also add:
+For exact Korean daily box-office ranks:
 
 ```text
 KOBIS_API_KEY
 ```
 
-Without the KOBIS key KINOSIS intentionally shows `현재 상영작` without rank numbers.
+For Settings → account deletion:
+
+```text
+SUPABASE_SECRET_KEY
+```
+
+`SUPABASE_SECRET_KEY` is server-only. Never put it in `config.js`, `index.html`, browser JavaScript, screenshots, or a public repository.
+
+## Supabase migration
+
+If upgrading an existing 0.4.x database, run:
+
+```text
+supabase/004_kinosis_0443.sql
+```
+
+Fresh projects can run `supabase/SETUP_ALL.sql` instead.
 
 ## Deploy
 
-Push the 0.4.4.1 source to the linked GitHub branch. Netlify runs `npm run build`, publishes the static site and deploys Functions.
+Push the 0.4.4.3 source to the branch connected to Netlify. Netlify installs package dependencies, runs `npm run build`, publishes the static site and bundles Functions.
 
-Smoke tests after deploy:
+After deployment, test:
 
-```text
-/api/movie-search?q=시민 케인
-/api/movie-detail?id=15
-/api/box-office
-```
+1. Google login.
+2. Modify a Watchlist item and confirm Cloud Sync reaches `ONLINE`.
+3. Open the same account in another browser and confirm the item arrives automatically.
+4. Open a Director Curation and confirm it loads once without sustained CPU/render churn.
+5. In MY → Settings, select OTT services and confirm `내 구독 서비스에서` returns live results.
+6. Check a WATCHA title and confirm the official WATCHA wordmark is shown once, not the incorrect upstream tile.
 
-`/api/box-office` should return `mode: "kobis"` when `KOBIS_API_KEY` is configured.
-
-## Catalog refresh
-
-Keep `TMDB_READ_ACCESS_TOKEN` in GitHub Actions Secrets. Add `KOBIS_API_KEY` there too if the generated catalog should carry exact KOBIS ranks. Run **Refresh movie catalog** once after upgrading.
-
-## Offline/PWA
-
-0.4.4.1 no longer ships or registers a Service Worker and no longer advertises an offline mode. Existing account-local state remains only for recovery and cloud synchronization.
-
-## Editorial Curation build
-
-`npm run build` validates `content/curations/*.curation.json` and generates `data/curations.js`. Director filmography network resolution happens only when that curation is opened, avoiding four background requests on every Arthouse visit.
+KINOSIS 0.4.4.3 does not ship an offline/PWA shell.

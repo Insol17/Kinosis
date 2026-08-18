@@ -77,4 +77,6 @@ export default async (request) => {
   }
 };
 
-export const config = { path: '/api/box-office', method: 'GET' };
+export const config = { path: '/api/box-office', method: 'GET',
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 40 }
+};

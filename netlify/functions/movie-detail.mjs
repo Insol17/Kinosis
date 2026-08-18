@@ -27,9 +27,24 @@ export default async (request) => {
     const theatricalReleaseDate = theatricalDates[0] || null;
     const releaseTime = theatricalReleaseDate ? Date.parse(theatricalReleaseDate) : 0;
     const now = Date.now();
-    const theatricalStatus = releaseTime
+    let theatricalStatus = releaseTime
       ? (releaseTime <= now + 86400000 && releaseTime >= now - 90 * 86400000 ? 'now' : releaseTime > now ? 'upcoming' : 'past')
       : null;
+    let theatricalEvidence = theatricalStatus === 'now' ? 'kr-release-window' : theatricalStatus === 'upcoming' ? 'kr-release-date' : null;
+
+    // A release-date window alone misses long-running/re-released films. If it does not already
+    // say "now", consult TMDB's KR now-playing feed before declaring the film unavailable in cinemas.
+    if (theatricalStatus !== 'now') {
+      try {
+        const pages = await Promise.all([1, 2].map((page) => tmdb('/movie/now_playing', { language: 'ko-KR', region: 'KR', page })));
+        if (pages.some((payload) => (payload.results || []).some((row) => String(row.id) === String(detail.id)))) {
+          theatricalStatus = 'now';
+          theatricalEvidence = 'tmdb-kr-now-playing';
+        }
+      } catch (error) {
+        console.warn('movie-detail now-playing check:', error.message);
+      }
+    }
     const { providers, watchLink } = normalizeProviderResults(providerPayload, 'KR');
 
     return json({
@@ -50,6 +65,7 @@ export default async (request) => {
       productionCountries: (detail.production_countries || []).map((country) => country.name).filter(Boolean),
       originalLanguage: detail.original_language || null,
       theatricalStatus,
+      theatricalEvidence,
       theatricalReleaseDate,
       keywords: (keywordsPayload.keywords || keywordsPayload.results || []).map((keyword) => keyword.name).filter(Boolean),
       productionCompanies: (detail.production_companies || []).map((company) => company.name).filter(Boolean),
@@ -69,4 +85,5 @@ export default async (request) => {
 export const config = {
   path: '/api/movie-detail',
   method: 'GET',
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 50 },
 };

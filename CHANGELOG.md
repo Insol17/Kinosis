@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.4.4.3 — Stability, sync concurrency and provider identity
+
+### P0 stability
+- Fixed the Director Curation microtask render loop by moving dynamic loading behind a cache contract that reports whether data actually changed. Cached reads do not trigger a rerender.
+- Added a dedicated regression test proving a Director Curation fetch happens once and a cached `ensure()` returns `changed:false`.
+- Removed a second redundant `ensureCurationMovies()` call from the open-Curation path.
+- Added a global `error` / `unhandledrejection` fallback with a recoverable KINOSIS toast.
+
+### Cloud Sync
+- Added `user_state.revision` and `kinosis_write_user_state(expected_revision, new_payload)` in `supabase/004_kinosis_0443.sql`.
+- Per-account writes are serialized in Postgres and reject stale revisions instead of silently last-write-wins overwriting another device.
+- The client now rereads, merges and retries when a revision conflict is detected.
+- Added server-side account deletion (`/api/delete-account`); it validates the user's bearer token before using `SUPABASE_SECRET_KEY`.
+
+### Discover / streaming / theatrical
+- `내 구독 서비스에서` now uses `/api/my-streaming` and TMDB KR provider discovery instead of filtering only the weekly Discover catalog.
+- Movie detail keeps the KR release-date signal and, when that does not say current, checks TMDB KR `now_playing` before treating a film as not currently theatrical.
+- Public TMDB/KOBIS proxy Functions now carry explicit Netlify IP rate limits.
+
+### OTT provider identity
+- Added `data/providers.js` + `assets/js/providers.js` as the canonical provider mapping layer.
+- Consolidates provider variants such as Netflix and Netflix Standard with Ads into one brand entry.
+- Corrected WATCHA branding with the official transparent WATCHA wordmark from the WATCHA media kit; the override lives in provider data, not hardcoded render logic.
+- Provider art uses transparent containers and `object-fit: contain` to prevent cropping or black icon tiles.
+
+### UX / visual maintenance
+- Consolidated the separate `design-0442.css` layer into `app.css` so visual behavior is no longer dependent on a second specificity override sheet.
+- Raised low-contrast secondary tokens and increased interactive pointer targets to at least 44px without visually inflating the icons.
+- Added mounted Hero slides, pause/play control and opacity/transform transitions instead of rebuilding Hero markup on every autoplay step.
+- Removed the separate direct Library-save action; Watchlist, viewing logs, Favorite and Collections establish Library membership automatically.
+- Moved Arthouse editorial seeds to `data/arthouse.js` so classifier behavior is code/data separated.
+
 ## 0.4.4.2 — Korean-first visual redesign
 
 ### Visual system

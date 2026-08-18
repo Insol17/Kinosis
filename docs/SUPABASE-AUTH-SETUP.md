@@ -1,28 +1,33 @@
-# Supabase/Auth setup — KINOSIS 0.4.4.1
+# Supabase/Auth setup — KINOSIS 0.4.4.3
 
-## Browser client
+KINOSIS uses Supabase Auth PKCE in the browser and RLS-protected user data.
 
-KINOSIS uses the Supabase Project URL and Publishable Key from `assets/js/config.js`. The Publishable Key is a client credential; RLS is the security boundary. Never put a Supabase Secret/Service Role key in frontend code.
+## Browser configuration
+
+`assets/js/config.js` contains only public client values:
+
+- Supabase Project URL
+- Publishable Key
+- redirect URL
+
+Never place `sb_secret_...` or a legacy `service_role` key in frontend code.
 
 ## Database
 
-Fresh project: run `supabase/SETUP_ALL.sql` once.
+Fresh project: run `supabase/SETUP_ALL.sql`.
 
-Already on the 0.4.1 core schema: there is no additional 0.4.4 migration. If the 0.4.2 curation experiment was installed, those unused tables can remain; the current app does not query them.
+Existing project created before 0.4.4.3: run `supabase/004_kinosis_0443.sql`. This adds atomic revision writes for multi-device sync.
 
-## Auth
+## Account deletion
 
-The browser client uses PKCE. Configure Supabase Authentication URL Configuration with the production Netlify URL and allowed redirects.
+Account deletion is intentionally not executed from the browser with elevated credentials.
 
-Google/Kakao become available to ordinary users once each provider has been enabled in Supabase and its provider credentials/callback settings are configured in the corresponding developer console. Email magic-link sign-in remains available through Supabase Auth.
-
-## Netlify health request
-
-Set:
+Set these in Netlify Environment Variables:
 
 ```text
 SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SECRET_KEY
 ```
 
-The scheduled health Function performs a tiny read against `app_health`; it has no hard-coded fallback credentials.
+`/api/delete-account` first validates the caller's bearer access token, then uses the server-only Secret Key to delete that exact authenticated user. `public.user_state` is deleted by the existing `auth.users(id) ON DELETE CASCADE` foreign key.

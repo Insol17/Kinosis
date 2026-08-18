@@ -31,4 +31,5 @@ export default async (request) => {
 export const config = {
   path: '/api/watchlist-availability',
   method: 'GET',
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 25 }
 };

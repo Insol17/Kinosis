@@ -9,6 +9,7 @@ const recommendationModule=await import('../netlify/functions/movie-recommendati
 const personModule=await import('../netlify/functions/person-films.mjs');
 const directorModule=await import('../netlify/functions/director-filmography.mjs');
 const availabilityModule=await import('../netlify/functions/watchlist-availability.mjs');
+const streamingModule=await import('../netlify/functions/my-streaming.mjs');
 
 const movieFixture={id:15,title:'시민 케인',original_title:'Citizen Kane',release_date:'1941-04-17',overview:'x',vote_average:8,vote_count:999,popularity:20,poster_path:'/poster.jpg',backdrop_path:'/backdrop.jpg'};
 const realFetch=globalThis.fetch;
@@ -22,7 +23,8 @@ try{
     assert.equal(options.headers.Authorization,'Bearer test-token-not-real');
     if(value.includes('/search/person')) return Response.json({results:[{id:2,name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]});
     if(value.includes('/search/movie')) return Response.json({page:1,total_results:1,results:[{...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}]});
-    if(value.includes('/discover/movie')) return Response.json({results:[]});
+    if(value.includes('/watch/providers/movie')) return Response.json({results:[{provider_id:8,provider_name:'Netflix',logo_path:'/netflix.jpg',display_priority:1},{provider_id:97,provider_name:'Watcha',logo_path:'/watcha-wrong.jpg',display_priority:2}]});
+    if(value.includes('/discover/movie')) return Response.json({results:[{...movieFixture,id:25,title:'스트리밍 영화',release_date:'2026-01-01'}]});
     if(value.includes('/movie/15/recommendations')) return Response.json({results:[{id:16,title:'추천 영화',original_title:'Recommended',release_date:'1942-01-01',vote_average:7.8,vote_count:500,popularity:12,poster_path:'/p2.jpg',backdrop_path:'/b2.jpg'}]});
     if(value.includes('/movie/15/similar')) return Response.json({results:[{id:17,title:'유사 영화',original_title:'Similar',release_date:'1943-01-01',vote_average:7.2,vote_count:300,popularity:9,poster_path:'/p3.jpg',backdrop_path:'/b3.jpg'}]});
     if(value.includes('/person/2/movie_credits')) return Response.json({cast:[],crew:[{...movieFixture,job:'Director'}]});
@@ -65,9 +67,14 @@ try{
   assert.equal(availabilityResponse.status,200); const availabilityData=await availabilityResponse.json();
   assert.equal(availabilityData.results[0].providers[0].name,'Netflix');
 
-  for(const payload of [searchData,detailData,boxOfficeData,recommendationData,personData,directorData,availabilityData]) {
+  const streamingResponse=await streamingModule.default(new Request('https://kinosis.test/api/my-streaming?providers=Netflix,Watcha'));
+  assert.equal(streamingResponse.status,200); const streamingData=await streamingResponse.json();
+  assert.equal(streamingData.results[0].id,'25');
+  assert.ok(streamingData.matchedProviders.some(row=>row.name==='Watcha'));
+
+  for(const payload of [searchData,detailData,boxOfficeData,recommendationData,personData,directorData,availabilityData,streamingData]) {
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
     assert.ok(!JSON.stringify(payload).includes('kobis-test-not-real'),'KOBIS secret leaked in API response');
   }
-  console.log('netlify-functions.test: search/detail/KOBIS/recommendations/person/director/availability contracts OK');
+  console.log('netlify-functions.test: search/detail/KOBIS/recommendations/person/director/availability/live-streaming contracts OK');
 }finally{globalThis.fetch=realFetch;}
