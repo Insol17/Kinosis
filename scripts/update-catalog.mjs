@@ -149,17 +149,31 @@ function kstDateOffset(days) {
   const get=t=>parts.find(p=>p.type===t)?.value||''; return `${get('year')}${get('month')}${get('day')}`;
 }
 async function fetchBoxOffice(nowPlayingResults) {
-  const fallback = [...nowPlayingResults].sort((a,b)=>Number(b.popularity||0)-Number(a.popularity||0)).slice(0,10).map((m,i)=>({...m,boxOfficeRank:i+1}));
-  if (!KOBIS_KEY) return { mode:'fallback', rows:fallback };
+  // Never manufacture a box-office rank from TMDB popularity. When KOBIS is
+  // unavailable we keep a current-theatrical fallback, but it has no ranks.
+  const fallback = [...nowPlayingResults]
+    .sort((a,b)=>Number(b.popularity||0)-Number(a.popularity||0))
+    .slice(0,10)
+    .map(({ boxOfficeRank, ...movie }) => movie);
+  if (!KOBIS_KEY) return { mode:'unavailable', rows:fallback };
   try {
     const targetDt = kstDateOffset(-1);
     const url = new URL('https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json');
     url.searchParams.set('key',KOBIS_KEY); url.searchParams.set('targetDt',targetDt);
     const res=await fetch(url,{signal:AbortSignal.timeout(15000)}); if(!res.ok)throw new Error(`KOBIS ${res.status}`);
     const body=await res.json(); const ranks=body?.boxOfficeResult?.dailyBoxOfficeList||[];
-    const matched=await pool(ranks.slice(0,10),4,async row=>{const data=await tmdb('/search/movie',{query:row.movieNm,language:LANGUAGE,region:REGION,include_adult:false,page:1});const list=data.results||[];const openYear=String(row.openDt||'').slice(0,4);const found=list.find(m=>String(m.release_date||'').slice(0,4)===openYear)||list[0];return found?{...found,boxOfficeRank:Number(row.rank)||null,boxOfficeAudience:Number(row.audiAcc)||null,boxOfficeSalesShare:Number(row.salesShare)||null}:null;});
-    const rows=uniq([...matched,...fallback]).slice(0,10); return { mode:matched.length>=3?'kobis':'fallback', rows };
-  } catch(e) { console.warn(`KOBIS box office fallback: ${e.message}`); return { mode:'fallback', rows:fallback }; }
+    const matched=(await pool(ranks.slice(0,10),4,async row=>{
+      const data=await tmdb('/search/movie',{query:row.movieNm,language:LANGUAGE,region:REGION,include_adult:false,page:1});
+      const list=data.results||[]; const openYear=String(row.openDt||'').slice(0,4);
+      const found=list.find(m=>String(m.release_date||'').slice(0,4)===openYear)||list[0];
+      return found?{...found,boxOfficeRank:Number(row.rank)||null,boxOfficeAudience:Number(row.audiAcc)||null,boxOfficeSalesShare:Number(row.salesShare)||null}:null;
+    })).filter(Boolean).sort((a,b)=>Number(a.boxOfficeRank||99)-Number(b.boxOfficeRank||99));
+    if (matched.length < 5) throw new Error(`Only ${matched.length} KOBIS titles matched TMDB`);
+    return { mode:'kobis', rows:matched.slice(0,10) };
+  } catch(e) {
+    console.warn(`KOBIS unavailable; using unranked theatrical titles: ${e.message}`);
+    return { mode:'unavailable', rows:fallback };
+  }
 }
 
 
@@ -255,7 +269,7 @@ const catalog = {
     metadata:{name:'TMDB',active:true},
     streaming:{name:'JustWatch via TMDB',active:true},
     theatrical:{name:`TMDB now_playing (${REGION})`,active:true},
-    boxOffice:{name:boxOffice.mode==='kobis'?'KOBIS daily box office':'TMDB theatrical popularity fallback',active:true,mode:boxOffice.mode},
+    boxOffice:{name:boxOffice.mode==='kobis'?'KOBIS daily box office':'KOBIS unavailable · unranked TMDB now_playing fallback',active:true,mode:boxOffice.mode},
     art:{name:'KINOSIS curated seed engine · KMDb cinephile canon inspired',active:true}
   },
   featured, featuredSlides, movies:enriched, sections

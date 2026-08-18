@@ -8,11 +8,11 @@
   <meta name="description" content="KINOSIS — Discover, Arthouse, Library, My. 영화를 발견하고, 보고, 기록하고, 다시 꺼내보는 영화 라이브러리." />
   <meta name="application-name" content="KINOSIS" />
   <title>KINOSIS — Discover · Arthouse · Library · My</title>
-  <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4.1" />
+  <link rel="stylesheet" href="./assets/css/editorial-0441.css?v=0.4.4.1" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -120,7 +120,7 @@
     </main>
 
     <footer class="footer">
-      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.4</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
+      <button id="aboutButton">Data sources & credits</button><span>·</span><span>KINOSIS 0.4.4.1</span><span>·</span><span>TMDB · JustWatch via TMDB</span>
     </footer>
   </div>
 
@@ -135,7 +135,7 @@
   <dialog id="authDialog" class="compact-dialog auth-dialog">
     <div class="form-card auth-card">
       <div class="form-head"><div><p class="eyebrow">KINOSIS ACCOUNT</p><h2>로그인하면 영화생활이 이어집니다.</h2></div><button class="ghost-close" data-close="authDialog">닫기</button></div>
-      <p class="auth-copy">Library와 MY는 계정에 연결됩니다. 같은 계정으로 PC·모바일·PWA에서 로그인하면 기록과 컬렉션이 동기화됩니다.</p>
+      <p class="auth-copy">Library와 MY는 계정에 연결됩니다. 같은 계정으로 PC·모바일에서 로그인하면 기록과 컬렉션이 자동으로 동기화됩니다.</p>
       <div class="auth-benefits"><span>Library 동기화</span><span>Reviews · Calendar</span><span>Collections</span><span>OTT 설정</span></div>
       <div class="auth-provider-grid">
         <button class="auth-provider google" data-auth-provider="google">Google로 계속하기</button>
@@ -221,7 +221,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4.1</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -234,16 +234,15 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.4"></script>
-  <script src="./data/curations.js?v=0.4.4"></script>
-  <script src="./assets/js/config.js?v=0.4.4"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.4"></script>
+  <script src="./data/catalog.js?v=0.4.4.1"></script>
+  <script src="./data/curations.js?v=0.4.4.1"></script>
+  <script src="./assets/js/config.js?v=0.4.4.1"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.4.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./assets/js/cloud.js?v=0.4.4"></script>
-  <script src="./assets/js/ui.js?v=0.4.4"></script>
-  <script src="./assets/js/recommender.js?v=0.4.4"></script>
-  <script src="./assets/js/importers.js?v=0.4.4"></script>
-  <script src="./assets/js/curations.js?v=0.4.4"></script>
-  <script src="./assets/js/app.js?v=0.4.4"></script>
+  <script src="./assets/js/cloud.js?v=0.4.4.1"></script>
+  <script src="./assets/js/ui.js?v=0.4.4.1"></script>
+  <script src="./assets/js/importers.js?v=0.4.4.1"></script>
+  <script src="./assets/js/curations.js?v=0.4.4.1"></script>
+  <script src="./assets/js/app.js?v=0.4.4.1"></script>
 </body>
 </html>

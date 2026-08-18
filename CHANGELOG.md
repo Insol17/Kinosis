@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.4.4.1 — Detail, performance and theatrical-data pass
+
+### Performance / cleanup
+- Removed Service Worker / manifest offline shell and the unused hidden For You client loop.
+- Render only the active top-level surface instead of rebuilding Discover, Arthouse, Library and MY together.
+- Arthouse landing no longer resolves director filmographies; a curation resolves its dynamic source only when opened.
+- Live box-office arrival updates only Discover content and no longer rebuilds the Hero.
+- Removed legacy Library Home and obsolete advanced-filter code paths.
+- Detail backdrops are capped at TMDB w1280 instead of `original`.
+- Added `content-visibility` containment and removed expensive shell/toolbar backdrop blur in the 0.4.4.1 visual layer.
+
+### Box office / theatrical state
+- Added `/api/box-office` backed by the official KOBIS daily box-office API.
+- TMDB popularity is never presented as a box-office rank. If KOBIS is unavailable the UI shows an unranked `현재 상영작` shelf.
+- KOBIS Korean opening dates are preferred for matched box-office titles.
+- Film detail now reads KR theatrical release dates and exposes current/upcoming theatrical state generically; no movie-title-specific patches are used.
+
+### Film detail / Where to Watch
+- Rebuilt film detail into a stronger editorial information page with masthead, actions, rating, synopsis/facts, cast, personal history and related films.
+- Whole Hero surfaces now open the corresponding film detail.
+- Where to Watch is an inline full-width surface rather than a cramped side utility.
+- Provider variants are consolidated by canonical brand, removing duplicate Netflix/ad-tier tiles.
+- Current theatrical films show a `극장 · 현재 상영 중` option even when there is no OTT provider.
+- Director and genre values are direct exploration actions.
+
+### P0 data integrity
+- Rewatch flags are recalculated from chronological viewing history after create/edit/delete.
+- Current Library rating becomes null when no rated viewing log remains instead of preserving a stale value.
+- Complete Library-film removal and Collection deletion now have cloud tombstones so stale devices do not resurrect them.
+
+### Motion / visual system
+- Added a new `editorial-0441.css` layer: warmer cinema typography, stronger hierarchy, restrained section/view/Hero transitions, film-card hover behavior and a redesigned detail surface.
+- Motion uses transform/opacity and honors `prefers-reduced-motion`.
+
 ## 0.4.4 — Discovery rails, reliable cloud sync, simpler Library
 
 ### Discover

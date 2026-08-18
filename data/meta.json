@@ -25,9 +25,9 @@
       "active": true
     },
     "boxOffice": {
-      "name": "TMDB theatrical popularity fallback",
+      "name": "KOBIS unavailable · unranked TMDB now_playing fallback",
       "active": true,
-      "mode": "fallback"
+      "mode": "unavailable"
     }
   }
 }

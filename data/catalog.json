@@ -18,9 +18,9 @@
       "active": true
     },
     "boxOffice": {
-      "name": "TMDB theatrical popularity fallback",
+      "name": "KOBIS unavailable · unranked TMDB now_playing fallback",
       "active": true,
-      "mode": "fallback"
+      "mode": "unavailable"
     }
   },
   "featured": {
@@ -2508,8 +2508,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/969681",
         "imdbId": "tt22084616",
-        "demo": false,
-        "boxOfficeRank": 1
+        "demo": false
       },
       {
         "id": 1368337,
@@ -2534,8 +2533,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
         "imdbId": "tt33764258",
-        "demo": false,
-        "boxOfficeRank": 2
+        "demo": false
       },
       {
         "id": 1315772,
@@ -2562,8 +2560,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
         "imdbId": "tt32890033",
-        "demo": false,
-        "boxOfficeRank": 3
+        "demo": false
       },
       {
         "id": 1108427,
@@ -2589,8 +2586,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
         "imdbId": "tt27419466",
-        "demo": false,
-        "boxOfficeRank": 4
+        "demo": false
       },
       {
         "id": 1083381,
@@ -2615,8 +2611,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
         "imdbId": "tt26657236",
-        "demo": false,
-        "boxOfficeRank": 5
+        "demo": false
       },
       {
         "id": 1612018,
@@ -2641,8 +2636,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
         "imdbId": "tt39316472",
-        "demo": false,
-        "boxOfficeRank": 6
+        "demo": false
       },
       {
         "id": 1185806,
@@ -2669,8 +2663,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1185806",
         "imdbId": "tt29356163",
-        "demo": false,
-        "boxOfficeRank": 7
+        "demo": false
       },
       {
         "id": 1430077,
@@ -2693,8 +2686,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1430077",
         "imdbId": "tt35672862",
-        "demo": false,
-        "boxOfficeRank": 8
+        "demo": false
       },
       {
         "id": 1058424,
@@ -2719,8 +2711,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1058424",
         "imdbId": "tt27369017",
-        "demo": false,
-        "boxOfficeRank": 9
+        "demo": false
       },
       {
         "id": 1307247,
@@ -2794,8 +2785,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1545621",
         "imdbId": "tt39123115",
-        "demo": false,
-        "boxOfficeRank": 10
+        "demo": false
       },
       {
         "id": 1220564,
@@ -5249,8 +5239,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/969681",
         "imdbId": "tt22084616",
-        "demo": false,
-        "boxOfficeRank": 1
+        "demo": false
       },
       {
         "id": 1368337,
@@ -5275,8 +5264,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
         "imdbId": "tt33764258",
-        "demo": false,
-        "boxOfficeRank": 2
+        "demo": false
       },
       {
         "id": 1315772,
@@ -5303,8 +5291,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
         "imdbId": "tt32890033",
-        "demo": false,
-        "boxOfficeRank": 3
+        "demo": false
       },
       {
         "id": 1108427,
@@ -5330,8 +5317,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
         "imdbId": "tt27419466",
-        "demo": false,
-        "boxOfficeRank": 4
+        "demo": false
       },
       {
         "id": 1083381,
@@ -5356,8 +5342,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
         "imdbId": "tt26657236",
-        "demo": false,
-        "boxOfficeRank": 5
+        "demo": false
       },
       {
         "id": 1612018,
@@ -5382,8 +5367,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
         "imdbId": "tt39316472",
-        "demo": false,
-        "boxOfficeRank": 6
+        "demo": false
       },
       {
         "id": 1185806,
@@ -5410,8 +5394,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1185806",
         "imdbId": "tt29356163",
-        "demo": false,
-        "boxOfficeRank": 7
+        "demo": false
       },
       {
         "id": 1430077,
@@ -5434,8 +5417,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1430077",
         "imdbId": "tt35672862",
-        "demo": false,
-        "boxOfficeRank": 8
+        "demo": false
       },
       {
         "id": 1058424,
@@ -5460,8 +5442,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1058424",
         "imdbId": "tt27369017",
-        "demo": false,
-        "boxOfficeRank": 9
+        "demo": false
       },
       {
         "id": 1545621,
@@ -5487,8 +5468,7 @@
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1545621",
         "imdbId": "tt39123115",
-        "demo": false,
-        "boxOfficeRank": 10
+        "demo": false
       }
     ],
     "upcoming": [
@@ -5543,8 +5523,7 @@
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/969681",
       "imdbId": "tt22084616",
-      "demo": false,
-      "boxOfficeRank": 1
+      "demo": false
     },
     {
       "id": 1368337,
@@ -5569,8 +5548,7 @@
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
       "imdbId": "tt33764258",
-      "demo": false,
-      "boxOfficeRank": 2
+      "demo": false
     },
     {
       "id": 1315772,
@@ -5597,8 +5575,7 @@
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
       "imdbId": "tt32890033",
-      "demo": false,
-      "boxOfficeRank": 3
+      "demo": false
     },
     {
       "id": 1108427,
@@ -5624,8 +5601,7 @@
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
       "imdbId": "tt27419466",
-      "demo": false,
-      "boxOfficeRank": 4
+      "demo": false
     },
     {
       "id": 1083381,
@@ -5650,8 +5626,7 @@
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
       "imdbId": "tt26657236",
-      "demo": false,
-      "boxOfficeRank": 5
+      "demo": false
     }
   ]
 }

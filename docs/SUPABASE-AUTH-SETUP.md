@@ -1,4 +1,4 @@
-# Supabase/Auth setup — KINOSIS 0.4.4
+# Supabase/Auth setup — KINOSIS 0.4.4.1
 
 ## Browser client
 

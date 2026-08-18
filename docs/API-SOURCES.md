@@ -1,89 +1,38 @@
-# KINOSIS API and attribution policy — 0.4.4
+# KINOSIS API and attribution policy — 0.4.4.1
 
-## TMDB: active
+## TMDB
 
-TMDB is the canonical external movie source for the MVP.
+TMDB is the canonical external movie source for the MVP: search, detail, credits, imagery, recommendations/similar titles, KR now-playing/upcoming and the Watch Providers bridge.
 
-Used for:
+`TMDB_READ_ACCESS_TOKEN` must exist only in trusted runtimes (Netlify, GitHub Actions or local developer environment). It must never be emitted to the browser.
 
-- movie search
-- titles / original titles / release dates
-- overview / runtime / genres
-- director via credits
-- TMDB rating
-- poster / backdrop / title artwork for the generated Discover catalog
-- IMDb external ID
-- KR now-playing / trending / streaming / top-rated Discover cache
-
-Required product notice is visible inside **Data sources & credits**:
+Required notice remains visible in **Data sources & credits**:
 
 > This product uses the TMDB API but is not endorsed or certified by TMDB.
 
-### Secret handling
+## JustWatch via TMDB Watch Providers
 
-`TMDB_READ_ACCESS_TOKEN` must exist only in trusted runtimes:
+KINOSIS normalizes provider rows into subscription / free / ads / rent / buy. Client UI then consolidates variants that belong to the same canonical brand so an ad tier does not render as a second Netflix service.
 
-- GitHub Actions Secret for scheduled catalog generation
-- Netlify Environment Variable for live serverless search/detail
-- local shell/Netlify CLI for development
+Where to Watch links to the regional provider page returned by TMDB when available. Provider availability is attributed as **JustWatch via TMDB** and is treated as advisory rather than a transaction guarantee.
 
-Never place it in `index.html`, `catalog.js`, frontend JavaScript, commits, screenshots or documentation examples containing the actual value.
+## KOBIS — exact Korean box office
 
-## Netlify Functions: active in 0.4.0
+`/api/box-office` reads the previous Korean calendar day's KOBIS daily box-office ranking when `KOBIS_API_KEY` is configured, then matches those rows to TMDB IDs for KINOSIS posters/detail navigation.
 
-Frontend browser requests:
+Important rule: TMDB popularity is never relabeled as a box-office ranking. If KOBIS cannot be used reliably, Discover renders an unranked `현재 상영작` shelf instead.
 
-```text
-/api/movie-search?q=...
-/api/movie-detail?id=...
-```
+The scheduled catalog updater follows the same rule. `KOBIS_API_KEY` can be supplied in GitHub Actions so generated catalog data also carries exact ranks.
 
-Netlify Functions then call TMDB using the server-side environment variable. Search results are normalized before being returned to the browser; the token is never returned.
+## Theatrical state
 
-`movie-search` is short CDN-cacheable. `movie-detail` is longer CDN-cacheable. The PWA service worker explicitly does not intercept `/api/*`.
+TMDB `now_playing`, KOBIS live box-office rows and KR theatrical release-date records can all mark a film as theatrically current. Film detail therefore can show `극장 · 현재 상영 중` even when there are no OTT providers.
 
-## JustWatch via TMDB Watch Providers: active
-
-TMDB Watch Providers supplies KR availability originating from JustWatch.
-
-KINOSIS groups offers into:
-
-- subscription
-- free
-- ads
-- rent
-- buy
-
-Provider information is attributed as **JustWatch via TMDB** near relevant UI and in credits.
-
-The data does not prove a user's entitlement and is not guaranteed to represent final price/availability at the instant of purchase. KINOSIS therefore says a title is on **MY STREAMING** only after intersecting KR subscription/flatrate availability with subscriptions manually selected by the user.
-
-## Collectio: manual subscription only
-
-Collectio is available as a user preference in `MY → SUBSCRIPTIONS`.
-
-KINOSIS does not scrape Collectio and does not automatically claim that a specific title is available there until a stable and permitted data integration is verified.
-
-## KOBIS: optional exact box-office adapter
-
-When `KOBIS_API_KEY` is configured in GitHub Actions, the catalog updater reads the previous Korean calendar day's daily box-office ranking from KOBIS, matches those titles to TMDB movie IDs, and stores the rank in the generated catalog.
-
-When the key is absent or the KOBIS request cannot be matched reliably, KINOSIS does **not** invent box-office numbers: the same Discover slot falls back to TMDB now-playing popularity and the UI labels it `극장 인기 순위` rather than `박스오피스`.
-
-## KMDb: planned adapter, inactive
-
-Candidate for deeper Korean film archival metadata. Keep as an independent adapter rather than silently merging identifiers into TMDB records.
+This logic is data-driven; individual movie titles are not hardcoded.
 
 ## Failure policy
 
-### Scheduled Discover refresh
-
-fetch → enrich → validate → replace. Failure aborts before replacing the last known-good catalog.
-
-### Live Search
-
-local KINOSIS search renders first. If the Netlify/TMDB request fails, the search UI explicitly reports that global search is unavailable while preserving local results.
-
-### Saved movie durability
-
-A Library item must not depend on remaining in the current weekly Discover catalog. When a movie is saved/logged/watchlisted/favorited, KINOSIS stores a normalized movie snapshot in local state keyed by TMDB ID.
+- Catalog refresh: fetch → enrich → validate → replace; failure leaves last known-good data intact.
+- Exact box office: if KOBIS is missing/fails, remove ranking semantics rather than fabricate rank numbers.
+- Live search/detail: preserve local catalog results where possible and report remote failure.
+- Saved movie durability: personal state stores a normalized movie snapshot keyed by TMDB ID so Library entries do not depend on remaining in the current weekly Discover catalog.

@@ -1,35 +1,37 @@
-# KINOSIS 0.4.4 — Curation Architecture
+# KINOSIS 0.4.4.1 — Curation architecture
 
-## Decision
-
-Curation remains a KINOSIS editorial feature, but authoring is not a user-facing Admin product. The repository is the CMS. This keeps editorial publishing under normal Git review and avoids maintaining roles, editor UI, draft DB state, and moderation rules for a one-person editorial workflow.
-
-## Flow
+Curation is an ARTHOUSE-only editorial feature. Authoring is intentionally repository-based for the current one-editor workflow; no Admin account or Curation database is required.
 
 ```text
-content/curations/<surface>/*.curation.json
+content/curations/*.curation.json
         ↓
-npm run build / Netlify build
+npm run build
         ↓
 data/curations.json + data/curations.js
         ↓
-DISCOVER / ARTHOUSE
+ARTHOUSE
         ↓
 ?curation=<slug>
 ```
 
-The weekly TMDB catalog and editorial curations are independent. A curation can reference any TMDB movie ID. If a referenced film is absent from the local weekly catalog, the browser asks the existing Netlify `movie-detail` proxy for metadata; the TMDB token remains server-side.
+## Director source
 
-## Surface policy
+```json
+{
+  "slug": "kiarostami",
+  "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
+  "source": {
+    "type": "director",
+    "name": "Abbas Kiarostami",
+    "sort": "release_asc"
+  }
+}
+```
 
-- DISCOVER: maximum one Curation module to keep the home simple.
-- ARTHOUSE: compact Curation rail; deeper editorial browsing belongs here.
-- `both`: eligible for both surfaces.
+The source is not expanded on the Arthouse landing. Opening the Curation resolves the director once through the Netlify TMDB proxy and renders all movie directing credits returned for that person.
 
-## Editing policy
+Static `movies: [TMDB_ID, ...]` definitions remain supported for hand-edited thematic programs.
 
-Publishing is a Git operation. Use feature-sized commits so a bad curation can be reverted without reverting unrelated code. `draft`/disabled definitions should use a filename that does not end in `.curation.json`, or set `status: "draft"` / `enabled: false`.
+## Publishing
 
-## Source format
-
-See `content/curations/README.md` for the exact JSON fields.
+Publishing is a Git operation. `npm run build` validates slugs, duplicates, field lengths and movie IDs before deployment. Keep Curation edits in small commits so an editorial mistake can be reverted independently of application code.

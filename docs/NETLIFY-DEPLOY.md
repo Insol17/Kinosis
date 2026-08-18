@@ -1,8 +1,6 @@
-# Netlify deployment — KINOSIS 0.4.4
+# Netlify deployment — KINOSIS 0.4.4.1
 
-KINOSIS source remains in GitHub. Netlify deploys the repository and runs the serverless TMDB proxy Functions.
-
-## Required Netlify environment variables
+## Required environment variables
 
 ```text
 TMDB_READ_ACCESS_TOKEN
@@ -10,26 +8,36 @@ SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
+For the actual Korean box-office ranking also add:
+
+```text
+KOBIS_API_KEY
+```
+
+Without the KOBIS key KINOSIS intentionally shows `현재 상영작` without rank numbers.
+
 ## Deploy
 
-Push 0.4.4 to the linked GitHub branch. Netlify deploys the site and Functions automatically.
+Push the 0.4.4.1 source to the linked GitHub branch. Netlify runs `npm run build`, publishes the static site and deploys Functions.
 
-After deployment test:
+Smoke tests after deploy:
 
 ```text
 /api/movie-search?q=시민 케인
-/api/movie-recommendations?id=15
+/api/movie-detail?id=15
+/api/box-office
 ```
 
-The first should return movie/person search data; the second should return recommendation candidates.
+`/api/box-office` should return `mode: "kobis"` when `KOBIS_API_KEY` is configured.
 
 ## Catalog refresh
 
-Keep `TMDB_READ_ACCESS_TOKEN` in GitHub Actions Secrets as well. Run **Refresh movie catalog** once after upgrading so the new multi-page theatre sync and expanded Arthouse seed pool are written to `data/catalog.js/json`.
+Keep `TMDB_READ_ACCESS_TOKEN` in GitHub Actions Secrets. Add `KOBIS_API_KEY` there too if the generated catalog should carry exact KOBIS ranks. Run **Refresh movie catalog** once after upgrading.
 
-PWA cache version is 0.4.4 and old `kinosis-*` shell caches are removed on activation.
+## Offline/PWA
 
+0.4.4.1 no longer ships or registers a Service Worker and no longer advertises an offline mode. Existing account-local state remains only for recovery and cloud synchronization.
 
 ## Editorial Curation build
 
-Netlify now runs `npm run build` before publish. That command validates `content/curations/*/*.curation.json` and generates `data/curations.js`. Do not remove the build command from `netlify.toml` if file-based curations are in use.
+`npm run build` validates `content/curations/*.curation.json` and generates `data/curations.js`. Director filmography network resolution happens only when that curation is opened, avoiding four background requests on every Arthouse visit.

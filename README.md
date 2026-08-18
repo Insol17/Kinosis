@@ -1,103 +1,88 @@
-# KINOSIS 0.4.4
+# KINOSIS 0.4.4.1
 
 KINOSIS is a responsive film discovery and personal film-life web MVP.
 
 ```text
-DISCOVER  → what should I watch?
-ARTHOUSE  → what should I explore as cinema?
-LIBRARY   → what have I saved and how do I manage it?
-MY        → what has my film life looked like?
+DISCOVER  → mainstream discovery: box office / upcoming / my services / highly rated
+ARTHOUSE  → editorial cinema discovery + KINOSIS curations
+LIBRARY   → simple, dense personal film management
+MY        → overview / reviews / stats / settings
 ```
 
-Search is global. Movie detail has a shareable URL. Library and MY require an account; guests can freely use Discover, Arthouse, Search and film detail.
+Search is global. Film detail and curation pages have shareable URLs. Library and MY require an account; guests can browse Discover, Arthouse, Search and film detail.
 
-## What changed in 0.4.4 / 0.4.4
+## 0.4.4.1 focus
 
-- Shareable movie URLs and browser back/forward routing.
-- Viewing logs can be edited and deleted.
-- Rewatches are explicit events. Each viewing keeps its own date/rating/review; the Library rating represents the latest current opinion.
-- MY is simplified to **Overview / Reviews / Stats / Settings**. Diary and Review are one viewing-history surface, while the calendar is embedded in Overview.
-- Calendar days with multiple films open a complete day list instead of only the first film.
-- Arthouse rows use smaller fixed-width poster cards and the weekly updater fetches more KR now-playing pages plus a broader director/canon seed pool.
-- **For You** uses the user's highly-rated films as seeds for TMDB recommendation/similarity candidates.
-- Similar Films uses live TMDB recommendations with a local fallback.
-- Search supports movies, people and common genre queries; person results open their filmography.
-- Watchlist availability is periodically rechecked and newly available subscription titles are surfaced in Library.
-- Personal Collections now support descriptions, visual covers and explicit movie ordering.
-- Letterboxd CSV import beta supports watched/ratings/diary/reviews/watchlist exports.
-- Curation returns in 0.4.4 as **content-as-code**: no Admin account or Supabase editor. Files under `content/curations/{discover,arthouse,both}` are indexed automatically at Netlify build time.
-
-
-## File-based Curation
-
-Curation is intentionally separate from user Collections and from account permissions. The repository is the editorial CMS.
-
-```text
-content/curations/
-├ discover/   → DISCOVER only
-├ arthouse/   → ARTHOUSE only
-└ both/       → both surfaces
-```
-
-Add a `*.curation.json` file, commit, and push. Netlify runs `npm run build`, validates the definitions, and generates `data/curations.js`. Curation pages receive shareable `?curation=<slug>` URLs and films outside the weekly 70-film cache are hydrated through the existing TMDB detail proxy.
-
-See `content/curations/README.md`.
+- Removed the offline/PWA shell and Service Worker. KINOSIS is an online-first web service; local storage remains only as a signed-in recovery/sync cache.
+- Reduced navigation jank: only the active surface renders, live box-office refresh does not rebuild the Hero, and Arthouse no longer resolves four director filmographies on landing.
+- Removed the unused hidden `For You` client loop and legacy Library Home/filter code.
+- Added an exact KOBIS daily box-office Function. Without `KOBIS_API_KEY`, KINOSIS shows unranked `현재 상영작` instead of manufacturing a ranking from TMDB popularity.
+- Hero banners are full-surface links to film detail and use lighter opacity/transform transitions.
+- Film detail is rebuilt as a stronger information hub: masthead, rating/actions, synopsis/facts, cast, personal history, related films and an inline Where to Watch surface.
+- Where to Watch consolidates duplicate provider variants (for example Netflix + ad tier) and includes a `극장 · 현재 상영 중` option when the film is in the current theatrical set.
+- KR theatrical release dates are preferred when TMDB release-date data or KOBIS provides them.
+- P0 data-integrity fixes: rewatch flags are recalculated chronologically; current Library rating is fully derived from viewing logs; complete Library-film removal and Collection deletion carry cloud tombstones.
+- New editorial visual layer avoids expensive blur and adds restrained transitions/hover feedback while preserving reduced-motion behavior.
 
 ## Run
 
-For shell/UI-only testing, `index.html` can still be opened directly. Live TMDB search and Netlify Functions require a served Netlify environment.
+For the full production-like environment use Netlify Dev:
 
 ```bash
-npm install -g netlify-cli
-netlify login
-netlify link
 netlify dev
 ```
 
-Production is expected to be deployed from GitHub to Netlify.
+Production is expected to deploy from GitHub to Netlify.
 
 ## Environment variables
 
-GitHub Actions:
+### Netlify
 
 ```text
 TMDB_READ_ACCESS_TOKEN
-```
-
-Netlify:
-
-```text
-TMDB_READ_ACCESS_TOKEN
+KOBIS_API_KEY                 # required for exact Korean daily box-office ranking
 SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
-Do not put the TMDB token or a Supabase Secret/Service Role key in frontend JavaScript.
+### GitHub Actions
+
+```text
+TMDB_READ_ACCESS_TOKEN
+KOBIS_API_KEY                 # optional but recommended for the generated catalog
+```
+
+Do not put the TMDB token, KOBIS key, or any Supabase Secret/Service Role key in frontend JavaScript.
 
 ## Supabase
 
 Fresh project: run `supabase/SETUP_ALL.sql` once in Supabase SQL Editor.
 
-If the 0.4.1 core schema is already installed, **0.4.4 requires no additional DB migration**. `supabase/003_kinosis_043.sql` documents that fact.
+If the 0.4.1 core schema is already installed, 0.4.4.1 requires no additional DB migration.
 
-The app uses:
+The MVP uses Supabase Auth with PKCE and one RLS-protected `user_state` JSON payload per account. The browser cache is not an offline product mode; it is a local recovery/sync cache for the authenticated account.
 
-- Supabase Auth with PKCE.
-- one RLS-protected `user_state` JSON payload per account for the MVP.
-- `app_health` for the lightweight external health request.
+## File-based Arthouse Curation
 
-The old 0.4.2 curation SQL is retained only under `supabase/legacy/` for history and is not required.
+`content/curations/*.curation.json` is the editorial source. Git is the current CMS; no Admin account is required.
+
+```json
+{
+  "slug": "kiarostami",
+  "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
+  "source": { "type": "director", "name": "Abbas Kiarostami", "sort": "release_asc" }
+}
+```
+
+Director filmographies resolve only when the user opens that curation; the Arthouse landing does not fire those network requests.
 
 ## Data sources
 
-- TMDB — movie metadata and imagery.
-- JustWatch via TMDB Watch Providers — KR availability.
+- TMDB — movie metadata, imagery, search, recommendations and KR watch-provider bridge.
+- JustWatch via TMDB Watch Providers — streaming availability.
+- KOBIS — exact Korean daily box-office ranking when configured.
 
-The product includes visible attribution and the required TMDB non-endorsement notice.
-
-## Automatic catalog refresh
-
-`.github/workflows/refresh-catalog.yml` runs the catalog updater. 0.4.4 fetches up to four pages of KR now-playing results and a broader Arthouse seed set before enriching the catalog. Failed validation leaves the last known-good catalog intact.
+Visible attribution and the required TMDB non-endorsement notice remain in the product.
 
 ## Test
 
@@ -105,4 +90,4 @@ The product includes visible attribution and the required TMDB non-endorsement n
 npm test
 ```
 
-The suite checks the catalog, core UX surfaces, API contracts, Arthouse classifier, file-based curation index, and syntax of browser/Netlify modules.
+The suite checks catalog integrity, static UX/regression markers, KOBIS/TMDB Function contracts, the Arthouse classifier and file-based curation build validation.
