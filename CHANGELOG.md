@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.4.4.6 — Reliability / entity hydration architecture
+
+### P0 runtime fixes
+- Fixed the film-detail crash that produced the generic global error toast. `app.js` supplied `isSignedIn` as a boolean while the extracted Detail feature called it as a function; the call site now supplies the callback and the feature defensively accepts either contract.
+- Added a runtime regression test that executes the Detail renderer rather than only checking source markers, so this exact integration failure is now covered.
+- Added a localized Detail loading/error surface. Selecting a search result changes route immediately and shows a poster/skeleton/loading indicator instead of leaving an apparently blank page. Timeout/rate-limit failures expose Retry without destroying search or personal state.
+
+### Library / MY entity hydration
+- Personal movie IDs from Library, Logs and Collections no longer disappear when movie metadata is absent. Missing entities render explicit loading placeholders.
+- Cloud Sync now carries compact stable movie snapshots for only the films referenced by personal data. This restores title/year/poster on a fresh device without requiring the user to open each movie first.
+- Added `/api/movie-summaries` for legacy cloud payloads that contain IDs but no snapshots. Library/MY render first, then hydrate missing movie metadata in the background.
+- Availability/provider state remains volatile and is intentionally excluded from compact cloud snapshots.
+
+### Detail critical path
+- Split volatile provider/theatrical work into `/api/movie-availability`; it no longer blocks the base film page.
+- `/api/movie-detail` now uses one TMDB detail request with appended credits instead of separate detail + credits round trips.
+- Detail, availability and batch-summary requests share in-flight promises so repeated clicks/renders do not duplicate network work.
+- Static film metadata keeps a long cache horizon while availability uses a shorter horizon.
+- Removed the client-wide `cache: no-store` request mode that was undermining the server/CDN cache strategy.
+
+### Loading / media resilience
+- Replaced blank poster cards with explicit metadata-loading skeletons in Library, MY and cards.
+- Added Library metadata-sync status and retry UI.
+- Missing search/detail poster art uses intentional placeholders rather than empty image elements or the KINOSIS app icon.
+- Removed inline image error handlers that were ineffective under the production CSP; image fallback is handled through delegated listeners.
+- Added the previously missing `collectionCover()` helper discovered during the audit.
+
+### Architecture / audit
+- Added `assets/js/core/movie-entities.js` for canonical entity normalization, personal-ID discovery, loading-placeholder behavior and compact snapshot rules.
+- Added `assets/js/services/movie-loader.js` as the request orchestration layer, leaving Search/Detail feature rendering independent from network de-duplication.
+- Added `docs/ARCHITECTURE-0.4.4.6.md` documenting data ownership, critical paths and the staged `app.js` decomposition plan.
+- Removed an unused secondary stylesheet and kept the active visual cascade in `assets/css/app.css`.
+
 ## 0.4.4.5 — Core UX / performance pass
 
 ### Search

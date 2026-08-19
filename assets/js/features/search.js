@@ -55,8 +55,10 @@
       const action = isSignedIn()
         ? `<div class="search-actions"><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(record.id)}">${lib(record.id)?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(record.id)}">감상 기록</button></div>`
         : '';
+      const posterUrl = poster(record);
+      const media = posterUrl ? `<span class="search-poster-media"><span class="search-poster-placeholder"><span>FILM</span></span><img data-poster-image src="${escapeHtml(posterUrl)}" alt=""></span>` : '<span class="search-poster-placeholder"><span>FILM</span></span>';
       return `<article class="search-result${exact ? ' is-exact' : ''}" data-movie="${escapeHtml(record.id)}" tabindex="-1" role="option" aria-label="${escapeHtml(record.title)} ${record.year || ''}">
-        <img src="${escapeHtml(poster(record))}" alt="">
+        ${media}
         <div class="search-result-copy"><h3>${escapeHtml(record.title)}</h3><p>${record.originalTitle && record.originalTitle !== record.title ? `${escapeHtml(record.originalTitle)} · ` : ''}${record.year || '—'}${record.director ? ` · ${escapeHtml(record.director)}` : ''}${record.personRole ? ` · ${escapeHtml(record.personRole)}` : ''}</p></div>${action}
       </article>`;
     }

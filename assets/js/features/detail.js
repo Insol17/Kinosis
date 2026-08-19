@@ -10,10 +10,13 @@
     const writers = c.writers || [];
     const cinematographers = c.cinematographers || [];
     const related = c.related || [];
+    const signedIn = typeof c.isSignedIn === 'function' ? c.isSignedIn() : !!c.isSignedIn;
+    const posterUrl = c.poster(record);
+    const backdropUrl = c.backdrop(record);
     const directorButton = record.directorId
       ? `<button data-person-id="${c.escapeHtml(record.directorId)}" data-person-name="${c.escapeHtml(record.director || '')}">${c.escapeHtml(record.director || '—')}</button>`
       : `<b>${c.escapeHtml(record.director || '—')}</b>`;
-    const myRecord = c.isSignedIn()
+    const myRecord = signedIn
       ? (entry ? `<div class="my-activity">${entry.rating ? `<div class="activity-rating">★ ${entry.rating}</div>` : ''}${entry.review ? `<div class="activity-review">${c.escapeHtml(entry.review)}</div>` : ''}<div class="activity-empty">${logs.length ? `${logs.length}회 감상 · 최근 ${c.formatDate(logs[0]?.watchedAt)}` : entry.watchlist ? '보고싶어요에 저장됨' : '영화와의 기록이 저장됨'}</div>${c.viewingHistoryHtml(record)}<button class="danger-text-button" data-remove-library="${c.escapeHtml(record.id)}">이 영화의 모든 기록 삭제</button></div>` : '<div class="activity-empty">아직 이 영화에 대한 기록이 없습니다.</div>')
       : '<button class="streaming-signin compact" data-open-auth>로그인하고 감상 기록 남기기</button>';
 
@@ -21,10 +24,10 @@
       <button data-movie-back>${c.icon('back')}<span>${c.escapeHtml(c.backLabel)}</span></button>
       <button class="detail-share" data-share-movie="${c.escapeHtml(record.id)}">${c.icon('share')}<span>공유</span></button>
     </div>
-    <section class="detail-hero">
-      <img class="detail-backdrop" src="${c.escapeHtml(c.backdrop(record))}" alt=""><div class="detail-backdrop-shade"></div>
+    <section class="detail-hero ${backdropUrl ? '' : 'has-no-backdrop'}">
+      ${backdropUrl ? `<img class="detail-backdrop" src="${c.escapeHtml(backdropUrl)}" alt="">` : '<div class="detail-backdrop-placeholder" aria-hidden="true"></div>'}<div class="detail-backdrop-shade"></div>
       <div class="detail-hero-inner">
-        <img class="detail-poster" src="${c.escapeHtml(c.poster(record))}" alt="${c.escapeHtml(record.title)} 포스터">
+        ${posterUrl ? `<img class="detail-poster" data-poster-image src="${c.escapeHtml(posterUrl)}" alt="${c.escapeHtml(record.title)} 포스터">` : `<div class="detail-poster detail-poster-placeholder" aria-label="포스터 없음"><span>${c.escapeHtml(record.title)}</span></div>`}
         <div class="detail-intro">
           <div class="detail-badges">${Number(record.boxOfficeRank || 0) > 0 ? `<span class="detail-badge is-boxoffice">박스오피스 ${Number(record.boxOfficeRank)}위</span>` : ''}${c.releaseLabel ? `<span class="detail-badge is-cinema">${c.icon('cinema')}${c.escapeHtml(c.releaseLabel)}</span>` : ''}${c.isArt ? '<span class="detail-badge">KINOSIS ARTHOUSE</span>' : ''}</div>
           <h1>${c.escapeHtml(record.title)}</h1>

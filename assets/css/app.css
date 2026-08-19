@@ -691,3 +691,60 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
 /* 08 responsive additions */
 @media(max-width:900px){.curation-card-grid{grid-template-columns:1fr;}.detail-watch-band .watch-row{grid-template-columns:76px minmax(0,1fr) auto;}.library-filter-panel{right:auto;left:0;}}
 @media(max-width:760px){.curation-chapters{gap:38px;margin-top:32px;}.curation-chapter-head{grid-template-columns:38px minmax(0,1fr);}.curation-chapter-head h2{font-size:23px;}.library-filter-menu{flex:1;}.library-filter-menu>summary{width:100%;justify-content:center;}.library-filter-panel{grid-template-columns:1fr;left:0;right:auto;}.library-filter-panel .secondary-button{grid-column:1;}.detail-watch-band{margin-top:12px;}.detail-watch-band .detail-side-card{padding:20px 0;}.detail-watch-band .detail-side-title{display:block;}.detail-watch-band .detail-side-title h2{margin-top:4px;}.detail-body{padding:0;}.detail-section{padding:28px 0;}.detail-synopsis p{font-size:14px;}.detail-facts>div{grid-template-columns:90px minmax(0,1fr);}.my-year-summary{flex-wrap:wrap;}.my-year-summary strong{font-size:29px;}.search-result{grid-template-columns:44px minmax(0,1fr);}.search-result .search-actions{grid-column:2;}.search-result-copy h3{font-size:13px;}}
+
+/* 0.4.4.6 — resilient loading / entity hydration */
+.poster-wrap .poster-loading{position:absolute;z-index:1;inset:0;display:grid;place-items:center;align-content:center;gap:10px;background:linear-gradient(120deg,#171b20 20%,#222831 38%,#171b20 56%);background-size:220% 100%;animation:kinosis-shimmer 1.35s linear infinite;color:var(--muted-2);}
+.poster-wrap .poster-loading small{font-size:8px;font-weight:850;letter-spacing:.16em;}
+.poster-fallback.is-visible{z-index:1;align-items:center;justify-content:center;padding:18px;text-align:center;line-height:1.45;background:linear-gradient(145deg,#242a31,#111419);}
+.movie-card.is-metadata-loading{cursor:progress;}
+.movie-card.is-metadata-loading .card-title{color:var(--sub);}
+.loading-ring.mini{width:16px;height:16px;border-width:2px;}
+.library-sync-banner{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--sub);font-size:10px;}
+.library-sync-banner.is-error{justify-content:space-between;border-color:rgba(255,120,120,.32);color:#e2b2b2;}
+.row-poster-loading,.review-poster-loading{display:grid;place-items:center;flex:0 0 auto;width:36px;height:54px;border:1px solid var(--line);border-radius:5px;background:linear-gradient(120deg,#171b20 20%,#222831 38%,#171b20 56%);background-size:220% 100%;animation:kinosis-shimmer 1.35s linear infinite;}
+.row-poster-loading.is-empty,.review-poster-loading.is-empty{animation:none;background:var(--surface-2);}
+.review-poster-loading{width:46px;height:69px;}
+.calendar-poster-loading{display:block;background:linear-gradient(120deg,#171b20 20%,#222831 38%,#171b20 56%);background-size:220% 100%;animation:kinosis-shimmer 1.35s linear infinite;}
+.search-poster-placeholder{width:48px;height:72px;display:grid;place-items:center;flex:0 0 auto;background:var(--surface-2);border:1px solid var(--line);color:var(--muted-2);font-size:7px;font-weight:900;letter-spacing:.12em;}
+.detail-progress-shell{min-height:min(620px,72vh);display:grid;grid-template-columns:minmax(180px,280px) minmax(0,520px);align-items:center;justify-content:center;gap:48px;padding:64px 24px;}
+.detail-progress-visual{aspect-ratio:2/3;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);}
+.detail-progress-visual img{width:100%;height:100%;object-fit:cover;display:block;opacity:.72;}
+.detail-progress-poster{width:100%;height:100%;background:linear-gradient(120deg,#171b20 20%,#252c35 38%,#171b20 56%);background-size:220% 100%;animation:kinosis-shimmer 1.35s linear infinite;}
+.detail-progress-copy h1{margin:8px 0 10px;font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-.05em;}
+.detail-progress-copy>p:not(.eyebrow){max-width:440px;color:var(--muted);font-size:12px;line-height:1.65;}
+.detail-skeleton-line{height:8px;width:68%;margin-top:12px;background:linear-gradient(90deg,var(--surface-2),#2a3038,var(--surface-2));background-size:220% 100%;animation:kinosis-shimmer 1.35s linear infinite;}
+.detail-skeleton-line.wide{width:92%;margin-top:28px;}
+.detail-skeleton-line.short{width:42%;}
+.detail-load-error{max-width:620px;margin:80px auto;padding:42px;border:1px solid var(--line);background:var(--surface-1);}
+.detail-load-error h1{margin:7px 0 12px;font-size:38px;letter-spacing:-.045em;}
+.detail-load-error>p:not(.eyebrow){color:var(--muted);font-size:12px;line-height:1.7;}
+.detail-load-error-actions{display:flex;gap:8px;margin-top:24px;}
+.watch-loading{display:flex;align-items:center;gap:10px;padding:14px 0;color:var(--muted);font-size:10px;}
+.watch-rows.is-stale{opacity:.55;}
+@keyframes kinosis-shimmer{0%{background-position:100% 0}100%{background-position:-120% 0}}
+@media(max-width:760px){.detail-progress-shell{grid-template-columns:110px minmax(0,1fr);gap:20px;min-height:420px;padding:44px 8px}.detail-progress-copy h1{font-size:28px}.detail-skeleton-line{display:none}.detail-load-error{margin:40px 8px;padding:28px 22px}}
+@media(prefers-reduced-motion:reduce){.poster-wrap .poster-loading,.row-poster-loading,.review-poster-loading,.calendar-poster-loading,.detail-progress-poster,.detail-skeleton-line{animation:none}}
+
+/* 0.4.4.6 — media fallbacks */
+.detail-backdrop-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.012));
+}
+.detail-poster-placeholder {
+  display: grid;
+  place-items: end start;
+  padding: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.72);
+}
+.detail-poster-placeholder span {
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.search-poster-media{position:relative;width:48px;height:72px;display:block;overflow:hidden;flex:0 0 auto;}
+.search-poster-media .search-poster-placeholder{position:absolute;inset:0;width:100%;height:100%;}
+.search-poster-media img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;}
+.search-poster-media.is-poster-error .search-poster-placeholder{z-index:2;}

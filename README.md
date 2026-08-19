@@ -1,4 +1,4 @@
-# KINOSIS 0.4.4.5
+# KINOSIS 0.4.4.6
 
 KINOSIS is a responsive film discovery and personal film-life web MVP.
 
@@ -11,18 +11,18 @@ MY        → overview / reviews / stats / settings
 
 Search is global. Film detail and curation pages have shareable URLs. Library and MY require an account; guests can browse Discover, Arthouse, Search and film detail.
 
-## 0.4.4.5 focus
+## 0.4.4.6 focus
 
-This release is the core UX/performance pass for the five production surfaces. It intentionally does not add country selection, Social, AI recommendations or new Discover shelves.
+0.4.4.6 is a reliability patch on top of the 0.4.4.5 UX pass. The priority is that a saved film remains visible, a search result opens a usable Detail page quickly, and partial network failure degrades explicitly instead of producing blank cards or a global error toast.
 
-- Search is instant-local first, merges live TMDB results after 250 ms, separates people/movies, ranks exact matches first and supports keyboard listbox navigation.
-- TMDB movie id is the canonical identity. Original-title/year is fallback identity only for records that do not have a TMDB id.
-- Film Detail prioritizes KINOSIS relationship state and places Where to Watch directly after the hero. Static metadata and availability use different cache horizons.
-- ARTHOUSE distinguishes `director-archive` from explicit `editorial` curation objects and indexes both as collection cards.
-- Library is retrieval-first: search, sort, collection navigation, compact filters and grid/list view.
-- MY uses real ARIA tabs and a reduced overview. Export supports KINOSIS JSON and Letterboxd-compatible Diary/Watchlist CSV.
-- Movie/curation sharing uses `/share` OG preview HTML before redirecting into the app.
-- Search and Detail are feature modules; the stylesheet cascade is consolidated and current locale behavior is centralized around KR / ko-KR.
+- Fixed the Detail integration crash caused by an `isSignedIn` dependency contract mismatch.
+- Detail navigation is immediate: a visible loading shell renders first, static film metadata follows, then Where to Watch and recommendations hydrate in the background.
+- `/api/movie-detail` is the static critical path; `/api/movie-availability` owns volatile provider/theatrical state; `/api/movie-summaries` batch-hydrates personal records.
+- Library/MY are ID-first. Missing movie metadata can show a loading placeholder but can no longer remove a saved movie/log from the screen.
+- Cloud Sync includes compact stable snapshots only for films referenced by personal data, while volatile availability remains separately refreshed.
+- `core/movie-entities.js` owns movie entity/snapshot rules and `services/movie-loader.js` owns request orchestration/in-flight de-duplication. Search and Detail remain isolated feature renderers.
+- Loading skeletons, retry states and intentional poster fallbacks replace blank cards.
+- The current architectural boundary and the staged `app.js` decomposition plan are documented in `docs/ARCHITECTURE-0.4.4.6.md`.
 
 ## OTT/provider identity
 

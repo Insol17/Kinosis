@@ -5,6 +5,8 @@ process.env.KOBIS_API_KEY='kobis-test-not-real';
 const shareModule=await import('../netlify/functions/share.mjs');
 const searchModule=await import('../netlify/functions/movie-search.mjs');
 const detailModule=await import('../netlify/functions/movie-detail.mjs');
+const availabilityDetailModule=await import('../netlify/functions/movie-availability.mjs');
+const summariesModule=await import('../netlify/functions/movie-summaries.mjs');
 const boxOfficeModule=await import('../netlify/functions/box-office.mjs');
 const recommendationModule=await import('../netlify/functions/movie-recommendations.mjs');
 const personModule=await import('../netlify/functions/person-films.mjs');
@@ -41,7 +43,7 @@ try{
     if(value.includes('/movie/15/external_ids')) return Response.json({imdb_id:'tt0033467'});
     if(value.includes('/movie/15/watch/providers')) return Response.json({results:{KR:{link:'https://example.test/watch',flatrate:[{provider_id:8,provider_name:'Netflix',logo_path:'/netflix.jpg',display_priority:1}],ads:[{provider_id:8,provider_name:'Netflix Standard with Ads',logo_path:'/netflix.jpg',display_priority:2}]}}});
     if(value.includes('/movie/15/keywords')) return Response.json({keywords:[{name:'newspaper'}]});
-    if(value.includes('/movie/15')) return Response.json({...movieFixture,runtime:119,tagline:'',genres:[{id:18,name:'드라마'}],production_companies:[],production_countries:[{name:'미국'}],original_language:'en'});
+    if(value.includes('/movie/15')) return Response.json({...movieFixture,runtime:119,tagline:'',genres:[{id:18,name:'드라마'}],production_companies:[],production_countries:[{name:'미국'}],original_language:'en',credits:{crew:[{id:2,job:'Director',name:'Orson Welles'}],cast:[{id:2,name:'Orson Welles',character:'Kane'}]}});
     throw new Error(`unexpected URL ${value}`);
   };
 
@@ -55,8 +57,17 @@ try{
 
   const detailResponse=await detailModule.default(new Request('https://kinosis.test/api/movie-detail?id=15'));
   assert.equal(detailResponse.status,200); const detailData=await detailResponse.json();
-  assert.equal(detailData.director,'Orson Welles'); assert.equal(detailData.directorId,2); assert.equal(detailData.imdbId,'tt0033467'); assert.equal(detailData.providers[0].type,'subscription'); assert.equal(detailData.cast[0].id,2); assert.equal(detailData.theatricalStatus,'now'); assert.equal(detailData.productionCountries[0],'미국');
+  assert.equal(detailData.director,'Orson Welles'); assert.equal(detailData.directorId,2); assert.equal(detailData.cast[0].id,2); assert.equal(detailData.productionCountries[0],'미국');
+  assert.ok(!('providers' in detailData),'static detail must not block on volatile availability');
   assert.ok(detailData.heroBackdropUrl?.includes('/w1280/'),'detail hero should be capped at w1280');
+
+  const detailAvailabilityResponse=await availabilityDetailModule.default(new Request('https://kinosis.test/api/movie-availability?id=15'));
+  assert.equal(detailAvailabilityResponse.status,200); const detailAvailabilityData=await detailAvailabilityResponse.json();
+  assert.equal(detailAvailabilityData.providers[0].type,'subscription'); assert.equal(detailAvailabilityData.theatricalStatus,'now');
+
+  const summariesResponse=await summariesModule.default(new Request('https://kinosis.test/api/movie-summaries?ids=15'));
+  assert.equal(summariesResponse.status,200); const summariesData=await summariesResponse.json();
+  assert.equal(summariesData.results[0].id,'15'); assert.equal(summariesData.results[0].title,'시민 케인');
 
   const boxOfficeResponse=await boxOfficeModule.default(new Request('https://kinosis.test/api/box-office'));
   assert.equal(boxOfficeResponse.status,200); const boxOfficeData=await boxOfficeResponse.json();
@@ -93,9 +104,9 @@ try{
   assert.equal(upcomingData.source,'tmdb-discover-theatrical');
   assert.equal(new Set(upcomingData.results.map(row=>row.id)).size,upcomingData.results.length,'upcoming results must be unique');
 
-  for(const payload of [searchData,detailData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
+  for(const payload of [searchData,detailData,detailAvailabilityData,summariesData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
     assert.ok(!JSON.stringify(payload).includes('kobis-test-not-real'),'KOBIS secret leaked in API response');
   }
-  console.log('netlify-functions.test: OG share/search/detail/KOBIS/recommendations/person/director/canonical-id/availability/live-streaming/upcoming contracts OK');
+  console.log('netlify-functions.test: OG share/search/static-detail/progressive-availability/summaries/KOBIS/recommendations/person/director/canonical-id/live-streaming/upcoming contracts OK');
 }finally{globalThis.fetch=realFetch;}

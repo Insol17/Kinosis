@@ -19,6 +19,8 @@
   const STATE_INTEGRITY = window.KINOSIS_STATE_INTEGRITY || null;
   const SEARCH_FACTORY = window.KINOSIS_SEARCH || null;
   const DETAIL_FACTORY = window.KINOSIS_DETAIL || null;
+  const MOVIE_LOADER_FACTORY = window.KINOSIS_MOVIE_LOADER || null;
+  const MOVIE_ENTITIES = window.KINOSIS_MOVIE_ENTITIES || null;
   const LOCALE = window.KINOSIS_LOCALE || {};
 
   const STORAGE_KEY = 'kinosis.mvp.v2.state';
@@ -58,6 +60,7 @@
   let calendarCursor = new Date();
   let libraryQueryTimer = null;
   let libraryFilter = { q: '', sort: 'recent', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
+  let libraryHydrationState = { status: 'idle', pending: 0, message: '' };
 
 
   const relatedState = new Map();
@@ -122,25 +125,15 @@
   }
 
   function normalizeMovieRecord(movie) {
-    if (!movie || movie.id == null) return null;
-    return {
-      ...movie,
-      id: String(movie.id),
-      title: movie.title || movie.originalTitle || 'Untitled',
-      originalTitle: movie.originalTitle || '',
-      year: movie.year || String(movie.releaseDate || '').slice(0, 4) || null,
-      providers: Array.isArray(movie.providers) ? movie.providers : [],
-      genres: Array.isArray(movie.genres) ? movie.genres : [],
-      source: movie.source || 'catalog',
-    };
+    return MOVIE_ENTITIES?.normalize?.(movie) || null;
   }
 
   function poster(movie) {
-    return movie?.posterUrl || './icons/icon.svg';
+    return movie?.posterUrl || '';
   }
 
   function backdrop(movie) {
-    return movie?.heroBackdropUrl || movie?.backdropUrl || movie?.posterUrl || './icons/icon.svg';
+    return movie?.heroBackdropUrl || movie?.backdropUrl || movie?.posterUrl || '';
   }
 
   function uniqueById(list) {
@@ -184,6 +177,22 @@
     return merged;
   }
 
+  function personalMovieIds(sourceState = state) {
+    return MOVIE_ENTITIES?.personalIds?.(sourceState) || [];
+  }
+
+  function moviePlaceholder(id) {
+    return MOVIE_ENTITIES?.placeholder?.(id) || null;
+  }
+
+  function personalMovie(id) {
+    return movie(id) || moviePlaceholder(id);
+  }
+
+  function compactMovieSnapshot(record) {
+    return MOVIE_ENTITIES?.compactSnapshot?.(record) || null;
+  }
+
   function genreNames(record) {
     return (record?.genres || []).map((genre) => typeof genre === 'string' ? genre : genre?.name).filter(Boolean);
   }
@@ -225,7 +234,7 @@
       profile: { name: '', handle: '', bio: '내 영화생활을 기록합니다.', updatedAt: null },
       subscriptions: [],
       settings: { lastExportAt: null },
-      meta: { modifiedAt: null, lastSyncedAt: null, cloudRevision: 0, localRevision: 0, dirtySince: null, syncVersion: 5, deletedLogs: {}, deletedCollections: {}, deletedLibrary: {}, subscriptionsUpdatedAt: null },
+      meta: { modifiedAt: null, lastSyncedAt: null, cloudRevision: 0, localRevision: 0, dirtySince: null, syncVersion: 6, deletedLogs: {}, deletedCollections: {}, deletedLibrary: {}, subscriptionsUpdatedAt: null },
       movieCache: {},
       library: {},
       logs: [],
@@ -347,18 +356,26 @@
 
   function cloudPayload(sourceState) {
     const payload = normalizeState(JSON.parse(JSON.stringify(sourceState)));
-    // TMDB metadata and availability snapshots are replaceable caches, not user-authored data.
-    payload.movieCache = {};
+    // Personal records reference TMDB ids. Keep only compact snapshots for those ids so a
+    // fresh device can render Library/MY immediately without first opening every film.
+    const snapshots = {};
+    for (const id of personalMovieIds(sourceState)) {
+      const record = movie(id) || sourceState?.movieCache?.[id];
+      const snapshot = compactMovieSnapshot(record);
+      if (snapshot) snapshots[id] = snapshot;
+    }
+    payload.movieCache = snapshots;
+    // Availability is volatile and remains device/API hydrated.
     payload.availability = { snapshot: {}, newlyAvailable: {}, lastCheckedAt: null };
     payload.meta.localRevision = 0;
     payload.meta.dirtySince = null;
-    payload.meta.syncVersion = 5;
+    payload.meta.syncVersion = 6;
     return payload;
   }
 
   function applyRemoteState(remotePayload, previousState = state) {
     const remote = normalizeState(remotePayload);
-    remote.movieCache = Object.assign({}, previousState?.movieCache || {});
+    remote.movieCache = Object.assign({}, remote.movieCache || {}, previousState?.movieCache || {});
     remote.availability = {
       snapshot: Object.assign({}, previousState?.availability?.snapshot || {}),
       newlyAvailable: Object.assign({}, previousState?.availability?.newlyAvailable || {}),
@@ -372,7 +389,7 @@
     const local = normalizeState(localState);
     const remote = normalizeState(remoteState);
     const out = normalizeState(remote);
-    out.movieCache = Object.assign({}, local.movieCache || {});
+    out.movieCache = Object.assign({}, remote.movieCache || {}, local.movieCache || {});
     const deletedLibrary = mergeTombstones(remote.meta?.deletedLibrary, local.meta?.deletedLibrary);
     out.meta.deletedLibrary = deletedLibrary;
     const libraryKeys = new Set([...Object.keys(remote.library || {}), ...Object.keys(local.library || {})]);
@@ -425,7 +442,7 @@
     out.meta.lastSyncedAt = local.meta?.lastSyncedAt || remote.meta?.lastSyncedAt || null;
     out.meta.dirtySince = local.meta?.dirtySince || null;
     out.meta.localRevision = Number(local.meta?.localRevision || 0);
-    out.meta.syncVersion = 5;
+    out.meta.syncVersion = 6;
     return normalizeState(out);
   }
 
@@ -532,7 +549,11 @@
         rememberCachedMovies();
         persistLocalCache();
         if (state.meta?.dirtySince) await pushCloudState();
-        else { syncState = { status: 'online', lastSyncedAt: remote.updated_at, message: '' }; renderAll(); }
+        else {
+          syncState = { status: 'online', lastSyncedAt: remote.updated_at, message: '' };
+          renderAll();
+          hydrateReferencedMovies().catch(() => {});
+        }
       }
     } catch (error) {
       syncState = { status: 'error', lastSyncedAt: state.meta?.lastSyncedAt || null, message: error.message || 'Cloud pull failed' };
@@ -617,8 +638,10 @@
       suppressCloudSync = false;
       syncState = { status: 'error', lastSyncedAt: state.meta?.lastSyncedAt || null, message: error.message || 'Cloud unavailable' };
     }
-    await Promise.allSettled([refreshWatchlistAvailability()]);
     renderAll();
+    // Metadata hydration must never block the user's personal surfaces.
+    // Render ids/snapshots first, then fill missing movie entities in the background.
+    Promise.allSettled([hydrateReferencedMovies(), refreshWatchlistAvailability()]).catch(() => {});
   }
 
   function lib(id) {
@@ -638,7 +661,7 @@
   }
 
   function allSavedMovies() {
-    return Object.keys(state.library).map(movie).filter(Boolean);
+    return Object.keys(state.library).map(personalMovie);
   }
 
   function logsForMovie(id) {
@@ -653,7 +676,7 @@
 
   function latestUniqueMovies() {
     const seen = new Set();
-    return latestLogs().map((log) => movie(log.movieId)).filter((record) => record && !seen.has(String(record.id)) && seen.add(String(record.id)));
+    return latestLogs().map((log) => personalMovie(log.movieId)).filter((record) => !seen.has(String(record.id)) && seen.add(String(record.id)));
   }
 
   function recomputeLibraryFromLogs(movieId) {
@@ -743,8 +766,22 @@
     return location.protocol === 'http:' || location.protocol === 'https:';
   }
 
-  async function apiJson(path, { signal } = {}) {
-    const response = await fetch(path, { headers: { Accept: 'application/json' }, signal, cache: 'no-store' });
+  async function apiJson(path, { signal, timeoutMs = 12000 } = {}) {
+    const controller = signal ? null : new AbortController();
+    const timer = controller && timeoutMs > 0 ? setTimeout(() => controller.abort(), timeoutMs) : null;
+    let response;
+    try {
+      response = await fetch(path, { headers: { Accept: 'application/json' }, signal: signal || controller?.signal });
+    } catch (error) {
+      if (error?.name === 'AbortError') {
+        const timeoutError = new Error('요청 시간이 초과되었습니다.');
+        timeoutError.code = 'TIMEOUT';
+        throw timeoutError;
+      }
+      throw error;
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
     let data = null;
     try { data = await response.json(); } catch {}
     if (!response.ok) {
@@ -764,33 +801,85 @@
     };
   }
 
-  async function fetchMovieDetail(id, { persist = false } = {}) {
-    const data = await apiJson(`/api/movie-detail?id=${encodeURIComponent(id)}`);
-    const detailed = rememberMovie({ ...data, source: 'tmdb-live', detailLoaded: true }, { persist });
+  let movieLoader = null;
+  function getMovieLoader() {
+    if (movieLoader) return movieLoader;
+    if (!MOVIE_LOADER_FACTORY?.create) return null;
+    movieLoader = MOVIE_LOADER_FACTORY.create({
+      apiJson,
+      rememberMovie,
+      getMovie: movie,
+      persistLocalCache,
+    });
+    return movieLoader;
+  }
+
+  async function fetchMovieDetail(id, { persist = false, force = false } = {}) {
+    const loader = getMovieLoader();
+    if (loader) return loader.loadDetail(id, { persist, force });
+    const data = await apiJson(`/api/movie-detail?id=${encodeURIComponent(id)}`, { timeoutMs: 10000 });
+    const detailed = rememberMovie({ ...data, source: 'tmdb-live', detailLoaded: true, metadataLoading: false }, { persist });
     if (persist) persistLocalCache();
     return detailed;
   }
 
-  async function ensureMovieDetail(id, { persist = false } = {}) {
+  async function fetchMovieAvailability(id, { persist = false, force = false } = {}) {
+    const loader = getMovieLoader();
+    if (loader?.loadAvailability) return loader.loadAvailability(id, { persist, force });
+    const current = movie(id);
+    const data = await apiJson(`/api/movie-availability?id=${encodeURIComponent(id)}`, { timeoutMs: 10000 });
+    const updated = rememberMovie({ ...current, ...data, availabilityLoading: false }, { persist });
+    if (persist) persistLocalCache();
+    return updated;
+  }
+
+  async function ensureMovieDetail(id, { persist = false, throwOnFailure = false, force = false } = {}) {
     let current = movie(id);
-    if (!current && canUseLiveApi()) {
+    const needs = !current || current.detailLoaded !== true;
+    if (needs && canUseLiveApi()) {
       try {
-        current = await fetchMovieDetail(id, { persist });
+        current = await fetchMovieDetail(id, { persist, force });
       } catch (error) {
         console.warn('detail load failed', error);
-        return null;
+        if (throwOnFailure) throw error;
       }
-    }
-    if (!current) return null;
-    const needs = current.source === 'tmdb-live' && !current.detailLoaded;
-    if (needs && canUseLiveApi()) {
-      try { current = await fetchMovieDetail(id, { persist }); }
-      catch (error) { console.warn('detail fallback', error); }
-    } else if (persist && !CATALOG.movies?.some((item) => String(item.id) === String(id))) {
+    } else if (persist && current && !CATALOG.movies?.some((item) => String(item.id) === String(id))) {
       rememberMovie(current, { persist: true });
       persistLocalCache();
     }
-    return current;
+    return current || null;
+  }
+
+  async function hydrateReferencedMovies({ force = false } = {}) {
+    if (!isSignedIn() || !canUseLiveApi()) return false;
+    const ids = personalMovieIds();
+    const missing = ids.filter((id) => {
+      const record = movie(id);
+      return !record || record.metadataLoading || (force && record.source === 'placeholder');
+    });
+    if (!missing.length) {
+      libraryHydrationState = { status: 'ready', pending: 0, message: '' };
+      return false;
+    }
+
+    libraryHydrationState = { status: 'loading', pending: missing.length, message: '' };
+    if (activeView === 'library') renderLibrary();
+    if (activeView === 'my') renderMy();
+
+    try {
+      const loader = getMovieLoader();
+      if (loader) await loader.loadSummaries(missing, { persist: true });
+      else {
+        for (const id of missing.slice(0, 20)) await ensureMovieDetail(id, { persist: true }).catch(() => null);
+      }
+      libraryHydrationState = { status: 'ready', pending: 0, message: '' };
+    } catch (error) {
+      libraryHydrationState = { status: 'error', pending: missing.filter((id) => !movie(id)).length, message: error.message || '영화 정보를 불러오지 못했습니다.' };
+    }
+
+    if (activeView === 'library') renderLibrary();
+    if (activeView === 'my') renderMy();
+    return true;
   }
 
   function gateHtml(area) {
@@ -894,7 +983,7 @@
   function heroSlideMarkup(record, key, index) {
     const providers = heroProviders(record);
     const title = record.logoUrl
-      ? `<div class="hero-title-wrap"><img class="hero-title-logo" src="${escapeHtml(record.logoUrl)}" alt="${escapeHtml(record.title)}" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><h2 class="${heroTitleClass(record.title)}" hidden>${escapeHtml(record.title)}</h2></div>`
+      ? `<div class="hero-title-wrap"><img class="hero-title-logo" data-hero-title-logo src="${escapeHtml(record.logoUrl)}" alt="${escapeHtml(record.title)}"><h2 class="${heroTitleClass(record.title)}" hidden>${escapeHtml(record.title)}</h2></div>`
       : `<h2 class="${heroTitleClass(record.title)}">${escapeHtml(record.title)}</h2>`;
     return `<article class="hero-slide ${index === 0 ? 'is-active' : ''}" data-hero-slide="${index}" aria-hidden="${index === 0 ? 'false' : 'true'}">
       <img class="hero-bg" src="${escapeHtml(backdrop(record))}" alt="" ${index ? 'loading="lazy"' : ''}>
@@ -937,14 +1026,20 @@
     const entry = lib(record.id);
     const libraryCard = variant === 'library';
     const arthouseCard = variant === 'arthouse';
-    return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''}" data-movie="${escapeHtml(record.id)}" tabindex="0" aria-label="${escapeHtml(record.title)} 상세보기">
+    const loading = !!record.metadataLoading;
+    const posterUrl = poster(record);
+    const media = loading
+      ? `<div class="poster-loading" aria-label="영화 정보를 불러오는 중"><span class="loading-ring mini"></span><small>LOADING</small></div>`
+      : posterUrl
+        ? `<div class="poster-fallback is-visible">${escapeHtml(record.title || '포스터 없음')}</div><img data-poster-image src="${escapeHtml(posterUrl)}" alt="${escapeHtml(record.title)} 포스터" loading="lazy">`
+        : `<div class="poster-fallback is-visible">${escapeHtml(record.title || '포스터 없음')}</div>`;
+    return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''}" data-movie="${escapeHtml(record.id)}" tabindex="0" aria-label="${escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}">
       <div class="poster-wrap">
-        <img src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터" loading="lazy" onerror="this.style.display='none'">
-        <div class="poster-fallback">${escapeHtml(record.title)}</div>
-        ${availabilityBadges(record)}
-        <div class="card-overlay">${isSignedIn() ? `<div class="quick-actions"><button class="tiny-button ${entry?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${record.id}" aria-label="${entry?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${entry?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${record.id}">감상 기록</button></div>` : ''}</div>
+        ${media}
+        ${!loading ? availabilityBadges(record) : ''}
+        <div class="card-overlay">${isSignedIn() && !loading ? `<div class="quick-actions"><button class="tiny-button ${entry?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${record.id}" aria-label="${entry?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${entry?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${record.id}">감상 기록</button></div>` : ''}</div>
       </div>
-      <div class="card-info"><p class="card-title">${escapeHtml(record.title)}</p><div class="card-meta"><span>${record.year || '—'}</span>${availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div></div>
+      <div class="card-info"><p class="card-title">${escapeHtml(record.title)}</p><div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div></div>
     </article>`;
   }
 
@@ -1111,6 +1206,17 @@
     element.innerHTML = pinned.map((collection) => `<button class="side-link" data-collection="${escapeHtml(collection.id)}">${icon('folder')}${escapeHtml(collection.name)}</button>`).join('');
   }
 
+  function collectionCover(collection) {
+    if (!collection) return '';
+    const preferred = collection.coverMovieId ? personalMovie(collection.coverMovieId) : null;
+    if (preferred?.posterUrl || preferred?.backdropUrl) return backdrop(preferred);
+    for (const id of collection.movieIds || []) {
+      const record = movie(id);
+      if (record?.posterUrl || record?.backdropUrl) return backdrop(record);
+    }
+    return '';
+  }
+
   function libraryHeader(title, summary = '', extras = '') { return `<header class="library-header simple-library-head"><div><h1>${escapeHtml(title)}</h1>${summary ? `<span>${escapeHtml(summary)}</span>` : ''}</div><div class="library-header-actions">${extras}</div></header>`; }
 
   function libraryGenres(list) {
@@ -1157,21 +1263,28 @@
     return `<div class="library-list">${list.map((record) => {
       const entry = lib(record.id);
       const last = logsForMovie(record.id)[0];
-      return `<div class="library-row" data-movie="${record.id}" tabindex="0"><img src="${escapeHtml(poster(record))}" alt=""><div><div class="library-row-title">${escapeHtml(record.title)}</div><div class="library-row-sub">${escapeHtml(record.director || '')} · ${genreNames(record).slice(0, 2).map(escapeHtml).join(' · ')}</div></div><div class="library-row-cell">${record.year || '—'}</div><div class="library-row-cell rating">${entry?.rating ? `★ ${entry.rating}` : '—'}</div><div class="library-row-cell">${last ? formatDate(last.watchedAt) : '—'}</div><div class="library-row-cell">${availableOnMine(record) ? '내 구독에서 가능' : isInTheatres(record) ? '극장 상영' : '—'}</div></div>`;
+      const image = record.metadataLoading ? '<span class="row-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="row-poster-loading is-empty"></span>';
+      return `<div class="library-row ${record.metadataLoading ? 'is-metadata-loading' : ''}" data-movie="${record.id}" tabindex="0">${image}<div><div class="library-row-title">${escapeHtml(record.title)}</div><div class="library-row-sub">${record.metadataLoading ? '영화 정보를 동기화하는 중입니다.' : `${escapeHtml(record.director || '')}${record.director ? ' · ' : ''}${genreNames(record).slice(0, 2).map(escapeHtml).join(' · ')}`}</div></div><div class="library-row-cell">${record.metadataLoading ? '…' : (record.year || '—')}</div><div class="library-row-cell rating">${entry?.rating ? `★ ${entry.rating}` : '—'}</div><div class="library-row-cell">${last ? formatDate(last.watchedAt) : '—'}</div><div class="library-row-cell">${record.metadataLoading ? '동기화 중' : availableOnMine(record) ? '내 구독에서 가능' : isInTheatres(record) ? '극장 상영' : '—'}</div></div>`;
     }).join('')}</div>`;
+  }
+
+  function libraryHydrationBanner() {
+    if (libraryHydrationState.status === 'loading') return `<div class="library-sync-banner" role="status"><span class="loading-ring mini"></span><span>저장된 영화 정보 ${libraryHydrationState.pending}편을 불러오는 중입니다.</span></div>`;
+    if (libraryHydrationState.status === 'error') return `<div class="library-sync-banner is-error" role="status"><span>${escapeHtml(libraryHydrationState.message || '일부 영화 정보를 불러오지 못했습니다.')}</span><button class="secondary-button mini" data-retry-library-hydration>다시 시도</button></div>`;
+    return '';
   }
 
   function listPage(title, summary, list) {
     const filtered=filterLibrary(list);
-    return `${libraryHeader(title, `${filtered.length}편`)}${libraryToolbar(list)}${filtered.length?(libraryView==='grid'?`<div class="library-grid">${filtered.map(record=>card(record,'library')).join('')}</div>`:libraryListRows(filtered)):`<div class="empty-state"><b>영화가 없습니다.</b></div>`}`;
+    return `${libraryHeader(title, `${filtered.length}편`)}${libraryHydrationBanner()}${libraryToolbar(list)}${filtered.length?(libraryView==='grid'?`<div class="library-grid">${filtered.map(record=>card(record,'library')).join('')}</div>`:libraryListRows(filtered)):`<div class="empty-state"><b>영화가 없습니다.</b></div>`}`;
   }
 
   function renderCollectionDetail(collection) {
-    const movies = collection.movieIds.map(movie).filter(Boolean);
+    const movies = collection.movieIds.map(personalMovie);
     const cover = collectionCover(collection);
     return `${libraryHeader(collection.name, collection.description || '직접 만든 컬렉션', `<div class="collection-head-actions"><button class="secondary-button" data-edit-collection="${escapeHtml(collection.id)}">${icon('edit')} 편집</button><button class="danger-text-button" data-delete-collection="${escapeHtml(collection.id)}">삭제</button></div>`)}
       <section class="collection-detail-hero ${cover ? 'has-cover' : ''}">${cover ? `<img src="${escapeHtml(cover)}" alt="">` : ''}<div><p class="eyebrow">PERSONAL COLLECTION</p><h2>${escapeHtml(collection.name)}</h2><p>${escapeHtml(collection.description || `${movies.length}편의 영화`)}</p></div></section>
-      ${movies.length ? `<div class="collection-order-list">${movies.map((record, index) => `<div class="collection-order-row"><button class="collection-film-main" data-movie="${record.id}"><img src="${escapeHtml(poster(record))}" alt=""><span><b>${escapeHtml(record.title)}</b><small>${record.year || '—'} · ${escapeHtml(record.director || '')}</small></span></button><div class="collection-order-actions"><button data-collection-move="up" data-collection-id="${escapeHtml(collection.id)}" data-index="${index}" ${index === 0 ? 'disabled' : ''}>↑</button><button data-collection-move="down" data-collection-id="${escapeHtml(collection.id)}" data-index="${index}" ${index === movies.length - 1 ? 'disabled' : ''}>↓</button><button data-collection-remove="${record.id}" data-collection-id="${escapeHtml(collection.id)}">×</button></div></div>`).join('')}</div>` : '<div class="empty-state"><b>아직 영화가 없습니다.</b><span>영화 상세에서 Collection에 추가해보세요.</span></div>'}`;
+      ${movies.length ? `<div class="collection-order-list">${movies.map((record, index) => `<div class="collection-order-row"><button class="collection-film-main" data-movie="${record.id}">${record.metadataLoading ? '<span class="row-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="row-poster-loading is-empty"></span>'}<span><b>${escapeHtml(record.title)}</b><small>${record.year || '—'} · ${escapeHtml(record.director || '')}</small></span></button><div class="collection-order-actions"><button data-collection-move="up" data-collection-id="${escapeHtml(collection.id)}" data-index="${index}" ${index === 0 ? 'disabled' : ''}>↑</button><button data-collection-move="down" data-collection-id="${escapeHtml(collection.id)}" data-index="${index}" ${index === movies.length - 1 ? 'disabled' : ''}>↓</button><button data-collection-remove="${record.id}" data-collection-id="${escapeHtml(collection.id)}">×</button></div></div>`).join('')}</div>` : '<div class="empty-state"><b>아직 영화가 없습니다.</b><span>영화 상세에서 Collection에 추가해보세요.</span></div>'}`;
   }
 
   function renderLibrary() {
@@ -1207,15 +1320,16 @@
     const recent = latestUniqueMovies()[0];
     const name = state.profile.name || currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'KINOSIS User';
     const initial = name[0]?.toUpperCase() || 'K';
-    element.innerHTML = `<section class="profile-hero"><div class="profile-cover">${recent ? `<img src="${escapeHtml(backdrop(recent))}" alt="">` : ''}</div><div class="profile-main"><div class="profile-identity"><div class="profile-left"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '')}</p><p class="profile-email">${escapeHtml(currentUser?.email || '')}</p></div></div><button class="secondary-button" id="editProfile">${icon('edit')} 프로필 수정</button></div><div class="profile-counts"><div class="profile-count"><strong>${counts.films}</strong><span>영화</span></div><div class="profile-count"><strong>${counts.ratings}</strong><span>평가</span></div><div class="profile-count"><strong>${counts.reviews}</strong><span>리뷰</span></div><div class="profile-count"><strong>${counts.collections}</strong><span>컬렉션</span></div></div></div></section>`;
+    const recentCover = recent && !recent.metadataLoading && (recent.backdropUrl || recent.posterUrl) ? backdrop(recent) : '';
+    element.innerHTML = `<section class="profile-hero"><div class="profile-cover">${recentCover ? `<img src="${escapeHtml(recentCover)}" alt="">` : ''}</div><div class="profile-main"><div class="profile-identity"><div class="profile-left"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '')}</p><p class="profile-email">${escapeHtml(currentUser?.email || '')}</p></div></div><button class="secondary-button" id="editProfile">${icon('edit')} 프로필 수정</button></div><div class="profile-counts"><div class="profile-count"><strong>${counts.films}</strong><span>영화</span></div><div class="profile-count"><strong>${counts.ratings}</strong><span>평가</span></div><div class="profile-count"><strong>${counts.reviews}</strong><span>리뷰</span></div><div class="profile-count"><strong>${counts.collections}</strong><span>컬렉션</span></div></div></div></section>`;
   }
 
   function viewingTimeline(logs = latestLogs()) {
     return `<div class="review-list viewing-timeline">${logs.map((log) => {
-      const record = movie(log.movieId);
-      if (!record) return '';
+      const record = personalMovie(log.movieId);
       const count = logsForMovie(record.id).length;
-      return `<article class="review-row timeline-row"><button class="review-main" data-movie="${record.id}"><img src="${escapeHtml(poster(record))}" alt=""><div><div class="review-title">${escapeHtml(record.title)}</div><div class="review-meta">${formatDate(log.watchedAt)}${log.rewatch || count > 1 ? ' · ↻ REWATCH' : ''}${log.rating ? ` · ★ ${log.rating}` : ''}</div>${log.review ? `<div class="review-text">${escapeHtml(log.review)}</div>` : '<div class="review-text muted-review">감상 기록</div>'}</div></button><div class="review-actions"><button class="secondary-button mini" data-log-edit="${escapeHtml(log.id)}">수정</button><button class="ghost-icon danger" data-log-delete="${escapeHtml(log.id)}">×</button></div></article>`;
+      const image = record.metadataLoading ? '<span class="review-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="review-poster-loading is-empty"></span>';
+      return `<article class="review-row timeline-row"><button class="review-main" data-movie="${record.id}">${image}<div><div class="review-title">${escapeHtml(record.title)}</div><div class="review-meta">${formatDate(log.watchedAt)}${log.rewatch || count > 1 ? ' · ↻ REWATCH' : ''}${log.rating ? ` · ★ ${log.rating}` : ''}</div>${log.review ? `<div class="review-text">${escapeHtml(log.review)}</div>` : '<div class="review-text muted-review">감상 기록</div>'}</div></button><div class="review-actions"><button class="secondary-button mini" data-log-edit="${escapeHtml(log.id)}">수정</button><button class="ghost-icon danger" data-log-delete="${escapeHtml(log.id)}">×</button></div></article>`;
     }).join('')}</div>`;
   }
 
@@ -1236,8 +1350,8 @@
       const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       const logs = logsByDate[date] || [];
       const firstLog = logs[0];
-      const record = firstLog ? movie(firstLog.movieId) : null;
-      cells += `<button class="calendar-cell ${date === isoDate(new Date()) ? 'today' : ''} ${logs.length ? 'has-logs' : ''}" ${logs.length ? `data-calendar-day="${date}"` : 'disabled'}><span class="day-number">${day}</span>${record ? `<img class="calendar-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)}">` : ''}${logs.length > 1 ? `<span class="calendar-count">${logs.length}</span>` : ''}</button>`;
+      const record = firstLog ? personalMovie(firstLog.movieId) : null;
+      cells += `<button class="calendar-cell ${date === isoDate(new Date()) ? 'today' : ''} ${logs.length ? 'has-logs' : ''}" ${logs.length ? `data-calendar-day="${date}"` : 'disabled'}><span class="day-number">${day}</span>${record && poster(record) ? `<img class="calendar-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)}">` : record?.metadataLoading ? '<span class="calendar-poster calendar-poster-loading"></span>' : ''}${logs.length > 1 ? `<span class="calendar-count">${logs.length}</span>` : ''}</button>`;
     }
     return `<div class="calendar-head"><div><p class="eyebrow">VIEWING CALENDAR</p><h2>${year}년 ${month + 1}월</h2></div><div class="calendar-controls"><button class="secondary-button" data-cal="prev">‹</button><button class="secondary-button" data-cal="next">›</button></div></div><div class="calendar-grid">${['일', '월', '화', '수', '목', '금', '토'].map((label) => `<div class="calendar-weekday">${label}</div>`).join('')}${cells}</div>`;
   }
@@ -1337,6 +1451,9 @@
       rows.push(`<div class="watch-row ${provider.isMine ? 'is-mine' : ''}">${mark}<span class="watch-row-copy"><strong>${escapeHtml(provider.label || provider.name)}</strong><small>${escapeHtml(types || '제공')}</small></span><span class="watch-row-type">${provider.isMine ? '내 구독' : escapeHtml((provider.types || [provider.type]).includes('subscription') ? '구독' : types)}</span></div>`);
     }
     const fresh = freshnessLabel(record.availabilityUpdatedAt);
+    if (record.availabilityLoading) {
+      return `<section class="detail-side-card watch-card is-loading" aria-live="polite"><div class="detail-side-title"><p>WHERE TO WATCH</p><h2>감상처 확인 중</h2></div><div class="watch-loading"><span class="loading-ring mini"></span><span>극장과 OTT 제공 정보를 불러오고 있습니다.</span></div>${rows.length ? `<div class="watch-rows is-stale">${rows.join('')}</div>` : ''}</section>`;
+    }
     if (!rows.length) {
       return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">극장 또는 OTT 제공 정보가 확인되면 이곳에 표시됩니다.</p></section>`;
     }
@@ -1374,12 +1491,19 @@
     const cinematographers = uniqueById((record.cinematographers || []).map((person) => ({ ...person, id: person.id || `dp-${person.name}`, title: person.name }))).slice(0, 2);
     const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'MY' : 'DISCOVER';
     document.title = `${record.title} — KINOSIS`;
-    const html = DETAIL_FACTORY?.render?.(record, {
-      entry, logs, related, country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
-      isArt: art.isArt, isSignedIn: isSignedIn(), escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
-      watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card,
-    });
-    if (html) document.getElementById('moviePage').innerHTML = html;
+    try {
+      if (!DETAIL_FACTORY?.render) throw new Error('Detail renderer is unavailable.');
+      const html = DETAIL_FACTORY.render(record, {
+        entry, logs, related, country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
+        isArt: art.isArt, isSignedIn, escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
+        watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card,
+      });
+      if (!html) throw new Error('Detail renderer returned empty output.');
+      document.getElementById('moviePage').innerHTML = html;
+    } catch (error) {
+      console.error('detail render failed', error);
+      document.getElementById('moviePage').innerHTML = detailErrorHtml(record, error);
+    }
   }
 
 
@@ -1498,26 +1622,79 @@
     return true;
   }
 
-  async function openMovie(id, { route = 'push', from = null } = {}) {
-    let record = movie(id);
-    if (!record && canUseLiveApi()) record = await ensureMovieDetail(id, { persist: false });
-    if (!record) {
-      UI.toast('영화 정보를 찾지 못했습니다.');
-      return;
-    }
+  function detailLoadingHtml(record) {
+    const title = record?.metadataLoading ? '영화 정보를 확인하는 중' : (record?.title || '영화 상세정보');
+    const posterUrl = poster(record);
+    return `<div class="detail-progress-shell" role="status" aria-live="polite">
+      <div class="detail-progress-visual">${posterUrl ? `<img src="${escapeHtml(posterUrl)}" alt="">` : '<div class="detail-progress-poster"></div>'}</div>
+      <div class="detail-progress-copy">
+        <div class="loading-ring"></div>
+        <p class="eyebrow">LOADING FILM</p>
+        <h1>${escapeHtml(title)}</h1>
+        <p>작품 정보와 감상 가능 서비스를 불러오고 있습니다.</p>
+        <div class="detail-skeleton-line wide"></div><div class="detail-skeleton-line"></div><div class="detail-skeleton-line short"></div>
+      </div>
+    </div>`;
+  }
+
+  function detailErrorHtml(record, error) {
+    const title = record?.metadataLoading ? '영화 상세정보' : (record?.title || '영화 상세정보');
+    const reason = error?.code === 'TIMEOUT'
+      ? '응답 시간이 길어 요청을 중단했습니다.'
+      : error?.status === 429
+        ? '요청이 많아 잠시 제한되었습니다.'
+        : '상세정보를 불러오지 못했습니다.';
+    return `<div class="detail-load-error">
+      <p class="eyebrow">DETAIL UNAVAILABLE</p>
+      <h1>${escapeHtml(title)}</h1>
+      <p>${escapeHtml(reason)} 검색 결과나 저장된 기록은 그대로 보존됩니다.</p>
+      <div class="detail-load-error-actions"><button class="primary-button" data-detail-retry="${escapeHtml(record?.id || detailMovieId || '')}">다시 불러오기</button><button class="secondary-button" data-movie-back>돌아가기</button></div>
+    </div>`;
+  }
+
+  async function openMovie(id, { route = 'push', from = null, force = false } = {}) {
+    const key = String(id);
+    let record = movie(key) || moviePlaceholder(key);
+
     previousView = from || (activeView === 'movie' ? previousView : activeView);
-    scrollPositions.set(previousView, window.scrollY);
-    detailMovieId = String(id);
+    if (activeView !== 'movie') scrollPositions.set(previousView, window.scrollY);
+    detailMovieId = key;
     setView('movie', { skipGate: true, keepScroll: false, route: 'none', deferRender: true });
+
     if (canUseLiveApi()) {
-      const historyValue = { kinRoute: true, view: 'movie', movieId: String(id), from: previousView };
-      if (route === 'replace') history.replaceState(historyValue, '', routeUrlForMovie(id, previousView));
-      else if (route === 'push') history.pushState(historyValue, '', routeUrlForMovie(id, previousView));
+      const historyValue = { kinRoute: true, view: 'movie', movieId: key, from: previousView };
+      if (route === 'replace') history.replaceState(historyValue, '', routeUrlForMovie(key, previousView));
+      else if (route === 'push') history.pushState(historyValue, '', routeUrlForMovie(key, previousView));
     }
-    document.getElementById('moviePage').innerHTML = `<div class="detail-loading"><div class="loading-ring"></div><b>${escapeHtml(record.title)}</b><span>상세정보를 불러오는 중…</span></div>`;
-    record = await ensureMovieDetail(id, { persist: !!lib(id) }) || record;
-    renderMoviePage(record);
-    loadRelatedRecommendations(id).catch(() => {});
+
+    const page = document.getElementById('moviePage');
+    if (page) page.innerHTML = detailLoadingHtml(record);
+
+    try {
+      const detailed = await ensureMovieDetail(key, { persist: !!lib(key), throwOnFailure: true, force });
+      if (!detailed) throw new Error('Movie detail unavailable');
+      record = rememberMovie({ ...detailed, availabilityLoading: !detailed.availabilityUpdatedAt }, { persist: !!lib(key) }) || detailed;
+      if (activeView !== 'movie' || String(detailMovieId) !== key) return;
+      renderMoviePage(record);
+
+      fetchMovieAvailability(key, { persist: !!lib(key), force })
+        .then((updated) => {
+          if (activeView === 'movie' && String(detailMovieId) === key && updated) renderMoviePage(updated);
+        })
+        .catch((error) => {
+          console.warn('movie availability failed', error);
+          const current = movie(key);
+          if (current) rememberMovie({ ...current, availabilityLoading: false, availabilityError: error.message || 'availability failed' }, { persist: !!lib(key) });
+          if (activeView === 'movie' && String(detailMovieId) === key) renderMoviePage(movie(key) || record);
+        });
+
+      loadRelatedRecommendations(key).catch(() => {});
+    } catch (error) {
+      console.warn('openMovie detail failed', error);
+      if (activeView !== 'movie' || String(detailMovieId) !== key) return;
+      const fallback = movie(key) || record;
+      if (page) page.innerHTML = detailErrorHtml(fallback, error);
+    }
   }
 
   function backFromMovie() {
@@ -1566,11 +1743,13 @@
 
   async function openLog(id, logId = null) {
     if (!requireAuth()) return;
-    let record = movie(id);
-    if (!record) return;
-    record = await ensureMovieDetail(id, { persist: true }) || record;
-    rememberMovie(record, { persist: true });
-    persistLocalCache();
+    let record = movie(id) || personalMovie(id);
+    if (!record.metadataLoading) {
+      rememberMovie(record, { persist: true });
+      persistLocalCache();
+    } else {
+      hydrateReferencedMovies().catch(() => {});
+    }
     const existing = logId ? state.logs.find((log) => String(log.id) === String(logId)) : null;
     const priorCount = logsForMovie(id).filter((log) => !existing || String(log.id) !== String(existing.id)).length;
     document.getElementById('logMovieId').value = String(id);
@@ -1744,9 +1923,9 @@
     document.getElementById('dayDialogTitle').textContent = formatDate(date);
     document.getElementById('dayDialogSummary').textContent = `${logs.length}편 감상${logs.reduce((sum, log) => sum + (movie(log.movieId)?.runtime || 0), 0) ? ` · ${fmtRuntime(logs.reduce((sum, log) => sum + (movie(log.movieId)?.runtime || 0), 0))}` : ''}`;
     document.getElementById('dayDialogList').innerHTML = logs.map((log) => {
-      const record = movie(log.movieId);
-      if (!record) return '';
-      return `<div class="day-log-row"><button class="day-log-main" data-movie="${record.id}"><img src="${escapeHtml(poster(record))}" alt=""><span><b>${escapeHtml(record.title)}</b><small>${log.rating ? `★ ${log.rating}` : '평점 없음'}${log.rewatch ? ' · ↻ 재관람' : ''}</small>${log.review ? `<em>${escapeHtml(log.review)}</em>` : ''}</span></button><button class="secondary-button mini" data-log-edit="${escapeHtml(log.id)}">수정</button></div>`;
+      const record = personalMovie(log.movieId);
+      const image = record.metadataLoading ? '<span class="row-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="row-poster-loading is-empty"></span>';
+      return `<div class="day-log-row"><button class="day-log-main" data-movie="${record.id}">${image}<span><b>${escapeHtml(record.title)}</b><small>${log.rating ? `★ ${log.rating}` : '평점 없음'}${log.rewatch ? ' · ↻ 재관람' : ''}</small>${log.review ? `<em>${escapeHtml(log.review)}</em>` : ''}</span></button><button class="secondary-button mini" data-log-edit="${escapeHtml(log.id)}">수정</button></div>`;
     }).join('');
     UI.showDialog('dayDialog');
   }
@@ -1825,7 +2004,7 @@
       UI.toast('Diary와 Watchlist CSV를 내보냈습니다.');
       return;
     }
-    downloadBlob(`kinosis-${stamp}.json`, JSON.stringify({ version: 5, exportedAt: new Date().toISOString(), locale: LOCALE, state }, null, 2), 'application/json');
+    downloadBlob(`kinosis-${stamp}.json`, JSON.stringify({ version: 6, exportedAt: new Date().toISOString(), locale: LOCALE, state }, null, 2), 'application/json');
     UI.toast('KINOSIS 전체 데이터를 내보냈습니다.');
   }
 
@@ -1941,6 +2120,29 @@
     event.target.value = '';
   }
 
+  document.addEventListener('error', (event) => {
+    const image = event.target;
+    if (image?.matches?.('[data-poster-image]')) {
+      if (image.classList.contains('detail-poster')) {
+        const fallback = document.createElement('div');
+        fallback.className = 'detail-poster detail-poster-placeholder';
+        fallback.setAttribute('aria-label', '포스터 없음');
+        const label = document.createElement('span');
+        label.textContent = String(image.alt || '').replace(/ 포스터$/, '') || '포스터 없음';
+        fallback.appendChild(label);
+        image.replaceWith(fallback);
+      } else {
+        image.parentElement?.classList.add('is-poster-error');
+        image.remove();
+      }
+      return;
+    }
+    if (image?.matches?.('[data-hero-title-logo]')) {
+      image.hidden = true;
+      if (image.nextElementSibling) image.nextElementSibling.hidden = false;
+    }
+  }, true);
+
   document.addEventListener('click', async (event) => {
     const close = event.target.closest('[data-close]');
     if (close) { UI.closeDialog(close.dataset.close); return; }
@@ -1971,6 +2173,17 @@
 
     const removeLibrary = event.target.closest('[data-remove-library]');
     if (removeLibrary) { await removeMovieFromLibrary(removeLibrary.dataset.removeLibrary); return; }
+
+    const detailRetry = event.target.closest('[data-detail-retry]');
+    if (detailRetry) {
+      await openMovie(detailRetry.dataset.detailRetry, { route: 'none', from: previousView, force: true });
+      return;
+    }
+
+    if (event.target.closest('[data-retry-library-hydration]')) {
+      hydrateReferencedMovies({ force: true }).catch(() => {});
+      return;
+    }
 
     const deleteCollectionButton = event.target.closest('[data-delete-collection]');
     if (deleteCollectionButton) { await deleteCollection(deleteCollectionButton.dataset.deleteCollection); return; }
