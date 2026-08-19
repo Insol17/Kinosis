@@ -1,19 +1,5 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
-
-function normalize(value) {
-  return String(value || '')
-    .normalize('NFKC')
-    .toLowerCase()
-    .replace(/\+/g, 'plus')
-    .replace(/[^a-z0-9가-힣]+/g, '');
-}
-
-function providerMatches(requested, providerName) {
-  const a = normalize(requested);
-  const b = normalize(providerName);
-  if (!a || !b) return false;
-  return a === b || b.startsWith(a) || a.startsWith(b);
-}
+import { providerMatches } from '../../shared/providers.mjs';
 
 function movieRow(movie, provider) {
   return {
@@ -50,24 +36,17 @@ export default async (request) => {
     const available = providerPayload?.results || [];
     const matched = [];
     for (const name of requested) {
-      const target = normalize(name);
-      const exact = available.filter((provider) => normalize(provider.provider_name) === target);
-      const hits = exact.length ? exact : available.filter((provider) => providerMatches(name, provider.provider_name));
-      for (const hit of hits) if (!matched.some((provider) => provider.provider_id === hit.provider_id)) matched.push(hit);
+      for (const hit of available.filter((provider) => providerMatches(name, provider.provider_name))) {
+        if (!matched.some((provider) => provider.provider_id === hit.provider_id)) matched.push(hit);
+      }
     }
 
     const chosen = matched.slice(0, 8);
     const pages = await Promise.all(chosen.map(async (provider) => {
       const data = await tmdb('/discover/movie', {
-        language: 'ko-KR',
-        region: 'KR',
-        watch_region: 'KR',
-        with_watch_providers: provider.provider_id,
-        with_watch_monetization_types: 'flatrate',
-        include_adult: false,
-        include_video: false,
-        sort_by: 'popularity.desc',
-        page: 1,
+        language: 'ko-KR', region: 'KR', watch_region: 'KR', with_watch_providers: provider.provider_id,
+        with_watch_monetization_types: 'flatrate', include_adult: false, include_video: false,
+        sort_by: 'popularity.desc', page: 1,
       });
       return { provider, results: data.results || [] };
     }));

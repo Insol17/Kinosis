@@ -1,4 +1,4 @@
-# KINOSIS 0.4.4.3
+# KINOSIS 0.4.4.4
 
 KINOSIS is a responsive film discovery and personal film-life web MVP.
 
@@ -11,20 +11,20 @@ MY        → overview / reviews / stats / settings
 
 Search is global. Film detail and curation pages have shareable URLs. Library and MY require an account; guests can browse Discover, Arthouse, Search and film detail.
 
-## 0.4.4.3 focus
+## 0.4.4.4 focus
 
-This is a stability and core-service pass rather than a social/features release.
+This release is a data-integrity and film-detail pass. It keeps the product IA stable while fixing the remaining sync race, duplicated movie identities, thin Upcoming data and the film-detail hierarchy.
 
-- Fixed the Director Curation render/ensure loop. Cached Curation data now returns `changed:false`; a loaded curation rerenders only once after new data arrives.
-- Cloud writes now use a Supabase revision RPC with per-user serialization and optimistic conflict detection instead of non-atomic read → merge → overwrite.
-- `내 구독 서비스에서` now queries TMDB's KR provider catalog live rather than being limited to the weekly ~70-film Discover cache.
-- Library is a result set: Log / 보고싶어요 / 좋아요 / Collection automatically establish the film relationship; the redundant direct `+ Library` action is gone.
-- Added complete account deletion through an authenticated Netlify Function. The Supabase Secret Key stays server-only.
-- Consolidated the 0.4.4.2 visual override layer into one `app.css`, fixed low-contrast secondary tokens and 44px pointer targets, and kept the Korean-first Pretendard system.
-- Hero slides stay mounted and transition with opacity/transform instead of rebuilding the entire Hero DOM on every autoplay tick.
-- Added explicit Netlify Function rate limits to public TMDB/KOBIS proxy endpoints.
-- Arthouse editorial seeds moved out of classifier logic into `data/arthouse.js`.
-- Added a global JS error fallback so unexpected runtime errors produce a user-facing recovery message rather than silently freezing.
+- Film detail now follows the proven poster + title/meta + personal actions + synopsis/cast/credits + watch-availability grammar used by mature film services, while keeping KINOSIS's graphite/amber visual language and personal viewing-history emphasis.
+- Dynamic Curation and Search results dedupe by both TMDB id and normalized original-title/year identity so one film does not appear several times under duplicate upstream records.
+- Víctor Erice uses `mode: "solo-features"`: the director resolver keeps only feature-length movies for which Erice is the sole credited director. The four-film collection is therefore no longer polluted by shorts, anthology segments or duplicate credits.
+- Cloud sync adds a client-side `localRevision` generation guard. A network write that finishes after the user made another local edit can no longer replace the live state with its older snapshot.
+- Delete tombstones are merged by the latest timestamp per entity instead of source order.
+- Replaceable TMDB movie metadata and availability snapshots are kept local rather than uploaded as user-authored Cloud state.
+- Upcoming discovery uses a KR theatrical Discover query (`release_type 3|2`, next 120 days). When the weekly bundled catalog is too thin, `/api/upcoming` fills the rail live.
+- Hero interaction uses proper carousel semantics, touch swipe, 44px controls and does not resume keyboard-stopped autoplay until the user explicitly restarts it.
+- Provider and Arthouse editorial source data now live under `shared/` and generate browser data, avoiding separate hardcoded server/client lists.
+- Letterboxd bulk matching respects the public search rate-limit budget and backs off on HTTP 429.
 
 ## OTT/provider identity
 
@@ -70,7 +70,7 @@ KOBIS_API_KEY                 # optional but recommended for the generated catal
 
 Fresh project: run `supabase/SETUP_ALL.sql` once in Supabase SQL Editor.
 
-Existing 0.4.x project: **run `supabase/004_kinosis_0443.sql` once**. It adds the `revision` column and `kinosis_write_user_state()` RPC used by 0.4.4.3 atomic sync.
+Existing 0.4.x project: **run `supabase/004_kinosis_0443.sql` once**. It adds the `revision` column and `kinosis_write_user_state()` RPC used by the 0.4.4.x atomic sync layer.
 
 The browser still uses only the Publishable Key and RLS. The server-only Secret Key is used solely by `/api/delete-account` after validating the signed-in user's access token.
 
@@ -103,4 +103,4 @@ Visible attribution and the required TMDB non-endorsement notice remain in the p
 npm test
 ```
 
-The suite checks catalog integrity, static UX/security markers, TMDB/KOBIS Function contracts, live My Streaming, Arthouse classification, Curation build validation, the Curation no-rerender regression, and OTT canonical/logo behavior.
+The suite checks catalog/rail integrity, static UX/security markers, TMDB/KOBIS Function contracts, live My Streaming/Upcoming, Arthouse classification, Curation build validation, duplicate movie collapse, the Curation no-rerender regression, OTT canonical/logo behavior and Cloud state-integrity helpers.

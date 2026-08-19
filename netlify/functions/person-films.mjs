@@ -1,5 +1,12 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
 
+
+function movieIdentity(movie) {
+  const title = String(movie.original_title || movie.title || '').normalize('NFKC').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');
+  const year = String(movie.release_date || '').slice(0,4);
+  return title && year ? `${title}|${year}` : '';
+}
+
 function normalizeMovie(movie, role = '') {
   return {
     id: String(movie.id),
@@ -46,10 +53,15 @@ export default async (request) => {
       if (!current || score > current.score) byId.set(key, { ...row, score });
     }
 
-    const results = [...byId.values()]
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 40)
-      .map((row) => normalizeMovie(row.movie, row.role));
+    const identities = new Set();
+    const results = [];
+    for (const row of [...byId.values()].sort((a, b) => b.score - a.score)) {
+      const identity = movieIdentity(row.movie);
+      if (identity && identities.has(identity)) continue;
+      if (identity) identities.add(identity);
+      results.push(normalizeMovie(row.movie, row.role));
+      if (results.length >= 40) break;
+    }
 
     return json({
       person: {

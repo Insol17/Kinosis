@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.4.4.4 — Film detail, data integrity and duplicate control
+
+### Film detail
+- Rebuilt the film page around a mature film-service hierarchy: poster/backdrop, title/original title, director/year/runtime/genres, primary personal actions, personal rating, synopsis, portrait cast, credits/facts, Where to Watch and related films.
+- Personal KINOSIS state is visually stronger than the external TMDB score; TMDB remains secondary reference data.
+- Added cast portraits, writer/cinematography facts and provider freshness text.
+- Where to Watch distinguishes confirmed current theatrical state from merely recent theatrical release and keeps provider rows informational with one clear external availability CTA.
+- Removed legacy detail CSS rules that were still layering an obsolete gradient/layout under the new detail UI.
+
+### Curation / search correctness
+- Search, client rails, person filmographies and Director Curations collapse duplicates by TMDB id plus normalized original-title/year identity.
+- Added Director Curation modes. `solo-features` fetches movie detail/credits and keeps only feature-length films where the selected person is the sole credited Director.
+- Víctor Erice's collection now uses `solo-features`, preventing shorts/anthology segments/duplicate records from turning a four-feature collection into an oversized list.
+- Curation source definitions support `personId`, `include` and `exclude` as editorial overrides without title-specific application logic.
+
+### Cloud integrity
+- Added a local mutation generation (`localRevision`) check around async Cloud writes so edits made while a write is in flight are never replaced by the older network snapshot.
+- Tombstone merges now retain the newest deletion timestamp per id.
+- Cloud payloads exclude replaceable `movieCache` and availability snapshots; opening a Log/detail path no longer schedules Cloud sync just because metadata was cached.
+- Added a small `state-integrity.js` module and regression tests for tombstone ordering and in-flight mutation generations.
+
+### Discovery data
+- Upcoming catalog refresh now uses TMDB Discover for KR theatrical releases over the next 120 days, preferring full theatrical release dates (`3|2`).
+- Added cached `/api/upcoming` live fallback when the bundled weekly catalog cannot fill the seven-card Upcoming rail.
+- Weekly catalog validation now requires seven items for visible Discover rails instead of accepting obviously thin three-item data.
+- The theatrical detail state no longer equates a recent theatrical release date with confirmed current exhibition; TMDB KR now-playing is used for current state.
+
+### Interaction / architecture
+- Hero uses carousel semantics, a dedicated movie-open control, touch swipe and keyboard-friendly autoplay behavior.
+- Shared provider and Arthouse editorial definitions are generated from `shared/providers.mjs` and `shared/arthouse.mjs` rather than duplicated client/server hardcoded lists.
+- Letterboxd import spaces title matching requests under the public search rate limit and retries 429 responses with backoff.
+- MY's review/history destination is labeled `기록`, and automatic Cloud sync is simplified in Settings with diagnostics under an advanced disclosure.
+
 ## 0.4.4.3 — Stability, sync concurrency and provider identity
 
 ### P0 stability

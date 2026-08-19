@@ -21,6 +21,13 @@ const GENRES = new Map([
   ['서부', 37], ['western', 37],
 ]);
 
+
+function movieIdentity(movie) {
+  const title = String(movie.original_title || movie.title || '').normalize('NFKC').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');
+  const year = String(movie.release_date || '').slice(0,4);
+  return title && year ? `${title}|${year}` : '';
+}
+
 function normalizeMovie(movie) {
   return {
     id: String(movie.id),
@@ -86,9 +93,13 @@ export default async (request) => {
 
     const [movieData, personData, genreData] = await Promise.all(tasks);
     const map = new Map();
+    const identities = new Set();
     for (const movie of [...(movieData.results || []), ...(genreData.results || [])]) {
       if (!movie?.id || map.has(String(movie.id))) continue;
+      const identity = movieIdentity(movie);
+      if (identity && identities.has(identity)) continue;
       map.set(String(movie.id), normalizeMovie(movie));
+      if (identity) identities.add(identity);
     }
 
     const results = [...map.values()].slice(0, 30);

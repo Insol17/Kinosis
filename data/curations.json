@@ -1,5 +1,5 @@
 {
-  "version": "0.4.4.3",
+  "version": "0.4.4.4",
   "items": [
     {
       "slug": "kiarostami",
@@ -14,7 +14,11 @@
       "source": {
         "type": "director",
         "name": "Abbas Kiarostami",
-        "sort": "release_asc"
+        "personId": "",
+        "sort": "release_asc",
+        "mode": "all-directed",
+        "include": [],
+        "exclude": []
       },
       "movies": []
     },
@@ -24,14 +28,18 @@
       "eyebrow": "DIRECTOR'S ARCHIVE",
       "title": "셀룰로이드의 정령: 빅토르 에리세 컬렉션",
       "subtitle": "Víctor Erice",
-      "description": "기억과 빛, 영화가 남긴 잔상을 따라가는 빅토르 에리세의 필모그래피.",
+      "description": "장편 네 편에 응축된 기억과 빛, 영화가 남긴 잔상을 따라가는 빅토르 에리세의 세계.",
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 20,
       "source": {
         "type": "director",
         "name": "Víctor Erice",
-        "sort": "release_asc"
+        "personId": "",
+        "sort": "release_asc",
+        "mode": "solo-features",
+        "include": [],
+        "exclude": []
       },
       "movies": []
     },
@@ -48,7 +56,11 @@
       "source": {
         "type": "director",
         "name": "Hou Hsiao-hsien",
-        "sort": "release_asc"
+        "personId": "",
+        "sort": "release_asc",
+        "mode": "all-directed",
+        "include": [],
+        "exclude": []
       },
       "movies": []
     },
@@ -65,7 +77,11 @@
       "source": {
         "type": "director",
         "name": "Quentin Tarantino",
-        "sort": "release_asc"
+        "personId": "",
+        "sort": "release_asc",
+        "mode": "all-directed",
+        "include": [],
+        "exclude": []
       },
       "movies": []
     }

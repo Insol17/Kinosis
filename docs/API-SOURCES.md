@@ -42,3 +42,9 @@ This logic is data-driven; individual movie titles are not hardcoded.
 - Exact box office: if KOBIS is missing/fails, remove ranking semantics rather than fabricate rank numbers.
 - Live search/detail: preserve local catalog results where possible and report remote failure.
 - Saved movie durability: personal state stores a normalized movie snapshot keyed by TMDB ID so Library entries do not depend on remaining in the current weekly Discover catalog.
+
+## 0.4.4.4 theatrical semantics
+
+- `박스오피스`: KOBIS daily ranking when configured. TMDB popularity is never labeled as a rank.
+- `공개 예정작`: TMDB Discover, `region=KR`, theatrical release types `3|2`, next 120 days. A cached `/api/upcoming` endpoint fills a thin weekly snapshot at runtime.
+- `상영 중`: requires current evidence such as KOBIS/current catalog or TMDB KR now-playing. A recent theatrical release date alone is labeled `최근 극장 개봉`, not `상영 중`.

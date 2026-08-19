@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import { ARTHOUSE_DATA } from '../shared/arthouse.mjs';
 
 const TOKEN = process.env.TMDB_READ_ACCESS_TOKEN;
 const KOBIS_KEY = process.env.KOBIS_API_KEY || '';
@@ -15,16 +16,8 @@ const JS_OUT = path.join(ROOT, 'data/catalog.js');
 const META_OUT = path.join(ROOT, 'data/meta.json');
 const headers = { Authorization: `Bearer ${TOKEN}`, accept: 'application/json' };
 
-const ART_SEED_TITLES = [
-  ['The Rules of the Game',1939],['Citizen Kane',1941],['Breathless',1960],['Tokyo Story',1953],
-  ['Journey to Italy',1954],['Night and Fog',1956],['Sherlock Jr.',1924],['Greed',1924],
-  ['Battleship Potemkin',1925],['Mulholland Drive',2001],['10',2002]
-];
-const ART_DIRECTOR_QUERIES = [
-  'David Lynch','Abbas Kiarostami','Wong Kar-wai','Edward Yang','Hou Hsiao-hsien','Apichatpong Weerasethakul',
-  'Hong Sang-soo','Lee Chang-dong','Park Chan-wook','Bong Joon-ho','Hirokazu Kore-eda','Ryusuke Hamaguchi',
-  'Victor Erice','Pedro Costa','Jia Zhangke','Claire Denis','Kelly Reichardt','Celine Sciamma','Jonathan Glazer','Kleber Mendonca Filho'
-];
+const ART_SEED_TITLES = ARTHOUSE_DATA.titleSeeds;
+const ART_DIRECTOR_QUERIES = [...new Set(ARTHOUSE_DATA.directorSeeds)];
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -183,7 +176,7 @@ const imageBase = config?.images?.secure_base_url || 'https://image.tmdb.org/t/p
 
 const [nowPlayingPages, upcomingPages, trending, topRated, streaming] = await Promise.all([
   Promise.all([1,2,3,4].map(page => tmdb('/movie/now_playing', { language:LANGUAGE, region:REGION, page }))),
-  Promise.all([1,2].map(page => tmdb('/movie/upcoming', { language:LANGUAGE, region:REGION, page }))),
+  Promise.all([1,2,3].map(page => tmdb('/discover/movie', { language:LANGUAGE, region:REGION, page, include_adult:false, include_video:false, with_release_type:'3|2', 'release_date.gte':new Date().toISOString().slice(0,10), 'release_date.lte':new Date(Date.now()+120*86400000).toISOString().slice(0,10), sort_by:'popularity.desc' }))),
   tmdb('/trending/movie/week', { language:LANGUAGE }),
   tmdb('/movie/top_rated', { language:LANGUAGE, region:REGION, page:1 }),
   tmdb('/discover/movie', { language:LANGUAGE, region:REGION, watch_region:REGION, with_watch_monetization_types:'flatrate', include_adult:false, include_video:false, sort_by:'popularity.desc', page:1 })
@@ -270,14 +263,15 @@ const catalog = {
     streaming:{name:'JustWatch via TMDB',active:true},
     theatrical:{name:`TMDB now_playing (${REGION})`,active:true},
     boxOffice:{name:boxOffice.mode==='kobis'?'KOBIS daily box office':'KOBIS unavailable · unranked TMDB now_playing fallback',active:true,mode:boxOffice.mode},
-    art:{name:'KINOSIS curated seed engine · KMDb cinephile canon inspired',active:true}
+    art:{name:`KINOSIS editorial seed engine · ${ARTHOUSE_DATA.version}`,active:true}
   },
   featured, featuredSlides, movies:enriched, sections
 };
 
 // Guard against a bad API response replacing the last known-good catalog.
 const required = ['boxOffice','upcoming','theatres','trending','streaming','rated','art'];
-for (const key of required) if (!Array.isArray(catalog.sections[key]) || catalog.sections[key].length < 3) throw new Error(`Validation failed: section ${key} has ${catalog.sections[key]?.length || 0} movies.`);
+const minimums = { boxOffice:7, upcoming:7, theatres:7, trending:7, streaming:7, rated:7, art:3 };
+for (const key of required) if (!Array.isArray(catalog.sections[key]) || catalog.sections[key].length < minimums[key]) throw new Error(`Validation failed: section ${key} has ${catalog.sections[key]?.length || 0} movies; expected at least ${minimums[key]}.`);
 if (!catalog.featured?.id || catalog.movies.length < 12) throw new Error('Validation failed: featured/movie count missing.');
 
 const json = JSON.stringify(catalog,null,2) + '\n';

@@ -28,15 +28,15 @@ export default async (request) => {
     const releaseTime = theatricalReleaseDate ? Date.parse(theatricalReleaseDate) : 0;
     const now = Date.now();
     let theatricalStatus = releaseTime
-      ? (releaseTime <= now + 86400000 && releaseTime >= now - 90 * 86400000 ? 'now' : releaseTime > now ? 'upcoming' : 'past')
+      ? (releaseTime > now + 86400000 ? 'upcoming' : releaseTime >= now - 120 * 86400000 ? 'recent' : 'past')
       : null;
-    let theatricalEvidence = theatricalStatus === 'now' ? 'kr-release-window' : theatricalStatus === 'upcoming' ? 'kr-release-date' : null;
+    let theatricalEvidence = theatricalStatus === 'upcoming' ? 'kr-release-date' : theatricalStatus === 'recent' ? 'kr-recent-release' : null;
 
-    // A release-date window alone misses long-running/re-released films. If it does not already
-    // say "now", consult TMDB's KR now-playing feed before declaring the film unavailable in cinemas.
-    if (theatricalStatus !== 'now') {
+    // A release date means the film opened theatrically; it does not prove it is still playing.
+    // Only the KR now-playing feed upgrades the state to a current-theatrical claim here.
+    if (theatricalStatus !== 'upcoming') {
       try {
-        const pages = await Promise.all([1, 2].map((page) => tmdb('/movie/now_playing', { language: 'ko-KR', region: 'KR', page })));
+        const pages = await Promise.all([1, 2, 3].map((page) => tmdb('/movie/now_playing', { language: 'ko-KR', region: 'KR', page })));
         if (pages.some((payload) => (payload.results || []).some((row) => String(row.id) === String(detail.id)))) {
           theatricalStatus = 'now';
           theatricalEvidence = 'tmdb-kr-now-playing';
@@ -46,6 +46,8 @@ export default async (request) => {
       }
     }
     const { providers, watchLink } = normalizeProviderResults(providerPayload, 'KR');
+    const writers = [...new Map((credits.crew || []).filter((person) => ['Writer','Screenplay','Story'].includes(person.job)).map((person) => [person.id || person.name, { id: person.id || null, name: person.name, job: person.job }])).values()].slice(0, 5);
+    const cinematographers = [...new Map((credits.crew || []).filter((person) => person.job === 'Director of Photography').map((person) => [person.id || person.name, { id: person.id || null, name: person.name }])).values()].slice(0, 3);
 
     return json({
       id: String(detail.id),
@@ -60,7 +62,9 @@ export default async (request) => {
       voteCount: detail.vote_count ?? 0,
       director,
       directorId: directorCredit?.id || null,
-      cast: (credits.cast || []).slice(0, 12).map((person) => ({ id: person.id, name: person.name, character: person.character || '' })),
+      cast: (credits.cast || []).slice(0, 12).map((person) => ({ id: person.id, name: person.name, character: person.character || '', profileUrl: imageUrl(person.profile_path, 'w185') })),
+      writers,
+      cinematographers,
       genres: (detail.genres || []).map((genre) => ({ id: genre.id, name: genre.name })),
       productionCountries: (detail.production_countries || []).map((country) => country.name).filter(Boolean),
       originalLanguage: detail.original_language || null,
@@ -75,6 +79,7 @@ export default async (request) => {
       imdbId: externalIds.imdb_id || null,
       providers,
       watchLink,
+      availabilityUpdatedAt: new Date().toISOString(),
     }, 200, 'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
   } catch (error) {
     console.error('movie-detail:', error.message);

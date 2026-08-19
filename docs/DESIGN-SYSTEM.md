@@ -1,4 +1,4 @@
-# KINOSIS — Design system (0.4.4.3)
+# KINOSIS — Design system (0.4.4.4)
 
 ## Goal
 
@@ -50,3 +50,10 @@ The redesign does not change the product layout contract:
 - Detail actions are Korean-first.
 
 The top-level product IA remains DISCOVER / ARTHOUSE / LIBRARY / MY because those names function as stable service destinations rather than sentence-level UI copy.
+
+
+## Film detail hierarchy — 0.4.4.4
+
+Film detail intentionally uses a familiar film-database/diary composition: poster and identity first, two primary personal actions, synopsis/cast/credits in the reading column and availability/personal history in a compact side rail. KINOSIS does not use a dashboard card grid for a single film.
+
+TMDB aggregate rating is secondary; the signed-in user's own rating and viewing history are the personal focus.

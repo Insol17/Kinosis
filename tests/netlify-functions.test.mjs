@@ -10,6 +10,7 @@ const personModule=await import('../netlify/functions/person-films.mjs');
 const directorModule=await import('../netlify/functions/director-filmography.mjs');
 const availabilityModule=await import('../netlify/functions/watchlist-availability.mjs');
 const streamingModule=await import('../netlify/functions/my-streaming.mjs');
+const upcomingModule=await import('../netlify/functions/upcoming.mjs');
 
 const movieFixture={id:15,title:'시민 케인',original_title:'Citizen Kane',release_date:'1941-04-17',overview:'x',vote_average:8,vote_count:999,popularity:20,poster_path:'/poster.jpg',backdrop_path:'/backdrop.jpg'};
 const realFetch=globalThis.fetch;
@@ -22,11 +23,16 @@ try{
     }
     assert.equal(options.headers.Authorization,'Bearer test-token-not-real');
     if(value.includes('/search/person')) return Response.json({results:[{id:2,name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]});
-    if(value.includes('/search/movie')) return Response.json({page:1,total_results:1,results:[{...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}]});
+    if(value.includes('/search/movie')) { const first={...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}; return Response.json({page:1,total_results:2,results:[first,{...first,id:151,title:first.title,original_title:first.original_title}]}); }
     if(value.includes('/watch/providers/movie')) return Response.json({results:[{provider_id:8,provider_name:'Netflix',logo_path:'/netflix.jpg',display_priority:1},{provider_id:97,provider_name:'Watcha',logo_path:'/watcha-wrong.jpg',display_priority:2}]});
+    if(value.includes('/movie/now_playing')) return Response.json({results:[movieFixture]});
     if(value.includes('/discover/movie')) return Response.json({results:[{...movieFixture,id:25,title:'스트리밍 영화',release_date:'2026-01-01'}]});
     if(value.includes('/movie/15/recommendations')) return Response.json({results:[{id:16,title:'추천 영화',original_title:'Recommended',release_date:'1942-01-01',vote_average:7.8,vote_count:500,popularity:12,poster_path:'/p2.jpg',backdrop_path:'/b2.jpg'}]});
     if(value.includes('/movie/15/similar')) return Response.json({results:[{id:17,title:'유사 영화',original_title:'Similar',release_date:'1943-01-01',vote_average:7.2,vote_count:300,popularity:9,poster_path:'/p3.jpg',backdrop_path:'/b3.jpg'}]});
+    if(value.includes('/person/3/movie_credits')) return Response.json({cast:[],crew:[31,32,33,34,35,36,37].map((id)=>({id,title:`Erice ${id}`,original_title:`Erice ${id}`,release_date:`${1980 + id - 31}-01-01`,job:'Director',vote_count:100}))});
+    if(value.includes('/person/3')) return Response.json({id:3,name:'Víctor Erice',known_for_department:'Directing',popularity:10,profile_path:'/erice.jpg'});
+    if(/\/movie\/(31|32|33|34|35|36|37)\/credits/.test(value)) { const id=Number(value.match(/\/movie\/(\d+)/)[1]); const directors=id===36?[{id:3,job:'Director',name:'Víctor Erice'},{id:4,job:'Director',name:'Other'}]:id===37?[{id:4,job:'Director',name:'Other'}]:[{id:3,job:'Director',name:'Víctor Erice'}]; return Response.json({crew:directors,cast:[]}); }
+    if(/\/movie\/(31|32|33|34|35|36|37)(?:\?|$)/.test(value)) { const id=Number(value.match(/\/movie\/(\d+)/)[1]); return Response.json({id,title:`Erice ${id}`,original_title:`Erice ${id}`,release_date:`${1980 + id - 31}-01-01`,runtime:id===35?20:120,vote_average:8,vote_count:100,popularity:10,poster_path:'/e.jpg',backdrop_path:'/e-bg.jpg'}); }
     if(value.includes('/person/2/movie_credits')) return Response.json({cast:[],crew:[{...movieFixture,job:'Director'}]});
     if(value.includes('/person/2')) return Response.json({id:2,name:'Orson Welles',known_for_department:'Directing',biography:'bio',profile_path:'/person.jpg'});
     if(value.includes('/movie/15/release_dates')) return Response.json({results:[{iso_3166_1:'KR',release_dates:[{type:3,release_date:new Date().toISOString()}]}]});
@@ -40,7 +46,7 @@ try{
 
   const searchResponse=await searchModule.default(new Request('https://kinosis.test/api/movie-search?q=%EC%8B%9C%EB%AF%BC%20%EC%BC%80%EC%9D%B8'));
   assert.equal(searchResponse.status,200); const searchData=await searchResponse.json();
-  assert.equal(searchData.results[0].id,'15'); assert.equal(searchData.people[0].id,'2');
+  assert.equal(searchData.results[0].id,'15'); assert.equal(searchData.results.length,1,'duplicate title/year search results should collapse'); assert.equal(searchData.people[0].id,'2');
 
   const detailResponse=await detailModule.default(new Request('https://kinosis.test/api/movie-detail?id=15'));
   assert.equal(detailResponse.status,200); const detailData=await detailResponse.json();
@@ -63,6 +69,11 @@ try{
   assert.equal(directorResponse.status,200); const directorData=await directorResponse.json();
   assert.equal(directorData.person.name,'Orson Welles'); assert.equal(directorData.results[0].id,'15');
 
+  const ericeResponse=await directorModule.default(new Request('https://kinosis.test/api/director-filmography?id=3&mode=solo-features'));
+  assert.equal(ericeResponse.status,200); const ericeData=await ericeResponse.json();
+  assert.equal(ericeData.results.length,4,'solo-features should keep only the four solo feature-length films in the fixture');
+  assert.equal(new Set(ericeData.results.map(row=>row.id)).size,4,'director curation results must be unique');
+
   const availabilityResponse=await availabilityModule.default(new Request('https://kinosis.test/api/watchlist-availability?ids=15'));
   assert.equal(availabilityResponse.status,200); const availabilityData=await availabilityResponse.json();
   assert.equal(availabilityData.results[0].providers[0].name,'Netflix');
@@ -72,9 +83,14 @@ try{
   assert.equal(streamingData.results[0].id,'25');
   assert.ok(streamingData.matchedProviders.some(row=>row.name==='Watcha'));
 
-  for(const payload of [searchData,detailData,boxOfficeData,recommendationData,personData,directorData,availabilityData,streamingData]) {
+  const upcomingResponse=await upcomingModule.default(new Request('https://kinosis.test/api/upcoming'));
+  assert.equal(upcomingResponse.status,200); const upcomingData=await upcomingResponse.json();
+  assert.equal(upcomingData.source,'tmdb-discover-theatrical');
+  assert.equal(new Set(upcomingData.results.map(row=>row.id)).size,upcomingData.results.length,'upcoming results must be unique');
+
+  for(const payload of [searchData,detailData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
     assert.ok(!JSON.stringify(payload).includes('kobis-test-not-real'),'KOBIS secret leaked in API response');
   }
-  console.log('netlify-functions.test: search/detail/KOBIS/recommendations/person/director/availability/live-streaming contracts OK');
+  console.log('netlify-functions.test: search/detail/KOBIS/recommendations/person/director/curation-dedupe/availability/live-streaming/upcoming contracts OK');
 }finally{globalThis.fetch=realFetch;}

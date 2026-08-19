@@ -9,6 +9,7 @@
   "source": {
     "type": "director",
     "name": "Abbas Kiarostami",
-    "sort": "release_asc"
+    "sort": "release_asc",
+    "mode": "all-directed"
   }
 }

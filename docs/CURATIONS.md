@@ -1,6 +1,6 @@
-# KINOSIS 0.4.4.1 — Curation architecture
+# KINOSIS 0.4.4.4 — Curation architecture
 
-Curation is an ARTHOUSE-only editorial feature. Authoring is intentionally repository-based for the current one-editor workflow; no Admin account or Curation database is required.
+Curation is an ARTHOUSE-only editorial feature. Git is the current CMS for the one-editor workflow.
 
 ```text
 content/curations/*.curation.json
@@ -14,24 +14,30 @@ ARTHOUSE
 ?curation=<slug>
 ```
 
-## Director source
+Director definitions resolve only when opened. Results are deduplicated by id and original-title/year identity before rendering.
+
+## Director modes
 
 ```json
 {
-  "slug": "kiarostami",
-  "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
   "source": {
     "type": "director",
-    "name": "Abbas Kiarostami",
-    "sort": "release_asc"
+    "name": "Víctor Erice",
+    "sort": "release_asc",
+    "mode": "solo-features"
   }
 }
 ```
 
-The source is not expanded on the Arthouse landing. Opening the Curation resolves the director once through the Netlify TMDB proxy and renders all movie directing credits returned for that person.
+- `all-directed`: all unique movie directing credits.
+- `solo-features`: feature-length (>=60m), sole-director films only.
+- `personId`: optional canonical TMDB person id.
+- `include` / `exclude`: explicit TMDB movie-id overrides.
 
-Static `movies: [TMDB_ID, ...]` definitions remain supported for hand-edited thematic programs.
+The Víctor Erice definition uses `solo-features` so shorts, anthology/co-directed work and duplicate upstream credits do not inflate the collection.
+
+Static `movies: [TMDB_ID, ...]` remains supported for hand-edited thematic programs.
 
 ## Publishing
 
-Publishing is a Git operation. `npm run build` validates slugs, duplicates, field lengths and movie IDs before deployment. Keep Curation edits in small commits so an editorial mistake can be reverted independently of application code.
+Publishing is a Git operation. `npm run build` validates slugs, duplicates, field lengths and ids. Keep editorial commits small so content can be reverted independently of application code.

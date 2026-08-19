@@ -6,35 +6,39 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const required = [
   'index.html','assets/css/app.css','assets/js/app.js','assets/js/cloud.js','assets/js/ui.js','assets/js/config.js','assets/js/error-boundary.js',
-  'assets/js/art-classifier.js','assets/js/importers.js','assets/js/curations.js','assets/js/curation-loader.js','assets/js/hero-carousel.js','assets/js/providers.js',
+  'assets/js/art-classifier.js','assets/js/importers.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js','assets/js/hero-carousel.js','assets/js/providers.js',
   'data/catalog.js','data/curations.js','data/curations.json','data/providers.js','data/arthouse.js',
   'content/curations/README.md','scripts/build-curations.mjs','icons/icon.svg','assets/branding/tmdb-logo.svg','assets/branding/providers/watcha-logo-white.png','docs/API-SOURCES.md',
-  'netlify/functions/movie-search.mjs','netlify/functions/movie-detail.mjs','netlify/functions/box-office.mjs','netlify/functions/movie-recommendations.mjs','netlify/functions/person-films.mjs','netlify/functions/director-filmography.mjs','netlify/functions/watchlist-availability.mjs','netlify/functions/my-streaming.mjs','netlify/functions/delete-account.mjs','netlify/functions/supabase-health.mjs',
+  'netlify/functions/movie-search.mjs','netlify/functions/movie-detail.mjs','netlify/functions/box-office.mjs','netlify/functions/movie-recommendations.mjs','netlify/functions/person-films.mjs','netlify/functions/director-filmography.mjs','netlify/functions/watchlist-availability.mjs','netlify/functions/my-streaming.mjs','netlify/functions/upcoming.mjs','netlify/functions/delete-account.mjs','netlify/functions/supabase-health.mjs',
   'supabase/001_kinosis_041.sql','supabase/004_kinosis_0443.sql','supabase/SETUP_ALL.sql','netlify.toml'
 ];
 for (const rel of required) assert.ok(fs.existsSync(path.join(root, rel)), `missing ${rel}`);
-for (const rel of ['sw.js','manifest.webmanifest','assets/js/recommender.js','assets/css/design-0442.css']) assert.ok(!fs.existsSync(path.join(root, rel)), `${rel} should not ship in 0.4.4.3`);
+for (const rel of ['sw.js','manifest.webmanifest','assets/js/recommender.js','assets/css/design-0442.css']) assert.ok(!fs.existsSync(path.join(root, rel)), `${rel} should not ship in 0.4.4.4`);
 
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const netlifyToml = fs.readFileSync(path.join(root, 'netlify.toml'), 'utf8');
 assert.ok(netlifyToml.includes('Content-Security-Policy'), 'Netlify security headers should include CSP');
-for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','MY','Data sources & credits','개요','리뷰','통계','설정','KINOSIS 0.4.4.3']) assert.ok(html.includes(marker), `index missing ${marker}`);
+for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','MY','데이터 출처 · 이용 안내','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
 assert.ok(!html.includes('data-my="diary"'), 'Diary must be merged into Reviews');
 assert.ok(!html.includes('data-my="calendar"'), 'Calendar must not be a separate My destination');
 assert.ok(!html.includes('adminView'), 'Admin UI should remain absent; curations are file-authored');
 assert.ok(!html.includes('serviceWorker'), 'service worker registration must not ship');
 assert.ok(!html.includes('recommender.js'), 'hidden For You client should not ship');
-assert.ok(html.includes('app.js?v=0.4.4.3'), 'asset cache-busting version missing');
-assert.ok(html.includes('data/curations.js?v=0.4.4.3'), 'curation data bundle version missing');
-assert.ok(html.includes('data/providers.js?v=0.4.4.3'), 'provider data bundle missing');
-assert.ok(html.includes('hero-carousel.js?v=0.4.4.3'), 'Hero controller module missing');
-assert.ok(html.includes('data/arthouse.js?v=0.4.4.3'), 'Arthouse editorial data bundle missing');
+assert.ok(html.includes('app.js?v=0.4.4.4'), 'asset cache-busting version missing');
+assert.ok(html.includes('data/curations.js?v=0.4.4.4'), 'curation data bundle version missing');
+assert.ok(html.includes('data/providers.js?v=0.4.4.4'), 'provider data bundle missing');
+assert.ok(html.includes('hero-carousel.js?v=0.4.4.4'), 'Hero controller module missing');
+assert.ok(html.includes('state-integrity.js?v=0.4.4.4'), 'state integrity module missing');
+assert.ok(html.includes('data/arthouse.js?v=0.4.4.4'), 'Arthouse editorial data bundle missing');
 assert.ok(html.includes('@supabase/supabase-js@2.112.3'), 'Supabase browser client must use an exact pinned version');
 assert.ok(!html.includes('design-0442.css'), 'legacy visual override layer must be consolidated into app.css');
 
 const js = fs.readFileSync(path.join(root, 'assets/js/app.js'), 'utf8');
 assert.ok(js.includes("const STORAGE_KEY = 'kinosis.mvp.v2.state'"), 'storage compatibility key changed unexpectedly');
-for (const marker of ['/api/movie-search','/api/movie-recommendations','/api/person-films','/api/watchlist-availability','/api/box-office','/api/my-streaming','/api/delete-account','popstate','pushState','openCalendarDay','deleteLog','logEntryId','handleLetterboxdFiles','renderArthouse','viewingTimeline','refreshWatchlistAvailability','openCuration','renderCurationPage','fromCuration','renderHeroCarousel','pullCloudState','mergeCloudStates','/api/director-filmography','consolidatedProviders','watchAvailabilityHtml','removeMovieFromLibrary','deleteCollection','deletedLibrary','deletedCollections','cloudRevision']) assert.ok(js.includes(marker), `app missing ${marker}`);
+for (const marker of ['/api/movie-search','/api/upcoming','/api/movie-recommendations','/api/person-films','/api/watchlist-availability','/api/box-office','/api/my-streaming','/api/delete-account','popstate','pushState','openCalendarDay','deleteLog','logEntryId','handleLetterboxdFiles','renderArthouse','viewingTimeline','refreshWatchlistAvailability','openCuration','renderCurationPage','fromCuration','renderHeroCarousel','pullCloudState','mergeCloudStates','/api/director-filmography','consolidatedProviders','watchAvailabilityHtml','removeMovieFromLibrary','deleteCollection','deletedLibrary','deletedCollections','cloudRevision']) assert.ok(js.includes(marker), `app missing ${marker}`);
+assert.ok(js.includes('snapshotRevision'), 'cloud push must preserve mutations made while a write is in flight');
+assert.ok(js.includes('mergeTombstones'), 'cloud tombstones must merge by latest timestamp');
+assert.ok(js.includes('/api/upcoming'), 'thin catalog must have live KR upcoming fallback');
 assert.ok(!js.includes('loadForYou'), 'unused hidden personalized recommendation loop should remain removed');
 assert.ok(!js.includes('renderAdmin'), 'Admin UI logic should not ship');
 assert.ok(!js.includes('Curation Studio'), 'Curation Studio should not ship; editing is file-based');
@@ -57,7 +61,7 @@ assert.ok(migration.includes('expected_revision'), 'sync RPC must check optimist
 
 const css = fs.readFileSync(path.join(root, 'assets/css/app.css'), 'utf8');
 assert.ok(css.includes('grid-auto-columns:calc((100% - (6 * var(--poster-gap)))/7)'), 'seven-card rail base rule missing');
-assert.ok(css.includes('.film-masthead'), 'film detail design missing');
+assert.ok(css.includes('.detail-hero-inner'), 'film detail hierarchy missing');
 assert.ok(css.includes('.watch-rows'), 'Where to Watch list design missing');
 assert.ok(css.includes('content-visibility:auto'), 'render containment/performance rule missing');
 assert.ok(css.includes('backdrop-filter:none'), 'expensive shell blur override missing');
@@ -73,7 +77,7 @@ assert.ok(html.includes('This product uses the TMDB API but is not endorsed or c
 assert.ok(html.includes('JustWatch via TMDB'), 'JustWatch attribution missing');
 
 const providerData = fs.readFileSync(path.join(root, 'data/providers.js'), 'utf8');
-assert.ok(providerData.includes("key: 'WATCHA'"), 'WATCHA canonical provider missing');
+assert.ok(providerData.includes('\"key\": \"WATCHA\"'), 'WATCHA canonical provider missing');
 assert.ok(providerData.includes('watcha-logo-white.png'), 'WATCHA official logo override missing');
 assert.ok(!js.includes('watcha-logo-white.png'), 'provider-specific branding must live in provider data, not app logic');
 
@@ -81,9 +85,9 @@ const artClassifier = fs.readFileSync(path.join(root, 'assets/js/art-classifier.
 assert.ok(artClassifier.includes('window.KINOSIS_ARTHOUSE_DATA'), 'Arthouse classifier should read data, not own editorial seeds');
 assert.ok(!artClassifier.includes("'Abbas Kiarostami','Ingmar Bergman'"), 'editorial director list should not be hardcoded in classifier logic');
 
-for (const file of ['movie-search','movie-detail','box-office','movie-recommendations','person-films','director-filmography','watchlist-availability','my-streaming','delete-account']) {
+for (const file of ['movie-search','movie-detail','box-office','movie-recommendations','person-films','director-filmography','watchlist-availability','my-streaming','upcoming','delete-account']) {
   const source = fs.readFileSync(path.join(root, `netlify/functions/${file}.mjs`), 'utf8');
   assert.ok(source.includes('rateLimit'), `${file} must have an explicit Netlify rate limit`);
 }
 
-console.log('static.test: 0.4.4.3 stability, provider branding, atomic sync, live streaming and unified visual contracts OK');
+console.log('static.test: 0.4.4.4 integrity, provider branding, curation/search dedupe, live discovery and film-detail contracts OK');
