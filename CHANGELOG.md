@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.5.1 — Arthouse / Library / Profile product polish
+
+### Arthouse
+- Expanded the source pool with hydrated Director Archive and Editorial films instead of ranking only the small static catalogue.
+- Lowered broad auteur/director seeds to a supporting classifier signal and raised the threshold so titles such as `기생충` or `센과 치히로의 행방불명` are not admitted from director identity alone.
+- Replaced the Tarantino archive with Christian Petzold and suppressed repeated programmed films across generic Arthouse rails.
+- Removed duplicate Director Archive labels.
+
+### Library / Detail
+- Added a dedicated `보고싶어요` Library surface while keeping watchlist-only films out of the present-tense `전체 영화` shelf.
+- Added proper first-use Library empty state and watchlist count/empty state.
+- Removed conversational/internal Detail questions and reduced the visible structure to `작품 정보 / 감상 가능 / 내 기록`.
+- Kept rating/comment/actions in the hero and removed the redundant lower relationship-state summary.
+
+### Loading / stability
+- Added stronger Search spinner/skeleton feedback, reduced remote debounce to 180ms, expanded card Detail prefetch and parallelized summary hydration.
+- Preserved enriched provider/cast/genre data during lightweight entity merges so provider badges do not disappear during progressive rerenders.
+- Added provider loading placeholders while availability owns a pending state.
+
+### Profile / navigation / visual polish
+- Consolidated the public personal surface under `PROFILE`; the old `MY` name remains only as an internal route key.
+- Rebuilt viewing-history row layout and the monthly viewing calendar with poster-filled days.
+- Added desktop previous/next rail controls and removed dependence on visible horizontal scrollbars.
+- Strengthened the catalogue/archive visual hierarchy without introducing a new visual system.
+- Deferred Editorial Studio/CMS until the reviewer-facing surfaces are stable.
+
 ## 0.4.5 — Personal Film Library identity pass
 
 ### Product identity / IA

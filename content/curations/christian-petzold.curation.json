@@ -1,0 +1,16 @@
+{
+  "slug": "christian-petzold",
+  "eyebrow": "DIRECTOR ARCHIVE",
+  "title": "크리스티안 페촐트",
+  "subtitle": "Christian Petzold",
+  "description": "역사와 기억, 유령처럼 남은 관계를 장르의 표면 아래 겹쳐 놓는 크리스티안 페촐트의 감독 작품 아카이브.",
+  "credit": "Curated by KINOSIS",
+  "priority": 40,
+  "source": {
+    "type": "director",
+    "name": "Christian Petzold",
+    "sort": "release_asc",
+    "mode": "all-directed"
+  },
+  "kind": "director-archive"
+}

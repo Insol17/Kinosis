@@ -35,9 +35,8 @@ export function renderLibraryToolbar(list, filter, view, c) {
   const genres = [...new Set((list || []).flatMap((record) => c.genreNames(record)))].sort((a, b) => a.localeCompare(b, 'ko'));
   const activeFilters = [filter.relationship !== 'all', filter.status !== 'all', filter.minRating !== 'all', filter.genre !== 'all', filter.availability !== 'all'].filter(Boolean).length;
   return `<div class="library-retrieval">
-    <div class="library-relationship-filters" aria-label="영화 관계 필터">
+    <div class="library-relationship-filters" aria-label="영화 상태 필터">
       ${relationshipChip('all', '전체', filter)}
-      ${relationshipChip('watchlist', '보고싶어요', filter)}
       ${relationshipChip('favorite', '좋아요', filter)}
       ${relationshipChip('rated', '평가함', filter)}
     </div>
@@ -67,8 +66,17 @@ export function renderCollectionStrip(collections, allCount, c) {
 
 export function renderLibraryShelf({ list, filter, view, collections, hydrationHtml = '', c }) {
   const filtered = filterLibrary(list, filter, c);
-  return `<header class="library-home-head"><p class="eyebrow">PERSONAL FILM LIBRARY</p><h1>내 영화장</h1><p>내가 남겨두고 계속 관리하는 영화들을 한곳에서 꺼내봅니다.</p><div class="library-home-count"><strong>${list.length}</strong><span>편의 영화</span></div></header>
+  const empty = !list.length
+    ? '<div class="empty-state library-empty-primary"><b>아직 내 영화장에 담은 영화가 없습니다.</b><span>마음에 남겨두고 싶은 영화를 담으면 이 서가에서 다시 꺼내볼 수 있습니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'
+    : '<div class="empty-state"><b>조건에 맞는 영화가 없습니다.</b><span>필터를 바꾸거나 다른 컬렉션을 확인해보세요.</span></div>';
+  return `<header class="library-home-head"><p class="eyebrow">PERSONAL FILM LIBRARY</p><h1>내 영화장</h1><p>지금 곁에 두고 관리하는 영화들을 다시 꺼내보는 서가입니다.</p><div class="library-home-count"><strong>${list.length}</strong><span>편의 영화</span></div></header>
     ${hydrationHtml}
     ${renderCollectionStrip(collections, list.length, c)}
-    <section class="library-shelf"><div class="library-section-head shelf-head"><div><p class="eyebrow">MY SHELF</p><h2>영화</h2><span>${filtered.length}편</span></div></div>${renderLibraryToolbar(list, filter, view, c)}${filtered.length ? (view === 'grid' ? `<div class="library-grid">${filtered.map((record) => c.card(record, 'library')).join('')}</div>` : c.listRows(filtered)) : '<div class="empty-state"><b>조건에 맞는 영화가 없습니다.</b><span>필터를 바꾸거나 다른 컬렉션을 확인해보세요.</span></div>'}</section>`;
+    <section class="library-shelf"><div class="library-section-head shelf-head"><div><p class="eyebrow">SHELF</p><h2>전체 영화</h2><span>${filtered.length}편</span></div></div>${renderLibraryToolbar(list, filter, view, c)}${filtered.length ? (view === 'grid' ? `<div class="library-grid">${filtered.map((record) => c.card(record, 'library')).join('')}</div>` : c.listRows(filtered)) : empty}</section>`;
+}
+
+export function renderWatchlistShelf({ list, c }) {
+  const rows = [...(list || [])].sort((a, b) => String(c.relationship(b.id)?.updatedAt || '').localeCompare(String(c.relationship(a.id)?.updatedAt || '')));
+  return `<header class="library-home-head watchlist-home-head"><p class="eyebrow">WATCHLIST</p><h1>보고싶어요</h1><p>보고 싶은 영화는 현재 서가와 분리해 이곳에 모아둡니다.</p><div class="library-home-count"><strong>${rows.length}</strong><span>편</span></div></header>
+    ${rows.length ? `<section class="library-shelf"><div class="library-section-head shelf-head"><div><p class="eyebrow">SAVED FOR LATER</p><h2>다음에 볼 영화</h2></div></div><div class="library-grid">${rows.map((record) => c.card(record, 'watchlist')).join('')}</div></section>` : '<div class="empty-state library-empty-primary"><b>아직 보고싶어요에 담은 영화가 없습니다.</b><span>Discover, Arthouse 또는 검색에서 ＋ 버튼을 누르면 이곳에 모입니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'}`;
 }

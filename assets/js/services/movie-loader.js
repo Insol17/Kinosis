@@ -57,14 +57,20 @@ export function createMovieLoader(deps) {
 
     summariesInflight = (async () => {
       const loaded = [];
-      for (let index = 0; index < requested.length; index += 20) {
-        const chunk = requested.slice(index, index + 20);
-        const data = await repository.summaries(chunk);
-        for (const row of data.results || []) {
-          const record = rememberMovie({ ...row, source: 'tmdb-summary', detailLoaded: false, metadataLoading: false }, { persist });
-          if (record) loaded.push(record);
+      const chunks = [];
+      for (let index = 0; index < requested.length; index += 20) chunks.push(requested.slice(index, index + 20));
+      let cursor = 0;
+      const workers = Array.from({ length: Math.min(3, chunks.length) }, async () => {
+        while (cursor < chunks.length) {
+          const chunk = chunks[cursor++];
+          const data = await repository.summaries(chunk);
+          for (const row of data.results || []) {
+            const record = rememberMovie({ ...row, source: 'tmdb-summary', detailLoaded: false, metadataLoading: false }, { persist });
+            if (record) loaded.push(record);
+          }
         }
-      }
+      });
+      await Promise.all(workers);
       if (persist && loaded.length) persistLocalCache?.();
       return loaded;
     })().finally(() => { summariesInflight = null; });

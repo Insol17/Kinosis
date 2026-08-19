@@ -14,6 +14,22 @@ export function normalize(record) {
   };
 }
 
+
+export function merge(existing = {}, incoming = {}) {
+  const next = normalize(incoming);
+  if (!next) return normalize(existing);
+  const merged = { ...existing, ...next };
+  // Some lightweight endpoints intentionally omit expensive arrays. `normalize()`
+  // gives those fields empty defaults for new entities, but an update that does
+  // not own a field must never erase richer data already attached to the entity.
+  if (!Object.prototype.hasOwnProperty.call(incoming, 'providers') && Array.isArray(existing?.providers)) merged.providers = existing.providers;
+  if (!Object.prototype.hasOwnProperty.call(incoming, 'genres') && Array.isArray(existing?.genres)) merged.genres = existing.genres;
+  if (!Object.prototype.hasOwnProperty.call(incoming, 'cast') && Array.isArray(existing?.cast)) merged.cast = existing.cast;
+  if (!Object.prototype.hasOwnProperty.call(incoming, 'keywords') && Array.isArray(existing?.keywords)) merged.keywords = existing.keywords;
+  if (!Object.prototype.hasOwnProperty.call(incoming, 'productionCompanies') && Array.isArray(existing?.productionCompanies)) merged.productionCompanies = existing.productionCompanies;
+  return normalize(merged);
+}
+
 export function placeholder(id) {
   return {
     id: String(id),

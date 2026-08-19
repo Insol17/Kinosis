@@ -1,28 +1,29 @@
-# KINOSIS 0.4.5
+# KINOSIS 0.4.5.1
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-It brings discovery, current viewing availability, personal relationships, viewing history and Collections together around one Movie Entity. The portfolio scope intentionally does not add social feeds, AI recommendations, country selection, newsletters, physical ownership or digital-purchase tracking.
+It brings film discovery, current viewing availability, a present-tense shelf, watchlist, personal ratings/comments, viewing history and Collections together around one Movie Entity. Physical/digital ownership, social feeds, AI recommendations and an Editorial CMS remain outside this portfolio build.
 
 ```text
-DISCOVER  → find a film
-ARTHOUSE  → find a film with editorial/director context
-DETAIL    → what is it / where can I watch / what is my relationship
-LIBRARY   → the films currently on MY SHELF + personal Collections
-MY        → viewing history / comments / stats / settings
+DISCOVER  → 일반적인 영화 발견
+ARTHOUSE  → 감독 아카이브 / 에디토리얼을 통한 맥락형 발견
+DETAIL    → 작품 정보 / 감상 가능 / 내 평가·기록
+LIBRARY   → 내 영화장 + 별도의 보고싶어요 + Collections
+PROFILE   → 감상 기록 / 한줄평 / 캘린더 / 통계 / 설정
 ```
 
-## 0.4.5 focus
+## 0.4.5.1 focus
 
-- **Personal Film Library IA:** Watchlist/Favorite/Rating are relationship filters, not sibling Library destinations. Collections and MY SHELF have separate hierarchy.
-- **Contextual Movie Card:** Discover, Library and MY use the same Movie Entity but surface task-specific information.
-- **Three-question Detail:** `ABOUT THE FILM` → `WHERE TO WATCH` → `MY FILM`.
-- **Visible Library relationship:** `내 영화장에 담기` is promoted to a first-class Detail action.
-- **Non-destructive shelf removal:** removing LibraryMembership keeps ratings, comments, viewing events, watchlist/favorite and Collection links.
-- **No ownership scope creep:** subscription/theatrical access is not presented as physical/digital ownership.
-- **Architecture:** Library policy lives in `features/library.js`; card representation policy lives in `ui/movie-card.js`; domain/network boundaries remain explicit.
+- **Arthouse quality:** dynamic Director Archive / Editorial films join the source pool; broad auteur seeds no longer classify mainstream titles by themselves; cross-rail repetition is suppressed.
+- **Watchlist semantics:** `보고싶어요` is visible inside Library but stays separate from `전체 영화` membership.
+- **Detail language:** internal design questions were removed from the UI. Hero owns rating/comment/actions; `내 기록` only shows real personal history.
+- **Loading feedback:** Search has explicit spinner/skeleton states, film cards prefetch Detail, summary hydration is parallelized, and entity merges preserve provider data.
+- **Shelf navigation:** desktop rails have previous/next controls while touch keeps native scrolling.
+- **Profile consolidation:** MY is no longer a public navigation concept; Profile owns overview, records, calendar, stats and settings.
+- **Calendar:** fixed seven-column poster month inspired by film-diary calendars rather than spreadsheet-like tiny cells.
+- **Visual polish:** flatter archive geometry, section indexing rules and a stronger catalogue/shelf hierarchy.
 
-See `docs/ARCHITECTURE-0.4.5.md` and `PATCH-0.4.5.md`.
+See `docs/ARCHITECTURE-0.4.5.1.md` and `PATCH-0.4.5.1.md`.
 
 ## Run
 

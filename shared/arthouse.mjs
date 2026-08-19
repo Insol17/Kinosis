@@ -1,5 +1,5 @@
 export const ARTHOUSE_DATA = Object.freeze({
-  version: 'cinephile-seed-v3',
+  version: 'cinephile-seed-v4',
   titleSeeds: [
     ['The Rules of the Game',1939],['Citizen Kane',1941],['Breathless',1960],['Tokyo Story',1953],
     ['Journey to Italy',1954],['Night and Fog',1956],['Sherlock Jr.',1924],['Greed',1924],

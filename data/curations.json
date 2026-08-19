@@ -1,5 +1,5 @@
 {
-  "version": "0.4.5",
+  "version": "0.4.5.1",
   "items": [
     {
       "slug": "kiarostami-life-continues",
@@ -133,20 +133,20 @@
       "chapters": []
     },
     {
-      "slug": "tarantino",
+      "slug": "christian-petzold",
       "kind": "director-archive",
       "surface": "arthouse",
-      "eyebrow": "DIRECTOR'S ARCHIVE",
-      "title": "쿠엔틴 타란티노",
-      "subtitle": "Quentin Tarantino",
-      "description": "장르의 쾌감, 대사, 폭력과 리듬으로 구축된 쿠엔틴 타란티노의 감독 작품 아카이브.",
+      "eyebrow": "DIRECTOR ARCHIVE",
+      "title": "크리스티안 페촐트",
+      "subtitle": "Christian Petzold",
+      "description": "역사와 기억, 유령처럼 남은 관계를 장르의 표면 아래 겹쳐 놓는 크리스티안 페촐트의 감독 작품 아카이브.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 40,
       "source": {
         "type": "director",
-        "name": "Quentin Tarantino",
+        "name": "Christian Petzold",
         "personId": "",
         "sort": "release_asc",
         "mode": "all-directed",

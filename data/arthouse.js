@@ -1,5 +1,5 @@
 window.KINOSIS_ARTHOUSE_DATA = Object.freeze({
-  "version": "cinephile-seed-v3",
+  "version": "cinephile-seed-v4",
   "titleSeeds": [
     [
       "The Rules of the Game",

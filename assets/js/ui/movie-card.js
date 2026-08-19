@@ -11,6 +11,7 @@ export function renderMovieCard(record, variant, c) {
   if (!record) return '';
   const relationship = c.relationship(record.id);
   const libraryCard = variant === 'library';
+  const watchlistCard = variant === 'watchlist';
   const myCard = variant === 'my';
   const arthouseCard = variant === 'arthouse';
   const loading = !!record.metadataLoading;
@@ -41,16 +42,20 @@ export function renderMovieCard(record, variant, c) {
     ? `<div class="film-object-context is-my"><div class="film-object-primary">${personalMeta || '<span class="film-object-muted">감상 기록</span>'}</div>${logs[0]?.watchedAt ? `<div class="film-object-secondary"><span>${c.escapeHtml(c.formatDate(logs[0].watchedAt))}</span>${relationship?.comment ? '<span>한줄평 있음</span>' : ''}</div>` : ''}</div>`
     : '';
 
-  const standardMeta = !libraryCard && !myCard
+  const watchlistContext = watchlistCard && !loading
+    ? `<div class="film-object-context is-watchlist"><div class="film-object-primary"><span>보고싶어요</span></div><div class="film-object-secondary">${access ? `<span class="film-object-access">${c.escapeHtml(access)}</span>` : '<span class="film-object-muted">감상 가능 정보 확인 전</span>'}</div></div>`
+    : '';
+
+  const standardMeta = !libraryCard && !watchlistCard && !myCard
     ? `<div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && c.availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div>`
     : '';
 
-  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''}" data-movie="${c.escapeHtml(record.id)}" tabindex="0" aria-label="${c.escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}">
+  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''}" data-movie="${c.escapeHtml(record.id)}" tabindex="0" aria-label="${c.escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}">
     <div class="poster-wrap">
       ${media}
       ${!loading ? c.availabilityBadges(record) : ''}
       <div class="card-overlay">${c.signedIn() && !loading ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
     </div>
-    <div class="card-info"><p class="card-title">${c.escapeHtml(record.title)}</p>${standardMeta}${libraryContext}${myContext}</div>
+    <div class="card-info"><p class="card-title">${c.escapeHtml(record.title)}</p>${standardMeta}${libraryContext}${watchlistContext}${myContext}</div>
   </article>`;
 }

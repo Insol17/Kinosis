@@ -852,3 +852,112 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
 @media(max-width:900px){.library-home-count{position:static;margin-top:22px;}.library-collection-rail{display:grid;grid-auto-flow:column;grid-auto-columns:180px;grid-template-columns:none;}.detail-hero .detail-hero-inner{grid-template-columns:150px minmax(0,1fr);}.detail-hero .detail-relationship{grid-column:2;}.detail-about-grid,.detail-personal-grid{grid-template-columns:1fr;}.detail-question-watch .watch-rows{grid-template-columns:1fr;}}
 @media(max-width:760px){.library-home-head{min-height:0;padding-top:18px;}.library-home-head h1{font-size:40px;}.library-collection-strip{padding:28px 0;}.library-section-head{align-items:center;}.library-section-head h2{font-size:20px;}.library-retrieval{top:58px;}.library-relationship-filters{padding-inline:1px;}.film-object-primary,.film-object-secondary{font-size:8px;}.detail-question{padding-top:38px;}.detail-question-head{grid-template-columns:30px minmax(0,1fr);gap:10px;}.detail-question-head h2{font-size:28px;}.detail-question-personal .history-log{grid-template-columns:110px 90px minmax(0,1fr);}}
 @media(max-width:540px){.detail-hero .detail-hero-inner{grid-template-columns:104px minmax(0,1fr);}.detail-hero .detail-relationship{grid-column:1/-1;}.detail-library-toggle,.detail-watchlist,.detail-actions .primary-button{flex:1 1 calc(50% - 6px);}.detail-question-personal .history-log{grid-template-columns:1fr;gap:4px;}.detail-question-head div>span{font-size:10px;}}
+
+/* ========================================================================== 
+   KINOSIS 0.4.5.1 — product polish
+   Rails · stable availability · Profile · viewing calendar · Detail language
+   ========================================================================== */
+
+/* Film rails are navigated as discrete shelves on desktop. Touch devices keep
+   native horizontal movement, but the scrollbar is no longer the primary UI. */
+.film-rail-shell{position:relative;min-width:0;}
+.film-rail-shell .poster-row{scrollbar-width:none;padding-inline:1px 1px;scroll-behavior:smooth;}
+.film-rail-shell .poster-row::-webkit-scrollbar{display:none;}
+.film-rail-arrow{position:absolute;z-index:12;top:38%;width:44px;height:72px;border:1px solid rgba(255,255,255,.12);background:rgba(13,14,16,.86);color:#f6f2e9;display:grid;place-items:center;cursor:pointer;opacity:.78;transition:opacity .16s ease,background .16s ease,transform .16s ease;}
+.film-rail-arrow .ui-icon{width:22px;height:22px;}
+.film-rail-arrow.is-prev{left:-18px;}
+.film-rail-arrow.is-next{right:-18px;}
+.film-rail-arrow:hover{opacity:1;background:#1e2024;color:var(--accent-2);transform:translateY(-1px);}
+.film-rail-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+/* A rail is treated as an archive shelf rather than a generic card carousel. */
+.content-section>.section-head,.curation-rail-head{position:relative;padding-top:15px;border-top:1px solid var(--line-soft);}
+.content-section>.section-head::before,.curation-rail-head::before{content:"";position:absolute;left:0;top:-1px;width:54px;height:2px;background:var(--accent);}
+.curation-rail-subtitle{display:block;margin-top:4px;color:#a9a49d;font-size:12px;letter-spacing:.01em;}
+.curation-rail-head>div>p:last-child{max-width:760px;}
+
+/* Provider data is progressive. Preserve its visual slot until the first
+   availability response instead of letting badges pop in/out of a card. */
+.availability-stack.is-loading{min-width:28px;min-height:28px;}
+.provider-badge-skeleton{width:28px;height:28px;border-radius:5px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#22252a,#30343a,#22252a);background-size:220% 100%;animation:providerPulse 1.2s linear infinite;}
+@keyframes providerPulse{to{background-position:-220% 0;}}
+
+/* Library: Watchlist is a separate saved-for-later surface, not part of the
+   present-tense shelf. */
+.side-link{position:relative;}
+.side-count{margin-left:auto;min-width:24px;text-align:right;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;}
+.side-link.is-active .side-count{color:var(--accent-2);}
+.watchlist-home-head{border-bottom:1px solid var(--line-soft);padding-bottom:24px;margin-bottom:30px;}
+.library-empty-primary{min-height:210px;display:grid;place-items:center;align-content:center;gap:7px;}
+.library-empty-primary .secondary-button{justify-self:center;}
+
+/* Detail section labels are terse catalogue labels. Internal product questions
+   remain design principles; they are not user-facing copy. */
+.detail-section-title{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:baseline;gap:18px;padding:24px 0 16px;border-top:1px solid var(--line-soft);}
+.detail-section-title p{margin:0;color:var(--accent);font-size:11px;font-weight:760;letter-spacing:.12em;}
+.detail-section-title h2{margin:0;font-size:26px;letter-spacing:-.035em;font-weight:720;}
+.detail-question:first-child .detail-section-title{border-top:0;}
+.detail-personal-grid.is-record-only{grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);}
+.detail-record-empty{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:70px;color:var(--muted);}
+.detail-record-empty p{margin:0;}
+.detail-record-collections{align-self:start;}
+.detail-relationship-kicker{letter-spacing:.11em;}
+
+/* Search always exposes asynchronous work. */
+.search-status.is-loading{display:flex;justify-content:center;align-items:center;gap:9px;color:#c9c5bd;}
+.search-status.is-loading .loading-ring{width:18px;height:18px;}
+.search-loading-results{display:grid;border-top:1px solid var(--line-soft);}
+.search-loading-row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line-soft);}
+.search-loading-poster{width:42px;height:62px;border-radius:5px;background:linear-gradient(90deg,#202328,#2d3036,#202328);background-size:220% 100%;animation:providerPulse 1.25s linear infinite;}
+.search-loading-copy{display:grid;gap:8px;}
+.search-loading-copy i{display:block;height:10px;max-width:310px;border-radius:2px;background:#282b30;}
+.search-loading-copy i:last-child{width:42%;height:8px;opacity:.7;}
+
+/* Profile is the single personal surface. Viewing rows use their own layout;
+   the old three-column review-row grid squeezed all copy into the poster slot. */
+.viewing-timeline .timeline-row{grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;}
+.viewing-timeline .timeline-row .review-main{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;width:100%;min-width:0;}
+.viewing-timeline .timeline-row .review-main img,.viewing-timeline .timeline-row .review-poster-loading{width:58px;height:86px;object-fit:cover;border-radius:5px;}
+.viewing-timeline .timeline-row .review-text{max-width:760px;white-space:normal;overflow-wrap:anywhere;}
+.viewing-timeline .review-actions{padding-top:2px;}
+
+/* Watcha-like calendar readability: fixed seven-column month, posters occupy
+   the day rather than appearing as tiny annotations inside spreadsheet cells. */
+.calendar-head-feature{align-items:end;margin:0 0 16px;}
+.calendar-head-feature h2{font-size:32px;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;}
+.calendar-head-feature>div>p:last-child{margin:8px 0 0;color:var(--muted);font-size:12px;}
+.calendar-grid-poster{gap:6px;border:0;background:transparent;}
+.calendar-grid-poster .calendar-weekday{border:0;padding:8px 6px 9px;text-align:left;color:#73777d;font-size:11px;font-weight:650;}
+.calendar-grid-poster .calendar-cell{position:relative;min-height:138px;aspect-ratio:1/.92;padding:8px;border:0;border-radius:7px;overflow:hidden;background:#111316;isolation:isolate;}
+.calendar-grid-poster .calendar-cell.is-empty{background:transparent;}
+.calendar-grid-poster button.calendar-cell:not(.has-logs){background:#17191d;opacity:.66;}
+.calendar-grid-poster .calendar-cell.has-logs{background:#0d0f12;cursor:pointer;}
+.calendar-grid-poster .calendar-cell.has-logs:hover{background:#0d0f12;transform:translateY(-2px);}
+.calendar-grid-poster .day-number{position:relative;z-index:4;color:#aaa69f;font-size:12px;font-weight:670;font-variant-numeric:tabular-nums;}
+.calendar-grid-poster .today .day-number{color:var(--accent-2);}
+.calendar-art{position:absolute;inset:0;z-index:1;}
+.calendar-grid-poster .calendar-poster{width:100%;height:100%;margin:0;border-radius:0;object-fit:cover;opacity:.9;}
+.calendar-poster-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.58) 0%,rgba(7,8,10,.04) 42%,rgba(7,8,10,.5) 100%);}
+.calendar-grid-poster .calendar-count{position:absolute;right:7px;top:7px;z-index:5;margin:0;min-width:24px;height:24px;display:grid;place-items:center;padding:0 5px;border-radius:999px;background:var(--accent);color:#1c1308;font-size:10px;}
+
+/* Small visual signature: catalogue-like typography and flatter geometry make
+   the product read as a film archive rather than a generic streaming clone. */
+.section-head h2,.library-section-head h2,.detail-section-title h2,.my-section h2{font-weight:720;letter-spacing:-.04em;}
+.movie-card .poster-wrap{border-radius:6px;}
+.arthouse-movie-card .poster-wrap{border-radius:6px;}
+.card-title{font-weight:680;}
+.library-home-head h1,.profile-copy h1{letter-spacing:-.055em;}
+
+@media(max-width:760px){
+  .film-rail-arrow{display:none;}
+  .film-rail-shell .poster-row{overflow-x:auto;scrollbar-width:none;}
+  .detail-section-title{grid-template-columns:1fr;gap:3px;padding-top:20px;}
+  .detail-personal-grid.is-record-only{grid-template-columns:1fr;}
+  .calendar-grid-poster{gap:3px;}
+  .calendar-grid-poster .calendar-weekday{font-size:9px;padding-inline:3px;}
+  .calendar-grid-poster .calendar-cell{min-height:78px;padding:5px;border-radius:4px;}
+  .calendar-grid-poster .day-number{font-size:9px;}
+  .calendar-grid-poster .calendar-count{right:4px;top:4px;min-width:18px;height:18px;font-size:8px;}
+  .viewing-timeline .timeline-row{grid-template-columns:1fr;}
+  .viewing-timeline .review-actions{padding-left:72px;}
+}

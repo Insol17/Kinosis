@@ -181,13 +181,13 @@ async function connectToPage(debugPort, expectedUrl) {
 }
 
 const { server, port } = await startServer();
-const url = `http://kinosis.test:${port}/`;
+const url = `http://127.0.0.1:${port}/`;
 const debugPort = 9300 + Math.floor(Math.random() * 400);
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'kinosis-browser-'));
 const chromium = process.env.CHROMIUM_PATH || '/usr/bin/chromium';
 const browser = spawn(chromium, [
   '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--disable-background-networking', '--disable-extensions',
-  '--blink-settings=imagesEnabled=false', '--host-resolver-rules=MAP kinosis.test 127.0.0.1', `--remote-debugging-port=${debugPort}`, `--user-data-dir=${profile}`, url,
+  '--blink-settings=imagesEnabled=false', `--remote-debugging-port=${debugPort}`, `--user-data-dir=${profile}`, url,
 ], { stdio: ['ignore', 'ignore', 'pipe'] });
 let stderr = '';
 browser.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
@@ -235,9 +235,9 @@ try {
   await waitFor(() => cdp.eval(`!document.querySelector('#libraryContent')?.textContent?.includes('테스트 영화')`), { label: 'Library membership removal' });
 
   await cdp.eval(`document.querySelector('[data-nav="my"]').click(); true`);
-  await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'MY profile' });
+  await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'Profile' });
   await cdp.eval(`document.querySelector('[data-my-drill="reviews"]').click(); true`);
-  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'MY one-line comment archive' });
+  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'Profile one-line comment archive' });
   assert.equal(await cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('첫 감상 메모') || false`), false, 'comment archive should show current comment, not per-viewing note');
 
   // Reload regression: local user cache must restore current relationship and viewing data.
@@ -245,7 +245,7 @@ try {
   await waitFor(() => cdp.eval(`document.readyState === 'complete' && !!document.querySelector('[data-nav="my"]')`), { timeout: 8000, label: 'reload' });
   await waitFor(() => cdp.eval(`document.querySelector('#accountButton')?.textContent?.includes('Browser') || !!document.querySelector('#profileCard')`), { label: 'authentication after reload' });
   await cdp.eval(`document.querySelector('[data-nav="my"]').click(); true`);
-  await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'MY after reload' });
+  await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'Profile after reload' });
   await cdp.eval(`document.querySelector('[data-my-drill="reviews"]').click(); true`);
   await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'relationship restored after reload' });
 
@@ -256,7 +256,7 @@ try {
   await waitFor(() => cdp.eval(`!!document.querySelector('.curation-editorial-intro') && document.querySelectorAll('.curation-chapter').length >= 3`), { timeout: 8000, label: 'authored curation detail' });
 
   assert.deepEqual(cdp.exceptions, [], `Browser runtime exceptions: ${cdp.exceptions.join('; ')}`);
-  console.log('browser-smoke: search -> optimistic detail -> rating/comment -> viewing -> non-destructive Library removal -> MY archive -> reload -> curation OK');
+  console.log('browser-smoke: search -> optimistic detail -> rating/comment -> viewing -> non-destructive Library removal -> Profile archive -> reload -> curation OK');
   }
 } finally {
   try { cdp?.close(); } catch {}

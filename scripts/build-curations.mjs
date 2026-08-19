@@ -136,7 +136,7 @@ function read() {
   return items;
 }
 
-const payload = { version: '0.4.5', items: read() };
+const payload = { version: '0.4.5.1', items: read() };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

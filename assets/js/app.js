@@ -2,7 +2,8 @@ import * as MOVIE_ENTITIES from './core/movie-entities.js';
 import { createMovieLoader } from './services/movie-loader.js';
 import { createSearchController } from './features/search.js';
 import { renderDetail, patchDetail } from './features/detail.js';
-import { renderLibraryShelf } from './features/library.js';
+import { renderLibraryShelf, renderWatchlistShelf } from './features/library.js';
+import { buildArthousePool, selectArthouseRails } from './features/arthouse.js';
 import { renderMovieCard } from './ui/movie-card.js';
 import { createStore } from './core/store.js';
 import { createRouter } from './core/router.js';
@@ -79,6 +80,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   const relatedState = new Map();
   const scrollPositions = new Map();
+  const moviePrefetchTimers = new WeakMap();
 
   function icon(name) {
     return `<svg class="ui-icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
@@ -182,7 +184,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const normalized = normalizeMovieRecord(record);
     if (!normalized) return null;
     const existing = movieMap.get(String(normalized.id)) || state.movieCache?.[String(normalized.id)] || {};
-    const merged = normalizeMovieRecord({ ...existing, ...normalized });
+    const merged = MOVIE_ENTITIES?.merge?.(existing, record) || normalizeMovieRecord({ ...existing, ...normalized });
     movieMap.set(String(merged.id), merged);
     if (persist) {
       state.movieCache = state.movieCache || {};
@@ -226,10 +228,18 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return !!artInfo(record).isArt;
   }
 
+  function arthouseCuratedMovies() {
+    const curations = CURATIONS?.forSurface?.('arthouse') || [];
+    return uniqueById(curations.flatMap((item) => curationMovies(item)));
+  }
+
   function artPool() {
-    return uniqueById([...(CATALOG.sections?.art || []), ...(CATALOG.movies || [])])
-      .filter(isArthouse)
-      .sort((a, b) => artInfo(b).score - artInfo(a).score || Number(b.voteAverage || 0) - Number(a.voteAverage || 0));
+    return buildArthousePool({
+      curated: arthouseCuratedMovies(),
+      staticArt: CATALOG.sections?.art || [],
+      catalog: CATALOG.movies || [],
+      classify: artInfo,
+    });
   }
 
   function isInTheatres(record) {
@@ -706,6 +716,12 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return Object.keys(state.library).map(personalMovie);
   }
 
+  function allWatchlistMovies() {
+    return Object.entries(state.relationships || {})
+      .filter(([, relation]) => !!relation?.watchlist)
+      .map(([id]) => personalMovie(id));
+  }
+
   function logsForMovie(id) {
     return state.logs
       .filter((log) => String(log.movieId) === String(id))
@@ -791,6 +807,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function availabilityBadges(record) {
     const ott = providerBadges(record, 2);
     const cinema = isInTheatres(record) ? `<span class="cinema-icon-badge" title="현재 극장 상영 목록">${icon('cinema')}</span>` : '';
+    if (!cinema && !ott && record?.availabilityLoading) return '<div class="availability-stack is-loading" aria-label="감상 가능 정보 확인 중"><span class="provider-badge-skeleton"></span></div>';
     return `<div class="availability-stack">${cinema}${ott}</div>`;
   }
 
@@ -887,7 +904,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   function gateHtml(area) {
-    return `<div class="gate-card"><div class="gate-card-inner"><div class="gate-icon">${icon('lock')}</div><p class="eyebrow">ACCOUNT REQUIRED</p><h1>${escapeHtml(area)}</h1><p>개인 기록은 계정과 연결됩니다. 로그인하면 같은 Library와 MY를 PC·모바일에서 이어서 사용할 수 있습니다.</p><button class="primary-button" data-open-auth>로그인하고 시작하기</button></div></div>`;
+    return `<div class="gate-card"><div class="gate-card-inner"><div class="gate-icon">${icon('lock')}</div><p class="eyebrow">ACCOUNT REQUIRED</p><h1>${escapeHtml(area)}</h1><p>개인 기록은 계정과 연결됩니다. 로그인하면 같은 라이브러리와 프로필 기록을 PC·모바일에서 이어서 사용할 수 있습니다.</p><button class="primary-button" data-open-auth>로그인하고 시작하기</button></div></div>`;
   }
 
   function requireAuth(message = '로그인하면 이 기능을 사용할 수 있습니다.') {
@@ -1057,10 +1074,14 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return renderMovieCard(record, variant, movieCardContext());
   }
 
+  function railFrame(inner, rowClass = 'poster-row') {
+    return `<div class="film-rail-shell"><button class="film-rail-arrow is-prev" data-rail-step="prev" aria-label="이전 영화">${icon('chevron-left')}</button><div class="${rowClass}" data-film-rail>${inner}</div><button class="film-rail-arrow is-next" data-rail-step="next" aria-label="다음 영화">${icon('chevron-right')}</button></div>`;
+  }
+
   function rowSection(title, subtitle, movies, limit = 12, variant = 'discover') {
     const list = uniqueById(movies || []).slice(0, limit);
     const rowClass = variant === 'arthouse' ? 'poster-row arthouse-poster-row' : 'poster-row';
-    return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2>${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}</div></div>${list.length ? `<div class="${rowClass}">${list.map((record) => card(record, variant)).join('')}</div>` : `<div class="empty-state"><b>아직 표시할 영화가 없습니다.</b><span>데이터가 갱신되면 이 섹션도 자동으로 채워집니다.</span></div>`}</section>`;
+    return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2>${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}</div></div>${list.length ? railFrame(list.map((record) => card(record, variant)).join(''), rowClass) : `<div class="empty-state"><b>표시할 영화가 없습니다.</b></div>`}</section>`;
   }
 
   function getCurationLoader() {
@@ -1130,17 +1151,18 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (!item) return '';
     const films = curationMovies(item).slice(0, 10);
     const isArchive = item.kind === 'director-archive';
-    const title = isArchive ? `Director’s Archive : ${item.title}` : item.title;
     const rail = films.length
       ? films.map((record) => card(record, 'arthouse')).join('')
       : Array.from({ length: 7 }, () => `<article class="movie-card arthouse-movie-card is-metadata-loading curation-rail-placeholder"><div class="poster-wrap"><div class="poster-loading"><span class="loading-ring mini"></span><small>LOADING</small></div></div><div class="card-info"><p class="card-title">영화 정보 불러오는 중</p><div class="card-meta"><span>동기화 중…</span></div></div></article>`).join('');
-    return `<section class="content-section curation-rail-section"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${escapeHtml(item.eyebrow || (isArchive ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'))}</p><h2>${escapeHtml(title)}</h2>${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div><div class="poster-row arthouse-poster-row curation-poster-rail">${rail}</div></section>`;
+    const kicker = isArchive ? 'DIRECTOR ARCHIVE' : 'EDITORIAL';
+    const subtitle = item.subtitle ? `<span class="curation-rail-subtitle">${escapeHtml(item.subtitle)}</span>` : '';
+    return `<section class="content-section curation-rail-section"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${kicker}</p><h2>${escapeHtml(item.title)}</h2>${subtitle}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div>${railFrame(rail, 'poster-row arthouse-poster-row curation-poster-rail')}</section>`;
   }
 
 
   function myStreamingSection(title = '내 구독 서비스에서', source = null, variant = 'discover') {
     if (!isSignedIn()) return '';
-    if (!(state.subscriptions || []).length) return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>MY → 설정에서 이용 중인 OTT를 먼저 선택하세요.</p></div></div></section>`;
+    if (!(state.subscriptions || []).length) return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>프로필 → 설정에서 이용 중인 OTT를 먼저 선택하세요.</p></div></div></section>`;
     const list = (source || myStreamingMovies()).filter(availableOnMine);
     if (list.length) return rowSection(title, myStreamingState.status === 'ready' ? '선택한 OTT의 대한민국 구독 제공작을 실시간으로 탐색합니다.' : '구독 서비스에서 확인된 영화.', list, 14, variant);
     if (myStreamingState.status === 'loading') return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>구독 서비스의 최신 제공작을 불러오는 중입니다.</p></div></div><div class="rail-loading"></div></section>`;
@@ -1183,13 +1205,13 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function rankedSection(list, { exact = false } = {}) {
     const rows=uniqueById(list||[]).slice(0,14); if(!rows.length)return'';
     if (!exact) {
-      return `<section class="content-section"><div class="section-head"><div><h2>현재 상영작</h2><p>정확한 박스오피스 순위는 KOBIS 연결 시 표시됩니다.</p></div></div><div class="poster-row">${rows.map((record)=>card(record)).join('')}</div></section>`;
+      return `<section class="content-section"><div class="section-head"><div><h2>현재 상영작</h2><p>정확한 박스오피스 순위는 KOBIS 연결 시 표시됩니다.</p></div></div>${railFrame(rows.map((record)=>card(record)).join(''))}</section>`;
     }
-    return `<section class="content-section"><div class="section-head"><div><h2>박스오피스</h2><p>KOBIS 일별 박스오피스 기준</p></div></div><div class="poster-row ranked-row">${rows.map((record,index)=>`<div class="ranked-card"><span class="rank-number">${String(record.boxOfficeRank||index+1).padStart(2,'0')}</span>${card(record)}</div>`).join('')}</div></section>`;
+    return `<section class="content-section"><div class="section-head"><div><h2>박스오피스</h2><p>KOBIS 일별 박스오피스 기준</p></div></div>${railFrame(rows.map((record,index)=>`<div class="ranked-card"><span class="rank-number">${String(record.boxOfficeRank||index+1).padStart(2,'0')}</span>${card(record)}</div>`).join(''), 'poster-row ranked-row')}</section>`;
   }
   function upcomingSection(list) {
     const rows=uniqueById(list||[]).slice(0,14); if(!rows.length)return'';
-    return `<section class="content-section"><div class="section-head"><div><h2>공개 예정작</h2></div></div><div class="poster-row">${rows.map((record)=>`<div class="upcoming-card">${card(record)}<time>${record.releaseDate?formatDate(record.releaseDate):''}</time></div>`).join('')}</div></section>`;
+    return `<section class="content-section"><div class="section-head"><div><h2>공개 예정작</h2></div></div>${railFrame(rows.map((record)=>`<div class="upcoming-card">${card(record)}<time>${record.releaseDate?formatDate(record.releaseDate):''}</time></div>`).join(''))}</section>`;
   }
   function renderDiscover({ hero = true, streaming = true, upcoming = true } = {}) {
     if (hero) renderHeroCarousel('hero', heroSlidePool('discover'));
@@ -1214,13 +1236,14 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function renderArthouse() {
     const art = artPool();
     renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'));
-    const latest = [...art].filter((record) => record.releaseDate || record.year).sort((a,b) => String(b.releaseDate || b.year || '').localeCompare(String(a.releaseDate || a.year || ''))).slice(0,18);
-    const rated = [...art].filter((record) => Number(record.voteCount || 0) >= 50).sort((a,b) => Number(b.voteAverage || 0) - Number(a.voteAverage || 0) || Number(b.voteCount || 0) - Number(a.voteCount || 0)).slice(0,18);
     const allCurations = CURATIONS.forSurface('arthouse');
-    // Collectio-style browsing: a curation is a visible film rail first, not an
-    // opaque collection card. Opening the rail moves into the authored page.
+    const programmedIds = new Set(allCurations.flatMap((item) => curationMovies(item).slice(0, 10).map((record) => String(record.id))));
+    const { latest, rated } = selectArthouseRails({ pool: art, programmedIds });
+    // Programme rails are the primary Arthouse surface. Generic rails only use
+    // remaining candidates so the same famous titles do not repeat everywhere.
     let html = allCurations.map(curationRail).join('');
-    html += rowSection('최신 공개작','',latest,14,'arthouse') + rowSection('높은 평가를 받은 영화','',rated,14,'arthouse');
+    if (latest.length) html += rowSection('최근 공개된 작가영화','',latest,14,'arthouse');
+    if (rated.length) html += rowSection('다시 볼 만한 작품','',rated,14,'arthouse');
     document.getElementById('arthouseContent').innerHTML = html;
     Promise.allSettled(allCurations.map(ensureCurationPreview)).then((results) => {
       const changed = results.some((result) => result.status === 'fulfilled' && result.value);
@@ -1302,7 +1325,10 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       return;
     }
     const saved = allSavedMovies();
+    const watchlist = allWatchlistMovies();
     document.getElementById('libraryCount').textContent = saved.length;
+    const watchlistCount = document.getElementById('watchlistCount');
+    if (watchlistCount) watchlistCount.textContent = watchlist.length;
     renderCollectionsSide();
     document.querySelectorAll('[data-library]').forEach((button) => button.classList.toggle('is-active', button.dataset.library === libraryMode));
     if (libraryMode === 'all') {
@@ -1314,6 +1340,8 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
         hydrationHtml: libraryHydrationBanner(),
         c: libraryFeatureContext(),
       });
+    } else if (libraryMode === 'watchlist') {
+      content.innerHTML = `${libraryHydrationBanner()}${renderWatchlistShelf({ list: watchlist, c: libraryFeatureContext() })}`;
     } else if (libraryMode === 'collections') {
       content.innerHTML = `${libraryHeader('컬렉션', `${state.collections.length}개 컬렉션`, '<button class="primary-button" data-new-collection>＋ 새 컬렉션</button>')}<p class="library-page-intro">컬렉션은 영화와 나의 상태와 별개로, 내 영화장을 직접 분류하는 개인 서가입니다.</p><div class="collection-grid">${state.collections.map((collection) => { const cover = collectionCover(collection); return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover ? `<img src="${escapeHtml(cover)}" alt="">` : ''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length}편</p></div></article>`; }).join('')}</div>`;
     } else if (libraryMode.startsWith('collection:')) {
@@ -1382,21 +1410,27 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const first = new Date(year, month, 1);
     const days = new Date(year, month + 1, 0).getDate();
     const offset = first.getDay();
+    const monthPrefix = `${year}-${String(month + 1).padStart(2, '0')}`;
     const logsByDate = {};
     for (const log of state.logs) {
-      if (!String(log.watchedAt).startsWith(`${year}-${String(month + 1).padStart(2, '0')}`)) continue;
+      if (!String(log.watchedAt).startsWith(monthPrefix)) continue;
       (logsByDate[log.watchedAt] || (logsByDate[log.watchedAt] = [])).push(log);
     }
     let cells = '';
-    for (let i = 0; i < offset; i++) cells += '<div class="calendar-cell is-empty"></div>';
-    for (let day = 1; day <= days; day++) {
-      const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    let cellCount = 0;
+    for (let i = 0; i < offset; i++, cellCount++) cells += '<div class="calendar-cell is-empty" aria-hidden="true"></div>';
+    for (let day = 1; day <= days; day++, cellCount++) {
+      const date = `${monthPrefix}-${String(day).padStart(2, '0')}`;
       const logs = logsByDate[date] || [];
       const firstLog = logs[0];
       const record = firstLog ? personalMovie(firstLog.movieId) : null;
-      cells += `<button class="calendar-cell ${date === isoDate(new Date()) ? 'today' : ''} ${logs.length ? 'has-logs' : ''}" ${logs.length ? `data-calendar-day="${date}"` : 'disabled'}><span class="day-number">${day}</span>${record && poster(record) ? `<img class="calendar-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)}">` : record?.metadataLoading ? '<span class="calendar-poster calendar-poster-loading"></span>' : ''}${logs.length > 1 ? `<span class="calendar-count">${logs.length}</span>` : ''}</button>`;
+      const art = record && poster(record) ? `<img class="calendar-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)}"><span class="calendar-poster-shade"></span>` : record?.metadataLoading ? '<span class="calendar-poster calendar-poster-loading"></span>' : '';
+      cells += `<button class="calendar-cell ${date === isoDate(new Date()) ? 'today' : ''} ${logs.length ? 'has-logs' : ''}" ${logs.length ? `data-calendar-day="${date}" aria-label="${month + 1}월 ${day}일, ${logs.length}편 감상"` : `disabled aria-label="${month + 1}월 ${day}일"`}><span class="day-number">${day}</span>${logs.length ? `<span class="calendar-art">${art}${logs.length > 1 ? `<span class="calendar-count">+${logs.length - 1}</span>` : ''}</span>` : ''}</button>`;
     }
-    return `<div class="calendar-head"><div><p class="eyebrow">VIEWING CALENDAR</p><h2>${year}년 ${month + 1}월</h2></div><div class="calendar-controls"><button class="secondary-button" data-cal="prev">‹</button><button class="secondary-button" data-cal="next">›</button></div></div><div class="calendar-grid">${['일', '월', '화', '수', '목', '금', '토'].map((label) => `<div class="calendar-weekday">${label}</div>`).join('')}${cells}</div>`;
+    while (cellCount % 7 !== 0 || cellCount < 35) { cells += '<div class="calendar-cell is-empty" aria-hidden="true"></div>'; cellCount++; }
+    const monthLogs = Object.values(logsByDate).flat();
+    const monthFilms = new Set(monthLogs.map((log) => String(log.movieId))).size;
+    return `<div class="calendar-head calendar-head-feature"><div><p class="eyebrow">VIEWING CALENDAR</p><h2>${year}. ${String(month + 1).padStart(2, '0')}</h2><p>${monthFilms ? `${monthFilms}편 · ${monthLogs.length}회 감상` : '이 달의 감상 기록이 없습니다.'}</p></div><div class="calendar-controls"><button class="secondary-button" data-cal="prev" aria-label="이전 달">‹</button><button class="secondary-button" data-cal="next" aria-label="다음 달">›</button></div></div><div class="calendar-grid calendar-grid-poster">${['일', '월', '화', '수', '목', '금', '토'].map((label) => `<div class="calendar-weekday">${label}</div>`).join('')}${cells}</div>`;
   }
 
   function statsHtml() {
@@ -1429,7 +1463,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (!content) return;
     if (!isSignedIn()) {
       document.getElementById('profileCard').innerHTML = '';
-      content.innerHTML = gateHtml('MY');
+      content.innerHTML = gateHtml('PROFILE');
       return;
     }
     renderProfileCard();
@@ -1450,8 +1484,8 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'my') : ''}${recentComments.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 한줄평</h2></div><button class="section-action" data-my-review-archive>전체 보기</button></div>${reviewArchiveHtml(4)}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
     } else if (myMode === 'reviews') {
       content.innerHTML = mySubMode === 'comments'
-        ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">MY / COMMENTS</p><h2>내 한줄평</h2><p>영화별 현재 평가를 한곳에서 다시 찾고 수정합니다.</p></div></div>${reviewArchiveHtml()}</section>`
-        : `<section class="my-section"><div class="section-head"><div><h2>기록</h2><p>감상 사건은 시간순으로, 현재 별점·한줄평과 분리해서 보존합니다.</p></div><button class="section-action" data-my-review-archive>내 한줄평 →</button></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
+        ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">PROFILE / COMMENTS</p><h2>내 한줄평</h2><p>영화마다 남긴 한줄평을 확인합니다.</p></div></div>${reviewArchiveHtml()}</section>`
+        : `<section class="my-section"><div class="section-head"><div><h2>기록</h2><p>감상한 영화를 날짜순으로 확인합니다.</p></div><button class="section-action" data-my-review-archive>내 한줄평 →</button></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
     } else if (myMode === 'stats') {
       content.innerHTML = `<section class="my-section">${statsHtml()}</section>`;
     } else {
@@ -1495,12 +1529,12 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     }
     const fresh = freshnessLabel(record.availabilityUpdatedAt);
     if (record.availabilityLoading) {
-      return `<section class="detail-side-card watch-card is-loading" aria-live="polite"><div class="detail-side-title"><p>WHERE TO WATCH</p><h2>감상처 확인 중</h2></div><div class="watch-loading"><span class="loading-ring mini"></span><span>극장과 OTT 제공 정보를 불러오고 있습니다.</span></div>${rows.length ? `<div class="watch-rows is-stale">${rows.join('')}</div>` : ''}</section>`;
+      return `<section class="detail-side-card watch-card is-loading" aria-live="polite"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 정보 확인 중</h2></div><div class="watch-loading"><span class="loading-ring mini"></span><span>극장과 OTT 제공 정보를 불러오고 있습니다.</span></div>${rows.length ? `<div class="watch-rows is-stale">${rows.join('')}</div>` : ''}</section>`;
     }
     if (!rows.length) {
-      return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">극장 또는 OTT 제공 정보가 확인되면 이곳에 표시됩니다.</p></section>`;
+      return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">현재 확인 가능한 극장·OTT 정보가 없습니다.</p></section>`;
     }
-    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>WHERE TO WATCH</p><h2>어디서 볼 수 있나요</h2></div><div class="watch-rows">${rows.join('')}</div>${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">전체 감상처 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}JustWatch via TMDB 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p></section>`;
+    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 서비스</h2></div><div class="watch-rows">${rows.join('')}</div>${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">전체 감상처 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}JustWatch via TMDB 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p></section>`;
   }
 
   function localRelatedMovies(record) {
@@ -1577,11 +1611,11 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const cast = uniqueById(record.cast || []).slice(0, 8);
     const writers = uniqueById((record.writers || []).map((person) => ({ ...person, id: person.id || `writer-${person.name}`, title: person.name }))).slice(0, 4);
     const cinematographers = uniqueById((record.cinematographers || []).map((person) => ({ ...person, id: person.id || `dp-${person.name}`, title: person.name }))).slice(0, 2);
-    const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'MY' : 'DISCOVER';
+    const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'PROFILE' : 'DISCOVER';
     return {
       relationship, membership: membershipEntry, entry: relationship, logs, related, collections: collectionsForMovie(record.id), country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
       isArt: art.isArt, isSignedIn, escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
-      watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card, starRatingHtml,
+      watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card, starRatingHtml, railFrame,
     };
   }
 
@@ -1631,7 +1665,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${curationPreviousView === 'discover' ? 'Discover' : 'Arthouse'}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">공유</button></div>
       <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || (isArchive ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'))}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length}편` : isArchive ? '감독 작품 아카이브' : 'Editorial'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
       ${introduction}
-      ${!isArchive && chapters ? `<div class="curation-chapters">${chapters}</div>` : `<section class="content-section curation-film-section"><div class="section-head"><div><h2>${isArchive ? 'Filmography' : '작품'}</h2><p>${isArchive ? '감독 크레딧 기준으로 정리한 작품 아카이브입니다. 연도 순으로 한 번에 탐색할 수 있습니다.' : '명시적으로 선택된 작품만 이 큐레이션에 포함됩니다.'}</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span>영화 정보가 준비되면 이 영역만 자동으로 채워집니다.</span></div>`}</section>`}`;
+      ${!isArchive && chapters ? `<div class="curation-chapters">${chapters}</div>` : `<section class="content-section curation-film-section"><div class="section-head"><div><h2>${isArchive ? '필모그래피' : '작품'}</h2><p>${isArchive ? '감독 크레딧을 기준으로 연도순으로 정리했습니다.' : '큐레이션에 포함된 작품을 순서대로 확인합니다.'}</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span class="loading-ring mini" aria-hidden="true"></span></div>`}</section>`}`;
   }
 
 
@@ -1687,14 +1721,14 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   function setView(view, { skipGate = false, keepScroll = false, route = 'push', deferRender = false } = {}) {
-    if (!skipGate && (view === 'library' || view === 'my') && !requireAuth(`${view === 'library' ? 'Library' : 'MY'}는 로그인 후 사용할 수 있습니다.`)) return false;
+    if (!skipGate && (view === 'library' || view === 'my') && !requireAuth(`${view === 'library' ? 'Library' : '프로필'}은 로그인 후 사용할 수 있습니다.`)) return false;
     if (activeView !== view) scrollPositions.set(activeView, window.scrollY);
     activeView = view;
     document.querySelectorAll('.view').forEach((element) => element.classList.toggle('is-active', element.dataset.view === view));
     const navView = view === 'curation' ? curationPreviousView : view === 'movie' ? (previousView === 'curation' ? curationPreviousView : previousView) : view;
     document.querySelectorAll('[data-nav]').forEach((button) => button.classList.toggle('is-active', button.dataset.nav === navView));
     document.querySelectorAll('.mobile-nav-item[data-nav]').forEach((button) => button.classList.toggle('is-active', button.dataset.nav === navView));
-    if (view !== 'movie') document.title = `KINOSIS — ${view.charAt(0).toUpperCase() + view.slice(1)}`;
+    if (view !== 'movie') { const titleView = view === 'my' ? 'Profile' : view.charAt(0).toUpperCase() + view.slice(1); document.title = `KINOSIS — ${titleView}`; }
     if (route !== 'none' && view !== 'movie' && view !== 'curation') updateHistoryForView(view, route);
     requestAnimationFrame(() => {
       if (keepScroll) window.scrollTo({ top: scrollPositions.get(view) || 0, behavior: 'auto' });
@@ -1913,7 +1947,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     saveState();
     renderAfterPersonalChange(id, ['hero', 'activity']);
     refreshWatchlistAvailability(true).catch(() => {});
-    UI.toast(entry.watchlist ? 'Watchlist에 추가했습니다.' : 'Watchlist에서 제거했습니다.');
+    UI.toast(entry.watchlist ? '보고싶어요에 추가했습니다.' : '보고싶어요에서 제거했습니다.');
   }
 
   function toggleFavorite(id) {
@@ -2275,9 +2309,42 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     }
   }, true);
 
+  document.addEventListener('pointerover', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('[data-movie]') : null;
+    if (!target || target.dataset.prefetchGlobal === '1') return;
+    target.dataset.prefetchGlobal = '1';
+    moviePrefetchTimers.set(target, setTimeout(() => {
+      const id = target.dataset.movie;
+      if (id && String(id) !== String(detailMovieId || '')) getMovieLoader()?.prefetchDetail(id).catch(() => {});
+    }, 140));
+  });
+  document.addEventListener('pointerout', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('[data-movie]') : null;
+    if (!target) return;
+    clearTimeout(moviePrefetchTimers.get(target));
+    moviePrefetchTimers.delete(target);
+    target.dataset.prefetchGlobal = '0';
+  });
+  document.addEventListener('focusin', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('[data-movie]') : null;
+    const id = target?.dataset.movie;
+    if (id && String(id) !== String(detailMovieId || '')) getMovieLoader()?.prefetchDetail(id).catch(() => {});
+  });
+
   document.addEventListener('click', async (event) => {
     const close = event.target.closest('[data-close]');
     if (close) { UI.closeDialog(close.dataset.close); return; }
+
+    const railStep = event.target.closest('[data-rail-step]');
+    if (railStep) {
+      const shell = railStep.closest('.film-rail-shell');
+      const rail = shell?.querySelector('[data-film-rail]');
+      if (rail) {
+        const direction = railStep.dataset.railStep === 'prev' ? -1 : 1;
+        rail.scrollBy({ left: direction * Math.max(260, rail.clientWidth * 0.82), behavior: 'smooth' });
+      }
+      return;
+    }
 
     const nav = event.target.closest('[data-nav]');
     if (nav) { setView(nav.dataset.nav); return; }

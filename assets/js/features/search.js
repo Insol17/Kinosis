@@ -4,7 +4,7 @@ export function createSearchController(deps) {
       lib, isSignedIn, canUseLiveApi, movieRepository, showDialog, prefetchMovieDetail,
     } = deps;
     const MIN_CHARS = 2;
-    const DEBOUNCE = 250;
+    const DEBOUNCE = 180;
     let timer = null;
     let aborter = null;
     let serial = 0;
@@ -82,6 +82,10 @@ export function createSearchController(deps) {
       target.scrollIntoView({ block: 'nearest' });
     }
 
+    function loadingRows(count = 3) {
+      return `<div class="search-loading-results" aria-hidden="true">${Array.from({ length: count }, () => '<div class="search-loading-row"><span class="search-loading-poster"></span><span class="search-loading-copy"><i></i><i></i></span></div>').join('')}</div>`;
+    }
+
     function render(query = '') {
       const root = resultRoot();
       if (!root) return;
@@ -102,11 +106,13 @@ export function createSearchController(deps) {
       const exact = results.filter((row) => [row.title, row.originalTitle].some((value) => normalizeText(value) === normalizeText(trimmed)));
       const exactIds = new Set(exact.map((row) => String(row.id)));
       const others = results.filter((row) => !exactIds.has(String(row.id)));
-      const status = live.status === 'loading' ? '<div class="search-status" role="status">온라인 결과를 합치는 중…</div>' : live.status === 'error' ? '<div class="search-status" role="status">온라인 검색을 사용할 수 없어 로컬 결과만 표시합니다.</div>' : '';
+      const searching = live.status === 'queued' || live.status === 'loading';
+      const status = searching ? `<div class="search-status is-loading" role="status"><span class="loading-ring mini"></span><span>${live.status === 'queued' ? '검색을 준비하는 중…' : '온라인 결과를 불러오는 중…'}</span></div>` : live.status === 'error' ? '<div class="search-status" role="status">온라인 검색을 사용할 수 없어 로컬 결과만 표시합니다.</div>' : '';
       const peopleHtml = people.length ? `<section class="search-section search-people"><div class="search-section-label">인물</div>${people.slice(0, 6).map(personRow).join('')}</section>` : '';
       const exactHtml = exact.length ? `<section class="search-section"><div class="search-section-label">정확히 일치</div>${exact.slice(0, 4).map((row) => movieRow(row, true)).join('')}</section>` : '';
-      const moviesHtml = others.length ? `<section class="search-section"><div class="search-section-label">영화</div>${others.slice(0, 24).map((row) => movieRow(row)).join('')}</section>` : (!exact.length ? '<div class="empty-state"><b>검색 결과가 없습니다.</b></div>' : '');
-      root.innerHTML = status + peopleHtml + exactHtml + moviesHtml;
+      const moviesHtml = others.length ? `<section class="search-section"><div class="search-section-label">영화</div>${others.slice(0, 24).map((row) => movieRow(row)).join('')}</section>` : (!exact.length && !searching ? '<div class="empty-state"><b>검색 결과가 없습니다.</b></div>' : '');
+      const loadingHtml = searching && !results.length && !people.length ? loadingRows(4) : '';
+      root.innerHTML = status + peopleHtml + exactHtml + moviesHtml + loadingHtml;
     }
 
     async function run(query, runSerial) {
@@ -132,14 +138,15 @@ export function createSearchController(deps) {
       const runSerial = ++serial;
       person = { status: 'idle', person: null, results: [] };
       if (query !== live.query) live = { query, status: 'idle', results: [], people: [], message: '' };
-      render(query); // instant local results
+      if (!composing && query.length >= MIN_CHARS && canUseLiveApi()) live = { ...live, query, status: 'queued' };
+      render(query); // instant local results + explicit remote-search signal
       if (composing || query.length < MIN_CHARS || !canUseLiveApi()) return;
       timer = setTimeout(() => run(query, runSerial), DEBOUNCE);
     }
 
     function open() {
       const context = document.getElementById('searchContext');
-      if (context) context.textContent = '영화와 인물을 함께 찾습니다. 로컬 결과를 즉시 표시하고 온라인 결과를 합칩니다.';
+      if (context) context.textContent = '제목, 감독, 배우를 검색합니다.';
       showDialog('searchDialog');
       const field = input();
       field.value = '';
