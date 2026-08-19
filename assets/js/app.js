@@ -2,6 +2,8 @@ import * as MOVIE_ENTITIES from './core/movie-entities.js';
 import { createMovieLoader } from './services/movie-loader.js';
 import { createSearchController } from './features/search.js';
 import { renderDetail, patchDetail } from './features/detail.js';
+import { renderLibraryShelf } from './features/library.js';
+import { renderMovieCard } from './ui/movie-card.js';
 import { createStore } from './core/store.js';
 import { createRouter } from './core/router.js';
 import { createPerformanceMonitor } from './core/performance.js';
@@ -71,7 +73,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   let mySubMode = 'timeline';
   let calendarCursor = new Date();
   let libraryQueryTimer = null;
-  let libraryFilter = { q: '', sort: 'recent', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
+  let libraryFilter = { q: '', sort: 'recent', relationship: 'all', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
   let libraryHydrationState = { status: 'idle', pending: 0, message: '' };
 
 
@@ -704,12 +706,6 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return Object.keys(state.library).map(personalMovie);
   }
 
-  function relationshipMovies(predicate = () => true) {
-    return Object.entries(state.relationships || {})
-      .filter(([, relation]) => predicate(relation))
-      .map(([id]) => personalMovie(id));
-  }
-
   function logsForMovie(id) {
     return state.logs
       .filter((log) => String(log.movieId) === String(id))
@@ -1029,26 +1025,36 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     getHeroController().render(element, key, slides, requestedIndex);
   }
 
+  function collectionsForMovie(id) {
+    const key = String(id);
+    return (state.collections || []).filter((collection) => (collection.movieIds || []).some((movieId) => String(movieId) === key));
+  }
+
+  function libraryAccessLabel(record) {
+    if (!record || record.metadataLoading) return '';
+    const mine = consolidatedProviders(record).find((provider) => provider.isMine);
+    if (mine) return `${mine.label || mine.name}에서 감상 가능`;
+    if (isInTheatres(record)) return '극장 상영 중';
+    return '';
+  }
+
+  function movieCardContext() {
+    return {
+      relationship: lib,
+      signedIn: isSignedIn,
+      poster,
+      escapeHtml,
+      availabilityBadges,
+      availableOnMine,
+      logsForMovie,
+      collectionsForMovie,
+      accessLabel: libraryAccessLabel,
+      formatDate,
+    };
+  }
+
   function card(record, variant = 'discover') {
-    if (!record) return '';
-    const entry = lib(record.id);
-    const libraryCard = variant === 'library';
-    const arthouseCard = variant === 'arthouse';
-    const loading = !!record.metadataLoading;
-    const posterUrl = poster(record);
-    const media = loading
-      ? `<div class="poster-loading" aria-label="영화 정보를 불러오는 중"><span class="loading-ring mini"></span><small>LOADING</small></div>`
-      : posterUrl
-        ? `<div class="poster-fallback is-visible">${escapeHtml(record.title || '포스터 없음')}</div><img data-poster-image src="${escapeHtml(posterUrl)}" alt="${escapeHtml(record.title)} 포스터" loading="lazy">`
-        : `<div class="poster-fallback is-visible">${escapeHtml(record.title || '포스터 없음')}</div>`;
-    return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''}" data-movie="${escapeHtml(record.id)}" tabindex="0" aria-label="${escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}">
-      <div class="poster-wrap">
-        ${media}
-        ${!loading ? availabilityBadges(record) : ''}
-        <div class="card-overlay">${isSignedIn() && !loading ? `<div class="quick-actions"><button class="tiny-button ${entry?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${record.id}" aria-label="${entry?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${entry?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${record.id}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${record.id}">제거</button>` : ''}</div>` : ''}</div>
-      </div>
-      <div class="card-info"><p class="card-title">${escapeHtml(record.title)}</p><div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div></div>
-    </article>`;
+    return renderMovieCard(record, variant, movieCardContext());
   }
 
   function rowSection(title, subtitle, movies, limit = 12, variant = 'discover') {
@@ -1244,52 +1250,15 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   function libraryHeader(title, summary = '', extras = '') { return `<header class="library-header simple-library-head"><div><h1>${escapeHtml(title)}</h1>${summary ? `<span>${escapeHtml(summary)}</span>` : ''}</div><div class="library-header-actions">${extras}</div></header>`; }
 
-  function libraryGenres(list) {
-    return [...new Set((list || []).flatMap((record) => genreNames(record)))].sort((a,b) => a.localeCompare(b, 'ko'));
-  }
-
-  function filterLibrary(list) {
-    let out = [...list];
-    const query = normalizeText(libraryFilter.q);
-    if (query) out = out.filter((record) => normalizeText([record.title, record.originalTitle, record.director, ...genreNames(record)].filter(Boolean).join(' ')).includes(query));
-    if (libraryFilter.status === 'watched') out = out.filter((record) => logsForMovie(record.id).length > 0);
-    else if (libraryFilter.status === 'unwatched') out = out.filter((record) => logsForMovie(record.id).length === 0);
-    if (libraryFilter.minRating !== 'all') out = out.filter((record) => Number(lib(record.id)?.rating || 0) >= Number(libraryFilter.minRating));
-    if (libraryFilter.genre !== 'all') out = out.filter((record) => genreNames(record).includes(libraryFilter.genre));
-    if (libraryFilter.availability === 'mine') out = out.filter(availableOnMine);
-    else if (libraryFilter.availability === 'now') out = out.filter((record) => availableOnMine(record) || isInTheatres(record));
-    if (libraryFilter.sort === 'title') out.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
-    else if (libraryFilter.sort === 'rating') out.sort((a, b) => (lib(b.id)?.rating || 0) - (lib(a.id)?.rating || 0));
-    else if (libraryFilter.sort === 'year') out.sort((a, b) => (b.year || 0) - (a.year || 0));
-    else if (libraryFilter.sort === 'watched') out.sort((a, b) => String(logsForMovie(b.id)[0]?.watchedAt || '').localeCompare(String(logsForMovie(a.id)[0]?.watchedAt || '')));
-    else out.sort((a, b) => String(membership(b.id)?.savedAt || '').localeCompare(String(membership(a.id)?.savedAt || '')));
-    return out;
-  }
-
-  function libraryToolbar(list) {
-    const genres = libraryGenres(list);
-    const activeFilters = [libraryFilter.status !== 'all', libraryFilter.minRating !== 'all', libraryFilter.genre !== 'all', libraryFilter.availability !== 'all'].filter(Boolean).length;
-    return `<div class="library-toolbar simple-library-toolbar">
-      <label class="library-search">${icon('search')}<input id="libraryQuery" value="${escapeHtml(libraryFilter.q)}" placeholder="Library 검색"></label>
-      <details class="library-filter-menu"><summary>${icon('sliders')} 필터${activeFilters ? ` <span>${activeFilters}</span>` : ''}</summary><div class="library-filter-panel">
-        <label>감상 상태<select id="libraryStatus"><option value="all">전체</option><option value="watched" ${libraryFilter.status === 'watched' ? 'selected' : ''}>감상함</option><option value="unwatched" ${libraryFilter.status === 'unwatched' ? 'selected' : ''}>미감상</option></select></label>
-        <label>평점<select id="libraryRating"><option value="all">전체</option><option value="4" ${libraryFilter.minRating === '4' ? 'selected' : ''}>4점 이상</option><option value="3" ${libraryFilter.minRating === '3' ? 'selected' : ''}>3점 이상</option></select></label>
-        <label>장르<select id="libraryGenre"><option value="all">전체</option>${genres.map((genre) => `<option value="${escapeHtml(genre)}" ${libraryFilter.genre === genre ? 'selected' : ''}>${escapeHtml(genre)}</option>`).join('')}</select></label>
-        <label>감상 가능<select id="libraryAvailability"><option value="all">전체</option><option value="mine" ${libraryFilter.availability === 'mine' ? 'selected' : ''}>내 구독에서 가능</option><option value="now" ${libraryFilter.availability === 'now' ? 'selected' : ''}>현재 볼 수 있음</option></select></label>
-        <button class="secondary-button" type="button" id="libraryFilterReset">필터 초기화</button>
-      </div></details>
-      <select id="librarySort" aria-label="정렬"><option value="recent" ${libraryFilter.sort==='recent'?'selected':''}>최근 추가</option><option value="watched" ${libraryFilter.sort==='watched'?'selected':''}>최근 감상</option><option value="title" ${libraryFilter.sort==='title'?'selected':''}>제목</option><option value="rating" ${libraryFilter.sort==='rating'?'selected':''}>내 평점</option><option value="year" ${libraryFilter.sort==='year'?'selected':''}>개봉연도</option></select>
-      <div class="view-toggle"><button class="${libraryView==='grid'?'is-active':''}" data-library-view="grid" aria-label="그리드 보기">${icon('grid')}</button><button class="${libraryView==='list'?'is-active':''}" data-library-view="list" aria-label="목록 보기">${icon('list')}</button></div>
-    </div>`;
-  }
-
-
   function libraryListRows(list) {
     return `<div class="library-list">${list.map((record) => {
       const entry = lib(record.id);
-      const last = logsForMovie(record.id)[0];
+      const logs = logsForMovie(record.id);
+      const last = logs[0];
+      const collections = collectionsForMovie(record.id);
+      const access = libraryAccessLabel(record);
       const image = record.metadataLoading ? '<span class="row-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="row-poster-loading is-empty"></span>';
-      return `<div class="library-row ${record.metadataLoading ? 'is-metadata-loading' : ''}" data-movie="${record.id}" tabindex="0">${image}<div><div class="library-row-title">${escapeHtml(record.title)}</div><div class="library-row-sub">${record.metadataLoading ? '영화 정보를 동기화하는 중입니다.' : `${escapeHtml(record.director || '')}${record.director ? ' · ' : ''}${genreNames(record).slice(0, 2).map(escapeHtml).join(' · ')}`}</div></div><div class="library-row-cell">${record.metadataLoading ? '…' : (record.year || '—')}</div><div class="library-row-cell rating">${entry?.rating ? `★ ${entry.rating}` : '—'}</div><div class="library-row-cell">${last ? formatDate(last.watchedAt) : '—'}</div><div class="library-row-cell">${record.metadataLoading ? '동기화 중' : availableOnMine(record) ? '내 구독에서 가능' : isInTheatres(record) ? '극장 상영' : '—'}</div><button class="library-row-remove" data-remove-library="${record.id}" aria-label="라이브러리에서 제거">×</button></div>`;
+      return `<div class="library-row ${record.metadataLoading ? 'is-metadata-loading' : ''}" data-movie="${record.id}" tabindex="0">${image}<div><div class="library-row-title">${escapeHtml(record.title)}</div><div class="library-row-sub">${record.metadataLoading ? '영화 정보를 동기화하는 중입니다.' : `${escapeHtml(record.director || '')}${record.director ? ' · ' : ''}${genreNames(record).slice(0, 2).map(escapeHtml).join(' · ')}`}</div></div><div class="library-row-cell">${record.metadataLoading ? '…' : (record.year || '—')}</div><div class="library-row-cell rating">${entry?.rating ? `★ ${Number(entry.rating).toFixed(1)}` : '—'}</div><div class="library-row-cell">${logs.length ? `${logs.length}회 · ${formatDate(last.watchedAt)}` : '미감상'}</div><div class="library-row-cell library-row-context">${record.metadataLoading ? '동기화 중' : [access, collections[0]?.name].filter(Boolean).map(escapeHtml).join(' · ') || '—'}</div><button class="library-row-remove" data-remove-library="${record.id}" aria-label="내 영화장에서 제거">×</button></div>`;
     }).join('')}</div>`;
   }
 
@@ -1299,9 +1268,21 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return '';
   }
 
-  function listPage(title, summary, list) {
-    const filtered=filterLibrary(list);
-    return `${libraryHeader(title, `${filtered.length}편`)}${libraryHydrationBanner()}${libraryToolbar(list)}${filtered.length?(libraryView==='grid'?`<div class="library-grid">${filtered.map(record=>card(record,'library')).join('')}</div>`:libraryListRows(filtered)):`<div class="empty-state"><b>영화가 없습니다.</b></div>`}`;
+  function libraryFeatureContext() {
+    return {
+      normalizeText,
+      genreNames,
+      relationship: lib,
+      logsForMovie,
+      availableOnMine,
+      isInTheatres,
+      membership,
+      icon,
+      escapeHtml,
+      card,
+      listRows: libraryListRows,
+      collectionCover,
+    };
   }
 
   function renderCollectionDetail(collection) {
@@ -1313,16 +1294,35 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   function renderLibrary() {
-    const content=document.getElementById('libraryContent'); if(!content)return;
-    if(!isSignedIn()){content.innerHTML=gateHtml('Library');document.getElementById('libraryCount').textContent='0';return;}
-    document.getElementById('libraryCount').textContent=allSavedMovies().length; renderCollectionsSide();
-    document.querySelectorAll('[data-library]').forEach(button=>button.classList.toggle('is-active',button.dataset.library===libraryMode));
-    if(libraryMode==='all')content.innerHTML=listPage('전체 영화','',allSavedMovies());
-    else if(libraryMode==='watchlist')content.innerHTML=listPage('보고싶어요','',relationshipMovies((relation)=>relation.watchlist));
-    else if(libraryMode==='favorites')content.innerHTML=listPage('좋아요','',relationshipMovies((relation)=>relation.favorite));
-    else if(libraryMode==='collections')content.innerHTML=`${libraryHeader('컬렉션',`${state.collections.length}개 컬렉션`,'<button class="primary-button" id="newCollectionButton">＋ 새 컬렉션</button>')}<div class="collection-grid">${state.collections.map(collection=>{const cover=collectionCover(collection);return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover?`<img src="${escapeHtml(cover)}" alt="">`:''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length}편</p></div></article>`}).join('')}</div>`;
-    else if(libraryMode.startsWith('collection:')){const collection=state.collections.find(item=>item.id===libraryMode.split(':')[1]);content.innerHTML=collection?renderCollectionDetail(collection):listPage('전체 영화','',allSavedMovies());}
-    else {libraryMode='all';content.innerHTML=listPage('전체 영화','',allSavedMovies());}
+    const content = document.getElementById('libraryContent');
+    if (!content) return;
+    if (!isSignedIn()) {
+      content.innerHTML = gateHtml('Library');
+      document.getElementById('libraryCount').textContent = '0';
+      return;
+    }
+    const saved = allSavedMovies();
+    document.getElementById('libraryCount').textContent = saved.length;
+    renderCollectionsSide();
+    document.querySelectorAll('[data-library]').forEach((button) => button.classList.toggle('is-active', button.dataset.library === libraryMode));
+    if (libraryMode === 'all') {
+      content.innerHTML = renderLibraryShelf({
+        list: saved,
+        filter: libraryFilter,
+        view: libraryView,
+        collections: state.collections,
+        hydrationHtml: libraryHydrationBanner(),
+        c: libraryFeatureContext(),
+      });
+    } else if (libraryMode === 'collections') {
+      content.innerHTML = `${libraryHeader('컬렉션', `${state.collections.length}개 컬렉션`, '<button class="primary-button" data-new-collection>＋ 새 컬렉션</button>')}<p class="library-page-intro">컬렉션은 영화와 나의 상태와 별개로, 내 영화장을 직접 분류하는 개인 서가입니다.</p><div class="collection-grid">${state.collections.map((collection) => { const cover = collectionCover(collection); return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover ? `<img src="${escapeHtml(cover)}" alt="">` : ''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length}편</p></div></article>`; }).join('')}</div>`;
+    } else if (libraryMode.startsWith('collection:')) {
+      const collection = state.collections.find((item) => item.id === libraryMode.split(':')[1]);
+      content.innerHTML = collection ? renderCollectionDetail(collection) : renderLibraryShelf({ list: saved, filter: libraryFilter, view: libraryView, collections: state.collections, hydrationHtml: libraryHydrationBanner(), c: libraryFeatureContext() });
+    } else {
+      libraryMode = 'all';
+      content.innerHTML = renderLibraryShelf({ list: saved, filter: libraryFilter, view: libraryView, collections: state.collections, hydrationHtml: libraryHydrationBanner(), c: libraryFeatureContext() });
+    }
   }
 
   function profileCounts() {
@@ -1447,7 +1447,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       const yearLogs = state.logs.filter((log) => String(log.watchedAt || '').startsWith(`${year}-`));
       const yearFilms = new Set(yearLogs.map((log) => String(log.movieId))).size;
       const yearHours = Math.round(yearLogs.reduce((sum, log) => sum + Number(movie(log.movieId)?.runtime || 0), 0) / 60);
-      content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'library') : ''}${recentComments.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 한줄평</h2></div><button class="section-action" data-my-review-archive>전체 보기</button></div>${reviewArchiveHtml(4)}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
+      content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'my') : ''}${recentComments.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 한줄평</h2></div><button class="section-action" data-my-review-archive>전체 보기</button></div>${reviewArchiveHtml(4)}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
     } else if (myMode === 'reviews') {
       content.innerHTML = mySubMode === 'comments'
         ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">MY / COMMENTS</p><h2>내 한줄평</h2><p>영화별 현재 평가를 한곳에서 다시 찾고 수정합니다.</p></div></div>${reviewArchiveHtml()}</section>`
@@ -1579,7 +1579,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const cinematographers = uniqueById((record.cinematographers || []).map((person) => ({ ...person, id: person.id || `dp-${person.name}`, title: person.name }))).slice(0, 2);
     const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'MY' : 'DISCOVER';
     return {
-      relationship, membership: membershipEntry, entry: relationship, logs, related, country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
+      relationship, membership: membershipEntry, entry: relationship, logs, related, collections: collectionsForMovie(record.id), country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
       isArt: art.isArt, isSignedIn, escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
       watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card, starRatingHtml,
     };
@@ -1934,8 +1934,8 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (record) rememberMovie(record, { persist: true });
     addLibraryMembership(state, id, new Date().toISOString());
     saveState();
-    renderAfterPersonalChange(id, ['hero']);
-    UI.toast('Library에 추가했습니다.');
+    renderAfterPersonalChange(id, ['hero', 'activity']);
+    UI.toast('내 영화장에 추가했습니다.');
   }
 
   async function removeMovieFromLibrary(id) {
@@ -1944,16 +1944,16 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (!membership(id)) return;
     const answer = await UI.ask({
       eyebrow: 'LIBRARY',
-      title: 'Library에서 제거할까요?',
-      message: `${record?.title || '영화'}는 Library 목록에서만 사라집니다. 별점, 한줄평, 감상 기록, 보고싶어요와 컬렉션은 그대로 보존됩니다.`,
-      confirmText: 'Library에서 제거',
+      title: '내 영화장에서 제거할까요?',
+      message: `${record?.title || '영화'}는 현재 서가에서만 사라집니다. 별점, 한줄평, 감상 기록, 보고싶어요와 컬렉션은 그대로 보존됩니다.`,
+      confirmText: '내 영화장에서 제거',
     });
     if (!answer.confirmed) return;
     removeLibraryMembership(state, id, new Date().toISOString());
     saveState();
-    if (activeView === 'movie') patchMoviePage(movie(id), ['hero']);
+    if (activeView === 'movie') patchMoviePage(movie(id), ['hero', 'activity']);
     else renderAll();
-    UI.toast('Library에서 제거했습니다. 개인 기록은 보존됩니다.');
+    UI.toast('내 영화장에서 제거했습니다. 개인 기록은 보존됩니다.');
   }
 
   async function deletePersonalMovieData(id) {
@@ -2299,6 +2299,13 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (event.target.closest('[data-my-review-archive]')) { myMode = 'reviews'; mySubMode = 'comments'; renderMy(); return; }
     if (event.target.closest('[data-my-log-timeline]')) { myMode = 'reviews'; mySubMode = 'timeline'; renderMy(); return; }
 
+    const relationshipFilter = event.target.closest('[data-library-relationship]');
+    if (relationshipFilter) {
+      libraryFilter.relationship = relationshipFilter.dataset.libraryRelationship || 'all';
+      renderLibrary();
+      return;
+    }
+
     const listView = event.target.closest('[data-library-view]');
     if (listView) { libraryView = listView.dataset.libraryView; renderLibrary(); return; }
 
@@ -2424,7 +2431,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const calendarDay = event.target.closest('[data-calendar-day]');
     if (calendarDay) { openCalendarDay(calendarDay.dataset.calendarDay); return; }
 
-    if (event.target.closest('#newCollectionButton')) { openCollectionEditor(); return; }
+    if (event.target.closest('[data-new-collection]')) { openCollectionEditor(); return; }
     const editCollectionButton = event.target.closest('[data-edit-collection]');
     if (editCollectionButton) {
       const collectionItem = state.collections.find((item) => item.id === editCollectionButton.dataset.editCollection);
@@ -2462,7 +2469,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     }
 
     if (event.target.closest('#libraryFilterReset')) {
-      libraryFilter = { ...libraryFilter, status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
+      libraryFilter = { ...libraryFilter, relationship: 'all', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
       renderLibrary();
       return;
     }

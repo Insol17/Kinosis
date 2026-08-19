@@ -1,5 +1,5 @@
 window.KINOSIS_PROVIDER_DATA = Object.freeze({
-  "version": "0.4.4.7",
+  "version": "0.4.5",
   "items": [
     {
       "key": "Netflix",

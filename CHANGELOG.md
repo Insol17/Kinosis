@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.4.5 — Personal Film Library identity pass
+
+### Product identity / IA
+- Reframed KINOSIS around **Personal Film Library / 나만의 영화장** rather than a collection of discovery, curation and logging features.
+- Library now treats `LibraryMembership` as the present-tense shelf. Watchlist, favorite and rating are relationship filters rather than sibling Library destinations.
+- Collections remain user-authored organization and are visually separated from relationship state.
+- No physical/digital ownership model was added; current access remains subscription/theatrical availability only.
+
+### Library
+- Rebuilt the Library landing around `PERSONAL FILM LIBRARY → COLLECTIONS → MY SHELF`.
+- Added relationship filter chips (전체 / 보고싶어요 / 좋아요 / 평가함), with watched/rating/genre/availability kept as secondary filters.
+- Added compact collection rail plus dedicated full-collection view.
+- Library cards now expose personal context: current rating, viewing count, current subscribed-provider access and collection membership.
+- MY cards use a different context emphasizing viewing time/history instead of reusing the Library card semantics.
+- Library removal continues to remove only membership; rating, one-line comment, viewing events, watchlist/favorite and collection links are preserved.
+
+### Detail
+- Reorganized Detail around three explicit product questions: **이 영화는 무엇인가? / 지금 어디서 볼 수 있는가? / 나와 어떤 관계인가?**
+- Promoted `내 영화장에 담기` to a visible primary relationship action beside viewing-log and watchlist actions.
+- Kept current star rating and one-line comment prominent in the hero while the MY FILM section owns membership, relationship state, collections and viewing history.
+- Preserved independent partial-render boundaries for metadata, availability and personal activity so background responses do not rerender the full page.
+
+### Architecture / quality
+- Extracted Library filtering/render policy into `assets/js/features/library.js`.
+- Extracted surface-specific movie-card policy into `assets/js/ui/movie-card.js`.
+- Critical rendering policy remains DOM/network agnostic; `app.js` owns composition and event delegation.
+- Added Library contextual-card regression tests and extended architecture/static/runtime contracts for the 0.4.5 IA.
+
 ## 0.4.4.7 — Personal film model / fast Detail / curated film-life UX
 
 ### Data model

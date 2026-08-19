@@ -1,5 +1,5 @@
 window.KINOSIS_CURATIONS = {
-  "version": "0.4.4.7",
+  "version": "0.4.5",
   "items": [
     {
       "slug": "kiarostami-life-continues",

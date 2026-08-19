@@ -14,6 +14,7 @@
     "assets/js/domain/**/*.js",
     "assets/js/infrastructure/**/*.js",
     "assets/js/services/**/*.js",
-    "assets/js/features/**/*.js"
+    "assets/js/features/**/*.js",
+    "assets/js/ui/**/*.js"
   ]
 }
