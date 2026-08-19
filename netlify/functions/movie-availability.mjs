@@ -28,9 +28,10 @@ export default async (request) => {
   if (!/^\d+$/.test(id)) return json({ error: 'Invalid movie ID.' }, 400);
 
   const hit = cache.get(id);
-  if (hit?.expiresAt > Date.now()) return json(hit.value, 200, 'public, max-age=0, s-maxage=14400, stale-while-revalidate=86400');
+  if (hit?.expiresAt > Date.now()) return json(hit.value, 200, 'public, max-age=900, stale-while-revalidate=3600', { 'Netlify-CDN-Cache-Control': 'public, durable, max-age=14400, stale-while-revalidate=86400', 'Server-Timing': 'cache;desc="MEMORY_HIT", tmdb;dur=0' });
 
   try {
+    const tmdbStartedAt = Date.now();
     const [providerPayload, releasePayload] = await Promise.all([
       tmdb(`/movie/${id}/watch/providers`).catch(() => ({ results: {} })),
       tmdb(`/movie/${id}/release_dates`).catch(() => ({ results: [] })),
@@ -61,7 +62,7 @@ export default async (request) => {
       theatricalReleaseDate,
     };
     cache.set(id, { value, expiresAt: Date.now() + AVAILABILITY_TTL });
-    return json(value, 200, 'public, max-age=0, s-maxage=14400, stale-while-revalidate=86400');
+    return json(value, 200, 'public, max-age=900, stale-while-revalidate=3600', { 'Netlify-CDN-Cache-Control': 'public, durable, max-age=14400, stale-while-revalidate=86400', 'Server-Timing': `cache;desc="MISS", tmdb;dur=${Date.now() - tmdbStartedAt}` });
   } catch (error) {
     console.error('movie-availability:', error.message);
     return json({ error: error.message || 'Movie availability failed.' }, error.status || 500);

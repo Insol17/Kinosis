@@ -6,11 +6,12 @@ const staticCache = new Map();
 
 async function loadStatic(id) {
   const hit = staticCache.get(id);
-  if (hit?.expiresAt > Date.now()) return hit.value;
+  if (hit?.expiresAt > Date.now()) return { ...hit.value, cacheStatus: 'MEMORY_HIT', tmdbDuration: 0 };
 
   // Static film metadata is intentionally isolated from volatile availability.
   // TMDB supports append_to_response, so the critical path is one upstream round trip
   // instead of waiting for separate detail + credits requests.
+  const tmdbStartedAt = Date.now();
   const detail = await tmdb(`/movie/${id}`, {
     language: KINOSIS_LOCALE.language,
     append_to_response: 'credits',
@@ -18,7 +19,7 @@ async function loadStatic(id) {
   const credits = detail.credits || { crew: [], cast: [] };
   const value = { detail, credits };
   staticCache.set(id, { value, expiresAt: Date.now() + STATIC_TTL });
-  return value;
+  return { ...value, cacheStatus: 'MISS', tmdbDuration: Date.now() - tmdbStartedAt };
 }
 
 export default async (request) => {
@@ -28,12 +29,13 @@ export default async (request) => {
   if (!/^\d+$/.test(id)) return json({ error: 'Invalid movie ID.' }, 400);
 
   try {
-    const { detail, credits } = await loadStatic(id);
+    const normalizeStartedAt = Date.now();
+    const { detail, credits, cacheStatus, tmdbDuration } = await loadStatic(id);
     const directorCredit = (credits.crew || []).find((person) => person.job === 'Director') || null;
     const writers = [...new Map((credits.crew || []).filter((person) => ['Writer', 'Screenplay', 'Story'].includes(person.job)).map((person) => [person.id || person.name, { id: person.id || null, name: person.name, job: person.job }])).values()].slice(0, 5);
     const cinematographers = [...new Map((credits.crew || []).filter((person) => person.job === 'Director of Photography').map((person) => [person.id || person.name, { id: person.id || null, name: person.name }])).values()].slice(0, 3);
 
-    return json({
+    const payload = {
       id: String(detail.id),
       title: detail.title || detail.original_title || 'Untitled',
       originalTitle: detail.original_title || '',
@@ -56,7 +58,12 @@ export default async (request) => {
       posterUrl: imageUrl(detail.poster_path, 'w500'),
       backdropUrl: imageUrl(detail.backdrop_path, 'w1280'),
       heroBackdropUrl: imageUrl(detail.backdrop_path, 'w1280'),
-    }, 200, 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800');
+    };
+    const normalizeDuration = Math.max(0, Date.now() - normalizeStartedAt - Number(tmdbDuration || 0));
+    return json(payload, 200, 'public, max-age=3600, stale-while-revalidate=86400', {
+      'Netlify-CDN-Cache-Control': 'public, durable, max-age=86400, stale-while-revalidate=604800',
+      'Server-Timing': `cache;desc="${cacheStatus}", tmdb;dur=${Number(tmdbDuration || 0)}, normalize;dur=${normalizeDuration}`,
+    });
   } catch (error) {
     console.error('movie-detail:', error.message);
     return json({ error: error.message || 'Movie detail failed.' }, error.status || 500);

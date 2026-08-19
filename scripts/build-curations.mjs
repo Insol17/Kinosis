@@ -52,6 +52,12 @@ function source(value, file) {
   };
 }
 
+function paragraphs(value, field, file) {
+  if (value == null) return [];
+  if (!Array.isArray(value)) fail(`${file}: ${field} must be array`);
+  return value.map((entry, index) => text(entry, `${field}[${index}]`, file, 1200)).filter(Boolean).slice(0, 8);
+}
+
 function chapters(value, file) {
   if (value == null) return [];
   if (!Array.isArray(value)) fail(`${file}: chapters must be array`);
@@ -117,6 +123,7 @@ function read() {
       title,
       subtitle: text(raw.subtitle, 'subtitle', rel, 160),
       description: text(raw.description, 'description', rel, 800),
+      introduction: paragraphs(raw.introduction, 'introduction', rel),
       credit: text(raw.credit, 'credit', rel, 120) || 'Curated by KINOSIS',
       heroMovieId: String(raw.heroMovieId || movieRows[0]?.id || chapterRows[0]?.movies[0]?.id || ''),
       priority: Number.isFinite(Number(raw.priority)) ? Math.trunc(Number(raw.priority)) : 100,
@@ -129,7 +136,7 @@ function read() {
   return items;
 }
 
-const payload = { version: '0.4.4.5', items: read() };
+const payload = { version: '0.4.4.7', items: read() };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

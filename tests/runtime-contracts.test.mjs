@@ -1,20 +1,19 @@
 import assert from 'node:assert/strict';
-
-globalThis.window = {};
-await import('../assets/js/core/movie-entities.js');
-await import('../assets/js/features/detail.js');
-await import('../assets/js/services/movie-loader.js');
-
+import * as entitiesApi from '../assets/js/core/movie-entities.js';
+import { renderDetail } from '../assets/js/features/detail.js';
+import { createMovieLoader } from '../assets/js/services/movie-loader.js';
 
 const entityState = {
   library: { '15': {} },
+  relationships: { '19': { rating: 4.5 } },
   logs: [{ movieId: '16' }],
   collections: [{ movieIds: ['17'], coverMovieId: '18' }],
 };
-assert.deepEqual(new Set(window.KINOSIS_MOVIE_ENTITIES.personalIds(entityState)), new Set(['15', '16', '17', '18']));
-assert.equal(window.KINOSIS_MOVIE_ENTITIES.placeholder('99').metadataLoading, true, 'missing personal entities must render a loading placeholder instead of disappearing');
-const snapshot = window.KINOSIS_MOVIE_ENTITIES.compactSnapshot({ id: 15, title: '시민 케인', posterUrl: '/p.jpg', providers: [{ name: 'Netflix' }], watchLink: 'x' });
+assert.deepEqual(new Set(entitiesApi.personalIds(entityState)), new Set(['15', '16', '17', '18', '19']));
+assert.equal(entitiesApi.placeholder('99').metadataLoading, true, 'missing personal entities must render an explicit loading placeholder');
+const snapshot = entitiesApi.compactSnapshot({ id: 15, title: '시민 케인', posterUrl: '/p.jpg', backdropUrl: '/b.jpg', providers: [{ name: 'Netflix' }], watchLink: 'x' });
 assert.equal(snapshot.title, '시민 케인');
+assert.equal(snapshot.backdropUrl, '/b.jpg');
 assert.ok(!('providers' in snapshot) && !('watchLink' in snapshot), 'volatile availability must not be synced as personal metadata');
 
 const record = {
@@ -23,39 +22,50 @@ const record = {
   genres: [{ name: '드라마' }], cast: [], providers: [],
 };
 const context = {
-  entry: null, logs: [], related: [], country: '미국', genres: ['드라마'], releaseLabel: '', titleMeta: '1941 · 드라마',
+  relationship: null, membership: null, entry: null, logs: [], related: [], country: '미국', genres: ['드라마'], releaseLabel: '', titleMeta: '1941 · 드라마',
   cast: [], writers: [], cinematographers: [], backLabel: 'DISCOVER', isArt: false,
   isSignedIn: false,
   escapeHtml: (value) => String(value ?? ''), icon: () => '', backdrop: () => '', poster: () => '', fmtRuntime: () => '1h 59m', formatDate: (value) => value,
-  watchAvailabilityHtml: () => '<section>watch</section>', viewingHistoryHtml: () => '', uniqueMovies: (rows) => rows, card: () => '',
+  watchAvailabilityHtml: () => '<section>watch</section>', viewingHistoryHtml: () => '', uniqueMovies: (rows) => rows, card: () => '', starRatingHtml: () => '<div>stars</div>',
 };
+assert.doesNotThrow(() => renderDetail(record, context), 'Detail renderer must accept boolean isSignedIn dependency');
+assert.ok(renderDetail(record, context).includes('로그인하고 감상 기록 남기기'));
+assert.ok(renderDetail(record, { ...context, isSignedIn: () => true }).includes('아직 감상 기록이 없습니다.'));
 
-assert.doesNotThrow(() => window.KINOSIS_DETAIL.render(record, context), 'Detail renderer must accept boolean isSignedIn dependency');
-assert.ok(window.KINOSIS_DETAIL.render(record, context).includes('로그인하고 감상 기록 남기기'));
-assert.ok(window.KINOSIS_DETAIL.render(record, { ...context, isSignedIn: () => true }).includes('아직 이 영화에 대한 기록이 없습니다.'));
-
-const entities = new Map();
+const store = new Map();
 const calls = [];
-const rememberMovie = (row) => { const merged = { ...(entities.get(String(row.id)) || {}), ...row, id: String(row.id) }; entities.set(merged.id, merged); return merged; };
-const loader = window.KINOSIS_MOVIE_LOADER.create({
-  getMovie: (id) => entities.get(String(id)) || null,
-  rememberMovie,
-  persistLocalCache: () => {},
-  apiJson: async (path) => {
-    calls.push(path);
-    await new Promise((resolve) => setTimeout(resolve, 5));
-    if (path.startsWith('/api/movie-detail')) return { id: '15', title: '시민 케인' };
-    if (path.startsWith('/api/movie-availability')) return { id: '15', providers: [], availabilityUpdatedAt: new Date().toISOString() };
-    if (path.startsWith('/api/movie-summaries')) return { results: [{ id: '16', title: '요약 영화' }] };
-    throw new Error(`unexpected ${path}`);
-  },
-});
-
+const rememberMovie = (row) => { const merged = { ...(store.get(String(row.id)) || {}), ...row, id: String(row.id) }; store.set(merged.id, merged); return merged; };
+const repository = {
+  detail: async (id) => { calls.push(`detail:${id}`); await new Promise((resolve) => setTimeout(resolve, 5)); return { id, title: '시민 케인' }; },
+  availability: async (id) => { calls.push(`availability:${id}`); await new Promise((resolve) => setTimeout(resolve, 5)); return { id, providers: [], availabilityUpdatedAt: new Date().toISOString() }; },
+  summaries: async (ids) => { calls.push(`summaries:${ids.join(',')}`); return { results: ids.map((id) => ({ id, title: `요약 ${id}` })) }; },
+  prefetchDetail: async (id) => { calls.push(`prefetch:${id}`); return null; },
+};
+const loader = createMovieLoader({ repository, getMovie: (id) => store.get(String(id)) || null, rememberMovie, persistLocalCache: () => {} });
 await Promise.all([loader.loadDetail('15'), loader.loadDetail('15')]);
-assert.equal(calls.filter((path) => path.startsWith('/api/movie-detail')).length, 1, 'duplicate detail requests must share one in-flight promise');
+assert.equal(calls.filter((row) => row === 'detail:15').length, 1, 'duplicate detail requests must share one in-flight promise');
 await Promise.all([loader.loadAvailability('15'), loader.loadAvailability('15')]);
-assert.equal(calls.filter((path) => path.startsWith('/api/movie-availability')).length, 1, 'duplicate availability requests must share one in-flight promise');
+assert.equal(calls.filter((row) => row === 'availability:15').length, 1, 'duplicate availability requests must share one in-flight promise');
 await loader.loadSummaries(['16']);
-assert.equal(entities.get('16')?.title, '요약 영화');
+assert.equal(store.get('16')?.title, '요약 16');
 
-console.log('runtime-contracts.test: personal entity persistence + detail render contract + movie loader in-flight dedupe OK');
+// Race regression: availability resolving after detail must merge against the
+// freshest entity rather than restoring an older placeholder snapshot.
+store.set('22', { id: '22', title: 'placeholder', metadataLoading: true });
+let detailResolve, availabilityResolve;
+const raceRepository = {
+  detail: () => new Promise((resolve) => { detailResolve = resolve; }),
+  availability: () => new Promise((resolve) => { availabilityResolve = resolve; }),
+  summaries: async () => ({ results: [] }), prefetchDetail: async () => null,
+};
+const raceLoader = createMovieLoader({ repository: raceRepository, getMovie: (id) => store.get(String(id)), rememberMovie, persistLocalCache: () => {} });
+const dp = raceLoader.loadDetail('22');
+const ap = raceLoader.loadAvailability('22');
+detailResolve({ id: '22', title: '실제 제목', director: '감독' });
+await dp;
+availabilityResolve({ id: '22', providers: [{ name: 'WATCHA' }], availabilityUpdatedAt: new Date().toISOString() });
+await ap;
+assert.equal(store.get('22').title, '실제 제목', 'availability merge must not revert fresh detail metadata');
+assert.equal(store.get('22').metadataLoading, false);
+
+console.log('runtime-contracts.test: entity + detail + loader dedupe/race contracts OK');

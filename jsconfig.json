@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "assets/js/core/**/*.js",
+    "assets/js/domain/**/*.js",
+    "assets/js/infrastructure/**/*.js",
+    "assets/js/services/**/*.js",
+    "assets/js/features/**/*.js"
+  ]
+}

@@ -1,28 +1,28 @@
-# KINOSIS 0.4.4.6
+# KINOSIS 0.4.4.7
 
-KINOSIS is a responsive film discovery and personal film-life web MVP.
+KINOSIS is a Korea-focused responsive film discovery and personal film-life web MVP.
 
 ```text
 DISCOVER  → box office / upcoming / my services / highly rated
-ARTHOUSE  → recent / highly rated / KINOSIS curations
-LIBRARY   → simple Steam-like personal film management
-MY        → overview / reviews / stats / settings
+ARTHOUSE  → Director Archive + Editorial Curation programme rails
+LIBRARY   → fast retrieval / watchlist / favorites / personal collections
+MY        → overview / viewing record / one-line-comment archive / stats / settings
 ```
 
 Search is global. Film detail and curation pages have shareable URLs. Library and MY require an account; guests can browse Discover, Arthouse, Search and film detail.
 
-## 0.4.4.6 focus
+## 0.4.4.7 focus
 
-0.4.4.6 is a reliability patch on top of the 0.4.4.5 UX pass. The priority is that a saved film remains visible, a search result opens a usable Detail page quickly, and partial network failure degrades explicitly instead of producing blank cards or a global error toast.
+0.4.4.7 moves KINOSIS from a feature-first MVP toward a defined film-life model and a faster critical path. The release keeps the product Korea-first and does not add country selection, social feed, AI recommendations or new Discover shelves.
 
-- Fixed the Detail integration crash caused by an `isSignedIn` dependency contract mismatch.
-- Detail navigation is immediate: a visible loading shell renders first, static film metadata follows, then Where to Watch and recommendations hydrate in the background.
-- `/api/movie-detail` is the static critical path; `/api/movie-availability` owns volatile provider/theatrical state; `/api/movie-summaries` batch-hydrates personal records.
-- Library/MY are ID-first. Missing movie metadata can show a loading placeholder but can no longer remove a saved movie/log from the screen.
-- Cloud Sync includes compact stable snapshots only for films referenced by personal data, while volatile availability remains separately refreshed.
-- `core/movie-entities.js` owns movie entity/snapshot rules and `services/movie-loader.js` owns request orchestration/in-flight de-duplication. Search and Detail remain isolated feature renderers.
-- Loading skeletons, retry states and intentional poster fallbacks replace blank cards.
-- The current architectural boundary and the staged `app.js` decomposition plan are documented in `docs/ARCHITECTURE-0.4.4.6.md`.
+- **Fast Detail:** the known movie entity paints immediately; metadata, availability and recommendations hydrate concurrently and patch only their own regions. Search hover/focus can prefetch Detail.
+- **Personal model v7:** LibraryMembership, FilmRelationship and ViewingEvent are separate. A current rating/comment is not the same thing as an individual viewing event.
+- **Non-destructive Library removal:** removing membership does not erase ratings, one-line comments or viewing history. Full deletion is a separate confirmed action.
+- **Watcha-like relationship input:** five visible stars, 0.5-step rating, prominent current one-line comment and a distinct per-viewing note.
+- **MY archive:** current one-line comments can be reviewed as a drill-down from MY rather than becoming a new top-level category.
+- **Collectio-like Arthouse presentation:** archives and editorial programmes appear as horizontal rails; editorial detail supports introductions, chapters and film notes.
+- **Explicit architecture:** critical Search/Detail/entity/network paths use native ES modules with domain, infrastructure and service boundaries. JavaScript `checkJs` type checking is part of `npm test`.
+- Architecture and ownership invariants are documented in `docs/ARCHITECTURE-0.4.4.7.md`.
 
 ## OTT/provider identity
 
@@ -101,4 +101,12 @@ Visible attribution and the required TMDB non-endorsement notice remain in the p
 npm test
 ```
 
-The suite checks catalog/rail integrity, static UX/security markers, TMDB/KOBIS Function contracts, live My Streaming/Upcoming, Arthouse classification, Curation build validation, duplicate movie collapse, the Curation no-rerender regression, OTT canonical/logo behavior and Cloud state-integrity helpers.
+The suite runs the curation/runtime build, `checkJs` type checking, syntax checks, catalog/API contracts, personal-state migration/command tests, architectural dependency checks, loader de-duplication/race regressions, provider normalization and Cloud state-integrity tests.
+
+An optional real-Chromium smoke harness exercises Search → optimistic Detail → rating/comment → viewing event → non-destructive Library removal → MY archive → reload → Editorial Curation without adding a browser-test framework dependency:
+
+```bash
+npm run test:browser
+```
+
+The harness reports `SKIP` when the installed Chromium is managed by a policy that blocks local HTTP test origins.

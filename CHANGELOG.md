@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.4.4.7 — Personal film model / fast Detail / curated film-life UX
+
+### Data model
+- Split durable personal film state into LibraryMembership, FilmRelationship and ViewingEvent (schema v7), with automatic migration from legacy 0.4.4.x library/log rating and review fields.
+- Library removal now deletes membership only; rating, one-line comment and viewing events survive. A separate confirmed destructive action removes all personal data for a film.
+
+### Detail / performance
+- Detail paints immediately from the movie entity already known by Search/rails/Library, then concurrently hydrates static metadata, availability and recommendations.
+- Async Detail results patch only their owned regions instead of replacing the whole page; concurrent responses merge against the freshest entity.
+- Added bounded Search hover/focus prefetch, client performance diagnostics, Server-Timing, browser caching and Netlify durable CDN caching for the static Detail path.
+
+### Rating / MY / Library
+- Replaced numeric rating selection with an accessible five-star, half-step rating control and promoted the current one-line comment into the primary Detail relationship surface.
+- Separated current film comment from per-viewing notes and historical rating snapshots.
+- Added MY one-line-comment drill-down/archive without another global navigation category.
+- Added direct Library removal actions with non-destructive semantics.
+
+### Arthouse / architecture
+- Reworked Arthouse around Collectio-style curation rails while preserving the Director Archive vs Editorial Curation domain boundary.
+- Added the authored editorial `그럼에도 삶은 계속된다` with introduction, chapters and film notes.
+- Converted the critical browser path to native ES modules and introduced explicit domain / infrastructure / service boundaries.
+- Added `checkJs` type checking plus personal-state, architecture and loader race/de-duplication regression tests.
+
 ## 0.4.4.6 — Reliability / entity hydration architecture
 
 ### P0 runtime fixes

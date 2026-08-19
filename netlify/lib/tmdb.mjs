@@ -47,12 +47,13 @@ export async function tmdb(path, params = {}, { signal } = {}) {
   }
 }
 
-export function json(data, status = 200, cacheControl = 'no-store') {
+export function json(data, status = 200, cacheControl = 'no-store', extraHeaders = {}) {
   return Response.json(data, {
     status,
     headers: {
       'Cache-Control': cacheControl,
       'X-Content-Type-Options': 'nosniff',
+      ...extraHeaders,
     },
   });
 }

@@ -12,8 +12,9 @@
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://image.tmdb.org" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4.6" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4.7" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -171,8 +172,9 @@
       <input type="hidden" id="logMovieId" /><input type="hidden" id="logEntryId" />
       <div class="form-head"><div><p class="eyebrow">LOG FILM</p><h2 id="logMovieTitle">영화 기록</h2></div><button type="button" class="ghost-close" data-close="logDialog">닫기</button></div>
       <label>감상일<input id="logDate" type="date" required /></label>
-      <label>내 평점<select id="logRating"><option value="">평점 없음</option><option>5</option><option>4.5</option><option>4</option><option>3.5</option><option>3</option><option>2.5</option><option>2</option><option>1.5</option><option>1</option><option>0.5</option></select></label>
-      <label>한줄평<textarea id="logReview" rows="3" maxlength="500" placeholder="선택 사항"></textarea></label>
+      <div class="form-field"><span class="form-field-label">현재 내 평점</span><div id="logRatingHost" class="form-rating-host"></div></div>
+      <label>내 한줄평<textarea id="logComment" rows="2" maxlength="280" placeholder="이 영화에 대한 현재 한줄평"></textarea></label>
+      <label>이번 감상 메모<textarea id="logNote" rows="3" maxlength="500" placeholder="이번 관람에만 남길 메모 · 선택 사항"></textarea></label>
       <div id="logRewatchHint" class="log-rewatch-hint"></div><label class="check-row"><input id="logFavorite" type="checkbox" /><span>Favorite로 표시</span></label>
       <div class="form-actions split-actions"><button type="button" class="secondary-button danger-button" id="deleteLogButton" hidden>기록 삭제</button><span class="form-spacer"></span><button type="button" class="secondary-button" data-close="logDialog">취소</button><button class="primary-button" value="save">기록 저장</button></div>
     </form>
@@ -205,6 +207,16 @@
     </div>
   </dialog>
 
+  <dialog id="relationshipDialog" class="compact-dialog">
+    <form id="relationshipForm" class="form-card">
+      <input type="hidden" id="relationshipMovieId" />
+      <div class="form-head"><div><p class="eyebrow">MY FILM</p><h2 id="relationshipMovieTitle">내 평가</h2></div><button type="button" class="ghost-close" data-close="relationshipDialog">닫기</button></div>
+      <div class="form-field"><span class="form-field-label">내 평점</span><div id="relationshipRatingHost" class="form-rating-host"></div></div>
+      <label>내 한줄평<textarea id="relationshipComment" rows="3" maxlength="280" placeholder="한 문장으로 남겨보세요."></textarea></label>
+      <div class="form-actions"><button type="button" class="secondary-button" data-close="relationshipDialog">취소</button><button class="primary-button" type="submit">저장</button></div>
+    </form>
+  </dialog>
+
   <dialog id="profileDialog" class="compact-dialog">
     <form id="profileForm" class="form-card">
       <div class="form-head"><div><p class="eyebrow">PROFILE</p><h2>프로필 수정</h2></div><button type="button" class="ghost-close" data-close="profileDialog">닫기</button></div>
@@ -226,7 +238,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4.6</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4.7</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -239,26 +251,22 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.4.6"></script>
-  <script src="./data/curations.js?v=0.4.4.6"></script>
-  <script src="./assets/js/config.js?v=0.4.4.6"></script>
-  <script src="./data/arthouse.js?v=0.4.4.6"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.4.6"></script>
-  <script src="./data/providers.js?v=0.4.4.6"></script>
-  <script src="./assets/js/providers.js?v=0.4.4.6"></script>
+  <script src="./data/catalog.js?v=0.4.4.7"></script>
+  <script src="./data/curations.js?v=0.4.4.7"></script>
+  <script src="./assets/js/config.js?v=0.4.4.7"></script>
+  <script src="./data/arthouse.js?v=0.4.4.7"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.4.7"></script>
+  <script src="./data/providers.js?v=0.4.4.7"></script>
+  <script src="./assets/js/providers.js?v=0.4.4.7"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3"></script>
-  <script src="./assets/js/cloud.js?v=0.4.4.6"></script>
-  <script src="./assets/js/ui.js?v=0.4.4.6"></script>
-  <script src="./assets/js/importers.js?v=0.4.4.6"></script>
-  <script src="./assets/js/curations.js?v=0.4.4.6"></script>
-  <script src="./assets/js/curation-loader.js?v=0.4.4.6"></script>
-  <script src="./assets/js/hero-carousel.js?v=0.4.4.6"></script>
-  <script src="./assets/js/features/search.js?v=0.4.4.6"></script>
-  <script src="./assets/js/core/movie-entities.js?v=0.4.4.6"></script>
-  <script src="./assets/js/services/movie-loader.js?v=0.4.4.6"></script>
-  <script src="./assets/js/features/detail.js?v=0.4.4.6"></script>
-  <script src="./assets/js/state-integrity.js?v=0.4.4.6"></script>
-  <script src="./assets/js/error-boundary.js?v=0.4.4.6"></script>
-  <script src="./assets/js/app.js?v=0.4.4.6"></script>
+  <script src="./assets/js/cloud.js?v=0.4.4.7"></script>
+  <script src="./assets/js/ui.js?v=0.4.4.7"></script>
+  <script src="./assets/js/importers.js?v=0.4.4.7"></script>
+  <script src="./assets/js/curations.js?v=0.4.4.7"></script>
+  <script src="./assets/js/curation-loader.js?v=0.4.4.7"></script>
+  <script src="./assets/js/hero-carousel.js?v=0.4.4.7"></script>
+  <script src="./assets/js/state-integrity.js?v=0.4.4.7"></script>
+  <script src="./assets/js/error-boundary.js?v=0.4.4.7"></script>
+  <script type="module" src="./assets/js/app.js?v=0.4.4.7"></script>
 </body>
 </html>

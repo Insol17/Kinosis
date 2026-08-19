@@ -1,10 +1,7 @@
-(function () {
-  'use strict';
-
-  function create(deps) {
+export function createSearchController(deps) {
     const {
       catalogMovies, normalizeText, uniqueMovies, genreNames, escapeHtml, poster, rememberMovie,
-      lib, isSignedIn, canUseLiveApi, fetchLiveSearch, apiJson, showDialog,
+      lib, isSignedIn, canUseLiveApi, movieRepository, showDialog, prefetchMovieDetail,
     } = deps;
     const MIN_CHARS = 2;
     const DEBOUNCE = 250;
@@ -14,9 +11,10 @@
     let composing = false;
     let live = { query: '', status: 'idle', results: [], people: [], message: '' };
     let person = { status: 'idle', person: null, results: [] };
+    const prefetchTimers = new WeakMap();
 
-    const resultRoot = () => document.getElementById('searchResults');
-    const input = () => document.getElementById('searchInput');
+    const resultRoot = () => /** @type {HTMLElement | null} */ (document.getElementById('searchResults'));
+    const input = () => /** @type {HTMLInputElement | null} */ (document.getElementById('searchInput'));
 
     function score(record, query) {
       const needle = normalizeText(query);
@@ -71,7 +69,8 @@
     }
 
     function options() {
-      return [...(resultRoot()?.querySelectorAll('[role="option"]') || [])];
+      const root = resultRoot();
+      return root ? /** @type {HTMLElement[]} */ (Array.from(root.querySelectorAll('[role="option"]'))) : [];
     }
 
     function focusOption(index) {
@@ -117,7 +116,7 @@
       live = { query, status: 'loading', results: live.query === query ? live.results : [], people: live.query === query ? live.people : [], message: '' };
       render(query);
       try {
-        const data = await fetchLiveSearch(query, { signal: aborter.signal });
+        const data = await movieRepository.search(query, { signal: aborter.signal });
         if (runSerial !== serial) return;
         live = { query, status: 'done', results: data.results || [], people: data.people || [], message: '' };
       } catch (error) {
@@ -155,7 +154,7 @@
       person = { status: 'loading', person: { id, name }, results: [] };
       resultRoot().innerHTML = `<div class="detail-loading"><div class="loading-ring"></div><b>${escapeHtml(name || 'Filmography')}</b><span>필모그래피를 불러오는 중…</span></div>`;
       try {
-        const data = await apiJson(`/api/person-films?id=${encodeURIComponent(id)}`);
+        const data = await movieRepository.personFilms(id);
         person = { status: 'ready', person: data.person, results: (data.results || []).map((row) => rememberMovie({ ...row, source: 'tmdb-live', detailLoaded: false })).filter(Boolean) };
       } catch {
         person = { status: 'error', person: { id, name }, results: [] };
@@ -177,25 +176,46 @@
       field.setAttribute('aria-controls', 'searchResults');
       field.setAttribute('aria-expanded', 'true');
       field.addEventListener('compositionstart', () => { composing = true; });
-      field.addEventListener('compositionend', (event) => { composing = false; queue(event.target.value); });
-      field.addEventListener('input', (event) => { if (!composing) queue(event.target.value); });
+      field.addEventListener('compositionend', (event) => { composing = false; queue(/** @type {HTMLInputElement} */ (event.target).value); });
+      field.addEventListener('input', (event) => { if (!composing) queue(/** @type {HTMLInputElement} */ (event.target).value); });
       field.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowDown') { event.preventDefault(); focusOption(0); }
         else if (event.key === 'ArrowUp') { event.preventDefault(); focusOption(options().length - 1); }
       });
       resultRoot()?.addEventListener('keydown', (event) => {
         const rows = options();
-        const index = rows.indexOf(document.activeElement);
+        const index = rows.indexOf(document.activeElement instanceof HTMLElement ? document.activeElement : /** @type {HTMLElement} */ (null));
         if (index < 0) return;
         if (event.key === 'ArrowDown') { event.preventDefault(); focusOption(index + 1); }
         else if (event.key === 'ArrowUp') { event.preventDefault(); if (index === 0) field.focus(); else focusOption(index - 1); }
-        else if (event.key === 'Enter') { event.preventDefault(); document.activeElement?.click(); }
+        else if (event.key === 'Enter') { event.preventDefault(); if (document.activeElement instanceof HTMLElement) document.activeElement.click(); }
         else if (event.key === 'Escape') { event.preventDefault(); field.focus(); }
       });
     }
 
-    return Object.freeze({ attach, open, queue, render, openPersonFilmography, backFromPerson, get composing() { return composing; } });
-  }
+    /** @param {Element | null} target */
+    function prefetchFromTarget(target) {
+      const movieRow = /** @type {HTMLElement | null} */ (target?.closest?.('[data-movie]') || null);
+      if (!movieRow?.dataset.movie) return;
+      prefetchMovieDetail?.(movieRow.dataset.movie);
+    }
 
-  window.KINOSIS_SEARCH = Object.freeze({ create });
-})();
+    resultRoot()?.addEventListener('pointerover', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const row = /** @type {HTMLElement | null} */ (target?.closest?.('[data-movie]') || null);
+      if (!row || row.dataset.prefetchArmed === '1') return;
+      row.dataset.prefetchArmed = '1';
+      prefetchTimers.set(row, setTimeout(() => prefetchFromTarget(row), 120));
+    });
+    resultRoot()?.addEventListener('pointerout', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const row = /** @type {HTMLElement | null} */ (target?.closest?.('[data-movie]') || null);
+      if (!row) return;
+      clearTimeout(prefetchTimers.get(row));
+      prefetchTimers.delete(row);
+      row.dataset.prefetchArmed = '0';
+    });
+    resultRoot()?.addEventListener('focusin', (event) => prefetchFromTarget(event.target instanceof Element ? event.target : null));
+
+    return Object.freeze({ attach, open, queue, render, openPersonFilmography, backFromPerson, get composing() { return composing; } });
+}

@@ -4,124 +4,75 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const required = [
-  'index.html','assets/css/app.css','assets/js/app.js','assets/js/cloud.js','assets/js/ui.js','assets/js/config.js','assets/js/error-boundary.js',
-  'assets/js/art-classifier.js','assets/js/importers.js','assets/js/core/movie-entities.js','assets/js/features/search.js','assets/js/features/detail.js','assets/js/services/movie-loader.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js','assets/js/hero-carousel.js','assets/js/providers.js',
-  'data/catalog.js','data/curations.js','data/curations.json','data/providers.js','data/arthouse.js',
-  'content/curations/README.md','docs/ARCHITECTURE-0.4.4.6.md','scripts/build-curations.mjs','icons/icon.svg','assets/branding/tmdb-logo.svg','assets/branding/providers/watcha-logo-white.png','docs/API-SOURCES.md',
-  'netlify/lib/locale.mjs','netlify/functions/share.mjs','netlify/functions/movie-search.mjs','netlify/functions/movie-detail.mjs','netlify/functions/movie-availability.mjs','netlify/functions/movie-summaries.mjs','netlify/functions/box-office.mjs','netlify/functions/movie-recommendations.mjs','netlify/functions/person-films.mjs','netlify/functions/director-filmography.mjs','netlify/functions/watchlist-availability.mjs','netlify/functions/my-streaming.mjs','netlify/functions/upcoming.mjs','netlify/functions/delete-account.mjs','netlify/functions/supabase-health.mjs',
-  'supabase/001_kinosis_041.sql','supabase/004_kinosis_0443.sql','supabase/SETUP_ALL.sql','netlify.toml'
+  'index.html','assets/css/app.css','assets/js/app.js','assets/js/core/store.js','assets/js/core/router.js','assets/js/core/movie-entities.js','assets/js/core/performance.js',
+  'assets/js/domain/personal-state.js','assets/js/domain/personal-actions.js','assets/js/infrastructure/api-client.js','assets/js/infrastructure/movie-repository.js','assets/js/services/movie-loader.js',
+  'assets/js/features/search.js','assets/js/features/detail.js','assets/js/cloud.js','assets/js/ui.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js',
+  'data/catalog.js','data/curations.js','data/curations.json','data/providers.js','data/arthouse.js','content/curations/kiarostami-life-continues.curation.json',
+  'scripts/build-curations.mjs','tests/browser-smoke.mjs','netlify/functions/movie-detail.mjs','netlify/functions/movie-availability.mjs','netlify/functions/movie-summaries.mjs','netlify/functions/share.mjs',
 ];
 for (const rel of required) assert.ok(fs.existsSync(path.join(root, rel)), `missing ${rel}`);
-for (const rel of ['sw.js','manifest.webmanifest','assets/js/recommender.js','assets/css/design-0442.css','assets/css/styles.css']) assert.ok(!fs.existsSync(path.join(root, rel)), `${rel} should not ship in 0.4.4.6`);
+for (const rel of ['sw.js','manifest.webmanifest','assets/css/design-0442.css','assets/css/styles.css']) assert.ok(!fs.existsSync(path.join(root, rel)), `${rel} should not ship`);
 
-const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const netlifyToml = fs.readFileSync(path.join(root, 'netlify.toml'), 'utf8');
-assert.ok(netlifyToml.includes('Content-Security-Policy'), 'Netlify security headers should include CSP');
-for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','MY','데이터 출처 · 이용 안내','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
-assert.ok(!html.includes('data-my="diary"'), 'Diary must be merged into Reviews');
-assert.ok(!html.includes('data-my="calendar"'), 'Calendar must not be a separate My destination');
-assert.ok(!html.includes('adminView'), 'Admin UI should remain absent; curations are file-authored');
-assert.ok(!html.includes('serviceWorker'), 'service worker registration must not ship');
-assert.ok(!html.includes('recommender.js'), 'hidden For You client should not ship');
-assert.ok(html.includes('app.js?v=0.4.4.6'), 'asset cache-busting version missing');
-assert.ok(html.includes('data/curations.js?v=0.4.4.6'), 'curation data bundle version missing');
-assert.ok(html.includes('data/providers.js?v=0.4.4.6'), 'provider data bundle missing');
-assert.ok(html.includes('hero-carousel.js?v=0.4.4.6'), 'Hero controller module missing');
-assert.ok(html.includes('core/movie-entities.js?v=0.4.4.6'), 'Movie entity domain module missing');
-assert.ok(html.includes('services/movie-loader.js?v=0.4.4.6'), 'Movie loader service module missing');
-assert.ok(html.includes('state-integrity.js?v=0.4.4.6'), 'state integrity module missing');
-assert.ok(html.includes('data/arthouse.js?v=0.4.4.6'), 'Arthouse editorial data bundle missing');
-assert.ok(html.includes('@supabase/supabase-js@2.112.3'), 'Supabase browser client must use an exact pinned version');
-assert.ok(!html.includes('design-0442.css'), 'legacy visual override layer must be consolidated into app.css');
+const html = read('index.html');
+const app = read('assets/js/app.js');
+const detail = read('assets/js/features/detail.js');
+const search = read('assets/js/features/search.js');
+const css = read('assets/css/app.css');
+const detailFn = read('netlify/functions/movie-detail.mjs');
+const availabilityFn = read('netlify/functions/movie-availability.mjs');
+const curations = JSON.parse(read('data/curations.json'));
 
-const js = fs.readFileSync(path.join(root, 'assets/js/app.js'), 'utf8');
-assert.ok(js.includes("const STORAGE_KEY = 'kinosis.mvp.v2.state'"), 'storage compatibility key changed unexpectedly');
-for (const marker of ['/api/movie-search','/api/upcoming','/api/movie-recommendations','/api/watchlist-availability','/api/box-office','/api/my-streaming','/api/delete-account','popstate','pushState','openCalendarDay','deleteLog','logEntryId','handleLetterboxdFiles','renderArthouse','viewingTimeline','refreshWatchlistAvailability','openCuration','renderCurationPage','fromCuration','renderHeroCarousel','pullCloudState','mergeCloudStates','/api/director-filmography','consolidatedProviders','watchAvailabilityHtml','removeMovieFromLibrary','deleteCollection','deletedLibrary','deletedCollections','cloudRevision']) assert.ok(js.includes(marker), `app missing ${marker}`);
-assert.ok(js.includes('snapshotRevision'), 'cloud push must preserve mutations made while a write is in flight');
-assert.ok(js.includes('mergeTombstones'), 'cloud tombstones must merge by latest timestamp');
-assert.ok(js.includes('/api/upcoming'), 'thin catalog must have live KR upcoming fallback');
-assert.ok(!js.includes('loadForYou'), 'unused hidden personalized recommendation loop should remain removed');
-assert.ok(!js.includes('renderAdmin'), 'Admin UI logic should not ship');
-assert.ok(!js.includes('Curation Studio'), 'Curation Studio should not ship; editing is file-based');
-assert.ok(!js.includes('renderLibraryHome'), 'legacy Library home should be removed');
-assert.ok(!js.includes('data-action="save"'), 'Library should be a result set, not a separate save action');
-assert.ok(!js.includes('function saveMovie'), 'direct Library-save action should remain removed');
-assert.ok(js.includes('.filter(isArthouse)'), 'Arthouse must respect classifier threshold');
-assert.ok(js.includes("entry.rating = newest.find((log) => log.rating != null)?.rating ?? null"), 'rating must be fully derived from logs');
-assert.ok(js.includes('getCurationLoader().ensure(item)'), 'curation loader contract missing');
-assert.ok(js.includes('HERO_CAROUSEL_FACTORY'), 'Hero behavior should be delegated out of app.js');
-assert.ok(js.includes('if (changed && activeView === \'curation\''), 'curation must rerender only after a real data change');
-assert.ok(!js.match(/\b(prompt|confirm|alert)\s*\(/), 'native dialogs must not be used');
+for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','MY','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
+assert.ok(html.includes('app.js?v=0.4.4.7'), '0.4.4.7 cache-busting missing');
+assert.ok(html.includes('type="module"'), 'main browser entry must be module');
+assert.ok(html.includes('https://image.tmdb.org'), 'TMDB image CDN preconnect missing');
+assert.ok(html.includes('logRatingHost') && html.includes('logComment') && html.includes('logNote'), 'rating/comment/viewing-note dialog split missing');
+assert.ok(html.includes('relationshipDialog'), 'current FilmRelationship editor missing');
+assert.ok(!html.includes('<select id="logRating"'), 'numeric rating dropdown must be removed');
+assert.ok(html.includes('role="tablist"') && html.includes('aria-controls="myContent"'), 'MY ARIA tabs missing');
+assert.ok(!html.includes('data-my="diary"'), 'Diary must remain inside MY records');
 
+assert.ok(app.includes("PERSONAL_SCHEMA_VERSION"), 'personal state schema version missing');
+assert.ok(app.includes('state.relationships'), 'FilmRelationship state missing');
+assert.ok(app.includes('removeMovieFromLibrary') && app.includes('deletePersonalMovieData'), 'Library remove and destructive delete must be separate commands');
+assert.ok(app.includes('개인 기록은 보존됩니다'), 'Library removal semantics must be visible to users');
+assert.ok(app.includes('reviewArchiveHtml') && app.includes('data-my-review-archive'), 'MY comment archive drill-down missing');
+assert.ok(app.includes('curationRail') && app.includes('Director’s Archive :'), 'Collectio-style curation rails missing');
+assert.ok(app.includes('ensureCurationPreview'), 'curation home must hydrate rail previews without requiring detail navigation');
+assert.ok(app.includes('PERFORMANCE.mark') && app.includes('__KINOSIS_PERF__'), 'Detail performance diagnostics missing');
+assert.ok(!app.includes("cache: 'no-store'"), 'client API must not defeat caching');
+assert.ok(!app.match(/\b(prompt|confirm|alert)\s*\(/), 'native blocking dialogs must not be used');
 
-const searchFeature = fs.readFileSync(path.join(root, 'assets/js/features/search.js'), 'utf8');
-const detailFeature = fs.readFileSync(path.join(root, 'assets/js/features/detail.js'), 'utf8');
-assert.ok(searchFeature.includes('const DEBOUNCE = 250'), 'search remote debounce should be 250ms');
-assert.ok(searchFeature.includes('/api/person-films'), 'person filmography API must live in Search feature');
-assert.ok(searchFeature.includes('role="option"'), 'search results must expose listbox options');
-assert.ok(searchFeature.includes("event.key === 'ArrowDown'") && searchFeature.includes("event.key === 'Enter'"), 'search keyboard traversal/activation missing');
-assert.ok(detailFeature.includes('detail-watch-band'), 'Where to Watch must sit immediately after the film hero');
-assert.ok(detailFeature.includes('내 평점'), 'personal rating hierarchy missing');
-assert.ok(html.includes('role="tablist"') && html.includes('aria-controls="myContent"'), 'MY must use ARIA tab semantics');
-assert.ok(js.includes("item.kind === 'director-archive'"), 'Director Archive and Editorial Curation must be distinct');
-assert.ok(js.includes('letterboxdDiaryCsv') && js.includes('letterboxdWatchlistCsv'), 'Letterboxd-compatible export missing');
-assert.ok(js.includes("new URL('/share'"), 'OG share route missing');
-assert.ok(js.includes('compactMovieSnapshot') && js.includes('personalMovieIds'), 'personal movie metadata snapshots must survive cloud sync');
-assert.ok(js.includes('/api/movie-availability'), 'detail availability must use a dedicated endpoint');
-assert.ok(!js.includes("cache: 'no-store'"), 'public API requests must not defeat the server/CDN cache policy');
-assert.ok(js.includes('detailErrorHtml') && js.includes('metadataLoading'), 'detail and card loading states must be explicit rather than blank');
-assert.ok(js.includes('Detail renderer returned empty output.'), 'missing detail renderer must fail visibly instead of leaving an endless loading shell');
-assert.ok(detailFeature.includes("typeof c.isSignedIn === 'function'"), 'Detail render contract must accept a boolean or function signed-in dependency');
-const movieEntities = fs.readFileSync(path.join(root, 'assets/js/core/movie-entities.js'), 'utf8');
-assert.ok(movieEntities.includes('personalIds') && movieEntities.includes('compactSnapshot'), 'movie identity/personal snapshot rules must live outside app.js');
-assert.ok(!movieEntities.includes("'providers', 'watchLink'"), 'cloud entity snapshots must not carry volatile availability');
-const movieLoader = fs.readFileSync(path.join(root, 'assets/js/services/movie-loader.js'), 'utf8');
-assert.ok(movieLoader.includes('detailInflight') && movieLoader.includes('availabilityInflight'), 'movie requests must deduplicate in-flight detail/availability work');
-assert.ok(movieLoader.includes('/api/movie-summaries'), 'personal metadata hydration must use the summaries endpoint');
-const movieDetailFn = fs.readFileSync(path.join(root, 'netlify/functions/movie-detail.mjs'), 'utf8');
-assert.ok(movieDetailFn.includes("append_to_response: 'credits'"), 'detail critical path should use one upstream TMDB round trip');
-assert.ok(!movieDetailFn.includes('`/movie/${id}/credits`'), 'detail critical path must not issue a separate credits request');
+assert.ok(detail.includes('data-detail-part="hero"') && detail.includes('data-detail-part="availability"') && detail.includes('data-detail-part="metadata"') && detail.includes('data-detail-part="related"'), 'Detail partial-render boundaries missing');
+assert.ok(detail.includes('starRatingHtml'), 'star rating control missing from Detail');
+assert.ok(detail.includes('내 한줄평'), 'current one-line comment must be prominent on Detail');
+assert.ok(detail.includes('라이브러리에서 제거') && detail.includes('모든 개인 데이터 삭제'), 'safe/danger movie commands must be distinct');
+assert.ok(search.includes('const DEBOUNCE = 250'), 'search remote debounce should stay 250ms');
+assert.ok(search.includes('setTimeout(() => prefetchFromTarget(row), 120)'), 'search hover Detail prefetch missing');
+assert.ok(search.includes("event.key === 'ArrowDown'") && search.includes("event.key === 'Enter'"), 'search keyboard traversal missing');
 
-const cloud = fs.readFileSync(path.join(root, 'assets/js/cloud.js'), 'utf8');
-assert.ok(cloud.includes("select('payload,updated_at,revision')"), 'cloud read must include revision');
-assert.ok(cloud.includes("rpc('kinosis_write_user_state'"), 'cloud write must use atomic revision RPC');
-const migration = fs.readFileSync(path.join(root, 'supabase/004_kinosis_0443.sql'), 'utf8');
-assert.ok(migration.includes('pg_advisory_xact_lock'), 'sync RPC must serialize per-account writes');
-assert.ok(migration.includes('expected_revision'), 'sync RPC must check optimistic revision');
+assert.equal(curations.version, '0.4.4.7');
+const editorial = curations.items.find((item) => item.slug === 'kiarostami-life-continues');
+assert.ok(editorial && editorial.kind === 'editorial', 'authored editorial curation missing');
+assert.ok(editorial.introduction?.length >= 3, 'editorial introduction must contain substantive copy');
+assert.ok(editorial.chapters?.length >= 3, 'editorial chapter structure missing');
+assert.ok(editorial.chapters.every((chapter) => chapter.movies.every((movie) => movie.note)), 'editorial film notes missing');
+assert.ok(curations.items.some((item) => item.kind === 'director-archive'), 'Director Archive must remain distinct from Editorial Curation');
 
-const css = fs.readFileSync(path.join(root, 'assets/css/app.css'), 'utf8');
-assert.ok(css.includes('.curation-card-grid') && css.includes('.library-filter-menu') && css.includes('.my-year-summary'), '0.4.4.6 surface styles missing');
-assert.ok((css.match(/!important/g) || []).length <= 8, 'stylesheet cleanup should leave only reduced-motion importance guards');
-assert.ok(css.includes('grid-auto-columns:calc((100% - (6 * var(--poster-gap)))/7)'), 'seven-card rail base rule missing');
-assert.ok(css.includes('.detail-hero-inner'), 'film detail hierarchy missing');
-assert.ok(css.includes('.watch-rows'), 'Where to Watch list design missing');
+assert.ok(detailFn.includes("append_to_response: 'credits'"), 'static Detail critical path should remain one upstream TMDB detail request');
+assert.ok(detailFn.includes('Netlify-CDN-Cache-Control') && detailFn.includes('durable'), 'static Detail durable CDN cache missing');
+assert.ok(detailFn.includes('Server-Timing'), 'Detail server timing diagnostics missing');
+assert.ok(detailFn.includes('max-age=3600'), 'browser Detail cache should avoid needless immediate revalidation');
+assert.ok(availabilityFn.includes('Netlify-CDN-Cache-Control') && availabilityFn.includes('max-age=900'), 'availability must use a shorter independent cache');
+
+assert.ok(css.includes('.star-rating') && css.includes('.detail-comment'), 'star/comment visual system missing');
+assert.ok(css.includes('.curation-rail-section') && css.includes('.curation-authored-film'), 'curation rail/detail styles missing');
+assert.ok(css.includes('.review-archive-list'), 'MY review archive styles missing');
+assert.ok(css.includes('.library-row-remove'), 'Library row removal affordance missing');
+assert.ok((css.match(/!important/g) || []).length <= 8, 'stylesheet cleanup regressed into important overrides');
 assert.ok(css.includes('content-visibility:auto'), 'render containment/performance rule missing');
-assert.ok(css.includes('backdrop-filter:none'), 'expensive shell blur override missing');
-assert.ok(css.includes('--font:'), 'unified font token missing');
-assert.ok(css.includes('.cinema-icon-badge'), 'transparent cinema icon treatment missing');
-assert.ok(css.includes('--muted-2:#8f8a82'), 'accessible muted token missing');
-assert.ok(css.includes('--line-strong:#62666f'), 'interactive boundary contrast token missing');
-assert.ok(css.includes('position:relative;width:44px;height:44px'), 'hero indicator hit target must be 44px');
-assert.ok(css.includes('.hero-slide.is-active'), 'mounted hero slide transition missing');
-assert.ok(css.includes('.provider-mark'), 'provider mark visual grammar missing');
-assert.ok(css.includes('.poster-wrap .poster-loading') && css.includes('.detail-progress-shell') && css.includes('.library-sync-banner'), 'resilient loading UI missing');
-assert.ok(html.includes('pretendardvariable-dynamic-subset.css'), 'Korean-first Pretendard stylesheet missing');
-assert.ok(html.includes('This product uses the TMDB API but is not endorsed or certified by TMDB.'), 'required TMDB notice missing');
-assert.ok(html.includes('JustWatch via TMDB'), 'JustWatch attribution missing');
+assert.ok(html.includes('This product uses the TMDB API but is not endorsed or certified by TMDB.'), 'TMDB notice missing');
 
-const providerData = fs.readFileSync(path.join(root, 'data/providers.js'), 'utf8');
-assert.ok(providerData.includes('\"key\": \"WATCHA\"'), 'WATCHA canonical provider missing');
-assert.ok(providerData.includes('watcha-logo-white.png'), 'WATCHA official logo override missing');
-assert.ok(!js.includes('watcha-logo-white.png'), 'provider-specific branding must live in provider data, not app logic');
-
-const artClassifier = fs.readFileSync(path.join(root, 'assets/js/art-classifier.js'), 'utf8');
-assert.ok(artClassifier.includes('window.KINOSIS_ARTHOUSE_DATA'), 'Arthouse classifier should read data, not own editorial seeds');
-assert.ok(!artClassifier.includes("'Abbas Kiarostami','Ingmar Bergman'"), 'editorial director list should not be hardcoded in classifier logic');
-
-for (const file of ['share','movie-search','movie-detail','movie-availability','movie-summaries','box-office','movie-recommendations','person-films','director-filmography','watchlist-availability','my-streaming','upcoming','delete-account']) {
-  const source = fs.readFileSync(path.join(root, `netlify/functions/${file}.mjs`), 'utf8');
-  assert.ok(source.includes('rateLimit'), `${file} must have an explicit Netlify rate limit`);
-}
-
-console.log('static.test: 0.4.4.6 core UX/performance, canonical identity, curation split and export/share contracts OK');
+console.log('static.test: 0.4.4.7 UX, data model, curation, caching and architecture contracts OK');
