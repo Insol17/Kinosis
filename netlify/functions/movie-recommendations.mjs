@@ -1,4 +1,5 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
+import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 function normalizeMovie(movie, score = 0) {
   return {
@@ -32,8 +33,8 @@ export default async (request) => {
   try {
     const payloads = await Promise.all(seeds.map(async (id) => {
       const [recommended, similar] = await Promise.all([
-        tmdb(`/movie/${id}/recommendations`, { language: 'ko-KR', page: 1 }).catch(() => ({ results: [] })),
-        tmdb(`/movie/${id}/similar`, { language: 'ko-KR', page: 1 }).catch(() => ({ results: [] })),
+        tmdb(`/movie/${id}/recommendations`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] })),
+        tmdb(`/movie/${id}/similar`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] })),
       ]);
       return { id, recommended: recommended.results || [], similar: similar.results || [] };
     }));

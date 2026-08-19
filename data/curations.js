@@ -1,13 +1,14 @@
 window.KINOSIS_CURATIONS = {
-  "version": "0.4.4.4",
+  "version": "0.4.4.5",
   "items": [
     {
       "slug": "kiarostami",
+      "kind": "director-archive",
       "surface": "arthouse",
       "eyebrow": "DIRECTOR'S ARCHIVE",
-      "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
+      "title": "압바스 키아로스타미",
       "subtitle": "Abbas Kiarostami",
-      "description": "삶과 죽음의 경계에서도 계속 움직이는 사람들을 바라보는 키아로스타미의 영화들.",
+      "description": "삶과 죽음, 현실과 영화의 경계를 오가며 이어지는 압바스 키아로스타미의 감독 작품 아카이브.",
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 10,
@@ -20,15 +21,17 @@ window.KINOSIS_CURATIONS = {
         "include": [],
         "exclude": []
       },
-      "movies": []
+      "movies": [],
+      "chapters": []
     },
     {
       "slug": "victor-erice",
+      "kind": "director-archive",
       "surface": "arthouse",
       "eyebrow": "DIRECTOR'S ARCHIVE",
-      "title": "셀룰로이드의 정령: 빅토르 에리세 컬렉션",
+      "title": "빅토르 에리세",
       "subtitle": "Víctor Erice",
-      "description": "장편 네 편에 응축된 기억과 빛, 영화가 남긴 잔상을 따라가는 빅토르 에리세의 세계.",
+      "description": "기억과 빛, 시간의 잔상을 오래 응시하는 빅토르 에리세의 장편 감독 작품 아카이브.",
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 20,
@@ -41,15 +44,17 @@ window.KINOSIS_CURATIONS = {
         "include": [],
         "exclude": []
       },
-      "movies": []
+      "movies": [],
+      "chapters": []
     },
     {
       "slug": "hou-hsiao-hsien",
+      "kind": "director-archive",
       "surface": "arthouse",
       "eyebrow": "DIRECTOR'S ARCHIVE",
-      "title": "파도치는 시대를 관조하는 시선: 허우샤오시엔 컬렉션",
+      "title": "허우샤오시엔",
       "subtitle": "Hou Hsiao-hsien",
-      "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 영화들.",
+      "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 감독 작품 아카이브.",
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 30,
@@ -62,15 +67,17 @@ window.KINOSIS_CURATIONS = {
         "include": [],
         "exclude": []
       },
-      "movies": []
+      "movies": [],
+      "chapters": []
     },
     {
       "slug": "tarantino",
+      "kind": "director-archive",
       "surface": "arthouse",
       "eyebrow": "DIRECTOR'S ARCHIVE",
-      "title": "폭발하는 도파민: 쿠엔틴 타란티노 컬렉션",
+      "title": "쿠엔틴 타란티노",
       "subtitle": "Quentin Tarantino",
-      "description": "장르의 쾌감, 대사, 폭력과 리듬을 밀어붙이는 쿠엔틴 타란티노의 감독 필모그래피.",
+      "description": "장르의 쾌감, 대사, 폭력과 리듬으로 구축된 쿠엔틴 타란티노의 감독 작품 아카이브.",
       "credit": "Curated by KINOSIS",
       "heroMovieId": "",
       "priority": 40,
@@ -83,7 +90,8 @@ window.KINOSIS_CURATIONS = {
         "include": [],
         "exclude": []
       },
-      "movies": []
+      "movies": [],
+      "chapters": []
     }
   ]
 };

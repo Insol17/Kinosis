@@ -1,9 +1,9 @@
 {
   "slug": "kiarostami",
   "eyebrow": "DIRECTOR'S ARCHIVE",
-  "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
+  "title": "압바스 키아로스타미",
   "subtitle": "Abbas Kiarostami",
-  "description": "삶과 죽음의 경계에서도 계속 움직이는 사람들을 바라보는 키아로스타미의 영화들.",
+  "description": "삶과 죽음, 현실과 영화의 경계를 오가며 이어지는 압바스 키아로스타미의 감독 작품 아카이브.",
   "credit": "Curated by KINOSIS",
   "priority": 10,
   "source": {
@@ -11,5 +11,6 @@
     "name": "Abbas Kiarostami",
     "sort": "release_asc",
     "mode": "all-directed"
-  }
+  },
+  "kind": "director-archive"
 }

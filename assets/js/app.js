@@ -17,12 +17,14 @@
   const CURATION_LOADER_FACTORY = window.KINOSIS_CURATION_LOADER || null;
   const HERO_CAROUSEL_FACTORY = window.KINOSIS_HERO_CAROUSEL || null;
   const STATE_INTEGRITY = window.KINOSIS_STATE_INTEGRITY || null;
+  const SEARCH_FACTORY = window.KINOSIS_SEARCH || null;
+  const DETAIL_FACTORY = window.KINOSIS_DETAIL || null;
+  const LOCALE = window.KINOSIS_LOCALE || {};
 
   const STORAGE_KEY = 'kinosis.mvp.v2.state';
   const LEGACY_STORAGE_KEY = 'film.mvp.v2.state';
   const MIGRATION_PREFIX = 'kinosis.legacy.migrated.';
   const LIVE_SEARCH_MIN_CHARS = 2;
-  const LIVE_SEARCH_DEBOUNCE = 300;
   const AVAILABILITY_CHECK_MS = 6 * 60 * 60 * 1000;
   const AVAILABILITY_NEW_MS = 14 * 24 * 60 * 60 * 1000;
 
@@ -55,14 +57,8 @@
   let myMode = 'overview';
   let calendarCursor = new Date();
   let libraryQueryTimer = null;
-  let libraryFilter = { q: '', sort: 'recent' };
+  let libraryFilter = { q: '', sort: 'recent', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
 
-  let searchTimer = null;
-  let searchAbort = null;
-  let searchSerial = 0;
-  let searchComposing = false;
-  let liveSearchState = { query: '', status: 'idle', results: [], people: [], message: '' };
-  let personSearchState = { status: 'idle', person: null, results: [] };
 
   const relatedState = new Map();
   const scrollPositions = new Map();
@@ -91,7 +87,7 @@
   function formatDate(value) {
     if (!value) return '—';
     try {
-      return new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(value));
+      return new Intl.DateTimeFormat(LOCALE.language, { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(value));
     } catch {
       return value;
     }
@@ -100,14 +96,14 @@
   function formatDateTime(value) {
     if (!value) return '없음';
     try {
-      return new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value));
+      return new Intl.DateTimeFormat(LOCALE.language, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value));
     } catch {
       return value;
     }
   }
 
   function normalizeText(value) {
-    return String(value || '').normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g, ' ').trim();
+    return String(value || '').normalize('NFKC').toLocaleLowerCase(LOCALE.language).replace(/\s+/g, ' ').trim();
   }
 
   function normalizeProviderName(value) {
@@ -149,17 +145,23 @@
 
   function uniqueById(list) {
     const ids = new Set();
-    const identities = new Set();
+    const fallbackIdentities = new Set();
     const out = [];
     for (const item of list || []) {
-      if (!item?.id) continue;
-      const id = String(item.id);
+      if (!item) continue;
+      const hasCanonicalId = item.id !== undefined && item.id !== null && String(item.id).trim() !== '';
+      if (hasCanonicalId) {
+        const id = String(item.id);
+        if (ids.has(id)) continue;
+        ids.add(id);
+        out.push(item);
+        continue;
+      }
       const titleKey = normalizeText(item.originalTitle || item.title || '');
       const yearKey = String(item.year || item.releaseDate || '').slice(0, 4);
       const identity = titleKey && yearKey ? `${titleKey}|${yearKey}` : '';
-      if (ids.has(id) || (identity && identities.has(identity))) continue;
-      ids.add(id);
-      if (identity) identities.add(identity);
+      if (!identity || fallbackIdentities.has(identity)) continue;
+      fallbackIdentities.add(identity);
       out.push(item);
     }
     return out;
@@ -973,9 +975,17 @@
     return curationLoader;
   }
 
+  function explicitCurationMovieIds(item) {
+    const direct = (item?.movies || []).map((entry) => String(entry.id));
+    const chapterIds = (item?.chapters || []).flatMap((chapter) => (chapter.movies || []).map((entry) => String(entry.id)));
+    return [...new Set([...direct, ...chapterIds])];
+  }
+
   function curationMovieIds(item) {
-    const dynamic = getCurationLoader().peek(item?.slug);
-    return dynamic?.length ? dynamic.map((record) => String(record.id)) : (item?.movies || []).map((entry) => String(entry.id));
+    if (!item) return [];
+    if (item.kind === 'editorial') return explicitCurationMovieIds(item);
+    const dynamic = getCurationLoader().peek(item.slug);
+    return dynamic?.length ? dynamic.map((record) => String(record.id)) : explicitCurationMovieIds(item);
   }
   function curationMovies(item) { return curationMovieIds(item).map((id) => movie(id)).filter(Boolean); }
   function curationHeroMovie(item) { return movie(item?.heroMovieId) || curationMovies(item)[0] || null; }
@@ -983,34 +993,27 @@
 
   async function ensureCurationMovies(item) {
     if (!item || !canUseLiveApi()) return false;
-    if (item.source?.type === 'director') {
+    if (item.kind === 'director-archive' && item.source?.type === 'director') {
       const result = await getCurationLoader().ensure(item);
       return !!result?.changed;
     }
-    const missing = (item.movies || []).map((entry) => String(entry.id)).filter((id) => !movie(id));
+    const missing = explicitCurationMovieIds(item).filter((id) => !movie(id));
     if (!missing.length) return false;
     await hydrateCurationIds(missing, 5);
     return true;
   }
 
-  function curationFeature(item, { compact = false } = {}) {
+  function curationFeature(item) {
     if (!item) return '';
-    // Arthouse landing must stay editorial and instant. Director filmographies
-    // are resolved only after the user opens a curation.
     const heroMovie = curationHeroMovie(item);
     const image = heroMovie ? backdrop(heroMovie) : '';
     const filmCount = curationMovieIds(item).length;
-    const countLabel = filmCount ? `${filmCount}편` : item.source?.type === 'director' ? '감독 필모그래피' : 'Curation';
-    return `<section class="curation-feature ${compact ? 'is-compact' : ''}" data-curation="${escapeHtml(item.slug)}" tabindex="0" role="link" aria-label="${escapeHtml(item.title)} 기획전 열기">
+    const isArchive = item.kind === 'director-archive';
+    const countLabel = filmCount ? `${filmCount}편` : isArchive ? '감독 작품 아카이브' : 'Editorial Curation';
+    return `<article class="curation-feature ${isArchive ? 'is-archive' : 'is-editorial'}" data-curation="${escapeHtml(item.slug)}" tabindex="0" role="link" aria-label="${escapeHtml(item.title)} ${isArchive ? '감독 아카이브' : '큐레이션'} 열기">
       ${image ? `<img class="curation-feature-bg" src="${escapeHtml(image)}" alt="">` : '<div class="curation-feature-placeholder"></div>'}
-      <div class="curation-feature-copy">
-        <p class="editorial-kicker">${escapeHtml(item.eyebrow || 'KINOSIS CURATION')}</p>
-        <h2>${escapeHtml(item.title)}</h2>
-        ${item.subtitle ? `<h3>${escapeHtml(item.subtitle)}</h3>` : ''}
-        ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}
-        <span>${countLabel}${item.credit ? ` · ${escapeHtml(item.credit)}` : ''}</span>
-      </div>
-    </section>`;
+      <div class="curation-feature-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || (isArchive ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'))}</p><h2>${escapeHtml(item.title)}</h2>${item.subtitle ? `<h3>${escapeHtml(item.subtitle)}</h3>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<span>${countLabel}${item.credit ? ` · ${escapeHtml(item.credit)}` : ''}</span></div>
+    </article>`;
   }
 
   function myStreamingSection(title = '내 구독 서비스에서', source = null, variant = 'discover') {
@@ -1087,28 +1090,43 @@
     document.getElementById('discoverContent').innerHTML=html;
   }
   function renderArthouse() {
-    const art=artPool(); renderHeroCarousel('arthouseHero',heroSlidePool('arthouse'));
-    const latest=[...art].filter(r=>r.releaseDate||r.year).sort((a,b)=>String(b.releaseDate||b.year||'').localeCompare(String(a.releaseDate||a.year||''))).slice(0,18);
-    const rated=[...art].filter(r=>Number(r.voteCount||0)>=50).sort((a,b)=>Number(b.voteAverage||0)-Number(a.voteAverage||0)||Number(b.voteCount||0)-Number(a.voteCount||0)).slice(0,18);
-    let html=rowSection('최신 공개작','',latest,14,'discover')+rowSection('높은 평가를 받은 영화','',rated,14,'discover');
-    const curated=CURATIONS.forSurface('arthouse').slice(0,4);
-    html+=curated.map(item=>`<section class="content-section arthouse-curation-slot">${curationFeature(item)}</section>`).join('');
-    document.getElementById('arthouseContent').innerHTML=html;
+    const art = artPool();
+    renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'));
+    const latest = [...art].filter((record) => record.releaseDate || record.year).sort((a,b) => String(b.releaseDate || b.year || '').localeCompare(String(a.releaseDate || a.year || ''))).slice(0,18);
+    const rated = [...art].filter((record) => Number(record.voteCount || 0) >= 50).sort((a,b) => Number(b.voteAverage || 0) - Number(a.voteAverage || 0) || Number(b.voteCount || 0) - Number(a.voteCount || 0)).slice(0,18);
+    let html = rowSection('최신 공개작','',latest,14,'arthouse') + rowSection('높은 평가를 받은 영화','',rated,14,'arthouse');
+    const allCurations = CURATIONS.forSurface('arthouse');
+    const editorials = allCurations.filter((item) => item.kind === 'editorial');
+    const archives = allCurations.filter((item) => item.kind === 'director-archive');
+    if (editorials.length) html += `<section class="content-section curation-index"><div class="section-head"><div><h2>CURATIONS</h2><p>영화가 아니라 편집 관점부터 고르는 컬렉션.</p></div></div><div class="curation-card-grid">${editorials.map(curationFeature).join('')}</div></section>`;
+    if (archives.length) html += `<section class="content-section curation-index"><div class="section-head"><div><h2>DIRECTOR ARCHIVES</h2><p>큐레이션과 분리된 감독별 필모그래피 아카이브.</p></div></div><div class="curation-card-grid">${archives.slice(0,8).map(curationFeature).join('')}</div></section>`;
+    document.getElementById('arthouseContent').innerHTML = html;
   }
+
 
   function renderCollectionsSide() {
     const element = document.getElementById('collectionSideLinks');
     if (!element) return;
-    element.innerHTML = state.collections.map((collection) => `<button class="side-link" data-collection="${escapeHtml(collection.id)}">${icon('folder')}${escapeHtml(collection.name)}</button>`).join('');
+    const pinned = [...state.collections].sort((a, b) => String(b.updatedAt || b.createdAt || '').localeCompare(String(a.updatedAt || a.createdAt || ''))).slice(0, 5);
+    element.innerHTML = pinned.map((collection) => `<button class="side-link" data-collection="${escapeHtml(collection.id)}">${icon('folder')}${escapeHtml(collection.name)}</button>`).join('');
   }
 
-  function libraryHeader(title, summary = '', extras = '') { return `<header class="library-header simple-library-head"><div><h1>${escapeHtml(title)}</h1>${summary?`<span>${escapeHtml(summary)}</span>`:''}</div><div class="library-header-actions">${extras}</div></header>`; }
+  function libraryHeader(title, summary = '', extras = '') { return `<header class="library-header simple-library-head"><div><h1>${escapeHtml(title)}</h1>${summary ? `<span>${escapeHtml(summary)}</span>` : ''}</div><div class="library-header-actions">${extras}</div></header>`; }
+
+  function libraryGenres(list) {
+    return [...new Set((list || []).flatMap((record) => genreNames(record)))].sort((a,b) => a.localeCompare(b, 'ko'));
+  }
 
   function filterLibrary(list) {
     let out = [...list];
-    const query = libraryFilter.q.trim().toLocaleLowerCase('ko-KR');
-    if (query) out = out.filter((record) => [record.title, record.originalTitle, record.director, ...genreNames(record)]
-      .filter(Boolean).join(' ').toLocaleLowerCase('ko-KR').includes(query));
+    const query = normalizeText(libraryFilter.q);
+    if (query) out = out.filter((record) => normalizeText([record.title, record.originalTitle, record.director, ...genreNames(record)].filter(Boolean).join(' ')).includes(query));
+    if (libraryFilter.status === 'watched') out = out.filter((record) => logsForMovie(record.id).length > 0);
+    else if (libraryFilter.status === 'unwatched') out = out.filter((record) => logsForMovie(record.id).length === 0);
+    if (libraryFilter.minRating !== 'all') out = out.filter((record) => Number(lib(record.id)?.rating || 0) >= Number(libraryFilter.minRating));
+    if (libraryFilter.genre !== 'all') out = out.filter((record) => genreNames(record).includes(libraryFilter.genre));
+    if (libraryFilter.availability === 'mine') out = out.filter(availableOnMine);
+    else if (libraryFilter.availability === 'now') out = out.filter((record) => availableOnMine(record) || isInTheatres(record));
     if (libraryFilter.sort === 'title') out.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
     else if (libraryFilter.sort === 'rating') out.sort((a, b) => (lib(b.id)?.rating || 0) - (lib(a.id)?.rating || 0));
     else if (libraryFilter.sort === 'year') out.sort((a, b) => (b.year || 0) - (a.year || 0));
@@ -1118,8 +1136,22 @@
   }
 
   function libraryToolbar(list) {
-    return `<div class="library-toolbar simple-library-toolbar"><label class="library-search">${icon('search')}<input id="libraryQuery" value="${escapeHtml(libraryFilter.q)}" placeholder="Library 검색"></label><select id="librarySort" aria-label="정렬"><option value="recent" ${libraryFilter.sort==='recent'?'selected':''}>최근 추가</option><option value="watched" ${libraryFilter.sort==='watched'?'selected':''}>최근 감상</option><option value="title" ${libraryFilter.sort==='title'?'selected':''}>제목</option><option value="rating" ${libraryFilter.sort==='rating'?'selected':''}>내 평점</option><option value="year" ${libraryFilter.sort==='year'?'selected':''}>개봉연도</option></select><div class="view-toggle"><button class="${libraryView==='grid'?'is-active':''}" data-library-view="grid" aria-label="그리드 보기">${icon('grid')}</button><button class="${libraryView==='list'?'is-active':''}" data-library-view="list" aria-label="목록 보기">${icon('list')}</button></div></div>`;
+    const genres = libraryGenres(list);
+    const activeFilters = [libraryFilter.status !== 'all', libraryFilter.minRating !== 'all', libraryFilter.genre !== 'all', libraryFilter.availability !== 'all'].filter(Boolean).length;
+    return `<div class="library-toolbar simple-library-toolbar">
+      <label class="library-search">${icon('search')}<input id="libraryQuery" value="${escapeHtml(libraryFilter.q)}" placeholder="Library 검색"></label>
+      <details class="library-filter-menu"><summary>${icon('sliders')} 필터${activeFilters ? ` <span>${activeFilters}</span>` : ''}</summary><div class="library-filter-panel">
+        <label>감상 상태<select id="libraryStatus"><option value="all">전체</option><option value="watched" ${libraryFilter.status === 'watched' ? 'selected' : ''}>감상함</option><option value="unwatched" ${libraryFilter.status === 'unwatched' ? 'selected' : ''}>미감상</option></select></label>
+        <label>평점<select id="libraryRating"><option value="all">전체</option><option value="4" ${libraryFilter.minRating === '4' ? 'selected' : ''}>4점 이상</option><option value="3" ${libraryFilter.minRating === '3' ? 'selected' : ''}>3점 이상</option></select></label>
+        <label>장르<select id="libraryGenre"><option value="all">전체</option>${genres.map((genre) => `<option value="${escapeHtml(genre)}" ${libraryFilter.genre === genre ? 'selected' : ''}>${escapeHtml(genre)}</option>`).join('')}</select></label>
+        <label>감상 가능<select id="libraryAvailability"><option value="all">전체</option><option value="mine" ${libraryFilter.availability === 'mine' ? 'selected' : ''}>내 구독에서 가능</option><option value="now" ${libraryFilter.availability === 'now' ? 'selected' : ''}>현재 볼 수 있음</option></select></label>
+        <button class="secondary-button" type="button" id="libraryFilterReset">필터 초기화</button>
+      </div></details>
+      <select id="librarySort" aria-label="정렬"><option value="recent" ${libraryFilter.sort==='recent'?'selected':''}>최근 추가</option><option value="watched" ${libraryFilter.sort==='watched'?'selected':''}>최근 감상</option><option value="title" ${libraryFilter.sort==='title'?'selected':''}>제목</option><option value="rating" ${libraryFilter.sort==='rating'?'selected':''}>내 평점</option><option value="year" ${libraryFilter.sort==='year'?'selected':''}>개봉연도</option></select>
+      <div class="view-toggle"><button class="${libraryView==='grid'?'is-active':''}" data-library-view="grid" aria-label="그리드 보기">${icon('grid')}</button><button class="${libraryView==='list'?'is-active':''}" data-library-view="list" aria-label="목록 보기">${icon('list')}</button></div>
+    </div>`;
   }
+
 
   function libraryListRows(list) {
     return `<div class="library-list">${list.map((record) => {
@@ -1231,7 +1263,7 @@
     return `<div class="settings-grid">
       <section class="settings-card"><h3>구독 서비스</h3><p>이용 중인 OTT를 선택하면 Discover에서 지금 볼 수 있는 영화를 우선 보여줍니다.</p><div class="subscription-grid">${subscriptions}</div></section>
       <section class="settings-card account-settings"><h3>계정</h3><div class="account-sync-summary"><span class="sync-dot ${syncClass}"></span><div><b>${escapeHtml(currentUser?.email || '')}</b><small>${escapeHtml(syncLabel)}</small></div></div>${syncState.message ? `<p class="sync-error">${escapeHtml(syncState.message)}</p><button class="secondary-button" id="syncNowButton">다시 시도</button>` : ''}<div class="settings-actions"><button class="secondary-button" id="accountExportButton">내 데이터 내보내기</button><button class="secondary-button" id="signOutButton">로그아웃</button></div><details class="settings-advanced"><summary>고급 동기화 정보</summary><p>최근 동기화 · ${formatDateTime(state.meta?.lastSyncedAt)}<br>Cloud revision · ${Number(state.meta?.cloudRevision || 0)}</p>${!syncState.message ? '<button class="secondary-button" id="syncNowButton">지금 동기화</button>' : ''}</details></section>
-      <section class="settings-card"><h3>가져오기</h3><p>기존 영화 기록을 KINOSIS로 옮길 수 있습니다.</p><button class="secondary-button" id="openLetterboxdImport">Letterboxd CSV 가져오기</button><button class="secondary-button" id="openAboutFromSettings">KINOSIS JSON · 데이터 출처</button></section>
+      <section class="settings-card"><h3>가져오기 / 내보내기</h3><p>KINOSIS JSON과 Letterboxd 호환 CSV로 기록을 이동할 수 있습니다.</p><button class="secondary-button" id="openLetterboxdImport">Letterboxd CSV 가져오기</button><button class="secondary-button" id="openAboutFromSettings">KINOSIS JSON · 데이터 출처</button></section>
       <section class="settings-card danger-zone"><h3>계정 삭제</h3><p>인증 계정과 Cloud Sync 데이터를 모두 삭제합니다. 이 작업은 되돌릴 수 없습니다.</p><button class="danger-button" id="deleteAccountButton">계정 완전히 삭제</button></section>
     </div>`;
   }
@@ -1245,11 +1277,22 @@
       return;
     }
     renderProfileCard();
-    document.querySelectorAll('[data-my]').forEach((button) => button.classList.toggle('is-active', button.dataset.my === myMode));
+    document.querySelectorAll('#myTabs [role="tab"]').forEach((button) => {
+      const active = button.dataset.my === myMode;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', active ? 'true' : 'false');
+      button.tabIndex = active ? 0 : -1;
+    });
+    content.setAttribute('aria-labelledby', `my-tab-${myMode}`);
     if (myMode === 'overview') {
       const recent = latestUniqueMovies();
-      const reviews = latestLogs().filter((log) => String(log.review || '').trim());
-      content.innerHTML = `${recent.length ? rowSection('최근 본 영화', '내 최근 감상 기록.', recent, 8, 'library') : ''}${reviews.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 기록</h2><p>평점, 리뷰, 재관람을 한 흐름에서 확인합니다.</p></div><button class="section-action" data-my="reviews">전체 보기</button></div>${viewingTimeline(reviews.slice(0, 4))}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
+      const records = latestLogs();
+      const reviews = records.filter((log) => String(log.review || '').trim());
+      const year = new Date().getFullYear();
+      const yearLogs = state.logs.filter((log) => String(log.watchedAt || '').startsWith(`${year}-`));
+      const yearFilms = new Set(yearLogs.map((log) => String(log.movieId))).size;
+      const yearHours = Math.round(yearLogs.reduce((sum, log) => sum + Number(movie(log.movieId)?.runtime || 0), 0) / 60);
+      content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'library') : ''}${reviews.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 기록</h2></div><button class="section-action" data-my="reviews">전체 보기</button></div>${viewingTimeline(reviews.slice(0, 4))}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
     } else if (myMode === 'reviews') {
       content.innerHTML = `<section class="my-section"><div class="section-head"><div><h2>기록</h2><p>평점, 리뷰, 재관람을 시간순으로 한곳에서 관리합니다.</p></div></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
     } else if (myMode === 'stats') {
@@ -1321,88 +1364,22 @@
     const entry = lib(record.id);
     const art = artInfo(record);
     const logs = logsForMovie(record.id);
-    const last = logs[0];
     const related = relatedMovies(record);
     const country = (record.productionCountries || []).slice(0, 2).join(' · ');
     const genres = genreNames(record).slice(0, 4);
     const releaseLabel = isInTheatres(record) ? '극장 상영 중' : record.theatricalStatus === 'upcoming' ? '개봉 예정' : record.theatricalStatus === 'recent' ? '최근 극장 개봉' : '';
-    const titleMeta = [record.year || '', genres.slice(0,2).join('/'), country, record.runtime ? fmtRuntime(record.runtime) : ''].filter(Boolean).join(' · ');
+    const titleMeta = [record.year || '', genres.slice(0, 2).join(' / '), country, record.runtime ? fmtRuntime(record.runtime) : ''].filter(Boolean).join(' · ');
     const cast = uniqueById(record.cast || []).slice(0, 8);
     const writers = uniqueById((record.writers || []).map((person) => ({ ...person, id: person.id || `writer-${person.name}`, title: person.name }))).slice(0, 4);
     const cinematographers = uniqueById((record.cinematographers || []).map((person) => ({ ...person, id: person.id || `dp-${person.name}`, title: person.name }))).slice(0, 2);
+    const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'MY' : 'DISCOVER';
     document.title = `${record.title} — KINOSIS`;
-    document.getElementById('moviePage').innerHTML = `
-      <div class="detail-topnav">
-        <button data-movie-back>${icon('back')}<span>${previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'MY' : 'DISCOVER'}</span></button>
-        <button class="detail-share" data-share-movie="${record.id}">${icon('share')}<span>공유</span></button>
-      </div>
-
-      <section class="detail-hero">
-        <img class="detail-backdrop" src="${escapeHtml(backdrop(record))}" alt="">
-        <div class="detail-backdrop-shade"></div>
-        <div class="detail-hero-inner">
-          <img class="detail-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터">
-          <div class="detail-intro">
-            <div class="detail-badges">${Number(record.boxOfficeRank || 0) > 0 ? `<span class="detail-badge is-boxoffice">박스오피스 ${Number(record.boxOfficeRank)}위</span>` : ''}${releaseLabel ? `<span class="detail-badge is-cinema">${icon('cinema')}${escapeHtml(releaseLabel)}</span>` : ''}${art.isArt ? '<span class="detail-badge">KINOSIS ARTHOUSE</span>' : ''}</div>
-            <h1>${escapeHtml(record.title)}</h1>
-            ${record.originalTitle && record.originalTitle !== record.title ? `<p class="detail-original">${escapeHtml(record.originalTitle)}</p>` : ''}
-            <p class="detail-meta">${escapeHtml(titleMeta || '영화 정보')}</p>
-            <p class="detail-director">감독 ${record.directorId ? `<button data-person-id="${escapeHtml(record.directorId)}" data-person-name="${escapeHtml(record.director || '')}">${escapeHtml(record.director || '—')}</button>` : `<b>${escapeHtml(record.director || '—')}</b>`}</p>
-            ${record.tagline ? `<p class="detail-tagline">${escapeHtml(record.tagline)}</p>` : ''}
-            <div class="detail-actions">
-              <button class="primary-button detail-action" data-action="log" data-id="${record.id}">${logs.length ? '감상 기록 추가' : '감상 기록'}</button>
-              <button class="detail-watchlist ${entry?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${record.id}">${entry?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button>
-              <details class="film-more">
-                <summary class="detail-more" aria-label="더 보기">${icon('more')}</summary>
-                <div class="film-more-menu">
-                  <button class="${entry?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${record.id}">${entry?.favorite ? '♥ 좋아요 해제' : '♡ 좋아요'}</button>
-                  <button data-action="collection-add" data-id="${record.id}">＋ 컬렉션에 추가</button>
-                </div>
-              </details>
-            </div>
-          </div>
-          <div class="detail-rating-box">
-            ${entry?.rating ? `<div class="detail-user-rating"><span>내 평점</span><strong>★ ${entry.rating}</strong><small>${logs.length ? `${logs.length}회 감상` : ''}</small></div>` : `<button class="detail-rate-cta" data-action="log" data-id="${record.id}"><span>내 평점</span><strong>평가하기</strong></button>`}
-            <div class="detail-external-rating"><span>TMDB</span><b>${record.voteAverage ? Number(record.voteAverage).toFixed(1) : '—'}</b>${record.voteCount ? `<small>${Number(record.voteCount).toLocaleString()}명</small>` : ''}</div>
-          </div>
-        </div>
-      </section>
-
-      <div class="detail-layout">
-        <main class="detail-main">
-          <section class="detail-section detail-synopsis">
-            <h2>줄거리</h2>
-            <p>${escapeHtml(record.overview || '줄거리 정보가 없습니다.')}</p>
-          </section>
-
-          ${cast.length ? `<section class="detail-section"><div class="detail-section-head"><h2>출연</h2><span>${record.cast.length > cast.length ? `${record.cast.length}명 중 주요 출연진` : '주요 출연진'}</span></div><div class="detail-cast-grid">${cast.map((person) => `<button class="detail-cast-person" data-person-id="${escapeHtml(person.id || '')}" data-person-name="${escapeHtml(person.name || person)}">${person.profileUrl ? `<img src="${escapeHtml(person.profileUrl)}" alt="${escapeHtml(person.name || person)}">` : `<span class="cast-avatar-fallback">${escapeHtml(String(person.name || person).slice(0,1))}</span>`}<span><b>${escapeHtml(person.name || person)}</b><small>${escapeHtml(person.character || '')}</small></span></button>`).join('')}</div></section>` : ''}
-
-          <section class="detail-section">
-            <h2>작품 정보</h2>
-            <dl class="detail-facts">
-              <div><dt>감독</dt><dd>${record.directorId ? `<button data-person-id="${escapeHtml(record.directorId)}" data-person-name="${escapeHtml(record.director || '')}">${escapeHtml(record.director || '—')}</button>` : escapeHtml(record.director || '—')}</dd></div>
-              ${writers.length ? `<div><dt>각본</dt><dd>${writers.map((person) => escapeHtml(person.name)).join(' · ')}</dd></div>` : ''}
-              ${cinematographers.length ? `<div><dt>촬영</dt><dd>${cinematographers.map((person) => escapeHtml(person.name)).join(' · ')}</dd></div>` : ''}
-              <div><dt>장르</dt><dd>${genres.map((genre)=>`<button data-search-query="${escapeHtml(genre)}">${escapeHtml(genre)}</button>`).join(' · ') || '—'}</dd></div>
-              ${country ? `<div><dt>국가</dt><dd>${escapeHtml(country)}</dd></div>` : ''}
-              ${record.originalLanguage ? `<div><dt>언어</dt><dd>${escapeHtml(String(record.originalLanguage).toUpperCase())}</dd></div>` : ''}
-              ${record.releaseDate ? `<div><dt>공개일</dt><dd>${escapeHtml(formatDate(record.releaseDate))}</dd></div>` : ''}
-              ${record.runtime ? `<div><dt>러닝타임</dt><dd>${escapeHtml(fmtRuntime(record.runtime))}</dd></div>` : ''}
-            </dl>
-          </section>
-
-          ${related.length ? `<section class="detail-section detail-related"><div class="detail-section-head"><h2>비슷한 영화</h2></div><div class="poster-row">${uniqueById(related).slice(0,7).map((item)=>card(item)).join('')}</div></section>` : ''}
-        </main>
-
-        <aside class="detail-side">
-          ${watchAvailabilityHtml(record)}
-          <section class="detail-side-card my-detail-card">
-            <div class="detail-side-title"><p>MY</p><h2>내 기록</h2></div>
-            ${isSignedIn() ? (entry ? `<div class="my-activity">${entry.rating ? `<div class="activity-rating">★ ${entry.rating}</div>` : ''}${entry.review ? `<div class="activity-review">${escapeHtml(entry.review)}</div>` : ''}<div class="activity-empty">${logs.length ? `${logs.length}회 감상 · 최근 ${formatDate(last.watchedAt)}` : entry.watchlist ? '보고싶어요에 저장됨' : '영화와의 기록이 저장됨'}</div>${viewingHistoryHtml(record)}<button class="danger-text-button" data-remove-library="${record.id}">이 영화의 모든 기록 삭제</button></div>` : '<div class="activity-empty">아직 이 영화에 대한 기록이 없습니다.</div>') : '<button class="streaming-signin compact" data-open-auth>로그인하고 감상 기록 남기기</button>'}
-          </section>
-        </aside>
-      </div>
-    `;
+    const html = DETAIL_FACTORY?.render?.(record, {
+      entry, logs, related, country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
+      isArt: art.isArt, isSignedIn: isSignedIn(), escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
+      watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card,
+    });
+    if (html) document.getElementById('moviePage').innerHTML = html;
   }
 
 
@@ -1415,11 +1392,18 @@
     const heroMovie = curationHeroMovie(item);
     const heroImage = heroMovie ? backdrop(heroMovie) : '';
     const sourceLabel = item.surface === 'discover' ? 'Discover' : item.surface === 'both' ? 'Discover / Arthouse' : 'Arthouse';
+    const isArchive = item.kind === 'director-archive';
+    const chapters = (item.chapters || []).map((chapter, index) => {
+      const rows = (chapter.movies || []).map((entry) => movie(entry.id)).filter(Boolean);
+      if (!rows.length) return '';
+      return `<section class="curation-chapter"><div class="curation-chapter-head"><span>${String(index + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(chapter.title)}</h2>${chapter.description ? `<p>${escapeHtml(chapter.description)}</p>` : ''}</div></div><div class="curation-film-grid">${rows.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div></section>`;
+    }).join('');
     document.title = `${item.title} — KINOSIS`;
-    document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${curationPreviousView === 'discover' ? 'Discover' : 'Arthouse'}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">링크 복사</button></div>
-      <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || 'KINOSIS CURATION')}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length}편` : '감독 필모그래피'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
-      <section class="content-section curation-film-section"><div class="section-head"><div><h2>작품</h2><p>기획전의 순서 자체가 편집 의도입니다.</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span>TMDB 상세정보가 준비되면 자동으로 채워집니다.</span></div>`}</section>`;
+    document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${curationPreviousView === 'discover' ? 'Discover' : 'Arthouse'}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">공유</button></div>
+      <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || (isArchive ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'))}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length}편` : isArchive ? '감독 작품 아카이브' : 'Editorial'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
+      ${!isArchive && chapters ? `<div class="curation-chapters">${chapters}</div>` : `<section class="content-section curation-film-section"><div class="section-head"><div><h2>${isArchive ? 'Filmography' : '작품'}</h2><p>${isArchive ? '감독 크레딧 기준으로 정리한 작품 아카이브입니다.' : '명시적으로 선택된 작품만 이 큐레이션에 포함됩니다.'}</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span>TMDB 상세정보가 준비되면 자동으로 채워집니다.</span></div>`}</section>`}`;
   }
+
 
   function routeUrlForCuration(slug, from) {
     const url = new URL(location.href);
@@ -1467,6 +1451,24 @@
     if (from && from !== 'discover') url.searchParams.set('from', from);
     if (from === 'curation' && curationSlug) url.searchParams.set('fromCuration', curationSlug);
     return `${url.pathname}${url.search}`;
+  }
+
+  function shareUrlForMovie(id) {
+    if (!canUseLiveApi()) return new URL(routeUrlForMovie(id, previousView), location.href).href;
+    const url = new URL('/share', location.origin);
+    url.searchParams.set('movie', String(id));
+    return url.href;
+  }
+
+  function shareUrlForCuration(item) {
+    if (!item || !canUseLiveApi()) return location.href;
+    const url = new URL('/share', location.origin);
+    url.searchParams.set('curation', item.slug);
+    url.searchParams.set('title', item.title);
+    if (item.description) url.searchParams.set('description', item.description.slice(0, 220));
+    const hero = curationHeroMovie(item);
+    if (hero) url.searchParams.set('image', backdrop(hero));
+    return url.href;
   }
 
   function updateHistoryForView(view, mode = 'push') {
@@ -1542,120 +1544,25 @@
     setView(view, { skipGate: false, keepScroll: true, route: replace ? 'replace' : 'none' });
   }
 
-  function localSearch(query) {
-    const lower = query.toLocaleLowerCase('ko-KR');
-    return (CATALOG.movies || []).filter((record) => [record.title, record.originalTitle, record.director, ...(record.cast || []).map((person) => person.name || person), ...genreNames(record)].filter(Boolean).join(' ').toLocaleLowerCase('ko-KR').includes(lower));
+  let searchController = null;
+  function getSearchController() {
+    if (searchController) return searchController;
+    if (!SEARCH_FACTORY?.create) return null;
+    searchController = SEARCH_FACTORY.create({
+      catalogMovies: CATALOG.movies || [],
+      trendingMovies: CATALOG.sections?.trending || [],
+      normalizeText, uniqueMovies: uniqueById, genreNames, escapeHtml, poster, rememberMovie, lib, isSignedIn, canUseLiveApi, fetchLiveSearch, apiJson,
+      showDialog: (id) => UI.showDialog(id),
+    });
+    searchController.attach();
+    return searchController;
   }
 
-  function relevance(record, query) {
-    const needle = query.toLocaleLowerCase('ko-KR');
-    const title = String(record.title || '').toLocaleLowerCase('ko-KR');
-    const original = String(record.originalTitle || '').toLocaleLowerCase('ko-KR');
-    const director = String(record.director || '').toLocaleLowerCase('ko-KR');
-    let score = 0;
-    if (title === needle || original === needle) score += 100;
-    if (title.startsWith(needle) || original.startsWith(needle)) score += 55;
-    if (title.includes(needle) || original.includes(needle)) score += 30;
-    if (director.includes(needle)) score += 12;
-    if (genreNames(record).some((genre) => normalizeText(genre) === normalizeText(query))) score += 22;
-    if (CATALOG.movies?.some((catalogMovie) => String(catalogMovie.id) === String(record.id))) score += 5;
-    score += Math.min(10, Number(record.voteCount || 0) / 10000);
-    return score;
-  }
+  function renderSearch(query = '') { getSearchController()?.render(query); }
+  function queueSearch(value) { getSearchController()?.queue(value); }
+  function openSearch() { getSearchController()?.open(); }
+  async function openPersonFilmography(id, name = '') { return getSearchController()?.openPersonFilmography(id, name); }
 
-  function combinedSearch(query) {
-    const local = localSearch(query);
-    const live = liveSearchState.query === query ? liveSearchState.results : [];
-    const map = new Map();
-    for (const record of [...live, ...local]) map.set(String(record.id), record);
-    return uniqueById([...map.values()]).sort((a, b) => relevance(b, query) - relevance(a, query));
-  }
-
-  function searchRow(record) {
-    const action = isSignedIn() ? `<button class="secondary-button" data-action="watchlist" data-id="${record.id}">${lib(record.id)?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button><button class="secondary-button" data-action="log" data-id="${record.id}">감상 기록</button>` : '';
-    return `<article class="search-result" data-movie="${record.id}" tabindex="0"><img src="${escapeHtml(poster(record))}" alt=""><div><h3>${escapeHtml(record.title)}</h3><p>${record.originalTitle && record.originalTitle !== record.title ? `${escapeHtml(record.originalTitle)} · ` : ''}${record.year || '—'}${record.director ? ` · ${escapeHtml(record.director)}` : ''}${record.personRole ? ` · ${escapeHtml(record.personRole)}` : ''}</p></div><div class="search-actions">${action}</div></article>`;
-  }
-
-  function personRow(person) {
-    return `<button class="person-result" data-person-id="${escapeHtml(person.id)}" data-person-name="${escapeHtml(person.name)}">${person.profileUrl ? `<img src="${escapeHtml(person.profileUrl)}" alt="">` : '<span class="person-avatar-placeholder"></span>'}<span><b>${escapeHtml(person.name)}</b><small>${escapeHtml(person.knownForDepartment || 'Person')}</small></span><span class="person-arrow">›</span></button>`;
-  }
-
-  function renderSearch(query = '') {
-    const element = document.getElementById('searchResults');
-    if (!element) return;
-    const trimmed = query.trim();
-    if (personSearchState.status === 'ready' && personSearchState.person) {
-      element.innerHTML = `<div class="person-filmography-head"><button class="secondary-button" data-search-back>← 검색 결과</button><div><p class="eyebrow">FILMOGRAPHY</p><h2>${escapeHtml(personSearchState.person.name)}</h2><p>${escapeHtml(personSearchState.person.knownForDepartment || '')}</p></div></div>${personSearchState.results.length ? personSearchState.results.map(searchRow).join('') : '<div class="empty-state"><b>표시할 영화가 없습니다.</b></div>'}`;
-      return;
-    }
-    if (!trimmed) {
-      const recent = uniqueById(CATALOG.sections?.trending || []).slice(0, 8);
-      element.innerHTML = recent.map(searchRow).join('');
-      return;
-    }
-    const results = combinedSearch(trimmed);
-    const people = liveSearchState.query === trimmed ? liveSearchState.people || [] : [];
-    const status = liveSearchState.status === 'loading' ? '<div class="search-status">TMDB 검색 중…</div>' : liveSearchState.status === 'error' ? '<div class="search-status">Live search unavailable · local results</div>' : '';
-    const peopleHtml = people.length ? `<section class="search-people"><div class="search-section-label">PEOPLE</div>${people.slice(0, 6).map(personRow).join('')}</section>` : '';
-    const moviesHtml = results.length ? `<section><div class="search-section-label">FILMS</div>${results.slice(0, 24).map(searchRow).join('')}</section>` : '<div class="empty-state"><b>검색 결과가 없습니다.</b></div>';
-    element.innerHTML = status + peopleHtml + moviesHtml;
-  }
-
-  async function runLiveSearch(query, serial) {
-    if (!canUseLiveApi() || query.length < LIVE_SEARCH_MIN_CHARS) return;
-    if (searchAbort) searchAbort.abort();
-    searchAbort = new AbortController();
-    liveSearchState = { query, status: 'loading', results: [], people: [], message: '' };
-    renderSearch(query);
-    try {
-      const data = await fetchLiveSearch(query, { signal: searchAbort.signal });
-      if (serial !== searchSerial) return;
-      liveSearchState = { query, status: 'done', results: data.results, people: data.people, message: '' };
-    } catch (error) {
-      if (error?.name === 'AbortError' || serial !== searchSerial) return;
-      liveSearchState = { query, status: 'error', results: [], people: [], message: error.message || 'Live search failed' };
-    }
-    renderSearch(query);
-  }
-
-  function queueSearch(value) {
-    const query = value.trim();
-    clearTimeout(searchTimer);
-    const serial = ++searchSerial;
-    personSearchState = { status: 'idle', person: null, results: [] };
-    liveSearchState = query === liveSearchState.query ? liveSearchState : { query, status: 'idle', results: [], people: [], message: '' };
-    renderSearch(query);
-    if (searchComposing || query.length < LIVE_SEARCH_MIN_CHARS || !canUseLiveApi()) return;
-    searchTimer = setTimeout(() => runLiveSearch(query, serial), LIVE_SEARCH_DEBOUNCE);
-  }
-
-  function openSearch() {
-    document.getElementById('searchContext').textContent = '영화·감독·배우·장르를 KINOSIS 카탈로그와 TMDB에서 함께 검색합니다.';
-    UI.showDialog('searchDialog');
-    const input = document.getElementById('searchInput');
-    input.value = '';
-    liveSearchState = { query: '', status: 'idle', results: [], people: [], message: '' };
-    personSearchState = { status: 'idle', person: null, results: [] };
-    renderSearch('');
-    setTimeout(() => input.focus(), 50);
-  }
-
-  async function openPersonFilmography(id, name = '') {
-    if (!canUseLiveApi()) return;
-    personSearchState = { status: 'loading', person: { id, name }, results: [] };
-    document.getElementById('searchResults').innerHTML = `<div class="detail-loading"><div class="loading-ring"></div><b>${escapeHtml(name || 'Filmography')}</b><span>필모그래피를 불러오는 중…</span></div>`;
-    try {
-      const data = await apiJson(`/api/person-films?id=${encodeURIComponent(id)}`);
-      personSearchState = {
-        status: 'ready',
-        person: data.person,
-        results: (data.results || []).map((record) => rememberMovie({ ...record, source: 'tmdb-live', detailLoaded: false })).filter(Boolean),
-      };
-    } catch (error) {
-      personSearchState = { status: 'error', person: { id, name }, results: [] };
-    }
-    renderSearch(document.getElementById('searchInput').value);
-  }
 
   async function openLog(id, logId = null) {
     if (!requireAuth()) return;
@@ -1848,7 +1755,7 @@
     const live = CATALOG.mode === 'live';
     const statusText = document.getElementById('dataStatusText');
     if (statusText) statusText.textContent = live ? 'SYNCED' : 'LOCAL';
-    document.getElementById('sourceStatus').innerHTML = `Catalog: <b>${live ? 'LIVE API SYNC' : 'LOCAL DEMO'}</b><br>Updated: ${escapeHtml(CATALOG.updatedAt || 'unknown')}<br>Region: ${escapeHtml(CATALOG.region || 'KR')}<br>Auth: ${isSignedIn() ? `SIGNED IN · ${escapeHtml(syncState.status.toUpperCase())}` : 'SIGNED OUT'}`;
+    document.getElementById('sourceStatus').innerHTML = `Catalog: <b>${live ? 'LIVE API SYNC' : 'LOCAL DEMO'}</b><br>Updated: ${escapeHtml(CATALOG.updatedAt || 'unknown')}<br>Region: ${escapeHtml(CATALOG.region || LOCALE.region)}<br>Auth: ${isSignedIn() ? `SIGNED IN · ${escapeHtml(syncState.status.toUpperCase())}` : 'SIGNED OUT'}`;
   }
 
   function renderActiveView() {
@@ -1866,18 +1773,62 @@
     renderAccountChrome();
   }
 
-  function exportData() {
-    if (!requireAuth()) return;
-    state.settings.lastExportAt = new Date().toISOString();
-    saveState();
-    const blob = new Blob([JSON.stringify({ version: 4, exportedAt: new Date().toISOString(), state }, null, 2)], { type: 'application/json' });
+  function downloadBlob(filename, content, type) {
+    const blob = new Blob([content], { type });
     const anchor = document.createElement('a');
     anchor.href = URL.createObjectURL(blob);
-    anchor.download = `kinosis-${isoDate(new Date())}.json`;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
     anchor.click();
-    URL.revokeObjectURL(anchor.href);
-    UI.toast('내 데이터를 내보냈습니다.');
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(anchor.href), 0);
   }
+
+  function csvCell(value) {
+    const text = String(value ?? '');
+    return /[",\n\r]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+  }
+
+  function letterboxdDiaryCsv() {
+    const header = ['Date','Name','Year','Letterboxd URI','Rating','Rewatch','Review','Tags','Watched Date'];
+    const rows = [...state.logs].sort((a,b) => String(a.watchedAt || '').localeCompare(String(b.watchedAt || ''))).map((log) => {
+      const record = movie(log.movieId) || state.movieCache?.[String(log.movieId)] || {};
+      const watchedDate = String(log.watchedAt || '').slice(0, 10);
+      return [watchedDate, record.title || `TMDB ${log.movieId}`, record.year || '', '', log.rating ?? '', log.rewatch ? 'Yes' : 'No', log.review || '', '', watchedDate];
+    });
+    return [header, ...rows].map((row) => row.map(csvCell).join(',')).join('\r\n');
+  }
+
+  function letterboxdWatchlistCsv() {
+    const header = ['Date','Name','Year','Letterboxd URI'];
+    const rows = Object.entries(state.library || {}).filter(([, entry]) => entry?.watchlist).map(([id, entry]) => {
+      const record = movie(id) || state.movieCache?.[String(id)] || {};
+      return [String(entry.savedAt || entry.updatedAt || '').slice(0, 10), record.title || `TMDB ${id}`, record.year || '', ''];
+    });
+    return [header, ...rows].map((row) => row.map(csvCell).join(',')).join('\r\n');
+  }
+
+  async function exportData() {
+    if (!requireAuth()) return;
+    const choice = await UI.ask({
+      eyebrow: 'EXPORT', title: '내 데이터 다운로드', message: '계정 삭제 전에도 언제든 기록을 꺼내갈 수 있습니다.',
+      select: { label: '형식', value: 'json', options: [{ value: 'json', label: 'KINOSIS JSON — 전체 백업' }, { value: 'letterboxd', label: 'Letterboxd 호환 CSV — Diary + Watchlist' }] },
+      confirmText: '다운로드',
+    });
+    if (!choice?.confirmed) return;
+    state.settings.lastExportAt = new Date().toISOString();
+    saveState();
+    const stamp = isoDate(new Date());
+    if (choice.select === 'letterboxd') {
+      downloadBlob(`kinosis-letterboxd-diary-${stamp}.csv`, `\uFEFF${letterboxdDiaryCsv()}`, 'text/csv;charset=utf-8');
+      downloadBlob(`kinosis-letterboxd-watchlist-${stamp}.csv`, `\uFEFF${letterboxdWatchlistCsv()}`, 'text/csv;charset=utf-8');
+      UI.toast('Diary와 Watchlist CSV를 내보냈습니다.');
+      return;
+    }
+    downloadBlob(`kinosis-${stamp}.json`, JSON.stringify({ version: 5, exportedAt: new Date().toISOString(), locale: LOCALE, state }, null, 2), 'application/json');
+    UI.toast('KINOSIS 전체 데이터를 내보냈습니다.');
+  }
+
 
   async function handleImport(event) {
     if (!requireAuth()) return;
@@ -2034,15 +1985,16 @@
 
     const curationShare = event.target.closest('[data-share-curation]');
     if (curationShare) {
-      try { await navigator.clipboard.writeText(location.href); UI.toast('기획전 링크를 복사했습니다.'); }
-      catch { UI.toast('주소창의 링크를 복사해주세요.'); }
+      const item = CURATIONS.get(curationShare.dataset.shareCuration);
+      try { await navigator.clipboard.writeText(shareUrlForCuration(item)); UI.toast('미리보기 카드가 포함된 기획전 링크를 복사했습니다.'); }
+      catch { UI.toast('공유 링크를 복사하지 못했습니다.'); }
       return;
     }
 
     const share = event.target.closest('[data-share-movie]');
     if (share) {
-      try { await navigator.clipboard.writeText(location.href); UI.toast('영화 링크를 복사했습니다.'); }
-      catch { UI.toast('주소창의 링크를 복사해주세요.'); }
+      try { await navigator.clipboard.writeText(shareUrlForMovie(share.dataset.shareMovie)); UI.toast('미리보기 카드가 포함된 영화 링크를 복사했습니다.'); }
+      catch { UI.toast('공유 링크를 복사하지 못했습니다.'); }
       return;
     }
 
@@ -2134,11 +2086,17 @@
       return;
     }
 
+    if (event.target.closest('#libraryFilterReset')) {
+      libraryFilter = { ...libraryFilter, status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
+      renderLibrary();
+      return;
+    }
+
     if (event.target.closest('#editProfile')) { editProfile(); return; }
     if (event.target.closest('#syncNowButton')) { await syncNow(); return; }
     if (event.target.closest('#signOutButton')) { await CLOUD?.signOut(); return; }
     if (event.target.closest('#deleteAccountButton')) { await deleteAccount(); return; }
-    if (event.target.closest('#accountExportButton') || event.target.closest('#exportButton')) { exportData(); return; }
+    if (event.target.closest('#accountExportButton') || event.target.closest('#exportButton')) { await exportData(); return; }
     if (event.target.closest('#aboutButton') || event.target.closest('#openAboutFromSettings')) { UI.showDialog('aboutDialog'); return; }
     if (event.target.closest('#openLetterboxdImport')) { UI.closeDialog('aboutDialog'); UI.showDialog('letterboxdDialog'); return; }
 
@@ -2169,8 +2127,7 @@
       return;
     }
     if (event.target.closest('[data-search-back]')) {
-      personSearchState = { status: 'idle', person: null, results: [] };
-      renderSearch(document.getElementById('searchInput').value);
+      getSearchController()?.backFromPerson();
     }
   });
 
@@ -2191,15 +2148,11 @@
   });
 
   document.addEventListener('change', (event) => {
-    if (event.target.id === 'librarySort') {
-      libraryFilter.sort = event.target.value;
-      renderLibrary();
-    }
+    const filterKeys = { librarySort: 'sort', libraryStatus: 'status', libraryRating: 'minRating', libraryGenre: 'genre', libraryAvailability: 'availability' };
+    const key = filterKeys[event.target.id];
+    if (key) { libraryFilter[key] = event.target.value; renderLibrary(); }
   });
 
-  document.getElementById('searchInput').addEventListener('compositionstart', () => { searchComposing = true; });
-  document.getElementById('searchInput').addEventListener('compositionend', (event) => { searchComposing = false; queueSearch(event.target.value); });
-  document.getElementById('searchInput').addEventListener('input', (event) => { if (!searchComposing) queueSearch(event.target.value); });
 
   document.getElementById('emailAuthForm').addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -2294,6 +2247,21 @@
   document.getElementById('importInput').addEventListener('change', handleImport);
   document.getElementById('letterboxdInput').addEventListener('change', handleLetterboxdFiles);
 
+  document.getElementById('myTabs')?.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    const tabs = [...document.querySelectorAll('#myTabs [role="tab"]')];
+    const index = tabs.indexOf(document.activeElement);
+    if (index < 0) return;
+    event.preventDefault();
+    let next = index;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    tabs[next].focus();
+    tabs[next].click();
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
       event.preventDefault();
@@ -2352,6 +2320,7 @@
     CLOUD.init().then(() => { authReady = true; }).catch(() => {});
   } else authReady = true;
 
+  getSearchController()?.attach();
   renderAll();
   applyLocationRoute({ replace: true }).catch(() => setView('discover', { skipGate: true, route: 'replace' }));
 })();

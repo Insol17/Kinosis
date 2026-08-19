@@ -1,43 +1,29 @@
-# KINOSIS 0.4.4.4 — Curation architecture
-
-Curation is an ARTHOUSE-only editorial feature. Git is the current CMS for the one-editor workflow.
+# KINOSIS 0.4.4.5 — Curation architecture
 
 ```text
 content/curations/*.curation.json
-        ↓
-npm run build
-        ↓
+        ↓ npm run build
 data/curations.json + data/curations.js
         ↓
-ARTHOUSE
+ARTHOUSE collection-card index
         ↓
 ?curation=<slug>
 ```
 
-Director definitions resolve only when opened. Results are deduplicated by id and original-title/year identity before rendering.
+KINOSIS now treats **Director Archive** and **Editorial Curation** as different domain objects.
 
-## Director modes
+## Director Archive
 
-```json
-{
-  "source": {
-    "type": "director",
-    "name": "Víctor Erice",
-    "sort": "release_asc",
-    "mode": "solo-features"
-  }
-}
-```
+`kind: "director-archive"` may use `source.type: "director"`. The resolver can use a TMDB person id/name, sorting, `all-directed` / `solo-features`, and explicit include/exclude overrides. It is a filmography utility, not authored editorial membership.
 
-- `all-directed`: all unique movie directing credits.
-- `solo-features`: feature-length (>=60m), sole-director films only.
-- `personId`: optional canonical TMDB person id.
-- `include` / `exclude`: explicit TMDB movie-id overrides.
+## Editorial Curation
 
-The Víctor Erice definition uses `solo-features` so shorts, anthology/co-directed work and duplicate upstream credits do not inflate the collection.
+`kind: "editorial"` must own explicit TMDB movie ids through `movies` or `chapters`. The build rejects an editorial definition that delegates membership to a director auto-source. This makes thematic programs such as cities, weather, eras or relationships possible without changing application logic.
 
-Static `movies: [TMDB_ID, ...]` remains supported for hand-edited thematic programs.
+## Identity
+
+TMDB movie id is the canonical key wherever it exists. Title/year identity is reserved for external records that have no TMDB id; two distinct TMDB ids are never collapsed just because their title/year match.
 
 ## Publishing
 
-Publishing is a Git operation. `npm run build` validates slugs, duplicates, field lengths and ids. Keep editorial commits small so content can be reverted independently of application code.
+Publishing remains a Git operation. `npm run build` validates slug, kind, source contract, ids, duplicate editorial membership and field lengths. Keep content commits independent from application code when practical.

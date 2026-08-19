@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4.4" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.4.5" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -104,13 +104,13 @@
       <section class="view" id="myView" data-view="my">
         <div class="my-layout">
           <div id="profileCard"></div>
-          <nav class="my-tabs" id="myTabs" aria-label="내 기록 메뉴">
-            <button class="my-tab is-active" data-my="overview">개요</button>
-            <button class="my-tab" data-my="reviews">기록</button>
-            <button class="my-tab" data-my="stats">통계</button>
-            <button class="my-tab" data-my="settings">설정</button>
+          <nav class="my-tabs" id="myTabs" aria-label="내 기록 메뉴" role="tablist" aria-orientation="horizontal">
+            <button class="my-tab is-active" id="my-tab-overview" data-my="overview" role="tab" aria-selected="true" aria-controls="myContent" tabindex="0">개요</button>
+            <button class="my-tab" id="my-tab-reviews" data-my="reviews" role="tab" aria-selected="false" aria-controls="myContent" tabindex="-1">기록</button>
+            <button class="my-tab" id="my-tab-stats" data-my="stats" role="tab" aria-selected="false" aria-controls="myContent" tabindex="-1">통계</button>
+            <button class="my-tab" id="my-tab-settings" data-my="settings" role="tab" aria-selected="false" aria-controls="myContent" tabindex="-1">설정</button>
           </nav>
-          <div id="myContent"></div>
+          <div id="myContent" role="tabpanel" aria-labelledby="my-tab-overview" tabindex="0"></div>
         </div>
       </section>
 
@@ -158,11 +158,11 @@
   <dialog id="searchDialog" class="sheet-dialog search-dialog">
     <div class="dialog-shell">
       <div class="dialog-topline">
-        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="영화, 감독, 배우, 장르 검색" /></label>
+        <label class="dialog-search"><svg class="ui-icon"><use href="#i-search"/></svg><input id="searchInput" autocomplete="off" placeholder="영화, 감독, 배우, 장르 검색" role="combobox" aria-autocomplete="list" aria-controls="searchResults" aria-expanded="true" /></label>
         <button class="ghost-close" data-close="searchDialog">닫기</button>
       </div>
       <div id="searchContext" class="search-hint">영화·감독·배우·장르를 KINOSIS 카탈로그와 TMDB에서 함께 검색합니다.</div>
-      <div id="searchResults" class="search-results"></div>
+      <div id="searchResults" class="search-results" role="listbox" aria-label="검색 결과"></div>
     </div>
   </dialog>
 
@@ -226,7 +226,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4.4</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.4.5</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -239,22 +239,24 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.4.4"></script>
-  <script src="./data/curations.js?v=0.4.4.4"></script>
-  <script src="./assets/js/config.js?v=0.4.4.4"></script>
-  <script src="./data/arthouse.js?v=0.4.4.4"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.4.4"></script>
-  <script src="./data/providers.js?v=0.4.4.4"></script>
-  <script src="./assets/js/providers.js?v=0.4.4.4"></script>
+  <script src="./data/catalog.js?v=0.4.4.5"></script>
+  <script src="./data/curations.js?v=0.4.4.5"></script>
+  <script src="./assets/js/config.js?v=0.4.4.5"></script>
+  <script src="./data/arthouse.js?v=0.4.4.5"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.4.5"></script>
+  <script src="./data/providers.js?v=0.4.4.5"></script>
+  <script src="./assets/js/providers.js?v=0.4.4.5"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3"></script>
-  <script src="./assets/js/cloud.js?v=0.4.4.4"></script>
-  <script src="./assets/js/ui.js?v=0.4.4.4"></script>
-  <script src="./assets/js/importers.js?v=0.4.4.4"></script>
-  <script src="./assets/js/curations.js?v=0.4.4.4"></script>
-  <script src="./assets/js/curation-loader.js?v=0.4.4.4"></script>
-  <script src="./assets/js/hero-carousel.js?v=0.4.4.4"></script>
-  <script src="./assets/js/state-integrity.js?v=0.4.4.4"></script>
-  <script src="./assets/js/error-boundary.js?v=0.4.4.4"></script>
-  <script src="./assets/js/app.js?v=0.4.4.4"></script>
+  <script src="./assets/js/cloud.js?v=0.4.4.5"></script>
+  <script src="./assets/js/ui.js?v=0.4.4.5"></script>
+  <script src="./assets/js/importers.js?v=0.4.4.5"></script>
+  <script src="./assets/js/curations.js?v=0.4.4.5"></script>
+  <script src="./assets/js/curation-loader.js?v=0.4.4.5"></script>
+  <script src="./assets/js/hero-carousel.js?v=0.4.4.5"></script>
+  <script src="./assets/js/features/search.js?v=0.4.4.5"></script>
+  <script src="./assets/js/features/detail.js?v=0.4.4.5"></script>
+  <script src="./assets/js/state-integrity.js?v=0.4.4.5"></script>
+  <script src="./assets/js/error-boundary.js?v=0.4.4.5"></script>
+  <script src="./assets/js/app.js?v=0.4.4.5"></script>
 </body>
 </html>

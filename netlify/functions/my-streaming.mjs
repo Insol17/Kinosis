@@ -1,5 +1,6 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
 import { providerMatches } from '../../shared/providers.mjs';
+import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 function movieRow(movie, provider) {
   return {
@@ -32,7 +33,7 @@ export default async (request) => {
   if (!requested.length) return json({ results: [], matchedProviders: [] }, 200, 'private, max-age=60');
 
   try {
-    const providerPayload = await tmdb('/watch/providers/movie', { watch_region: 'KR', language: 'ko-KR' });
+    const providerPayload = await tmdb('/watch/providers/movie', { watch_region: KINOSIS_LOCALE.region, language: KINOSIS_LOCALE.language });
     const available = providerPayload?.results || [];
     const matched = [];
     for (const name of requested) {
@@ -44,7 +45,7 @@ export default async (request) => {
     const chosen = matched.slice(0, 8);
     const pages = await Promise.all(chosen.map(async (provider) => {
       const data = await tmdb('/discover/movie', {
-        language: 'ko-KR', region: 'KR', watch_region: 'KR', with_watch_providers: provider.provider_id,
+        language: KINOSIS_LOCALE.language, region: KINOSIS_LOCALE.region, watch_region: KINOSIS_LOCALE.region, with_watch_providers: provider.provider_id,
         with_watch_monetization_types: 'flatrate', include_adult: false, include_video: false,
         sort_by: 'popularity.desc', page: 1,
       });

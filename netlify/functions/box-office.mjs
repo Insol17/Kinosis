@@ -1,4 +1,5 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
+import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 function kstDateOffset(days) {
   const now = new Date(Date.now() + days * 86400000);
@@ -55,8 +56,8 @@ export default async (request) => {
       try {
         const search = await tmdb('/search/movie', {
           query: row.movieNm,
-          language: 'ko-KR',
-          region: 'KR',
+          language: KINOSIS_LOCALE.language,
+          region: KINOSIS_LOCALE.region,
           include_adult: false,
           page: 1,
         });

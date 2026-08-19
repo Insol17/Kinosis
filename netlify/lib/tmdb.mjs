@@ -1,3 +1,4 @@
+import { KINOSIS_LOCALE } from './locale.mjs';
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const IMAGE_BASE = 'https://image.tmdb.org/t/p';
 
@@ -56,7 +57,7 @@ export function json(data, status = 200, cacheControl = 'no-store') {
   });
 }
 
-export function normalizeProviderResults(payload, region = 'KR') {
+export function normalizeProviderResults(payload, region = KINOSIS_LOCALE.region) {
   const regionData = payload?.results?.[region];
   if (!regionData) return { providers: [], watchLink: null };
   const groups = [

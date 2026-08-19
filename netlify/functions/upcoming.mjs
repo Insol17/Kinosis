@@ -1,4 +1,5 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
+import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 function isoDate(date) {
   return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
@@ -45,8 +46,8 @@ export default async (request) => {
   end.setDate(end.getDate() + 120);
   try {
     const pages = await Promise.all([1, 2, 3].map((page) => tmdb('/discover/movie', {
-      language: 'ko-KR',
-      region: 'KR',
+      language: KINOSIS_LOCALE.language,
+      region: KINOSIS_LOCALE.region,
       include_adult: false,
       include_video: false,
       with_release_type: '3|2',
@@ -60,7 +61,7 @@ export default async (request) => {
       .sort((a, b) => String(a.release_date).localeCompare(String(b.release_date)) || Number(b.popularity || 0) - Number(a.popularity || 0))
       .slice(0, 42)
       .map(movie);
-    return json({ region: 'KR', source: 'tmdb-discover-theatrical', results, updatedAt: new Date().toISOString() }, 200, 'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
+    return json({ region: KINOSIS_LOCALE.region, source: 'tmdb-discover-theatrical', results, updatedAt: new Date().toISOString() }, 200, 'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
   } catch (error) {
     console.error('upcoming:', error.message);
     return json({ error: error.message || 'Upcoming discovery failed.' }, error.status || 500);

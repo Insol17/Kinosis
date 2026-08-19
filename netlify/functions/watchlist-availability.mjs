@@ -1,4 +1,5 @@
 import { json, normalizeProviderResults, tmdb } from '../lib/tmdb.mjs';
+import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 export default async (request) => {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
@@ -15,7 +16,7 @@ export default async (request) => {
     const results = await Promise.all(ids.map(async (id) => {
       try {
         const payload = await tmdb(`/movie/${id}/watch/providers`);
-        const { providers, watchLink } = normalizeProviderResults(payload, 'KR');
+        const { providers, watchLink } = normalizeProviderResults(payload, KINOSIS_LOCALE.region);
         return { id, providers, watchLink };
       } catch (error) {
         return { id, providers: [], watchLink: null, error: error.message || 'unavailable' };

@@ -1,12 +1,13 @@
 (function () {
   'use strict';
   const DATA = window.KINOSIS_PROVIDER_DATA || { items: [] };
+  const LOCALE = window.KINOSIS_LOCALE || {};
   const items = Array.isArray(DATA.items) ? DATA.items.map((item) => ({ ...item })) : [];
 
   function normalize(value) {
     return String(value || '')
       .normalize('NFKC')
-      .toLocaleLowerCase('ko-KR')
+      .toLocaleLowerCase(LOCALE.language)
       .replace(/\+/g, 'plus')
       .replace(/[^a-z0-9가-힣]+/g, '');
   }

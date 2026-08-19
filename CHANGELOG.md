@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.4.4.5 — Core UX / performance pass
+
+### Search
+- Split Search into `assets/js/features/search.js` and rebuilt it as an instant-local + 250 ms live-merge search product.
+- Results distinguish people from movies, rank exact/prefix matches first, expose an exact-match section and support Arrow Up/Down + Enter navigation through ARIA combobox/listbox semantics.
+- Movie identity is canonical by TMDB movie id. Normalized original-title/year is used only as a fallback when an external record has no TMDB id, so distinct same-title films are never collapsed.
+
+### Film detail / availability
+- Split Detail into `assets/js/features/detail.js` and rebuilt the page around title/meta → personal actions/rating → Where to Watch → synopsis → director/cast → personal record → facts → related films.
+- TMDB rating is secondary reference data; KINOSIS personal state is the primary relationship signal.
+- `/api/movie-detail` now separates 24 h static metadata cache from 4 h availability cache. KR now-playing validation is only requested for genuinely recent theatrical releases.
+
+### Arthouse / curation
+- Added explicit `editorial` and `director-archive` curation kinds. Editorial objects must own explicit movie ids/chapters; director auto-sources can no longer become editorial source of truth.
+- Arthouse now indexes editorial collections and Director Archives as collection cards instead of expanding every curation into a home rail.
+- Editorial chapter rendering supports numbered sections and explicit movie membership.
+
+### Library / MY / portability
+- Simplified Library around retrieval: query, sort, view mode and an on-demand filter panel for watched state, rating, genre and current availability. Sidebar collections are capped to recent/pinned items.
+- MY uses actual ARIA tabs with keyboard traversal. Overview is reduced to yearly total, recent watches, recent records and calendar; statistics stay in Stats and subscriptions stay in Settings.
+- Data export now offers full KINOSIS JSON plus Letterboxd-compatible Diary and Watchlist CSV files.
+
+### Sharing / architecture / CSS
+- Added `/share` OG HTML for movie and curation links so copied public links can render poster/title preview cards before redirecting into KINOSIS.
+- Centralized the current Korea product locale (`KR`, `ko-KR`) for client/server use without adding country-selection UI.
+- Consolidated the accumulated stylesheet cascade, reduced `!important` usage to reduced-motion exceptions, and added dedicated 0.4.4.5 rules for curation cards, retrieval filters, film detail hierarchy, MY and search.
+
 ## 0.4.4.4 — Film detail, data integrity and duplicate control
 
 ### Film detail

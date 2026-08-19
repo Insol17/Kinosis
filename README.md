@@ -1,4 +1,4 @@
-# KINOSIS 0.4.4.4
+# KINOSIS 0.4.4.5
 
 KINOSIS is a responsive film discovery and personal film-life web MVP.
 
@@ -11,20 +11,18 @@ MY        → overview / reviews / stats / settings
 
 Search is global. Film detail and curation pages have shareable URLs. Library and MY require an account; guests can browse Discover, Arthouse, Search and film detail.
 
-## 0.4.4.4 focus
+## 0.4.4.5 focus
 
-This release is a data-integrity and film-detail pass. It keeps the product IA stable while fixing the remaining sync race, duplicated movie identities, thin Upcoming data and the film-detail hierarchy.
+This release is the core UX/performance pass for the five production surfaces. It intentionally does not add country selection, Social, AI recommendations or new Discover shelves.
 
-- Film detail now follows the proven poster + title/meta + personal actions + synopsis/cast/credits + watch-availability grammar used by mature film services, while keeping KINOSIS's graphite/amber visual language and personal viewing-history emphasis.
-- Dynamic Curation and Search results dedupe by both TMDB id and normalized original-title/year identity so one film does not appear several times under duplicate upstream records.
-- Víctor Erice uses `mode: "solo-features"`: the director resolver keeps only feature-length movies for which Erice is the sole credited director. The four-film collection is therefore no longer polluted by shorts, anthology segments or duplicate credits.
-- Cloud sync adds a client-side `localRevision` generation guard. A network write that finishes after the user made another local edit can no longer replace the live state with its older snapshot.
-- Delete tombstones are merged by the latest timestamp per entity instead of source order.
-- Replaceable TMDB movie metadata and availability snapshots are kept local rather than uploaded as user-authored Cloud state.
-- Upcoming discovery uses a KR theatrical Discover query (`release_type 3|2`, next 120 days). When the weekly bundled catalog is too thin, `/api/upcoming` fills the rail live.
-- Hero interaction uses proper carousel semantics, touch swipe, 44px controls and does not resume keyboard-stopped autoplay until the user explicitly restarts it.
-- Provider and Arthouse editorial source data now live under `shared/` and generate browser data, avoiding separate hardcoded server/client lists.
-- Letterboxd bulk matching respects the public search rate-limit budget and backs off on HTTP 429.
+- Search is instant-local first, merges live TMDB results after 250 ms, separates people/movies, ranks exact matches first and supports keyboard listbox navigation.
+- TMDB movie id is the canonical identity. Original-title/year is fallback identity only for records that do not have a TMDB id.
+- Film Detail prioritizes KINOSIS relationship state and places Where to Watch directly after the hero. Static metadata and availability use different cache horizons.
+- ARTHOUSE distinguishes `director-archive` from explicit `editorial` curation objects and indexes both as collection cards.
+- Library is retrieval-first: search, sort, collection navigation, compact filters and grid/list view.
+- MY uses real ARIA tabs and a reduced overview. Export supports KINOSIS JSON and Letterboxd-compatible Diary/Watchlist CSV.
+- Movie/curation sharing uses `/share` OG preview HTML before redirecting into the app.
+- Search and Detail are feature modules; the stylesheet cascade is consolidated and current locale behavior is centralized around KR / ko-KR.
 
 ## OTT/provider identity
 

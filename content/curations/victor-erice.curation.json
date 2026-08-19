@@ -1,9 +1,9 @@
 {
   "slug": "victor-erice",
   "eyebrow": "DIRECTOR'S ARCHIVE",
-  "title": "셀룰로이드의 정령: 빅토르 에리세 컬렉션",
+  "title": "빅토르 에리세",
   "subtitle": "Víctor Erice",
-  "description": "장편 네 편에 응축된 기억과 빛, 영화가 남긴 잔상을 따라가는 빅토르 에리세의 세계.",
+  "description": "기억과 빛, 시간의 잔상을 오래 응시하는 빅토르 에리세의 장편 감독 작품 아카이브.",
   "credit": "Curated by KINOSIS",
   "priority": 20,
   "source": {
@@ -11,5 +11,6 @@
     "name": "Víctor Erice",
     "sort": "release_asc",
     "mode": "solo-features"
-  }
+  },
+  "kind": "director-archive"
 }

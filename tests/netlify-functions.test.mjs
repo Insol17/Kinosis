@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 process.env.TMDB_READ_ACCESS_TOKEN='test-token-not-real';
 process.env.KOBIS_API_KEY='kobis-test-not-real';
 
+const shareModule=await import('../netlify/functions/share.mjs');
 const searchModule=await import('../netlify/functions/movie-search.mjs');
 const detailModule=await import('../netlify/functions/movie-detail.mjs');
 const boxOfficeModule=await import('../netlify/functions/box-office.mjs');
@@ -46,7 +47,11 @@ try{
 
   const searchResponse=await searchModule.default(new Request('https://kinosis.test/api/movie-search?q=%EC%8B%9C%EB%AF%BC%20%EC%BC%80%EC%9D%B8'));
   assert.equal(searchResponse.status,200); const searchData=await searchResponse.json();
-  assert.equal(searchData.results[0].id,'15'); assert.equal(searchData.results.length,1,'duplicate title/year search results should collapse'); assert.equal(searchData.people[0].id,'2');
+  assert.equal(searchData.results[0].id,'15'); assert.equal(searchData.results.length,2,'distinct TMDB ids must survive even when title/year match'); assert.deepEqual(new Set(searchData.results.map(row=>row.id)),new Set(['15','151'])); assert.equal(searchData.people[0].id,'2');
+
+  const shareResponse=await shareModule.default(new Request('https://kinosis.test/share?movie=15'));
+  assert.equal(shareResponse.status,200); const shareHtml=await shareResponse.text();
+  assert.ok(shareHtml.includes('property="og:title"')); assert.ok(shareHtml.includes('시민 케인')); assert.ok(shareHtml.includes('/?movie=15'));
 
   const detailResponse=await detailModule.default(new Request('https://kinosis.test/api/movie-detail?id=15'));
   assert.equal(detailResponse.status,200); const detailData=await detailResponse.json();
@@ -92,5 +97,5 @@ try{
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
     assert.ok(!JSON.stringify(payload).includes('kobis-test-not-real'),'KOBIS secret leaked in API response');
   }
-  console.log('netlify-functions.test: search/detail/KOBIS/recommendations/person/director/curation-dedupe/availability/live-streaming/upcoming contracts OK');
+  console.log('netlify-functions.test: OG share/search/detail/KOBIS/recommendations/person/director/canonical-id/availability/live-streaming/upcoming contracts OK');
 }finally{globalThis.fetch=realFetch;}

@@ -30,7 +30,7 @@ assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('dis
 assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
 
 const baseline = build();
-assert.equal(baseline.version, '0.4.4.4');
+assert.equal(baseline.version, '0.4.4.5');
 assert.ok(Array.isArray(baseline.items));
 assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
 
@@ -74,6 +74,7 @@ try {
   const fixture = withFixture.items.find((item) => item.slug === 'test-build');
   assert.ok(fixture, 'valid curation was not indexed');
   assert.equal(fixture.surface, 'arthouse');
+  assert.equal(fixture.kind, 'editorial');
   assert.deepEqual(fixture.movies.map((movie) => movie.id), ids);
 } finally {
   fs.rmSync(validFixturePath, { force: true });
@@ -82,7 +83,7 @@ try {
 
 const finalPayload = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 assert.equal(finalPayload.items.length, baseline.items.length, 'test fixture leaked into generated curation data');
-assert.ok(finalPayload.items.some((item) => item.slug === 'kiarostami' && item.source?.type === 'director'), 'director-source curation missing');
+assert.ok(finalPayload.items.some((item) => item.slug === 'kiarostami' && item.kind === 'director-archive' && item.source?.type === 'director'), 'director archive missing');
 const erice = finalPayload.items.find((item) => item.slug === 'victor-erice');
 assert.equal(erice?.source?.mode, 'solo-features', 'Víctor Erice curation should resolve solo feature films only');
 console.log(`curations.test: build indexing + validation OK (${finalPayload.items.length} published definition(s))`);

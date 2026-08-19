@@ -1,16 +1,138 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const sourceRoot=path.join(root,'content','curations');
-const dataRoot=path.join(root,'data');
-const validateOnly=process.argv.includes('--validate-only');
-const fail=m=>{throw new Error(`[curations] ${m}`)};
-const text=(v,f,file,max=600)=>{if(v==null)return'';if(typeof v!=='string')fail(`${file}: ${f} must be string`);v=v.trim();if(v.length>max)fail(`${file}: ${f} too long`);return v};
-const slugFile=n=>n.replace(/\.curation\.json$/i,'');
-function movie(v,file,i){const id=String(typeof v==='object'?(v.tmdbId??v.id??''):v).trim();if(!/^\d+$/.test(id))fail(`${file}: movies[${i}] invalid TMDB id`);return{id,note:typeof v==='object'?text(v.note,`movies[${i}].note`,file,220):''}}
-function source(v,file){if(!v)return null;if(typeof v!=='object'||Array.isArray(v))fail(`${file}: source must be object`);if(v.type!=='director')fail(`${file}: only source.type=director supported`);const name=text(v.name,'source.name',file,100);const personId=String(v.personId||'').trim();if(!name&&!/^\d+$/.test(personId))fail(`${file}: source.name or source.personId required`);const ids=(value,field)=>{if(value==null)return[];if(!Array.isArray(value))fail(`${file}: ${field} must be array`);const out=[];for(const raw of value){const id=String(raw).trim();if(!/^\d+$/.test(id))fail(`${file}: ${field} contains invalid TMDB id`);if(!out.includes(id))out.push(id);}return out};return{type:'director',name,personId:/^\d+$/.test(personId)?personId:'',sort:v.sort==='release_desc'?'release_desc':'release_asc',mode:v.mode==='solo-features'?'solo-features':'all-directed',include:ids(v.include,'source.include'),exclude:ids(v.exclude,'source.exclude')};}
-function read(){const files=[];if(fs.existsSync(sourceRoot)){for(const e of fs.readdirSync(sourceRoot,{withFileTypes:true})){if(e.isFile()&&e.name.endsWith('.curation.json'))files.push(path.join(sourceRoot,e.name));if(e.isDirectory()){for(const n of fs.readdirSync(path.join(sourceRoot,e.name)))if(n.endsWith('.curation.json'))files.push(path.join(sourceRoot,e.name,n));}}}
- const items=[],seen=new Set(); for(const filePath of files.sort()){const rel=path.relative(root,filePath).replaceAll('\\','/');let raw;try{raw=JSON.parse(fs.readFileSync(filePath,'utf8'))}catch(e){fail(`${rel}: invalid JSON (${e.message})`)};if(raw.enabled===false||raw.status==='draft')continue;const slug=text(raw.slug,'slug',rel,63)||slugFile(path.basename(filePath));if(!/^[a-z0-9][a-z0-9-]{1,62}$/.test(slug))fail(`${rel}: invalid slug`);if(seen.has(slug))fail(`${rel}: duplicate slug`);seen.add(slug);const title=text(raw.title,'title',rel,120);if(!title)fail(`${rel}: title required`);const src=source(raw.source,rel);const movies=Array.isArray(raw.movies)?raw.movies.map((v,i)=>movie(v,rel,i)):[];if(!src&&!movies.length)fail(`${rel}: movies or director source required`);const ids=new Set();for(const m of movies){if(ids.has(m.id))fail(`${rel}: duplicate movie ${m.id}`);ids.add(m.id)};items.push({slug,surface:'arthouse',eyebrow:text(raw.eyebrow,'eyebrow',rel,50)||"DIRECTOR'S ARCHIVE",title,subtitle:text(raw.subtitle,'subtitle',rel,160),description:text(raw.description,'description',rel,800),credit:text(raw.credit,'credit',rel,120)||'Curated by KINOSIS',heroMovieId:String(raw.heroMovieId||movies[0]?.id||''),priority:Number.isFinite(Number(raw.priority))?Math.trunc(Number(raw.priority)):100,source:src,movies});}
- items.sort((a,b)=>a.priority-b.priority||a.title.localeCompare(b.title,'ko'));return items;}
-const payload={version:'0.4.4.4',items:read()};if(!validateOnly){fs.mkdirSync(dataRoot,{recursive:true});fs.writeFileSync(path.join(dataRoot,'curations.json'),JSON.stringify(payload,null,2)+'\n');fs.writeFileSync(path.join(dataRoot,'curations.js'),`window.KINOSIS_CURATIONS = ${JSON.stringify(payload,null,2)};\n`)}console.log(`curations: ${payload.items.length} published definition(s) ${validateOnly?'validated':'built'}`);
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const sourceRoot = path.join(root, 'content', 'curations');
+const dataRoot = path.join(root, 'data');
+const validateOnly = process.argv.includes('--validate-only');
+const fail = (message) => { throw new Error(`[curations] ${message}`); };
+const text = (value, field, file, max = 600) => {
+  if (value == null) return '';
+  if (typeof value !== 'string') fail(`${file}: ${field} must be string`);
+  const out = value.trim();
+  if (out.length > max) fail(`${file}: ${field} too long`);
+  return out;
+};
+const slugFile = (name) => name.replace(/\.curation\.json$/i, '');
+
+function movie(value, file, index, field = 'movies') {
+  const id = String(typeof value === 'object' ? (value.tmdbId ?? value.id ?? '') : value).trim();
+  if (!/^\d+$/.test(id)) fail(`${file}: ${field}[${index}] invalid TMDB id`);
+  return { id, note: typeof value === 'object' ? text(value.note, `${field}[${index}].note`, file, 220) : '' };
+}
+
+function ids(value, field, file) {
+  if (value == null) return [];
+  if (!Array.isArray(value)) fail(`${file}: ${field} must be array`);
+  const out = [];
+  for (const raw of value) {
+    const id = String(raw).trim();
+    if (!/^\d+$/.test(id)) fail(`${file}: ${field} contains invalid TMDB id`);
+    if (!out.includes(id)) out.push(id);
+  }
+  return out;
+}
+
+function source(value, file) {
+  if (!value) return null;
+  if (typeof value !== 'object' || Array.isArray(value)) fail(`${file}: source must be object`);
+  if (value.type !== 'director') fail(`${file}: only source.type=director supported`);
+  const name = text(value.name, 'source.name', file, 100);
+  const personId = String(value.personId || '').trim();
+  if (!name && !/^\d+$/.test(personId)) fail(`${file}: source.name or source.personId required`);
+  return {
+    type: 'director',
+    name,
+    personId: /^\d+$/.test(personId) ? personId : '',
+    sort: value.sort === 'release_desc' ? 'release_desc' : 'release_asc',
+    mode: value.mode === 'solo-features' ? 'solo-features' : 'all-directed',
+    include: ids(value.include, 'source.include', file),
+    exclude: ids(value.exclude, 'source.exclude', file),
+  };
+}
+
+function chapters(value, file) {
+  if (value == null) return [];
+  if (!Array.isArray(value)) fail(`${file}: chapters must be array`);
+  return value.map((chapter, index) => {
+    if (!chapter || typeof chapter !== 'object' || Array.isArray(chapter)) fail(`${file}: chapters[${index}] must be object`);
+    const title = text(chapter.title, `chapters[${index}].title`, file, 120);
+    if (!title) fail(`${file}: chapters[${index}].title required`);
+    if (!Array.isArray(chapter.movies) || !chapter.movies.length) fail(`${file}: chapters[${index}].movies required`);
+    return {
+      title,
+      description: text(chapter.description, `chapters[${index}].description`, file, 400),
+      movies: chapter.movies.map((entry, movieIndex) => movie(entry, file, movieIndex, `chapters[${index}].movies`)),
+    };
+  });
+}
+
+function read() {
+  const files = [];
+  if (fs.existsSync(sourceRoot)) {
+    for (const entry of fs.readdirSync(sourceRoot, { withFileTypes: true })) {
+      if (entry.isFile() && entry.name.endsWith('.curation.json')) files.push(path.join(sourceRoot, entry.name));
+      if (entry.isDirectory()) {
+        for (const name of fs.readdirSync(path.join(sourceRoot, entry.name))) {
+          if (name.endsWith('.curation.json')) files.push(path.join(sourceRoot, entry.name, name));
+        }
+      }
+    }
+  }
+
+  const items = [];
+  const seen = new Set();
+  for (const filePath of files.sort()) {
+    const rel = path.relative(root, filePath).replaceAll('\\', '/');
+    let raw;
+    try { raw = JSON.parse(fs.readFileSync(filePath, 'utf8')); }
+    catch (error) { fail(`${rel}: invalid JSON (${error.message})`); }
+    if (raw.enabled === false || raw.status === 'draft') continue;
+
+    const slug = text(raw.slug, 'slug', rel, 63) || slugFile(path.basename(filePath));
+    if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(slug)) fail(`${rel}: invalid slug`);
+    if (seen.has(slug)) fail(`${rel}: duplicate slug`);
+    seen.add(slug);
+
+    const title = text(raw.title, 'title', rel, 120);
+    if (!title) fail(`${rel}: title required`);
+    const src = source(raw.source, rel);
+    const kind = raw.kind === 'editorial' ? 'editorial' : raw.kind === 'director-archive' ? 'director-archive' : (src ? 'director-archive' : 'editorial');
+    const movieRows = Array.isArray(raw.movies) ? raw.movies.map((entry, index) => movie(entry, rel, index)) : [];
+    const chapterRows = chapters(raw.chapters, rel);
+    const chapterMovieIds = chapterRows.flatMap((chapter) => chapter.movies.map((entry) => entry.id));
+    const explicitMovieIds = [...movieRows.map((entry) => entry.id), ...chapterMovieIds];
+    if (new Set(explicitMovieIds).size !== explicitMovieIds.length) fail(`${rel}: duplicate movie id across editorial definition`);
+
+    if (kind === 'editorial' && !explicitMovieIds.length) fail(`${rel}: editorial curation requires explicit movies or chapters`);
+    if (kind === 'director-archive' && !src) fail(`${rel}: director-archive requires source.type=director`);
+    if (kind === 'editorial' && src) fail(`${rel}: editorial source of truth must be explicit; remove source and list movies`);
+
+    items.push({
+      slug,
+      kind,
+      surface: raw.surface === 'discover' || raw.surface === 'both' ? raw.surface : 'arthouse',
+      eyebrow: text(raw.eyebrow, 'eyebrow', rel, 50) || (kind === 'director-archive' ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'),
+      title,
+      subtitle: text(raw.subtitle, 'subtitle', rel, 160),
+      description: text(raw.description, 'description', rel, 800),
+      credit: text(raw.credit, 'credit', rel, 120) || 'Curated by KINOSIS',
+      heroMovieId: String(raw.heroMovieId || movieRows[0]?.id || chapterRows[0]?.movies[0]?.id || ''),
+      priority: Number.isFinite(Number(raw.priority)) ? Math.trunc(Number(raw.priority)) : 100,
+      source: kind === 'director-archive' ? src : null,
+      movies: movieRows,
+      chapters: chapterRows,
+    });
+  }
+  items.sort((a, b) => a.priority - b.priority || a.title.localeCompare(b.title, 'ko'));
+  return items;
+}
+
+const payload = { version: '0.4.4.5', items: read() };
+if (!validateOnly) {
+  fs.mkdirSync(dataRoot, { recursive: true });
+  fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);
+  fs.writeFileSync(path.join(dataRoot, 'curations.js'), `window.KINOSIS_CURATIONS = ${JSON.stringify(payload, null, 2)};\n`);
+}
+console.log(`curations: ${payload.items.length} published definition(s) ${validateOnly ? 'validated' : 'built'}`);

@@ -1,9 +1,9 @@
 {
   "slug": "hou-hsiao-hsien",
   "eyebrow": "DIRECTOR'S ARCHIVE",
-  "title": "파도치는 시대를 관조하는 시선: 허우샤오시엔 컬렉션",
+  "title": "허우샤오시엔",
   "subtitle": "Hou Hsiao-hsien",
-  "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 영화들.",
+  "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 감독 작품 아카이브.",
   "credit": "Curated by KINOSIS",
   "priority": 30,
   "source": {
@@ -11,5 +11,6 @@
     "name": "Hou Hsiao-hsien",
     "sort": "release_asc",
     "mode": "all-directed"
-  }
+  },
+  "kind": "director-archive"
 }

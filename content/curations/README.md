@@ -1,43 +1,55 @@
 # KINOSIS Curations
 
-`content/curations/*.curation.json` 파일 하나가 ARTHOUSE의 기획전 하나입니다. 현재 편집 방식은 Git 기반이며 push 시 Netlify build가 정의를 검증하고 `data/curations.js`를 생성합니다.
+`content/curations/*.curation.json` is the Git-authored source for ARTHOUSE collection cards. `npm run build` validates the definitions and generates `data/curations.json` + `data/curations.js`.
 
-## 감독 기반 Curation
+## Two different content types
+
+### `director-archive`
+
+A Director Archive is an automatically resolved filmography surface. It is not an editorial curation.
 
 ```json
 {
-  "slug": "kiarostami",
-  "title": "그럼에도 삶은 계속된다: 키아로스타미 컬렉션",
+  "slug": "victor-erice",
+  "kind": "director-archive",
+  "title": "빅토르 에리세",
+  "subtitle": "Víctor Erice",
   "source": {
     "type": "director",
-    "name": "Abbas Kiarostami",
+    "name": "Víctor Erice",
     "sort": "release_asc",
-    "mode": "all-directed"
+    "mode": "solo-features"
   }
 }
 ```
 
-가능하면 동명이인 위험이 있는 감독은 `personId`를 canonical key로 추가할 수 있습니다.
+`personId` is preferred when known. `mode` can be `all-directed` or `solo-features`; `include` / `exclude` are filmography overrides. Director results are canonicalized by TMDB movie id. They are resolved only when the archive is opened and then cached.
+
+### `editorial`
+
+An Editorial Curation owns its movie selection explicitly. A director source is forbidden as its source of truth.
 
 ```json
-"source": {
-  "type": "director",
-  "personId": 12345,
-  "name": "Director Name",
-  "mode": "all-directed",
-  "include": [111],
-  "exclude": [222]
+{
+  "slug": "city-at-night",
+  "kind": "editorial",
+  "title": "도시를 헤매다",
+  "description": "...",
+  "movies": [123, 456, 789]
 }
 ```
 
-`mode`:
-- `all-directed` — TMDB movie credits에서 해당 인물이 Director인 고유 영화 전체.
-- `solo-features` — 60분 이상이면서 해당 인물이 유일한 Director인 장편만. 빅토르 에리세 컬렉션이 이 모드를 사용합니다.
+For an authored sequence, use chapters:
 
-동일 영화는 TMDB id와 정규화된 원제/연도 기준으로 중복 제거됩니다. `include`/`exclude`는 자동 필모그래피에 대한 편집자 override이며 앱 코드에 영화 제목별 조건문을 넣을 필요가 없습니다.
+```json
+{
+  "kind": "editorial",
+  "title": "그럼에도 삶은 계속된다",
+  "chapters": [
+    { "title": "01. 소년과 세계", "movies": [123, 456] },
+    { "title": "02. 현실과 영화", "movies": [789] }
+  ]
+}
+```
 
-중요: ARTHOUSE 홈에서는 감독 필모그래피 API를 미리 호출하지 않습니다. 사용자가 기획전을 열 때 한 번만 해석하고 캐시합니다.
-
-## 직접 선택 Curation
-
-특정 작품만 직접 편집하려면 `movies: [TMDB_ID, ...]` 형식을 사용합니다. 배열 순서가 기획전 순서입니다.
+Movie array order is editorial order. Duplicate TMDB movie ids across an editorial definition are rejected at build time.

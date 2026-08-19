@@ -2,14 +2,15 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { ARTHOUSE_DATA } from '../shared/arthouse.mjs';
+import { KINOSIS_LOCALE } from '../netlify/lib/locale.mjs';
 
 const TOKEN = process.env.TMDB_READ_ACCESS_TOKEN;
 const KOBIS_KEY = process.env.KOBIS_API_KEY || '';
 if (!TOKEN) throw new Error('TMDB_READ_ACCESS_TOKEN is required. Keep it in GitHub Actions Secrets; never place it in frontend code.');
 
 const API = 'https://api.themoviedb.org/3';
-const REGION = process.env.KINOSIS_REGION || process.env.FILM_REGION || 'KR';
-const LANGUAGE = process.env.KINOSIS_LANGUAGE || process.env.FILM_LANGUAGE || 'ko-KR';
+const REGION = process.env.KINOSIS_REGION || process.env.FILM_REGION || KINOSIS_LOCALE.region;
+const LANGUAGE = process.env.KINOSIS_LANGUAGE || process.env.FILM_LANGUAGE || KINOSIS_LOCALE.language;
 const ROOT = process.cwd();
 const JSON_OUT = path.join(ROOT, 'data/catalog.json');
 const JS_OUT = path.join(ROOT, 'data/catalog.js');
