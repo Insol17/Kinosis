@@ -1,5 +1,5 @@
 {
-  "version": "0.4.5.3",
+  "version": "0.4.5.4",
   "items": [
     {
       "slug": "kiarostami-life-continues",
@@ -9,9 +9,7 @@
       "title": "그럼에도 삶은 계속된다",
       "subtitle": "Abbas Kiarostami",
       "description": "아이의 작은 약속에서 현실과 영화의 경계, 죽음 곁에서도 이어지는 일상까지. 다섯 편을 하나의 흐름으로 묶었습니다.",
-      "introduction": [
-        "키아로스타미의 영화는 거대한 사건보다 그 곁에서 계속 움직이는 사람을 바라봅니다. 이 다섯 편은 연대기가 아니라 시선이 확장되는 순서로 배치했습니다."
-      ],
+      "introduction": [],
       "credit": "Curated by KINOSIS",
       "heroMovieId": "49964",
       "priority": 5,
@@ -38,6 +36,7 @@
           "note": "보이지 않는 사건보다 바람과 일상의 지속이 더 오래 남는 마지막 자리입니다."
         }
       ],
+      "orderMode": "unordered",
       "chapters": []
     },
     {
@@ -70,6 +69,7 @@
             "director": "Abbas Kiarostami",
             "directorId": "119294",
             "runtime": null,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -84,6 +84,7 @@
             "director": "Abbas Kiarostami",
             "directorId": "119294",
             "runtime": null,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -98,6 +99,7 @@
             "director": "Abbas Kiarostami",
             "directorId": "119294",
             "runtime": null,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -112,6 +114,7 @@
             "director": "Abbas Kiarostami",
             "directorId": "119294",
             "runtime": null,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -126,6 +129,7 @@
             "director": "Abbas Kiarostami",
             "directorId": "119294",
             "runtime": null,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -135,6 +139,7 @@
         "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
+      "orderMode": "unordered",
       "chapters": []
     },
     {
@@ -167,6 +172,7 @@
             "director": "Víctor Erice",
             "directorId": "37833",
             "runtime": 98,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -181,6 +187,7 @@
             "director": "Víctor Erice",
             "directorId": "37833",
             "runtime": 94,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -190,6 +197,7 @@
         "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
+      "orderMode": "unordered",
       "chapters": []
     },
     {
@@ -222,6 +230,7 @@
             "director": "Hou Hsiao-hsien",
             "directorId": "64992",
             "runtime": 105,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -231,6 +240,7 @@
         "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
+      "orderMode": "unordered",
       "chapters": []
     },
     {
@@ -263,6 +273,7 @@
             "director": "Christian Petzold",
             "directorId": "2332",
             "runtime": 102,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -277,6 +288,7 @@
             "director": "Christian Petzold",
             "directorId": "2332",
             "runtime": 103,
+            "overview": "",
             "posterUrl": null,
             "backdropUrl": null,
             "source": "director-snapshot",
@@ -286,6 +298,7 @@
         "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
+      "orderMode": "unordered",
       "chapters": []
     }
   ]

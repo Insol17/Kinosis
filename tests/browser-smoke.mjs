@@ -250,9 +250,9 @@ try {
 
   // Arthouse programme rails -> authored curation detail.
   await cdp.eval(`document.querySelector('[data-nav="arthouse"]').click(); true`);
-  await waitFor(() => cdp.eval(`document.querySelectorAll('.curation-rail-section').length >= 5`), { timeout: 8000, label: 'curation programme rails' });
+  await waitFor(() => cdp.eval(`document.querySelectorAll('.arthouse-collection-card, .curation-rail-section').length >= 5`), { timeout: 8000, label: 'arthouse programmes' });
   await cdp.eval(`document.querySelector('[data-curation="kiarostami-life-continues"]').click(); true`);
-  await waitFor(() => cdp.eval(`!!document.querySelector('.curation-editorial-intro') && document.querySelectorAll('.curation-chapter').length >= 3`), { timeout: 8000, label: 'authored curation detail' });
+  await waitFor(() => cdp.eval(`!!document.querySelector('.curation-collection-grid, .curation-ordered-list') && document.querySelectorAll('[data-movie]').length >= 5`), { timeout: 8000, label: 'collection-object curation detail' });
 
   assert.deepEqual(cdp.exceptions, [], `Browser runtime exceptions: ${cdp.exceptions.join('; ')}`);
   console.log('browser-smoke: search -> optimistic detail -> auto-shelf rating/comment -> viewing -> non-destructive Library removal -> Profile archive -> reload -> curation OK');

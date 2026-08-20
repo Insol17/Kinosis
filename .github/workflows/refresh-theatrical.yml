@@ -1,0 +1,41 @@
+name: Refresh KR theatrical snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:10 KST daily = 21:10 UTC previous day. KOBIS daily box office for the
+    # previous date is stable by then, while usage remains only a few API calls.
+    - cron: '10 21 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kinosis-theatrical-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - name: Build KOBIS canonical KR theatrical snapshot
+        env:
+          TMDB_READ_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN }}
+          KOBIS_API_KEY: ${{ secrets.KOBIS_API_KEY }}
+        run: node scripts/update-theatrical.mjs
+      - name: Commit only when theatrical data changed
+        run: |
+          if git diff --quiet -- data/theatrical-kr.json data/theatrical-kr.js data/theatrical-kr.mjs data/kobis-tmdb-map.json; then
+            echo "No theatrical changes."
+            exit 0
+          fi
+          git config user.name "kinosis-theatrical-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/theatrical-kr.json data/theatrical-kr.js data/theatrical-kr.mjs data/kobis-tmdb-map.json
+          git commit -m "chore: refresh KR theatrical snapshot"
+          git push

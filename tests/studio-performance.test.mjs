@@ -22,12 +22,14 @@ assert.deepEqual(orderedEditorialEntries(editorial), [
 ]);
 const studioHome = renderStudioHome([{ ...editorial, status: 'published' }]);
 assert.ok(studioHome.includes('KINOSIS STUDIO') && studioHome.includes('미리보기') && studioHome.includes('보관'));
+const loadingHome = renderStudioHome([], { loading: true });
+assert.ok(loadingHome.includes('프로그램을 불러오는 중') && loadingHome.includes('편집 데이터는 선택할 때 불러옵니다'));
 const editorHtml = renderStudioEditor(editorial, (id) => ({ id, title: `Movie ${id}`, year: '2000' }));
-assert.ok(editorHtml.includes('짧은 서문 + 순서 있는 영화 목록 + 작품별 짧은 코멘트'));
+assert.ok(editorHtml.includes('기본은 영화 묶음입니다') && editorHtml.includes('작품 메모 · 선택 사항'));
+assert.ok(editorHtml.includes('value="unordered"') && editorHtml.includes('value="curated"'), 'Studio must support optional ordering rather than forcing sequence');
 assert.ok(!editorHtml.includes('CHAPTER 01'), 'new Studio authoring must not force magazine-style chapters');
 
-// Background work may not consume all request capacity. With max 3 / low cap 1,
-// a queued high-priority action must start while low-priority work is still active.
+// Background work may not consume all request capacity.
 const scheduler = createRequestScheduler({ maxConcurrent: 3, maxMediumConcurrent: 2, maxLowConcurrent: 1 });
 const events = [];
 let releaseLow;
@@ -47,14 +49,25 @@ await Promise.all([low1, low2]);
 const summaries = fs.readFileSync('netlify/functions/movie-summaries.mjs', 'utf8');
 const movieLoader = fs.readFileSync('assets/js/services/movie-loader.js', 'utf8');
 const director = fs.readFileSync('netlify/functions/director-filmography.mjs', 'utf8');
-const curationLoader = fs.readFileSync('assets/js/curation-loader.js', 'utf8');
 const sql = fs.readFileSync('supabase/005_kinosis_0453.sql', 'utf8');
+const sql454 = fs.readFileSync('supabase/006_kinosis_0454.sql', 'utf8');
+const cloud = fs.readFileSync('assets/js/cloud.js', 'utf8');
+const app = fs.readFileSync('assets/js/app.js', 'utf8');
+const hydrate = fs.readFileSync('scripts/hydrate-director-snapshots.mjs', 'utf8');
+
 assert.ok(summaries.includes('.slice(0, 6)'), 'summary recovery batch must remain bounded to six movies');
 assert.ok(summaries.includes('Netlify-CDN-Cache-Control') && summaries.includes('durable'), 'summary recovery needs durable CDN caching');
 assert.ok(movieLoader.includes('index += 6') && movieLoader.includes('Math.min(2, chunks.length)'), 'summary hydration must avoid nested high-concurrency fan-out');
-assert.ok(director.includes("append_to_response:'credits'") && !director.includes("/credits`"), 'solo feature authoring must use one detail+credits request per candidate');
-assert.ok(curationLoader.includes('30 * 24 * 60 * 60 * 1000') && curationLoader.includes("skipped: 'fresh-snapshot'"), 'fresh Director snapshots should not live-refresh on every visit');
+assert.ok(director.includes("append_to_response:'credits'") && !director.includes('/credits`'), 'solo feature authoring must use one detail+credits request per candidate');
+assert.ok(hydrate.includes('--if-key') && hydrate.includes('snapshotGeneratedAt'), 'Director Archive build hydration contract missing');
 assert.ok(sql.includes("auth.jwt() -> 'app_metadata' ->> 'user_role'") && sql.includes("= 'admin'"), 'Studio writes must be protected by server-side admin RLS');
 assert.ok(sql.includes("status in ('draft','published','archived')"), 'Studio publication lifecycle must be constrained in SQL');
+assert.ok(sql454.includes('add column if not exists title') && sql454.includes('add column if not exists description'), '0.4.5.4 Studio summary-column migration missing');
+assert.ok(cloud.includes("select('slug,kind,surface,status,priority,title,description,updated_at')") && cloud.includes('readStudioProgramme'), 'Studio list must be lightweight and full payload lazy-loaded');
+const routeIndex = app.indexOf("setView('studio', { skipGate: true");
+const readIndex = app.indexOf('await loadStudioProgrammes', routeIndex);
+assert.ok(routeIndex >= 0 && readIndex > routeIndex, 'Studio shell must route before its network list read');
+assert.ok(app.includes('curationPreviewItem'), 'Studio needs a direct draft preview object');
+assert.ok(!app.includes('CURATIONS.replaceDynamic(\n    [...CURATIONS.all().filter((item) => item.slug !== candidate.slug)'), 'Studio preview must not temporarily publish into the global registry');
 
-console.log('studio-performance.test: admin/RLS + Studio grammar + request scheduling + bounded enrichment OK');
+console.log('studio-performance.test: admin/RLS + responsive Studio + collection grammar + request scheduling OK');

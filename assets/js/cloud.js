@@ -112,6 +112,23 @@
     return { ...payload, slug: row.slug || payload.slug, status: row.status || payload.status || 'draft', updatedAt: row.updated_at || payload.updatedAt || null };
   }
 
+  function programmeSummaryFromRow(row) {
+    if (!row) return null;
+    const payload = row.payload && typeof row.payload === 'object' ? row.payload : {};
+    return {
+      slug: row.slug || payload.slug,
+      kind: row.kind || payload.kind || 'editorial',
+      surface: row.surface || payload.surface || 'arthouse',
+      status: row.status || payload.status || 'draft',
+      priority: Number(row.priority ?? payload.priority ?? 100),
+      title: row.title || payload.title || '',
+      description: row.description || payload.description || '',
+      updatedAt: row.updated_at || payload.updatedAt || null,
+      _summaryOnly: !row.payload,
+      ...(row.payload ? { payload } : {}),
+    };
+  }
+
   async function readPublishedProgrammes() {
     const c = create();
     const { data, error } = await c.rpc('kinosis_public_programmes');
@@ -126,9 +143,22 @@
   async function readStudioProgrammes() {
     if (!isAuthenticated()) throw new Error('Sign in required.');
     const c = create();
-    const { data, error } = await c.from('editorial_programmes').select('slug,status,payload,priority,updated_at').order('priority', { ascending: true });
+    // 0.4.5.4 list view intentionally avoids downloading full JSON payloads.
+    let query = await c.from('editorial_programmes').select('slug,kind,surface,status,priority,title,description,updated_at').order('priority', { ascending: true });
+    if (query.error && /column .*title|description.*does not exist/i.test(query.error.message || '')) {
+      // Backward-compatible fallback until supabase/006_kinosis_0454.sql is run.
+      query = await c.from('editorial_programmes').select('slug,kind,surface,status,priority,payload,updated_at').order('priority', { ascending: true });
+    }
+    if (query.error) throw dbError(query.error);
+    return (query.data || []).map(programmeSummaryFromRow).filter(Boolean);
+  }
+
+  async function readStudioProgramme(slug) {
+    if (!isAuthenticated()) throw new Error('Sign in required.');
+    const c = create();
+    const { data, error } = await c.from('editorial_programmes').select('slug,kind,surface,status,priority,payload,updated_at').eq('slug', String(slug || '')).maybeSingle();
     if (error) throw dbError(error);
-    return (data || []).map(programmeFromRow).filter(Boolean);
+    return programmeFromRow(data);
   }
 
   async function saveStudioProgramme(programme, status = 'draft') {
@@ -143,13 +173,19 @@
       surface: programme.surface === 'discover' || programme.surface === 'both' ? programme.surface : 'arthouse',
       status: ['draft', 'published', 'archived'].includes(status) ? status : 'draft',
       priority: Number.isFinite(Number(programme.priority)) ? Math.trunc(Number(programme.priority)) : 100,
+      title: String(programme.title || '').slice(0, 160),
+      description: String(programme.description || '').slice(0, 1000),
       payload,
       updated_by: user().id,
       updated_at: new Date().toISOString(),
     };
-    const { data, error } = await c.from('editorial_programmes').upsert(row, { onConflict: 'slug' }).select('slug,status,payload,updated_at').single();
-    if (error) throw dbError(error);
-    return programmeFromRow(data);
+    let result = await c.from('editorial_programmes').upsert(row, { onConflict: 'slug' }).select('slug,status,payload,updated_at').single();
+    if (result.error && /column .*title|description.*does not exist/i.test(result.error.message || '')) {
+      const legacyRow = { ...row }; delete legacyRow.title; delete legacyRow.description;
+      result = await c.from('editorial_programmes').upsert(legacyRow, { onConflict: 'slug' }).select('slug,status,payload,updated_at').single();
+    }
+    if (result.error) throw dbError(result.error);
+    return programmeFromRow(result.data);
   }
 
   async function archiveStudioProgramme(slug) {
@@ -180,6 +216,7 @@
     writeUserState,
     readPublishedProgrammes,
     readStudioProgrammes,
+    readStudioProgramme,
     saveStudioProgramme,
     archiveStudioProgramme,
     health,

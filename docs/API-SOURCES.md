@@ -1,50 +1,60 @@
-# KINOSIS API and attribution policy — 0.4.4.3
+# KINOSIS API and snapshot policy — 0.4.5.4
+
+## Principle
+
+External APIs are **ingest/enrichment sources**, not page-render prerequisites. The browser should paint KINOSIS snapshots immediately and request live data only for user-driven detail/search flows.
+
+## KOBIS — canonical Korean theatrical source
+
+KOBIS is the canonical source for:
+
+- Korean daily box-office rank.
+- Korean theatrical opening dates used by `공개 예정작`.
+- Stable `movieCd` identity for Korean theatrical records.
+
+`KOBIS_API_KEY` is server/build-only. Do not put it in `index.html`, `config.js`, client JavaScript, screenshots or public source.
+
+### Quota policy
+
+Browser refreshes do **not** call KOBIS. Netlify builds refresh the snapshot when both build secrets are available, and `.github/workflows/refresh-theatrical.yml` also runs once per day. Both paths generate:
+
+- `data/theatrical-kr.json`
+- `data/theatrical-kr.js`
+- `data/theatrical-kr.mjs`
+- `data/kobis-tmdb-map.json`
+
+KOBIS use is tied to scheduled/build ingestion rather than page views, so a normal day consumes only a small fixed number of KOBIS calls regardless of whether 10 or 10,000 users open Discover. The public `/api/box-office` and `/api/upcoming` endpoints serve the generated snapshot and do not consume the KOBIS key.
+
+### KOBIS ↔ TMDB identity
+
+KOBIS `movieCd` is mapped once to a TMDB ID and persisted in `data/kobis-tmdb-map.json`. KOBIS remains canonical for theatrical rank/date; TMDB enriches posters, backdrops and metadata. A TMDB match failure must not erase the KOBIS row: unmatched rows remain visible as non-detail KOBIS records until a mapping is resolved.
 
 ## TMDB
 
-TMDB is the canonical external movie source for the MVP: search, detail, credits, imagery, recommendations/similar titles, KR now-playing/upcoming and the Watch Providers bridge.
+TMDB remains the source for:
 
-`TMDB_READ_ACCESS_TOKEN` must exist only in trusted runtimes (Netlify, GitHub Actions or local developer environment). It must never be emitted to the browser.
+- Posters/backdrops.
+- Search and movie detail.
+- Credits and director filmography ingestion.
+- Recommendations.
+- Watch Providers / JustWatch availability.
 
-Required notice remains visible in **Data sources & credits**:
+`TMDB_READ_ACCESS_TOKEN` is trusted-runtime only.
 
-> This product uses the TMDB API but is not endorsed or certified by TMDB.
+## Director Archive
+
+Director Archives are snapshot-first content. `scripts/hydrate-director-snapshots.mjs` hydrates full director snapshots during trusted builds when a TMDB token is available. The runtime only falls back to live director lookup when no published snapshot exists at all.
+
+Studio's `TMDB에서 snapshot 갱신` action is an authoring operation and may call TMDB directly; public Arthouse browsing does not depend on it.
 
 ## JustWatch via TMDB Watch Providers
 
-KINOSIS normalizes provider rows into subscription / free / ads / rent / buy. Client UI then consolidates variants that belong to the same canonical brand so an ad tier does not render as a second Netflix service.
-
-Where to Watch links to the regional provider page returned by TMDB when available. Provider availability is attributed as **JustWatch via TMDB** and is treated as advisory rather than a transaction guarantee.
-
-### Provider marks
-
-Availability remains sourced from TMDB/JustWatch, but KINOSIS normalizes provider brand identity in `data/providers.js`. Provider tiers that represent the same brand are consolidated before rendering.
-
-WATCHA is the explicit presentation exception: KINOSIS uses the official transparent WATCHA wordmark stored in `assets/branding/providers/watcha-logo-white.png` instead of the current upstream provider tile. This does not change availability data; it only corrects the displayed brand asset.
-
-## KOBIS — exact Korean box office
-
-`/api/box-office` reads the previous Korean calendar day's KOBIS daily box-office ranking when `KOBIS_API_KEY` is configured, then matches those rows to TMDB IDs for KINOSIS posters/detail navigation.
-
-Important rule: TMDB popularity is never relabeled as a box-office ranking. If KOBIS cannot be used reliably, Discover renders an unranked `현재 상영작` shelf instead.
-
-The scheduled catalog updater follows the same rule. `KOBIS_API_KEY` can be supplied in GitHub Actions so generated catalog data also carries exact ranks.
-
-## Theatrical state
-
-TMDB `now_playing`, KOBIS live box-office rows and KR theatrical release-date records can all mark a film as theatrically current. Film detail therefore can show `극장 · 현재 상영 중` even when there are no OTT providers.
-
-This logic is data-driven; individual movie titles are not hardcoded.
+Availability is volatile and remains a background/live enrichment layer. It never blocks the base movie page.
 
 ## Failure policy
 
-- Catalog refresh: fetch → enrich → validate → replace; failure leaves last known-good data intact.
-- Exact box office: if KOBIS is missing/fails, remove ranking semantics rather than fabricate rank numbers.
-- Live search/detail: preserve local catalog results where possible and report remote failure.
-- Saved movie durability: personal state stores a normalized movie snapshot keyed by TMDB ID so Library entries do not depend on remaining in the current weekly Discover catalog.
-
-## 0.4.4.4 theatrical semantics
-
-- `박스오피스`: KOBIS daily ranking when configured. TMDB popularity is never labeled as a rank.
-- `공개 예정작`: TMDB Discover, `region=KR`, theatrical release types `3|2`, next 120 days. A cached `/api/upcoming` endpoint fills a thin weekly snapshot at runtime.
-- `상영 중`: requires current evidence such as KOBIS/current catalog or TMDB KR now-playing. A recent theatrical release date alone is labeled `최근 극장 개봉`, not `상영 중`.
+- Snapshot refresh: generate → validate → replace; failure retains last known-good committed data.
+- KOBIS/TMDB matching failure: keep KOBIS title/rank/date and omit detail navigation until mapped.
+- Director live refresh failure: keep the published snapshot.
+- Search/detail failure: preserve the existing MovieSummary and show a local retry state.
+- Personal data: keep compact movie snapshots in cloud state so Library/Profile do not depend on Discover catalog membership.

@@ -6,9 +6,6 @@
   "title": "그럼에도 삶은 계속된다",
   "subtitle": "Abbas Kiarostami",
   "description": "아이의 작은 약속에서 현실과 영화의 경계, 죽음 곁에서도 이어지는 일상까지. 다섯 편을 하나의 흐름으로 묶었습니다.",
-  "introduction": [
-    "키아로스타미의 영화는 거대한 사건보다 그 곁에서 계속 움직이는 사람을 바라봅니다. 이 다섯 편은 연대기가 아니라 시선이 확장되는 순서로 배치했습니다."
-  ],
   "credit": "Curated by KINOSIS",
   "priority": 5,
   "heroMovieId": "49964",
@@ -33,5 +30,6 @@
       "tmdbId": 43423,
       "note": "보이지 않는 사건보다 바람과 일상의 지속이 더 오래 남는 마지막 자리입니다."
     }
-  ]
+  ],
+  "orderMode": "unordered"
 }

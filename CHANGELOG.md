@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.5.4
+
+- Moved Korean theatrical data to a scheduled KOBIS→TMDB snapshot pipeline so browser traffic does not consume KOBIS quota.
+- Added persistent KOBIS↔TMDB mapping and preserved unmatched KOBIS rows.
+- Added build-time Director Archive snapshot hydration and removed normal public Arthouse dependence on live filmography assembly.
+- Reworked Studio loading: immediate shell, lightweight list, lazy payload, local save/archive patch, direct draft preview and sync progress.
+- Simplified Curation to a film-collection object with optional ordering/notes and flattened legacy chapters.
+- Unified typography while adding restrained Arthouse grain/frame/perforation surface treatment.
+- Fixed transient star-rating hover state.
+- Rebuilt Profile calendar with cinematic landscape stills, deterministic multi-film lead selection and mobile agenda.
+- Added Supabase Studio summary-column migration `006_kinosis_0454.sql`.
+
 ## 0.4.5.3 — Bounded movie loading / admin Studio / unified Arthouse surface
 
 ### Loading architecture

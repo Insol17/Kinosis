@@ -57,6 +57,7 @@ function snapshot(value, file) {
       director: text(entry.director, `source.snapshot[${index}].director`, file, 120),
       directorId: String(entry.directorId || '').trim(),
       runtime: Number.isFinite(Number(entry.runtime)) ? Number(entry.runtime) : null,
+      overview: text(entry.overview, `source.snapshot[${index}].overview`, file, 1200),
       posterUrl: text(entry.posterUrl, `source.snapshot[${index}].posterUrl`, file, 500) || null,
       backdropUrl: text(entry.backdropUrl, `source.snapshot[${index}].backdropUrl`, file, 500) || null,
       source: 'director-snapshot',
@@ -140,8 +141,9 @@ function read() {
     const kind = raw.kind === 'editorial' ? 'editorial' : raw.kind === 'director-archive' ? 'director-archive' : (src ? 'director-archive' : 'editorial');
     const movieRows = Array.isArray(raw.movies) ? raw.movies.map((entry, index) => movie(entry, rel, index)) : [];
     const chapterRows = chapters(raw.chapters, rel);
-    const chapterMovieIds = chapterRows.flatMap((chapter) => chapter.movies.map((entry) => entry.id));
-    const explicitMovieIds = [...movieRows.map((entry) => entry.id), ...chapterMovieIds];
+    const chapterMovieRows = chapterRows.flatMap((chapter) => chapter.movies);
+    for (const entry of chapterMovieRows) if (!movieRows.some((row) => row.id === entry.id)) movieRows.push(entry);
+    const explicitMovieIds = movieRows.map((entry) => entry.id);
     if (new Set(explicitMovieIds).size !== explicitMovieIds.length) fail(`${rel}: duplicate movie id across editorial definition`);
 
     if (kind === 'editorial' && !explicitMovieIds.length) fail(`${rel}: editorial curation requires explicit movies or chapters`);
@@ -156,20 +158,21 @@ function read() {
       title,
       subtitle: text(raw.subtitle, 'subtitle', rel, 160),
       description: text(raw.description, 'description', rel, 800),
-      introduction: paragraphs(raw.introduction, 'introduction', rel),
+      introduction: [],
       credit: text(raw.credit, 'credit', rel, 120) || 'Curated by KINOSIS',
       heroMovieId: String(raw.heroMovieId || movieRows[0]?.id || chapterRows[0]?.movies[0]?.id || ''),
       priority: Number.isFinite(Number(raw.priority)) ? Math.trunc(Number(raw.priority)) : 100,
       source: kind === 'director-archive' ? src : null,
       movies: movieRows,
-      chapters: chapterRows,
+      orderMode: raw.orderMode === 'curated' ? 'curated' : 'unordered',
+      chapters: [],
     });
   }
   items.sort((a, b) => a.priority - b.priority || a.title.localeCompare(b.title, 'ko'));
   return items;
 }
 
-const payload = { version: '0.4.5.3', items: read() };
+const payload = { version: '0.4.5.4', items: read() };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

@@ -50,11 +50,16 @@ export function renderMovieCard(record, variant, c) {
     ? `<div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && c.availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div>`
     : '';
 
-  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''}" data-movie="${c.escapeHtml(record.id)}" tabindex="0" aria-label="${c.escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}">
+  const canOpenDetail = !record.externalOnly && /^\d+$/.test(String(record.tmdbId || record.id || ''));
+  const interaction = canOpenDetail
+    ? `data-movie="${c.escapeHtml(record.tmdbId || record.id)}" tabindex="0" aria-label="${c.escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}"`
+    : `aria-label="${c.escapeHtml(`${record.title} · KOBIS 극장 정보`)}"`;
+
+  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''} ${canOpenDetail ? '' : 'is-external-only'}" ${interaction}>
     <div class="poster-wrap">
       ${media}
       ${!loading ? c.availabilityBadges(record) : ''}
-      <div class="card-overlay">${c.signedIn() && !loading ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
+      <div class="card-overlay">${c.signedIn() && !loading && canOpenDetail ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
     </div>
     <div class="card-info"><p class="card-title">${c.escapeHtml(record.title)}</p>${standardMeta}${libraryContext}${watchlistContext}${myContext}</div>
   </article>`;

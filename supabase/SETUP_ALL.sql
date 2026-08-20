@@ -119,6 +119,8 @@ create table if not exists public.editorial_programmes (
   surface text not null default 'arthouse' check (surface in ('arthouse','discover','both')),
   status text not null default 'draft' check (status in ('draft','published','archived')),
   priority integer not null default 100,
+  title text,
+  description text,
   payload jsonb not null default '{}'::jsonb,
   updated_by uuid references auth.users(id) on delete set null,
   updated_at timestamptz not null default now()

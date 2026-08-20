@@ -1,75 +1,16 @@
-import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
-import { KINOSIS_LOCALE } from '../lib/locale.mjs';
+import theatrical from '../../data/theatrical-kr.mjs';
+import { json } from '../lib/tmdb.mjs';
 
-function isoDate(date) {
-  return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-}
-function movie(m) {
-  return {
-    id: String(m.id),
-    title: m.title || m.original_title || 'Untitled',
-    originalTitle: m.original_title || '',
-    releaseDate: m.release_date || null,
-    year: m.release_date?.slice(0, 4) || null,
-    overview: m.overview || '',
-    voteAverage: m.vote_average ?? null,
-    voteCount: m.vote_count ?? 0,
-    popularity: m.popularity ?? 0,
-    posterUrl: imageUrl(m.poster_path, 'w500'),
-    backdropUrl: imageUrl(m.backdrop_path, 'w1280'),
-    source: 'tmdb-live',
-  };
-}
-function norm(value) {
-  return String(value || '').normalize('NFKC').toLowerCase().replace(/[^a-z0-9가-힣]+/g, '');
-}
-function unique(rows) {
-  const ids = new Set();
-  const identities = new Set();
-  const out = [];
-  for (const row of rows || []) {
-    if (!row?.id) continue;
-    const id = String(row.id);
-    const identity = `${norm(row.original_title || row.title)}|${String(row.release_date || '').slice(0, 4)}`;
-    if (ids.has(id) || (identity !== '|' && identities.has(identity))) continue;
-    ids.add(id);
-    if (identity !== '|') identities.add(identity);
-    out.push(row);
-  }
-  return out;
-}
-
+/** Korean theatrical opening snapshot. KOBIS is ingested out of band. */
 export default async (request) => {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
-  const today = new Date();
-  const end = new Date(today);
-  end.setDate(end.getDate() + 120);
-  try {
-    const pages = await Promise.all([1, 2, 3].map((page) => tmdb('/discover/movie', {
-      language: KINOSIS_LOCALE.language,
-      region: KINOSIS_LOCALE.region,
-      include_adult: false,
-      include_video: false,
-      with_release_type: '3|2',
-      'release_date.gte': isoDate(today),
-      'release_date.lte': isoDate(end),
-      sort_by: 'popularity.desc',
-      page,
-    })));
-    const results = unique(pages.flatMap((payload) => payload.results || []))
-      .filter((row) => row.poster_path && row.release_date)
-      .sort((a, b) => String(a.release_date).localeCompare(String(b.release_date)) || Number(b.popularity || 0) - Number(a.popularity || 0))
-      .slice(0, 42)
-      .map(movie);
-    return json({ region: KINOSIS_LOCALE.region, source: 'tmdb-discover-theatrical', results, updatedAt: new Date().toISOString() }, 200, 'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
-  } catch (error) {
-    console.error('upcoming:', error.message);
-    return json({ error: error.message || 'Upcoming discovery failed.' }, error.status || 500);
-  }
+  const results = Array.isArray(theatrical?.upcoming) ? theatrical.upcoming : [];
+  if (!results.length) return json({ error: 'KOBIS upcoming snapshot is not ready.' }, 503, 'public, max-age=300, s-maxage=300');
+  return json({ region: 'KR', source: theatrical.sources?.upcoming || 'KOBIS snapshot', updatedAt: theatrical.updatedAt || null, results }, 200,
+    'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
 };
 
 export const config = {
-  path: '/api/upcoming',
-  method: 'GET',
-  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 40 },
+  path: '/api/upcoming', method: 'GET',
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 120 },
 };

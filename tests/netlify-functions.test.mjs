@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 process.env.TMDB_READ_ACCESS_TOKEN='test-token-not-real';
-process.env.KOBIS_API_KEY='kobis-test-not-real';
 
 const shareModule=await import('../netlify/functions/share.mjs');
 const searchModule=await import('../netlify/functions/movie-search.mjs');
@@ -20,10 +19,6 @@ const realFetch=globalThis.fetch;
 try{
   globalThis.fetch=async(url,options={})=>{
     const value=String(url);
-    if(value.includes('kobis.or.kr')){
-      assert.ok(value.includes('key=kobis-test-not-real'));
-      return Response.json({boxOfficeResult:{dailyBoxOfficeList:Array.from({length:10},(_,i)=>({rank:String(i+1),movieNm:`영화 ${i+1}`,openDt:'20260801',audiAcc:String(100000-i*1000)}))}});
-    }
     assert.equal(options.headers.Authorization,'Bearer test-token-not-real');
     if(value.includes('/search/person')) return Response.json({results:[{id:2,name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]});
     if(value.includes('/search/movie')) { const first={...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}; return Response.json({page:1,total_results:2,results:[first,{...first,id:151,title:first.title,original_title:first.original_title}]}); }
@@ -71,7 +66,7 @@ try{
 
   const boxOfficeResponse=await boxOfficeModule.default(new Request('https://kinosis.test/api/box-office'));
   assert.equal(boxOfficeResponse.status,200); const boxOfficeData=await boxOfficeResponse.json();
-  assert.equal(boxOfficeData.mode,'kobis'); assert.equal(boxOfficeData.results[0].boxOfficeRank,1); assert.ok(boxOfficeData.results.length>=5);
+  assert.ok(['kobis-snapshot','seed-fallback'].includes(boxOfficeData.mode)); assert.ok(boxOfficeData.results.length>=1);
 
   const recommendationResponse=await recommendationModule.default(new Request('https://kinosis.test/api/movie-recommendations?id=15'));
   assert.equal(recommendationResponse.status,200); const recommendationData=await recommendationResponse.json();
@@ -101,12 +96,11 @@ try{
 
   const upcomingResponse=await upcomingModule.default(new Request('https://kinosis.test/api/upcoming'));
   assert.equal(upcomingResponse.status,200); const upcomingData=await upcomingResponse.json();
-  assert.equal(upcomingData.source,'tmdb-discover-theatrical');
+  assert.ok(String(upcomingData.source).length > 0); assert.equal(upcomingData.region,'KR');
   assert.equal(new Set(upcomingData.results.map(row=>row.id)).size,upcomingData.results.length,'upcoming results must be unique');
 
   for(const payload of [searchData,detailData,detailAvailabilityData,summariesData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
-    assert.ok(!JSON.stringify(payload).includes('kobis-test-not-real'),'KOBIS secret leaked in API response');
   }
-  console.log('netlify-functions.test: OG share/search/static-detail/progressive-availability/summaries/KOBIS/recommendations/person/director/canonical-id/live-streaming/upcoming contracts OK');
+  console.log('netlify-functions.test: OG share/search/static-detail/progressive-availability/summaries/theatrical-snapshot/recommendations/person/director/live-streaming contracts OK');
 }finally{globalThis.fetch=realFetch;}

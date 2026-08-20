@@ -62,7 +62,7 @@ export function compactSnapshot(record) {
   if (!record || record.metadataLoading) return null;
   const fields = [
     'id', 'title', 'originalTitle', 'year', 'releaseDate', 'director', 'directorId',
-    'genres', 'posterUrl', 'backdropUrl',
+    'runtime', 'overview', 'genres', 'posterUrl', 'backdropUrl',
   ];
   const snapshot = {};
   for (const field of fields) if (record[field] !== undefined) snapshot[field] = record[field];

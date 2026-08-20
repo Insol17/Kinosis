@@ -1,6 +1,8 @@
-# Netlify deployment — KINOSIS 0.4.4.3
+# Netlify deployment — KINOSIS 0.4.5.4
 
-## Required environment variables
+## Environment variables
+
+Set these in **Netlify → Project configuration → Environment variables**.
 
 ```text
 TMDB_READ_ACCESS_TOKEN
@@ -8,41 +10,68 @@ SUPABASE_URL
 SUPABASE_PUBLISHABLE_KEY
 ```
 
-For exact Korean daily box-office ranks:
+For Korean theatrical ingestion:
 
 ```text
 KOBIS_API_KEY
 ```
 
-For Settings → account deletion:
+`KOBIS_API_KEY` and `TMDB_READ_ACCESS_TOKEN` should be available to **Builds + Functions** (or All scopes). They must never be exposed to browser code.
+
+For account deletion only:
 
 ```text
 SUPABASE_SECRET_KEY
 ```
 
-`SUPABASE_SECRET_KEY` is server-only. Never put it in `config.js`, `index.html`, browser JavaScript, screenshots, or a public repository.
+After changing environment variables, trigger a new deploy. The build runs `update-theatrical.mjs --if-keys`, so a deploy with both KOBIS/TMDB build secrets produces a fresh KR theatrical snapshot immediately; if either secret is absent it keeps the committed last-known-good snapshot.
 
-## Supabase migration
+## GitHub Actions secrets
 
-If upgrading an existing 0.4.x database, run:
+The repository's daily Korean theatrical snapshot uses GitHub Actions. Add the same secret values under **Repository Settings → Secrets and variables → Actions**:
 
 ```text
-supabase/004_kinosis_0443.sql
+KOBIS_API_KEY
+TMDB_READ_ACCESS_TOKEN
 ```
 
-Fresh projects can run `supabase/SETUP_ALL.sql` instead.
+`refresh-theatrical.yml` runs once daily. User traffic reads the committed snapshot and does not spend the KOBIS daily quota.
 
-## Deploy
+## Supabase
 
-Push the 0.4.4.3 source to the branch connected to Netlify. Netlify installs package dependencies, runs `npm run build`, publishes the static site and bundles Functions.
+Fresh project:
 
-After deployment, test:
+```text
+supabase/SETUP_ALL.sql
+```
 
-1. Google login.
-2. Modify a Watchlist item and confirm Cloud Sync reaches `ONLINE`.
-3. Open the same account in another browser and confirm the item arrives automatically.
-4. Open a Director Curation and confirm it loads once without sustained CPU/render churn.
-5. In MY → Settings, select OTT services and confirm `내 구독 서비스에서` returns live results.
-6. Check a WATCHA title and confirm the official WATCHA wordmark is shown once, not the incorrect upstream tile.
+Existing 0.4.5.3 project:
 
-KINOSIS 0.4.4.3 does not ship an offline/PWA shell.
+```text
+supabase/006_kinosis_0454.sql
+```
+
+The 0.4.5.4 migration adds lightweight Studio list metadata so the Studio home does not download every full Director snapshot.
+
+## Admin role
+
+KINOSIS uses only `user` and `admin`. Give a normal Auth user the trusted claim:
+
+```sql
+update auth.users
+set raw_app_meta_data =
+  coalesce(raw_app_meta_data, '{}'::jsonb)
+  || '{"user_role":"admin"}'::jsonb
+where id = 'USER_UUID';
+```
+
+Then sign out and sign in again so a fresh JWT contains the claim.
+
+## Deploy verification
+
+1. Discover paints Box Office/Upcoming from `window.KINOSIS_THEATRICAL` without waiting for KOBIS.
+2. `/api/box-office` and `/api/upcoming` return snapshot data.
+3. Arthouse Director Archives show committed/build snapshots immediately.
+4. Studio opens its shell immediately, then loads the lightweight programme list.
+5. Star hover leaves no uncommitted visual rating after pointer exit.
+6. Profile calendar uses horizontal stills on desktop and agenda rows on mobile.
