@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://image.tmdb.org" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.5.1" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.5.2" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -62,7 +62,14 @@
         <button class="search-trigger" id="searchTrigger" aria-label="영화 검색">
           <svg class="ui-icon"><use href="#i-search"/></svg><span>영화 검색</span><kbd>/</kbd>
         </button>
-        <button class="avatar-button" id="topAccountButton" aria-label="계정"><span id="topAvatar">K</span></button>
+        <div class="account-menu-wrap">
+          <button class="avatar-button" id="topAccountButton" aria-label="계정 메뉴" aria-expanded="false" aria-controls="accountMenu"><span id="topAvatar">K</span></button>
+          <div class="account-popover" id="accountMenu" hidden>
+            <button data-account-nav="profile">프로필</button>
+            <button data-account-nav="settings">설정</button>
+            <button data-account-action="signout">로그아웃</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -141,7 +148,9 @@
     <div class="form-card auth-card">
       <div class="form-head"><div><p class="eyebrow">KINOSIS ACCOUNT</p><h2>로그인하면 영화생활이 이어집니다.</h2></div><button class="ghost-close" data-close="authDialog">닫기</button></div>
       <p class="auth-copy">라이브러리와 프로필 기록은 계정에 연결됩니다. 같은 계정으로 PC와 모바일에서 로그인하면 기록과 컬렉션이 자동 동기화됩니다.</p>
-      <div class="auth-benefits"><span>라이브러리 동기화</span><span>리뷰 · 캘린더</span><span>컬렉션</span><span>OTT 설정</span></div>
+      <div class="auth-benefits"><span>라이브러리 동기화</span><span>한줄평 · 캘린더</span><span>컬렉션</span><span>OTT 설정</span></div>
+      <button class="demo-entry-button" type="button" id="enterDemoButton"><b>KINOSIS 둘러보기</b><span>채워진 데모 영화장으로 바로 들어갑니다. 변경 내용은 저장되지 않습니다.</span></button>
+      <div class="auth-divider"><span>계정으로 시작</span></div>
       <div class="auth-provider-grid">
         <button class="auth-provider google" data-auth-provider="google">Google로 계속하기</button>
         <button class="auth-provider kakao" data-auth-provider="kakao">Kakao로 계속하기</button>
@@ -171,10 +180,9 @@
       <input type="hidden" id="logMovieId" /><input type="hidden" id="logEntryId" />
       <div class="form-head"><div><p class="eyebrow">LOG FILM</p><h2 id="logMovieTitle">영화 기록</h2></div><button type="button" class="ghost-close" data-close="logDialog">닫기</button></div>
       <label>감상일<input id="logDate" type="date" required /></label>
-      <div class="form-field"><span class="form-field-label">현재 내 평점</span><div id="logRatingHost" class="form-rating-host"></div></div>
-      <label>내 한줄평<textarea id="logComment" rows="2" maxlength="280" placeholder="이 영화에 대한 현재 한줄평"></textarea></label>
-      <label>이번 감상 메모<textarea id="logNote" rows="3" maxlength="500" placeholder="이번 관람에만 남길 메모 · 선택 사항"></textarea></label>
-      <div id="logRewatchHint" class="log-rewatch-hint"></div><label class="check-row"><input id="logFavorite" type="checkbox" /><span>Favorite로 표시</span></label>
+      <div class="form-field"><span class="form-field-label" id="logRatingLabel">이번 감상 평점</span><div id="logRatingHost" class="form-rating-host"></div></div>
+      <label>이번 감상 메모<textarea id="logNote" rows="3" maxlength="500" placeholder="이번 관람에 남길 메모 · 선택 사항"></textarea></label>
+      <div id="logRewatchHint" class="log-rewatch-hint"></div>
       <div class="form-actions split-actions"><button type="button" class="secondary-button danger-button" id="deleteLogButton" hidden>기록 삭제</button><span class="form-spacer"></span><button type="button" class="secondary-button" data-close="logDialog">취소</button><button class="primary-button" value="save">기록 저장</button></div>
     </form>
   </dialog>
@@ -237,7 +245,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.5.1</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.5.2</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -250,22 +258,22 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.5.1"></script>
-  <script src="./data/curations.js?v=0.4.5.1"></script>
-  <script src="./assets/js/config.js?v=0.4.5.1"></script>
-  <script src="./data/arthouse.js?v=0.4.5.1"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.5.1"></script>
-  <script src="./data/providers.js?v=0.4.5.1"></script>
-  <script src="./assets/js/providers.js?v=0.4.5.1"></script>
+  <script src="./data/catalog.js?v=0.4.5.2"></script>
+  <script src="./data/curations.js?v=0.4.5.2"></script>
+  <script src="./assets/js/config.js?v=0.4.5.2"></script>
+  <script src="./data/arthouse.js?v=0.4.5.2"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.5.2"></script>
+  <script src="./data/providers.js?v=0.4.5.2"></script>
+  <script src="./assets/js/providers.js?v=0.4.5.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3"></script>
-  <script src="./assets/js/cloud.js?v=0.4.5.1"></script>
-  <script src="./assets/js/ui.js?v=0.4.5.1"></script>
-  <script src="./assets/js/importers.js?v=0.4.5.1"></script>
-  <script src="./assets/js/curations.js?v=0.4.5.1"></script>
-  <script src="./assets/js/curation-loader.js?v=0.4.5.1"></script>
-  <script src="./assets/js/hero-carousel.js?v=0.4.5.1"></script>
-  <script src="./assets/js/state-integrity.js?v=0.4.5.1"></script>
-  <script src="./assets/js/error-boundary.js?v=0.4.5.1"></script>
-  <script type="module" src="./assets/js/app.js?v=0.4.5.1"></script>
+  <script src="./assets/js/cloud.js?v=0.4.5.2"></script>
+  <script src="./assets/js/ui.js?v=0.4.5.2"></script>
+  <script src="./assets/js/importers.js?v=0.4.5.2"></script>
+  <script src="./assets/js/curations.js?v=0.4.5.2"></script>
+  <script src="./assets/js/curation-loader.js?v=0.4.5.2"></script>
+  <script src="./assets/js/hero-carousel.js?v=0.4.5.2"></script>
+  <script src="./assets/js/state-integrity.js?v=0.4.5.2"></script>
+  <script src="./assets/js/error-boundary.js?v=0.4.5.2"></script>
+  <script type="module" src="./assets/js/app.js?v=0.4.5.2"></script>
 </body>
 </html>

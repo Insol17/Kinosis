@@ -1,6 +1,6 @@
 {
   "slug": "victor-erice",
-  "eyebrow": "DIRECTOR'S ARCHIVE",
+  "eyebrow": "DIRECTOR ARCHIVE",
   "title": "빅토르 에리세",
   "subtitle": "Víctor Erice",
   "description": "기억과 빛, 시간의 잔상을 오래 응시하는 빅토르 에리세의 장편 감독 작품 아카이브.",
@@ -10,7 +10,31 @@
     "type": "director",
     "name": "Víctor Erice",
     "sort": "release_asc",
-    "mode": "solo-features"
+    "mode": "solo-features",
+    "personId": "37833",
+    "snapshot": [
+      {
+        "id": "4495",
+        "title": "벌집의 정령",
+        "originalTitle": "El espíritu de la colmena",
+        "year": "1973",
+        "releaseDate": "1973-10-08",
+        "director": "Víctor Erice",
+        "directorId": "37833",
+        "runtime": 98
+      },
+      {
+        "id": "48139",
+        "title": "남쪽",
+        "originalTitle": "El sur",
+        "year": "1983",
+        "releaseDate": "1983-05-19",
+        "director": "Víctor Erice",
+        "directorId": "37833",
+        "runtime": 94
+      }
+    ],
+    "snapshotGeneratedAt": "2026-08-20"
   },
   "kind": "director-archive"
 }

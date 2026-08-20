@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.4.5.2 — Coherence / Arthouse reliability / portfolio demo
+
+### Personal Film Library rules
+- Upgraded personal state to schema v8. Watchlist-only remains outside `전체 영화`, while a current rating, one-line comment, favorite, new viewing or Collection membership promotes the film into the current shelf.
+- Promotion is a migration/action rule rather than a perpetual normalize rule, so manually removing a film from the shelf does not silently re-add it on reload.
+- Demoted manual `영화장에 보관` to the Detail overflow menu. Library membership remains available for explicit save-without-engagement cases.
+- Fixed create-from-film Collection flow so a newly created Collection actually contains the pending film.
+- Letterboxd imports now follow the same shelf semantics: rating/review/watched entries enter the shelf; watchlist-only entries do not.
+
+### Viewing / Detail integrity
+- Separated the current FilmRelationship editor from ViewingEvent history editing. A historical log opens its own `ratingSnapshot` and note; editing it no longer rewrites the current rating.
+- New viewing events may update the current rating and automatically enter the shelf; editing an old event does not resurrect a later manual shelf removal.
+- Kept favorite visible as a secondary Hero action and removed duplicated relationship controls from the viewing dialog.
+- Kept user-facing Detail labels terse (`작품 정보 / 감상 가능 / 내 기록`) and removed redundant director/basic-fact duplication.
+
+### Arthouse
+- Removed the generic `최근 공개된 작가영화` and misleading `다시 볼 만한 작품` rails. Arthouse is now entirely programme-driven.
+- Rebuilt the Hero as one representative slide per Editorial/Director Archive programme, with curation-aware navigation instead of `artPool().slice(0,5)`.
+- Director Archive definitions now use stable person IDs and ship static movie snapshots. Runtime loading renders the snapshot immediately, then attempts live enrichment.
+- Added explicit curation loader states (`idle/loading/ready/empty/error`), retry, request dedupe and snapshot preservation; a failed network request is no longer cached as a successful empty filmography.
+- Director filmography responses now carry `director` and `directorId`, and Movie Entity enrichment preserves director/runtime/metadata fields across lightweight merges.
+
+### Discover / Search / Profile
+- Added curation-capable Discover Hero slides and varied movie Hero allocation across featured/box-office/upcoming/rated sources.
+- Added cross-section visible allocation so Hero and adjacent rails do not repeatedly spend the same first viewport on the same films.
+- Replaced raw-average high-rated ordering with confidence-weighted ranking.
+- Search keeps explicit spinner/skeleton feedback, uses one main ARIA option per result row, closes before Detail and restores the prior query/results on return.
+- Unified PROFILE navigation: the avatar opens an account popover instead of jumping directly to Settings; Profile counters now distinguish 감상 영화 / 평가 / 한줄평 / 컬렉션 and open matching archives.
+- Runtime statistics mark incomplete runtime metadata instead of silently pretending missing runtime is zero.
+
+### Portfolio / regression cleanup
+- Added `KINOSIS 둘러보기`, a session-only seeded demo mode with Cloud reads/writes disabled.
+- Fixed the stale Hero-dot CSS rule that painted the entire active hit target as a large amber block.
+- Removed obsolete status-pill CSS and dead Library/watchlist branches, and added Discovery allocation regression tests.
+- Editorial Studio remains deferred; reviewer-facing product coherence remains the priority for this portfolio build.
+
 ## 0.4.5.1 — Arthouse / Library / Profile product polish
 
 ### Arthouse

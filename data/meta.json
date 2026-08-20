@@ -1,16 +1,15 @@
 {
   "status": "ok",
   "mode": "live",
-  "updatedAt": "2026-08-19T21:51:22.028Z",
+  "updatedAt": "2026-08-18T08:11:23.110Z",
   "region": "KR",
   "counts": {
-    "boxOffice": 10,
-    "upcoming": 30,
-    "theatres": 62,
+    "theatres": 20,
     "trending": 20,
-    "streaming": 20,
     "rated": 20,
-    "art": 48
+    "streaming": 20,
+    "boxOffice": 10,
+    "upcoming": 1
   },
   "sources": {
     "metadata": {
@@ -29,10 +28,6 @@
       "name": "KOBIS unavailable · unranked TMDB now_playing fallback",
       "active": true,
       "mode": "unavailable"
-    },
-    "art": {
-      "name": "KINOSIS editorial seed engine · cinephile-seed-v4",
-      "active": true
     }
   }
 }

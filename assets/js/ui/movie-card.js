@@ -43,7 +43,7 @@ export function renderMovieCard(record, variant, c) {
     : '';
 
   const watchlistContext = watchlistCard && !loading
-    ? `<div class="film-object-context is-watchlist"><div class="film-object-primary"><span>보고싶어요</span></div><div class="film-object-secondary">${access ? `<span class="film-object-access">${c.escapeHtml(access)}</span>` : '<span class="film-object-muted">감상 가능 정보 확인 전</span>'}</div></div>`
+    ? `<div class="film-object-context is-watchlist"><div class="film-object-primary"><span>보고싶어요</span></div><div class="film-object-secondary">${access ? `<span class="film-object-access">${c.escapeHtml(access)}</span>` : '<span class="film-object-muted">감상 가능 정보 확인 전</span>'}</div><button class="watchlist-remove-button" data-action="watchlist" data-id="${c.escapeHtml(record.id)}">보고싶어요에서 제거</button></div>`
     : '';
 
   const standardMeta = !libraryCard && !watchlistCard && !myCard

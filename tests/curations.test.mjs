@@ -30,7 +30,7 @@ assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('dis
 assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
 
 const baseline = build();
-assert.equal(baseline.version, '0.4.5.1');
+assert.equal(baseline.version, '0.4.5.2');
 assert.ok(Array.isArray(baseline.items));
 assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
 
@@ -85,6 +85,10 @@ const finalPayload = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 assert.equal(finalPayload.items.length, baseline.items.length, 'test fixture leaked into generated curation data');
 assert.ok(finalPayload.items.some((item) => item.slug === 'kiarostami' && item.kind === 'director-archive' && item.source?.type === 'director'), 'director archive missing');
 assert.ok(finalPayload.items.some((item) => item.slug === 'christian-petzold'), 'Christian Petzold director archive missing');
+const archives = finalPayload.items.filter((item) => item.kind === 'director-archive');
+assert.ok(archives.every((item) => /^\d+$/.test(String(item.source?.personId || ''))), 'director archives must ship a stable TMDB personId');
+assert.ok(archives.every((item) => Array.isArray(item.source?.snapshot) && item.source.snapshot.length > 0), 'director archives must ship snapshot fallback rows');
+assert.ok(archives.every((item) => item.source.snapshot.every((movie) => movie.director && movie.directorId)), 'snapshot movies must carry director identity');
 assert.ok(!finalPayload.items.some((item) => item.slug === 'tarantino'), 'broad mainstream Tarantino archive should not remain in Arthouse programme');
 const erice = finalPayload.items.find((item) => item.slug === 'victor-erice');
 assert.equal(erice?.source?.mode, 'solo-features', 'Víctor Erice curation should resolve solo feature films only');

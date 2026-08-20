@@ -3,7 +3,7 @@ import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 
 const norm=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/[^a-z0-9가-힣]+/g,'');
 const parseIds=value=>[...new Set(String(value||'').split(',').map(v=>v.trim()).filter(v=>/^\d+$/.test(v)))];
-function movie(m){return{id:String(m.id),title:m.title||m.original_title||'Untitled',originalTitle:m.original_title||'',releaseDate:m.release_date||null,year:m.release_date?.slice(0,4)||null,overview:m.overview||'',voteAverage:m.vote_average??null,voteCount:m.vote_count??0,popularity:m.popularity??0,runtime:m.runtime??null,posterUrl:imageUrl(m.poster_path,'w500'),backdropUrl:imageUrl(m.backdrop_path,'w1280'),source:'tmdb-live'};}
+function movie(m,person){return{id:String(m.id),title:m.title||m.original_title||'Untitled',originalTitle:m.original_title||'',releaseDate:m.release_date||null,year:m.release_date?.slice(0,4)||null,overview:m.overview||'',voteAverage:m.vote_average??null,voteCount:m.vote_count??0,popularity:m.popularity??0,runtime:m.runtime??null,posterUrl:imageUrl(m.poster_path,'w500'),backdropUrl:imageUrl(m.backdrop_path,'w1280'),director:person?.name||'',directorId:person?.id?String(person.id):'',source:'tmdb-live'};}
 function uniqueMovies(rows){const ids=new Set(),out=[];for(const row of rows||[]){if(!row?.id)continue;const id=String(row.id);if(ids.has(id))continue;ids.add(id);out.push(row);}return out;}
 async function pool(items,size,fn){const out=new Array(items.length);let cursor=0;await Promise.all(Array.from({length:Math.min(size,Math.max(1,items.length))},async()=>{while(cursor<items.length){const i=cursor++;try{out[i]=await fn(items[i]);}catch{out[i]=null;}}}));return out.filter(Boolean);}
 
@@ -56,7 +56,7 @@ export default async request=>{
       directed.push(...extra);
     }
 
-    let results=uniqueMovies(directed).map(movie);
+    let results=uniqueMovies(directed).map(row=>movie(row,person));
     results.sort((a,b)=>{const ad=a.releaseDate||'9999-99-99',bd=b.releaseDate||'9999-99-99';return sort==='release_desc'?bd.localeCompare(ad):ad.localeCompare(bd)});
     return json({person:{id:String(person.id),name:person.name,knownForDepartment:person.known_for_department||''},mode,results},200,'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
   }catch(e){console.error('director-filmography:',e.message);return json({error:e.message||'Director filmography failed.'},e.status||500)}

@@ -24,7 +24,6 @@ const c = {
   membership: (id) => membership[id] || null,
 };
 const base = { q: '', sort: 'recent', relationship: 'all', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
-assert.deepEqual(filterLibrary(movies, { ...base, relationship: 'watchlist' }, c).map((m) => m.id), ['2']);
 assert.deepEqual(filterLibrary(movies, { ...base, relationship: 'favorite' }, c).map((m) => m.id), ['1']);
 assert.deepEqual(new Set(filterLibrary(movies, { ...base, relationship: 'rated' }, c).map((m) => m.id)), new Set(['1', '3']));
 assert.deepEqual(new Set(filterLibrary(movies, { ...base, status: 'watched' }, c).map((m) => m.id)), new Set(['1', '3']));
@@ -41,5 +40,7 @@ assert.ok(libraryCard.includes('★ 4.5') && libraryCard.includes('1회 감상')
 assert.ok(libraryCard.includes('WATCHA에서 감상 가능') && libraryCard.includes('Favorites'), 'Library card must expose access and collection context');
 const discoverCard = renderMovieCard(movies[0], 'discover', cardContext);
 assert.ok(!discoverCard.includes('Favorites'), 'Discover card must not inherit Library organization context');
+const watchlistCard = renderMovieCard(movies[1], 'watchlist', cardContext);
+assert.ok(watchlistCard.includes('보고싶어요에서 제거'), 'Watchlist card must expose an explicit removal affordance');
 
 console.log('library.test: relationship filters + contextual Movie Card contracts OK');

@@ -34,6 +34,37 @@ function ids(value, field, file) {
   return out;
 }
 
+
+function snapshot(value, file) {
+  if (value == null) return [];
+  if (!Array.isArray(value)) fail(`${file}: source.snapshot must be array`);
+  const seen = new Set();
+  return value.map((entry, index) => {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) fail(`${file}: source.snapshot[${index}] must be object`);
+    const id = String(entry.id ?? entry.tmdbId ?? '').trim();
+    if (!/^\d+$/.test(id)) fail(`${file}: source.snapshot[${index}].id invalid TMDB id`);
+    if (seen.has(id)) fail(`${file}: source.snapshot duplicate id ${id}`);
+    seen.add(id);
+    const title = text(entry.title, `source.snapshot[${index}].title`, file, 160);
+    if (!title) fail(`${file}: source.snapshot[${index}].title required`);
+    const year = String(entry.year || '').trim();
+    return {
+      id,
+      title,
+      originalTitle: text(entry.originalTitle, `source.snapshot[${index}].originalTitle`, file, 160),
+      year: /^\d{4}$/.test(year) ? year : null,
+      releaseDate: text(entry.releaseDate, `source.snapshot[${index}].releaseDate`, file, 20) || null,
+      director: text(entry.director, `source.snapshot[${index}].director`, file, 120),
+      directorId: String(entry.directorId || '').trim(),
+      runtime: Number.isFinite(Number(entry.runtime)) ? Number(entry.runtime) : null,
+      posterUrl: text(entry.posterUrl, `source.snapshot[${index}].posterUrl`, file, 500) || null,
+      backdropUrl: text(entry.backdropUrl, `source.snapshot[${index}].backdropUrl`, file, 500) || null,
+      source: 'director-snapshot',
+      detailLoaded: false,
+    };
+  });
+}
+
 function source(value, file) {
   if (!value) return null;
   if (typeof value !== 'object' || Array.isArray(value)) fail(`${file}: source must be object`);
@@ -49,6 +80,8 @@ function source(value, file) {
     mode: value.mode === 'solo-features' ? 'solo-features' : 'all-directed',
     include: ids(value.include, 'source.include', file),
     exclude: ids(value.exclude, 'source.exclude', file),
+    snapshot: snapshot(value.snapshot, file),
+    snapshotGeneratedAt: text(value.snapshotGeneratedAt, 'source.snapshotGeneratedAt', file, 40) || null,
   };
 }
 
@@ -136,7 +169,7 @@ function read() {
   return items;
 }
 
-const payload = { version: '0.4.5.1', items: read() };
+const payload = { version: '0.4.5.2', items: read() };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

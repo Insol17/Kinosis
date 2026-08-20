@@ -8,8 +8,7 @@ export function filterLibrary(list, filter, c) {
   const query = c.normalizeText(filter.q);
   if (query) out = out.filter((record) => c.normalizeText([record.title, record.originalTitle, record.director, ...c.genreNames(record)].filter(Boolean).join(' ')).includes(query));
 
-  if (filter.relationship === 'watchlist') out = out.filter((record) => !!c.relationship(record.id)?.watchlist);
-  else if (filter.relationship === 'favorite') out = out.filter((record) => !!c.relationship(record.id)?.favorite);
+  if (filter.relationship === 'favorite') out = out.filter((record) => !!c.relationship(record.id)?.favorite);
   else if (filter.relationship === 'rated') out = out.filter((record) => c.relationship(record.id)?.rating != null);
 
   if (filter.status === 'watched') out = out.filter((record) => c.logsForMovie(record.id).length > 0);

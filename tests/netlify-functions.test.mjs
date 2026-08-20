@@ -83,7 +83,7 @@ try{
 
   const directorResponse=await directorModule.default(new Request('https://kinosis.test/api/director-filmography?name=Orson%20Welles'));
   assert.equal(directorResponse.status,200); const directorData=await directorResponse.json();
-  assert.equal(directorData.person.name,'Orson Welles'); assert.equal(directorData.results[0].id,'15');
+  assert.equal(directorData.person.name,'Orson Welles'); assert.equal(directorData.results[0].id,'15'); assert.equal(directorData.results[0].director,'Orson Welles'); assert.equal(String(directorData.results[0].directorId),'2');
 
   const ericeResponse=await directorModule.default(new Request('https://kinosis.test/api/director-filmography?id=3&mode=solo-features'));
   assert.equal(ericeResponse.status,200); const ericeData=await ericeResponse.json();

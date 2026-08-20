@@ -1,6 +1,6 @@
 {
   "slug": "hou-hsiao-hsien",
-  "eyebrow": "DIRECTOR'S ARCHIVE",
+  "eyebrow": "DIRECTOR ARCHIVE",
   "title": "허우샤오시엔",
   "subtitle": "Hou Hsiao-hsien",
   "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 감독 작품 아카이브.",
@@ -10,7 +10,21 @@
     "type": "director",
     "name": "Hou Hsiao-hsien",
     "sort": "release_asc",
-    "mode": "all-directed"
+    "mode": "all-directed",
+    "personId": "64992",
+    "snapshot": [
+      {
+        "id": "253450",
+        "title": "자객 섭은낭",
+        "originalTitle": "刺客聶隱娘",
+        "year": "2015",
+        "releaseDate": "2015-08-27",
+        "director": "Hou Hsiao-hsien",
+        "directorId": "64992",
+        "runtime": 105
+      }
+    ],
+    "snapshotGeneratedAt": "2026-08-20"
   },
   "kind": "director-archive"
 }

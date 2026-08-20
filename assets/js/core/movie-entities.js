@@ -27,6 +27,16 @@ export function merge(existing = {}, incoming = {}) {
   if (!Object.prototype.hasOwnProperty.call(incoming, 'cast') && Array.isArray(existing?.cast)) merged.cast = existing.cast;
   if (!Object.prototype.hasOwnProperty.call(incoming, 'keywords') && Array.isArray(existing?.keywords)) merged.keywords = existing.keywords;
   if (!Object.prototype.hasOwnProperty.call(incoming, 'productionCompanies') && Array.isArray(existing?.productionCompanies)) merged.productionCompanies = existing.productionCompanies;
+  // Scalar enrichment follows the same contract: a summary that simply does
+  // not know the director/runtime/imagery must not erase richer metadata that
+  // arrived earlier from Detail or a Director Archive.
+  const preserveScalars = ['director', 'directorId', 'runtime', 'overview', 'posterUrl', 'backdropUrl', 'releaseDate', 'year'];
+  for (const field of preserveScalars) {
+    const value = incoming?.[field];
+    if ((!Object.prototype.hasOwnProperty.call(incoming, field) || value == null || value === '') && existing?.[field] != null && existing[field] !== '') {
+      merged[field] = existing[field];
+    }
+  }
   return normalize(merged);
 }
 
@@ -51,7 +61,7 @@ export function personalIds(state) {
 export function compactSnapshot(record) {
   if (!record || record.metadataLoading) return null;
   const fields = [
-    'id', 'title', 'originalTitle', 'year', 'releaseDate', 'director',
+    'id', 'title', 'originalTitle', 'year', 'releaseDate', 'director', 'directorId',
     'genres', 'posterUrl', 'backdropUrl',
   ];
   const snapshot = {};

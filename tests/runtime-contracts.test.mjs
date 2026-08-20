@@ -11,9 +11,10 @@ const entityState = {
 };
 assert.deepEqual(new Set(entitiesApi.personalIds(entityState)), new Set(['15', '16', '17', '18', '19']));
 assert.equal(entitiesApi.placeholder('99').metadataLoading, true, 'missing personal entities must render an explicit loading placeholder');
-const snapshot = entitiesApi.compactSnapshot({ id: 15, title: '시민 케인', posterUrl: '/p.jpg', backdropUrl: '/b.jpg', providers: [{ name: 'Netflix' }], watchLink: 'x' });
+const snapshot = entitiesApi.compactSnapshot({ id: 15, title: '시민 케인', director: 'Orson Welles', directorId: '2', posterUrl: '/p.jpg', backdropUrl: '/b.jpg', providers: [{ name: 'Netflix' }], watchLink: 'x' });
 assert.equal(snapshot.title, '시민 케인');
 assert.equal(snapshot.backdropUrl, '/b.jpg');
+assert.equal(snapshot.directorId, '2');
 assert.ok(!('providers' in snapshot) && !('watchLink' in snapshot), 'volatile availability must not be synced as personal metadata');
 
 const record = {
@@ -33,9 +34,12 @@ assert.ok(renderDetail(record, context).includes('로그인하고 내 영화로 
 assert.ok(renderDetail(record, { ...context, isSignedIn: () => true }).includes('아직 감상 기록이 없습니다.'));
 for (const slop of ['이 영화는 무엇인가?', '지금 어디서 볼 수 있는가?', '나와 어떤 관계인가?']) assert.ok(!renderDetail(record, context).includes(slop));
 for (const label of ['작품 정보', '감상 가능', '내 기록']) assert.ok(renderDetail(record, context).includes(label));
-const preserved = entitiesApi.merge({ id: '31', title: '기존', providers: [{ name: 'WATCHA' }], cast: [{ name: 'A' }] }, { id: '31', title: '새 제목' });
+const preserved = entitiesApi.merge({ id: '31', title: '기존', director: '감독 A', directorId: '99', runtime: 123, providers: [{ name: 'WATCHA' }], cast: [{ name: 'A' }] }, { id: '31', title: '새 제목' });
 assert.equal(preserved.providers?.[0]?.name, 'WATCHA', 'lightweight entity merge must preserve provider availability');
 assert.equal(preserved.cast?.[0]?.name, 'A', 'lightweight entity merge must preserve enriched cast');
+assert.equal(preserved.director, '감독 A', 'lightweight entity merge must preserve director metadata');
+assert.equal(preserved.directorId, '99');
+assert.equal(preserved.runtime, 123);
 
 const store = new Map();
 const calls = [];

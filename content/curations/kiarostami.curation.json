@@ -1,6 +1,6 @@
 {
   "slug": "kiarostami",
-  "eyebrow": "DIRECTOR'S ARCHIVE",
+  "eyebrow": "DIRECTOR ARCHIVE",
   "title": "압바스 키아로스타미",
   "subtitle": "Abbas Kiarostami",
   "description": "삶과 죽음, 현실과 영화의 경계를 오가며 이어지는 압바스 키아로스타미의 감독 작품 아카이브.",
@@ -10,7 +10,46 @@
     "type": "director",
     "name": "Abbas Kiarostami",
     "sort": "release_asc",
-    "mode": "all-directed"
+    "mode": "all-directed",
+    "personId": "119294",
+    "snapshot": [
+      {
+        "id": "49964",
+        "title": "내 친구의 집은 어디인가",
+        "year": "1987",
+        "director": "Abbas Kiarostami",
+        "directorId": "119294"
+      },
+      {
+        "id": "30017",
+        "title": "클로즈업",
+        "year": "1990",
+        "director": "Abbas Kiarostami",
+        "directorId": "119294"
+      },
+      {
+        "id": "47104",
+        "title": "올리브 나무 사이로",
+        "year": "1994",
+        "director": "Abbas Kiarostami",
+        "directorId": "119294"
+      },
+      {
+        "id": "30020",
+        "title": "체리 향기",
+        "year": "1997",
+        "director": "Abbas Kiarostami",
+        "directorId": "119294"
+      },
+      {
+        "id": "43423",
+        "title": "바람이 우리를 데려다 주리라",
+        "year": "1999",
+        "director": "Abbas Kiarostami",
+        "directorId": "119294"
+      }
+    ],
+    "snapshotGeneratedAt": "2026-08-20"
   },
   "kind": "director-archive"
 }

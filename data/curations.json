@@ -1,5 +1,5 @@
 {
-  "version": "0.4.5.1",
+  "version": "0.4.5.2",
   "items": [
     {
       "slug": "kiarostami-life-continues",
@@ -64,7 +64,7 @@
       "slug": "kiarostami",
       "kind": "director-archive",
       "surface": "arthouse",
-      "eyebrow": "DIRECTOR'S ARCHIVE",
+      "eyebrow": "DIRECTOR ARCHIVE",
       "title": "압바스 키아로스타미",
       "subtitle": "Abbas Kiarostami",
       "description": "삶과 죽음, 현실과 영화의 경계를 오가며 이어지는 압바스 키아로스타미의 감독 작품 아카이브.",
@@ -75,11 +75,84 @@
       "source": {
         "type": "director",
         "name": "Abbas Kiarostami",
-        "personId": "",
+        "personId": "119294",
         "sort": "release_asc",
         "mode": "all-directed",
         "include": [],
-        "exclude": []
+        "exclude": [],
+        "snapshot": [
+          {
+            "id": "49964",
+            "title": "내 친구의 집은 어디인가",
+            "originalTitle": "",
+            "year": "1987",
+            "releaseDate": null,
+            "director": "Abbas Kiarostami",
+            "directorId": "119294",
+            "runtime": null,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "30017",
+            "title": "클로즈업",
+            "originalTitle": "",
+            "year": "1990",
+            "releaseDate": null,
+            "director": "Abbas Kiarostami",
+            "directorId": "119294",
+            "runtime": null,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "47104",
+            "title": "올리브 나무 사이로",
+            "originalTitle": "",
+            "year": "1994",
+            "releaseDate": null,
+            "director": "Abbas Kiarostami",
+            "directorId": "119294",
+            "runtime": null,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "30020",
+            "title": "체리 향기",
+            "originalTitle": "",
+            "year": "1997",
+            "releaseDate": null,
+            "director": "Abbas Kiarostami",
+            "directorId": "119294",
+            "runtime": null,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "43423",
+            "title": "바람이 우리를 데려다 주리라",
+            "originalTitle": "",
+            "year": "1999",
+            "releaseDate": null,
+            "director": "Abbas Kiarostami",
+            "directorId": "119294",
+            "runtime": null,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          }
+        ],
+        "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
       "chapters": []
@@ -88,7 +161,7 @@
       "slug": "victor-erice",
       "kind": "director-archive",
       "surface": "arthouse",
-      "eyebrow": "DIRECTOR'S ARCHIVE",
+      "eyebrow": "DIRECTOR ARCHIVE",
       "title": "빅토르 에리세",
       "subtitle": "Víctor Erice",
       "description": "기억과 빛, 시간의 잔상을 오래 응시하는 빅토르 에리세의 장편 감독 작품 아카이브.",
@@ -99,11 +172,42 @@
       "source": {
         "type": "director",
         "name": "Víctor Erice",
-        "personId": "",
+        "personId": "37833",
         "sort": "release_asc",
         "mode": "solo-features",
         "include": [],
-        "exclude": []
+        "exclude": [],
+        "snapshot": [
+          {
+            "id": "4495",
+            "title": "벌집의 정령",
+            "originalTitle": "El espíritu de la colmena",
+            "year": "1973",
+            "releaseDate": "1973-10-08",
+            "director": "Víctor Erice",
+            "directorId": "37833",
+            "runtime": 98,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "48139",
+            "title": "남쪽",
+            "originalTitle": "El sur",
+            "year": "1983",
+            "releaseDate": "1983-05-19",
+            "director": "Víctor Erice",
+            "directorId": "37833",
+            "runtime": 94,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          }
+        ],
+        "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
       "chapters": []
@@ -112,7 +216,7 @@
       "slug": "hou-hsiao-hsien",
       "kind": "director-archive",
       "surface": "arthouse",
-      "eyebrow": "DIRECTOR'S ARCHIVE",
+      "eyebrow": "DIRECTOR ARCHIVE",
       "title": "허우샤오시엔",
       "subtitle": "Hou Hsiao-hsien",
       "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 감독 작품 아카이브.",
@@ -123,11 +227,28 @@
       "source": {
         "type": "director",
         "name": "Hou Hsiao-hsien",
-        "personId": "",
+        "personId": "64992",
         "sort": "release_asc",
         "mode": "all-directed",
         "include": [],
-        "exclude": []
+        "exclude": [],
+        "snapshot": [
+          {
+            "id": "253450",
+            "title": "자객 섭은낭",
+            "originalTitle": "刺客聶隱娘",
+            "year": "2015",
+            "releaseDate": "2015-08-27",
+            "director": "Hou Hsiao-hsien",
+            "directorId": "64992",
+            "runtime": 105,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          }
+        ],
+        "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
       "chapters": []
@@ -147,11 +268,42 @@
       "source": {
         "type": "director",
         "name": "Christian Petzold",
-        "personId": "",
+        "personId": "2332",
         "sort": "release_asc",
         "mode": "all-directed",
         "include": [],
-        "exclude": []
+        "exclude": [],
+        "snapshot": [
+          {
+            "id": "471853",
+            "title": "트랜짓",
+            "originalTitle": "Transit",
+            "year": "2018",
+            "releaseDate": "2018-04-05",
+            "director": "Christian Petzold",
+            "directorId": "2332",
+            "runtime": 102,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          },
+          {
+            "id": "900379",
+            "title": "어파이어",
+            "originalTitle": "Roter Himmel",
+            "year": "2023",
+            "releaseDate": "2023-04-20",
+            "director": "Christian Petzold",
+            "directorId": "2332",
+            "runtime": 103,
+            "posterUrl": null,
+            "backdropUrl": null,
+            "source": "director-snapshot",
+            "detailLoaded": false
+          }
+        ],
+        "snapshotGeneratedAt": "2026-08-20"
       },
       "movies": [],
       "chapters": []

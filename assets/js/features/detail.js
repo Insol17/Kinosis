@@ -21,8 +21,8 @@ export function renderDetailHero(record, c) {
   const director = directorButton(record, c);
   const isLoading = !!record.metadataLoading;
   const libraryAction = membership
-    ? `<button class="detail-library-toggle is-active" data-remove-library="${c.escapeHtml(record.id)}">✓ 내 영화장</button>`
-    : `<button class="detail-library-toggle" data-add-library="${c.escapeHtml(record.id)}">＋ 내 영화장에 담기</button>`;
+    ? `<button data-remove-library="${c.escapeHtml(record.id)}">내 영화장에서 제거</button>`
+    : `<button data-add-library="${c.escapeHtml(record.id)}">영화장에 보관</button>`;
 
   return `<section class="detail-hero ${backdropUrl ? '' : 'has-no-backdrop'} ${isLoading ? 'is-partial' : ''}" data-detail-part="hero">
     ${backdropUrl ? `<img class="detail-backdrop" src="${c.escapeHtml(backdropUrl)}" alt="">` : '<div class="detail-backdrop-placeholder" aria-hidden="true"></div>'}<div class="detail-backdrop-shade"></div>
@@ -33,13 +33,13 @@ export function renderDetailHero(record, c) {
         <h1>${c.escapeHtml(record.title)}</h1>
         ${record.originalTitle && record.originalTitle !== record.title ? `<p class="detail-original">${c.escapeHtml(record.originalTitle)}</p>` : ''}
         <p class="detail-meta">${c.escapeHtml(c.titleMeta || (isLoading ? '영화 정보를 불러오는 중…' : '영화 정보'))}</p>
-        ${record.director ? `<p class="detail-director">감독 ${director}</p>` : '<p class="detail-director detail-meta-skeleton">감독 정보 확인 중</p>'}
+        ${record.director ? `<p class="detail-director">감독 ${director}</p>` : isLoading ? '<p class="detail-director detail-meta-skeleton">감독 정보 확인 중</p>' : ''}
         ${record.tagline ? `<p class="detail-tagline">${c.escapeHtml(record.tagline)}</p>` : ''}
-        <div class="detail-actions"><button class="primary-button detail-action" data-action="log" data-id="${c.escapeHtml(record.id)}">${logs.length ? '감상 기록 추가' : '감상 기록'}</button>${signedIn(c) ? libraryAction : ''}<button class="detail-watchlist ${relationship?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}">${relationship?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button><details class="film-more"><summary class="detail-more" aria-label="더 보기">${c.icon('more')}</summary><div class="film-more-menu"><button class="${relationship?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${c.escapeHtml(record.id)}">${relationship?.favorite ? '♥ 좋아요 해제' : '♡ 좋아요'}</button><button data-action="collection-add" data-id="${c.escapeHtml(record.id)}">＋ 컬렉션에 추가</button>${relationship || logs.length || membership ? `<button class="is-danger" data-delete-personal-movie="${c.escapeHtml(record.id)}">모든 개인 데이터 삭제…</button>` : ''}</div></details></div>
+        <div class="detail-actions"><button class="primary-button detail-action" data-action="log" data-id="${c.escapeHtml(record.id)}">${logs.length ? '감상 기록 추가' : '감상 기록'}</button><button class="detail-watchlist ${relationship?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}">${relationship?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button>${signedIn(c) ? `<button class="detail-favorite ${relationship?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${c.escapeHtml(record.id)}">${relationship?.favorite ? '♥ 좋아요' : '♡ 좋아요'}</button>` : ''}<details class="film-more"><summary class="detail-more" aria-label="더 보기">${c.icon('more')}</summary><div class="film-more-menu">${signedIn(c) ? libraryAction : ''}<button data-action="collection-add" data-id="${c.escapeHtml(record.id)}">＋ 컬렉션에 추가</button>${relationship || logs.length || membership ? `<button class="is-danger" data-delete-personal-movie="${c.escapeHtml(record.id)}">모든 개인 데이터 삭제…</button>` : ''}</div></details></div>
       </div>
       <aside class="detail-relationship" aria-label="내 평가와 한줄평">
         <p class="detail-relationship-kicker">RATING</p>
-        ${signedIn(c) ? `${c.starRatingHtml(record.id, relationship?.rating ?? null, 'detail')}<div class="detail-comment"><div class="detail-comment-head"><span>내 한줄평</span><button data-edit-relationship="${c.escapeHtml(record.id)}">${comment ? '수정' : '작성'}</button></div>${comment ? `<p>${c.escapeHtml(comment)}</p>` : '<p class="is-empty">이 영화에 대한 한줄평을 남겨보세요.</p>'}</div><div class="detail-personal-glance">${membership ? '<span>내 영화장</span>' : ''}${logs.length ? `<span>${logs.length}회 감상</span>` : ''}${relationship?.favorite ? '<span>좋아요</span>' : ''}</div>` : '<button class="streaming-signin compact" data-open-auth>로그인하고 내 영화로 기록하기</button>'}
+        ${signedIn(c) ? `${c.starRatingHtml(record.id, relationship?.rating ?? null, 'detail')}<div class="detail-comment"><div class="detail-comment-head"><span>내 한줄평</span><button data-edit-relationship="${c.escapeHtml(record.id)}">${comment ? '수정' : '작성'}</button></div>${comment ? `<p>${c.escapeHtml(comment)}</p>` : '<p class="is-empty">이 영화에 대한 한줄평을 남겨보세요.</p>'}</div><div class="detail-personal-glance">${membership ? '<span>내 영화장에 보관됨</span>' : ''}${logs.length ? `<span>${logs.length}회 감상</span>` : ''}${relationship?.favorite ? '<span>좋아요</span>' : ''}</div>` : '<button class="streaming-signin compact" data-open-auth>로그인하고 내 영화로 기록하기</button>'}
       </aside>
     </div>
   </section>`;
@@ -61,11 +61,9 @@ export function renderDetailMetadata(record, c) {
   return `<section class="detail-question detail-question-about" data-detail-part="metadata">${head}<div class="detail-about-grid">
     <div class="detail-about-main">
       <section class="detail-section detail-synopsis"><h3>줄거리</h3><p>${c.escapeHtml(record.overview || '줄거리 정보가 없습니다.')}</p></section>
-      ${record.director ? `<section class="detail-section detail-director-section"><div class="detail-section-head"><h3>감독</h3></div><div class="detail-director-card"><span class="cast-avatar-fallback">${c.escapeHtml(String(record.director || '?').slice(0, 1))}</span><div><strong>${director}</strong><small>${record.year || ''}${record.runtime ? ` · ${c.escapeHtml(c.fmtRuntime(record.runtime))}` : ''}</small></div></div></section>` : ''}
       ${cast.length ? `<section class="detail-section"><div class="detail-section-head"><h3>출연</h3><span>${record.cast?.length > cast.length ? `${record.cast.length}명 중 주요 출연진` : '주요 출연진'}</span></div><div class="detail-cast-grid">${cast.map((person) => `<button class="detail-cast-person" data-person-id="${c.escapeHtml(person.id || '')}" data-person-name="${c.escapeHtml(person.name || person)}">${person.profileUrl ? `<img src="${c.escapeHtml(person.profileUrl)}" alt="${c.escapeHtml(person.name || person)}">` : `<span class="cast-avatar-fallback">${c.escapeHtml(String(person.name || person).slice(0,1))}</span>`}<span><b>${c.escapeHtml(person.name || person)}</b><small>${c.escapeHtml(person.character || '')}</small></span></button>`).join('')}</div></section>` : ''}
     </div>
-    <section class="detail-section detail-facts-section"><div class="detail-section-head"><h3>작품 정보</h3></div><dl class="detail-facts">
-      ${record.director ? `<div><dt>감독</dt><dd>${director}</dd></div>` : ''}
+    <section class="detail-section detail-facts-section"><div class="detail-section-head"><h3>기본 정보</h3></div><dl class="detail-facts">
       ${writers.length ? `<div><dt>각본</dt><dd>${writers.map((p) => c.escapeHtml(p.name)).join(' · ')}</dd></div>` : ''}
       ${cinematographers.length ? `<div><dt>촬영</dt><dd>${cinematographers.map((p) => c.escapeHtml(p.name)).join(' · ')}</dd></div>` : ''}
       <div><dt>장르</dt><dd>${genres.map((g) => `<button data-search-query="${c.escapeHtml(g)}">${c.escapeHtml(g)}</button>`).join(' · ') || '—'}</dd></div>

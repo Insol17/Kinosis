@@ -1,29 +1,30 @@
-# KINOSIS 0.4.5.1
+# KINOSIS 0.4.5.2
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-It brings film discovery, current viewing availability, a present-tense shelf, watchlist, personal ratings/comments, viewing history and Collections together around one Movie Entity. Physical/digital ownership, social feeds, AI recommendations and an Editorial CMS remain outside this portfolio build.
+It brings film discovery, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections together around one Movie Entity. Physical/digital ownership, social feeds, AI recommendations and an Editorial CMS remain outside this portfolio build.
 
 ```text
-DISCOVER  → 일반적인 영화 발견
-ARTHOUSE  → 감독 아카이브 / 에디토리얼을 통한 맥락형 발견
-DETAIL    → 작품 정보 / 감상 가능 / 내 평가·기록
-LIBRARY   → 내 영화장 + 별도의 보고싶어요 + Collections
-PROFILE   → 감상 기록 / 한줄평 / 캘린더 / 통계 / 설정
+DISCOVER  → 넓고 빠른 영화 발견
+ARTHOUSE  → 에디토리얼 / 감독 아카이브를 통한 맥락형 발견
+DETAIL    → 작품 정보 / 감상 가능 / 현재 평가·기록
+LIBRARY   → 현재 내 영화장 + 별도의 보고싶어요 + Collections
+PROFILE   → 감상 기록 / 평가 / 한줄평 / 캘린더 / 통계 / 설정
 ```
 
-## 0.4.5.1 focus
+## 0.4.5.2 focus
 
-- **Arthouse quality:** dynamic Director Archive / Editorial films join the source pool; broad auteur seeds no longer classify mainstream titles by themselves; cross-rail repetition is suppressed.
-- **Watchlist semantics:** `보고싶어요` is visible inside Library but stays separate from `전체 영화` membership.
-- **Detail language:** internal design questions were removed from the UI. Hero owns rating/comment/actions; `내 기록` only shows real personal history.
-- **Loading feedback:** Search has explicit spinner/skeleton states, film cards prefetch Detail, summary hydration is parallelized, and entity merges preserve provider data.
-- **Shelf navigation:** desktop rails have previous/next controls while touch keeps native scrolling.
-- **Profile consolidation:** MY is no longer a public navigation concept; Profile owns overview, records, calendar, stats and settings.
-- **Calendar:** fixed seven-column poster month inspired by film-diary calendars rather than spreadsheet-like tiny cells.
-- **Visual polish:** flatter archive geometry, section indexing rules and a stronger catalogue/shelf hierarchy.
+- **Shelf mental model:** watchlist-only remains separate, while rating, one-line comment, favorite, a new viewing event or Collection membership makes the film part of the current shelf. A later manual shelf removal remains non-destructive and is not silently resurrected on reload.
+- **Viewing integrity:** current FilmRelationship and historical ViewingEvent snapshots are edited through separate controls. Editing an old viewing can no longer overwrite the current rating/comment.
+- **Arthouse reliability:** the page is programme-driven rather than padded with generic pseudo-personal rails. Director Archives ship stable person IDs and static snapshot fallbacks, then live-refresh without turning network errors into fake empty filmographies.
+- **Arthouse Hero:** one representative slot per programme, curation-aware Hero navigation, stable director identity and no `감독 정보 없음` placeholder in the large Hero.
+- **Discover breadth:** Hero selection rotates across sources, nearby rails suppress visible repetition, and the high-rated rail uses confidence-weighted ranking instead of raw averages.
+- **Search continuity:** explicit loading feedback remains, result actions no longer nest inside ARIA options, Search closes for Detail and restores the previous query/results when returning.
+- **Profile coherence:** PROFILE is the only public personal surface. The avatar opens an account popover; Profile counters drill into the matching viewing/rating/comment/collection archive.
+- **Portfolio demo:** `KINOSIS 둘러보기` loads a session-only seeded film life without a shared account or Cloud writes.
+- **Regression cleanup:** fixed the oversized orange Hero indicator, stale relationship records, collection-create-from-film flow and several obsolete CSS/code paths.
 
-See `docs/ARCHITECTURE-0.4.5.1.md` and `PATCH-0.4.5.1.md`.
+See `docs/ARCHITECTURE-0.4.5.2.md` and `PATCH-0.4.5.2.md`.
 
 ## Run
 
@@ -46,7 +47,7 @@ npm test
 npm run test:browser
 ```
 
-The browser smoke harness may report `SKIP` in environments whose installed Chromium policy blocks local HTTP origins.
+`npm test` includes build validation, `checkJs` type checking, function/domain/runtime regression tests and Discovery/Arthouse allocation tests. The browser smoke harness may report `SKIP` in environments whose installed Chromium policy blocks local HTTP origins.
 
 ## Environment variables
 
@@ -68,12 +69,12 @@ Fresh project: run `supabase/SETUP_ALL.sql`. Existing 0.4.x installations use th
 
 ## Editorial source
 
-`content/curations/*.curation.json` is the Git-backed editorial source. Director Archive and Editorial Curation remain separate domain types.
+`content/curations/*.curation.json` is the Git-backed editorial source. Director Archive and Editorial Curation remain separate domain types. Director Archive definitions include static runtime snapshots so the public portfolio surface is not blank when live enrichment fails.
 
 ## Data sources
 
 - TMDB: film metadata, images, recommendations and JustWatch-derived provider availability.
 - KOBIS: Korean daily box office when configured.
-- KINOSIS editorial files: Arthouse Director Archive / Editorial Curation definitions.
+- KINOSIS editorial files: Arthouse Director Archive / Editorial Curation definitions and snapshot fallbacks.
 
 TMDB attribution is included in the product UI.

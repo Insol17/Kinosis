@@ -201,7 +201,7 @@ try {
     console.log('browser-smoke: SKIP — installed Chromium policy blocks local HTTP test origins');
   } else {
   await waitFor(() => cdp.eval(`document.readyState === 'complete' && !!document.querySelector('#searchTrigger')`), { label: 'app shell' });
-  await waitFor(() => cdp.eval(`document.querySelector('#accountButton')?.textContent?.includes('Browser') || !!document.querySelector('#profileCard')`), { label: 'test authentication' });
+  await waitFor(() => cdp.eval(`document.querySelector('#topAvatar')?.textContent?.includes('B') || document.querySelector('#profileCard')?.textContent?.includes('Browser')`), { label: 'test authentication' });
 
   // Search -> optimistic Detail. The mock Detail endpoint intentionally waits 450 ms.
   await cdp.eval(`document.querySelector('#searchTrigger').click(); const i=document.querySelector('#searchInput'); i.value='테스트'; i.dispatchEvent(new Event('input',{bubbles:true})); true`);
@@ -219,8 +219,7 @@ try {
   await cdp.eval(`document.querySelector('#relationshipComment').value='브라우저 한줄평'; document.querySelector('#relationshipForm').requestSubmit(); true`);
   await waitFor(() => cdp.eval(`document.querySelector('.detail-comment')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'Detail one-line comment' });
 
-  // Explicit Library membership + viewing event.
-  await cdp.eval(`document.querySelector('[data-add-library="${TEST_MOVIE_ID}"]')?.click(); true`);
+  // Rating/comment already promote the film into the current shelf; add a viewing event.
   await cdp.eval(`document.querySelector('[data-action="log"][data-id="${TEST_MOVIE_ID}"]').click(); true`);
   await waitFor(() => cdp.eval(`document.querySelector('#logDialog')?.open || false`), { label: 'viewing dialog' });
   await cdp.eval(`document.querySelector('#logDate').value='2026-08-19'; document.querySelector('#logNote').value='첫 감상 메모'; document.querySelector('#logForm').requestSubmit(); true`);
@@ -243,7 +242,7 @@ try {
   // Reload regression: local user cache must restore current relationship and viewing data.
   await cdp.send('Page.reload', { ignoreCache: true });
   await waitFor(() => cdp.eval(`document.readyState === 'complete' && !!document.querySelector('[data-nav="my"]')`), { timeout: 8000, label: 'reload' });
-  await waitFor(() => cdp.eval(`document.querySelector('#accountButton')?.textContent?.includes('Browser') || !!document.querySelector('#profileCard')`), { label: 'authentication after reload' });
+  await waitFor(() => cdp.eval(`document.querySelector('#topAvatar')?.textContent?.includes('B') || document.querySelector('#profileCard')?.textContent?.includes('Browser')`), { label: 'authentication after reload' });
   await cdp.eval(`document.querySelector('[data-nav="my"]').click(); true`);
   await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'Profile after reload' });
   await cdp.eval(`document.querySelector('[data-my-drill="reviews"]').click(); true`);
@@ -256,7 +255,7 @@ try {
   await waitFor(() => cdp.eval(`!!document.querySelector('.curation-editorial-intro') && document.querySelectorAll('.curation-chapter').length >= 3`), { timeout: 8000, label: 'authored curation detail' });
 
   assert.deepEqual(cdp.exceptions, [], `Browser runtime exceptions: ${cdp.exceptions.join('; ')}`);
-  console.log('browser-smoke: search -> optimistic detail -> rating/comment -> viewing -> non-destructive Library removal -> Profile archive -> reload -> curation OK');
+  console.log('browser-smoke: search -> optimistic detail -> auto-shelf rating/comment -> viewing -> non-destructive Library removal -> Profile archive -> reload -> curation OK');
   }
 } finally {
   try { cdp?.close(); } catch {}

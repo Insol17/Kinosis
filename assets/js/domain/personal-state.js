@@ -1,4 +1,4 @@
-export const PERSONAL_SCHEMA_VERSION = 7;
+export const PERSONAL_SCHEMA_VERSION = 8;
 
 function numberRating(value) {
   if (value === '' || value == null) return null;
@@ -108,6 +108,21 @@ export function ensureMembership(state, id, now = new Date().toISOString()) {
   if (state.meta.deletedLibrary[key]) delete state.meta.deletedLibrary[key];
   if (!state.library[key]) state.library[key] = { savedAt: now, updatedAt: now };
   return state.library[key];
+}
+
+export function promoteEngagedMemberships(state, now = new Date().toISOString()) {
+  state.library ||= {};
+  const ids = new Set();
+  for (const [id, relation] of Object.entries(state.relationships || {})) {
+    // Watchlist-only is intentionally not part of the current shelf. Any authored
+    // opinion or favorite is a stronger signal that the film belongs to the
+    // user's personal film library.
+    if (relation && (relation.rating != null || relation.comment || relation.favorite)) ids.add(String(id));
+  }
+  for (const log of state.logs || []) if (log?.movieId != null) ids.add(String(log.movieId));
+  for (const collection of state.collections || []) for (const id of collection?.movieIds || []) ids.add(String(id));
+  for (const id of ids) if (!state.library[id]) state.library[id] = { savedAt: now, updatedAt: now };
+  return [...ids];
 }
 
 export function hasRelationshipContent(value) {

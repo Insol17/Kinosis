@@ -3,7 +3,8 @@ import { createMovieLoader } from './services/movie-loader.js';
 import { createSearchController } from './features/search.js';
 import { renderDetail, patchDetail } from './features/detail.js';
 import { renderLibraryShelf, renderWatchlistShelf } from './features/library.js';
-import { buildArthousePool, selectArthouseRails } from './features/arthouse.js';
+import { selectProgrammeHeroes } from './features/arthouse.js';
+import { allocateSections, selectDiscoverHeroMovies } from './features/discovery.js';
 import { renderMovieCard } from './ui/movie-card.js';
 import { createStore } from './core/store.js';
 import { createRouter } from './core/router.js';
@@ -13,9 +14,10 @@ import { createMovieRepository } from './infrastructure/movie-repository.js';
 import {
   PERSONAL_SCHEMA_VERSION, migratePersonalShape, normalizeRelationship, normalizeMembership,
   relationshipFor, membershipFor, ensureRelationship as ensureRelationshipState,
-  ensureMembership as ensureMembershipState, hasRelationshipContent,
+  ensureMembership as ensureMembershipState, hasRelationshipContent, promoteEngagedMemberships,
 } from './domain/personal-state.js';
 import { setRelationship, addLibraryMembership, removeLibraryMembership, deletePersonalFilmData } from './domain/personal-actions.js';
+import { createDemoState } from './domain/demo-state.js';
 
 'use strict';
 
@@ -55,6 +57,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   let curationSlug = null;
   let curationPreviousView = 'arthouse';
   let currentUser = null;
+  let demoMode = false;
   let authReady = false;
   let hydratedUserId = null;
   let suppressCloudSync = true;
@@ -76,6 +79,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   let libraryQueryTimer = null;
   let libraryFilter = { q: '', sort: 'recent', relationship: 'all', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
   let libraryHydrationState = { status: 'idle', pending: 0, message: '' };
+  let pendingCollectionMovieId = null;
 
 
   const relatedState = new Map();
@@ -228,20 +232,6 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return !!artInfo(record).isArt;
   }
 
-  function arthouseCuratedMovies() {
-    const curations = CURATIONS?.forSurface?.('arthouse') || [];
-    return uniqueById(curations.flatMap((item) => curationMovies(item)));
-  }
-
-  function artPool() {
-    return buildArthousePool({
-      curated: arthouseCuratedMovies(),
-      staticArt: CATALOG.sections?.art || [],
-      catalog: CATALOG.movies || [],
-      classify: artInfo,
-    });
-  }
-
   function isInTheatres(record) {
     if (!record) return false;
     return theatreIds.has(String(record.id))
@@ -285,6 +275,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function normalizeState(parsed) {
     const base = initialState();
     const source = parsed || {};
+    const sourceSchemaVersion = Number(source?.meta?.syncVersion || 0);
     const personal = migratePersonalShape(source, { today: isoDate(new Date()) });
     const normalized = Object.assign(base, source, {
       profile: Object.assign(base.profile, source.profile || {}),
@@ -320,6 +311,10 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       createdAt: collection.createdAt || '1970-01-01T00:00:00.000Z',
       updatedAt: collection.updatedAt || collection.createdAt || '1970-01-01T00:00:00.000Z',
     }));
+    // Schema v8 introduced automatic shelf promotion for authored engagement.
+    // Run it once while migrating legacy state; a deliberate later 'remove from
+    // shelf' must survive reload/cloud normalization until the user engages again.
+    if (sourceSchemaVersion < PERSONAL_SCHEMA_VERSION) promoteEngagedMemberships(normalized, normalized.meta.modifiedAt || new Date().toISOString());
     return normalized;
   }
 
@@ -492,11 +487,15 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   function isSignedIn() {
-    return !!currentUser;
+    return !!currentUser || demoMode;
+  }
+
+  function hasCloudAccount() {
+    return !!currentUser && !demoMode;
   }
 
   function persistLocalCache() {
-    if (!isSignedIn()) return;
+    if (!hasCloudAccount()) return;
     const key = userCacheKey();
     if (key) localStorage.setItem(key, JSON.stringify(state));
   }
@@ -509,7 +508,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       state.meta.dirtySince = state.meta.dirtySince || state.meta.modifiedAt;
     }
     persistLocalCache();
-    if (sync && isSignedIn() && !suppressCloudSync) scheduleCloudSync();
+    if (sync && hasCloudAccount() && !suppressCloudSync) scheduleCloudSync();
   }
 
   function rememberCachedMovies() {
@@ -524,7 +523,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   async function pushCloudState() {
-    if (!isSignedIn() || !CLOUD) return;
+    if (!hasCloudAccount() || !CLOUD) return;
     clearTimeout(syncTimer);
     syncState.status = navigator.onLine ? 'syncing' : 'error';
     renderAccountChrome();
@@ -572,7 +571,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   async function pullCloudState({ force = false } = {}) {
-    if (!isSignedIn() || !CLOUD || !navigator.onLine) return;
+    if (!hasCloudAccount() || !CLOUD || !navigator.onLine) return;
     if (!force && Date.now() - lastCloudPullAt < 15000) return;
     lastCloudPullAt = Date.now();
     try {
@@ -648,7 +647,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   async function hydrateSignedInUser() {
-    if (!isSignedIn() || !CLOUD) return;
+    if (!hasCloudAccount() || !CLOUD) return;
     suppressCloudSync = true;
     syncState.status = 'syncing';
     try {
@@ -706,8 +705,14 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return ensureMembershipState(state, id, new Date().toISOString());
   }
 
-  // Compatibility name for older call sites. Relationships no longer imply
-  // Library membership; explicit Library actions own that lifecycle.
+  function ensureShelfForEngagement(id) {
+    const row = ensureMembershipState(state, id, new Date().toISOString());
+    row.updatedAt = new Date().toISOString();
+    return row;
+  }
+
+  // Compatibility helper for relationship-only actions such as Watchlist.
+  // Engagement call sites explicitly promote to the current shelf; watchlist-only does not.
   function ensureLib(id) {
     return ensureRelationship(id, { addToLibrary: false });
   }
@@ -914,14 +919,43 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return false;
   }
 
+  function enterDemoMode() {
+    demoMode = true;
+    currentUser = null;
+    hydratedUserId = null;
+    suppressCloudSync = true;
+    replaceState(normalizeState(createDemoState(CATALOG.movies || [], initialState)), 'demo-enter');
+    rememberCachedMovies();
+    suppressCloudSync = false;
+    syncState = { status: 'demo', lastSyncedAt: null, message: '' };
+    UI.closeDialog('authDialog');
+    setView('library', { skipGate: true, route: 'replace' });
+    libraryMode = 'all';
+    renderAll();
+    hydrateReferencedMovies().catch(() => {});
+    UI.toast('데모 모드입니다. 변경 내용은 이 세션에만 유지됩니다.');
+  }
+
+  function exitDemoMode() {
+    if (!demoMode) return;
+    demoMode = false;
+    replaceState(initialState(), 'demo-exit');
+    syncState = { status: 'guest', lastSyncedAt: null, message: '' };
+    setView('discover', { skipGate: true, route: 'replace' });
+    renderAll();
+    UI.toast('데모 모드를 종료했습니다.');
+  }
+
   function renderAccountChrome() {
     const avatar = document.getElementById('topAvatar');
     if (!avatar) return;
     if (isSignedIn()) {
-      const label = currentUser?.user_metadata?.full_name || currentUser?.user_metadata?.name || currentUser?.email || 'U';
+      const label = demoMode ? 'D' : (currentUser?.user_metadata?.full_name || currentUser?.user_metadata?.name || currentUser?.email || 'U');
       avatar.textContent = String(label).trim()[0]?.toUpperCase() || 'U';
     } else avatar.textContent = 'K';
     document.querySelectorAll('[data-nav="library"],[data-nav="my"]').forEach((element) => element.classList.toggle('nav-locked', !isSignedIn()));
+    const accountAction = document.querySelector('[data-account-action="signout"]');
+    if (accountAction) accountAction.textContent = demoMode ? '데모 종료' : '로그아웃';
   }
 
   async function refreshWatchlistAvailability(force = false) {
@@ -995,27 +1029,51 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   function heroKeyForElement(id) { return id === 'arthouseHero' ? 'arthouse' : 'discover'; }
   function heroSlidePool(key) {
-    if (key === 'arthouse') return artPool().filter((record) => backdrop(record)).slice(0, 5);
+    if (key === 'arthouse') {
+      const programmes = CURATIONS.forSurface('arthouse');
+      return selectProgrammeHeroes(programmes, curationMovies, curationHeroMovie, 5).map(({ programme, movie: heroMovie }) => ({
+        ...(heroMovie || {}), id: `curation:${programme.slug}`, heroKey: `curation:${programme.slug}:${heroMovie?.id || 'programme'}`, heroType: 'curation', curationSlug: programme.slug,
+        title: programme.title, originalTitle: programme.subtitle || '', description: programme.description || '', programmeKind: programme.kind,
+        programmeEyebrow: programme.kind === 'editorial' ? 'KINOSIS CURATION' : 'DIRECTOR ARCHIVE',
+        director: programme.kind === 'director-archive' ? (programme.subtitle || programme.source?.name || '') : (heroMovie?.director || ''), sourceMovieId: heroMovie?.id ? String(heroMovie.id) : '',
+      }));
+    }
     const preferred = CATALOG.featuredSlides || [];
     const upcoming = upcomingState.status === 'ready' ? upcomingState.results : (CATALOG.sections?.upcoming || []);
-    return uniqueById([CATALOG.featured, ...preferred, ...(CATALOG.sections?.boxOffice || []), ...(CATALOG.sections?.theatres || []), ...upcoming, ...(CATALOG.sections?.rated || [])]).filter((record) => backdrop(record)).slice(0, 5);
+    const editorial = CURATIONS.forSurface('arthouse').find((item) => item.kind === 'editorial');
+    const editorialMovie = editorial ? curationHeroMovie(editorial) : null;
+    const editorialSlide = editorial ? {
+      ...(editorialMovie || {}), id: `curation:${editorial.slug}`, heroKey: `curation:${editorial.slug}:${editorialMovie?.id || 'programme'}`, heroType: 'curation', curationSlug: editorial.slug,
+      title: editorial.title, originalTitle: editorial.subtitle || '', description: editorial.description || '', programmeKind: editorial.kind, programmeEyebrow: 'KINOSIS CURATION',
+      sourceMovieId: editorialMovie?.id ? String(editorialMovie.id) : '',
+    } : null;
+    const withBackdrop = (rows) => uniqueById(rows || []).filter((record) => backdrop(record));
+    const heroMovies = selectDiscoverHeroMovies({
+      featured: withBackdrop([CATALOG.featured, ...preferred]),
+      boxOffice: withBackdrop(boxOfficeState.status === 'ready' ? boxOfficeState.results : (CATALOG.sections?.boxOffice || CATALOG.sections?.theatres || [])),
+      upcoming: withBackdrop(upcoming),
+      rated: withBackdrop(CATALOG.sections?.rated || []),
+    }, 4).map((record) => ({ ...record, heroType: 'movie', heroKey: `movie:${record.id}` }));
+    const used = new Set(editorialMovie?.id ? [String(editorialMovie.id)] : []);
+    return [editorialSlide, ...heroMovies.filter((record) => !used.has(String(record.id)))].filter(Boolean).slice(0, 5);
   }
 
   function heroSlideMarkup(record, key, index) {
-    const providers = heroProviders(record);
-    const title = record.logoUrl
+    const isCuration = record.heroType === 'curation';
+    const providers = isCuration ? [] : heroProviders(record);
+    const title = !isCuration && record.logoUrl
       ? `<div class="hero-title-wrap"><img class="hero-title-logo" data-hero-title-logo src="${escapeHtml(record.logoUrl)}" alt="${escapeHtml(record.title)}"><h2 class="${heroTitleClass(record.title)}" hidden>${escapeHtml(record.title)}</h2></div>`
       : `<h2 class="${heroTitleClass(record.title)}">${escapeHtml(record.title)}</h2>`;
-    return `<article class="hero-slide ${index === 0 ? 'is-active' : ''}" data-hero-slide="${index}" aria-hidden="${index === 0 ? 'false' : 'true'}">
-      <img class="hero-bg" src="${escapeHtml(backdrop(record))}" alt="" ${index ? 'loading="lazy"' : ''}>
-      <button class="hero-slide-open" data-hero-open="${escapeHtml(record.id)}" tabindex="${index === 0 ? '0' : '-1'}" aria-label="${escapeHtml(record.title)} 상세 보기"></button>
-      <div class="hero-content" aria-hidden="true">
-        <div class="hero-badges"><span class="mini-badge accent">${key === 'arthouse' ? 'ARTHOUSE' : 'FEATURED'}</span>${isInTheatres(record) ? '<span class="mini-badge">극장 상영 중</span>' : ''}</div>
-        ${title}
-        <div class="hero-meta"><span>${escapeHtml(record.director || '감독 정보 없음')}</span><span>·</span><span>${record.year || '—'}</span>${record.runtime ? `<span>·</span><span>${fmtRuntime(record.runtime)}</span>` : ''}</div>
-        <div class="hero-watch"><div class="hero-provider-list">${providers.map((provider) => providerMarkHtml(provider, 'hero-provider')).join('')}</div>${isInTheatres(record) ? `<span class="hero-cinema">${icon('cinema')} 극장 상영</span>` : ''}</div>
-        <span class="hero-open-hint">영화 상세 보기 →</span>
-      </div>
+    const background = backdrop(record);
+    const meta = isCuration
+      ? `<div class="hero-meta"><span>${escapeHtml(record.programmeKind === 'director-archive' ? (record.originalTitle || record.director || '') : (record.originalTitle || 'KINOSIS Editorial'))}</span></div>`
+      : `<div class="hero-meta">${record.director ? `<span>${escapeHtml(record.director)}</span><span>·</span>` : ''}<span>${record.year || '—'}</span>${record.runtime ? `<span>·</span><span>${fmtRuntime(record.runtime)}</span>` : ''}</div>`;
+    return `<article class="hero-slide ${isCuration ? 'is-programme-slide' : ''} ${index === 0 ? 'is-active' : ''}" data-hero-slide="${index}" aria-hidden="${index === 0 ? 'false' : 'true'}">
+      ${background ? `<img class="hero-bg" src="${escapeHtml(background)}" alt="" ${index ? 'loading="lazy"' : ''}>` : '<div class="hero-bg hero-programme-fallback" aria-hidden="true"></div>'}
+      <button class="hero-slide-open" data-hero-open="${escapeHtml(isCuration ? record.curationSlug : record.id)}" data-hero-type="${isCuration ? 'curation' : 'movie'}" tabindex="${index === 0 ? '0' : '-1'}" aria-label="${escapeHtml(record.title)} ${isCuration ? '큐레이션 보기' : '상세 보기'}"></button>
+      <div class="hero-content" aria-hidden="true"><div class="hero-badges"><span class="mini-badge accent">${escapeHtml(isCuration ? (record.programmeEyebrow || 'CURATION') : (key === 'arthouse' ? 'ARTHOUSE' : 'FEATURED'))}</span>${!isCuration && isInTheatres(record) ? '<span class="mini-badge">극장 상영 중</span>' : ''}</div>${title}${meta}
+        ${isCuration ? `<p class="hero-programme-copy">${escapeHtml(record.description || '')}</p>` : `<div class="hero-watch"><div class="hero-provider-list">${providers.map((provider) => providerMarkHtml(provider, 'hero-provider')).join('')}</div>${isInTheatres(record) ? `<span class="hero-cinema">${icon('cinema')} 극장 상영</span>` : ''}</div>`}
+        <span class="hero-open-hint">${isCuration ? '큐레이션 보기 →' : '영화 상세 보기 →'}</span></div>
     </article>`;
   }
 
@@ -1023,7 +1081,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (heroController) return heroController;
     heroController = HERO_CAROUSEL_FACTORY?.create?.({
       icon,
-      openMovie,
+      openSlide: async (type, target) => { if (type === 'curation') await openCuration(target); else await openMovie(target); },
       renderSlide: heroSlideMarkup,
       getActiveView: () => activeView,
       interval: 7200,
@@ -1037,8 +1095,13 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const element = document.getElementById(elementId);
     if (!element) return;
     const key = heroKeyForElement(elementId);
-    const slides = uniqueById(records || heroSlidePool(key)).slice(0, 5);
-    if (!slides.length) { element.innerHTML = '<div class="empty-state">카탈로그를 불러오지 못했습니다.</div>'; return; }
+    const seen = new Set();
+    const slides = (records || heroSlidePool(key)).filter((record) => {
+      const signature = String(record?.heroKey || record?.id || '');
+      if (!signature || seen.has(signature)) return false;
+      seen.add(signature); return true;
+    }).slice(0, 5);
+    if (!slides.length) { element.innerHTML = '<div class="empty-state">표시할 프로그램을 준비하지 못했습니다.</div>'; return; }
     getHeroController().render(element, key, slides, requestedIndex);
   }
 
@@ -1088,20 +1151,16 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (curationLoader) return curationLoader;
     curationLoader = CURATION_LOADER_FACTORY?.create?.({
       fetchDirector: async (item) => {
-        const source = item.source || {};
-        const params = new URLSearchParams();
-        if (source.personId) params.set('id', source.personId);
-        else params.set('name', source.name || '');
-        params.set('sort', source.sort || 'release_asc');
-        params.set('mode', source.mode || 'all-directed');
-        if (source.include?.length) params.set('include', source.include.join(','));
-        if (source.exclude?.length) params.set('exclude', source.exclude.join(','));
-        const data = await apiJson(`/api/director-filmography?${params.toString()}`);
-        return data.results || [];
+        const source = item.source || {}; const params = new URLSearchParams();
+        if (source.personId) params.set('id', source.personId); else params.set('name', source.name || '');
+        params.set('sort', source.sort || 'release_asc'); params.set('mode', source.mode || 'all-directed');
+        if (source.include?.length) params.set('include', source.include.join(',')); if (source.exclude?.length) params.set('exclude', source.exclude.join(','));
+        const data = await apiJson(`/api/director-filmography?${params.toString()}`); return data.results || [];
       },
-      fallbackDirector: async (item) => (CATALOG.movies || []).filter((record) => normalizeText(record.director) === normalizeText(item.source.name)),
+      fallbackDirector: async (item) => [...(item?.source?.snapshot || []), ...(CATALOG.movies || []).filter((record) => normalizeText(record.director) === normalizeText(item.source.name))],
       normalizeRows: (rows) => uniqueById((rows || []).map((record) => rememberMovie(record, { persist: false })).filter(Boolean)),
-    }) || { ensure: async () => ({ changed: false, rows: null }), peek: () => null };
+    }) || { ensure: async () => ({ changed: false, rows: null }), retry: async () => ({ changed: false, rows: null }), seed: () => [], peek: () => null, state: () => ({ status: 'idle', rows: [] }) };
+    for (const item of CURATIONS.all()) if (item.kind === 'director-archive') curationLoader.seed?.(item);
     return curationLoader;
   }
 
@@ -1114,57 +1173,68 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function curationMovieIds(item) {
     if (!item) return [];
     if (item.kind === 'editorial') return explicitCurationMovieIds(item);
-    const dynamic = getCurationLoader().peek(item.slug);
+    const loader = getCurationLoader(); const dynamic = loader.peek(item.slug) || loader.seed?.(item) || [];
     return dynamic?.length ? dynamic.map((record) => String(record.id)) : explicitCurationMovieIds(item);
   }
+
   function curationMovies(item) { return curationMovieIds(item).map((id) => movie(id)).filter(Boolean); }
   function curationHeroMovie(item) { return movie(item?.heroMovieId) || curationMovies(item)[0] || null; }
   async function hydrateCurationIds(ids, concurrency = 5) { let cursor = 0; const workers = Array.from({ length: Math.min(concurrency, ids.length) }, async () => { while (cursor < ids.length) { const id = ids[cursor++]; await ensureMovieDetail(id,{persist:false}).catch(()=>null); } }); await Promise.all(workers); }
 
   async function ensureCurationMovies(item) {
-    if (!item || !canUseLiveApi()) return false;
+    if (!item) return false;
     if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      const result = await getCurationLoader().ensure(item);
-      return !!result?.changed;
+      getCurationLoader().seed?.(item); if (!canUseLiveApi()) return false;
+      const result = await getCurationLoader().ensure(item); return !!result?.changed;
     }
-    const missing = explicitCurationMovieIds(item).filter((id) => !movie(id));
-    if (!missing.length) return false;
-    await hydrateCurationIds(missing, 5);
-    return true;
+    if (!canUseLiveApi()) return false;
+    const missing = explicitCurationMovieIds(item).filter((id) => !movie(id)); if (!missing.length) return false;
+    await hydrateCurationIds(missing, 5); return true;
   }
 
   async function ensureCurationPreview(item) {
-    if (!item || !canUseLiveApi()) return false;
+    if (!item) return { changed: false, stateChanged: false };
     if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      const result = await getCurationLoader().ensure(item);
-      return !!result?.changed;
+      getCurationLoader().seed?.(item);
+      if (!canUseLiveApi()) return { changed: false, stateChanged: false };
+      return getCurationLoader().ensure(item);
     }
+    if (!canUseLiveApi()) return { changed: false, stateChanged: false };
     const missing = explicitCurationMovieIds(item).filter((id) => !movie(id));
-    if (!missing.length) return false;
+    if (!missing.length) return { changed: false, stateChanged: false };
     const loader = getMovieLoader();
     if (loader) await loader.loadSummaries(missing, { persist: false });
     else await hydrateCurationIds(missing, 4);
-    return true;
+    return { changed: true, stateChanged: false };
   }
 
   function curationRail(item) {
     if (!item) return '';
     const films = curationMovies(item).slice(0, 10);
     const isArchive = item.kind === 'director-archive';
-    const rail = films.length
-      ? films.map((record) => card(record, 'arthouse')).join('')
-      : Array.from({ length: 7 }, () => `<article class="movie-card arthouse-movie-card is-metadata-loading curation-rail-placeholder"><div class="poster-wrap"><div class="poster-loading"><span class="loading-ring mini"></span><small>LOADING</small></div></div><div class="card-info"><p class="card-title">영화 정보 불러오는 중</p><div class="card-meta"><span>동기화 중…</span></div></div></article>`).join('');
-    const kicker = isArchive ? 'DIRECTOR ARCHIVE' : 'EDITORIAL';
+    const loadState = isArchive ? getCurationLoader().state?.(item.slug) : { status: 'ready' };
+    let rail = '';
+    if (films.length) rail = films.map((record) => card(record, 'arthouse')).join('');
+    else if (loadState?.status === 'error') rail = `<div class="curation-load-error"><b>필모그래피를 불러오지 못했습니다.</b><span>저장된 아카이브도 사용할 수 없습니다.</span><button class="secondary-button" data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`;
+    else rail = Array.from({ length: 6 }, () => `<article class="movie-card arthouse-movie-card is-metadata-loading curation-rail-placeholder"><div class="poster-wrap"><div class="poster-loading"><span class="loading-ring mini"></span><small>LOADING</small></div></div><div class="card-info"><p class="card-title">필모그래피 불러오는 중</p></div></article>`).join('');
+    const kicker = isArchive ? 'DIRECTOR ARCHIVE' : 'KINOSIS CURATION';
     const subtitle = item.subtitle ? `<span class="curation-rail-subtitle">${escapeHtml(item.subtitle)}</span>` : '';
-    return `<section class="content-section curation-rail-section"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${kicker}</p><h2>${escapeHtml(item.title)}</h2>${subtitle}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div>${railFrame(rail, 'poster-row arthouse-poster-row curation-poster-rail')}</section>`;
+    const archiveStatus = isArchive && films.length && loadState?.status === 'error'
+      ? `<div class="curation-inline-status is-error"><span>저장된 아카이브 표시 중 · 실시간 갱신 실패</span><button data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`
+      : '';
+    return `<section class="content-section curation-rail-section" data-programme-kind="${isArchive ? 'archive' : 'editorial'}"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${kicker}</p><h2>${escapeHtml(item.title)}</h2>${subtitle}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}${archiveStatus}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div>${films.length ? railFrame(rail, 'poster-row arthouse-poster-row curation-poster-rail') : rail}</section>`;
   }
-
 
   function myStreamingSection(title = '내 구독 서비스에서', source = null, variant = 'discover') {
     if (!isSignedIn()) return '';
     if (!(state.subscriptions || []).length) return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>프로필 → 설정에서 이용 중인 OTT를 먼저 선택하세요.</p></div></div></section>`;
-    const list = (source || myStreamingMovies()).filter(availableOnMine);
+    const sourceProvided = Array.isArray(source);
+    const allMine = myStreamingMovies().filter(availableOnMine);
+    const list = (sourceProvided ? source : allMine).filter(availableOnMine);
     if (list.length) return rowSection(title, myStreamingState.status === 'ready' ? '선택한 OTT의 대한민국 구독 제공작을 실시간으로 탐색합니다.' : '구독 서비스에서 확인된 영화.', list, 14, variant);
+    // If allocation removed every item because it already appeared above, omit
+    // this rail rather than falsely claiming the subscription has no movies.
+    if (sourceProvided && allMine.length) return '';
     if (myStreamingState.status === 'loading') return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>구독 서비스의 최신 제공작을 불러오는 중입니다.</p></div></div><div class="rail-loading"></div></section>`;
     return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>현재 확인된 구독 제공작이 없습니다.</p></div></div></section>`;
   }
@@ -1214,44 +1284,33 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return `<section class="content-section"><div class="section-head"><div><h2>공개 예정작</h2></div></div>${railFrame(rows.map((record)=>`<div class="upcoming-card">${card(record)}<time>${record.releaseDate?formatDate(record.releaseDate):''}</time></div>`).join(''))}</section>`;
   }
   function renderDiscover({ hero = true, streaming = true, upcoming = true } = {}) {
-    if (hero) renderHeroCarousel('hero', heroSlidePool('discover'));
+    const heroSlides = heroSlidePool('discover'); if (hero) renderHeroCarousel('hero', heroSlides);
     if (boxOfficeState.status === 'idle') loadLiveBoxOffice().catch(() => {});
     if (upcoming && (CATALOG.sections?.upcoming || []).length < 7 && upcomingState.status === 'idle') loadLiveUpcoming().catch(() => {});
     if (streaming && isSignedIn() && (state.subscriptions || []).length) loadMyStreaming().catch(() => {});
-    let html='';
-    const exactBoxOffice = boxOfficeState.status === 'ready'
-      ? boxOfficeState.results
-      : (CATALOG.sources?.boxOffice?.mode === 'kobis' ? CATALOG.sections?.boxOffice || [] : []);
-    html+=exactBoxOffice.length
-      ? rankedSection(exactBoxOffice, { exact: true })
-      : rankedSection(CATALOG.sections?.theatres || [], { exact: false });
-    const upcomingRows = upcomingState.status === 'ready' && upcomingState.results.length
-      ? upcomingState.results
-      : (CATALOG.sections?.upcoming?.length ? CATALOG.sections.upcoming : (CATALOG.movies || []).filter((record) => record.releaseDate && Date.parse(record.releaseDate) > Date.now()).sort((a, b) => String(a.releaseDate).localeCompare(String(b.releaseDate))));
-    html += upcomingSection(upcomingRows);
-    html+=isSignedIn()?myStreamingSection('내 구독 서비스에서',null,'discover'):guestStreamingPrompt();
-    html+=rowSection('높은 평가를 받은 영화','',CATALOG.sections?.rated||[],14,'discover');
-    document.getElementById('discoverContent').innerHTML=html;
+    const rawBoxOffice = boxOfficeState.status === 'ready' ? boxOfficeState.results : (CATALOG.sources?.boxOffice?.mode === 'kobis' ? CATALOG.sections?.boxOffice || [] : (CATALOG.sections?.theatres || []));
+    const rawUpcoming = upcomingState.status === 'ready' && upcomingState.results.length ? upcomingState.results : (CATALOG.sections?.upcoming?.length ? CATALOG.sections.upcoming : (CATALOG.movies || []).filter((record) => record.releaseDate && Date.parse(record.releaseDate) > Date.now()).sort((a, b) => String(a.releaseDate).localeCompare(String(b.releaseDate))));
+    const heroMovieIds = heroSlides.map((slide) => slide.heroType === 'curation' ? slide.sourceMovieId : slide.id).filter(Boolean).map(String);
+    const rawStreaming = isSignedIn() ? myStreamingMovies().filter(availableOnMine) : [];
+    const rawRated = uniqueById([...(CATALOG.sections?.rated || []), ...(CATALOG.movies || []).filter((record) => Number(record.voteAverage || 0) > 0 && Number(record.voteCount || 0) >= 100)]);
+    const allocated = allocateSections({ heroMovieIds, boxOffice: rawBoxOffice, upcoming: rawUpcoming, streaming: rawStreaming, rated: rawRated });
+    let html = '';
+    if (allocated.boxOffice.length) html += rankedSection(allocated.boxOffice, { exact: boxOfficeState.status === 'ready' || CATALOG.sources?.boxOffice?.mode === 'kobis' });
+    html += upcomingSection(allocated.upcoming);
+    html += isSignedIn() ? myStreamingSection('내 구독 서비스에서', allocated.streaming, 'discover') : guestStreamingPrompt();
+    html += rowSection('높은 평가를 받은 영화', '평가 수를 함께 반영한 가중 평점 순', allocated.rated, 14, 'discover');
+    document.getElementById('discoverContent').innerHTML = html;
   }
+
   function renderArthouse() {
-    const art = artPool();
-    renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'));
     const allCurations = CURATIONS.forSurface('arthouse');
-    const programmedIds = new Set(allCurations.flatMap((item) => curationMovies(item).slice(0, 10).map((record) => String(record.id))));
-    const { latest, rated } = selectArthouseRails({ pool: art, programmedIds });
-    // Programme rails are the primary Arthouse surface. Generic rails only use
-    // remaining candidates so the same famous titles do not repeat everywhere.
-    let html = allCurations.map(curationRail).join('');
-    if (latest.length) html += rowSection('최근 공개된 작가영화','',latest,14,'arthouse');
-    if (rated.length) html += rowSection('다시 볼 만한 작품','',rated,14,'arthouse');
-    document.getElementById('arthouseContent').innerHTML = html;
+    renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'));
+    document.getElementById('arthouseContent').innerHTML = allCurations.map(curationRail).join('');
     Promise.allSettled(allCurations.map(ensureCurationPreview)).then((results) => {
-      const changed = results.some((result) => result.status === 'fulfilled' && result.value);
+      const changed = results.some((result) => result.status === 'fulfilled' && (result.value?.changed || result.value?.stateChanged));
       if (changed && activeView === 'arthouse') renderArthouse();
     }).catch(() => {});
   }
-
-
 
   function renderCollectionsSide() {
     const element = document.getElementById('collectionSideLinks');
@@ -1375,7 +1434,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const name = state.profile.name || currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'KINOSIS User';
     const initial = name[0]?.toUpperCase() || 'K';
     const recentCover = recent && !recent.metadataLoading && (recent.backdropUrl || recent.posterUrl) ? backdrop(recent) : '';
-    element.innerHTML = `<section class="profile-hero"><div class="profile-cover">${recentCover ? `<img src="${escapeHtml(recentCover)}" alt="">` : ''}</div><div class="profile-main"><div class="profile-identity"><div class="profile-left"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '')}</p><p class="profile-email">${escapeHtml(currentUser?.email || '')}</p></div></div><button class="secondary-button" id="editProfile">${icon('edit')} 프로필 수정</button></div><div class="profile-counts"><button class="profile-count" data-my-drill="films"><strong>${counts.films}</strong><span>영화</span></button><button class="profile-count" data-my-drill="ratings"><strong>${counts.ratings}</strong><span>평가</span></button><button class="profile-count" data-my-drill="reviews"><strong>${counts.reviews}</strong><span>한줄평</span></button><button class="profile-count" data-my-drill="collections"><strong>${counts.collections}</strong><span>컬렉션</span></button></div></div></section>`;
+    element.innerHTML = `<section class="profile-hero"><div class="profile-cover">${recentCover ? `<img src="${escapeHtml(recentCover)}" alt="">` : ''}</div><div class="profile-main"><div class="profile-identity"><div class="profile-left"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '')}</p><p class="profile-email">${demoMode ? 'SESSION DEMO · 저장되지 않음' : escapeHtml(currentUser?.email || '')}</p></div></div><button class="secondary-button" id="editProfile">${icon('edit')} 프로필 수정</button></div><div class="profile-counts"><button class="profile-count" data-my-drill="films"><strong>${counts.films}</strong><span>감상 영화</span></button><button class="profile-count" data-my-drill="ratings"><strong>${counts.ratings}</strong><span>평가</span></button><button class="profile-count" data-my-drill="reviews"><strong>${counts.reviews}</strong><span>한줄평</span></button><button class="profile-count" data-my-drill="collections"><strong>${counts.collections}</strong><span>컬렉션</span></button></div></div></section>`;
   }
 
   function viewingTimeline(logs = latestLogs()) {
@@ -1401,6 +1460,18 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     return `<div class="review-archive-list">${rows.map(({ record, relation }) => {
       const image = record.metadataLoading ? '<span class="review-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="review-poster-loading is-empty"></span>';
       return `<article class="review-archive-row"><button class="review-main" data-movie="${escapeHtml(record.id)}">${image}<div><div class="review-title">${escapeHtml(record.title)}</div><div class="review-meta">${relation.rating ? `★ ${relation.rating} · ` : ''}${formatDate(relation.updatedAt)}</div><div class="review-text">${escapeHtml(relation.comment)}</div></div></button><button class="secondary-button mini" data-edit-relationship="${escapeHtml(record.id)}">수정</button></article>`;
+    }).join('')}</div>`;
+  }
+
+  function ratingArchiveHtml() {
+    const rows = Object.entries(state.relationships || {})
+      .filter(([, relation]) => relation?.rating != null)
+      .map(([id, relation]) => ({ record: personalMovie(id), relation }))
+      .sort((a, b) => String(b.relation.updatedAt || '').localeCompare(String(a.relation.updatedAt || '')));
+    if (!rows.length) return '<div class="empty-state"><b>아직 평가한 영화가 없습니다.</b><span>영화 상세에서 별점을 남기면 이곳에 모입니다.</span></div>';
+    return `<div class="rating-archive-list">${rows.map(({ record, relation }) => {
+      const image = record.metadataLoading ? '<span class="review-poster-loading"><span class="loading-ring mini"></span></span>' : poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="">` : '<span class="review-poster-loading is-empty"></span>';
+      return `<article class="review-archive-row rating-archive-row"><button class="review-main" data-movie="${escapeHtml(record.id)}">${image}<div><div class="review-title">${escapeHtml(record.title)}</div><div class="review-meta rating-archive-score">★ ${Number(relation.rating).toFixed(1)}</div><div class="review-text muted-review">${relation.comment ? escapeHtml(relation.comment) : '한줄평 없음'}</div></div></button><button class="secondary-button mini" data-edit-relationship="${escapeHtml(record.id)}">수정</button></article>`;
     }).join('')}</div>`;
   }
 
@@ -1436,13 +1507,16 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   function statsHtml() {
     const ratings = Object.values(state.relationships || {}).map((relation) => relation?.rating).filter((value) => value != null);
     const average = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2) : '—';
-    const hours = Math.round(state.logs.reduce((sum, log) => sum + (movie(log.movieId)?.runtime || 0), 0) / 60);
+    const knownRuntime = state.logs.reduce((sum, log) => sum + Number(movie(log.movieId)?.runtime || 0), 0);
+    const unknownRuntime = state.logs.filter((log) => !Number(movie(log.movieId)?.runtime || 0)).length;
+    const hours = Math.round(knownRuntime / 60);
     const distribution = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5].map((value) => ({ value, count: ratings.filter((rating) => rating === value).length }));
     const max = Math.max(1, ...distribution.map((row) => row.count));
-    return `<div class="stat-grid"><div class="stat-card"><strong>${state.logs.length}</strong><span>감상 기록</span></div><div class="stat-card"><strong>${hours}h</strong><span>기록된 러닝타임</span></div><div class="stat-card"><strong>${average}</strong><span>현재 평균 평점</span></div></div><div class="my-section"><h2>평점 분포</h2><div class="rating-bars">${distribution.map((row) => `<div class="rating-bar"><span>★ ${row.value}</span><div class="rating-track"><div class="rating-fill" style="width:${row.count / max * 100}%"></div></div><b>${row.count}</b></div>`).join('')}</div></div>`;
+    return `<div class="stat-grid"><div class="stat-card"><strong>${state.logs.length}</strong><span>감상 기록</span></div><div class="stat-card"><strong>${hours}h${unknownRuntime ? '+' : ''}</strong><span>확인된 러닝타임${unknownRuntime ? ` · ${unknownRuntime}회 정보 보강 중` : ''}</span></div><div class="stat-card"><strong>${average}</strong><span>현재 평균 평점</span></div></div><div class="my-section"><h2>평점 분포</h2><div class="rating-bars">${distribution.map((row) => `<div class="rating-bar"><span>★ ${row.value}</span><div class="rating-track"><div class="rating-fill" style="width:${row.count / max * 100}%"></div></div><b>${row.count}</b></div>`).join('')}</div></div>`;
   }
 
   function settingsHtml() {
+    if (demoMode) return `<div class="settings-grid"><section class="settings-card demo-settings-card"><p class="eyebrow">SESSION DEMO</p><h3>둘러보기 모드</h3><p>현재 기록은 이 브라우저 세션에만 존재하며 Cloud Sync에 저장되지 않습니다.</p><button class="secondary-button" data-demo-exit>데모 종료</button></section><section class="settings-card"><h3>구독 서비스</h3><p>데모에서는 Netflix와 WATCHA가 예시로 선택되어 있습니다. 설정을 바꿔도 세션 종료 시 초기화됩니다.</p></section></div>`;
     const syncClass = syncState.status === 'online' ? 'online' : syncState.status === 'error' ? 'error' : 'pending';
     const syncLabel = syncState.status === 'error' ? '동기화 문제' : syncState.status === 'syncing' || syncState.status === 'pending' ? '동기화 중' : '동기화됨';
     const subscriptions = PROVIDERS.map((provider) => {
@@ -1480,12 +1554,16 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       const year = new Date().getFullYear();
       const yearLogs = state.logs.filter((log) => String(log.watchedAt || '').startsWith(`${year}-`));
       const yearFilms = new Set(yearLogs.map((log) => String(log.movieId))).size;
-      const yearHours = Math.round(yearLogs.reduce((sum, log) => sum + Number(movie(log.movieId)?.runtime || 0), 0) / 60);
-      content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'my') : ''}${recentComments.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 한줄평</h2></div><button class="section-action" data-my-review-archive>전체 보기</button></div>${reviewArchiveHtml(4)}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
+      const knownYearRuntime = yearLogs.reduce((sum, log) => sum + Number(movie(log.movieId)?.runtime || 0), 0);
+      const unknownYearRuntime = yearLogs.filter((log) => !Number(movie(log.movieId)?.runtime || 0)).length;
+      const yearHours = Math.round(knownYearRuntime / 60);
+      content.innerHTML = `<section class="my-year-summary"><span>${year}</span><strong>${yearFilms}편 · ${yearHours}시간${unknownYearRuntime ? ' 이상' : ''}</strong></section>${recent.length ? rowSection('최근 감상', '', recent, 8, 'my') : ''}${recentComments.length ? `<section class="my-section"><div class="section-head"><div><h2>최근 한줄평</h2></div><button class="section-action" data-my-review-archive>전체 보기</button></div>${reviewArchiveHtml(4)}</section>` : ''}<section class="my-section">${calendarHtml()}</section>`;
     } else if (myMode === 'reviews') {
       content.innerHTML = mySubMode === 'comments'
-        ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">PROFILE / COMMENTS</p><h2>내 한줄평</h2><p>영화마다 남긴 한줄평을 확인합니다.</p></div></div>${reviewArchiveHtml()}</section>`
-        : `<section class="my-section"><div class="section-head"><div><h2>기록</h2><p>감상한 영화를 날짜순으로 확인합니다.</p></div><button class="section-action" data-my-review-archive>내 한줄평 →</button></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
+        ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">PROFILE / COMMENTS</p><h2>내 한줄평</h2><p>영화마다 남긴 현재 한줄평을 확인합니다.</p></div></div>${reviewArchiveHtml()}</section>`
+        : mySubMode === 'ratings'
+          ? `<section class="my-section"><div class="my-drill-head"><button class="secondary-button mini" data-my-log-timeline>← 기록</button><div><p class="eyebrow">PROFILE / RATINGS</p><h2>내 평가</h2><p>현재 평점을 영화별로 확인합니다.</p></div></div>${ratingArchiveHtml()}</section>`
+          : `<section class="my-section"><div class="section-head"><div><h2>감상 기록</h2><p>관람 사건을 날짜순으로 확인합니다.</p></div><div class="profile-record-links"><button class="section-action" data-my-ratings>내 평가 →</button><button class="section-action" data-my-review-archive>내 한줄평 →</button></div></div>${state.logs.length ? viewingTimeline() : '<div class="empty-state"><b>아직 감상 기록이 없습니다.</b><span>영화를 본 뒤 감상 기록을 남겨보세요.</span></div>'}</section>`;
     } else if (myMode === 'stats') {
       content.innerHTML = `<section class="my-section">${statsHtml()}</section>`;
     } else {
@@ -1576,6 +1654,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   function setCurrentRating(movieId, rating) {
     setRelationship(state, movieId, { rating }, new Date().toISOString());
+    if (rating != null) ensureShelfForEngagement(movieId);
     saveState();
     if (activeView === 'movie' && String(detailMovieId) === String(movieId)) patchMoviePage(movie(movieId), ['hero', 'activity']);
     if (activeView === 'my') renderMy();
@@ -1843,6 +1922,10 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   }
 
   function backFromMovie() {
+    if (getSearchController()?.restoreAfterDetail?.()) {
+      setView(previousView || 'discover', { skipGate: true, keepScroll: true, route: 'replace' });
+      return;
+    }
     if (canUseLiveApi() && history.state?.kinRoute && history.length > 1) history.back();
     else if (previousView === 'curation' && curationSlug) openCuration(curationSlug, { route: 'replace', from: curationPreviousView });
     else setView(previousView || 'discover', { skipGate: true, keepScroll: true, route: 'replace' });
@@ -1875,6 +1958,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
       normalizeText, uniqueMovies: uniqueById, genreNames, escapeHtml, poster, rememberMovie, lib, isSignedIn, canUseLiveApi,
       movieRepository: MOVIE_REPOSITORY, prefetchMovieDetail: (id) => getMovieLoader()?.prefetchDetail(id),
       showDialog: (id) => UI.showDialog(id),
+      closeDialog: (id) => UI.closeDialog(id),
     });
     searchController.attach();
     return searchController;
@@ -1902,10 +1986,9 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     document.getElementById('logMovieTitle').textContent = existing ? `${record.title} 기록 수정` : record.title;
     document.getElementById('logDate').value = existing?.watchedAt || isoDate(new Date());
     const relation = lib(id);
-    document.getElementById('logRatingHost').innerHTML = starRatingHtml(id, relation?.rating ?? existing?.ratingSnapshot ?? null, 'log');
-    document.getElementById('logComment').value = relation?.comment || '';
+    document.getElementById('logRatingHost').innerHTML = starRatingHtml(id, existing ? (existing.ratingSnapshot ?? null) : (relation?.rating ?? null), 'log');
+    document.getElementById('logRatingLabel').textContent = existing ? '당시 평점' : '이번 감상 평점';
     document.getElementById('logNote').value = existing?.note || '';
-    document.getElementById('logFavorite').checked = !!lib(id)?.favorite;
     const hint = document.getElementById('logRewatchHint');
     hint.textContent = existing ? (existing.rewatch ? '재관람 기록입니다.' : '첫 관람 기록입니다.') : priorCount ? `↻ ${priorCount + 1}번째 감상으로 기록됩니다.` : '첫 감상으로 기록됩니다.';
     const deleteButton = document.getElementById('deleteLogButton');
@@ -1941,25 +2024,24 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     if (!requireAuth()) return;
     const record = movie(id);
     if (record) rememberMovie(record, { persist: true });
-    const entry = ensureLib(id);
-    entry.watchlist = !entry.watchlist;
-    entry.updatedAt = new Date().toISOString();
+    const next = !lib(id)?.watchlist;
+    setRelationship(state, id, { watchlist: next }, new Date().toISOString());
     saveState();
     renderAfterPersonalChange(id, ['hero', 'activity']);
     refreshWatchlistAvailability(true).catch(() => {});
-    UI.toast(entry.watchlist ? '보고싶어요에 추가했습니다.' : '보고싶어요에서 제거했습니다.');
+    UI.toast(next ? '보고싶어요에 추가했습니다.' : '보고싶어요에서 제거했습니다.');
   }
 
   function toggleFavorite(id) {
     if (!requireAuth()) return;
     const record = movie(id);
     if (record) rememberMovie(record, { persist: true });
-    const entry = ensureLib(id);
-    entry.favorite = !entry.favorite;
-    entry.updatedAt = new Date().toISOString();
+    const next = !lib(id)?.favorite;
+    setRelationship(state, id, { favorite: next }, new Date().toISOString());
+    if (next) ensureShelfForEngagement(id);
     saveState();
     renderAfterPersonalChange(id, ['hero', 'activity']);
-    UI.toast(entry.favorite ? 'Favorite로 표시했습니다.' : 'Favorite를 해제했습니다.');
+    UI.toast(next ? '좋아요에 추가하고 내 영화장에 보관했습니다.' : '좋아요를 해제했습니다.');
   }
 
   async function addMovieToLibrary(id) {
@@ -2033,6 +2115,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   function openCollectionEditor(collection = null) {
     if (!requireAuth()) return;
+    if (collection) pendingCollectionMovieId = null;
     document.getElementById('collectionId').value = collection?.id || '';
     document.getElementById('collectionName').value = collection?.name || '';
     document.getElementById('collectionDescription').value = collection?.description || '';
@@ -2044,8 +2127,9 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   async function addToCollection(id) {
     if (!requireAuth()) return;
     if (!state.collections.length) {
+      pendingCollectionMovieId = String(id);
       openCollectionEditor();
-      UI.toast('먼저 컬렉션을 만들어주세요.');
+      UI.toast('새 컬렉션을 만들면 이 영화가 바로 추가됩니다.');
       return;
     }
     const answer = await UI.ask({
@@ -2059,6 +2143,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const collection = state.collections.find((item) => item.id === answer.select);
     if (!collection) return;
     if (!collection.movieIds.includes(String(id))) collection.movieIds.push(String(id));
+    ensureShelfForEngagement(id);
     collection.coverMovieId = collection.coverMovieId || String(id);
     collection.updatedAt = new Date().toISOString();
     const record = movie(id);
@@ -2088,8 +2173,6 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
 
   function renderStatus() {
     const live = CATALOG.mode === 'live';
-    const statusText = document.getElementById('dataStatusText');
-    if (statusText) statusText.textContent = live ? 'SYNCED' : 'LOCAL';
     document.getElementById('sourceStatus').innerHTML = `Catalog: <b>${live ? 'LIVE API SYNC' : 'LOCAL DEMO'}</b><br>Updated: ${escapeHtml(CATALOG.updatedAt || 'unknown')}<br>Region: ${escapeHtml(CATALOG.region || LOCALE.region)}<br>Auth: ${isSignedIn() ? `SIGNED IN · ${escapeHtml(syncState.status.toUpperCase())}` : 'SIGNED OUT'}`;
   }
 
@@ -2257,7 +2340,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
         if (ratingRows.length) relation.rating = ratingRows[ratingRows.length - 1].rating;
         if (reviewRows.length) relation.comment = reviewRows[reviewRows.length - 1].review.trim();
         relation.updatedAt = new Date().toISOString();
-        if (group.entries.some((row) => row.watched)) ensureMembership(matched.id);
+        if (ratingRows.length || reviewRows.length || group.entries.some((row) => row.watched)) ensureMembership(matched.id);
 
         for (const row of group.entries.filter((item) => ['diary', 'reviews'].includes(item.sourceType) && item.watchedAt)) {
           const duplicate = state.logs.some((log) => String(log.movieId) === String(matched.id) && log.watchedAt === row.watchedAt && normalizeText(log.note) === normalizeText(row.review));
@@ -2335,6 +2418,12 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const close = event.target.closest('[data-close]');
     if (close) { UI.closeDialog(close.dataset.close); return; }
 
+    const accountMenu = document.getElementById('accountMenu');
+    if (accountMenu && !accountMenu.hidden && !event.target.closest('.account-menu-wrap')) {
+      accountMenu.hidden = true;
+      document.getElementById('topAccountButton')?.setAttribute('aria-expanded', 'false');
+    }
+
     const railStep = event.target.closest('[data-rail-step]');
     if (railStep) {
       const shell = railStep.closest('.film-rail-shell');
@@ -2347,7 +2436,10 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     }
 
     const nav = event.target.closest('[data-nav]');
-    if (nav) { setView(nav.dataset.nav); return; }
+    if (nav) {
+      if (nav.dataset.nav === 'my') { myMode = 'overview'; mySubMode = 'timeline'; }
+      setView(nav.dataset.nav); return;
+    }
 
     const libraryTab = event.target.closest('[data-library]');
     if (libraryTab) { libraryMode = libraryTab.dataset.library; renderLibrary(); return; }
@@ -2358,12 +2450,13 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const myDrill = event.target.closest('[data-my-drill]');
     if (myDrill) {
       const target = myDrill.dataset.myDrill;
-      if (target === 'reviews' || target === 'ratings') { myMode = 'reviews'; mySubMode = target === 'reviews' ? 'comments' : 'timeline'; renderMy(); }
+      if (target === 'reviews' || target === 'ratings') { myMode = 'reviews'; mySubMode = target === 'reviews' ? 'comments' : 'ratings'; renderMy(); }
       else if (target === 'collections') { setView('library'); libraryMode = 'collections'; renderLibrary(); }
       else { myMode = 'reviews'; mySubMode = 'timeline'; renderMy(); }
       return;
     }
     if (event.target.closest('[data-my-review-archive]')) { myMode = 'reviews'; mySubMode = 'comments'; renderMy(); return; }
+    if (event.target.closest('[data-my-ratings]')) { myMode = 'reviews'; mySubMode = 'ratings'; renderMy(); return; }
     if (event.target.closest('[data-my-log-timeline]')) { myMode = 'reviews'; mySubMode = 'timeline'; renderMy(); return; }
 
     const relationshipFilter = event.target.closest('[data-library-relationship]');
@@ -2424,12 +2517,23 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const deleteCollectionButton = event.target.closest('[data-delete-collection]');
     if (deleteCollectionButton) { await deleteCollection(deleteCollectionButton.dataset.deleteCollection); return; }
 
+    const curationRetry = event.target.closest('[data-curation-retry]');
+    if (curationRetry) {
+      const item = CURATIONS.get(curationRetry.dataset.curationRetry);
+      if (item) { await getCurationLoader().retry?.(item); if (activeView === 'arthouse') renderArthouse(); if (activeView === 'curation') await openCuration(item.slug, { route: 'none', from: curationPreviousView }); }
+      return;
+    }
+
     const curationElement = event.target.closest('[data-curation]');
     if (curationElement) { await openCuration(curationElement.dataset.curation); return; }
     if (event.target.closest('[data-curation-back]')) { backFromCuration(); return; }
 
     const movieElement = event.target.closest('[data-movie]');
-    if (movieElement) { UI.closeDialog('dayDialog'); await openMovie(movieElement.dataset.movie); return; }
+    if (movieElement) {
+      UI.closeDialog('dayDialog');
+      if (movieElement.closest('#searchDialog')) getSearchController()?.closeForDetail?.();
+      await openMovie(movieElement.dataset.movie); return;
+    }
     if (event.target.closest('[data-movie-back]')) { backFromMovie(); return; }
 
     const curationShare = event.target.closest('[data-share-curation]');
@@ -2468,10 +2572,29 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     }
 
     if (event.target.closest('#topAccountButton')) {
-      if (isSignedIn()) { myMode = 'settings'; setView('my'); renderMy(); }
-      else UI.showDialog('authDialog');
+      if (!isSignedIn()) { UI.showDialog('authDialog'); return; }
+      const menu = document.getElementById('accountMenu');
+      const button = document.getElementById('topAccountButton');
+      const willOpen = !!menu?.hidden;
+      if (menu) menu.hidden = !willOpen;
+      button?.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       return;
     }
+    const accountNav = event.target.closest('[data-account-nav]');
+    if (accountNav) {
+      myMode = accountNav.dataset.accountNav === 'settings' ? 'settings' : 'overview';
+      mySubMode = 'timeline';
+      document.getElementById('accountMenu')?.setAttribute('hidden', '');
+      document.getElementById('topAccountButton')?.setAttribute('aria-expanded', 'false');
+      setView('my'); renderMy(); return;
+    }
+    const accountAction = event.target.closest('[data-account-action]');
+    if (accountAction?.dataset.accountAction === 'signout') {
+      if (demoMode) exitDemoMode(); else await CLOUD?.signOut();
+      return;
+    }
+    if (event.target.closest('#enterDemoButton')) { enterDemoMode(); return; }
+    if (event.target.closest('[data-demo-exit]')) { exitDemoMode(); return; }
 
     const subscription = event.target.closest('[data-subscription]');
     if (subscription) {
@@ -2648,19 +2771,18 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const logId = document.getElementById('logEntryId').value;
     const watchedAt = document.getElementById('logDate').value;
     const ratingValue = ratingFromHost(document.getElementById('logRatingHost'));
-    const comment = document.getElementById('logComment').value.trim();
     const note = document.getElementById('logNote').value.trim();
-    const favorite = document.getElementById('logFavorite').checked;
     if (!movieId || !watchedAt) return;
     const record = movie(movieId);
     if (record) rememberMovie(record, { persist: true });
     const prior = logsForMovie(movieId).filter((log) => String(log.id) !== String(logId));
     const now = new Date().toISOString();
-    const relation = ensureRelationship(movieId);
-    relation.rating = ratingValue;
-    relation.comment = comment;
-    relation.favorite = favorite;
-    relation.updatedAt = now;
+    // A new viewing is a present-tense engagement and enters the current shelf.
+    // Editing an old event must preserve a deliberate later shelf removal.
+    if (!logId) ensureShelfForEngagement(movieId);
+    // A new viewing may update the current rating; editing history must never
+    // rewrite FilmRelationship from an old snapshot.
+    if (!logId && ratingValue != null) setRelationship(state, movieId, { rating: ratingValue }, now);
     const payload = {
       movieId: String(movieId),
       watchedAt,
@@ -2690,6 +2812,7 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
     const rating = ratingFromHost(document.getElementById('relationshipRatingHost'));
     const comment = document.getElementById('relationshipComment').value.trim();
     setRelationship(state, movieId, { rating, comment }, new Date().toISOString());
+    if (rating != null || comment) ensureShelfForEngagement(movieId);
     saveState();
     UI.closeDialog('relationshipDialog');
     renderAfterPersonalChange(movieId, ['hero', 'activity']);
@@ -2721,16 +2844,25 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
         collection.updatedAt = new Date().toISOString();
       }
     } else {
-      state.collections.push({
+      const now = new Date().toISOString();
+      const pendingId = pendingCollectionMovieId;
+      const created = {
         id: `col-${Date.now()}`,
         name,
         description,
-        coverMovieId: null,
+        coverMovieId: pendingId || null,
         type: 'manual',
-        movieIds: [],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      });
+        movieIds: pendingId ? [pendingId] : [],
+        createdAt: now,
+        updatedAt: now,
+      };
+      state.collections.push(created);
+      if (pendingId) {
+        ensureShelfForEngagement(pendingId);
+        const record = movie(pendingId);
+        if (record) rememberMovie(record, { persist: true });
+      }
+      pendingCollectionMovieId = null;
       libraryMode = 'collections';
     }
     saveState();
@@ -2789,6 +2921,8 @@ import { setRelationship, addLibraryMembership, removeLibraryMembership, deleteP
   if (CLOUD) {
     CLOUD.onChange(async ({ user, error, event }) => {
       authReady = true;
+      if (demoMode && !user) { renderAccountChrome(); return; }
+      if (user && demoMode) demoMode = false;
       currentUser = user || null;
       if (error) syncState = { status: 'error', lastSyncedAt: null, message: error.message || 'Auth unavailable' };
       if (currentUser) {

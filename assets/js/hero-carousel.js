@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  function create({ icon, openMovie, renderSlide, getActiveView, interval = 7200 }) {
+  function create({ icon, openSlide, renderSlide, getActiveView, interval = 7200 }) {
     const state = new Map();
 
     function stop(key) {
@@ -52,14 +52,14 @@
       state.set(key, item);
       element.setAttribute('role', 'region');
       element.setAttribute('aria-roledescription', 'carousel');
-      element.setAttribute('aria-label', key === 'arthouse' ? 'ARTHOUSE 추천 영화' : '추천 영화');
+      element.setAttribute('aria-label', key === 'arthouse' ? 'ARTHOUSE 프로그램' : 'KINOSIS 추천');
       element.innerHTML = `<div class="hero-slides">${slides.map((record, index) => renderSlide(record, key, index)).join('')}</div>
         <button class="hero-arrow hero-prev" data-hero-dir="-1" aria-label="이전 영화">${icon('chevron-left')}</button>
         <button class="hero-arrow hero-next" data-hero-dir="1" aria-label="다음 영화">${icon('chevron-right')}</button>
         <div class="hero-dots" aria-label="배너 선택">${slides.map((_, index) => `<button class="hero-dot ${index === 0 ? 'is-active' : ''}" data-hero-index="${index}" aria-label="${index + 1}번째 배너" aria-current="${index === 0 ? 'true' : 'false'}"><span></span></button>`).join('')}</div>
         <button class="hero-autoplay" data-hero-pause aria-label="배너 자동 전환 일시정지" aria-pressed="false">${icon(reduced ? 'play' : 'pause')}</button>`;
 
-      element.querySelectorAll('[data-hero-open]').forEach((button) => button.addEventListener('click', () => openMovie(button.dataset.heroOpen)));
+      element.querySelectorAll('[data-hero-open]').forEach((button) => button.addEventListener('click', () => openSlide(button.dataset.heroType || 'movie', button.dataset.heroOpen)));
       element.querySelectorAll('[data-hero-dir]').forEach((button) => button.addEventListener('click', (event) => {
         event.stopPropagation();
         apply(element, key, item.index + Number(button.dataset.heroDir));
@@ -111,7 +111,7 @@
 
     function render(element, key, slides, requestedIndex = null) {
       if (!element || !slides?.length) return;
-      const signature = slides.map((record) => String(record.id)).join('|');
+      const signature = slides.map((record) => String(record.heroKey || record.id)).join('|');
       let item = state.get(key);
       if (!item || item.signature !== signature) item = mount(element, key, slides, signature);
       else item.slides = slides;

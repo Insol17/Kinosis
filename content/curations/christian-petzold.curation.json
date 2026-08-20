@@ -10,7 +10,31 @@
     "type": "director",
     "name": "Christian Petzold",
     "sort": "release_asc",
-    "mode": "all-directed"
+    "mode": "all-directed",
+    "personId": "2332",
+    "snapshot": [
+      {
+        "id": "471853",
+        "title": "트랜짓",
+        "originalTitle": "Transit",
+        "year": "2018",
+        "releaseDate": "2018-04-05",
+        "director": "Christian Petzold",
+        "directorId": "2332",
+        "runtime": 102
+      },
+      {
+        "id": "900379",
+        "title": "어파이어",
+        "originalTitle": "Roter Himmel",
+        "year": "2023",
+        "releaseDate": "2023-04-20",
+        "director": "Christian Petzold",
+        "directorId": "2332",
+        "runtime": 103
+      }
+    ],
+    "snapshotGeneratedAt": "2026-08-20"
   },
   "kind": "director-archive"
 }
