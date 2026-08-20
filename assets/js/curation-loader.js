@@ -44,12 +44,22 @@
       return value ? { ...value, rows: value.rows.slice() } : { status: 'idle', rows: [], source: null, error: null, updatedAt: null };
     }
 
+    function snapshotFresh(item, maxAgeMs = 30 * 24 * 60 * 60 * 1000) {
+      const stamp = Date.parse(item?.source?.snapshotGeneratedAt || 0) || 0;
+      return !!stamp && Date.now() - stamp < maxAgeMs && snapshotRows(item).length > 0;
+    }
+
     async function ensure(item, { force = false } = {}) {
       if (!item?.source || item.source.type !== 'director') return { changed: false, rows: null, status: 'idle' };
       const slug = keyFor(item.slug);
       if (!slug) return { changed: false, rows: null, status: 'idle' };
       seed(item);
       const current = states.get(slug);
+      // Portfolio-safe archives are content snapshots first. Fresh snapshots do
+      // not need a live TMDB refresh on every visit.
+      if (!force && current?.source === 'snapshot' && snapshotFresh(item)) {
+        return { changed: false, stateChanged: false, rows: current.rows, status: current.status, skipped: 'fresh-snapshot' };
+      }
       if (!force && current?.source === 'live' && (current.status === 'ready' || current.status === 'empty')) {
         return { changed: false, stateChanged: false, rows: current.rows, status: current.status };
       }

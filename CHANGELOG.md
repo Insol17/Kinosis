@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.4.5.3 — Bounded movie loading / admin Studio / unified Arthouse surface
+
+### Loading architecture
+- Added a global HIGH/MEDIUM/LOW request scheduler so Search and opened Detail are not starved by prefetch, Archive refresh or bulk hydration. Background LOW work is capped independently.
+- Reduced the summary recovery path from 20-film multi-wave work to six-film batches, two browser workers, partial failures and durable CDN caching.
+- Added an 8-second Detail client budget and a 3.5-second partial slow state; known film/personal data remains visible while external metadata is late.
+- Reduced TMDB hard timeout to 6.5 seconds and changed Director `solo-features` authoring from separate detail+credits calls to one `append_to_response=credits` call per candidate.
+- Fresh Director snapshots skip automatic live refresh for 30 days; stale/manual refresh remains explicit low-priority enrichment.
+
+### Admin-only KINOSIS Studio
+- Added the hidden Studio surface for accounts with trusted Supabase `app_metadata.user_role=admin`. Demo remains a local mode, not an account role.
+- Added `supabase/005_kinosis_0453.sql`: `editorial_programmes`, Draft/Published/Archived lifecycle, admin-only RLS writes and a public Published/Archived projection.
+- Added Editorial and Director Archive authoring flows, TMDB film search, order/note editing, Director snapshot sync, preview, publish and archive.
+- Dynamic published definitions override Git fallback definitions by slug; archived tombstones can suppress a static programme without deleting source history.
+
+### Curation / Arthouse design
+- Simplified Editorial Curation to short introduction + ordered films + concise film notes. New content no longer uses forced magazine-style chapters.
+- Kept Director Archive as a compact decade-grouped filmography.
+- Unified typography across all KINOSIS surfaces. Arthouse differentiation now comes from a restrained film/archive surface layer—grain, thin frame, perforation rule and film-card framing—rather than a separate font family.
+
+### Quality
+- Added regression coverage for trusted admin claims, Studio/RLS lifecycle, request lane capacity, summary batch bounds, fresh-snapshot TTL, single-request Director filtering and the simplified Curation grammar.
+
+
 ## 0.4.5.2 — Coherence / Arthouse reliability / portfolio demo
 
 ### Personal Film Library rules

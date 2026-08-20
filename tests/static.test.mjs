@@ -6,11 +6,11 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const required = [
-  'index.html','assets/css/app.css','assets/js/app.js','assets/js/core/store.js','assets/js/core/router.js','assets/js/core/movie-entities.js','assets/js/core/performance.js',
-  'assets/js/domain/personal-state.js','assets/js/domain/personal-actions.js','assets/js/domain/demo-state.js','assets/js/infrastructure/api-client.js','assets/js/infrastructure/movie-repository.js','assets/js/services/movie-loader.js',
-  'assets/js/features/search.js','assets/js/features/detail.js','assets/js/features/library.js','assets/js/features/arthouse.js','assets/js/features/discovery.js','assets/js/ui/movie-card.js','assets/js/cloud.js','assets/js/ui.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js',
+  'index.html','assets/css/app.css','assets/js/app.js','assets/js/core/store.js','assets/js/core/router.js','assets/js/core/movie-entities.js','assets/js/core/performance.js','assets/js/core/request-scheduler.js',
+  'assets/js/domain/personal-state.js','assets/js/domain/personal-actions.js','assets/js/domain/demo-state.js','assets/js/domain/auth-role.js','assets/js/infrastructure/api-client.js','assets/js/infrastructure/movie-repository.js','assets/js/services/movie-loader.js',
+  'assets/js/features/search.js','assets/js/features/detail.js','assets/js/features/library.js','assets/js/features/arthouse.js','assets/js/features/discovery.js','assets/js/features/studio.js','assets/js/ui/movie-card.js','assets/js/cloud.js','assets/js/ui.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js',
   'data/catalog.js','data/curations.js','data/curations.json','data/providers.js','data/arthouse.js','content/curations/kiarostami-life-continues.curation.json',
-  'scripts/build-curations.mjs','tests/browser-smoke.mjs','netlify/functions/movie-detail.mjs','netlify/functions/movie-availability.mjs','netlify/functions/movie-summaries.mjs','netlify/functions/share.mjs','netlify/functions/director-filmography.mjs',
+  'scripts/build-curations.mjs','tests/browser-smoke.mjs','supabase/005_kinosis_0453.sql','netlify/functions/movie-detail.mjs','netlify/functions/movie-availability.mjs','netlify/functions/movie-summaries.mjs','netlify/functions/share.mjs','netlify/functions/director-filmography.mjs',
 ];
 for (const rel of required) assert.ok(fs.existsSync(path.join(root, rel)), `missing ${rel}`);
 for (const rel of ['sw.js','manifest.webmanifest','assets/css/design-0442.css','assets/css/styles.css']) assert.ok(!fs.existsSync(path.join(root, rel)), `${rel} should not ship`);
@@ -31,14 +31,14 @@ const directorFn = read('netlify/functions/director-filmography.mjs');
 const curations = JSON.parse(read('data/curations.json'));
 
 for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','PROFILE','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
-assert.ok(html.includes('app.js?v=0.4.5.2'), '0.4.5.2 cache-busting missing');
+assert.ok(html.includes('app.js?v=0.4.5.3'), '0.4.5.3 cache-busting missing');
 assert.ok(html.includes('type="module"'), 'main browser entry must be module');
 assert.ok(html.includes('https://image.tmdb.org'), 'TMDB image CDN preconnect missing');
 assert.ok(html.includes('logRatingHost') && html.includes('logNote') && !html.includes('id="logComment"') && !html.includes('id="logFavorite"'), 'ViewingEvent editor must not edit current relationship comment/favorite');
 assert.ok(html.includes('relationshipDialog'), 'current FilmRelationship editor missing');
 assert.ok(!html.includes('<select id="logRating"'), 'numeric rating dropdown must be removed');
 assert.ok(html.includes('role="tablist"') && html.includes('aria-controls="myContent"'), 'Profile ARIA tabs missing');
-assert.ok(html.includes('id="accountMenu"') && html.includes('data-account-nav="profile"') && html.includes('data-account-nav="settings"'), 'avatar account popover missing');
+assert.ok(html.includes('id="accountMenu"') && html.includes('data-account-nav="profile"') && html.includes('data-account-nav="settings"') && html.includes('data-account-nav="studio" hidden'), 'avatar account popover/admin-only Studio entry missing');
 assert.ok(html.includes('id="enterDemoButton"') && html.includes('KINOSIS 둘러보기'), 'session-only portfolio demo entry missing');
 
 assert.ok(app.includes('sourceSchemaVersion < PERSONAL_SCHEMA_VERSION'), 'v8 auto-shelf migration must not resurrect deliberately removed memberships on every normalize');
@@ -75,10 +75,10 @@ assert.ok(!library.includes("filter.relationship === 'watchlist'"), 'dead watchl
 assert.ok(movieCard.includes('보고싶어요에서 제거'), 'watchlist removal affordance must be explicit');
 assert.ok(movieCard.includes("variant === 'library'") && movieCard.includes("variant === 'my'"), 'contextual Movie Card variants missing');
 
-assert.equal(curations.version, '0.4.5.2');
+assert.equal(curations.version, '0.4.5.3');
 const editorial = curations.items.find((item) => item.slug === 'kiarostami-life-continues');
 assert.ok(editorial && editorial.kind === 'editorial', 'authored editorial curation missing');
-assert.ok(editorial.introduction?.length >= 3 && editorial.chapters?.length >= 3, 'editorial curation must contain substantive structured copy');
+assert.ok(editorial.introduction?.length >= 1 && editorial.movies?.length >= 5 && editorial.chapters?.length === 0, 'editorial curation must use the light short-intro + ordered-film grammar');
 const directorArchives = curations.items.filter((item) => item.kind === 'director-archive');
 assert.ok(directorArchives.length >= 4, 'Director Archive programme breadth regressed');
 assert.ok(directorArchives.every((item) => /^\d+$/.test(String(item.source?.personId || ''))), 'Director Archive must use stable personId');
@@ -95,7 +95,10 @@ assert.ok(detailFn.includes('max-age=3600'), 'browser Detail cache should avoid 
 assert.ok(availabilityFn.includes('Netlify-CDN-Cache-Control') && availabilityFn.includes('max-age=900'), 'availability must use a shorter independent cache');
 
 assert.ok(css.includes('.star-rating') && css.includes('.detail-comment'), 'star/comment visual system missing');
-assert.ok(css.includes('.curation-rail-section') && css.includes('.curation-authored-film'), 'curation rail/detail styles missing');
+assert.ok(css.includes('.curation-rail-section') && css.includes('.curation-ordered-list') && css.includes('.director-archive-groups'), 'curation rail/detail styles missing');
+assert.ok(css.includes('#arthouseView::before') && css.includes('.arthouse-surface-texture'), 'Arthouse film/archive surface layer missing');
+assert.ok(!/Georgia|Times New Roman/.test(css), 'Arthouse/Curation must not split into a second font system');
+assert.ok(!css.includes('.curation-chapter') && !css.includes('.curation-authored-film'), 'retired magazine/chapter Curation styles must not linger');
 assert.ok(css.includes('.review-archive-list'), 'Profile review archive styles missing');
 assert.ok(css.includes('.library-row-remove'), 'Library row removal affordance missing');
 assert.ok((css.match(/!important/g) || []).length <= 8, 'stylesheet cleanup regressed into important overrides');
@@ -107,4 +110,5 @@ assert.ok(app.includes('calendar-grid-poster') && app.includes('VIEWING CALENDAR
 assert.ok(app.includes('data-rail-step="prev"') && app.includes('data-rail-step="next"'), 'film rail previous/next controls missing');
 assert.ok(css.includes('.provider-badge-skeleton'), 'stable provider loading slot missing');
 assert.ok(app.includes('allWatchlistMovies') && library.includes('보고싶어요'), 'watchlist-only Library surface missing');
-console.log('static.test: 0.4.5.2 coherence + programme Arthouse + demo/search/library contracts OK');
+assert.ok(html.includes('id="studioView"') && app.includes('openStudio') && app.includes('isAdmin()'), 'admin-only Studio surface missing');
+console.log('static.test: 0.4.5.3 performance + Studio + unified Arthouse/Curation contracts OK');

@@ -58,15 +58,29 @@ export function createMovieLoader(deps) {
     summariesInflight = (async () => {
       const loaded = [];
       const chunks = [];
-      for (let index = 0; index < requested.length; index += 20) chunks.push(requested.slice(index, index + 20));
+      for (let index = 0; index < requested.length; index += 6) chunks.push(requested.slice(index, index + 6));
       let cursor = 0;
-      const workers = Array.from({ length: Math.min(3, chunks.length) }, async () => {
+      const workers = Array.from({ length: Math.min(2, chunks.length) }, async () => {
         while (cursor < chunks.length) {
           const chunk = chunks[cursor++];
-          const data = await repository.summaries(chunk);
-          for (const row of data.results || []) {
-            const record = rememberMovie({ ...row, source: 'tmdb-summary', detailLoaded: false, metadataLoading: false }, { persist });
-            if (record) loaded.push(record);
+          try {
+            const data = await repository.summaries(chunk);
+            const received = new Set();
+            for (const row of data.results || []) {
+              received.add(String(row.id));
+              const record = rememberMovie({ ...row, source: 'tmdb-summary', detailLoaded: false, metadataLoading: false, metadataError: null }, { persist });
+              if (record) loaded.push(record);
+            }
+            for (const id of chunk) {
+              if (received.has(String(id))) continue;
+              const current = getMovie(id);
+              if (current?.source === 'placeholder') rememberMovie({ ...current, metadataLoading: false, metadataError: '영화 정보를 불러오지 못했습니다.' }, { persist });
+            }
+          } catch (error) {
+            for (const id of chunk) {
+              const current = getMovie(id);
+              if (current?.source === 'placeholder') rememberMovie({ ...current, metadataLoading: false, metadataError: error?.message || '영화 정보를 불러오지 못했습니다.' }, { persist });
+            }
           }
         }
       });

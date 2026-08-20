@@ -53,7 +53,8 @@ export function renderDetailMetadata(record, c) {
   const director = directorButton(record, c);
   const head = sectionHead('FILM', '작품 정보');
   if (record.metadataLoading) {
-    return `<section class="detail-question detail-question-about" data-detail-part="metadata">${head}<div class="detail-section detail-metadata-loading" role="status"><span class="loading-ring mini"></span><div><h3>작품 정보를 불러오는 중입니다.</h3><p>감독·출연·러닝타임 정보를 확인하고 있습니다.</p></div></div></section>`;
+    const slow = !!record.metadataSlow;
+    return `<section class="detail-question detail-question-about" data-detail-part="metadata">${head}<div class="detail-section detail-metadata-loading ${slow ? 'is-slow' : ''}" role="status"><span class="loading-ring mini"></span><div><h3>${slow ? '작품 정보 응답이 평소보다 늦습니다.' : '작품 정보를 불러오는 중입니다.'}</h3><p>${slow ? '제목·포스터·내 기록은 먼저 사용할 수 있습니다. 8초 안에 응답이 없으면 요청을 중단합니다.' : '감독·출연·러닝타임 정보를 확인하고 있습니다.'}</p></div></div></section>`;
   }
   if (record.detailError) {
     return `<section class="detail-question detail-question-about" data-detail-part="metadata">${head}<div class="detail-section detail-metadata-error" role="status"><div><h3>일부 작품 정보를 불러오지 못했습니다.</h3><p>${c.escapeHtml(record.detailError)} 이미 확인된 제목·포스터·내 기록은 그대로 사용할 수 있습니다.</p></div><button class="secondary-button" data-detail-retry="${c.escapeHtml(record.id)}">다시 불러오기</button></div></section>`;

@@ -24,7 +24,7 @@ export async function tmdb(path, params = {}, { signal } = {}) {
   }
 
   const controller = signal ? null : new AbortController();
-  const timer = controller ? setTimeout(() => controller.abort(), 8500) : null;
+  const timer = controller ? setTimeout(() => controller.abort(), 6500) : null;
   try {
     const response = await fetch(url, {
       headers: {

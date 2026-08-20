@@ -37,12 +37,11 @@ export default async request=>{
 
     let directed=[...byId.values()];
     if(mode==='solo-features'){
-      const checked=await pool(directed,4,async candidate=>{
-        const [detail,crewPayload]=await Promise.all([
-          tmdb(`/movie/${candidate.id}`,{language:KINOSIS_LOCALE.language}),
-          tmdb(`/movie/${candidate.id}/credits`,{language:KINOSIS_LOCALE.language}).catch(()=>({crew:[]})),
-        ]);
-        const directors=[...new Set((crewPayload.crew||[]).filter(row=>row.job==='Director'&&row.id).map(row=>String(row.id)))];
+      // One TMDB request per candidate, not detail + credits as two separate calls.
+      // This path is mainly an authoring refresh; public archives use snapshots first.
+      const checked=await pool(directed.slice(0,30),3,async candidate=>{
+        const detail=await tmdb(`/movie/${candidate.id}`,{language:KINOSIS_LOCALE.language,append_to_response:'credits'});
+        const directors=[...new Set((detail.credits?.crew||[]).filter(row=>row.job==='Director'&&row.id).map(row=>String(row.id)))];
         if(Number(detail.runtime||0)<60)return null;
         if(directors.length!==1||directors[0]!==String(person.id))return null;
         return detail;

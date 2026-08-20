@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://image.tmdb.org" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.5.2" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=0.4.5.3" />
 </head>
 <body>
   <a class="skip-link" href="#discoverView">본문으로 건너뛰기</a>
@@ -67,6 +67,7 @@
           <div class="account-popover" id="accountMenu" hidden>
             <button data-account-nav="profile">프로필</button>
             <button data-account-nav="settings">설정</button>
+            <button data-account-nav="studio" hidden>KINOSIS STUDIO</button>
             <button data-account-action="signout">로그아웃</button>
           </div>
         </div>
@@ -127,6 +128,10 @@
 
       <section class="view" id="curationView" data-view="curation">
         <div id="curationPage"></div>
+      </section>
+
+      <section class="view" id="studioView" data-view="studio">
+        <div id="studioContent"></div>
       </section>
 
     </main>
@@ -245,7 +250,7 @@
 
   <dialog id="aboutDialog" class="compact-dialog">
     <div class="form-card about-card">
-      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.5.2</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
+      <div class="form-head"><div><p class="eyebrow">ABOUT & CREDITS</p><h2>KINOSIS 0.4.5.3</h2></div><button class="ghost-close" data-close="aboutDialog">닫기</button></div>
       <div id="sourceStatus" class="source-status"></div>
       <div class="credit-block tmdb-credit"><div class="credit-brand"><img src="./assets/branding/tmdb-logo.svg" alt="TMDB" class="tmdb-logo" /><b>TMDB</b></div><p>영화 메타데이터와 이미지를 사용합니다. Live Search와 상세 조회는 Netlify Function이 중계합니다.</p><p class="legal">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></div>
       <div class="credit-block"><b>JustWatch via TMDB</b><p>대한민국 지역의 스트리밍·대여·구매 제공처 정보에 사용합니다.</p></div>
@@ -258,22 +263,22 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data/catalog.js?v=0.4.5.2"></script>
-  <script src="./data/curations.js?v=0.4.5.2"></script>
-  <script src="./assets/js/config.js?v=0.4.5.2"></script>
-  <script src="./data/arthouse.js?v=0.4.5.2"></script>
-  <script src="./assets/js/art-classifier.js?v=0.4.5.2"></script>
-  <script src="./data/providers.js?v=0.4.5.2"></script>
-  <script src="./assets/js/providers.js?v=0.4.5.2"></script>
+  <script src="./data/catalog.js?v=0.4.5.3"></script>
+  <script src="./data/curations.js?v=0.4.5.3"></script>
+  <script src="./assets/js/config.js?v=0.4.5.3"></script>
+  <script src="./data/arthouse.js?v=0.4.5.3"></script>
+  <script src="./assets/js/art-classifier.js?v=0.4.5.3"></script>
+  <script src="./data/providers.js?v=0.4.5.3"></script>
+  <script src="./assets/js/providers.js?v=0.4.5.3"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3"></script>
-  <script src="./assets/js/cloud.js?v=0.4.5.2"></script>
-  <script src="./assets/js/ui.js?v=0.4.5.2"></script>
-  <script src="./assets/js/importers.js?v=0.4.5.2"></script>
-  <script src="./assets/js/curations.js?v=0.4.5.2"></script>
-  <script src="./assets/js/curation-loader.js?v=0.4.5.2"></script>
-  <script src="./assets/js/hero-carousel.js?v=0.4.5.2"></script>
-  <script src="./assets/js/state-integrity.js?v=0.4.5.2"></script>
-  <script src="./assets/js/error-boundary.js?v=0.4.5.2"></script>
-  <script type="module" src="./assets/js/app.js?v=0.4.5.2"></script>
+  <script src="./assets/js/cloud.js?v=0.4.5.3"></script>
+  <script src="./assets/js/ui.js?v=0.4.5.3"></script>
+  <script src="./assets/js/importers.js?v=0.4.5.3"></script>
+  <script src="./assets/js/curations.js?v=0.4.5.3"></script>
+  <script src="./assets/js/curation-loader.js?v=0.4.5.3"></script>
+  <script src="./assets/js/hero-carousel.js?v=0.4.5.3"></script>
+  <script src="./assets/js/state-integrity.js?v=0.4.5.3"></script>
+  <script src="./assets/js/error-boundary.js?v=0.4.5.3"></script>
+  <script type="module" src="./assets/js/app.js?v=0.4.5.3"></script>
 </body>
 </html>

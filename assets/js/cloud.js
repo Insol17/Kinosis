@@ -80,6 +80,7 @@
     if (!error) return new Error('Unknown cloud error.');
     if (error.code === '42P01' || /user_state.*does not exist/i.test(error.message || '')) return new Error('Cloud schema is missing. Run supabase/SETUP_ALL.sql once.');
     if (error.code === '42883' || /kinosis_write_user_state/i.test(error.message || '')) return new Error('Cloud schema is outdated. Run supabase/004_kinosis_0443.sql once.');
+    if (error.code === '42P01' || error.code === 'PGRST205' || /editorial_programmes/i.test(error.message || '')) return new Error('Studio schema is missing. Run supabase/005_kinosis_0453.sql once.');
     if (error.code === '42501') return new Error('Cloud permission denied. Check Supabase RLS policies.');
     return error;
   }
@@ -103,6 +104,62 @@
     return data || null;
   }
 
+
+
+  function programmeFromRow(row) {
+    if (!row) return null;
+    const payload = row.payload && typeof row.payload === 'object' ? row.payload : {};
+    return { ...payload, slug: row.slug || payload.slug, status: row.status || payload.status || 'draft', updatedAt: row.updated_at || payload.updatedAt || null };
+  }
+
+  async function readPublishedProgrammes() {
+    const c = create();
+    const { data, error } = await c.rpc('kinosis_public_programmes');
+    if (error) {
+      // Studio is optional. Older deployments keep using Git-authored curations.
+      if (error.code === '42883' || error.code === 'PGRST202' || error.code === 'PGRST205' || /kinosis_public_programmes|editorial_programmes/i.test(error.message || '')) return [];
+      throw dbError(error);
+    }
+    return (data || []).map(programmeFromRow).filter(Boolean);
+  }
+
+  async function readStudioProgrammes() {
+    if (!isAuthenticated()) throw new Error('Sign in required.');
+    const c = create();
+    const { data, error } = await c.from('editorial_programmes').select('slug,status,payload,priority,updated_at').order('priority', { ascending: true });
+    if (error) throw dbError(error);
+    return (data || []).map(programmeFromRow).filter(Boolean);
+  }
+
+  async function saveStudioProgramme(programme, status = 'draft') {
+    if (!isAuthenticated()) throw new Error('Sign in required.');
+    const slug = String(programme?.slug || '').trim();
+    if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(slug)) throw new Error('유효한 slug가 필요합니다.');
+    const c = create();
+    const payload = { ...programme, slug, status };
+    const row = {
+      slug,
+      kind: programme.kind === 'director-archive' ? 'director-archive' : 'editorial',
+      surface: programme.surface === 'discover' || programme.surface === 'both' ? programme.surface : 'arthouse',
+      status: ['draft', 'published', 'archived'].includes(status) ? status : 'draft',
+      priority: Number.isFinite(Number(programme.priority)) ? Math.trunc(Number(programme.priority)) : 100,
+      payload,
+      updated_by: user().id,
+      updated_at: new Date().toISOString(),
+    };
+    const { data, error } = await c.from('editorial_programmes').upsert(row, { onConflict: 'slug' }).select('slug,status,payload,updated_at').single();
+    if (error) throw dbError(error);
+    return programmeFromRow(data);
+  }
+
+  async function archiveStudioProgramme(slug) {
+    if (!isAuthenticated()) throw new Error('Sign in required.');
+    const c = create();
+    const { data, error } = await c.from('editorial_programmes').update({ status: 'archived', updated_by: user().id, updated_at: new Date().toISOString() }).eq('slug', String(slug || '')).select('slug,status,payload,updated_at').single();
+    if (error) throw dbError(error);
+    return programmeFromRow(data);
+  }
+
   async function health() {
     const c = create();
     const { data, error } = await c.from('app_health').select('id').limit(1);
@@ -121,6 +178,10 @@
     signOut,
     readUserState,
     writeUserState,
+    readPublishedProgrammes,
+    readStudioProgrammes,
+    saveStudioProgramme,
+    archiveStudioProgramme,
     health,
     redirectUrl,
   });

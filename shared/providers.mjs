@@ -1,5 +1,5 @@
 export const PROVIDER_DATA = Object.freeze({
-  version: '0.4.5.2',
+  version: '0.4.5.3',
   items: [
     { key: 'Netflix', label: 'Netflix', aliases: ['Netflix', 'Netflix Standard with Ads'], prefixes: ['netflix'] },
     { key: 'TVING', label: 'TVING', aliases: ['TVING'] },

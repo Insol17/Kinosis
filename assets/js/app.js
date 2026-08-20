@@ -9,6 +9,7 @@ import { renderMovieCard } from './ui/movie-card.js';
 import { createStore } from './core/store.js';
 import { createRouter } from './core/router.js';
 import { createPerformanceMonitor } from './core/performance.js';
+import { createRequestScheduler } from './core/request-scheduler.js';
 import { createApiClient } from './infrastructure/api-client.js';
 import { createMovieRepository } from './infrastructure/movie-repository.js';
 import {
@@ -18,6 +19,8 @@ import {
 } from './domain/personal-state.js';
 import { setRelationship, addLibraryMembership, removeLibraryMembership, deletePersonalFilmData } from './domain/personal-actions.js';
 import { createDemoState } from './domain/demo-state.js';
+import { isAdminUser } from './domain/auth-role.js';
+import { emptyProgramme, orderedEditorialEntries, renderStudioHome, renderStudioEditor } from './features/studio.js';
 
 'use strict';
 
@@ -80,6 +83,10 @@ import { createDemoState } from './domain/demo-state.js';
   let libraryFilter = { q: '', sort: 'recent', relationship: 'all', status: 'all', minRating: 'all', genre: 'all', availability: 'all' };
   let libraryHydrationState = { status: 'idle', pending: 0, message: '' };
   let pendingCollectionMovieId = null;
+  let studioMode = 'list';
+  let studioProgrammes = [];
+  let studioDraft = null;
+  let studioSearchResults = [];
 
 
   const relatedState = new Map();
@@ -476,8 +483,9 @@ import { createDemoState } from './domain/demo-state.js';
   const store = createStore(initialState());
   let state = store.getState();
   const PERFORMANCE = createPerformanceMonitor();
-  window.__KINOSIS_PERF__ = Object.freeze({ snapshot: () => PERFORMANCE.snapshot() });
-  const API_CLIENT = createApiClient({ performanceMonitor: PERFORMANCE });
+  const REQUEST_SCHEDULER = createRequestScheduler({ maxConcurrent: 5, maxMediumConcurrent: 3, maxLowConcurrent: 2 });
+  window.__KINOSIS_PERF__ = Object.freeze({ snapshot: () => ({ ...PERFORMANCE.snapshot(), requests: REQUEST_SCHEDULER.snapshot() }) });
+  const API_CLIENT = createApiClient({ performanceMonitor: PERFORMANCE, scheduler: REQUEST_SCHEDULER });
   const MOVIE_REPOSITORY = createMovieRepository({ apiClient: API_CLIENT, rememberMovie });
   const ROUTER = createRouter({ canUseHistory: canUseLiveApi });
 
@@ -492,6 +500,10 @@ import { createDemoState } from './domain/demo-state.js';
 
   function hasCloudAccount() {
     return !!currentUser && !demoMode;
+  }
+
+  function isAdmin() {
+    return !demoMode && isAdminUser(currentUser);
   }
 
   function persistLocalCache() {
@@ -896,9 +908,15 @@ import { createDemoState } from './domain/demo-state.js';
       const loader = getMovieLoader();
       if (loader) await loader.loadSummaries(missing, { persist: true });
       else {
-        for (const id of missing.slice(0, 20)) await ensureMovieDetail(id, { persist: true }).catch(() => null);
+        for (const id of missing.slice(0, 8)) await ensureMovieDetail(id, { persist: true }).catch(() => null);
       }
-      libraryHydrationState = { status: 'ready', pending: 0, message: '' };
+      const unresolved = missing.filter((id) => {
+        const record = movie(id);
+        return !record || record.source === 'placeholder' || !!record.metadataError;
+      });
+      libraryHydrationState = unresolved.length
+        ? { status: 'error', pending: unresolved.length, message: `${unresolved.length}편의 영화 정보를 불러오지 못했습니다. 저장된 기록은 그대로 유지됩니다.` }
+        : { status: 'ready', pending: 0, message: '' };
     } catch (error) {
       libraryHydrationState = { status: 'error', pending: missing.filter((id) => !movie(id)).length, message: error.message || '영화 정보를 불러오지 못했습니다.' };
     }
@@ -956,6 +974,8 @@ import { createDemoState } from './domain/demo-state.js';
     document.querySelectorAll('[data-nav="library"],[data-nav="my"]').forEach((element) => element.classList.toggle('nav-locked', !isSignedIn()));
     const accountAction = document.querySelector('[data-account-action="signout"]');
     if (accountAction) accountAction.textContent = demoMode ? '데모 종료' : '로그아웃';
+    const studioAction = document.querySelector('[data-account-nav="studio"]');
+    if (studioAction) studioAction.hidden = !isAdmin();
   }
 
   async function refreshWatchlistAvailability(force = false) {
@@ -1155,7 +1175,7 @@ import { createDemoState } from './domain/demo-state.js';
         if (source.personId) params.set('id', source.personId); else params.set('name', source.name || '');
         params.set('sort', source.sort || 'release_asc'); params.set('mode', source.mode || 'all-directed');
         if (source.include?.length) params.set('include', source.include.join(',')); if (source.exclude?.length) params.set('exclude', source.exclude.join(','));
-        const data = await apiJson(`/api/director-filmography?${params.toString()}`); return data.results || [];
+        const data = await apiJson(`/api/director-filmography?${params.toString()}`, { timeoutMs: 8000, priority: 'low' }); return data.results || [];
       },
       fallbackDirector: async (item) => [...(item?.source?.snapshot || []), ...(CATALOG.movies || []).filter((record) => normalizeText(record.director) === normalizeText(item.source.name))],
       normalizeRows: (rows) => uniqueById((rows || []).map((record) => rememberMovie(record, { persist: false })).filter(Boolean)),
@@ -1183,28 +1203,37 @@ import { createDemoState } from './domain/demo-state.js';
 
   async function ensureCurationMovies(item) {
     if (!item) return false;
+    const loader = getMovieLoader();
     if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      getCurationLoader().seed?.(item); if (!canUseLiveApi()) return false;
-      const result = await getCurationLoader().ensure(item); return !!result?.changed;
+      const seeded = getCurationLoader().seed?.(item) || [];
+      const missingArtwork = seeded.filter((row) => !row.posterUrl || !row.backdropUrl).map((row) => String(row.id));
+      // Snapshot titles/directors paint immediately. Artwork enrichment is a small,
+      // bounded background recovery path and does not gate the Archive itself.
+      if (canUseLiveApi() && loader && missingArtwork.length) loader.loadSummaries(missingArtwork, { persist: false }).then(() => { if (activeView === 'arthouse') renderArthouse(); if (activeView === 'curation' && curationSlug === item.slug) renderCurationPage(item); }).catch(() => {});
+      if (!canUseLiveApi()) return false;
+      const result = await getCurationLoader().ensure(item);
+      return !!result?.changed;
     }
     if (!canUseLiveApi()) return false;
     const missing = explicitCurationMovieIds(item).filter((id) => !movie(id)); if (!missing.length) return false;
-    await hydrateCurationIds(missing, 5); return true;
+    if (loader) await loader.loadSummaries(missing, { persist: false }); else await hydrateCurationIds(missing, 2);
+    return true;
   }
 
   async function ensureCurationPreview(item) {
     if (!item) return { changed: false, stateChanged: false };
+    const loader = getMovieLoader();
     if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      getCurationLoader().seed?.(item);
+      const seeded = getCurationLoader().seed?.(item) || [];
+      const missingArtwork = seeded.filter((row) => !row.posterUrl || !row.backdropUrl).map((row) => String(row.id));
+      if (canUseLiveApi() && loader && missingArtwork.length) loader.loadSummaries(missingArtwork, { persist: false }).catch(() => {});
       if (!canUseLiveApi()) return { changed: false, stateChanged: false };
       return getCurationLoader().ensure(item);
     }
     if (!canUseLiveApi()) return { changed: false, stateChanged: false };
     const missing = explicitCurationMovieIds(item).filter((id) => !movie(id));
     if (!missing.length) return { changed: false, stateChanged: false };
-    const loader = getMovieLoader();
-    if (loader) await loader.loadSummaries(missing, { persist: false });
-    else await hydrateCurationIds(missing, 4);
+    if (loader) await loader.loadSummaries(missing, { persist: false }); else await hydrateCurationIds(missing, 2);
     return { changed: true, stateChanged: false };
   }
 
@@ -1730,21 +1759,40 @@ import { createDemoState } from './domain/demo-state.js';
     const films = curationMovies(item);
     const heroMovie = curationHeroMovie(item);
     const heroImage = heroMovie ? backdrop(heroMovie) : '';
-    const sourceLabel = item.surface === 'discover' ? 'Discover' : item.surface === 'both' ? 'Discover / Arthouse' : 'Arthouse';
     const isArchive = item.kind === 'director-archive';
-    const introduction = (item.introduction || []).length
-      ? `<section class="curation-editorial-intro">${item.introduction.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`
-      : '';
-    const chapters = (item.chapters || []).map((chapter, index) => {
-      const entries = (chapter.movies || []).map((entry) => ({ entry, record: movie(entry.id) })).filter(({ record }) => !!record);
-      if (!entries.length) return '';
-      return `<section class="curation-chapter"><div class="curation-chapter-head"><span>${String(index + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(chapter.title)}</h2>${chapter.description ? `<p>${escapeHtml(chapter.description)}</p>` : ''}</div></div><div class="curation-authored-films">${entries.map(({ entry, record }, filmIndex) => `<article class="curation-authored-film"><div class="curation-authored-index">${String(filmIndex + 1).padStart(2, '0')}</div>${card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')}<div class="curation-film-copy"><h3>${escapeHtml(record.title)}</h3><p>${escapeHtml(entry.note || '이 큐레이션의 흐름 안에서 함께 볼 작품입니다.')}</p></div></article>`).join('')}</div></section>`;
-    }).join('');
+    const sourceLabel = isArchive ? 'DIRECTOR ARCHIVE' : 'KINOSIS CURATION';
+    const backDestination = curationPreviousView === 'studio' ? 'Studio' : curationPreviousView === 'discover' ? 'Discover' : 'Arthouse';
+
+    const orderedEntries = [];
+    if (!isArchive) {
+      for (const entry of item.movies || []) if (entry?.id) orderedEntries.push({ id: String(entry.id), note: entry.note || '' });
+      for (const chapter of item.chapters || []) {
+        for (const entry of chapter.movies || []) if (entry?.id && !orderedEntries.some((row) => row.id === String(entry.id))) orderedEntries.push({ id: String(entry.id), note: entry.note || '' });
+      }
+    }
+
+    let body = '';
+    if (isArchive) {
+      const grouped = new Map();
+      for (const record of films) {
+        const year = Number(record.year || String(record.releaseDate || '').slice(0, 4));
+        const decade = Number.isFinite(year) && year > 0 ? `${Math.floor(year / 10) * 10}s` : '연도 미상';
+        if (!grouped.has(decade)) grouped.set(decade, []);
+        grouped.get(decade).push(record);
+      }
+      const groups = [...grouped.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+      body = films.length ? `<div class="director-archive-groups">${groups.map(([decade, rows]) => `<section class="director-decade"><header><span>${escapeHtml(decade)}</span><small>${rows.length} FILMS</small></header><div class="curation-film-grid">${rows.map((record) => card(record, 'arthouse')).join('')}</div></section>`).join('')}</div>` : `<div class="empty-state"><b>필모그래피를 표시할 수 없습니다.</b><span>저장된 snapshot 또는 실시간 데이터를 다시 확인해주세요.</span><button class="secondary-button" data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`;
+    } else {
+      const entries = orderedEntries.map((entry) => ({ entry, record: movie(entry.id) })).filter(({ record }) => !!record);
+      body = entries.length ? `<div class="curation-ordered-list">${entries.map(({ entry, record }, index) => `<article class="curation-order-row"><span class="curation-order-index">${String(index + 1).padStart(2, '0')}</span><div class="curation-order-card"><button class="curation-order-poster" data-movie="${escapeHtml(record.id)}" aria-label="${escapeHtml(record.title)} 상세 보기">${poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터" loading="lazy">` : `<span>${escapeHtml(record.title)}</span>`}</button></div><div class="curation-order-copy"><h2>${escapeHtml(record.title)}</h2><p class="curation-order-meta">${escapeHtml([record.year, record.director].filter(Boolean).join(' · '))}</p>${entry.note ? `<p>${escapeHtml(entry.note)}</p>` : '<p class="is-muted">이 큐레이션의 흐름 안에서 함께 보는 작품입니다.</p>'}<div class="curation-order-actions"><button class="secondary-button mini" data-movie="${escapeHtml(record.id)}">상세 보기</button><button class="secondary-button mini" data-action="watchlist" data-id="${escapeHtml(record.id)}">＋ 보고싶어요</button></div></div></article>`).join('')}</div>` : `<div class="empty-state"><b>큐레이션 영화를 불러오는 중입니다.</b><span class="loading-ring mini" aria-hidden="true"></span></div>`;
+    }
+
+    const intro = !isArchive ? (item.introduction || []).slice(0, 1).join(' ') : '';
     document.title = `${item.title} — KINOSIS`;
-    document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${curationPreviousView === 'discover' ? 'Discover' : 'Arthouse'}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">공유</button></div>
-      <section class="curation-page-hero">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="curation-page-copy"><p class="editorial-kicker">${escapeHtml(item.eyebrow || (isArchive ? "DIRECTOR'S ARCHIVE" : 'KINOSIS CURATION'))}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}<div class="curation-page-meta"><span>${curationMovieIds(item).length ? `${curationMovieIds(item).length}편` : isArchive ? '감독 작품 아카이브' : 'Editorial'}</span><span>${escapeHtml(sourceLabel)}</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
-      ${introduction}
-      ${!isArchive && chapters ? `<div class="curation-chapters">${chapters}</div>` : `<section class="content-section curation-film-section"><div class="section-head"><div><h2>${isArchive ? '필모그래피' : '작품'}</h2><p>${isArchive ? '감독 크레딧을 기준으로 연도순으로 정리했습니다.' : '큐레이션에 포함된 작품을 순서대로 확인합니다.'}</p></div></div>${films.length ? `<div class="curation-film-grid">${films.map((record) => card(record, item.surface === 'arthouse' ? 'arthouse' : 'discover')).join('')}</div>` : `<div class="empty-state"><b>영화 정보를 불러오는 중입니다.</b><span class="loading-ring mini" aria-hidden="true"></span></div>`}</section>`}`;
+    document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${backDestination}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">공유</button></div>
+      <section class="curation-page-hero ${isArchive ? 'is-archive' : 'is-editorial'}">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="arthouse-surface-texture" aria-hidden="true"></div><div class="curation-page-copy"><p class="editorial-kicker">${sourceLabel}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}<p>${escapeHtml(item.description || intro || '')}</p><div class="curation-page-meta"><span>${films.length || orderedEntries.length}편</span>${item.credit ? `<span>${escapeHtml(item.credit)}</span>` : ''}</div></div></section>
+      ${!isArchive && intro ? `<section class="curation-short-intro"><p>${escapeHtml(intro)}</p></section>` : ''}
+      <section class="content-section curation-film-section"><div class="section-head"><div><p class="editorial-kicker">${sourceLabel}</p><h2>${isArchive ? '필모그래피' : '영화 순서'}</h2><p>${isArchive ? '감독 작품을 연대별로 정리합니다.' : '선택한 순서와 작품별 짧은 코멘트만 남깁니다.'}</p></div></div>${body}</section>`;
   }
 
 
@@ -1769,6 +1817,7 @@ import { createDemoState } from './domain/demo-state.js';
   }
 
   function backFromCuration() {
+    if (curationPreviousView === 'studio') { hydratePublishedProgrammes().catch(() => {}); studioMode = 'edit'; setView('studio', { skipGate: true, keepScroll: true, route: 'replace' }); renderStudio(); return; }
     if (canUseLiveApi() && history.state?.kinRoute && history.length > 1) history.back();
     else setView(curationPreviousView || 'arthouse', { skipGate: true, keepScroll: true, route: 'replace' });
   }
@@ -1801,13 +1850,14 @@ import { createDemoState } from './domain/demo-state.js';
 
   function setView(view, { skipGate = false, keepScroll = false, route = 'push', deferRender = false } = {}) {
     if (!skipGate && (view === 'library' || view === 'my') && !requireAuth(`${view === 'library' ? 'Library' : '프로필'}은 로그인 후 사용할 수 있습니다.`)) return false;
+    if (view === 'studio' && !isAdmin()) { UI.toast('관리자 권한이 필요합니다.'); return false; }
     if (activeView !== view) scrollPositions.set(activeView, window.scrollY);
     activeView = view;
     document.querySelectorAll('.view').forEach((element) => element.classList.toggle('is-active', element.dataset.view === view));
     const navView = view === 'curation' ? curationPreviousView : view === 'movie' ? (previousView === 'curation' ? curationPreviousView : previousView) : view;
     document.querySelectorAll('[data-nav]').forEach((button) => button.classList.toggle('is-active', button.dataset.nav === navView));
     document.querySelectorAll('.mobile-nav-item[data-nav]').forEach((button) => button.classList.toggle('is-active', button.dataset.nav === navView));
-    if (view !== 'movie') { const titleView = view === 'my' ? 'Profile' : view.charAt(0).toUpperCase() + view.slice(1); document.title = `KINOSIS — ${titleView}`; }
+    if (view !== 'movie') { const titleView = view === 'my' ? 'Profile' : view === 'studio' ? 'Studio' : view.charAt(0).toUpperCase() + view.slice(1); document.title = `KINOSIS — ${titleView}`; }
     if (route !== 'none' && view !== 'movie' && view !== 'curation') updateHistoryForView(view, route);
     requestAnimationFrame(() => {
       if (keepScroll) window.scrollTo({ top: scrollPositions.get(view) || 0, behavior: 'auto' });
@@ -1879,8 +1929,16 @@ import { createDemoState } from './domain/demo-state.js';
     const detailPromise = ensureMovieDetail(key, { persist: persistPersonal, throwOnFailure: true, force });
     const availabilityPromise = fetchMovieAvailability(key, { persist: persistPersonal, force });
     const relatedPromise = loadRelatedRecommendations(key, force);
+    const detailSlowTimer = setTimeout(() => {
+      const current = movie(key);
+      if (activeView === 'movie' && String(detailMovieId) === key && current?.metadataLoading) {
+        const slowRecord = rememberMovie({ ...current, metadataSlow: true }, { persist: false }) || current;
+        patchMoviePage(slowRecord, ['metadata']);
+      }
+    }, 3500);
 
     detailPromise.then((detailed) => {
+      clearTimeout(detailSlowTimer);
       if (!detailed || activeView !== 'movie' || String(detailMovieId) !== key) return;
       record = rememberMovie({ ...detailed, availabilityLoading: !movie(key)?.availabilityUpdatedAt }, { persist: persistPersonal }) || detailed;
       patchMoviePage(record, ['hero', 'metadata', 'activity']);
@@ -1891,6 +1949,7 @@ import { createDemoState } from './domain/demo-state.js';
         PERFORMANCE.measure('detail.first-usable-latency', 'detail.click', { movieId: key, source: 'metadata' });
       }
     }).catch((error) => {
+      clearTimeout(detailSlowTimer);
       console.warn('openMovie detail failed', error);
       if (activeView !== 'movie' || String(detailMovieId) !== key) return;
       const fallback = movie(key) || record;
@@ -1945,7 +2004,8 @@ import { createDemoState } from './domain/demo-state.js';
       await openMovie(movieId, { route: replace ? 'replace' : 'none', from });
       return;
     }
-    const view = ['discover', 'arthouse', 'library', 'my'].includes(params.get('view')) ? params.get('view') : 'discover';
+    const requestedView = params.get('view');
+    const view = ['discover', 'arthouse', 'library', 'my'].includes(requestedView) ? requestedView : (requestedView === 'studio' && isAdmin() ? 'studio' : 'discover');
     setView(view, { skipGate: false, keepScroll: true, route: replace ? 'replace' : 'none' });
   }
 
@@ -2171,6 +2231,109 @@ import { createDemoState } from './domain/demo-state.js';
     UI.showDialog('dayDialog');
   }
 
+
+  async function hydratePublishedProgrammes() {
+    if (!CLOUD?.readPublishedProgrammes) return false;
+    try {
+      const rows = await CLOUD.readPublishedProgrammes();
+      CURATIONS.replaceDynamic?.(rows || []);
+      return true;
+    } catch (error) {
+      console.warn('published programmes unavailable; using static curations', error);
+      return false;
+    }
+  }
+
+  async function loadStudioProgrammes() {
+    if (!isAdmin()) return [];
+    let rows = [];
+    if (CLOUD?.readStudioProgrammes) {
+      try { rows = await CLOUD.readStudioProgrammes(); }
+      catch (error) { console.warn('Studio database unavailable; static programmes remain editable as templates.', error); }
+    }
+    const merged = new Map((CURATIONS.all?.() || []).map((item) => [String(item.slug), { ...item, status: item.status || 'published' }]));
+    for (const item of rows || []) if (item?.slug) merged.set(String(item.slug), item);
+    studioProgrammes = [...merged.values()].sort((a, b) => Number(a.priority || 100) - Number(b.priority || 100));
+    return studioProgrammes;
+  }
+
+  function normalizeStudioDraftFromDom() {
+    if (!studioDraft) return null;
+    const root = document.getElementById('studioContent');
+    if (!root) return studioDraft;
+    root.querySelectorAll('[data-studio-field]').forEach((field) => {
+      const key = field.dataset.studioField;
+      if (key === 'priority') studioDraft[key] = Number(field.value || 100);
+      else if (key === 'intro') studioDraft.introduction = field.value.trim() ? [field.value.trim()] : [];
+      else studioDraft[key] = field.value.trim();
+    });
+    root.querySelectorAll('[data-studio-director]').forEach((field) => {
+      studioDraft.source = studioDraft.source || { type: 'director', snapshot: [] };
+      studioDraft.source[field.dataset.studioDirector] = field.value.trim();
+    });
+    const notes = [...root.querySelectorAll('[data-studio-film-note]')];
+    if (notes.length && studioDraft.kind === 'editorial') {
+      const entries = orderedEditorialEntries(studioDraft);
+      notes.forEach((field) => { const index = Number(field.dataset.studioFilmNote); if (entries[index]) entries[index].note = field.value.trim(); });
+      studioDraft.movies = entries;
+      studioDraft.chapters = [];
+    }
+    return studioDraft;
+  }
+
+  function renderStudio() {
+    const root = document.getElementById('studioContent');
+    if (!root) return;
+    if (!isAdmin()) {
+      root.innerHTML = '<div class="gate-card"><div class="gate-card-inner"><p class="eyebrow">403</p><h1>관리자 전용</h1><p>KINOSIS Studio는 관리자 계정에만 노출됩니다.</p><button class="secondary-button" data-nav="discover">Discover로 돌아가기</button></div></div>';
+      return;
+    }
+    root.innerHTML = studioMode === 'edit' && studioDraft ? renderStudioEditor(studioDraft, movie) : renderStudioHome(studioProgrammes);
+  }
+
+  async function openStudio() {
+    if (!isAdmin()) { UI.toast('관리자 권한이 필요합니다.'); return; }
+    try { await loadStudioProgrammes(); } catch (error) { console.warn('studio load', error); UI.toast(error.message || 'Studio 데이터를 불러오지 못했습니다.'); }
+    studioMode = 'list'; studioDraft = null;
+    setView('studio', { skipGate: true });
+    renderStudio();
+  }
+
+  async function saveStudio(status) {
+    if (!isAdmin() || !studioDraft) return;
+    normalizeStudioDraftFromDom();
+    if (!studioDraft.title || !studioDraft.slug) { UI.toast('제목과 slug를 입력하세요.'); return; }
+    if (studioDraft.kind === 'editorial' && !orderedEditorialEntries(studioDraft).length) { UI.toast('Editorial에는 영화가 한 편 이상 필요합니다.'); return; }
+    if (studioDraft.kind === 'director-archive' && !studioDraft.source?.personId && !studioDraft.source?.name) { UI.toast('감독 이름 또는 TMDB Person ID가 필요합니다.'); return; }
+    try {
+      const saved = await CLOUD.saveStudioProgramme(studioDraft, status);
+      studioDraft = saved;
+      await Promise.all([loadStudioProgrammes(), hydratePublishedProgrammes()]);
+      studioMode = 'list'; studioDraft = null; renderStudio();
+      if (activeView === 'arthouse') renderArthouse();
+      UI.toast(status === 'published' ? '프로그램을 공개했습니다.' : '초안으로 저장했습니다.');
+    } catch (error) { UI.toast(error.message || '저장하지 못했습니다.'); }
+  }
+
+  async function syncStudioDirector() {
+    if (!studioDraft || studioDraft.kind !== 'director-archive') return;
+    normalizeStudioDraftFromDom();
+    const source = studioDraft.source || {};
+    const params = new URLSearchParams();
+    if (source.personId) params.set('id', source.personId); else params.set('name', source.name || '');
+    params.set('sort', source.sort || 'release_asc');
+    // Studio sync is an authoring operation, not a page-load dependency. Use the
+    // inexpensive all-directed credits path; exclusions can be curated afterward.
+    params.set('mode', 'all-directed');
+    try {
+      const data = await apiJson(`/api/director-filmography?${params.toString()}`, { timeoutMs: 9000, priority: 'high' });
+      const rows = (data.results || []).map((row) => rememberMovie(row, { persist: false })).filter(Boolean);
+      studioDraft.source = { ...source, name: data.person?.name || source.name, personId: data.person?.id || source.personId, mode: 'all-directed', snapshot: rows.map((row) => MOVIE_ENTITIES.compactSnapshot(row) || row), snapshotGeneratedAt: new Date().toISOString() };
+      studioDraft.heroMovieId = studioDraft.heroMovieId || rows[0]?.id || '';
+      renderStudio(); UI.toast(`${rows.length}편의 필모그래피 snapshot을 갱신했습니다.`);
+    } catch (error) { UI.toast(error.message || '필모그래피 동기화에 실패했습니다.'); }
+  }
+
   function renderStatus() {
     const live = CATALOG.mode === 'live';
     document.getElementById('sourceStatus').innerHTML = `Catalog: <b>${live ? 'LIVE API SYNC' : 'LOCAL DEMO'}</b><br>Updated: ${escapeHtml(CATALOG.updatedAt || 'unknown')}<br>Region: ${escapeHtml(CATALOG.region || LOCALE.region)}<br>Auth: ${isSignedIn() ? `SIGNED IN · ${escapeHtml(syncState.status.toUpperCase())}` : 'SIGNED OUT'}`;
@@ -2183,6 +2346,7 @@ import { createDemoState } from './domain/demo-state.js';
     else if (activeView === 'my') renderMy();
     else if (activeView === 'movie' && detailMovieId) renderMoviePage(movie(detailMovieId));
     else if (activeView === 'curation' && curationSlug) renderCurationPage(CURATIONS.get(curationSlug));
+    else if (activeView === 'studio') renderStudio();
   }
 
   function renderAll() {
@@ -2582,10 +2746,11 @@ import { createDemoState } from './domain/demo-state.js';
     }
     const accountNav = event.target.closest('[data-account-nav]');
     if (accountNav) {
-      myMode = accountNav.dataset.accountNav === 'settings' ? 'settings' : 'overview';
-      mySubMode = 'timeline';
       document.getElementById('accountMenu')?.setAttribute('hidden', '');
       document.getElementById('topAccountButton')?.setAttribute('aria-expanded', 'false');
+      if (accountNav.dataset.accountNav === 'studio') { await openStudio(); return; }
+      myMode = accountNav.dataset.accountNav === 'settings' ? 'settings' : 'overview';
+      mySubMode = 'timeline';
       setView('my'); renderMy(); return;
     }
     const accountAction = event.target.closest('[data-account-action]');
@@ -2595,6 +2760,40 @@ import { createDemoState } from './domain/demo-state.js';
     }
     if (event.target.closest('#enterDemoButton')) { enterDemoMode(); return; }
     if (event.target.closest('[data-demo-exit]')) { exitDemoMode(); return; }
+
+
+    if (event.target.closest('[data-studio-back]')) { studioMode = 'list'; studioDraft = null; renderStudio(); return; }
+    const studioNew = event.target.closest('[data-studio-new]');
+    if (studioNew) { studioDraft = emptyProgramme(studioNew.dataset.studioNew); studioMode = 'edit'; renderStudio(); return; }
+    const studioEdit = event.target.closest('[data-studio-edit]');
+    if (studioEdit) { studioDraft = JSON.parse(JSON.stringify(studioProgrammes.find((item) => item.slug === studioEdit.dataset.studioEdit) || CURATIONS.get(studioEdit.dataset.studioEdit) || emptyProgramme())); studioMode = 'edit'; renderStudio(); return; }
+    const studioSave = event.target.closest('[data-studio-save]');
+    if (studioSave) { await saveStudio(studioSave.dataset.studioSave); return; }
+    const studioArchive = event.target.closest('[data-studio-archive]');
+    if (studioArchive) { try { await CLOUD.archiveStudioProgramme(studioArchive.dataset.studioArchive); await Promise.all([loadStudioProgrammes(), hydratePublishedProgrammes()]); renderStudio(); UI.toast('프로그램을 보관했습니다.'); } catch (error) { UI.toast(error.message || '보관하지 못했습니다.'); } return; }
+    if (event.target.closest('[data-studio-director-sync]')) { await syncStudioDirector(); return; }
+    if (event.target.closest('[data-studio-add-movie]')) {
+      normalizeStudioDraftFromDom();
+      const answer = await UI.ask({ eyebrow: 'STUDIO', title: '영화 추가', message: 'TMDB에서 검색할 제목을 입력하세요.', input: { label: '영화 제목', value: '' }, confirmText: '검색' });
+      if (!answer.confirmed || !answer.input) return;
+      try {
+        const data = await MOVIE_REPOSITORY.search(answer.input);
+        studioSearchResults = data.results || [];
+        if (!studioSearchResults.length) { UI.toast('검색 결과가 없습니다.'); return; }
+        const pick = await UI.ask({ eyebrow: 'STUDIO', title: '영화 선택', message: '큐레이션에 추가할 영화를 선택하세요.', select: { label: '검색 결과', options: studioSearchResults.slice(0, 10).map((row) => ({ value: row.id, label: `${row.title}${row.year ? ` (${row.year})` : ''}` })) }, confirmText: '추가' });
+        if (!pick.confirmed) return;
+        const entries = orderedEditorialEntries(studioDraft);
+        if (!entries.some((row) => row.id === String(pick.select))) entries.push({ id: String(pick.select), note: '' });
+        studioDraft.movies = entries; studioDraft.chapters = []; studioDraft.heroMovieId = studioDraft.heroMovieId || String(pick.select); renderStudio();
+      } catch (error) { UI.toast(error.message || '영화를 검색하지 못했습니다.'); }
+      return;
+    }
+    const studioRemove = event.target.closest('[data-studio-film-remove]');
+    if (studioRemove && studioDraft) { normalizeStudioDraftFromDom(); const rows = orderedEditorialEntries(studioDraft); rows.splice(Number(studioRemove.dataset.studioFilmRemove), 1); studioDraft.movies = rows; studioDraft.chapters = []; renderStudio(); return; }
+    const studioUp = event.target.closest('[data-studio-film-up],[data-studio-film-down]');
+    if (studioUp && studioDraft) { normalizeStudioDraftFromDom(); const rows = orderedEditorialEntries(studioDraft); const index = Number(studioUp.dataset.studioFilmUp ?? studioUp.dataset.studioFilmDown); const delta = studioUp.hasAttribute('data-studio-film-up') ? -1 : 1; const next = Math.max(0, Math.min(rows.length - 1, index + delta)); if (next !== index) [rows[index], rows[next]] = [rows[next], rows[index]]; studioDraft.movies = rows; studioDraft.chapters = []; renderStudio(); return; }
+    const studioPreview = event.target.closest('[data-studio-preview],[data-studio-preview-current]');
+    if (studioPreview) { const candidate = studioPreview.hasAttribute('data-studio-preview-current') ? normalizeStudioDraftFromDom() : (studioProgrammes.find((item) => item.slug === studioPreview.dataset.studioPreview) || CURATIONS.get(studioPreview.dataset.studioPreview)); if (candidate) { const original = curationSlug; CURATIONS.replaceDynamic?.([...(CURATIONS.dynamic?.() || []).filter((item) => item.slug !== candidate.slug), { ...candidate, status: 'published' }]); curationSlug = candidate.slug; curationPreviousView = 'studio'; setView('curation', { skipGate: true, route: 'none', deferRender: true }); renderCurationPage(candidate); curationSlug = candidate.slug || original; } return; }
 
     const subscription = event.target.closest('[data-subscription]');
     if (subscription) {
@@ -2941,7 +3140,7 @@ import { createDemoState } from './domain/demo-state.js';
         if (!params.get('movie') && !params.get('curation')) setView('discover', { skipGate: true, route: 'replace' });
       }
     });
-    CLOUD.init().then(() => { authReady = true; }).catch(() => {});
+    CLOUD.init().then(() => { authReady = true; hydratePublishedProgrammes().catch(() => {}); }).catch(() => {});
   } else authReady = true;
 
   getSearchController()?.attach();

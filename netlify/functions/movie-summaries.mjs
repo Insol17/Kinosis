@@ -23,38 +23,32 @@ function normalize(movie) {
 export default async (request) => {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
   const url = new URL(request.url);
+  // Summary recovery is an exception path. Keep batches deliberately small so a
+  // single slow TMDB item cannot turn Library hydration into a 20–30 second call.
   const ids = [...new Set((url.searchParams.get('ids') || '')
     .split(',')
     .map((value) => value.trim())
     .filter((value) => /^\d+$/.test(value)))]
-    .slice(0, 20);
+    .slice(0, 6);
 
   if (!ids.length) return json({ results: [] });
 
-  const results = [];
-  const errors = [];
-  let cursor = 0;
-  const workers = Array.from({ length: Math.min(5, ids.length) }, async () => {
-    while (cursor < ids.length) {
-      const id = ids[cursor++];
-      try {
-        const movie = await tmdb(`/movie/${id}`, { language: KINOSIS_LOCALE.language });
-        results.push(normalize(movie));
-      } catch (error) {
-        errors.push({ id, error: error.message || 'unavailable' });
-      }
+  const settled = await Promise.all(ids.map(async (id) => {
+    try {
+      const movie = await tmdb(`/movie/${id}`, { language: KINOSIS_LOCALE.language });
+      return { ok: true, id, movie: normalize(movie) };
+    } catch (error) {
+      return { ok: false, id, error: error.message || 'unavailable' };
     }
-  });
-  await Promise.all(workers);
-  const order = new Map(ids.map((id, index) => [id, index]));
-  results.sort((a, b) => (order.get(String(a.id)) ?? 999) - (order.get(String(b.id)) ?? 999));
-  errors.sort((a, b) => (order.get(String(a.id)) ?? 999) - (order.get(String(b.id)) ?? 999));
+  }));
+  const results = settled.filter((row) => row.ok).map((row) => row.movie);
+  const errors = settled.filter((row) => !row.ok).map(({ id, error }) => ({ id, error }));
 
-  return json({ results, errors }, 200, 'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
+  return json({ results, errors }, 200, 'public, max-age=3600, stale-while-revalidate=21600', { 'Netlify-CDN-Cache-Control': 'public, durable, max-age=21600, stale-while-revalidate=86400' });
 };
 
 export const config = {
   path: '/api/movie-summaries',
   method: 'GET',
-  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 30 },
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip'], windowSize: 60, windowLimit: 40 },
 };
