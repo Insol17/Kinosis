@@ -8,7 +8,7 @@ Provider availability comes from TMDB Watch Providers / JustWatch. Provider *ide
 
 ## WATCHA
 
-KINOSIS uses `assets/branding/providers/watcha-logo-white.png`, sourced from the official WATCHA media kit. It is an RGBA transparent wordmark and is rendered with `object-fit: contain`.
+KINOSIS uses `assets/branding/providers/watcha-mark.svg`, sourced from the official WATCHA media kit. It is an compact W mark and is rendered with `object-fit: contain`.
 
 The Watcha `logo_path` currently present in the imported provider data is intentionally ignored by the KINOSIS brand registry. This is a presentation override only; Watch Provider availability itself still comes from TMDB/JustWatch.
 

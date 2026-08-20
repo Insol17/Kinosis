@@ -20,6 +20,9 @@ export function createMovieRepository({ apiClient, rememberMovie }) {
   async function summaries(ids, options = {}) {
     return apiJson(`/api/movie-summaries?ids=${encodeURIComponent(ids.join(','))}`, { timeoutMs: 8000, priority: 'medium', ...options });
   }
+  async function media(id, options = {}) {
+    return apiJson(`/api/movie-media?id=${encodeURIComponent(id)}`, { timeoutMs: 7500, priority: 'medium', ...options });
+  }
   async function recommendations(id, options = {}) {
     return apiJson(`/api/movie-recommendations?id=${encodeURIComponent(id)}`, { timeoutMs: 7000, priority: 'low', ...options });
   }
@@ -31,5 +34,5 @@ export function createMovieRepository({ apiClient, rememberMovie }) {
     return apiClient.prefetch(`/api/movie-detail?id=${encodeURIComponent(id)}`);
   }
 
-  return Object.freeze({ search, detail, availability, summaries, recommendations, personFilms, prefetchDetail });
+  return Object.freeze({ search, detail, availability, summaries, media, recommendations, personFilms, prefetchDetail });
 }

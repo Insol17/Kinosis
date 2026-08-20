@@ -9,47 +9,26 @@
   "source": {
     "type": "director",
     "name": "Abbas Kiarostami",
-    "sort": "release_asc",
-    "mode": "all-directed",
-    "personId": "119294",
-    "snapshot": [
-      {
-        "id": "49964",
-        "title": "내 친구의 집은 어디인가",
-        "year": "1987",
-        "director": "Abbas Kiarostami",
-        "directorId": "119294"
-      },
-      {
-        "id": "30017",
-        "title": "클로즈업",
-        "year": "1990",
-        "director": "Abbas Kiarostami",
-        "directorId": "119294"
-      },
-      {
-        "id": "47104",
-        "title": "올리브 나무 사이로",
-        "year": "1994",
-        "director": "Abbas Kiarostami",
-        "directorId": "119294"
-      },
-      {
-        "id": "30020",
-        "title": "체리 향기",
-        "year": "1997",
-        "director": "Abbas Kiarostami",
-        "directorId": "119294"
-      },
-      {
-        "id": "43423",
-        "title": "바람이 우리를 데려다 주리라",
-        "year": "1999",
-        "director": "Abbas Kiarostami",
-        "directorId": "119294"
-      }
-    ],
-    "snapshotGeneratedAt": "2026-08-20"
+    "personId": "119294"
   },
-  "kind": "director-archive"
+  "kind": "director-archive",
+  "movies": [
+    {
+      "tmdbId": 49964
+    },
+    {
+      "tmdbId": 30017
+    },
+    {
+      "tmdbId": 47104
+    },
+    {
+      "tmdbId": 30020
+    },
+    {
+      "tmdbId": 43423
+    }
+  ],
+  "heroMovieId": "49964",
+  "orderMode": "unordered"
 }

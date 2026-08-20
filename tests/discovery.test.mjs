@@ -18,9 +18,9 @@ const allocated = allocateSections({
   streaming: [movie(3), movie(4), movie(6)],
   rated: [movie(5, 8.2, 5000), movie(6, 8.3, 6000), movie(7, 8.4, 7000)],
 }, { boxOffice: 2, upcoming: 2, streaming: 2, rated: 2 });
-const visibleIds = Object.values(allocated).flat().map((row) => row.id);
-assert.equal(new Set(visibleIds).size, visibleIds.length, 'adjacent Discover rails should not repeat films already allocated to another visible rail');
-assert.ok(!visibleIds.includes('1'), 'Hero film should not immediately repeat in a Discover rail');
+assert.deepEqual(allocated.boxOffice.map((row) => row.id), ['1','2'], 'KOBIS ranking must preserve rank #1 even when it also appears in Hero');
+const recommendationIds = [...allocated.upcoming, ...allocated.streaming, ...allocated.rated].map((row) => row.id);
+assert.equal(new Set(recommendationIds).size, recommendationIds.length, 'non-factual Discover rails should avoid repeating one another');
 
 const trusted = weightedRating(movie(10, 8.5, 10000), { mean: 7, confidence: 1500 });
 const tinySample = weightedRating(movie(11, 9.0, 50), { mean: 7, confidence: 1500 });

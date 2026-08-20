@@ -52,7 +52,10 @@ export function allocateSections({ heroMovieIds = [], boxOffice = [], upcoming =
     out.forEach((row) => used.add(String(row.id)));
     return out;
   };
-  const box = take(boxOffice, limits.boxOffice || 14);
+  // KOBIS ranking is factual data, not a recommendation rail. Never remove rank #1
+  // just because the same film appeared in the Hero. Deduplication starts after it.
+  const box = (boxOffice || []).slice(0, limits.boxOffice || 14);
+  box.forEach((row) => row?.id != null && used.add(String(row.id)));
   const up = take(upcoming, limits.upcoming || 14);
   const stream = take(streaming, limits.streaming || 14);
   const high = take(rankWeighted(rated), limits.rated || 14);

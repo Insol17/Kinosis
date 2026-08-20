@@ -30,7 +30,7 @@ assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('dis
 assert.deepEqual(Array.from(sandbox.window.KINOSIS_CURATIONS_API.forSurface('arthouse'), (item) => item.slug), ['arthouse-one', 'both-one']);
 
 const baseline = build();
-assert.equal(baseline.version, '0.4.5.4');
+assert.equal(baseline.version, '0.4.5.6');
 assert.ok(Array.isArray(baseline.items));
 assert.ok(fs.readFileSync(scriptPath, 'utf8').startsWith('window.KINOSIS_CURATIONS = '));
 
@@ -44,7 +44,7 @@ fs.writeFileSync(fixturePath, `${JSON.stringify({
   description: 'Temporary test definition.',
   priority: -999,
   heroMovieId: ids[0],
-  movies: ids,
+  movies: ids.map((id) => ({ tmdbId: id, note: `note ${id}` })),
 }, null, 2)}\n`);
 
 try {
@@ -66,7 +66,7 @@ fs.writeFileSync(validFixturePath, `${JSON.stringify({
   description: 'Temporary test definition.',
   priority: -999,
   heroMovieId: ids[0],
-  movies: ids,
+  movies: ids.map((id) => ({ tmdbId: id, note: `note ${id}` })),
 }, null, 2)}\n`);
 
 try {
@@ -87,9 +87,10 @@ assert.ok(finalPayload.items.some((item) => item.slug === 'kiarostami' && item.k
 assert.ok(finalPayload.items.some((item) => item.slug === 'christian-petzold'), 'Christian Petzold director archive missing');
 const archives = finalPayload.items.filter((item) => item.kind === 'director-archive');
 assert.ok(archives.every((item) => /^\d+$/.test(String(item.source?.personId || ''))), 'director archives must ship a stable TMDB personId');
-assert.ok(archives.every((item) => Array.isArray(item.source?.snapshot) && item.source.snapshot.length > 0), 'director archives must ship snapshot fallback rows');
-assert.ok(archives.every((item) => item.source.snapshot.every((movie) => movie.director && movie.directorId)), 'snapshot movies must carry director identity');
+assert.ok(archives.every((item) => Array.isArray(item.movies) && item.movies.length > 0), 'director archives must contain an explicit selected film list');
+assert.ok(archives.every((item) => item.movies.every((movie) => /^\d+$/.test(String(movie.id)))), 'selected Director Archive films must use canonical TMDB ids');
 assert.ok(!finalPayload.items.some((item) => item.slug === 'tarantino'), 'broad mainstream Tarantino archive should not remain in Arthouse programme');
-const erice = finalPayload.items.find((item) => item.slug === 'victor-erice');
-assert.equal(erice?.source?.mode, 'solo-features', 'Víctor Erice curation should resolve solo feature films only');
+const life = finalPayload.items.find((item) => item.slug === 'kiarostami-life-continues');
+assert.deepEqual(life.movies.map((row) => row.id), ['30020','38047','103663','334541','265180','976893']);
+assert.ok(life.movies.every((row) => row.note), 'Editorial Curation must carry a note per film');
 console.log(`curations.test: build indexing + validation OK (${finalPayload.items.length} published definition(s))`);

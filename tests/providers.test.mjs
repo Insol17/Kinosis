@@ -14,8 +14,8 @@ const api = sandbox.window.KINOSIS_PROVIDERS;
 assert.equal(api.canonicalKey('Watcha'), 'WATCHA');
 assert.equal(api.label('Watcha'), 'WATCHA');
 const watcha = api.logo({ name: 'Watcha', logoUrl: 'https://image.tmdb.org/t/p/w92/wrong.jpg' });
-assert.equal(watcha.url, './assets/branding/providers/watcha-logo-white.png');
-assert.equal(watcha.kind, 'wordmark');
+assert.equal(watcha.url, './assets/branding/providers/watcha-mark.svg');
+assert.equal(watcha.kind, 'mark');
 assert.match(watcha.source, /official/i);
 assert.equal(api.canonicalKey('Netflix Standard with Ads'), 'Netflix');
 assert.equal(api.canonicalKey('Disney Plus'), 'Disney+');
@@ -31,7 +31,7 @@ assert.equal(merged.length, 2, 'brand variants should consolidate');
 const netflix = merged.find((row) => row.key === 'Netflix');
 assert.deepEqual(Array.from(netflix.types), ['subscription', 'ads']);
 const mergedWatcha = merged.find((row) => row.key === 'WATCHA');
-assert.equal(mergedWatcha.logoResolved, './assets/branding/providers/watcha-logo-white.png');
+assert.equal(mergedWatcha.logoResolved, './assets/branding/providers/watcha-mark.svg');
 
 
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/catalog.json'), 'utf8'));
@@ -45,8 +45,8 @@ for (const movie of catalog.movies || []) {
   }
 }
 
-const logoPath = path.join(root, 'assets/branding/providers/watcha-logo-white.png');
-const header = fs.readFileSync(logoPath).subarray(0, 8).toString('hex');
-assert.equal(header, '89504e470d0a1a0a', 'WATCHA logo override must be a PNG asset');
+const logoPath = path.join(root, 'assets/branding/providers/watcha-mark.svg');
+const svg = fs.readFileSync(logoPath, 'utf8');
+assert.ok(svg.includes('<svg') && svg.includes('aria-label="WATCHA"'), 'WATCHA compact W mark must be a valid SVG asset');
 
-console.log('providers.test: canonical OTT matching, duplicate consolidation and WATCHA official override OK');
+console.log('providers.test: canonical OTT matching, duplicate consolidation and WATCHA compact mark override OK');

@@ -73,7 +73,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   let syncTimer = null;
   let syncState = { status: 'guest', lastSyncedAt: null, message: '' };
   let lastCloudPullAt = 0;
-  let curationLoader = null;
   let heroController = null;
   const artClassCache = new Map();
   let boxOfficeState = Array.isArray(THEATRICAL?.boxOffice) && THEATRICAL.boxOffice.length ? { status: 'ready', results: THEATRICAL.boxOffice, source: 'snapshot', updatedAt: THEATRICAL.updatedAt || null } : { status: 'idle', results: [] };
@@ -95,11 +94,11 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   let studioSearchResults = [];
   let studioLoading = false;
   let studioError = '';
-  let studioSyncing = false;
   let curationPreviewItem = null;
 
 
   const relatedState = new Map();
+  const mediaState = new Map();
   const scrollPositions = new Map();
   const moviePrefetchTimers = new WeakMap();
 
@@ -825,18 +824,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     return true;
   }
 
-  function providerBadges(record, max = 2) {
-    const providers = (PROVIDER_API?.consolidate?.(subscriptionProviders(record)) || subscriptionProviders(record))
-      .sort((a, b) => (isSubscribedProvider(b.name) ? 1 : 0) - (isSubscribedProvider(a.name) ? 1 : 0));
-    return providers.slice(0, max).map((provider) => providerMarkHtml(provider, 'provider-icon')).join('');
-  }
-
-  function availabilityBadges(record) {
-    const ott = providerBadges(record, 2);
-    const cinema = isInTheatres(record) ? `<span class="cinema-icon-badge" title="현재 극장 상영 목록">${icon('cinema')}</span>` : '';
-    if (!cinema && !ott && record?.availabilityLoading) return '<div class="availability-stack is-loading" aria-label="감상 가능 정보 확인 중"><span class="provider-badge-skeleton"></span></div>';
-    return `<div class="availability-stack">${cinema}${ott}</div>`;
-  }
 
   function canUseLiveApi() {
     return location.protocol === 'http:' || location.protocol === 'https:';
@@ -1046,6 +1033,27 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     if (activeView === 'movie' && String(detailMovieId) === String(id)) patchMoviePage(movie(id), ['related']);
   }
 
+
+  async function loadMovieMedia(id, force = false) {
+    const key = String(id);
+    const existing = mediaState.get(key);
+    if (!force && (existing?.status === 'loading' || existing?.status === 'ready')) return existing;
+    mediaState.set(key, { status: 'loading', trailers: existing?.trailers || [], stills: existing?.stills || [] });
+    if (activeView === 'movie' && String(detailMovieId) === key) patchMoviePage(movie(key), ['media']);
+    try {
+      const data = await MOVIE_REPOSITORY.media(key);
+      const next = { status: 'ready', trailers: data.trailers || [], stills: data.stills || [] };
+      mediaState.set(key, next);
+      if (activeView === 'movie' && String(detailMovieId) === key) patchMoviePage(movie(key), ['media']);
+      return next;
+    } catch (error) {
+      const next = { status: 'error', trailers: [], stills: [], error: error.message || '미디어를 불러오지 못했습니다.' };
+      mediaState.set(key, next);
+      if (activeView === 'movie' && String(detailMovieId) === key) patchMoviePage(movie(key), ['media']);
+      return next;
+    }
+  }
+
   function heroProviders(record) {
     const rank = { subscription: 0, free: 1, ads: 2, rent: 3, buy: 4 };
     const providers = PROVIDER_API?.consolidate?.(record?.providers || []) || [...(record?.providers || [])];
@@ -1066,26 +1074,18 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
         title: programme.title, originalTitle: programme.subtitle || '', description: programme.description || '', programmeKind: programme.kind,
         programmeEyebrow: programme.kind === 'editorial' ? 'KINOSIS CURATION' : 'DIRECTOR ARCHIVE',
         director: programme.kind === 'director-archive' ? (programme.subtitle || programme.source?.name || '') : (heroMovie?.director || ''), sourceMovieId: heroMovie?.id ? String(heroMovie.id) : '',
+        heroBackdropUrl: programme.heroImageUrl || heroMovie?.heroBackdropUrl || heroMovie?.backdropUrl || '',
       }));
     }
     const preferred = CATALOG.featuredSlides || [];
     const upcoming = upcomingState.status === 'ready' ? upcomingState.results : (CATALOG.sections?.upcoming || []);
-    const editorial = CURATIONS.forSurface('arthouse').find((item) => item.kind === 'editorial');
-    const editorialMovie = editorial ? curationHeroMovie(editorial) : null;
-    const editorialSlide = editorial ? {
-      ...(editorialMovie || {}), id: `curation:${editorial.slug}`, heroKey: `curation:${editorial.slug}:${editorialMovie?.id || 'programme'}`, heroType: 'curation', curationSlug: editorial.slug,
-      title: editorial.title, originalTitle: editorial.subtitle || '', description: editorial.description || '', programmeKind: editorial.kind, programmeEyebrow: 'KINOSIS CURATION',
-      sourceMovieId: editorialMovie?.id ? String(editorialMovie.id) : '',
-    } : null;
     const withBackdrop = (rows) => uniqueById(rows || []).filter((record) => backdrop(record));
-    const heroMovies = selectDiscoverHeroMovies({
+    return selectDiscoverHeroMovies({
       featured: withBackdrop([CATALOG.featured, ...preferred]),
       boxOffice: withBackdrop(boxOfficeState.status === 'ready' ? boxOfficeState.results : (CATALOG.sections?.boxOffice || CATALOG.sections?.theatres || [])),
       upcoming: withBackdrop(upcoming),
       rated: withBackdrop(CATALOG.sections?.rated || []),
-    }, 4).map((record) => ({ ...record, heroType: 'movie', heroKey: `movie:${record.id}` }));
-    const used = new Set(editorialMovie?.id ? [String(editorialMovie.id)] : []);
-    return [editorialSlide, ...heroMovies.filter((record) => !used.has(String(record.id)))].filter(Boolean).slice(0, 5);
+    }, 5).map((record) => ({ ...record, heroType: 'movie', heroKey: `movie:${record.id}` }));
   }
 
   function heroSlideMarkup(record, key, index) {
@@ -1154,7 +1154,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       signedIn: isSignedIn,
       poster,
       escapeHtml,
-      availabilityBadges,
       availableOnMine,
       logsForMovie,
       collectionsForMovie,
@@ -1168,7 +1167,24 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   }
 
   function railFrame(inner, rowClass = 'poster-row') {
-    return `<div class="film-rail-shell"><button class="film-rail-arrow is-prev" data-rail-step="prev" aria-label="이전 영화">${icon('chevron-left')}</button><div class="${rowClass}" data-film-rail>${inner}</div><button class="film-rail-arrow is-next" data-rail-step="next" aria-label="다음 영화">${icon('chevron-right')}</button></div>`;
+    return `<div class="film-rail-shell"><button class="film-rail-arrow is-prev" data-rail-step="prev" aria-label="이전 영화" hidden>${icon('chevron-left')}</button><div class="${rowClass}" data-film-rail>${inner}</div><button class="film-rail-arrow is-next" data-rail-step="next" aria-label="다음 영화">${icon('chevron-right')}</button></div>`;
+  }
+
+  function syncRailArrows(root = document) {
+    root.querySelectorAll?.('.film-rail-shell').forEach((shell) => {
+      const rail = shell.querySelector('[data-film-rail]');
+      const prev = shell.querySelector('[data-rail-step="prev"]');
+      const next = shell.querySelector('[data-rail-step="next"]');
+      if (!rail || !prev || !next) return;
+      const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
+      prev.hidden = rail.scrollLeft <= 2;
+      next.hidden = max <= 2 || rail.scrollLeft >= max - 2;
+      if (!rail.dataset.railBound) {
+        rail.dataset.railBound = '1';
+        rail.addEventListener('scroll', () => syncRailArrows(shell), { passive: true });
+        new ResizeObserver(() => syncRailArrows(shell)).observe(rail);
+      }
+    });
   }
 
   function rowSection(title, subtitle, movies, limit = 12, variant = 'discover') {
@@ -1177,22 +1193,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2>${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}</div></div>${list.length ? railFrame(list.map((record) => card(record, variant)).join(''), rowClass) : `<div class="empty-state"><b>표시할 영화가 없습니다.</b></div>`}</section>`;
   }
 
-  function getCurationLoader() {
-    if (curationLoader) return curationLoader;
-    curationLoader = CURATION_LOADER_FACTORY?.create?.({
-      fetchDirector: async (item) => {
-        const source = item.source || {}; const params = new URLSearchParams();
-        if (source.personId) params.set('id', source.personId); else params.set('name', source.name || '');
-        params.set('sort', source.sort || 'release_asc'); params.set('mode', source.mode || 'all-directed');
-        if (source.include?.length) params.set('include', source.include.join(',')); if (source.exclude?.length) params.set('exclude', source.exclude.join(','));
-        const data = await apiJson(`/api/director-filmography?${params.toString()}`, { timeoutMs: 8000, priority: 'low' }); return data.results || [];
-      },
-      fallbackDirector: async (item) => [...(item?.source?.snapshot || []), ...(CATALOG.movies || []).filter((record) => normalizeText(record.director) === normalizeText(item.source.name))],
-      normalizeRows: (rows) => uniqueById((rows || []).map((record) => rememberMovie(record, { persist: false })).filter(Boolean)),
-    }) || { ensure: async () => ({ changed: false, rows: null }), retry: async () => ({ changed: false, rows: null }), seed: () => [], peek: () => null, state: () => ({ status: 'idle', rows: [] }) };
-    for (const item of CURATIONS.all()) if (item.kind === 'director-archive') curationLoader.seed?.(item);
-    return curationLoader;
-  }
 
   function explicitCurationMovieIds(item) {
     const direct = (item?.movies || []).map((entry) => String(entry.id));
@@ -1202,76 +1202,73 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
 
   function curationMovieIds(item) {
     if (!item) return [];
-    if (item.kind === 'editorial') return explicitCurationMovieIds(item);
-    const loader = getCurationLoader(); const dynamic = loader.peek(item.slug) || loader.seed?.(item) || [];
-    return dynamic?.length ? dynamic.map((record) => String(record.id)) : explicitCurationMovieIds(item);
+    const explicit = explicitCurationMovieIds(item);
+    if (explicit.length) return explicit;
+    // Legacy fallback only. New Director Archives are explicitly authored in Studio.
+    return (item?.source?.snapshot || []).map((record) => String(record.id)).filter(Boolean);
   }
 
-  function curationMovies(item) { return curationMovieIds(item).map((id) => movie(id)).filter(Boolean); }
-  function curationHeroMovie(item) { return movie(item?.heroMovieId) || curationMovies(item)[0] || null; }
+  function seedCurationSnapshots(item) {
+    for (const entry of item?.movies || []) {
+      if (!entry?.snapshot) continue;
+      rememberMovie({ ...entry.snapshot, id: String(entry.id || entry.snapshot.id), tmdbId: String(entry.id || entry.snapshot.id), source: 'programme-snapshot', detailLoaded: false }, { persist: false });
+    }
+  }
+  function curationMovies(item) { seedCurationSnapshots(item); return curationMovieIds(item).map((id) => movie(id)).filter(Boolean); }
+  function curationHeroMovie(item) { seedCurationSnapshots(item); return movie(item?.heroMovieId) || curationMovies(item)[0] || null; }
+  function curationHeroImage(item) { if (item?.heroImageUrl) return item.heroImageUrl; const hero = curationHeroMovie(item); return hero ? backdrop(hero) : ''; }
   async function hydrateCurationIds(ids, concurrency = 5) { let cursor = 0; const workers = Array.from({ length: Math.min(concurrency, ids.length) }, async () => { while (cursor < ids.length) { const id = ids[cursor++]; await ensureMovieDetail(id,{persist:false}).catch(()=>null); } }); await Promise.all(workers); }
 
   async function ensureCurationMovies(item) {
     if (!item) return false;
-    const loader = getMovieLoader();
-    if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      const seeded = getCurationLoader().seed?.(item) || [];
-      // Director Archives are published content, not a runtime query. A build or
-      // Studio sync owns the snapshot. Live TMDB is only an emergency recovery
-      // when no snapshot exists at all.
-      if (seeded.length) return false;
-      if (!canUseLiveApi()) return false;
-      const result = await getCurationLoader().ensure(item);
-      return !!result?.changed;
-    }
+    seedCurationSnapshots(item);
     if (!canUseLiveApi()) return false;
-    const missing = explicitCurationMovieIds(item).filter((id) => !movie(id)); if (!missing.length) return false;
+    const missing = curationMovieIds(item).filter((id) => !movie(id));
+    if (!missing.length) return false;
+    const loader = getMovieLoader();
     if (loader) await loader.loadSummaries(missing, { persist: false }); else await hydrateCurationIds(missing, 2);
     return true;
   }
 
   async function ensureCurationPreview(item) {
     if (!item) return { changed: false, stateChanged: false };
-    const loader = getMovieLoader();
-    if (item.kind === 'director-archive' && item.source?.type === 'director') {
-      const seeded = getCurationLoader().seed?.(item) || [];
-      if (seeded.length) return { changed: false, stateChanged: false, skipped: 'published-snapshot' };
-      if (!canUseLiveApi()) return { changed: false, stateChanged: false };
-      return getCurationLoader().ensure(item);
-    }
+    seedCurationSnapshots(item);
     if (!canUseLiveApi()) return { changed: false, stateChanged: false };
-    const missing = explicitCurationMovieIds(item).filter((id) => !movie(id));
+    const missing = curationMovieIds(item).filter((id) => !movie(id));
     if (!missing.length) return { changed: false, stateChanged: false };
+    const loader = getMovieLoader();
     if (loader) await loader.loadSummaries(missing, { persist: false }); else await hydrateCurationIds(missing, 2);
     return { changed: true, stateChanged: false };
   }
 
   function curationRail(item) {
     if (!item) return '';
-    const films = curationMovies(item).slice(0, 10);
+    const films = curationMovies(item).slice(0, 12);
     const isArchive = item.kind === 'director-archive';
-    const loadState = isArchive ? getCurationLoader().state?.(item.slug) : { status: 'ready' };
-    let rail = '';
-    if (films.length) rail = films.map((record) => card(record, 'arthouse')).join('');
-    else if (loadState?.status === 'error') rail = `<div class="curation-load-error"><b>필모그래피를 불러오지 못했습니다.</b><span>저장된 아카이브도 사용할 수 없습니다.</span><button class="secondary-button" data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`;
-    else rail = Array.from({ length: 6 }, () => `<article class="movie-card arthouse-movie-card is-metadata-loading curation-rail-placeholder"><div class="poster-wrap"><div class="poster-loading"><span class="loading-ring mini"></span><small>LOADING</small></div></div><div class="card-info"><p class="card-title">필모그래피 불러오는 중</p></div></article>`).join('');
+    const rail = films.length ? films.map((record) => card(record, 'arthouse')).join('') : Array.from({ length: Math.min(6, curationMovieIds(item).length || 4) }, () => `<article class="movie-card arthouse-movie-card is-metadata-loading curation-rail-placeholder"><div class="poster-wrap"><div class="poster-loading"><span class="loading-ring mini"></span><small>LOADING</small></div></div><div class="card-info"><p class="card-title">영화 정보 불러오는 중</p></div></article>`).join('');
     const kicker = isArchive ? 'DIRECTOR ARCHIVE' : 'KINOSIS CURATION';
     const subtitle = item.subtitle ? `<span class="curation-rail-subtitle">${escapeHtml(item.subtitle)}</span>` : '';
-    const archiveStatus = isArchive && films.length && loadState?.status === 'error'
-      ? `<div class="curation-inline-status is-error"><span>저장된 아카이브 표시 중 · 실시간 갱신 실패</span><button data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`
-      : '';
-    return `<section class="content-section curation-rail-section" data-programme-kind="${isArchive ? 'archive' : 'editorial'}"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${kicker}</p><h2>${escapeHtml(item.title)}</h2>${subtitle}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}${archiveStatus}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div>${films.length ? railFrame(rail, 'poster-row arthouse-poster-row curation-poster-rail') : rail}</section>`;
+    return `<section class="content-section curation-rail-section" data-programme-kind="${isArchive ? 'archive' : 'editorial'}"><div class="section-head curation-rail-head"><div><p class="editorial-kicker">${kicker}</p><h2>${escapeHtml(item.title)}</h2>${subtitle}${item.description ? `<p>${escapeHtml(item.description)}</p>` : ''}</div><button class="section-action" data-curation="${escapeHtml(item.slug)}">전체 보기 →</button></div>${films.length ? railFrame(rail, 'poster-row arthouse-poster-row curation-poster-rail') : rail}</section>`;
   }
 
   function curationCollectionCard(item) {
     const films = curationMovies(item).slice(0, 5);
     const hero = curationHeroMovie(item) || films[0] || null;
-    const heroArt = hero ? backdrop(hero) : '';
+    const heroArt = curationHeroImage(item) || (hero ? backdrop(hero) : '');
     const posterStrip = films.slice(0, 4).map((record) => poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="" loading="lazy">` : '').join('');
     return `<button class="arthouse-collection-card" data-curation="${escapeHtml(item.slug)}" aria-label="${escapeHtml(item.title)} 큐레이션 보기">
       <span class="arthouse-collection-media">${heroArt ? `<img class="arthouse-collection-bg" src="${escapeHtml(heroArt)}" alt="">` : ''}<span class="arthouse-collection-shade"></span>${posterStrip ? `<span class="arthouse-collection-posters">${posterStrip}</span>` : ''}</span>
       <span class="arthouse-collection-copy"><small>KINOSIS CURATION · ${films.length || explicitCurationMovieIds(item).length} FILMS</small><b>${escapeHtml(item.title)}</b>${item.description ? `<span>${escapeHtml(item.description)}</span>` : ''}<em>살펴보기 →</em></span>
     </button>`;
+  }
+
+
+  function discoverCurationPromo() {
+    const item = CURATIONS.forSurface('arthouse').find((row) => row.kind === 'editorial');
+    if (!item) return '';
+    const image = curationHeroImage(item);
+    const films = curationMovieIds(item).length;
+    return `<section class="discover-curation-promo"><button data-curation="${escapeHtml(item.slug)}" aria-label="${escapeHtml(item.title)} 큐레이션 보기">${image ? `<img src="${escapeHtml(image)}" alt="">` : ''}<span class="discover-curation-shade"></span><span class="discover-curation-copy"><small>KINOSIS CURATION · ${films} FILMS</small><b>${escapeHtml(item.title)}</b><em>${escapeHtml(item.description || '')}</em><strong>큐레이션 보기 →</strong></span></button></section>`;
   }
 
 
@@ -1346,10 +1343,12 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const allocated = allocateSections({ heroMovieIds, boxOffice: rawBoxOffice, upcoming: rawUpcoming, streaming: rawStreaming, rated: rawRated });
     let html = '';
     if (allocated.boxOffice.length) html += rankedSection(allocated.boxOffice, { exact: boxOfficeState.status === 'ready' || CATALOG.sources?.boxOffice?.mode === 'kobis' || THEATRICAL?.mode === 'kobis-snapshot' });
+    html += discoverCurationPromo();
     html += upcomingSection(allocated.upcoming);
     html += isSignedIn() ? myStreamingSection('내 구독 서비스에서', allocated.streaming, 'discover') : guestStreamingPrompt();
     html += rowSection('높은 평가를 받은 영화', '평가 수를 함께 반영한 가중 평점 순', allocated.rated, 14, 'discover');
     document.getElementById('discoverContent').innerHTML = html;
+    requestAnimationFrame(() => syncRailArrows(document.getElementById('discoverView')));
   }
 
   function renderArthouse() {
@@ -1359,6 +1358,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'));
     const editorialIndex = editorials.length ? `<section class="arthouse-curation-index"><div class="section-head"><div><p class="editorial-kicker">CURATIONS</p><h2>큐레이션</h2></div></div><div class="arthouse-collection-grid">${editorials.map(curationCollectionCard).join('')}</div></section>` : '';
     document.getElementById('arthouseContent').innerHTML = `${editorialIndex}${archives.map(curationRail).join('')}`;
+    requestAnimationFrame(() => syncRailArrows(document.getElementById('arthouseView')));
     Promise.allSettled(allCurations.map(ensureCurationPreview)).then((results) => {
       const changed = results.some((result) => result.status === 'fulfilled' && (result.value?.changed || result.value?.stateChanged));
       if (changed && activeView === 'arthouse') renderArthouse();
@@ -1463,6 +1463,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       libraryMode = 'all';
       content.innerHTML = renderLibraryShelf({ list: saved, filter: libraryFilter, view: libraryView, collections: state.collections, hydrationHtml: libraryHydrationBanner(), c: libraryFeatureContext() });
     }
+    requestAnimationFrame(() => syncRailArrows(document.getElementById('libraryView')));
   }
 
   function profileCounts() {
@@ -1478,16 +1479,13 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   function renderProfileCard() {
     const element = document.getElementById('profileCard');
     if (!element) return;
-    if (!isSignedIn()) {
-      element.innerHTML = '';
-      return;
-    }
+    if (!isSignedIn()) { element.innerHTML = ''; return; }
     const counts = profileCounts();
-    const recent = latestUniqueMovies()[0];
     const name = state.profile.name || currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'KINOSIS User';
     const initial = name[0]?.toUpperCase() || 'K';
-    const recentCover = recent && !recent.metadataLoading && (recent.backdropUrl || recent.posterUrl) ? backdrop(recent) : '';
-    element.innerHTML = `<section class="profile-hero"><div class="profile-cover">${recentCover ? `<img src="${escapeHtml(recentCover)}" alt="">` : ''}</div><div class="profile-main"><div class="profile-identity"><div class="profile-left"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '')}</p><p class="profile-email">${demoMode ? 'SESSION DEMO · 저장되지 않음' : escapeHtml(currentUser?.email || '')}</p></div></div><button class="secondary-button" id="editProfile">${icon('edit')} 프로필 수정</button></div><div class="profile-counts"><button class="profile-count" data-my-drill="films"><strong>${counts.films}</strong><span>감상 영화</span></button><button class="profile-count" data-my-drill="ratings"><strong>${counts.ratings}</strong><span>평가</span></button><button class="profile-count" data-my-drill="reviews"><strong>${counts.reviews}</strong><span>한줄평</span></button><button class="profile-count" data-my-drill="collections"><strong>${counts.collections}</strong><span>컬렉션</span></button></div></div></section>`;
+    const lastLog = latestLogs()[0];
+    const lastMovie = lastLog ? personalMovie(lastLog.movieId) : null;
+    element.innerHTML = `<section class="profile-summary"><div class="profile-summary-identity"><div class="profile-avatar">${escapeHtml(initial)}</div><div class="profile-copy"><p class="eyebrow">PERSONAL FILM ARCHIVE</p><h1>${escapeHtml(name)}</h1><p>${escapeHtml(state.profile.bio || '내 영화생활을 기록합니다.')}</p><small>${demoMode ? 'SESSION DEMO · 저장되지 않음' : escapeHtml(currentUser?.email || '')}</small></div><button class="secondary-button" id="editProfile">${icon('edit')} 수정</button></div><div class="profile-summary-stats"><button data-my-drill="films"><strong>${counts.films}</strong><span>감상 영화</span></button><button data-my-drill="ratings"><strong>${counts.ratings}</strong><span>평가</span></button><button data-my-drill="reviews"><strong>${counts.reviews}</strong><span>한줄평</span></button><button data-my-drill="collections"><strong>${counts.collections}</strong><span>컬렉션</span></button></div>${lastMovie ? `<button class="profile-last-film" data-movie="${escapeHtml(lastMovie.id)}">${backdrop(lastMovie) ? `<img src="${escapeHtml(backdrop(lastMovie))}" alt="">` : ''}<span><small>LAST VIEWED</small><b>${escapeHtml(lastMovie.title)}</b><em>${escapeHtml(formatDate(lastLog.watchedAt))}</em></span></button>` : ''}</section>`;
   }
 
   function viewingTimeline(logs = latestLogs()) {
@@ -1767,7 +1765,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const cinematographers = uniqueById((record.cinematographers || []).map((person) => ({ ...person, id: person.id || `dp-${person.name}`, title: person.name }))).slice(0, 2);
     const backLabel = previousView === 'curation' ? '기획전' : previousView === 'arthouse' ? 'ARTHOUSE' : previousView === 'library' ? 'LIBRARY' : previousView === 'my' ? 'PROFILE' : 'DISCOVER';
     return {
-      relationship, membership: membershipEntry, entry: relationship, logs, related, collections: collectionsForMovie(record.id), country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
+      relationship, membership: membershipEntry, entry: relationship, logs, related, media: mediaState.get(String(record.id)) || { status: 'idle', trailers: [], stills: [] }, collections: collectionsForMovie(record.id), country, genres, releaseLabel, titleMeta, cast, writers, cinematographers, backLabel,
       isArt: art.isArt, isSignedIn, escapeHtml, icon, backdrop, poster, fmtRuntime, formatDate,
       watchAvailabilityHtml, viewingHistoryHtml, uniqueMovies: uniqueById, card, starRatingHtml, railFrame,
     };
@@ -1799,43 +1797,26 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
 
   function renderCurationPage(item) {
     if (!item) return;
-    ensureCurationMovies(item).then((changed) => {
-      if (changed && activeView === 'curation' && curationSlug === item.slug) renderCurationPage(item);
-    }).catch(() => {});
+    ensureCurationMovies(item).then((changed) => { if (changed && activeView === 'curation' && curationSlug === item.slug) renderCurationPage(item); }).catch(() => {});
     const films = curationMovies(item);
-    const heroMovie = curationHeroMovie(item);
-    const heroImage = heroMovie ? backdrop(heroMovie) : '';
     const isArchive = item.kind === 'director-archive';
     const sourceLabel = isArchive ? 'DIRECTOR ARCHIVE' : 'KINOSIS CURATION';
     const backDestination = curationPreviousView === 'studio' ? 'Studio' : curationPreviousView === 'discover' ? 'Discover' : 'Arthouse';
-
-    const orderedEntries = !isArchive ? orderedEditorialEntries(item) : [];
+    const heroImage = curationHeroImage(item);
+    const entries = orderedEditorialEntries(item).map((entry) => ({ entry, record: movie(entry.id) })).filter(({ record }) => !!record);
     let body = '';
     if (isArchive) {
-      const grouped = new Map();
-      for (const record of films) {
-        const year = Number(record.year || String(record.releaseDate || '').slice(0, 4));
-        const decade = Number.isFinite(year) && year > 0 ? `${Math.floor(year / 10) * 10}s` : '연도 미상';
-        if (!grouped.has(decade)) grouped.set(decade, []);
-        grouped.get(decade).push(record);
-      }
-      const groups = [...grouped.entries()].sort((a, b) => b[0].localeCompare(a[0]));
-      body = films.length ? `<div class="director-archive-groups">${groups.map(([decade, rows]) => `<section class="director-decade"><header><span>${escapeHtml(decade)}</span><small>${rows.length} FILMS</small></header><div class="curation-film-grid">${rows.map((record) => card(record, 'arthouse')).join('')}</div></section>`).join('')}</div>` : `<div class="empty-state"><b>필모그래피를 표시할 수 없습니다.</b><span>저장된 snapshot을 다시 갱신해주세요.</span><button class="secondary-button" data-curation-retry="${escapeHtml(item.slug)}">다시 시도</button></div>`;
+      body = films.length ? `<div class="director-manual-grid">${films.map((record) => card(record, 'arthouse')).join('')}</div>` : `<div class="empty-state"><b>선택된 영화가 없습니다.</b><span>Studio에서 이 Archive에 보여줄 작품을 직접 추가하세요.</span></div>`;
+    } else if (!entries.length) {
+      body = `<div class="empty-state"><b>큐레이션 영화를 불러오는 중입니다.</b><span class="loading-ring mini" aria-hidden="true"></span></div>`;
     } else {
-      const entries = orderedEntries.map((entry) => ({ entry, record: movie(entry.id) })).filter(({ record }) => !!record);
-      if (!entries.length) {
-        body = `<div class="empty-state"><b>큐레이션 영화를 불러오는 중입니다.</b><span class="loading-ring mini" aria-hidden="true"></span></div>`;
-      } else if (item.orderMode === 'curated') {
-        body = `<div class="curation-ordered-list">${entries.map(({ entry, record }, index) => `<article class="curation-order-row"><span class="curation-order-index">${String(index + 1).padStart(2, '0')}</span><div class="curation-order-card"><button class="curation-order-poster" data-movie="${escapeHtml(record.id)}" aria-label="${escapeHtml(record.title)} 상세 보기">${poster(record) ? `<img src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터" loading="lazy">` : `<span>${escapeHtml(record.title)}</span>`}</button></div><div class="curation-order-copy"><h2>${escapeHtml(record.title)}</h2><p class="curation-order-meta">${escapeHtml([record.year, record.director].filter(Boolean).join(' · '))}</p>${entry.note ? `<p>${escapeHtml(entry.note)}</p>` : ''}<div class="curation-order-actions"><button class="secondary-button mini" data-movie="${escapeHtml(record.id)}">상세 보기</button><button class="secondary-button mini" data-action="watchlist" data-id="${escapeHtml(record.id)}">＋ 보고싶어요</button></div></div></article>`).join('')}</div>`;
-      } else {
-        body = `<div class="curation-collection-grid">${entries.map(({ entry, record }) => `<div class="curation-collection-item">${card(record, 'arthouse')}${entry.note ? `<p class="curation-collection-note">${escapeHtml(entry.note)}</p>` : ''}</div>`).join('')}</div>`;
-      }
+      body = `<div class="curation-feature-list">${entries.map(({ entry, record }, index) => { const still = backdrop(record); const relation = lib(record.id); return `<article class="curation-feature-row"><div class="curation-feature-media">${still ? `<img src="${escapeHtml(still)}" alt="${escapeHtml(record.title)} 스틸" loading="lazy">` : poster(record) ? `<img class="is-poster" src="${escapeHtml(poster(record))}" alt="${escapeHtml(record.title)} 포스터" loading="lazy">` : '<span></span>'}<span class="curation-feature-index">${String(index + 1).padStart(2,'0')}</span></div><div class="curation-feature-copy"><p class="editorial-kicker">CURATED FILM</p><h2>${escapeHtml(record.title)}</h2><p class="curation-feature-meta">${escapeHtml([record.originalTitle && record.originalTitle !== record.title ? record.originalTitle : '', record.year, record.director].filter(Boolean).join(' · '))}</p>${relation?.rating != null ? `<p class="curation-feature-rating">내 ★ ${Number(relation.rating).toFixed(1)}</p>` : ''}<p class="curation-feature-note">${escapeHtml(entry.note || '이 작품에 대한 큐레이션 설명이 필요합니다.')}</p><div class="curation-feature-actions"><button class="secondary-button" data-movie="${escapeHtml(record.id)}">영화 상세</button><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(record.id)}">${relation?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button></div></div></article>`; }).join('')}</div>`;
     }
-
     document.title = `${item.title} — KINOSIS`;
     document.getElementById('curationPage').innerHTML = `<div class="movie-page-back"><button data-curation-back>${icon('back')} ${backDestination}로 돌아가기</button><button class="share-link" data-share-curation="${escapeHtml(item.slug)}">공유</button></div>
-      <section class="curation-page-hero ${isArchive ? 'is-archive' : 'is-editorial'}">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="arthouse-surface-texture" aria-hidden="true"></div><div class="curation-page-copy"><p class="editorial-kicker">${sourceLabel}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}<p>${escapeHtml(item.description || '')}</p><div class="curation-page-meta"><span>${films.length || orderedEntries.length}편</span></div></div></section>
-      <section class="content-section curation-film-section"><div class="section-head"><div><p class="editorial-kicker">${sourceLabel}</p><h2>${isArchive ? '필모그래피' : '선정 영화'}</h2>${isArchive ? '<p>감독 작품을 연대별로 정리합니다.</p>' : ''}</div></div>${body}</section>`;
+      <section class="curation-page-hero ${isArchive ? 'is-archive' : 'is-editorial'}">${heroImage ? `<img class="curation-page-bg" src="${escapeHtml(heroImage)}" alt="">` : ''}<div class="arthouse-surface-texture" aria-hidden="true"></div><div class="curation-page-copy"><p class="editorial-kicker">${sourceLabel}</p><h1>${escapeHtml(item.title)}</h1>${item.subtitle ? `<h2>${escapeHtml(item.subtitle)}</h2>` : ''}<p>${escapeHtml(item.description || '')}</p><div class="curation-page-meta"><span>${films.length || curationMovieIds(item).length}편</span>${isSignedIn() ? `<button class="secondary-button mini" data-save-programme-collection="${escapeHtml(item.slug)}">＋ 내 컬렉션에 저장</button>` : ''}</div></div></section>
+      <section class="content-section curation-film-section"><div class="section-head"><div><p class="editorial-kicker">${sourceLabel}</p><h2>${isArchive ? '선정 작품' : '큐레이션'}</h2><p>${isArchive ? '감독의 전체 필모그래피가 아니라 KINOSIS가 선택한 작품만 보여줍니다.' : '각 영화가 이 큐레이션에 놓인 이유를 함께 봅니다.'}</p></div></div>${body}</section>`;
+    requestAnimationFrame(() => syncRailArrows(document.getElementById('curationPage')));
   }
 
 
@@ -1973,6 +1954,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const detailPromise = ensureMovieDetail(key, { persist: persistPersonal, throwOnFailure: true, force });
     const availabilityPromise = fetchMovieAvailability(key, { persist: persistPersonal, force });
     const relatedPromise = loadRelatedRecommendations(key, force);
+    const mediaPromise = loadMovieMedia(key, force);
     const detailSlowTimer = setTimeout(() => {
       const current = movie(key);
       if (activeView === 'movie' && String(detailMovieId) === key && current?.metadataLoading) {
@@ -2022,6 +2004,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     });
 
     relatedPromise.catch(() => {});
+    mediaPromise.catch(() => {});
   }
 
   function backFromMovie() {
@@ -2257,6 +2240,31 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     UI.toast(`${collection.name}에 추가했습니다.`);
   }
 
+
+  async function saveProgrammeAsCollection(slug) {
+    if (!requireAuth()) return;
+    const item = CURATIONS.get(slug) || (curationPreviewItem?.slug === slug ? curationPreviewItem : null);
+    if (!item) return;
+    const ids = curationMovieIds(item);
+    if (!ids.length) { UI.toast('저장할 영화가 없습니다.'); return; }
+    let collection = state.collections.find((row) => row.sourceProgrammeSlug === item.slug);
+    const now = new Date().toISOString();
+    if (!collection) {
+      collection = { id: `collection-${Date.now()}`, name: item.title, description: item.description || '', movieIds: [], coverMovieId: item.heroMovieId || ids[0], sourceProgrammeSlug: item.slug, createdAt: now, updatedAt: now };
+      state.collections.push(collection);
+    }
+    for (const id of ids) {
+      if (!collection.movieIds.includes(String(id))) collection.movieIds.push(String(id));
+      ensureShelfForEngagement(id);
+      const record = movie(id); if (record) rememberMovie(record, { persist: true });
+    }
+    collection.coverMovieId = item.heroMovieId || collection.coverMovieId || ids[0];
+    collection.updatedAt = now;
+    saveState();
+    renderAll();
+    UI.toast(`${item.title}을(를) 내 컬렉션에 저장했습니다.`);
+  }
+
   function editProfile() {
     document.getElementById('profileName').value = state.profile.name || '';
     document.getElementById('profileBio').value = state.profile.bio || '';
@@ -2332,7 +2340,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       return;
     }
     root.innerHTML = studioMode === 'edit' && studioDraft
-      ? renderStudioEditor(studioDraft, movie, { syncing: studioSyncing })
+      ? renderStudioEditor(studioDraft, movie)
       : renderStudioHome(studioProgrammes, { loading: studioLoading, error: studioError });
   }
 
@@ -2350,8 +2358,10 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     if (!isAdmin() || !studioDraft) return;
     normalizeStudioDraftFromDom();
     if (!studioDraft.title || !studioDraft.slug) { UI.toast('제목과 slug를 입력하세요.'); return; }
-    if (studioDraft.kind === 'editorial' && !orderedEditorialEntries(studioDraft).length) { UI.toast('Editorial에는 영화가 한 편 이상 필요합니다.'); return; }
-    if (studioDraft.kind === 'director-archive' && !studioDraft.source?.personId && !studioDraft.source?.name) { UI.toast('감독 이름 또는 TMDB Person ID가 필요합니다.'); return; }
+    const studioEntries = orderedEditorialEntries(studioDraft);
+    if (!studioEntries.length) { UI.toast('프로그램에는 영화가 한 편 이상 필요합니다.'); return; }
+    if (studioDraft.kind === 'editorial' && studioEntries.some((entry) => !String(entry.note || '').trim())) { UI.toast('Curation의 모든 영화에 큐레이션 설명을 작성하세요.'); return; }
+    if (studioDraft.kind === 'director-archive' && !studioDraft.source?.name && !studioDraft.subtitle) { UI.toast('Director Archive에는 감독 이름이 필요합니다.'); return; }
     try {
       const saved = await CLOUD.saveStudioProgramme(studioDraft, status);
       const summary = { ...saved, _summaryOnly: false };
@@ -2368,26 +2378,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     } catch (error) { UI.toast(error.message || '저장하지 못했습니다.'); }
   }
 
-  async function syncStudioDirector() {
-    if (!studioDraft || studioDraft.kind !== 'director-archive') return;
-    normalizeStudioDraftFromDom();
-    const source = studioDraft.source || {};
-    const params = new URLSearchParams();
-    if (source.personId) params.set('id', source.personId); else params.set('name', source.name || '');
-    params.set('sort', source.sort || 'release_asc');
-    // Studio sync is an authoring operation, not a page-load dependency. Use the
-    // inexpensive all-directed credits path; exclusions can be curated afterward.
-    params.set('mode', 'all-directed');
-    studioSyncing = true; renderStudio();
-    try {
-      const data = await apiJson(`/api/director-filmography?${params.toString()}`, { timeoutMs: 9000, priority: 'high' });
-      const rows = (data.results || []).map((row) => rememberMovie(row, { persist: false })).filter(Boolean);
-      studioDraft.source = { ...source, name: data.person?.name || source.name, personId: data.person?.id || source.personId, mode: 'all-directed', snapshot: rows.map((row) => MOVIE_ENTITIES.compactSnapshot(row) || row), snapshotGeneratedAt: new Date().toISOString() };
-      studioDraft.heroMovieId = studioDraft.heroMovieId || rows[0]?.id || '';
-      UI.toast(`${rows.length}편의 필모그래피 snapshot을 갱신했습니다.`);
-    } catch (error) { UI.toast(error.message || '필모그래피 동기화에 실패했습니다.'); }
-    finally { studioSyncing = false; if (activeView === 'studio') renderStudio(); }
-  }
 
   function renderStatus() {
     const live = CATALOG.mode === 'live';
@@ -2408,6 +2398,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     renderActiveView();
     renderStatus();
     renderAccountChrome();
+    requestAnimationFrame(() => syncRailArrows());
   }
 
   function renderAfterPersonalChange(movieId, parts = ['hero', 'activity']) {
@@ -2650,6 +2641,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       if (rail) {
         const direction = railStep.dataset.railStep === 'prev' ? -1 : 1;
         rail.scrollBy({ left: direction * Math.max(260, rail.clientWidth * 0.82), behavior: 'smooth' });
+        setTimeout(() => syncRailArrows(shell), 360);
       }
       return;
     }
@@ -2701,6 +2693,9 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const editRelationship = event.target.closest('[data-edit-relationship]');
     if (editRelationship) { await openRelationshipEditor(editRelationship.dataset.editRelationship); return; }
 
+    const saveProgramme = event.target.closest('[data-save-programme-collection]');
+    if (saveProgramme) { await saveProgrammeAsCollection(saveProgramme.dataset.saveProgrammeCollection); return; }
+
     const addLibrary = event.target.closest('[data-add-library]');
     if (addLibrary) { await addMovieToLibrary(addLibrary.dataset.addLibrary); return; }
 
@@ -2735,13 +2730,6 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
 
     const deleteCollectionButton = event.target.closest('[data-delete-collection]');
     if (deleteCollectionButton) { await deleteCollection(deleteCollectionButton.dataset.deleteCollection); return; }
-
-    const curationRetry = event.target.closest('[data-curation-retry]');
-    if (curationRetry) {
-      const item = CURATIONS.get(curationRetry.dataset.curationRetry);
-      if (item) { await getCurationLoader().retry?.(item); if (activeView === 'arthouse') renderArthouse(); if (activeView === 'curation') await openCuration(item.slug, { route: 'none', from: curationPreviousView }); }
-      return;
-    }
 
     const curationElement = event.target.closest('[data-curation]');
     if (curationElement) { await openCuration(curationElement.dataset.curation); return; }
@@ -2847,23 +2835,68 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       } catch (error) { UI.toast(error.message || '보관하지 못했습니다.'); }
       return;
     }
-    if (event.target.closest('[data-studio-director-sync]')) { await syncStudioDirector(); return; }
-    if (event.target.closest('[data-studio-add-movie]')) {
+    if (event.target.closest('[data-studio-pick-hero-image]')) {
       normalizeStudioDraftFromDom();
-      const answer = await UI.ask({ eyebrow: 'STUDIO', title: '영화 추가', message: 'TMDB에서 검색할 제목을 입력하세요.', input: { label: '영화 제목', value: '' }, confirmText: '검색' });
-      if (!answer.confirmed || !answer.input) return;
+      const heroId = String(studioDraft?.heroMovieId || orderedEditorialEntries(studioDraft)[0]?.id || '');
+      if (!heroId) { UI.toast('먼저 대표 영화를 선택해주세요.'); return; }
+      const host = document.getElementById('studioHeroImageResults');
+      host.innerHTML = '<div class="studio-search-loading"><span class="loading-ring"></span><span>대표 영화 이미지를 불러오는 중…</span></div>';
+      UI.showDialog('studioHeroImageDialog');
       try {
-        const data = await MOVIE_REPOSITORY.search(answer.input);
-        studioSearchResults = data.results || [];
-        if (!studioSearchResults.length) { UI.toast('검색 결과가 없습니다.'); return; }
-        const pick = await UI.ask({ eyebrow: 'STUDIO', title: '영화 선택', message: '큐레이션에 추가할 영화를 선택하세요.', select: { label: '검색 결과', options: studioSearchResults.slice(0, 10).map((row) => ({ value: row.id, label: `${row.title}${row.year ? ` (${row.year})` : ''}` })) }, confirmText: '추가' });
-        if (!pick.confirmed) return;
-        const entries = orderedEditorialEntries(studioDraft);
-        if (!entries.some((row) => row.id === String(pick.select))) entries.push({ id: String(pick.select), note: '' });
-        studioDraft.movies = entries; studioDraft.chapters = []; studioDraft.heroMovieId = studioDraft.heroMovieId || String(pick.select); renderStudio();
-      } catch (error) { UI.toast(error.message || '영화를 검색하지 못했습니다.'); }
+        const record = movie(heroId) || await getMovieLoader()?.loadSummary?.(heroId, { persist: false }) || movie(heroId);
+        const media = await MOVIE_REPOSITORY.media(heroId);
+        const candidates = [];
+        const add = (url, label) => { if (url && !candidates.some((row) => row.url === url)) candidates.push({ url, label }); };
+        add(backdrop(record), '대표 백드롭');
+        for (const still of media?.stills || []) add(still.originalUrl || still.url, '스틸컷');
+        host.innerHTML = candidates.length ? candidates.slice(0, 16).map((row) => `<button type="button" class="studio-hero-image-option" data-studio-hero-image="${escapeHtml(row.url)}"><img src="${escapeHtml(row.url)}" alt=""><span>${escapeHtml(row.label)}</span></button>`).join('') : '<div class="empty-state compact"><b>선택할 이미지를 찾지 못했습니다.</b><span>Hero 이미지 URL을 직접 입력할 수도 있습니다.</span></div>';
+      } catch (error) {
+        host.innerHTML = `<div class="empty-state compact"><b>이미지를 불러오지 못했습니다.</b><span>${escapeHtml(error.message || '')}</span></div>`;
+      }
       return;
     }
+    const studioHeroImage = event.target.closest('[data-studio-hero-image]');
+    if (studioHeroImage && studioDraft) {
+      studioDraft.heroImageUrl = String(studioHeroImage.dataset.studioHeroImage || '');
+      UI.closeDialog('studioHeroImageDialog');
+      renderStudio();
+      return;
+    }
+    if (event.target.closest('[data-studio-add-movie]')) {
+      normalizeStudioDraftFromDom();
+      studioSearchResults = [];
+      document.getElementById('studioMovieSearchInput').value = '';
+      document.getElementById('studioMovieSearchResults').innerHTML = '<div class="empty-state compact"><span>제목을 검색하면 포스터·연도·감독을 함께 확인할 수 있습니다.</span></div>';
+      UI.showDialog('studioMovieDialog');
+      setTimeout(() => document.getElementById('studioMovieSearchInput')?.focus(), 40);
+      return;
+    }
+    if (event.target.closest('[data-studio-movie-search-submit]')) {
+      const query = document.getElementById('studioMovieSearchInput')?.value.trim();
+      if (!query) return;
+      const host = document.getElementById('studioMovieSearchResults');
+      host.innerHTML = '<div class="studio-search-loading"><span class="loading-ring"></span><span>영화를 찾는 중…</span></div>';
+      try {
+        const data = await MOVIE_REPOSITORY.search(query);
+        studioSearchResults = data.results || [];
+        const top = studioSearchResults.slice(0, 8);
+        if (top.length) {
+          try { await getMovieLoader()?.loadSummaries(top.map((row) => String(row.id)), { persist: false }); } catch { /* detail enrichment is best effort */ }
+        }
+        host.innerHTML = top.length ? top.map((row) => { const full = movie(row.id) || row; return `<button class="studio-search-result" data-studio-pick-movie="${escapeHtml(row.id)}"><span class="studio-search-poster">${poster(full) ? `<img src="${escapeHtml(poster(full))}" alt="">` : ''}</span><span class="studio-search-copy"><b>${escapeHtml(full.title)}</b><small>${escapeHtml([full.originalTitle && full.originalTitle !== full.title ? full.originalTitle : '', full.year, full.director || '감독 정보 없음'].filter(Boolean).join(' · '))}</small></span><span>추가</span></button>`; }).join('') : '<div class="empty-state compact"><b>검색 결과가 없습니다.</b></div>';
+      } catch (error) { host.innerHTML = `<div class="empty-state compact"><b>검색하지 못했습니다.</b><span>${escapeHtml(error.message || '')}</span></div>`; }
+      return;
+    }
+    const studioPickMovie = event.target.closest('[data-studio-pick-movie]');
+    if (studioPickMovie && studioDraft) {
+      normalizeStudioDraftFromDom();
+      const id = String(studioPickMovie.dataset.studioPickMovie);
+      const entries = orderedEditorialEntries(studioDraft);
+      if (!entries.some((row) => row.id === id)) { const picked = movie(id) || studioSearchResults.find((row) => String(row.id) === id); entries.push({ id, note: '', ...(picked ? { snapshot: MOVIE_ENTITIES.compactSnapshot(picked) || picked } : {}) }); }
+      studioDraft.movies = entries; studioDraft.chapters = []; studioDraft.heroMovieId = studioDraft.heroMovieId || id;
+      UI.closeDialog('studioMovieDialog'); renderStudio(); return;
+    }
+
     const studioRemove = event.target.closest('[data-studio-film-remove]');
     if (studioRemove && studioDraft) { normalizeStudioDraftFromDom(); const rows = orderedEditorialEntries(studioDraft); rows.splice(Number(studioRemove.dataset.studioFilmRemove), 1); studioDraft.movies = rows; studioDraft.chapters = []; renderStudio(); return; }
     const studioUp = event.target.closest('[data-studio-film-up],[data-studio-film-down]');
@@ -3180,6 +3213,11 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && document.activeElement?.id === 'studioMovieSearchInput') {
+      event.preventDefault();
+      document.querySelector('[data-studio-movie-search-submit]')?.click();
+      return;
+    }
     if (event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
       event.preventDefault();
       openSearch();

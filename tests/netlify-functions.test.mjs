@@ -5,6 +5,7 @@ const shareModule=await import('../netlify/functions/share.mjs');
 const searchModule=await import('../netlify/functions/movie-search.mjs');
 const detailModule=await import('../netlify/functions/movie-detail.mjs');
 const availabilityDetailModule=await import('../netlify/functions/movie-availability.mjs');
+const mediaModule=await import('../netlify/functions/movie-media.mjs');
 const summariesModule=await import('../netlify/functions/movie-summaries.mjs');
 const boxOfficeModule=await import('../netlify/functions/box-office.mjs');
 const recommendationModule=await import('../netlify/functions/movie-recommendations.mjs');
@@ -33,6 +34,8 @@ try{
     if(/\/movie\/(31|32|33|34|35|36|37)(?:\?|$)/.test(value)) { const id=Number(value.match(/\/movie\/(\d+)/)[1]); const directors=id===36?[{id:3,job:'Director',name:'Víctor Erice'},{id:4,job:'Director',name:'Other'}]:id===37?[{id:4,job:'Director',name:'Other'}]:[{id:3,job:'Director',name:'Víctor Erice'}]; return Response.json({id,title:`Erice ${id}`,original_title:`Erice ${id}`,release_date:`${1980 + id - 31}-01-01`,runtime:id===35?20:120,vote_average:8,vote_count:100,popularity:10,poster_path:'/e.jpg',backdrop_path:'/e-bg.jpg',credits:{crew:directors,cast:[]}}); }
     if(value.includes('/person/2/movie_credits')) return Response.json({cast:[],crew:[{...movieFixture,job:'Director'}]});
     if(value.includes('/person/2')) return Response.json({id:2,name:'Orson Welles',known_for_department:'Directing',biography:'bio',profile_path:'/person.jpg'});
+    if(value.includes('/movie/15/videos')) return Response.json({results:[{site:'YouTube',key:'trailer123',name:'Official Trailer',type:'Trailer',official:true,iso_639_1:'ko',size:1080}]});
+    if(value.includes('/movie/15/images')) return Response.json({backdrops:[{file_path:'/still.jpg',width:1920,height:1080,vote_average:8}]});
     if(value.includes('/movie/15/release_dates')) return Response.json({results:[{iso_3166_1:'KR',release_dates:[{type:3,release_date:new Date().toISOString()}]}]});
     if(value.includes('/movie/15/credits')) return Response.json({crew:[{id:2,job:'Director',name:'Orson Welles'}],cast:[{id:2,name:'Orson Welles',character:'Kane'}]});
     if(value.includes('/movie/15/external_ids')) return Response.json({imdb_id:'tt0033467'});
@@ -55,6 +58,10 @@ try{
   assert.equal(detailData.director,'Orson Welles'); assert.equal(detailData.directorId,2); assert.equal(detailData.cast[0].id,2); assert.equal(detailData.productionCountries[0],'미국');
   assert.ok(!('providers' in detailData),'static detail must not block on volatile availability');
   assert.ok(detailData.heroBackdropUrl?.includes('/w1280/'),'detail hero should be capped at w1280');
+
+  const mediaResponse=await mediaModule.default(new Request('https://kinosis.test/api/movie-media?id=15'));
+  assert.equal(mediaResponse.status,200); const mediaData=await mediaResponse.json();
+  assert.equal(mediaData.trailers[0].key,'trailer123'); assert.ok(mediaData.stills[0].url.includes('/w780/'));
 
   const detailAvailabilityResponse=await availabilityDetailModule.default(new Request('https://kinosis.test/api/movie-availability?id=15'));
   assert.equal(detailAvailabilityResponse.status,200); const detailAvailabilityData=await detailAvailabilityResponse.json();
@@ -99,8 +106,8 @@ try{
   assert.ok(String(upcomingData.source).length > 0); assert.equal(upcomingData.region,'KR');
   assert.equal(new Set(upcomingData.results.map(row=>row.id)).size,upcomingData.results.length,'upcoming results must be unique');
 
-  for(const payload of [searchData,detailData,detailAvailabilityData,summariesData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
+  for(const payload of [searchData,detailData,mediaData,detailAvailabilityData,summariesData,boxOfficeData,recommendationData,personData,directorData,ericeData,availabilityData,streamingData,upcomingData]) {
     assert.ok(!JSON.stringify(payload).includes('test-token-not-real'),'TMDB secret leaked in API response');
   }
-  console.log('netlify-functions.test: OG share/search/static-detail/progressive-availability/summaries/theatrical-snapshot/recommendations/person/director/live-streaming contracts OK');
+  console.log('netlify-functions.test: OG share/search/static-detail/media/progressive-availability/summaries/theatrical-snapshot/recommendations/person/director/live-streaming contracts OK');
 }finally{globalThis.fetch=realFetch;}

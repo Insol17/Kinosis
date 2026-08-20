@@ -1,4 +1,4 @@
-# KINOSIS API and snapshot policy — 0.4.5.4
+# KINOSIS API and snapshot policy — 0.4.5.6
 
 ## Principle
 
@@ -43,9 +43,9 @@ TMDB remains the source for:
 
 ## Director Archive
 
-Director Archives are snapshot-first content. `scripts/hydrate-director-snapshots.mjs` hydrates full director snapshots during trusted builds when a TMDB token is available. The runtime only falls back to live director lookup when no published snapshot exists at all.
+Director Archives are explicitly authored programmes. Studio/admin chooses the exact films that belong in each Archive; KINOSIS never auto-publishes a director's complete filmography. During trusted builds, `build-curations.mjs` enriches only those selected TMDB IDs with compact title/poster/backdrop/director snapshots. Public Arthouse renders those committed selections first and never needs a runtime director-filmography query.
 
-Studio's `TMDB에서 snapshot 갱신` action is an authoring operation and may call TMDB directly; public Arthouse browsing does not depend on it.
+`scripts/hydrate-director-snapshots.mjs` remains only as a legacy migration utility and is not part of the normal build path.
 
 ## JustWatch via TMDB Watch Providers
 
@@ -55,6 +55,6 @@ Availability is volatile and remains a background/live enrichment layer. It neve
 
 - Snapshot refresh: generate → validate → replace; failure retains last known-good committed data.
 - KOBIS/TMDB matching failure: keep KOBIS title/rank/date and omit detail navigation until mapped.
-- Director live refresh failure: keep the published snapshot.
+- Programme enrichment failure: keep the explicitly selected IDs and any last known programme snapshots; never change programme membership.
 - Search/detail failure: preserve the existing MovieSummary and show a local retry state.
 - Personal data: keep compact movie snapshots in cloud state so Library/Profile do not depend on Discover catalog membership.

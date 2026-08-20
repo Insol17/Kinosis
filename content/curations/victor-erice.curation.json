@@ -9,32 +9,17 @@
   "source": {
     "type": "director",
     "name": "Víctor Erice",
-    "sort": "release_asc",
-    "mode": "solo-features",
-    "personId": "37833",
-    "snapshot": [
-      {
-        "id": "4495",
-        "title": "벌집의 정령",
-        "originalTitle": "El espíritu de la colmena",
-        "year": "1973",
-        "releaseDate": "1973-10-08",
-        "director": "Víctor Erice",
-        "directorId": "37833",
-        "runtime": 98
-      },
-      {
-        "id": "48139",
-        "title": "남쪽",
-        "originalTitle": "El sur",
-        "year": "1983",
-        "releaseDate": "1983-05-19",
-        "director": "Víctor Erice",
-        "directorId": "37833",
-        "runtime": 94
-      }
-    ],
-    "snapshotGeneratedAt": "2026-08-20"
+    "personId": "37833"
   },
-  "kind": "director-archive"
+  "kind": "director-archive",
+  "movies": [
+    {
+      "tmdbId": 4495
+    },
+    {
+      "tmdbId": 48139
+    }
+  ],
+  "heroMovieId": "4495",
+  "orderMode": "unordered"
 }

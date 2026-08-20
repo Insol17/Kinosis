@@ -207,7 +207,7 @@ const boxOffice = boxRows.map((row) => ({
 }));
 const upcoming = upcomingRows.map((row) => enrichKobisRecord(row, resolved.get(String(row.movieCd)), 'kobis-upcoming-snapshot'));
 const snapshot = {
-  version: '0.4.5.4', region: REGION, mode: 'kobis-snapshot', updatedAt: new Date().toISOString(), targetDt,
+  version: '0.4.5.6', region: REGION, mode: 'kobis-snapshot', updatedAt: new Date().toISOString(), targetDt,
   sources: { boxOffice: 'KOBIS daily box office', upcoming: 'KOBIS movie list · KR opening dates', enrichment: 'TMDB' },
   boxOffice,
   upcoming,

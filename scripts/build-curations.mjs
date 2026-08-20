@@ -19,7 +19,9 @@ const slugFile = (name) => name.replace(/\.curation\.json$/i, '');
 function movie(value, file, index, field = 'movies') {
   const id = String(typeof value === 'object' ? (value.tmdbId ?? value.id ?? '') : value).trim();
   if (!/^\d+$/.test(id)) fail(`${file}: ${field}[${index}] invalid TMDB id`);
-  return { id, note: typeof value === 'object' ? text(value.note, `${field}[${index}].note`, file, 220) : '' };
+  const row = { id, note: typeof value === 'object' ? text(value.note, `${field}[${index}].note`, file, 700) : '' };
+  if (typeof value === 'object' && value?.snapshot && typeof value.snapshot === 'object') row.snapshot = normalizeMovieSnapshot({ ...value.snapshot, id }, file, `${field}[${index}].snapshot`);
+  return row;
 }
 
 function ids(value, field, file) {
@@ -35,34 +37,39 @@ function ids(value, field, file) {
 }
 
 
+function normalizeMovieSnapshot(entry, file, field = 'snapshot') {
+  const id = String(entry?.id ?? entry?.tmdbId ?? '').trim();
+  if (!/^\d+$/.test(id)) fail(`${file}: ${field}.id invalid TMDB id`);
+  const title = text(entry?.title, `${field}.title`, file, 160);
+  if (!title) fail(`${file}: ${field}.title required`);
+  const year = String(entry?.year || '').trim();
+  return {
+    id,
+    title,
+    originalTitle: text(entry?.originalTitle, `${field}.originalTitle`, file, 160),
+    year: /^\d{4}$/.test(year) ? year : null,
+    releaseDate: text(entry?.releaseDate, `${field}.releaseDate`, file, 20) || null,
+    director: text(entry?.director, `${field}.director`, file, 120),
+    directorId: String(entry?.directorId || '').trim(),
+    runtime: Number.isFinite(Number(entry?.runtime)) ? Number(entry.runtime) : null,
+    overview: text(entry?.overview, `${field}.overview`, file, 1200),
+    posterUrl: text(entry?.posterUrl, `${field}.posterUrl`, file, 500) || null,
+    backdropUrl: text(entry?.backdropUrl, `${field}.backdropUrl`, file, 500) || null,
+    source: 'programme-snapshot',
+    detailLoaded: false,
+  };
+}
+
 function snapshot(value, file) {
   if (value == null) return [];
   if (!Array.isArray(value)) fail(`${file}: source.snapshot must be array`);
   const seen = new Set();
   return value.map((entry, index) => {
     if (!entry || typeof entry !== 'object' || Array.isArray(entry)) fail(`${file}: source.snapshot[${index}] must be object`);
-    const id = String(entry.id ?? entry.tmdbId ?? '').trim();
-    if (!/^\d+$/.test(id)) fail(`${file}: source.snapshot[${index}].id invalid TMDB id`);
-    if (seen.has(id)) fail(`${file}: source.snapshot duplicate id ${id}`);
-    seen.add(id);
-    const title = text(entry.title, `source.snapshot[${index}].title`, file, 160);
-    if (!title) fail(`${file}: source.snapshot[${index}].title required`);
-    const year = String(entry.year || '').trim();
-    return {
-      id,
-      title,
-      originalTitle: text(entry.originalTitle, `source.snapshot[${index}].originalTitle`, file, 160),
-      year: /^\d{4}$/.test(year) ? year : null,
-      releaseDate: text(entry.releaseDate, `source.snapshot[${index}].releaseDate`, file, 20) || null,
-      director: text(entry.director, `source.snapshot[${index}].director`, file, 120),
-      directorId: String(entry.directorId || '').trim(),
-      runtime: Number.isFinite(Number(entry.runtime)) ? Number(entry.runtime) : null,
-      overview: text(entry.overview, `source.snapshot[${index}].overview`, file, 1200),
-      posterUrl: text(entry.posterUrl, `source.snapshot[${index}].posterUrl`, file, 500) || null,
-      backdropUrl: text(entry.backdropUrl, `source.snapshot[${index}].backdropUrl`, file, 500) || null,
-      source: 'director-snapshot',
-      detailLoaded: false,
-    };
+    const row = normalizeMovieSnapshot(entry, file, `source.snapshot[${index}]`);
+    if (seen.has(row.id)) fail(`${file}: source.snapshot duplicate id ${row.id}`);
+    seen.add(row.id);
+    return { ...row, source: 'director-snapshot' };
   });
 }
 
@@ -148,6 +155,8 @@ function read() {
 
     if (kind === 'editorial' && !explicitMovieIds.length) fail(`${rel}: editorial curation requires explicit movies or chapters`);
     if (kind === 'director-archive' && !src) fail(`${rel}: director-archive requires source.type=director`);
+    if (kind === 'director-archive' && !explicitMovieIds.length) fail(`${rel}: director-archive requires explicit movies`);
+    if (kind === 'editorial' && movieRows.some((entry) => !entry.note)) fail(`${rel}: editorial curation requires a note for every movie`);
     if (kind === 'editorial' && src) fail(`${rel}: editorial source of truth must be explicit; remove source and list movies`);
 
     items.push({
@@ -161,6 +170,7 @@ function read() {
       introduction: [],
       credit: text(raw.credit, 'credit', rel, 120) || 'Curated by KINOSIS',
       heroMovieId: String(raw.heroMovieId || movieRows[0]?.id || chapterRows[0]?.movies[0]?.id || ''),
+      heroImageUrl: text(raw.heroImageUrl, 'heroImageUrl', rel, 500),
       priority: Number.isFinite(Number(raw.priority)) ? Math.trunc(Number(raw.priority)) : 100,
       source: kind === 'director-archive' ? src : null,
       movies: movieRows,
@@ -172,7 +182,43 @@ function read() {
   return items;
 }
 
-const payload = { version: '0.4.5.4', items: read() };
+async function enrichProgrammeMovies(items) {
+  const token = process.env.TMDB_READ_ACCESS_TOKEN || '';
+  if (!token || validateOnly) return items;
+  const byId = new Map();
+  for (const item of items) for (const entry of item.movies || []) if (!entry.snapshot) byId.set(String(entry.id), null);
+  const ids = [...byId.keys()];
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(4, ids.length) }, async () => {
+    while (cursor < ids.length) {
+      const id = ids[cursor++];
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=ko-KR&append_to_response=credits`, { headers: { Authorization: `Bearer ${token}`, accept: 'application/json' } });
+        if (!response.ok) continue;
+        const data = await response.json();
+        const director = (data.credits?.crew || []).find((person) => person.job === 'Director');
+        byId.set(id, {
+          id,
+          title: data.title || data.original_title || `TMDB ${id}`,
+          originalTitle: data.original_title || '',
+          year: String(data.release_date || '').slice(0,4) || null,
+          releaseDate: data.release_date || null,
+          director: director?.name || '',
+          directorId: director?.id ? String(director.id) : '',
+          runtime: Number(data.runtime) || null,
+          overview: data.overview || '',
+          posterUrl: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : null,
+          backdropUrl: data.backdrop_path ? `https://image.tmdb.org/t/p/w1280${data.backdrop_path}` : null,
+          source: 'programme-snapshot', detailLoaded: false,
+        });
+      } catch { /* retain runtime fallback for this one film */ }
+    }
+  });
+  await Promise.all(workers);
+  return items.map((item) => ({ ...item, movies: (item.movies || []).map((entry) => ({ ...entry, snapshot: entry.snapshot || byId.get(String(entry.id)) || undefined })) }));
+}
+
+const payload = { version: '0.4.5.6', items: await enrichProgrammeMovies(read()) };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

@@ -9,22 +9,14 @@
   "source": {
     "type": "director",
     "name": "Hou Hsiao-hsien",
-    "sort": "release_asc",
-    "mode": "all-directed",
-    "personId": "64992",
-    "snapshot": [
-      {
-        "id": "253450",
-        "title": "자객 섭은낭",
-        "originalTitle": "刺客聶隱娘",
-        "year": "2015",
-        "releaseDate": "2015-08-27",
-        "director": "Hou Hsiao-hsien",
-        "directorId": "64992",
-        "runtime": 105
-      }
-    ],
-    "snapshotGeneratedAt": "2026-08-20"
+    "personId": "64992"
   },
-  "kind": "director-archive"
+  "kind": "director-archive",
+  "movies": [
+    {
+      "tmdbId": 253450
+    }
+  ],
+  "heroMovieId": "253450",
+  "orderMode": "unordered"
 }

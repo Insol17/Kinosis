@@ -1,8 +1,8 @@
-# KINOSIS 0.4.5.4
+# KINOSIS 0.4.5.6
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.4 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
+KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.6 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
 
 ```text
 DISCOVER  → KOBIS 기반 한국 박스오피스 / 개봉 예정 + 영화 발견
@@ -13,19 +13,19 @@ PROFILE   → 감상 기록 / 평가 / 한줄평 / cinematic calendar / 통계 /
 STUDIO    → admin only · Arthouse 프로그램 제작/미리보기/발행
 ```
 
-## 0.4.5.4 focus
+## 0.4.5.6 focus
 
-- **Snapshot-first theatrical data:** KOBIS is the canonical source for Korean box office and Korean opening/upcoming data. A scheduled ingest enriches KOBIS rows with TMDB imagery/metadata and writes `data/theatrical-kr.*`; browser refreshes read the snapshot and do **not** consume KOBIS quota.
-- **Persistent KOBIS↔TMDB identity mapping:** `data/kobis-tmdb-map.json` remembers resolved pairs. A KOBIS movie remains visible even when TMDB matching fails; only enrichment is missing.
-- **Arthouse no longer depends on runtime filmography assembly:** Director Archive snapshots are hydrated at build/authoring time. Public Arthouse paints committed snapshots immediately; live Director requests are recovery only when a snapshot is missing.
-- **Studio responsiveness:** Studio routes immediately to a loading shell, fetches a lightweight programme list, lazily loads full payloads on edit/preview, patches local state after save/archive, and no longer mutates the global published Curation registry for preview.
-- **Curation as a film collection object:** default Curation grammar is `title + short description + films`. Per-film notes are optional, ordering is optional (`unordered` / `curated`), and legacy chapters are flattened at the build boundary.
-- **One typography system, differentiated Arthouse surface:** no special editorial font. Arthouse uses the same KINOSIS components with restrained grain, emulsion scratches, thin archive framing and perforation-like rules.
-- **Rating preview correctness:** pointer hover is transient; leaving the whole rating control restores the committed value instead of leaving an uncommitted 4.5-star visual state.
-- **Cinematic viewing calendar:** desktop cells use horizontal still/backdrop imagery. The representative film is the highest-rated viewing event, with latest-recorded as the tie-break; multiple films are summarized as `외 N편` using unique movies. Mobile switches to a readable monthly agenda.
-- **Bounded external work:** Search/Detail keep foreground priority, snapshot hydration is background work, Director refresh is no longer an ordinary public-page requirement, and legacy `/movie-summaries` remains recovery-only.
+- **Authored programmes:** Director Archives and Editorial Curations are both explicitly selected in Studio. Archive has no required per-film commentary; Curation requires it.
+- **Programme snapshots:** selected movie summaries are enriched during build when a TMDB token exists, and Studio stores compact snapshots with its selected films. Public Arthouse therefore renders from committed programme data first.
+- **Discover composition:** movie-only Hero; Curation appears as a dedicated inline programme promotion. KOBIS ranking is factual and rank #1 is never removed by presentation dedupe.
+- **Stable browsing:** horizontal rail arrows disappear at their true bounds; cards expose personal rating/watched state and no longer carry OTT logos.
+- **Library/Profile polish:** oversized Library intro removed, Shelf/Watchlist use a stable header, Profile uses a compact record-first composition, and the cinematic calendar is retained.
+- **Curation experience:** `그럼에도 삶은 계속된다` is a six-film cross-director programme with a required explanation beside each film. Programme pages can be saved as personal Collections.
+- **Studio authoring:** richer film identity search and explicit Hero image selection from representative-film imagery.
+- **Film Detail media:** trailers and stills load independently after the base Detail, keeping movie information and personal records usable first.
+- **Visual identity:** a stronger but consistent Arthouse film/archive surface plus a new film-frame KINOSIS icon.
 
-See `docs/ARCHITECTURE-0.4.5.4.md`, `docs/API-SOURCES.md`, `docs/NETLIFY-DEPLOY.md` and `PATCH-0.4.5.4.md`.
+See `PATCH-0.4.5.6.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
 
 ## Run
 
@@ -93,8 +93,8 @@ Studio role remains intentionally small: normal `user` and trusted `admin`. Assi
 
 `content/curations/*.curation.json` remains the Git-backed portfolio fallback. Admin accounts can author dynamic overlays in **KINOSIS STUDIO**. Published rows override the same slug; Archived rows suppress a fallback without destructively deleting it.
 
-- **Curation:** a film collection with a short context. Ordering and film notes are optional.
-- **Director Archive:** a filmography surface backed by a committed snapshot. Studio/build refresh is responsible for updating it; public rendering is not.
+- **Curation:** an explicitly selected film programme. Every film carries a curator explanation; ordering can be meaningful.
+- **Director Archive:** an explicitly selected set of films by one director. Studio decides which works belong; runtime auto-filmography does not.
 
 ## Data sources
 

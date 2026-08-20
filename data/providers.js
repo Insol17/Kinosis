@@ -1,5 +1,5 @@
 window.KINOSIS_PROVIDER_DATA = Object.freeze({
-  "version": "0.4.5.4",
+  "version": "0.4.5.6",
   "items": [
     {
       "key": "Netflix",
@@ -48,8 +48,8 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "prefixes": [
         "watcha"
       ],
-      "logoOverride": "./assets/branding/providers/watcha-logo-white.png",
-      "logoKind": "wordmark",
+      "logoOverride": "./assets/branding/providers/watcha-mark.svg",
+      "logoKind": "mark",
       "source": "WATCHA official media kit"
     },
     {

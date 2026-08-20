@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.5.6
+
+- Made Director Archives explicit admin-selected film programmes and required per-film editorial notes for Curation.
+- Rebuilt `그럼에도 삶은 계속된다` with six cross-director films and authored explanations.
+- Added Studio rich film search and direct Hero image picker.
+- Moved Discover Curation promotion out of Hero into an inline programme banner.
+- Preserved KOBIS rank #1, added state-aware rail arrows, personal ratings on cards, and removed card OTT badges.
+- Added WATCHA compact W mark, trailers/stills in Detail, stable Library switching, compact Profile UI and programme-to-Collection save.
+- Expanded Arthouse film/archive visual language and replaced the KINOSIS app icon with a film-frame mark.
+- Added build-time programme movie snapshot enrichment so programme imagery is available before Detail is opened.
+
 ## 0.4.5.4
 
 - Moved Korean theatrical data to a scheduled KOBIS→TMDB snapshot pipeline so browser traffic does not consume KOBIS quota.

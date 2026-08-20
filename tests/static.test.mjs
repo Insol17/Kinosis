@@ -8,7 +8,7 @@ const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const required = [
   'index.html','assets/css/app.css','assets/js/app.js','assets/js/core/store.js','assets/js/core/router.js','assets/js/core/movie-entities.js','assets/js/core/performance.js','assets/js/core/request-scheduler.js',
   'assets/js/domain/personal-state.js','assets/js/domain/personal-actions.js','assets/js/domain/demo-state.js','assets/js/domain/auth-role.js','assets/js/infrastructure/api-client.js','assets/js/infrastructure/movie-repository.js','assets/js/services/movie-loader.js',
-  'assets/js/features/search.js','assets/js/features/detail.js','assets/js/features/library.js','assets/js/features/arthouse.js','assets/js/features/discovery.js','assets/js/features/studio.js','assets/js/features/calendar.js','assets/js/ui/movie-card.js','assets/js/cloud.js','assets/js/ui.js','assets/js/state-integrity.js','assets/js/curations.js','assets/js/curation-loader.js',
+  'assets/js/features/search.js','assets/js/features/detail.js','assets/js/features/library.js','assets/js/features/arthouse.js','assets/js/features/discovery.js','assets/js/features/studio.js','assets/js/features/calendar.js','assets/js/ui/movie-card.js','assets/js/cloud.js','assets/js/ui.js','assets/js/state-integrity.js','assets/js/curations.js',
   'data/catalog.js','data/curations.js','data/curations.json','data/providers.js','data/arthouse.js','data/theatrical-kr.js','data/theatrical-kr.json','data/theatrical-kr.mjs','data/kobis-tmdb-map.json','content/curations/kiarostami-life-continues.curation.json',
   'scripts/build-curations.mjs','scripts/update-theatrical.mjs','scripts/hydrate-director-snapshots.mjs','tests/browser-smoke.mjs','supabase/005_kinosis_0453.sql','supabase/006_kinosis_0454.sql','netlify/functions/movie-detail.mjs','netlify/functions/movie-availability.mjs','netlify/functions/movie-summaries.mjs','netlify/functions/share.mjs','netlify/functions/director-filmography.mjs',
 ];
@@ -23,7 +23,6 @@ const library = read('assets/js/features/library.js');
 const movieCard = read('assets/js/ui/movie-card.js');
 const arthouse = read('assets/js/features/arthouse.js');
 const discovery = read('assets/js/features/discovery.js');
-const curationLoader = read('assets/js/curation-loader.js');
 const css = read('assets/css/app.css');
 const detailFn = read('netlify/functions/movie-detail.mjs');
 const availabilityFn = read('netlify/functions/movie-availability.mjs');
@@ -31,7 +30,7 @@ const directorFn = read('netlify/functions/director-filmography.mjs');
 const curations = JSON.parse(read('data/curations.json'));
 
 for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','PROFILE','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
-assert.ok(html.includes('app.js?v=0.4.5.4'), '0.4.5.4 cache-busting missing');
+assert.ok(html.includes('app.js?v=0.4.5.6'), '0.4.5.6 cache-busting missing');
 assert.ok(html.includes('type="module"'), 'main browser entry must be module');
 assert.ok(html.includes('https://image.tmdb.org'), 'TMDB image CDN preconnect missing');
 assert.ok(html.includes('logRatingHost') && html.includes('logNote') && !html.includes('id="logComment"') && !html.includes('id="logFavorite"'), 'ViewingEvent editor must not edit current relationship comment/favorite');
@@ -47,7 +46,7 @@ assert.ok(app.includes('removeMovieFromLibrary') && app.includes('deletePersonal
 assert.ok(app.includes('개인 기록은 보존됩니다'), 'Library removal semantics must be visible to users');
 assert.ok(app.includes('reviewArchiveHtml') && app.includes('ratingArchiveHtml'), 'Profile comment/rating archive drill-down missing');
 assert.ok(app.includes('selectProgrammeHeroes') && !app.includes('최근 공개된 작가영화') && !app.includes('다시 볼 만한 작품'), 'Arthouse must be programme-driven without generic pseudo-personal rails');
-assert.ok(app.includes('ensureCurationPreview') && app.includes('data-curation-retry') && app.includes('curation-inline-status'), 'curation snapshot/live retry path missing');
+assert.ok(app.includes('seedCurationSnapshots') && app.includes('curationHeroImage') && app.includes('discoverCurationPromo'), 'programme snapshot/direct Hero/promo path missing');
 assert.ok(app.includes('PERFORMANCE.mark') && app.includes('__KINOSIS_PERF__'), 'Detail performance diagnostics missing');
 assert.ok(!app.includes("cache: 'no-store'"), 'client API must not defeat caching');
 assert.ok(!app.match(/\b(prompt|confirm|alert)\s*\(/), 'native blocking dialogs must not be used');
@@ -62,28 +61,40 @@ assert.ok(!detail.includes('<dt>감독</dt>'), 'director must not be duplicated 
 for (const slop of ['이 영화는 무엇인가?', '지금 어디서 볼 수 있는가?', '나와 어떤 관계인가?']) assert.ok(!detail.includes(slop), `Detail must not expose internal design question: ${slop}`);
 for (const label of ['작품 정보', '감상 가능', '내 기록']) assert.ok(detail.includes(label), `Detail catalogue label missing: ${label}`);
 
+
+assert.ok(html.includes('studioMovieDialog') && html.includes('studioHeroImageDialog'), 'Studio rich movie/Hero image pickers missing');
+assert.ok(detail.includes('트레일러 · 스틸') && detail.includes('youtube-nocookie.com'), 'Detail trailer/still surface missing');
+assert.ok(movieCard.includes('card-personal-rating') && !movieCard.includes('availabilityBadges'), 'cards must show personal rating and omit OTT badge rendering');
+assert.ok(css.includes('.film-rail-arrow[hidden]') && css.includes('.discover-curation-promo') && css.includes('.curation-feature-row'), '0.4.5.6 rail/promo/curation design contracts missing');
+assert.ok(app.includes('data-save-programme-collection') && app.includes('saveProgrammeAsCollection'), 'programme-to-personal-collection action missing');
+assert.ok(app.includes('discoverCurationPromo') && app.includes(".map((record) => ({ ...record, heroType: 'movie'"), 'Discover must promote Curation inline while keeping Hero movie-only');
 assert.ok(search.includes('const DEBOUNCE = 180'), 'search remote debounce should be responsive at 180ms');
 assert.ok(search.includes('search-loading-results') && search.includes('loading-ring mini'), 'search loading skeleton/status missing');
 assert.ok(search.includes('closeForDetail') && search.includes('restoreAfterDetail'), 'search-to-detail context restoration missing');
 assert.ok(search.includes('search-result-main') && search.includes('search-result-row'), 'search option/actions must be sibling controls');
 assert.ok(search.includes("event.key === 'ArrowDown'") && search.includes("event.key === 'Enter'"), 'search keyboard traversal missing');
 
-assert.ok(html.includes('PERSONAL FILM LIBRARY') && html.includes('내 영화장'), 'Personal Film Library identity missing from Library shell');
+assert.ok(html.includes('PERSONAL FILM LIBRARY') && html.includes('내 영화장'), 'Personal Film Library navigation identity missing');
+assert.ok(!library.includes('library-home-head'), 'oversized Library manifesto/header must stay removed');
+assert.ok(library.includes('stable-library-head'), 'shelf/watchlist need stable-height headers');
 assert.ok(html.includes('data-library="watchlist"') && !html.includes('data-library="favorites"'), 'Watchlist must have a separate Library destination while favorites remain a relationship filter');
 assert.ok(library.includes('data-library-relationship') && library.includes('COLLECTIONS') && library.includes('SHELF') && library.includes('renderWatchlistShelf'), 'Library IA must separate relationship filters, collections, shelf and watchlist');
 assert.ok(!library.includes("filter.relationship === 'watchlist'"), 'dead watchlist relationship filter branch must be removed');
 assert.ok(movieCard.includes('보고싶어요에서 제거'), 'watchlist removal affordance must be explicit');
 assert.ok(movieCard.includes("variant === 'library'") && movieCard.includes("variant === 'my'"), 'contextual Movie Card variants missing');
 
-assert.equal(curations.version, '0.4.5.4');
+assert.equal(curations.version, '0.4.5.6');
 const editorial = curations.items.find((item) => item.slug === 'kiarostami-life-continues');
 assert.ok(editorial && editorial.kind === 'editorial', 'authored editorial curation missing');
-assert.ok(editorial.description && editorial.movies?.length >= 5 && editorial.chapters?.length === 0 && editorial.orderMode === 'unordered', 'editorial curation must use the collection-object grammar without mandatory chapters');
+assert.equal(editorial.movies?.length, 6, 'life-continues curation must contain the six approved films');
+assert.deepEqual(editorial.movies.map((row) => row.id), ['30020','38047','103663','334541','265180','976893']);
+assert.ok(editorial.movies.every((row) => String(row.note || '').trim()), 'every Curation film needs a curator explanation');
+assert.equal(editorial.orderMode, 'curated');
+assert.ok(editorial.heroImageUrl, 'published Curation must ship a direct Hero image');
 const directorArchives = curations.items.filter((item) => item.kind === 'director-archive');
 assert.ok(directorArchives.length >= 4, 'Director Archive programme breadth regressed');
-assert.ok(directorArchives.every((item) => /^\d+$/.test(String(item.source?.personId || ''))), 'Director Archive must use stable personId');
-assert.ok(directorArchives.every((item) => Array.isArray(item.source?.snapshot) && item.source.snapshot.length), 'Director Archive must ship a snapshot fallback');
-assert.ok(curationLoader.includes("status: 'error'") && curationLoader.includes('retry: (item)') && curationLoader.includes('snapshotRows'), 'curation loading/error/snapshot state machine missing');
+assert.ok(directorArchives.every((item) => Array.isArray(item.movies) && item.movies.length), 'Director Archive must be an explicit admin-selected movie list');
+assert.ok(app.includes('ensureCurationMovies') && !app.includes('최근 공개된 작가영화') && !app.includes('다시 볼 만한 작품'), 'programme hydration/public Arthouse contract missing');
 assert.ok(arthouse.includes('selectProgrammeHeroes') && !arthouse.includes('selectArthouseRails'), 'Arthouse feature must allocate programme heroes, not generic rails');
 assert.ok(discovery.includes('weightedRating') && discovery.includes('selectDiscoverHeroMovies') && discovery.includes('streaming'), 'Discover weighted ranking/varied hero/cross-rail allocation missing');
 assert.ok(directorFn.includes('director:person?.name') && directorFn.includes('directorId:person?.id?String(person.id)'), 'Director Archive entity contract must preserve director identity');
@@ -120,4 +131,4 @@ assert.ok(upcomingFn.includes("../../data/theatrical-kr.mjs") && !upcomingFn.inc
 assert.ok(theatricalIngest.includes('KOBIS_API_KEY') && theatricalIngest.includes('kobis-tmdb-map.json') && theatricalIngest.includes('externalOnly: true'), 'KOBIS ingest/mapping/unmatched-row contract missing');
 assert.ok(directorHydrate.includes('TMDB_READ_ACCESS_TOKEN') && directorHydrate.includes('snapshotGeneratedAt'), 'Director build snapshot hydration missing');
 assert.ok(css.includes('.curation-collection-grid') && css.includes('.arthouse-collection-card'), 'Curation must read as a film collection object rather than a magazine chapter layout');
-console.log('static.test: 0.4.5.4 snapshot-first KOBIS/Arthouse + Studio + calendar contracts OK');
+console.log('static.test: 0.4.5.6 snapshot-first KOBIS/Arthouse + Studio + calendar contracts OK');

@@ -1,5 +1,5 @@
 export default {
-  "version": "0.4.5.4",
+  "version": "0.4.5.6",
   "region": "KR",
   "mode": "seed-fallback",
   "updatedAt": "2026-08-18T08:11:23.110Z",

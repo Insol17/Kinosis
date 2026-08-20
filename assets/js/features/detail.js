@@ -73,6 +73,23 @@ export function renderDetailMetadata(record, c) {
   </div></section>`;
 }
 
+
+export function renderDetailMedia(record, c) {
+  const media = c.media || { status: 'idle', trailers: [], stills: [] };
+  const head = sectionHead('MEDIA', '트레일러 · 스틸');
+  if (media.status === 'idle' || media.status === 'loading') {
+    return `<section class="detail-question detail-question-media" data-detail-part="media">${head}<div class="detail-media-loading"><span class="loading-ring mini"></span><span>트레일러와 스틸컷을 불러오는 중입니다.</span></div></section>`;
+  }
+  if (media.status === 'error' && !media.trailers?.length && !media.stills?.length) {
+    return `<section class="detail-question detail-question-media" data-detail-part="media">${head}<div class="detail-media-empty"><span>등록된 트레일러·스틸 정보를 불러오지 못했습니다.</span></div></section>`;
+  }
+  const trailer = media.trailers?.[0];
+  const trailerHtml = trailer ? `<section class="detail-media-trailer"><div class="detail-section-head"><h3>트레일러</h3>${media.trailers.length > 1 ? `<span>${media.trailers.length}개 영상</span>` : ''}</div><div class="detail-trailer-frame"><iframe src="https://www.youtube-nocookie.com/embed/${c.escapeHtml(trailer.key)}" title="${c.escapeHtml(trailer.name || `${record.title} 트레일러`)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></section>` : '';
+  const stills = (media.stills || []).slice(0, 8);
+  const stillHtml = stills.length ? `<section class="detail-media-stills"><div class="detail-section-head"><h3>스틸컷</h3><span>${stills.length}장</span></div><div class="detail-still-grid">${stills.map((still) => `<a href="${c.escapeHtml(still.originalUrl || still.url)}" target="_blank" rel="noopener noreferrer"><img src="${c.escapeHtml(still.url)}" alt="${c.escapeHtml(record.title)} 스틸컷" loading="lazy"></a>`).join('')}</div></section>` : '';
+  return `<section class="detail-question detail-question-media" data-detail-part="media">${head}${trailerHtml || stillHtml ? `<div class="detail-media-grid">${trailerHtml}${stillHtml}</div>` : '<div class="detail-media-empty"><span>등록된 트레일러·스틸컷이 없습니다.</span></div>'}</section>`;
+}
+
 export function renderDetailAvailability(record, c) {
   return `<section class="detail-question detail-question-watch detail-watch-band" data-detail-part="availability">${sectionHead('WATCH', '감상 가능')}${c.watchAvailabilityHtml(record)}</section>`;
 }
@@ -98,13 +115,14 @@ export function renderDetailRelated(record, c) {
 
 export function renderDetail(record, c) {
   if (!record) return '';
-  return `<div class="detail-topnav"><button data-movie-back>${c.icon('back')}<span>${c.escapeHtml(c.backLabel)}</span></button><button class="detail-share" data-share-movie="${c.escapeHtml(record.id)}">${c.icon('share')}<span>공유</span></button></div>${renderDetailHero(record, c)}<main class="detail-body">${renderDetailMetadata(record, c)}${renderDetailAvailability(record, c)}${renderDetailActivity(record, c)}${renderDetailRelated(record, c)}</main>`;
+  return `<div class="detail-topnav"><button data-movie-back>${c.icon('back')}<span>${c.escapeHtml(c.backLabel)}</span></button><button class="detail-share" data-share-movie="${c.escapeHtml(record.id)}">${c.icon('share')}<span>공유</span></button></div>${renderDetailHero(record, c)}<main class="detail-body">${renderDetailMetadata(record, c)}${renderDetailMedia(record, c)}${renderDetailAvailability(record, c)}${renderDetailActivity(record, c)}${renderDetailRelated(record, c)}</main>`;
 }
 
 const PART_RENDERERS = {
   hero: renderDetailHero,
   availability: renderDetailAvailability,
   metadata: renderDetailMetadata,
+  media: renderDetailMedia,
   activity: renderDetailActivity,
   related: renderDetailRelated,
 };

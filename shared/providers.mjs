@@ -1,11 +1,11 @@
 export const PROVIDER_DATA = Object.freeze({
-  version: '0.4.5.4',
+  version: '0.4.5.6',
   items: [
     { key: 'Netflix', label: 'Netflix', aliases: ['Netflix', 'Netflix Standard with Ads'], prefixes: ['netflix'] },
     { key: 'TVING', label: 'TVING', aliases: ['TVING'] },
     { key: 'Coupang Play', label: 'Coupang Play', aliases: ['Coupang Play'] },
     { key: 'Disney+', label: 'Disney+', aliases: ['Disney Plus', 'Disney+'], prefixes: ['disneyplus', 'disney'] },
-    { key: 'WATCHA', label: 'WATCHA', aliases: ['Watcha', 'WATCHA'], prefixes: ['watcha'], logoOverride: './assets/branding/providers/watcha-logo-white.png', logoKind: 'wordmark', source: 'WATCHA official media kit' },
+    { key: 'WATCHA', label: 'WATCHA', aliases: ['Watcha', 'WATCHA'], prefixes: ['watcha'], logoOverride: './assets/branding/providers/watcha-mark.svg', logoKind: 'mark', source: 'WATCHA official media kit' },
     { key: 'Wavve', label: 'Wavve', aliases: ['wavve', 'Wavve'], prefixes: ['wavve'] },
     { key: 'Apple TV Plus', label: 'Apple TV+', aliases: ['Apple TV Plus', 'Apple TV+'] },
     { key: 'Amazon Prime Video', label: 'Prime Video', aliases: ['Amazon Prime Video', 'Prime Video'] },

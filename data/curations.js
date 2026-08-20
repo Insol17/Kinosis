@@ -1,5 +1,5 @@
 window.KINOSIS_CURATIONS = {
-  "version": "0.4.5.4",
+  "version": "0.4.5.6",
   "items": [
     {
       "slug": "kiarostami-life-continues",
@@ -7,36 +7,41 @@ window.KINOSIS_CURATIONS = {
       "surface": "arthouse",
       "eyebrow": "KINOSIS CURATION",
       "title": "그럼에도 삶은 계속된다",
-      "subtitle": "Abbas Kiarostami",
-      "description": "아이의 작은 약속에서 현실과 영화의 경계, 죽음 곁에서도 이어지는 일상까지. 다섯 편을 하나의 흐름으로 묶었습니다.",
+      "subtitle": "6 films on living after rupture",
+      "description": "삶은 상실을 해결해주지 않습니다. 죽음의 문턱, 살아남은 뒤의 시간, 공동체의 균열과 반복되는 일상까지. 계속 살아간다는 것의 서로 다른 얼굴을 여섯 편으로 묶었습니다.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
-      "heroMovieId": "49964",
+      "heroMovieId": "976893",
+      "heroImageUrl": "https://image.tmdb.org/t/p/original/hjWxngV6tidwDkfJDEgMjHD2KEz.jpg",
       "priority": 5,
       "source": null,
       "movies": [
         {
-          "id": "49964",
-          "note": "작은 약속 하나가 마을 전체를 새롭게 보게 만드는 출발점."
-        },
-        {
-          "id": "30017",
-          "note": "실제 사건의 당사자가 자신을 연기하며 현실과 영화의 경계를 흔듭니다."
-        },
-        {
-          "id": "47104",
-          "note": "촬영 현장과 실제 감정이 같은 풍경 안에서 겹치며 시선 자체가 서사가 됩니다."
-        },
-        {
           "id": "30020",
-          "note": "죽음을 선택하려는 사람의 길 위에서 영화는 답보다 판단의 거리를 남깁니다."
+          "note": "죽음을 선택하려는 사람에게도 세계는 계속 말을 겁니다. 영화는 삶을 계속해야 한다는 답 대신, 결심과 무관하게 지속되는 사람과 풍경을 남깁니다."
         },
         {
-          "id": "43423",
-          "note": "보이지 않는 사건보다 바람과 일상의 지속이 더 오래 남는 마지막 자리입니다."
+          "id": "38047",
+          "note": "살아남았다는 사실이 곧 다시 살아갈 수 있다는 뜻은 아닙니다. 상처 이후의 시간이 얼마나 느리게 움직이는지를 따라가며, 회복보다 다시 움직이기까지의 시간을 바라봅니다."
+        },
+        {
+          "id": "103663",
+          "note": "일상으로 돌아갈 수 있어도 이전의 일상으로 돌아갈 수는 없습니다. 사건이 끝난 뒤에도 남는 공동체의 균열을 통해, 계속 살아가는 것과 모든 것이 해결되는 일이 다르다고 말합니다."
+        },
+        {
+          "id": "334541",
+          "note": "어떤 상실은 극복의 대상이 아닙니다. 완전히 회복하지 못하더라도 감당할 수 있는 만큼 삶을 이어가는 사람을 통해, 희망을 극복이 아니라 지속의 가능성으로 바꿉니다."
+        },
+        {
+          "id": "265180",
+          "note": "개인의 삶이 무너져도 세계는 아무 일 없었다는 듯 작동합니다. 계속된다는 사실이 반드시 위안은 아니라는, 이 큐레이션에서 가장 잔혹한 형태의 지속을 보여줍니다."
+        },
+        {
+          "id": "976893",
+          "note": "그리고 다음 날 아침은 다시 옵니다. 반복되는 노동과 같은 길, 같은 음악 속에서 하루가 조금씩 달라지는 모습을 통해 지속을 거대한 명제가 아니라 매일의 작은 행위로 되돌립니다."
         }
       ],
-      "orderMode": "unordered",
+      "orderMode": "curated",
       "chapters": []
     },
     {
@@ -49,7 +54,8 @@ window.KINOSIS_CURATIONS = {
       "description": "삶과 죽음, 현실과 영화의 경계를 오가며 이어지는 압바스 키아로스타미의 감독 작품 아카이브.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
-      "heroMovieId": "",
+      "heroMovieId": "49964",
+      "heroImageUrl": "",
       "priority": 10,
       "source": {
         "type": "director",
@@ -59,86 +65,31 @@ window.KINOSIS_CURATIONS = {
         "mode": "all-directed",
         "include": [],
         "exclude": [],
-        "snapshot": [
-          {
-            "id": "49964",
-            "title": "내 친구의 집은 어디인가",
-            "originalTitle": "",
-            "year": "1987",
-            "releaseDate": null,
-            "director": "Abbas Kiarostami",
-            "directorId": "119294",
-            "runtime": null,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "30017",
-            "title": "클로즈업",
-            "originalTitle": "",
-            "year": "1990",
-            "releaseDate": null,
-            "director": "Abbas Kiarostami",
-            "directorId": "119294",
-            "runtime": null,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "47104",
-            "title": "올리브 나무 사이로",
-            "originalTitle": "",
-            "year": "1994",
-            "releaseDate": null,
-            "director": "Abbas Kiarostami",
-            "directorId": "119294",
-            "runtime": null,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "30020",
-            "title": "체리 향기",
-            "originalTitle": "",
-            "year": "1997",
-            "releaseDate": null,
-            "director": "Abbas Kiarostami",
-            "directorId": "119294",
-            "runtime": null,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "43423",
-            "title": "바람이 우리를 데려다 주리라",
-            "originalTitle": "",
-            "year": "1999",
-            "releaseDate": null,
-            "director": "Abbas Kiarostami",
-            "directorId": "119294",
-            "runtime": null,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          }
-        ],
-        "snapshotGeneratedAt": "2026-08-20"
+        "snapshot": [],
+        "snapshotGeneratedAt": null
       },
-      "movies": [],
+      "movies": [
+        {
+          "id": "49964",
+          "note": ""
+        },
+        {
+          "id": "30017",
+          "note": ""
+        },
+        {
+          "id": "47104",
+          "note": ""
+        },
+        {
+          "id": "30020",
+          "note": ""
+        },
+        {
+          "id": "43423",
+          "note": ""
+        }
+      ],
       "orderMode": "unordered",
       "chapters": []
     },
@@ -152,51 +103,30 @@ window.KINOSIS_CURATIONS = {
       "description": "기억과 빛, 시간의 잔상을 오래 응시하는 빅토르 에리세의 장편 감독 작품 아카이브.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
-      "heroMovieId": "",
+      "heroMovieId": "4495",
+      "heroImageUrl": "",
       "priority": 20,
       "source": {
         "type": "director",
         "name": "Víctor Erice",
         "personId": "37833",
         "sort": "release_asc",
-        "mode": "solo-features",
+        "mode": "all-directed",
         "include": [],
         "exclude": [],
-        "snapshot": [
-          {
-            "id": "4495",
-            "title": "벌집의 정령",
-            "originalTitle": "El espíritu de la colmena",
-            "year": "1973",
-            "releaseDate": "1973-10-08",
-            "director": "Víctor Erice",
-            "directorId": "37833",
-            "runtime": 98,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "48139",
-            "title": "남쪽",
-            "originalTitle": "El sur",
-            "year": "1983",
-            "releaseDate": "1983-05-19",
-            "director": "Víctor Erice",
-            "directorId": "37833",
-            "runtime": 94,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          }
-        ],
-        "snapshotGeneratedAt": "2026-08-20"
+        "snapshot": [],
+        "snapshotGeneratedAt": null
       },
-      "movies": [],
+      "movies": [
+        {
+          "id": "4495",
+          "note": ""
+        },
+        {
+          "id": "48139",
+          "note": ""
+        }
+      ],
       "orderMode": "unordered",
       "chapters": []
     },
@@ -210,7 +140,8 @@ window.KINOSIS_CURATIONS = {
       "description": "격변하는 시대와 사람 사이의 거리를 오래 바라보는 허우샤오시엔의 감독 작품 아카이브.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
-      "heroMovieId": "",
+      "heroMovieId": "253450",
+      "heroImageUrl": "",
       "priority": 30,
       "source": {
         "type": "director",
@@ -220,26 +151,15 @@ window.KINOSIS_CURATIONS = {
         "mode": "all-directed",
         "include": [],
         "exclude": [],
-        "snapshot": [
-          {
-            "id": "253450",
-            "title": "자객 섭은낭",
-            "originalTitle": "刺客聶隱娘",
-            "year": "2015",
-            "releaseDate": "2015-08-27",
-            "director": "Hou Hsiao-hsien",
-            "directorId": "64992",
-            "runtime": 105,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          }
-        ],
-        "snapshotGeneratedAt": "2026-08-20"
+        "snapshot": [],
+        "snapshotGeneratedAt": null
       },
-      "movies": [],
+      "movies": [
+        {
+          "id": "253450",
+          "note": ""
+        }
+      ],
       "orderMode": "unordered",
       "chapters": []
     },
@@ -253,7 +173,8 @@ window.KINOSIS_CURATIONS = {
       "description": "역사와 기억, 유령처럼 남은 관계를 장르의 표면 아래 겹쳐 놓는 크리스티안 페촐트의 감독 작품 아카이브.",
       "introduction": [],
       "credit": "Curated by KINOSIS",
-      "heroMovieId": "",
+      "heroMovieId": "471853",
+      "heroImageUrl": "",
       "priority": 40,
       "source": {
         "type": "director",
@@ -263,41 +184,19 @@ window.KINOSIS_CURATIONS = {
         "mode": "all-directed",
         "include": [],
         "exclude": [],
-        "snapshot": [
-          {
-            "id": "471853",
-            "title": "트랜짓",
-            "originalTitle": "Transit",
-            "year": "2018",
-            "releaseDate": "2018-04-05",
-            "director": "Christian Petzold",
-            "directorId": "2332",
-            "runtime": 102,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
-            "id": "900379",
-            "title": "어파이어",
-            "originalTitle": "Roter Himmel",
-            "year": "2023",
-            "releaseDate": "2023-04-20",
-            "director": "Christian Petzold",
-            "directorId": "2332",
-            "runtime": 103,
-            "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          }
-        ],
-        "snapshotGeneratedAt": "2026-08-20"
+        "snapshot": [],
+        "snapshotGeneratedAt": null
       },
-      "movies": [],
+      "movies": [
+        {
+          "id": "471853",
+          "note": ""
+        },
+        {
+          "id": "900379",
+          "note": ""
+        }
+      ],
       "orderMode": "unordered",
       "chapters": []
     }

@@ -19,6 +19,7 @@ export function renderMovieCard(record, variant, c) {
   const logs = c.logsForMovie(record.id);
   const collections = c.collectionsForMovie(record.id);
   const access = c.accessLabel(record);
+  const cardRating = relationship?.rating != null ? `내 ★ ${Number(relationship.rating).toFixed(1)}` : (logs.length ? '감상함' : '');
 
   const media = loading
     ? `<div class="poster-loading" aria-label="영화 정보를 불러오는 중"><span class="loading-ring mini"></span><small>LOADING</small></div>`
@@ -47,7 +48,7 @@ export function renderMovieCard(record, variant, c) {
     : '';
 
   const standardMeta = !libraryCard && !watchlistCard && !myCard
-    ? `<div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && c.availableOnMine(record) ? '<span class="mine-dot"></span><span>내 구독</span>' : ''}</div>`
+    ? `<div class="card-meta"><span>${loading ? '동기화 중…' : (record.year || '—')}</span>${!loading && cardRating ? `<span class="card-personal-rating">${c.escapeHtml(cardRating)}</span>` : ''}</div>`
     : '';
 
   const canOpenDetail = !record.externalOnly && /^\d+$/.test(String(record.tmdbId || record.id || ''));
@@ -58,7 +59,6 @@ export function renderMovieCard(record, variant, c) {
   return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''} ${canOpenDetail ? '' : 'is-external-only'}" ${interaction}>
     <div class="poster-wrap">
       ${media}
-      ${!loading ? c.availabilityBadges(record) : ''}
       <div class="card-overlay">${c.signedIn() && !loading && canOpenDetail ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
     </div>
     <div class="card-info"><p class="card-title">${c.escapeHtml(record.title)}</p>${standardMeta}${libraryContext}${watchlistContext}${myContext}</div>

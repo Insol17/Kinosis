@@ -25,8 +25,8 @@ assert.ok(studioHome.includes('KINOSIS STUDIO') && studioHome.includes('미리�
 const loadingHome = renderStudioHome([], { loading: true });
 assert.ok(loadingHome.includes('프로그램을 불러오는 중') && loadingHome.includes('편집 데이터는 선택할 때 불러옵니다'));
 const editorHtml = renderStudioEditor(editorial, (id) => ({ id, title: `Movie ${id}`, year: '2000' }));
-assert.ok(editorHtml.includes('기본은 영화 묶음입니다') && editorHtml.includes('작품 메모 · 선택 사항'));
-assert.ok(editorHtml.includes('value="unordered"') && editorHtml.includes('value="curated"'), 'Studio must support optional ordering rather than forcing sequence');
+assert.ok(editorHtml.includes('각 영화에는 이 큐레이션에 포함된 이유를 반드시 작성합니다.') && editorHtml.includes('대표 영화 이미지에서 고르기'));
+assert.ok(editorHtml.includes('data-studio-add-movie') && editorHtml.includes('studio-film-poster'), 'Studio must provide explicit rich film authoring');
 assert.ok(!editorHtml.includes('CHAPTER 01'), 'new Studio authoring must not force magazine-style chapters');
 
 // Background work may not consume all request capacity.
@@ -59,7 +59,8 @@ assert.ok(summaries.includes('.slice(0, 6)'), 'summary recovery batch must remai
 assert.ok(summaries.includes('Netlify-CDN-Cache-Control') && summaries.includes('durable'), 'summary recovery needs durable CDN caching');
 assert.ok(movieLoader.includes('index += 6') && movieLoader.includes('Math.min(2, chunks.length)'), 'summary hydration must avoid nested high-concurrency fan-out');
 assert.ok(director.includes("append_to_response:'credits'") && !director.includes('/credits`'), 'solo feature authoring must use one detail+credits request per candidate');
-assert.ok(hydrate.includes('--if-key') && hydrate.includes('snapshotGeneratedAt'), 'Director Archive build hydration contract missing');
+assert.ok(hydrate.includes('--if-key'), 'legacy Director hydration utility should remain available for migration only');
+assert.ok(app.includes('data-studio-pick-hero-image') && app.includes('studioHeroImageDialog'), 'Studio direct Hero image picker missing');
 assert.ok(sql.includes("auth.jwt() -> 'app_metadata' ->> 'user_role'") && sql.includes("= 'admin'"), 'Studio writes must be protected by server-side admin RLS');
 assert.ok(sql.includes("status in ('draft','published','archived')"), 'Studio publication lifecycle must be constrained in SQL');
 assert.ok(sql454.includes('add column if not exists title') && sql454.includes('add column if not exists description'), '0.4.5.4 Studio summary-column migration missing');
@@ -70,4 +71,4 @@ assert.ok(routeIndex >= 0 && readIndex > routeIndex, 'Studio shell must route be
 assert.ok(app.includes('curationPreviewItem'), 'Studio needs a direct draft preview object');
 assert.ok(!app.includes('CURATIONS.replaceDynamic(\n    [...CURATIONS.all().filter((item) => item.slug !== candidate.slug)'), 'Studio preview must not temporarily publish into the global registry');
 
-console.log('studio-performance.test: admin/RLS + responsive Studio + collection grammar + request scheduling OK');
+console.log('studio-performance.test: admin/RLS + responsive Studio + explicit programme authoring + request scheduling OK');
