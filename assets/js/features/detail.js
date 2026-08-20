@@ -91,7 +91,7 @@ export function renderDetailMedia(record, c) {
 }
 
 export function renderDetailAvailability(record, c) {
-  return `<section class="detail-question detail-question-watch detail-watch-band" data-detail-part="availability">${sectionHead('WATCH', '감상 가능')}${c.watchAvailabilityHtml(record)}</section>`;
+  return `<section class="detail-question detail-question-watch detail-watch-band" data-detail-part="availability">${sectionHead('WATCH', '감상처')}${c.watchAvailabilityHtml(record)}</section>`;
 }
 
 export function renderDetailActivity(record, c) {

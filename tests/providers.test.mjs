@@ -32,6 +32,13 @@ const netflix = merged.find((row) => row.key === 'Netflix');
 assert.deepEqual(Array.from(netflix.types), ['subscription', 'ads']);
 const mergedWatcha = merged.find((row) => row.key === 'WATCHA');
 assert.equal(mergedWatcha.logoResolved, './assets/branding/providers/watcha-mark.svg');
+const evidenceMerge = api.consolidate([
+  { id: 97, name: 'Watcha', type: 'subscription', source: 'tmdb-justwatch', confidence: 'reported' },
+  { id: 'verified-watcha', name: 'WATCHA', type: 'subscription', source: 'kinosis-verified', confidence: 'verified', verifiedAt: '2026-08-20T00:00:00+09:00' },
+]);
+assert.equal(evidenceMerge.length, 1);
+assert.equal(evidenceMerge[0].confidence, 'verified');
+assert.equal(evidenceMerge[0].source, 'kinosis-verified');
 
 
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/catalog.json'), 'utf8'));

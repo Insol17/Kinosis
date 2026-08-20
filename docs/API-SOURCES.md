@@ -1,4 +1,4 @@
-# KINOSIS API and snapshot policy — 0.4.5.7
+# KINOSIS API and snapshot policy — 0.4.5.8
 
 ## Principle
 
@@ -47,11 +47,25 @@ Director Archives are explicitly authored programmes. Studio/admin chooses the e
 
 `scripts/hydrate-director-snapshots.mjs` remains only as a legacy migration utility and is not part of the normal build path.
 
-## JustWatch via TMDB Watch Providers
+## Availability evidence model
 
 Availability is volatile and remains a background/live enrichment layer. It never blocks the base movie page. A Korean theatrical release date is treated only as historical metadata; the UI shows `상영 중` only when current KOBIS/TMDB evidence exists.
 
-Third-party provider feeds can be incomplete. `shared/availability-overrides.mjs` is therefore allowed as a deliberately small, timestamped verification supplement for known gaps. It may add/remove explicit current availability facts, but it must not grow into a general shadow catalogue. Live provider lookup failures must preserve last-known data rather than replace it with an empty list.
+### TMDB Watch Providers / JustWatch — reported evidence
+
+TMDB Watch Providers is powered by JustWatch. KINOSIS stores those rows as `source: tmdb-justwatch` and `confidence: reported`. They are useful discovery candidates, but KINOSIS must not present them as a directly verified real-time playback fact. The Detail surface therefore separates these rows under `외부 DB · 확인 필요`; they do not by themselves satisfy the watchlist/Discover `지금 볼 수 있음` predicate.
+
+### Collectio — direct official-catalogue verification
+
+Collectio does not currently flow through TMDB's Korean provider list reliably enough for KINOSIS. `netlify/lib/collectio.mjs` performs a bounded title search against Collectio's public official catalogue, parses catalogue rows and accepts only exact normalized title + release-year matches. A match becomes `source: collectio-official`, `confidence: verified`. Searches are cached for 12 hours and time out quickly; failure is non-fatal.
+
+This verifier is intentionally low-frequency and provider-specific. If Collectio changes its public markup, the parser can fail closed without converting absence into a false `not available` assertion.
+
+### Manual verified supplements
+
+Providers without a reliable first-party catalogue surface can still require a small timestamped correction in `shared/availability-overrides.mjs`. This file is an emergency evidence supplement, not a shadow OTT database. Verified corrections may upgrade an identical stale aggregator row; they must not silently create broad catalogue claims.
+
+Long term, the preferred order is: first-party provider API/feed → bounded official-site verifier → licensed partner availability feed → TMDB/JustWatch reported candidate.
 
 ## Failure policy
 

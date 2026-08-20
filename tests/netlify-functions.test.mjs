@@ -20,6 +20,11 @@ const realFetch=globalThis.fetch;
 try{
   globalThis.fetch=async(url,options={})=>{
     const value=String(url);
+    if(value.startsWith('https://collectio.co.kr/')) {
+      const q=new URL(value).searchParams.get('q') || '';
+      const row=q.includes('체리') ? '<div>체리 향기｜Abbas Kiarostami｜1997｜95m</div>' : '<div>검색 결과가 없습니다.</div>';
+      return new Response(`<html><body>${row}</body></html>`,{status:200,headers:{'content-type':'text/html'}});
+    }
     assert.equal(options.headers.Authorization,'Bearer test-token-not-real');
     if(value.includes('/search/person')) return Response.json({results:[{id:2,name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]});
     if(value.includes('/search/movie')) { const first={...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}; return Response.json({page:1,total_results:2,results:[first,{...first,id:151,title:first.title,original_title:first.original_title}]}); }
@@ -63,9 +68,11 @@ try{
   assert.equal(mediaResponse.status,200); const mediaData=await mediaResponse.json();
   assert.equal(mediaData.trailers[0].key,'trailer123'); assert.ok(mediaData.stills[0].url.includes('/w780/'));
 
-  const detailAvailabilityResponse=await availabilityDetailModule.default(new Request('https://kinosis.test/api/movie-availability?id=15'));
+  const detailAvailabilityResponse=await availabilityDetailModule.default(new Request('https://kinosis.test/api/movie-availability?id=15&title=%EC%B2%B4%EB%A6%AC%20%ED%96%A5%EA%B8%B0&originalTitle=Taste%20of%20Cherry&year=1997'));
   assert.equal(detailAvailabilityResponse.status,200); const detailAvailabilityData=await detailAvailabilityResponse.json();
   assert.equal(detailAvailabilityData.providers[0].type,'subscription'); assert.equal(detailAvailabilityData.theatricalStatus,'now');
+  assert.ok(detailAvailabilityData.providers.some(row=>row.name==='Collectio' && row.confidence==='verified' && row.source==='collectio-official'),'official Collectio exact match should become verified evidence');
+  assert.ok(detailAvailabilityData.providers.some(row=>row.name==='Netflix' && row.confidence==='reported' && row.source==='tmdb-justwatch'),'TMDB/JustWatch rows must remain reported evidence');
 
   const summariesResponse=await summariesModule.default(new Request('https://kinosis.test/api/movie-summaries?ids=15'));
   assert.equal(summariesResponse.status,200); const summariesData=await summariesResponse.json();

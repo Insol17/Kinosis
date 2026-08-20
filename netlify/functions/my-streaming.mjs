@@ -21,6 +21,8 @@ function movieRow(movie, provider) {
       type: 'subscription',
       logoUrl: imageUrl(provider.logo_path, 'w92'),
       displayPriority: provider.display_priority ?? 999,
+      source: 'tmdb-justwatch',
+      confidence: 'reported',
     }],
     source: 'tmdb-live-streaming',
   };

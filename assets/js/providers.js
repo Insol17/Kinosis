@@ -50,6 +50,12 @@
       const current = map.get(key) || { ...provider, key: config?.key || provider.name, label: config?.label || provider.name, types: [] };
       if (!current.types.includes(provider.type)) current.types.push(provider.type);
       if (!current.logoUrl && provider.logoUrl) current.logoUrl = provider.logoUrl;
+      if (provider.confidence === 'verified' && current.confidence !== 'verified') {
+        current.confidence = 'verified';
+        current.source = provider.source || current.source;
+        current.verifiedAt = provider.verifiedAt || current.verifiedAt;
+        current.sourceUrl = provider.sourceUrl || current.sourceUrl;
+      }
       const mark = logo({ ...provider, logoUrl: current.logoUrl });
       current.logoResolved = mark.url;
       current.logoKind = mark.kind;

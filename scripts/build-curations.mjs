@@ -218,7 +218,7 @@ async function enrichProgrammeMovies(items) {
   return items.map((item) => ({ ...item, movies: (item.movies || []).map((entry) => ({ ...entry, snapshot: entry.snapshot || byId.get(String(entry.id)) || undefined })) }));
 }
 
-const payload = { version: '0.4.5.7', items: await enrichProgrammeMovies(read()) };
+const payload = { version: '0.4.5.8', items: await enrichProgrammeMovies(read()) };
 if (!validateOnly) {
   fs.mkdirSync(dataRoot, { recursive: true });
   fs.writeFileSync(path.join(dataRoot, 'curations.json'), `${JSON.stringify(payload, null, 2)}\n`);

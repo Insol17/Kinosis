@@ -20,8 +20,8 @@ const scheduler = fs.readFileSync('assets/js/core/request-scheduler.js', 'utf8')
 for (const importPath of ['./core/store.js','./core/router.js','./core/request-scheduler.js','./domain/personal-state.js','./domain/personal-actions.js','./domain/demo-state.js','./domain/auth-role.js','./infrastructure/api-client.js','./infrastructure/movie-repository.js','./services/movie-loader.js','./features/search.js','./features/detail.js','./features/library.js','./features/arthouse.js','./features/discovery.js','./features/studio.js','./features/calendar.js','./ui/movie-card.js']) {
   assert.ok(app.includes(`from '${importPath}'`), `app composition missing ${importPath}`);
 }
-assert.ok(html.includes('<script type="module" src="./assets/js/app.js?v=0.4.5.7"></script>'), 'browser entry must be a native ES module');
-for (const legacy of ['features/search.js?v=0.4.5.7"></script>','core/movie-entities.js?v=0.4.5.7"></script>','services/movie-loader.js?v=0.4.5.7"></script>','features/detail.js?v=0.4.5.7"></script>']) assert.ok(!html.includes(`<script src="./assets/js/${legacy}`), `critical module still loaded as ordered global script: ${legacy}`);
+assert.ok(html.includes('<script type="module" src="./assets/js/app.js?v=0.4.5.8"></script>'), 'browser entry must be a native ES module');
+for (const legacy of ['features/search.js?v=0.4.5.8"></script>','core/movie-entities.js?v=0.4.5.8"></script>','services/movie-loader.js?v=0.4.5.8"></script>','features/detail.js?v=0.4.5.8"></script>']) assert.ok(!html.includes(`<script src="./assets/js/${legacy}`), `critical module still loaded as ordered global script: ${legacy}`);
 assert.ok(!domain.includes('document.') && !domain.includes('fetch('), 'domain layer must be DOM/network agnostic');
 assert.ok(!actions.includes('document.') && !actions.includes('fetch('), 'domain actions must be DOM/network agnostic');
 assert.ok(app.includes('deletePersonalFilmData(state, id') && app.includes('removeLibraryMembership(state, id'), 'personal destructive semantics must route through domain commands');

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5.8
+- OTT availability now carries source/confidence provenance instead of treating TMDB/JustWatch rows as real-time truth.
+- Added direct Collectio official-catalogue verification with exact title/year matching and bounded cache/timeout.
+- Confirmed vs external-DB availability is separated in detail, watchlist and Discover claims.
+- Verified manual corrections can upgrade duplicate stale aggregator rows.
+
 ## 0.4.5.7
 - Watchlist utility overview + explicit full-list route.
 - Personal schema v9 adds `watchlistedAt`.

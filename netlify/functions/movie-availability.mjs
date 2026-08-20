@@ -2,6 +2,7 @@ import { json, normalizeProviderResults, tmdb } from '../lib/tmdb.mjs';
 import { KINOSIS_LOCALE } from '../lib/locale.mjs';
 import theatricalSnapshot from '../../data/theatrical-kr.mjs';
 import { applyAvailabilityOverride } from '../../shared/availability-overrides.mjs';
+import { collectioAvailability } from '../lib/collectio.mjs';
 
 const DAY = 86400000;
 const AVAILABILITY_TTL = 4 * 60 * 60 * 1000;
@@ -40,13 +41,31 @@ export default async (request) => {
 
   try {
     const tmdbStartedAt = Date.now();
-    const [providerResult, releaseResult] = await Promise.allSettled([
+    const suppliedTitle = String(url.searchParams.get('title') || '').trim();
+    const suppliedOriginalTitle = String(url.searchParams.get('originalTitle') || '').trim();
+    const suppliedYear = String(url.searchParams.get('year') || '').trim().slice(0, 4);
+    const needsDetailForCollectio = !suppliedTitle;
+    const [providerResult, releaseResult, detailResult] = await Promise.allSettled([
       tmdb(`/movie/${id}/watch/providers`),
       tmdb(`/movie/${id}/release_dates`),
+      needsDetailForCollectio ? tmdb(`/movie/${id}`, { language: KINOSIS_LOCALE.language }) : Promise.resolve(null),
     ]);
     const providerPayload = providerResult.status === 'fulfilled' ? providerResult.value : null;
     const releasePayload = releaseResult.status === 'fulfilled' ? releaseResult.value : { results: [] };
     const availability = providerPayload ? normalizeProviderResults(providerPayload, KINOSIS_LOCALE.region) : { providers: undefined, watchLink: undefined };
+    const detail = detailResult.status === 'fulfilled' ? detailResult.value : null;
+    const collectioTitle = suppliedTitle || detail?.title || '';
+    const collectioOriginalTitle = suppliedOriginalTitle || detail?.original_title || '';
+    const collectioYear = suppliedYear || String(detail?.release_date || '').slice(0, 4);
+    const collectio = collectioTitle ? await collectioAvailability({
+      title: collectioTitle,
+      originalTitle: collectioOriginalTitle,
+      year: collectioYear,
+    }) : null;
+    const providers = Array.isArray(availability.providers) ? [...availability.providers] : [];
+    if (collectio?.provider && !providers.some((provider) => String(provider.name || '').toLowerCase() === 'collectio' && provider.type === collectio.provider.type)) {
+      providers.push(collectio.provider);
+    }
     const krReleaseDates = (releasePayload.results || []).find((row) => row.iso_3166_1 === KINOSIS_LOCALE.region)?.release_dates || [];
     const theatricalDates = krReleaseDates.filter((row) => row.type === 2 || row.type === 3).map((row) => row.release_date).filter(Boolean).sort();
     const theatricalReleaseDate = theatricalDates[0] || null;
@@ -67,9 +86,10 @@ export default async (request) => {
 
     let value = {
       id,
-      ...(providerPayload ? { providers: availability.providers, watchLink: availability.watchLink } : {}),
+      ...((providerPayload || collectio) ? { providers, watchLink: availability.watchLink } : {}),
       availabilityUpdatedAt: new Date().toISOString(),
-      availabilitySources: providerPayload ? ['tmdb-justwatch'] : [],
+      availabilitySources: [...new Set([...(providerPayload ? ['tmdb-justwatch'] : []), ...(collectio ? ['collectio-official'] : [])])],
+      ...(collectio?.checkedAt ? { availabilityVerifiedAt: collectio.checkedAt } : {}),
       providerError: providerResult.status === 'rejected' ? (providerResult.reason?.message || 'provider lookup failed') : null,
       theatricalStatus,
       theatricalEvidence,

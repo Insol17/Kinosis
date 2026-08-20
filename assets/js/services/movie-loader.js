@@ -34,7 +34,7 @@ export function createMovieLoader(deps) {
     if (availabilityInflight.has(key)) return availabilityInflight.get(key);
 
     const request = (async () => {
-      const data = await repository.availability(key);
+      const data = await repository.availability(key, { title: current?.title, originalTitle: current?.originalTitle, year: current?.year });
       const fresh = getMovie(key) || current;
       const record = rememberMovie({ ...fresh, ...data, availabilityLoading: false }, { persist });
       if (persist) persistLocalCache?.();

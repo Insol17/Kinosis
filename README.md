@@ -1,8 +1,8 @@
-# KINOSIS 0.4.5.7
+# KINOSIS 0.4.5.8
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.7 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
+KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.8 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
 
 ```text
 DISCOVER  → KOBIS 기반 한국 박스오피스 / 개봉 예정 + 영화 발견
@@ -13,17 +13,16 @@ PROFILE   → 감상 기록 / 평가 / 한줄평 / cinematic calendar / 통계 /
 STUDIO    → admin only · Arthouse 프로그램 제작/미리보기/발행
 ```
 
-## 0.4.5.7 focus
+## 0.4.5.8 focus
 
-- **Watchlist utility:** `보고싶어요` opens useful slices first (`지금 볼 수 있음`, `100분 안에 볼 수 있음`, `오래 기다린 영화`, `최근 담은 영화`) and keeps an explicit `전체 보기` for the exhaustive list.
-- **Stable watchlist intent:** personal schema v9 stores `watchlistedAt` independently from later rating/comment edits.
-- **Availability correctness:** a release date no longer means `상영 중`; only current KOBIS/TMDB evidence can produce a theatrical badge. Partial provider failures preserve last-known provider data.
-- **Verified supplements:** a deliberately tiny timestamped correction layer can fill known JustWatch/TMDB gaps without turning KINOSIS into a second availability database. The 2026-08-20 Eureka correction includes WATCHA + YouTube and removes stale theatrical availability.
-- **Discover Watch Now:** selected subscriptions are shown as landscape, still/backdrop-led cards rather than another poster/OTT-logo rail.
-- **Genre browse:** Horror / Comedy / SF / Romance visual entry cards provide a deterministic exploration path without pretending to be personalized AI recommendation.
-- **Existing 0.4.5.6 programme, KOBIS snapshot, Studio, cinematic calendar and trailer/still contracts remain intact.**
+- **Availability provenance:** TMDB Watch Providers is treated as JustWatch-reported availability, not as a guaranteed real-time playback fact. Every row carries `source` + `confidence`.
+- **Verified vs reported UI:** Detail separates `확인된 감상처` from `외부 DB · 확인 필요`. Watchlist/Discover no longer use unverified rows for strong `지금 볼 수 있음` claims.
+- **Collectio official verification:** movie title + year are checked against Collectio's public official catalogue search. Exact matches are marked `collectio-official / verified` and can power `내 구독` availability.
+- **Failure isolation:** Collectio verification is cached, bounded by timeout and non-fatal. A provider-site failure cannot erase other availability data or break Detail.
+- **Verified correction merge:** the small emergency correction layer still exists for providers without a usable first-party source, but a verified row now upgrades a duplicate stale aggregator row rather than being dropped by deduplication.
+- **Existing 0.4.5.7 watchlist utility, theatrical-state fix, visual Discover work, KOBIS snapshot, Studio and Arthouse contracts remain intact.**
 
-See `PATCH-0.4.5.7.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
+See `PATCH-0.4.5.8.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
 
 ## Run
 

@@ -6,7 +6,7 @@ const workflow = fs.readFileSync('.github/workflows/refresh-theatrical.yml','utf
 const boxFn = fs.readFileSync('netlify/functions/box-office.mjs','utf8');
 const upcomingFn = fs.readFileSync('netlify/functions/upcoming.mjs','utf8');
 
-assert.equal(snapshot.version, '0.4.5.7');
+assert.equal(snapshot.version, '0.4.5.8');
 assert.ok(Array.isArray(snapshot.boxOffice) && Array.isArray(snapshot.upcoming));
 assert.ok(ingest.includes('KOBIS_API_KEY') && ingest.includes('TMDB_READ_ACCESS_TOKEN'));
 assert.ok(ingest.includes('kobis-tmdb-map.json'), 'persistent KOBIS↔TMDB identity map missing');

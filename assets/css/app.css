@@ -1124,7 +1124,7 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
 @media(max-width:760px){#arthouseView .arthouse-collection-grid{grid-template-columns:1fr}.arthouse-collection-card{min-height:235px}.arthouse-collection-copy{max-width:86%;padding:22px}.arthouse-collection-copy b{font-size:23px}.arthouse-collection-posters{display:none}}
 
 /* ========================================================================== 
-   KINOSIS 0.4.5.7 — stable shelf, authored programmes, cinematic media
+   KINOSIS 0.4.5.8 — stable shelf, authored programmes, cinematic media
    ========================================================================== */
 
 /* Rail arrows reflect actual scroll availability instead of looking clickable forever. */
@@ -1268,7 +1268,7 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
   .studio-film-row{grid-template-columns:26px 46px minmax(0,1fr);}.studio-film-poster{width:46px}.studio-film-actions{grid-column:3;}.studio-hero-image-results{grid-template-columns:1fr 1fr;}
 }
 
-/* KINOSIS 0.4.5.7 — watchlist utility + accurate availability + visual discovery */
+/* KINOSIS 0.4.5.8 — watchlist utility + accurate availability + visual discovery */
 .watchlist-overview-copy{max-width:720px;margin:-10px 0 26px;color:var(--muted);font-size:12px;line-height:1.65;}
 .watchlist-dynamic-section{padding:22px 0;border-top:1px solid var(--line-soft);}
 .watchlist-dynamic-section:first-of-type{border-top:0;}
@@ -1306,3 +1306,10 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
 
 @media(max-width:980px){.watch-now-grid,.genre-discovery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.watch-now-card,.genre-discovery-card{min-height:170px;}}
 @media(max-width:540px){.watch-now-grid{display:grid;grid-auto-flow:column;grid-auto-columns:82%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;}.watch-now-card{scroll-snap-align:start;min-height:170px;}.genre-discovery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.genre-discovery-card{min-height:145px;}.watchlist-overview-copy{margin-bottom:18px;}}
+
+/* 0.4.5.8 availability provenance */
+.watch-reported-block{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line-soft);}
+.watch-reported-label{display:block;margin-bottom:4px;color:var(--muted-2);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+.watch-row.is-reported{opacity:.66;}
+.watch-row.is-reported .watch-row-type{color:var(--muted-2);}
+.watch-row.is-reported .watch-row-copy strong{font-weight:600;}

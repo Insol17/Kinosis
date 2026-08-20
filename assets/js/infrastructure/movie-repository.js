@@ -15,7 +15,12 @@ export function createMovieRepository({ apiClient, rememberMovie }) {
     return apiJson(`/api/movie-detail?id=${encodeURIComponent(id)}`, { timeoutMs: 8000, priority: 'high', ...options });
   }
   async function availability(id, options = {}) {
-    return apiJson(`/api/movie-availability?id=${encodeURIComponent(id)}`, { timeoutMs: 7500, priority: 'medium', ...options });
+    const { title = '', originalTitle = '', year = '', ...requestOptions } = options;
+    const params = new URLSearchParams({ id: String(id) });
+    if (title) params.set('title', title);
+    if (originalTitle) params.set('originalTitle', originalTitle);
+    if (year) params.set('year', String(year));
+    return apiJson(`/api/movie-availability?${params.toString()}`, { timeoutMs: 7500, priority: 'medium', ...requestOptions });
   }
   async function summaries(ids, options = {}) {
     return apiJson(`/api/movie-summaries?ids=${encodeURIComponent(ids.join(','))}`, { timeoutMs: 8000, priority: 'medium', ...options });

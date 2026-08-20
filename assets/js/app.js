@@ -793,17 +793,25 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     return config ? isSubscriptionEnabled(config.key) : isSubscriptionEnabled(name);
   }
 
-  function subscriptionProviders(record) {
-    return (record?.providers || []).filter((provider) => provider.type === 'subscription');
+  function providerIsVerified(provider) {
+    return provider?.confidence === 'verified' || provider?.source === 'collectio-official' || provider?.source === 'kinosis-verified';
+  }
+
+  function subscriptionProviders(record, { verifiedOnly = false } = {}) {
+    return (record?.providers || []).filter((provider) => provider.type === 'subscription' && (!verifiedOnly || providerIsVerified(provider)));
+  }
+
+  function reportedOnMine(record) {
+    return subscriptionProviders(record).some((provider) => isSubscribedProvider(provider.name));
   }
 
   function availableOnMine(record) {
-    return subscriptionProviders(record).some((provider) => isSubscribedProvider(provider.name));
+    return subscriptionProviders(record, { verifiedOnly: true }).some((provider) => isSubscribedProvider(provider.name));
   }
 
   function myStreamingMovies() {
     if (myStreamingState.status === 'ready' && myStreamingState.key === streamingSubscriptionKey()) return myStreamingState.results;
-    return (CATALOG.movies || []).filter(availableOnMine);
+    return (CATALOG.movies || []).filter(reportedOnMine);
   }
 
   function streamingSubscriptionKey() {
@@ -866,7 +874,11 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const loader = getMovieLoader();
     if (loader?.loadAvailability) return loader.loadAvailability(id, { persist, force });
     const current = movie(id);
-    const data = await apiJson(`/api/movie-availability?id=${encodeURIComponent(id)}`, { timeoutMs: 10000 });
+    const availabilityParams = new URLSearchParams({ id: String(id) });
+    if (current?.title) availabilityParams.set('title', current.title);
+    if (current?.originalTitle) availabilityParams.set('originalTitle', current.originalTitle);
+    if (current?.year) availabilityParams.set('year', String(current.year));
+    const data = await apiJson(`/api/movie-availability?${availabilityParams.toString()}`, { timeoutMs: 10000 });
     const updated = rememberMovie({ ...current, ...data, availabilityLoading: false }, { persist });
     if (persist) persistLocalCache();
     return updated;
@@ -995,7 +1007,8 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const responses = [];
     for (const chunk of chunks) {
       try {
-        const data = await apiJson(`/api/watchlist-availability?ids=${encodeURIComponent(chunk.join(','))}`);
+        const verifyCollectio = isSubscriptionEnabled('Collectio') ? '&verifyCollectio=1' : '';
+        const data = await apiJson(`/api/watchlist-availability?ids=${encodeURIComponent(chunk.join(','))}${verifyCollectio}`);
         responses.push(...(data.results || []));
       } catch (error) {
         console.warn('availability check', error);
@@ -1298,8 +1311,12 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>내 구독 서비스의 최신 제공작을 확인하고 있습니다.</p></div></div><div class="watch-now-grid is-loading">${Array.from({length:4},()=>'<div class="watch-now-card skeleton"></div>').join('')}</div></section>`;
     }
     const rows = myStreamingMovies().filter(availableOnMine).slice(0, 8);
-    if (!rows.length) return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>현재 확인된 구독 제공작이 없습니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div></section>`;
-    return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>내가 선택한 구독 서비스에서 지금 확인되는 영화입니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div><div class="watch-now-grid">${rows.map((record)=>{ const image=backdrop(record)||poster(record); const access=libraryAccessLabel(record)||'내 구독에서 감상 가능'; const rating=lib(record.id)?.rating; return `<button class="watch-now-card" data-movie="${escapeHtml(record.id)}">${image?`<img src="${escapeHtml(image)}" alt="">`:''}<span class="watch-now-shade"></span><span class="watch-now-copy"><small>${escapeHtml(access)}</small><b>${escapeHtml(record.title)}</b><em>${escapeHtml([record.year, record.runtime?fmtRuntime(record.runtime):'', rating!=null?`내 ★ ${Number(rating).toFixed(1)}`:''].filter(Boolean).join(' · '))}</em></span></button>`;}).join('')}</div></section>`;
+    if (!rows.length) {
+      const candidates = myStreamingMovies().filter(reportedOnMine).slice(0, 8);
+      if (!candidates.length) return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>현재 직접 확인된 구독 제공작이 없습니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div></section>`;
+      return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>외부 DB 제공 후보</h2><p>JustWatch/TMDB에 등록된 후보입니다. 실제 재생 가능 여부는 서비스에서 다시 확인해야 합니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div><div class="watch-now-grid">${candidates.map((record)=>{ const image=backdrop(record)||poster(record); const rating=lib(record.id)?.rating; return `<button class="watch-now-card" data-movie="${escapeHtml(record.id)}">${image?`<img src="${escapeHtml(image)}" alt="">`:''}<span class="watch-now-shade"></span><span class="watch-now-copy"><small>외부 DB 기준 · 확인 필요</small><b>${escapeHtml(record.title)}</b><em>${escapeHtml([record.year, record.runtime?fmtRuntime(record.runtime):'', rating!=null?`내 ★ ${Number(rating).toFixed(1)}`:''].filter(Boolean).join(' · '))}</em></span></button>`;}).join('')}</div></section>`;
+    }
+    return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>공식 제공처 또는 KINOSIS 검증으로 현재 확인된 영화입니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div><div class="watch-now-grid">${rows.map((record)=>{ const image=backdrop(record)||poster(record); const access=libraryAccessLabel(record)||'내 구독에서 감상 가능'; const rating=lib(record.id)?.rating; return `<button class="watch-now-card" data-movie="${escapeHtml(record.id)}">${image?`<img src="${escapeHtml(image)}" alt="">`:''}<span class="watch-now-shade"></span><span class="watch-now-copy"><small>${escapeHtml(access)}</small><b>${escapeHtml(record.title)}</b><em>${escapeHtml([record.year, record.runtime?fmtRuntime(record.runtime):'', rating!=null?`내 ★ ${Number(rating).toFixed(1)}`:''].filter(Boolean).join(' · '))}</em></span></button>`;}).join('')}</div></section>`;
   }
 
   function discoverGenreSection() {
@@ -1705,27 +1722,42 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   function watchAvailabilityHtml(record) {
     const providers = consolidatedProviders(record);
     const inTheatres = isInTheatres(record);
-    const rows = [];
+    const confirmed = providers.filter(providerIsVerified);
+    const reported = providers.filter((provider) => !providerIsVerified(provider));
+    const confirmedRows = [];
+    const reportedRows = [];
     if (inTheatres) {
       const date = record.theatricalReleaseDate || record.releaseDate;
-      rows.push(`<div class="watch-row cinema-option is-current"><span class="watch-row-mark">${icon('cinema')}</span><span class="watch-row-copy"><strong>극장</strong><small>현재 상영 확인${date ? ` · ${formatDate(date)}` : ''}</small></span><span class="watch-row-type">상영 중</span></div>`);
+      confirmedRows.push(`<div class="watch-row cinema-option is-current"><span class="watch-row-mark">${icon('cinema')}</span><span class="watch-row-copy"><strong>극장</strong><small>현재 상영 확인${date ? ` · ${formatDate(date)}` : ''}</small></span><span class="watch-row-type">상영 중</span></div>`);
     }
-    for (const provider of providers) {
+    for (const provider of confirmed) {
       const mark = providerMarkHtml(provider, 'watch-provider-mark');
       const types = (provider.types || [provider.type]).filter(Boolean).map(providerTypeLabel).join(' · ');
-      rows.push(`<div class="watch-row ${provider.isMine ? 'is-mine' : ''}">${mark}<span class="watch-row-copy"><strong>${escapeHtml(provider.label || provider.name)}</strong><small>${escapeHtml(types || '제공')}</small></span><span class="watch-row-type">${provider.isMine ? '내 구독' : escapeHtml((provider.types || [provider.type]).includes('subscription') ? '구독' : types)}</span></div>`);
+      const status = provider.isMine ? '내 구독' : '확인됨';
+      confirmedRows.push(`<div class="watch-row ${provider.isMine ? 'is-mine' : ''}">${mark}<span class="watch-row-copy"><strong>${escapeHtml(provider.label || provider.name)}</strong><small>${escapeHtml(types || '제공')} · 직접 확인</small></span><span class="watch-row-type">${status}</span></div>`);
+    }
+    for (const provider of reported) {
+      const mark = providerMarkHtml(provider, 'watch-provider-mark');
+      const types = (provider.types || [provider.type]).filter(Boolean).map(providerTypeLabel).join(' · ');
+      reportedRows.push(`<div class="watch-row is-reported">${mark}<span class="watch-row-copy"><strong>${escapeHtml(provider.label || provider.name)}</strong><small>${escapeHtml(types || '제공')} · JustWatch/TMDB 등록 정보</small></span><span class="watch-row-type">${provider.isMine ? '내 구독 · 확인 필요' : '확인 필요'}</span></div>`);
     }
     const fresh = freshnessLabel(record.availabilityUpdatedAt);
+    const allRows = [...confirmedRows, ...reportedRows];
     if (record.availabilityLoading) {
-      return `<section class="detail-side-card watch-card is-loading" aria-live="polite"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 정보 확인 중</h2></div><div class="watch-loading"><span class="loading-ring mini"></span><span>극장과 OTT 제공 정보를 불러오고 있습니다.</span></div>${rows.length ? `<div class="watch-rows is-stale">${rows.join('')}</div>` : ''}</section>`;
+      return `<section class="detail-side-card watch-card is-loading" aria-live="polite"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 정보 확인 중</h2></div><div class="watch-loading"><span class="loading-ring mini"></span><span>극장과 OTT 제공 정보를 불러오고 있습니다.</span></div>${allRows.length ? `<div class="watch-rows is-stale">${allRows.join('')}</div>` : ''}</section>`;
     }
-    if (!rows.length) {
-      return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">현재 확인 가능한 극장·OTT 정보가 없습니다.</p></section>`;
+    if (!allRows.length) {
+      return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">현재 직접 확인 가능한 극장·OTT 정보가 없습니다.</p></section>`;
     }
-    const sourceNames = Array.isArray(record.availabilitySources) && record.availabilitySources.includes('kinosis-verified')
-      ? 'KINOSIS 확인 + JustWatch/TMDB'
-      : 'JustWatch via TMDB';
-    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 서비스</h2></div><div class="watch-rows">${rows.join('')}</div>${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">전체 감상처 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}${sourceNames} 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p></section>`;
+    const hasDirectOfficial = confirmed.some((provider) => provider.source === 'collectio-official');
+    const hasKinosisVerified = confirmed.some((provider) => provider.source === 'kinosis-verified');
+    const sourceParts = [];
+    if (hasDirectOfficial) sourceParts.push('공식 제공처 확인');
+    if (hasKinosisVerified) sourceParts.push('KINOSIS 확인');
+    if (reportedRows.length) sourceParts.push('JustWatch/TMDB 참고');
+    const heading = confirmedRows.length ? '확인된 감상처' : '외부 DB 제공 정보';
+    const caution = reportedRows.length ? `<p class="watch-source">JustWatch/TMDB 항목은 실시간 재생을 보장하지 않습니다. 실제 서비스에서 한 번 더 확인하세요.</p>` : '';
+    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>AVAILABILITY</p><h2>${heading}</h2></div>${confirmedRows.length ? `<div class="watch-rows">${confirmedRows.join('')}</div>` : ''}${reportedRows.length ? `<div class="watch-reported-block"><small class="watch-reported-label">외부 DB · 확인 필요</small><div class="watch-rows">${reportedRows.join('')}</div></div>` : ''}${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">JustWatch에서 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}${escapeHtml(sourceParts.join(' + ') || '제공처 확인')} 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p>${caution}</section>`;
   }
 
   function localRelatedMovies(record) {

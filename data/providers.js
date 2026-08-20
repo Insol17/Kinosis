@@ -1,5 +1,5 @@
 window.KINOSIS_PROVIDER_DATA = Object.freeze({
-  "version": "0.4.5.7",
+  "version": "0.4.5.8",
   "items": [
     {
       "key": "Netflix",
@@ -107,7 +107,7 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
         "COLLECTIO",
         "콜렉티오"
       ],
-      "manualOnly": true
+      "source": "Collectio official catalogue verifier"
     }
   ]
 });
