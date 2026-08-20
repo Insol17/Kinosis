@@ -1,5 +1,5 @@
 window.KINOSIS_PROVIDER_DATA = Object.freeze({
-  "version": "0.4.5.6",
+  "version": "0.4.5.7",
   "items": [
     {
       "key": "Netflix",
@@ -85,6 +85,18 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "aliases": [
         "Google Play Movies",
         "Google Play"
+      ]
+    },
+    {
+      "key": "YouTube",
+      "label": "YouTube",
+      "aliases": [
+        "YouTube",
+        "Youtube",
+        "YouTube Movies"
+      ],
+      "prefixes": [
+        "youtube"
       ]
     },
     {

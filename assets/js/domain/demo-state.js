@@ -22,6 +22,7 @@ export function createDemoState(catalog = [], baseFactory = () => ({})) {
       rating: [4.5, 4, 5, 3.5, 4.5, 4, 3, 5, 4, 4.5][index],
       comment: index < 5 ? ['다시 꺼내보고 싶은 영화.', '이미지보다 리듬이 오래 남는다.', '끝난 뒤에 더 커지는 장면.', '좋아하는 이유가 명확해진 영화.', '한동안 머릿속에서 떠나지 않았다.'][index] : '',
       watchlist: false,
+      watchlistedAt: null,
       favorite: [0, 2, 4, 7].includes(index),
       updatedAt: stamp(when),
     };
@@ -31,7 +32,7 @@ export function createDemoState(catalog = [], baseFactory = () => ({})) {
   if (ids[2]) base.logs.push({ id: 'demo-log-rewatch-2', movieId: ids[2], watchedAt: '2026-08-16', rewatch: true, ratingSnapshot: 4.5, note: '두 번째 감상.', createdAt: stamp('2026-08-16'), updatedAt: stamp('2026-08-16') });
 
   ids.slice(10, 14).forEach((id, index) => {
-    base.relationships[id] = { rating: null, comment: '', watchlist: true, favorite: false, updatedAt: stamp(`2026-08-${10 + index}`) };
+    base.relationships[id] = { rating: null, comment: '', watchlist: true, watchlistedAt: stamp(`2026-08-${10 + index}`), favorite: false, updatedAt: stamp(`2026-08-${10 + index}`) };
   });
   base.collections = [
     { id: 'demo-col-1', name: '2026 Best', description: '올해 다시 꺼내보고 싶은 영화', movieIds: ids.slice(0, 5), coverMovieId: ids[0] || null, type: 'manual', createdAt: now, updatedAt: now },
@@ -39,7 +40,7 @@ export function createDemoState(catalog = [], baseFactory = () => ({})) {
     { id: 'demo-col-3', name: '다시 보기', description: '재관람 후보', movieIds: ids.slice(6, 10), coverMovieId: ids[6] || null, type: 'manual', createdAt: now, updatedAt: now },
   ];
   base.meta ||= {};
-  base.meta.syncVersion = 8;
+  base.meta.syncVersion = 9;
   base.meta.modifiedAt = now;
   base.meta.dirtySince = null;
   base.meta.localRevision = 0;

@@ -1,8 +1,8 @@
-# KINOSIS 0.4.5.6
+# KINOSIS 0.4.5.7
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.6 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
+KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.7 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
 
 ```text
 DISCOVER  → KOBIS 기반 한국 박스오피스 / 개봉 예정 + 영화 발견
@@ -13,19 +13,17 @@ PROFILE   → 감상 기록 / 평가 / 한줄평 / cinematic calendar / 통계 /
 STUDIO    → admin only · Arthouse 프로그램 제작/미리보기/발행
 ```
 
-## 0.4.5.6 focus
+## 0.4.5.7 focus
 
-- **Authored programmes:** Director Archives and Editorial Curations are both explicitly selected in Studio. Archive has no required per-film commentary; Curation requires it.
-- **Programme snapshots:** selected movie summaries are enriched during build when a TMDB token exists, and Studio stores compact snapshots with its selected films. Public Arthouse therefore renders from committed programme data first.
-- **Discover composition:** movie-only Hero; Curation appears as a dedicated inline programme promotion. KOBIS ranking is factual and rank #1 is never removed by presentation dedupe.
-- **Stable browsing:** horizontal rail arrows disappear at their true bounds; cards expose personal rating/watched state and no longer carry OTT logos.
-- **Library/Profile polish:** oversized Library intro removed, Shelf/Watchlist use a stable header, Profile uses a compact record-first composition, and the cinematic calendar is retained.
-- **Curation experience:** `그럼에도 삶은 계속된다` is a six-film cross-director programme with a required explanation beside each film. Programme pages can be saved as personal Collections.
-- **Studio authoring:** richer film identity search and explicit Hero image selection from representative-film imagery.
-- **Film Detail media:** trailers and stills load independently after the base Detail, keeping movie information and personal records usable first.
-- **Visual identity:** a stronger but consistent Arthouse film/archive surface plus a new film-frame KINOSIS icon.
+- **Watchlist utility:** `보고싶어요` opens useful slices first (`지금 볼 수 있음`, `100분 안에 볼 수 있음`, `오래 기다린 영화`, `최근 담은 영화`) and keeps an explicit `전체 보기` for the exhaustive list.
+- **Stable watchlist intent:** personal schema v9 stores `watchlistedAt` independently from later rating/comment edits.
+- **Availability correctness:** a release date no longer means `상영 중`; only current KOBIS/TMDB evidence can produce a theatrical badge. Partial provider failures preserve last-known provider data.
+- **Verified supplements:** a deliberately tiny timestamped correction layer can fill known JustWatch/TMDB gaps without turning KINOSIS into a second availability database. The 2026-08-20 Eureka correction includes WATCHA + YouTube and removes stale theatrical availability.
+- **Discover Watch Now:** selected subscriptions are shown as landscape, still/backdrop-led cards rather than another poster/OTT-logo rail.
+- **Genre browse:** Horror / Comedy / SF / Romance visual entry cards provide a deterministic exploration path without pretending to be personalized AI recommendation.
+- **Existing 0.4.5.6 programme, KOBIS snapshot, Studio, cinematic calendar and trailer/still contracts remain intact.**
 
-See `PATCH-0.4.5.6.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
+See `PATCH-0.4.5.7.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
 
 ## Run
 

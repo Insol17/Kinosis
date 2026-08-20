@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { migratePersonalShape, ensureMembership, ensureRelationship, hasRelationshipContent, promoteEngagedMemberships, PERSONAL_SCHEMA_VERSION } from '../assets/js/domain/personal-state.js';
 import { setRelationship, addLibraryMembership, removeLibraryMembership, deletePersonalFilmData } from '../assets/js/domain/personal-actions.js';
 
-assert.equal(PERSONAL_SCHEMA_VERSION, 8);
+assert.equal(PERSONAL_SCHEMA_VERSION, 9);
 const legacy = {
   library: { '10': { savedAt: '2026-01-01T00:00:00.000Z', rating: 4.5, review: '현재 한줄평', watchlist: true, favorite: true } },
   logs: [
@@ -14,6 +14,7 @@ const migrated = migratePersonalShape(legacy, { today: '2026-08-20' });
 assert.deepEqual(Object.keys(migrated.library['10']).sort(), ['savedAt','updatedAt']);
 assert.equal(migrated.relationships['10'].rating, 4.5);
 assert.equal(migrated.relationships['10'].comment, '현재 한줄평');
+assert.equal(migrated.relationships['10'].watchlistedAt, '2026-01-01T00:00:00.000Z');
 assert.equal(migrated.logs[0].ratingSnapshot, 4);
 assert.equal(migrated.logs[0].note, '첫 감상');
 assert.equal(migrated.logs[0].rewatch, false);
@@ -50,6 +51,9 @@ const commandState = {
 };
 addLibraryMembership(commandState, '42', '2026-08-20T01:00:00.000Z');
 setRelationship(commandState, '42', { rating: 4.5, comment: '현재 한줄평', watchlist: true }, '2026-08-20T01:01:00.000Z');
+assert.equal(commandState.relationships['42'].watchlistedAt, '2026-08-20T01:01:00.000Z');
+setRelationship(commandState, '42', { rating: 5 }, '2026-08-21T01:01:00.000Z');
+assert.equal(commandState.relationships['42'].watchlistedAt, '2026-08-20T01:01:00.000Z', 'rating edits must not rewrite watchlistedAt');
 commandState.logs.push({ id: 'watch-1', movieId: '42', watchedAt: '2026-08-20' });
 assert.equal(removeLibraryMembership(commandState, '42', '2026-08-20T01:02:00.000Z'), true);
 assert.equal(commandState.library['42'], undefined);
@@ -63,4 +67,4 @@ assert.equal(commandState.logs.length, 0);
 assert.deepEqual(commandState.collections[0].movieIds, ['99']);
 assert.equal(commandState.meta.deletedLogs['watch-1'], '2026-08-20T01:04:00.000Z');
 
-console.log('personal-state.test: v8 migration + auto-shelf engagement + safe membership removal OK');
+console.log('personal-state.test: v9 migration + auto-shelf engagement + safe membership removal OK');

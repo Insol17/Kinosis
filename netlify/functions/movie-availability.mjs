@@ -1,11 +1,19 @@
 import { json, normalizeProviderResults, tmdb } from '../lib/tmdb.mjs';
 import { KINOSIS_LOCALE } from '../lib/locale.mjs';
+import theatricalSnapshot from '../../data/theatrical-kr.mjs';
+import { applyAvailabilityOverride } from '../../shared/availability-overrides.mjs';
 
 const DAY = 86400000;
 const AVAILABILITY_TTL = 4 * 60 * 60 * 1000;
 const NOW_PLAYING_TTL = 30 * 60 * 1000;
 const cache = new Map();
 let nowPlayingCache = { expiresAt: 0, ids: new Set() };
+
+const KOBIS_CURRENT_IDS = new Set(
+  theatricalSnapshot?.mode === 'kobis-snapshot'
+    ? (theatricalSnapshot.boxOffice || []).map((row) => String(row.tmdbId || row.id || '')).filter((id) => /^\d+$/.test(id))
+    : [],
+);
 
 async function currentTheatricalIds() {
   if (nowPlayingCache.expiresAt > Date.now()) return nowPlayingCache.ids;
@@ -32,35 +40,42 @@ export default async (request) => {
 
   try {
     const tmdbStartedAt = Date.now();
-    const [providerPayload, releasePayload] = await Promise.all([
-      tmdb(`/movie/${id}/watch/providers`).catch(() => ({ results: {} })),
-      tmdb(`/movie/${id}/release_dates`).catch(() => ({ results: [] })),
+    const [providerResult, releaseResult] = await Promise.allSettled([
+      tmdb(`/movie/${id}/watch/providers`),
+      tmdb(`/movie/${id}/release_dates`),
     ]);
-    const availability = normalizeProviderResults(providerPayload, KINOSIS_LOCALE.region);
+    const providerPayload = providerResult.status === 'fulfilled' ? providerResult.value : null;
+    const releasePayload = releaseResult.status === 'fulfilled' ? releaseResult.value : { results: [] };
+    const availability = providerPayload ? normalizeProviderResults(providerPayload, KINOSIS_LOCALE.region) : { providers: undefined, watchLink: undefined };
     const krReleaseDates = (releasePayload.results || []).find((row) => row.iso_3166_1 === KINOSIS_LOCALE.region)?.release_dates || [];
     const theatricalDates = krReleaseDates.filter((row) => row.type === 2 || row.type === 3).map((row) => row.release_date).filter(Boolean).sort();
     const theatricalReleaseDate = theatricalDates[0] || null;
     const releaseTime = theatricalReleaseDate ? Date.parse(theatricalReleaseDate) : 0;
     const now = Date.now();
-    let theatricalStatus = releaseTime ? (releaseTime > now + DAY ? 'upcoming' : releaseTime >= now - 120 * DAY ? 'recent' : 'past') : null;
-    let theatricalEvidence = theatricalStatus === 'upcoming' ? 'kr-release-date' : theatricalStatus === 'recent' ? 'kr-recent-release' : null;
+    let theatricalStatus = releaseTime ? (releaseTime > now + DAY ? 'upcoming' : 'past') : null;
+    let theatricalEvidence = theatricalStatus === 'upcoming' ? 'kr-release-date' : null;
 
-    if (theatricalStatus === 'recent' && releaseTime >= now - 45 * DAY) {
-      if ((await currentTheatricalIds()).has(id)) {
-        theatricalStatus = 'now';
-        theatricalEvidence = 'tmdb-kr-now-playing';
-      }
+    // A release date is historical metadata, not evidence that a film is still
+    // playing. Only current KOBIS/TMDB evidence can promote a film to `now`.
+    if (KOBIS_CURRENT_IDS.has(id)) {
+      theatricalStatus = 'now';
+      theatricalEvidence = 'kobis-current-box-office';
+    } else if (releaseTime && releaseTime >= now - 45 * DAY && (await currentTheatricalIds()).has(id)) {
+      theatricalStatus = 'now';
+      theatricalEvidence = 'tmdb-kr-now-playing';
     }
 
-    const value = {
+    let value = {
       id,
-      providers: availability.providers,
-      watchLink: availability.watchLink,
+      ...(providerPayload ? { providers: availability.providers, watchLink: availability.watchLink } : {}),
       availabilityUpdatedAt: new Date().toISOString(),
+      availabilitySources: providerPayload ? ['tmdb-justwatch'] : [],
+      providerError: providerResult.status === 'rejected' ? (providerResult.reason?.message || 'provider lookup failed') : null,
       theatricalStatus,
       theatricalEvidence,
       theatricalReleaseDate,
     };
+    value = applyAvailabilityOverride(id, KINOSIS_LOCALE.region, value);
     cache.set(id, { value, expiresAt: Date.now() + AVAILABILITY_TTL });
     return json(value, 200, 'public, max-age=900, stale-while-revalidate=3600', { 'Netlify-CDN-Cache-Control': 'public, durable, max-age=14400, stale-while-revalidate=86400', 'Server-Timing': `cache;desc="MISS", tmdb;dur=${Date.now() - tmdbStartedAt}` });
   } catch (error) {

@@ -2,7 +2,7 @@ import * as MOVIE_ENTITIES from './core/movie-entities.js';
 import { createMovieLoader } from './services/movie-loader.js';
 import { createSearchController } from './features/search.js';
 import { renderDetail, patchDetail } from './features/detail.js';
-import { renderLibraryShelf, renderWatchlistShelf } from './features/library.js';
+import { renderLibraryShelf, renderWatchlistShelf, renderWatchlistOverview } from './features/library.js';
 import { selectProgrammeHeroes } from './features/arthouse.js';
 import { allocateSections, selectDiscoverHeroMovies } from './features/discovery.js';
 import { renderMovieCard } from './ui/movie-card.js';
@@ -58,7 +58,11 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const normalized = normalizeMovieRecord(row);
     if (normalized?.id) movieMap.set(String(normalized.id), MOVIE_ENTITIES.merge(movieMap.get(String(normalized.id)) || {}, normalized));
   }
-  const theatreIds = new Set((CATALOG.sections?.theatres || []).map((m) => String(m.id)));
+  const theatreIds = new Set(
+    THEATRICAL?.mode === 'kobis-snapshot'
+      ? (THEATRICAL.boxOffice || []).map((m) => String(m.tmdbId || m.id || '')).filter((id) => /^\d+$/.test(id))
+      : [],
+  );
 
   let activeView = 'discover';
   let previousView = 'discover';
@@ -78,6 +82,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   let boxOfficeState = Array.isArray(THEATRICAL?.boxOffice) && THEATRICAL.boxOffice.length ? { status: 'ready', results: THEATRICAL.boxOffice, source: 'snapshot', updatedAt: THEATRICAL.updatedAt || null } : { status: 'idle', results: [] };
   let myStreamingState = { status: 'idle', key: '', results: [], message: '' };
   let upcomingState = Array.isArray(THEATRICAL?.upcoming) && THEATRICAL.upcoming.length ? { status: 'ready', results: THEATRICAL.upcoming, updatedAt: THEATRICAL.updatedAt || null, source: 'snapshot' } : { status: 'idle', results: [], updatedAt: null };
+  let discoverGenre = '';
 
   let libraryMode = 'all';
   let libraryView = 'grid';
@@ -250,8 +255,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
 
   function isInTheatres(record) {
     if (!record) return false;
-    return theatreIds.has(String(record.id))
-      || Number(record.boxOfficeRank || 0) > 0
+    return theatreIds.has(String(record.tmdbId || record.id))
       || record.theatricalStatus === 'now';
   }
 
@@ -1011,7 +1015,15 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       }
       state.availability.snapshot[id] = currentNames;
       const cached = movie(id);
-      if (cached) rememberMovie({ ...cached, providers: result.providers || cached.providers, watchLink: result.watchLink || cached.watchLink }, { persist: !!state.movieCache[id] });
+      if (cached && (Array.isArray(result.providers) || result.watchLink)) {
+        rememberMovie({
+          ...cached,
+          ...(Array.isArray(result.providers) ? { providers: result.providers } : {}),
+          ...(result.watchLink ? { watchLink: result.watchLink } : {}),
+          ...(result.availabilitySources ? { availabilitySources: result.availabilitySources } : {}),
+          ...(result.availabilityVerifiedAt ? { availabilityVerifiedAt: result.availabilityVerifiedAt } : {}),
+        }, { persist: !!state.movieCache[id] });
+      }
     }
     state.availability.lastCheckedAt = new Date().toISOString();
     saveState();
@@ -1272,22 +1284,40 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   }
 
 
-  function myStreamingSection(title = '내 구독 서비스에서', source = null, variant = 'discover') {
-    if (!isSignedIn()) return '';
-    if (!(state.subscriptions || []).length) return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>프로필 → 설정에서 이용 중인 OTT를 먼저 선택하세요.</p></div></div></section>`;
-    const sourceProvided = Array.isArray(source);
-    const allMine = myStreamingMovies().filter(availableOnMine);
-    const list = (sourceProvided ? source : allMine).filter(availableOnMine);
-    if (list.length) return rowSection(title, myStreamingState.status === 'ready' ? '선택한 OTT의 대한민국 구독 제공작을 실시간으로 탐색합니다.' : '구독 서비스에서 확인된 영화.', list, 14, variant);
-    // If allocation removed every item because it already appeared above, omit
-    // this rail rather than falsely claiming the subscription has no movies.
-    if (sourceProvided && allMine.length) return '';
-    if (myStreamingState.status === 'loading') return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>구독 서비스의 최신 제공작을 불러오는 중입니다.</p></div></div><div class="rail-loading"></div></section>`;
-    return `<section class="content-section"><div class="section-head"><div><h2>${escapeHtml(title)}</h2><p>현재 확인된 구독 제공작이 없습니다.</p></div></div></section>`;
+
+
+  function watchNowSection() {
+    const title = '지금 바로 볼 수 있는 영화';
+    if (!isSignedIn()) {
+      return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>로그인하고 이용 중인 OTT를 고르면 실제로 볼 수 있는 영화만 모아봅니다.</p></div></div><button class="streaming-signin wide" data-open-auth>${icon('cloud')}<span>내 구독 서비스 연결하기</span><b>로그인</b></button></section>`;
+    }
+    if (!(state.subscriptions || []).length) {
+      return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>구독 서비스를 설정하면 이곳에 현재 감상 가능한 영화를 바로 보여줍니다.</p></div></div><button class="streaming-signin wide" data-open-streaming-settings>${icon('sliders')}<span>Netflix, WATCHA, TVING 등 이용 중인 서비스를 선택하세요.</span><b>설정</b></button></section>`;
+    }
+    if (myStreamingState.status === 'loading' && !myStreamingMovies().length) {
+      return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>내 구독 서비스의 최신 제공작을 확인하고 있습니다.</p></div></div><div class="watch-now-grid is-loading">${Array.from({length:4},()=>'<div class="watch-now-card skeleton"></div>').join('')}</div></section>`;
+    }
+    const rows = myStreamingMovies().filter(availableOnMine).slice(0, 8);
+    if (!rows.length) return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>현재 확인된 구독 제공작이 없습니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div></section>`;
+    return `<section class="content-section discover-watch-now"><div class="section-head"><div><p class="eyebrow">WATCH NOW</p><h2>${title}</h2><p>내가 선택한 구독 서비스에서 지금 확인되는 영화입니다.</p></div><button class="section-action" data-open-streaming-settings>구독 설정 →</button></div><div class="watch-now-grid">${rows.map((record)=>{ const image=backdrop(record)||poster(record); const access=libraryAccessLabel(record)||'내 구독에서 감상 가능'; const rating=lib(record.id)?.rating; return `<button class="watch-now-card" data-movie="${escapeHtml(record.id)}">${image?`<img src="${escapeHtml(image)}" alt="">`:''}<span class="watch-now-shade"></span><span class="watch-now-copy"><small>${escapeHtml(access)}</small><b>${escapeHtml(record.title)}</b><em>${escapeHtml([record.year, record.runtime?fmtRuntime(record.runtime):'', rating!=null?`내 ★ ${Number(rating).toFixed(1)}`:''].filter(Boolean).join(' · '))}</em></span></button>`;}).join('')}</div></section>`;
   }
 
-  function guestStreamingPrompt() {
-    return `<section class="content-section"><div class="section-head"><div><h2>내 구독 서비스에서</h2></div></div><button class="streaming-signin" data-open-auth>${icon('cloud')}<span>로그인하면 이용 중인 OTT에서 바로 볼 수 있는 영화만 모아봅니다.</span><b>로그인</b></button></section>`;
+  function discoverGenreSection() {
+    const definitions = [
+      ['공포', 'HORROR'], ['코미디', 'COMEDY'], ['SF', 'SCIENCE FICTION'], ['로맨스', 'ROMANCE'],
+    ];
+    const all = CATALOG.movies || [];
+    const tiles = definitions.map(([genre, label]) => {
+      const rows = all.filter((record) => genreNames(record).includes(genre)).sort((a,b)=>Number(b.popularity||0)-Number(a.popularity||0));
+      const art = rows.map((record)=>backdrop(record)).find(Boolean) || '';
+      return `<button class="genre-discovery-card ${discoverGenre===genre?'is-active':''}" data-discover-genre="${escapeHtml(genre)}">${art?`<img src="${escapeHtml(art)}" alt="">`:''}<span></span><small>${label}</small><b>${genre}</b></button>`;
+    }).join('');
+    let selected = '';
+    if (discoverGenre) {
+      const rows = rankWeighted(all.filter((record)=>genreNames(record).includes(discoverGenre))).slice(0,14);
+      selected = rows.length ? `<div class="genre-discovery-results"><div class="section-head compact"><div><h3>${escapeHtml(discoverGenre)} 영화</h3><p>평가 수를 함께 반영해 둘러보기 좋은 작품을 모았습니다.</p></div><button class="section-action" data-discover-genre="">닫기</button></div>${railFrame(rows.map((record)=>card(record,'discover')).join(''))}</div>` : '';
+    }
+    return `<section class="content-section discover-genres"><div class="section-head"><div><p class="eyebrow">BROWSE BY GENRE</p><h2>장르로 둘러보기</h2><p>추천 알고리즘이 아니라, 지금 원하는 영화의 결부터 빠르게 좁힙니다.</p></div></div><div class="genre-discovery-grid">${tiles}</div>${selected}</section>`;
   }
   async function loadLiveUpcoming(force = false) {
     const cached = CATALOG.sections?.upcoming || [];
@@ -1344,8 +1374,9 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     let html = '';
     if (allocated.boxOffice.length) html += rankedSection(allocated.boxOffice, { exact: boxOfficeState.status === 'ready' || CATALOG.sources?.boxOffice?.mode === 'kobis' || THEATRICAL?.mode === 'kobis-snapshot' });
     html += discoverCurationPromo();
+    html += watchNowSection();
+    html += discoverGenreSection();
     html += upcomingSection(allocated.upcoming);
-    html += isSignedIn() ? myStreamingSection('내 구독 서비스에서', allocated.streaming, 'discover') : guestStreamingPrompt();
     html += rowSection('높은 평가를 받은 영화', '평가 수를 함께 반영한 가중 평점 순', allocated.rated, 14, 'discover');
     document.getElementById('discoverContent').innerHTML = html;
     requestAnimationFrame(() => syncRailArrows(document.getElementById('discoverView')));
@@ -1417,6 +1448,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       card,
       listRows: libraryListRows,
       collectionCover,
+      railFrame,
     };
   }
 
@@ -1442,7 +1474,11 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const watchlistCount = document.getElementById('watchlistCount');
     if (watchlistCount) watchlistCount.textContent = watchlist.length;
     renderCollectionsSide();
-    document.querySelectorAll('[data-library]').forEach((button) => button.classList.toggle('is-active', button.dataset.library === libraryMode));
+    document.querySelectorAll('[data-library]').forEach((button) => {
+      const target = button.dataset.library;
+      const active = target === 'watchlist' ? libraryMode.startsWith('watchlist') : target === libraryMode;
+      button.classList.toggle('is-active', active);
+    });
     if (libraryMode === 'all') {
       content.innerHTML = renderLibraryShelf({
         list: saved,
@@ -1453,6 +1489,8 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
         c: libraryFeatureContext(),
       });
     } else if (libraryMode === 'watchlist') {
+      content.innerHTML = `${libraryHydrationBanner()}${renderWatchlistOverview({ list: watchlist, c: libraryFeatureContext() })}`;
+    } else if (libraryMode === 'watchlist-all') {
       content.innerHTML = `${libraryHydrationBanner()}${renderWatchlistShelf({ list: watchlist, c: libraryFeatureContext() })}`;
     } else if (libraryMode === 'collections') {
       content.innerHTML = `${libraryHeader('컬렉션', `${state.collections.length}개 컬렉션`, '<button class="primary-button" data-new-collection>＋ 새 컬렉션</button>')}<p class="library-page-intro">컬렉션은 영화와 나의 상태와 별개로, 내 영화장을 직접 분류하는 개인 서가입니다.</p><div class="collection-grid">${state.collections.map((collection) => { const cover = collectionCover(collection); return `<article class="collection-card rich-collection" data-collection-card="${escapeHtml(collection.id)}">${cover ? `<img src="${escapeHtml(cover)}" alt="">` : ''}<div class="collection-card-shade"></div><div class="collection-card-copy"><h3>${escapeHtml(collection.name)}</h3><p>${collection.movieIds.length}편</p></div></article>`; }).join('')}</div>`;
@@ -1667,11 +1705,10 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
   function watchAvailabilityHtml(record) {
     const providers = consolidatedProviders(record);
     const inTheatres = isInTheatres(record);
-    const recentTheatrical = !inTheatres && record?.theatricalStatus === 'recent';
     const rows = [];
-    if (inTheatres || recentTheatrical) {
+    if (inTheatres) {
       const date = record.theatricalReleaseDate || record.releaseDate;
-      rows.push(`<div class="watch-row cinema-option ${inTheatres ? 'is-current' : 'is-recent'}"><span class="watch-row-mark">${icon('cinema')}</span><span class="watch-row-copy"><strong>극장</strong><small>${inTheatres ? '현재 상영 확인' : '최근 극장 개봉'}${date ? ` · ${formatDate(date)}` : ''}</small></span><span class="watch-row-type">${inTheatres ? '상영 중' : '개봉'}</span></div>`);
+      rows.push(`<div class="watch-row cinema-option is-current"><span class="watch-row-mark">${icon('cinema')}</span><span class="watch-row-copy"><strong>극장</strong><small>현재 상영 확인${date ? ` · ${formatDate(date)}` : ''}</small></span><span class="watch-row-type">상영 중</span></div>`);
     }
     for (const provider of providers) {
       const mark = providerMarkHtml(provider, 'watch-provider-mark');
@@ -1685,7 +1722,10 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     if (!rows.length) {
       return `<section class="detail-side-card watch-card is-empty"><div class="detail-side-title"><p>감상처</p><h2>현재 확인된 감상처가 없습니다.</h2></div><p class="watch-empty-copy">현재 확인 가능한 극장·OTT 정보가 없습니다.</p></section>`;
     }
-    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 서비스</h2></div><div class="watch-rows">${rows.join('')}</div>${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">전체 감상처 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}JustWatch via TMDB 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p></section>`;
+    const sourceNames = Array.isArray(record.availabilitySources) && record.availabilitySources.includes('kinosis-verified')
+      ? 'KINOSIS 확인 + JustWatch/TMDB'
+      : 'JustWatch via TMDB';
+    return `<section class="detail-side-card watch-card"><div class="detail-side-title"><p>AVAILABILITY</p><h2>제공 서비스</h2></div><div class="watch-rows">${rows.join('')}</div>${record.watchLink ? `<a class="watch-all-link" href="${escapeHtml(record.watchLink)}" target="_blank" rel="noopener noreferrer">전체 감상처 확인 <span>↗</span></a>` : ''}<p class="watch-source">${fresh ? `${escapeHtml(fresh)} · ` : ''}${sourceNames} 기준${inTheatres ? ' · 극장 상영 정보 포함' : ''}</p></section>`;
   }
 
   function localRelatedMovies(record) {
@@ -1758,7 +1798,7 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
     const related = relatedMovies(record);
     const country = (record.productionCountries || []).slice(0, 2).join(' · ');
     const genres = genreNames(record).slice(0, 4);
-    const releaseLabel = isInTheatres(record) ? '극장 상영 중' : record.theatricalStatus === 'upcoming' ? '개봉 예정' : record.theatricalStatus === 'recent' ? '최근 극장 개봉' : '';
+    const releaseLabel = isInTheatres(record) ? '극장 상영 중' : record.theatricalStatus === 'upcoming' ? '개봉 예정' : '';
     const titleMeta = [record.year || '', genres.slice(0, 2).join(' / '), country, record.runtime ? fmtRuntime(record.runtime) : ''].filter(Boolean).join(' · ');
     const cast = uniqueById(record.cast || []).slice(0, 8);
     const writers = uniqueById((record.writers || []).map((person) => ({ ...person, id: person.id || `writer-${person.name}`, title: person.name }))).slice(0, 4);
@@ -2652,8 +2692,14 @@ import { selectCalendarLead, uniqueCalendarMovieCount } from './features/calenda
       setView(nav.dataset.nav); return;
     }
 
+    const genreDiscover = event.target.closest('[data-discover-genre]');
+    if (genreDiscover) { discoverGenre = genreDiscover.dataset.discoverGenre || ''; renderDiscover({ hero: false, streaming: false, upcoming: false }); return; }
+    if (event.target.closest('[data-open-streaming-settings]')) { myMode = 'settings'; mySubMode = 'timeline'; setView('my'); renderMy(); return; }
+
     const libraryTab = event.target.closest('[data-library]');
     if (libraryTab) { libraryMode = libraryTab.dataset.library; renderLibrary(); return; }
+    if (event.target.closest('[data-watchlist-all]')) { libraryMode = 'watchlist-all'; renderLibrary(); return; }
+    if (event.target.closest('[data-watchlist-overview]')) { libraryMode = 'watchlist'; renderLibrary(); return; }
 
     const myTab = event.target.closest('[data-my]');
     if (myTab) { myMode = myTab.dataset.my; if (myMode === 'reviews') mySubMode = 'timeline'; renderMy(); return; }

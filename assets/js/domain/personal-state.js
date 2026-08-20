@@ -1,4 +1,4 @@
-export const PERSONAL_SCHEMA_VERSION = 8;
+export const PERSONAL_SCHEMA_VERSION = 9;
 
 function numberRating(value) {
   if (value === '' || value == null) return null;
@@ -11,6 +11,7 @@ export function normalizeRelationship(value = {}) {
     rating: numberRating(value.rating),
     comment: String(value.comment ?? value.review ?? '').trim(),
     watchlist: !!value.watchlist,
+    watchlistedAt: value.watchlist ? (value.watchlistedAt || value.updatedAt || value.savedAt || '1970-01-01T00:00:00.000Z') : null,
     favorite: !!value.favorite,
     updatedAt: value.updatedAt || value.savedAt || '1970-01-01T00:00:00.000Z',
   };

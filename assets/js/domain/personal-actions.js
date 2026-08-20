@@ -13,7 +13,11 @@ export function setRelationship(state, movieId, patch = {}, now = new Date().toI
   const relation = ensureRelationship(state, key, now);
   if ('rating' in patch) relation.rating = patch.rating == null ? null : Number(patch.rating);
   if ('comment' in patch) relation.comment = String(patch.comment || '').trim();
-  if ('watchlist' in patch) relation.watchlist = !!patch.watchlist;
+  if ('watchlist' in patch) {
+    const nextWatchlist = !!patch.watchlist;
+    relation.watchlist = nextWatchlist;
+    relation.watchlistedAt = nextWatchlist ? (relation.watchlistedAt || now) : null;
+  }
   if ('favorite' in patch) relation.favorite = !!patch.favorite;
   relation.updatedAt = now;
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.5.7
+- Watchlist utility overview + explicit full-list route.
+- Personal schema v9 adds `watchlistedAt`.
+- Correct current-theatre semantics and provider partial-failure preservation.
+- Timestamped availability verification supplement for known third-party gaps.
+- Discover landscape Watch Now strip and visual genre browse.
+
+
 ## 0.4.5.6
 
 - Made Director Archives explicit admin-selected film programmes and required per-film editorial notes for Curation.

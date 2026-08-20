@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { filterLibrary } from '../assets/js/features/library.js';
+import { filterLibrary, renderWatchlistOverview } from '../assets/js/features/library.js';
 import { renderMovieCard } from '../assets/js/ui/movie-card.js';
 
 const movies = [
@@ -43,4 +43,15 @@ assert.ok(!discoverCard.includes('Favorites'), 'Discover card must not inherit L
 const watchlistCard = renderMovieCard(movies[1], 'watchlist', cardContext);
 assert.ok(watchlistCard.includes('보고싶어요에서 제거'), 'Watchlist card must expose an explicit removal affordance');
 
-console.log('library.test: relationship filters + contextual Movie Card contracts OK');
+
+const overviewContext = {
+  relationship: (id) => ({ ...relations[id], watchlistedAt: id === '2' ? '2026-01-01T00:00:00.000Z' : '2026-08-10T00:00:00.000Z' }),
+  availableOnMine: (record) => record.id === '2',
+  escapeHtml: (v) => String(v ?? ''),
+  card: (record) => `<article>${record.title}</article>`,
+  railFrame: (inner) => `<div class="rail">${inner}</div>`,
+};
+const watchlistOverview = renderWatchlistOverview({ list: [{ id:'2', title:'B', runtime:95 }, { id:'4', title:'D', runtime:130 }], c: overviewContext });
+assert.ok(watchlistOverview.includes('전체 보기') && watchlistOverview.includes('지금 볼 수 있음') && watchlistOverview.includes('100분 안에 볼 수 있음'), 'Watchlist overview/full-list utility contract missing');
+
+console.log('library.test: relationship filters + watchlist utility + contextual Movie Card contracts OK');

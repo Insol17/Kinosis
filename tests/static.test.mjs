@@ -30,7 +30,7 @@ const directorFn = read('netlify/functions/director-filmography.mjs');
 const curations = JSON.parse(read('data/curations.json'));
 
 for (const marker of ['DISCOVER','ARTHOUSE','LIBRARY','PROFILE','개요','기록','통계','설정']) assert.ok(html.includes(marker), `index missing ${marker}`);
-assert.ok(html.includes('app.js?v=0.4.5.6'), '0.4.5.6 cache-busting missing');
+assert.ok(html.includes('app.js?v=0.4.5.7'), '0.4.5.7 cache-busting missing');
 assert.ok(html.includes('type="module"'), 'main browser entry must be module');
 assert.ok(html.includes('https://image.tmdb.org'), 'TMDB image CDN preconnect missing');
 assert.ok(html.includes('logRatingHost') && html.includes('logNote') && !html.includes('id="logComment"') && !html.includes('id="logFavorite"'), 'ViewingEvent editor must not edit current relationship comment/favorite');
@@ -65,7 +65,7 @@ for (const label of ['작품 정보', '감상 가능', '내 기록']) assert.ok(
 assert.ok(html.includes('studioMovieDialog') && html.includes('studioHeroImageDialog'), 'Studio rich movie/Hero image pickers missing');
 assert.ok(detail.includes('트레일러 · 스틸') && detail.includes('youtube-nocookie.com'), 'Detail trailer/still surface missing');
 assert.ok(movieCard.includes('card-personal-rating') && !movieCard.includes('availabilityBadges'), 'cards must show personal rating and omit OTT badge rendering');
-assert.ok(css.includes('.film-rail-arrow[hidden]') && css.includes('.discover-curation-promo') && css.includes('.curation-feature-row'), '0.4.5.6 rail/promo/curation design contracts missing');
+assert.ok(css.includes('.film-rail-arrow[hidden]') && css.includes('.discover-curation-promo') && css.includes('.curation-feature-row'), '0.4.5.7 rail/promo/curation design contracts missing');
 assert.ok(app.includes('data-save-programme-collection') && app.includes('saveProgrammeAsCollection'), 'programme-to-personal-collection action missing');
 assert.ok(app.includes('discoverCurationPromo') && app.includes(".map((record) => ({ ...record, heroType: 'movie'"), 'Discover must promote Curation inline while keeping Hero movie-only');
 assert.ok(search.includes('const DEBOUNCE = 180'), 'search remote debounce should be responsive at 180ms');
@@ -83,7 +83,7 @@ assert.ok(!library.includes("filter.relationship === 'watchlist'"), 'dead watchl
 assert.ok(movieCard.includes('보고싶어요에서 제거'), 'watchlist removal affordance must be explicit');
 assert.ok(movieCard.includes("variant === 'library'") && movieCard.includes("variant === 'my'"), 'contextual Movie Card variants missing');
 
-assert.equal(curations.version, '0.4.5.6');
+assert.equal(curations.version, '0.4.5.7');
 const editorial = curations.items.find((item) => item.slug === 'kiarostami-life-continues');
 assert.ok(editorial && editorial.kind === 'editorial', 'authored editorial curation missing');
 assert.equal(editorial.movies?.length, 6, 'life-continues curation must contain the six approved films');
@@ -121,6 +121,10 @@ assert.ok(app.includes('calendar-grid-cinematic') && app.includes('VIEWING CALEN
 assert.ok(app.includes('data-rail-step="prev"') && app.includes('data-rail-step="next"'), 'film rail previous/next controls missing');
 assert.ok(css.includes('.provider-badge-skeleton'), 'stable provider loading slot missing');
 assert.ok(app.includes('allWatchlistMovies') && library.includes('보고싶어요'), 'watchlist-only Library surface missing');
+assert.ok(library.includes('renderWatchlistOverview') && library.includes('data-watchlist-all') && library.includes('100분 안에 볼 수 있음'), 'Watchlist utility overview/full-list contract missing');
+assert.ok(app.includes('watchNowSection') && app.includes('discoverGenreSection') && app.includes('data-discover-genre'), 'Discover watch-now/genre exploration surfaces missing');
+assert.ok(!app.includes("record.theatricalStatus === 'recent' ? '최근 극장 개봉'"), 'recent release must not masquerade as current theatrical availability');
+
 assert.ok(html.includes('id="studioView"') && app.includes('openStudio') && app.includes('isAdmin()'), 'admin-only Studio surface missing');
 const boxOfficeFn = read('netlify/functions/box-office.mjs');
 const upcomingFn = read('netlify/functions/upcoming.mjs');
@@ -131,4 +135,4 @@ assert.ok(upcomingFn.includes("../../data/theatrical-kr.mjs") && !upcomingFn.inc
 assert.ok(theatricalIngest.includes('KOBIS_API_KEY') && theatricalIngest.includes('kobis-tmdb-map.json') && theatricalIngest.includes('externalOnly: true'), 'KOBIS ingest/mapping/unmatched-row contract missing');
 assert.ok(directorHydrate.includes('TMDB_READ_ACCESS_TOKEN') && directorHydrate.includes('snapshotGeneratedAt'), 'Director build snapshot hydration missing');
 assert.ok(css.includes('.curation-collection-grid') && css.includes('.arthouse-collection-card'), 'Curation must read as a film collection object rather than a magazine chapter layout');
-console.log('static.test: 0.4.5.6 snapshot-first KOBIS/Arthouse + Studio + calendar contracts OK');
+console.log('static.test: 0.4.5.7 watchlist utility + accurate availability + visual discovery contracts OK');

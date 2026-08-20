@@ -1,5 +1,6 @@
 import { json, normalizeProviderResults, tmdb } from '../lib/tmdb.mjs';
 import { KINOSIS_LOCALE } from '../lib/locale.mjs';
+import { applyAvailabilityOverride } from '../../shared/availability-overrides.mjs';
 
 export default async (request) => {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
@@ -17,9 +18,9 @@ export default async (request) => {
       try {
         const payload = await tmdb(`/movie/${id}/watch/providers`);
         const { providers, watchLink } = normalizeProviderResults(payload, KINOSIS_LOCALE.region);
-        return { id, providers, watchLink };
+        return applyAvailabilityOverride(id, KINOSIS_LOCALE.region, { id, providers, watchLink, availabilitySources: ['tmdb-justwatch'] });
       } catch (error) {
-        return { id, providers: [], watchLink: null, error: error.message || 'unavailable' };
+        return applyAvailabilityOverride(id, KINOSIS_LOCALE.region, { id, error: error.message || 'unavailable', availabilitySources: [] });
       }
     }));
     return json({ results }, 200, 'public, max-age=0, s-maxage=1800, stale-while-revalidate=7200');

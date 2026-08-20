@@ -73,5 +73,38 @@ export function renderLibraryShelf({ list, filter, view, collections, hydrationH
 
 export function renderWatchlistShelf({ list, c }) {
   const rows = [...(list || [])].sort((a, b) => String(c.relationship(b.id)?.updatedAt || '').localeCompare(String(c.relationship(a.id)?.updatedAt || '')));
-  return `<section class="library-shelf library-primary-surface"><div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">WATCHLIST</p><h1>보고싶어요</h1><span>${rows.length}편</span></div></div>${rows.length ? `<div class="library-grid">${rows.map((record) => c.card(record, 'watchlist')).join('')}</div>` : '<div class="empty-state library-empty-primary"><b>아직 보고싶어요에 담은 영화가 없습니다.</b><span>Discover, Arthouse 또는 검색에서 ＋ 버튼을 누르면 이곳에 모입니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'}</section>`;
+  return `<section class="library-shelf library-primary-surface"><div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">WATCHLIST / ALL</p><h1>보고싶어요 전체</h1><span>${rows.length}편</span></div><button class="section-action" data-watchlist-overview>요약 보기 →</button></div>${rows.length ? `<div class="library-grid">${rows.map((record) => c.card(record, 'watchlist')).join('')}</div>` : '<div class="empty-state library-empty-primary"><b>아직 보고싶어요에 담은 영화가 없습니다.</b><span>Discover, Arthouse 또는 검색에서 ＋ 버튼을 누르면 이곳에 모입니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'}</section>`;
+}
+
+function watchlistTime(record, c) {
+  const relation = c.relationship(record.id);
+  return Date.parse(relation?.watchlistedAt || relation?.updatedAt || 0) || 0;
+}
+
+function watchlistRail(title, description, rows, c) {
+  if (!rows.length) return '';
+  const inner = rows.slice(0, 10).map((record) => c.card(record, 'watchlist')).join('');
+  return `<section class="watchlist-dynamic-section"><div class="library-section-head"><div><h2>${c.escapeHtml(title)}</h2>${description ? `<p>${c.escapeHtml(description)}</p>` : ''}</div></div>${c.railFrame(inner)}</section>`;
+}
+
+/** Watchlist landing surface: useful slices first, exhaustive list one click away. */
+export function renderWatchlistOverview({ list, c }) {
+  const rows = [...(list || [])];
+  const recent = [...rows].sort((a, b) => watchlistTime(b, c) - watchlistTime(a, c));
+  const available = recent.filter((record) => c.availableOnMine(record));
+  const short = recent.filter((record) => Number(record.runtime || 0) > 0 && Number(record.runtime) <= 100);
+  const cutoff = Date.now() - 180 * 86400000;
+  const waiting = [...rows].filter((record) => watchlistTime(record, c) > 0 && watchlistTime(record, c) < cutoff).sort((a, b) => watchlistTime(a, c) - watchlistTime(b, c));
+
+  if (!rows.length) return '<section class="library-shelf library-primary-surface"><div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">WATCHLIST</p><h1>보고싶어요</h1><span>0편</span></div></div><div class="empty-state library-empty-primary"><b>아직 보고싶어요에 담은 영화가 없습니다.</b><span>Discover, Arthouse 또는 검색에서 ＋ 버튼을 누르면 이곳에 모입니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div></section>';
+
+  return `<section class="library-shelf library-primary-surface watchlist-overview">
+    <div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">WATCHLIST</p><h1>보고싶어요</h1><span>${rows.length}편</span></div><button class="section-action watchlist-all-action" data-watchlist-all>전체 보기 →</button></div>
+    <p class="watchlist-overview-copy">저장해둔 영화가 실제 선택으로 이어지도록, 지금 볼 수 있는 작품과 오래 기다린 작품을 먼저 꺼냅니다.</p>
+    ${watchlistRail('지금 볼 수 있음', '내가 설정한 구독 서비스에서 현재 확인되는 영화', available, c)}
+    ${watchlistRail('100분 안에 볼 수 있음', '부담 없이 꺼내기 좋은 짧은 영화', short, c)}
+    ${watchlistRail('오래 기다린 영화', '보고싶어요에 6개월 이상 머문 영화', waiting, c)}
+    ${watchlistRail('최근 담은 영화', '', recent, c)}
+    <div class="watchlist-overview-footer"><button class="secondary-button" data-watchlist-all>보고싶어요 ${rows.length}편 전체 보기</button></div>
+  </section>`;
 }

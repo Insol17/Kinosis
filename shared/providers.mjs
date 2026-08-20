@@ -1,5 +1,5 @@
 export const PROVIDER_DATA = Object.freeze({
-  version: '0.4.5.6',
+  version: '0.4.5.7',
   items: [
     { key: 'Netflix', label: 'Netflix', aliases: ['Netflix', 'Netflix Standard with Ads'], prefixes: ['netflix'] },
     { key: 'TVING', label: 'TVING', aliases: ['TVING'] },
@@ -10,6 +10,7 @@ export const PROVIDER_DATA = Object.freeze({
     { key: 'Apple TV Plus', label: 'Apple TV+', aliases: ['Apple TV Plus', 'Apple TV+'] },
     { key: 'Amazon Prime Video', label: 'Prime Video', aliases: ['Amazon Prime Video', 'Prime Video'] },
     { key: 'Google Play Movies', label: 'Google Play', aliases: ['Google Play Movies', 'Google Play'] },
+    { key: 'YouTube', label: 'YouTube', aliases: ['YouTube', 'Youtube', 'YouTube Movies'], prefixes: ['youtube'] },
     { key: 'Collectio', label: '콜렉티오', aliases: ['Collectio', 'COLLECTIO', '콜렉티오'], manualOnly: true }
   ]
 });

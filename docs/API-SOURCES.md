@@ -1,4 +1,4 @@
-# KINOSIS API and snapshot policy — 0.4.5.6
+# KINOSIS API and snapshot policy — 0.4.5.7
 
 ## Principle
 
@@ -49,7 +49,9 @@ Director Archives are explicitly authored programmes. Studio/admin chooses the e
 
 ## JustWatch via TMDB Watch Providers
 
-Availability is volatile and remains a background/live enrichment layer. It never blocks the base movie page.
+Availability is volatile and remains a background/live enrichment layer. It never blocks the base movie page. A Korean theatrical release date is treated only as historical metadata; the UI shows `상영 중` only when current KOBIS/TMDB evidence exists.
+
+Third-party provider feeds can be incomplete. `shared/availability-overrides.mjs` is therefore allowed as a deliberately small, timestamped verification supplement for known gaps. It may add/remove explicit current availability facts, but it must not grow into a general shadow catalogue. Live provider lookup failures must preserve last-known data rather than replace it with an empty list.
 
 ## Failure policy
 

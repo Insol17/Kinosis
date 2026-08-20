@@ -1124,7 +1124,7 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
 @media(max-width:760px){#arthouseView .arthouse-collection-grid{grid-template-columns:1fr}.arthouse-collection-card{min-height:235px}.arthouse-collection-copy{max-width:86%;padding:22px}.arthouse-collection-copy b{font-size:23px}.arthouse-collection-posters{display:none}}
 
 /* ========================================================================== 
-   KINOSIS 0.4.5.6 — stable shelf, authored programmes, cinematic media
+   KINOSIS 0.4.5.7 — stable shelf, authored programmes, cinematic media
    ========================================================================== */
 
 /* Rail arrows reflect actual scroll availability instead of looking clickable forever. */
@@ -1267,3 +1267,42 @@ padding:16px 14px;}.person-filmography-head h2{margin:2px 0 0;font-size:22px;}.p
   .detail-still-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .studio-film-row{grid-template-columns:26px 46px minmax(0,1fr);}.studio-film-poster{width:46px}.studio-film-actions{grid-column:3;}.studio-hero-image-results{grid-template-columns:1fr 1fr;}
 }
+
+/* KINOSIS 0.4.5.7 — watchlist utility + accurate availability + visual discovery */
+.watchlist-overview-copy{max-width:720px;margin:-10px 0 26px;color:var(--muted);font-size:12px;line-height:1.65;}
+.watchlist-dynamic-section{padding:22px 0;border-top:1px solid var(--line-soft);}
+.watchlist-dynamic-section:first-of-type{border-top:0;}
+.watchlist-dynamic-section .library-section-head{margin-bottom:14px;}
+.watchlist-dynamic-section .library-section-head h2{font-size:18px;}
+.watchlist-dynamic-section .library-section-head p{margin-top:4px;color:var(--muted);font-size:11px;}
+.watchlist-overview-footer{display:flex;justify-content:center;padding:20px 0 4px;}
+.watchlist-all-action{align-self:center;}
+
+.discover-watch-now{overflow:hidden;}
+.watch-now-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.watch-now-card{position:relative;min-height:185px;padding:0;border:1px solid rgba(255,255,255,.11);border-radius:7px;overflow:hidden;background:#12151a;color:#fff;text-align:left;cursor:pointer;isolation:isolate;}
+.watch-now-card img{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .28s ease;}
+.watch-now-card:hover img{transform:scale(1.018);}
+.watch-now-shade{position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,rgba(5,7,9,.94),rgba(5,7,9,.08) 68%),linear-gradient(90deg,rgba(5,7,9,.3),transparent);}
+.watch-now-copy{position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:4px;}
+.watch-now-copy small{color:var(--accent-2);font-size:9px;font-weight:750;letter-spacing:.04em;}
+.watch-now-copy b{font-size:17px;line-height:1.12;letter-spacing:-.025em;}
+.watch-now-copy em{color:#d1ccc2;font-size:10px;font-style:normal;}
+.watch-now-card.skeleton{min-height:185px;background:linear-gradient(90deg,#171a20,#20242b,#171a20);background-size:200% 100%;animation:loadingShimmer 1.4s linear infinite;cursor:default;}
+.streaming-signin.wide{width:100%;}
+
+.genre-discovery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.genre-discovery-card{position:relative;min-height:190px;border:1px solid rgba(255,255,255,.11);border-radius:7px;overflow:hidden;background:#101318;color:#fff;text-align:left;cursor:pointer;isolation:isolate;}
+.genre-discovery-card img{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(1.05);transition:transform .25s ease,filter .25s ease;}
+.genre-discovery-card>span{position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,rgba(4,6,9,.9),rgba(4,6,9,.2) 72%);}
+.genre-discovery-card small,.genre-discovery-card b{position:absolute;left:18px;}
+.genre-discovery-card small{bottom:41px;color:#c5beb2;font-size:8px;font-weight:800;letter-spacing:.12em;}
+.genre-discovery-card b{bottom:17px;font-size:20px;letter-spacing:-.03em;}
+.genre-discovery-card:hover img,.genre-discovery-card.is-active img{transform:scale(1.018);filter:saturate(.9) contrast(1.08);}
+.genre-discovery-card.is-active{border-color:rgba(255,179,71,.65);box-shadow:inset 0 -2px var(--accent);}
+.genre-discovery-results{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-soft);}
+.section-head.compact{margin-bottom:14px;}
+.section-head.compact h3{font-size:18px;}
+
+@media(max-width:980px){.watch-now-grid,.genre-discovery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.watch-now-card,.genre-discovery-card{min-height:170px;}}
+@media(max-width:540px){.watch-now-grid{display:grid;grid-auto-flow:column;grid-auto-columns:82%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;}.watch-now-card{scroll-snap-align:start;min-height:170px;}.genre-discovery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.genre-discovery-card{min-height:145px;}.watchlist-overview-copy{margin-bottom:18px;}}
