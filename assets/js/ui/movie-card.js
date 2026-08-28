@@ -14,12 +14,13 @@ export function renderMovieCard(record, variant, c) {
   const watchlistCard = variant === 'watchlist';
   const myCard = variant === 'my';
   const arthouseCard = variant === 'arthouse';
+  const collectionCard = variant === 'collection';
   const loading = !!record.metadataLoading;
   const posterUrl = c.poster(record);
   const logs = c.logsForMovie(record.id);
   const collections = c.collectionsForMovie(record.id);
   const access = c.accessLabel(record);
-  const cardRating = relationship?.rating != null ? `내 ★ ${Number(relationship.rating).toFixed(1)}` : (logs.length ? '감상함' : '');
+  const cardRating = relationship?.rating != null ? `평가함 ★ ${Number(relationship.rating).toFixed(1)}` : (logs.length ? '감상함' : '');
 
   const media = loading
     ? `<div class="poster-loading" aria-label="영화 정보를 불러오는 중"><span class="loading-ring mini"></span><small>LOADING</small></div>`
@@ -40,7 +41,7 @@ export function renderMovieCard(record, variant, c) {
     : '';
 
   const myContext = myCard && !loading
-    ? `<div class="film-object-context is-my"><div class="film-object-primary">${personalMeta || '<span class="film-object-muted">감상 기록</span>'}</div>${logs[0]?.watchedAt ? `<div class="film-object-secondary"><span>${c.escapeHtml(c.formatDate(logs[0].watchedAt))}</span>${relationship?.comment ? '<span>한줄평 있음</span>' : ''}</div>` : ''}</div>`
+    ? `<div class="film-object-context is-my"><div class="film-object-primary">${personalMeta || '<span class="film-object-muted">감상 기록</span>'}</div>${logs[0]?.watchedAt ? `<div class="film-object-secondary"><span>${c.escapeHtml(c.formatDate(logs[0].watchedAt))}</span>${relationship?.comment ? '<span>리뷰 있음</span>' : ''}</div>` : ''}</div>`
     : '';
 
   const watchlistContext = watchlistCard && !loading
@@ -56,10 +57,10 @@ export function renderMovieCard(record, variant, c) {
     ? `data-movie="${c.escapeHtml(record.tmdbId || record.id)}" tabindex="0" aria-label="${c.escapeHtml(loading ? '영화 정보 불러오는 중' : `${record.title} 상세보기`)}"`
     : `aria-label="${c.escapeHtml(`${record.title} · KOBIS 극장 정보`)}"`;
 
-  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''} ${canOpenDetail ? '' : 'is-external-only'}" ${interaction}>
+  return `<article class="movie-card ${libraryCard ? 'library-movie-card' : ''} ${watchlistCard ? 'watchlist-movie-card' : ''} ${myCard ? 'my-movie-card' : ''} ${arthouseCard ? 'arthouse-movie-card' : ''} ${collectionCard ? 'collection-movie-card' : ''} ${loading ? 'is-metadata-loading' : ''} ${canOpenDetail ? '' : 'is-external-only'}" ${interaction}>
     <div class="poster-wrap">
       ${media}
-      <div class="card-overlay">${c.signedIn() && !loading && canOpenDetail ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
+      <div class="card-overlay">${c.signedIn() && !collectionCard && !loading && canOpenDetail ? `<div class="quick-actions"><button class="tiny-button ${relationship?.watchlist ? 'is-active' : 'accent'}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}" aria-label="${relationship?.watchlist ? '보고싶어요 해제' : '보고싶어요 추가'}">${relationship?.watchlist ? '✓' : '＋'}</button><button class="tiny-button" data-action="log" data-id="${c.escapeHtml(record.id)}">감상 기록</button>${libraryCard ? `<button class="tiny-button is-danger-soft" data-remove-library="${c.escapeHtml(record.id)}">제거</button>` : ''}</div>` : ''}</div>
     </div>
     <div class="card-info"><p class="card-title">${c.escapeHtml(record.title)}</p>${standardMeta}${libraryContext}${watchlistContext}${myContext}</div>
   </article>`;

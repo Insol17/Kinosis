@@ -14,9 +14,9 @@ const api = sandbox.window.KINOSIS_PROVIDERS;
 assert.equal(api.canonicalKey('Watcha'), 'WATCHA');
 assert.equal(api.label('Watcha'), 'WATCHA');
 const watcha = api.logo({ name: 'Watcha', logoUrl: 'https://image.tmdb.org/t/p/w92/wrong.jpg' });
-assert.equal(watcha.url, './assets/branding/providers/watcha-mark.svg');
-assert.equal(watcha.kind, 'mark');
-assert.match(watcha.source, /official/i);
+assert.equal(watcha.url, 'https://image.tmdb.org/t/p/w92/wrong.jpg');
+assert.equal(watcha.kind, 'tile');
+assert.match(watcha.source, /TMDB \/ JustWatch/i);
 assert.equal(api.canonicalKey('Netflix Standard with Ads'), 'Netflix');
 assert.equal(api.canonicalKey('Disney Plus'), 'Disney+');
 assert.equal(api.canonicalKey('wavve'), 'Wavve');
@@ -31,7 +31,7 @@ assert.equal(merged.length, 2, 'brand variants should consolidate');
 const netflix = merged.find((row) => row.key === 'Netflix');
 assert.deepEqual(Array.from(netflix.types), ['subscription', 'ads']);
 const mergedWatcha = merged.find((row) => row.key === 'WATCHA');
-assert.equal(mergedWatcha.logoResolved, './assets/branding/providers/watcha-mark.svg');
+assert.equal(mergedWatcha.logoResolved, '/tmdb-watcha.png');
 const evidenceMerge = api.consolidate([
   { id: 97, name: 'Watcha', type: 'subscription', source: 'tmdb-justwatch', confidence: 'reported' },
   { id: 'verified-watcha', name: 'WATCHA', type: 'subscription', source: 'kinosis-verified', confidence: 'verified', verifiedAt: '2026-08-20T00:00:00+09:00' },
@@ -52,8 +52,15 @@ for (const movie of catalog.movies || []) {
   }
 }
 
-const logoPath = path.join(root, 'assets/branding/providers/watcha-mark.svg');
-const svg = fs.readFileSync(logoPath, 'utf8');
-assert.ok(svg.includes('<svg') && svg.includes('aria-label="WATCHA"'), 'WATCHA compact W mark must be a valid SVG asset');
+assert.match(watcha.url, /^https:\/\/image\.tmdb\.org\//, 'movie-scoped WATCHA marks should prefer the dedicated provider artwork over a tiny favicon');
 
-console.log('providers.test: canonical OTT matching, duplicate consolidation and WATCHA compact mark override OK');
+for (const [name, host] of [
+  ['Netflix', 'netflix.com'], ['Coupang Play', 'coupangplay.com'], ['Disney+', 'disneyplus.com'],
+  ['WATCHA', 'watcha.com'], ['Apple TV Plus', 'apple.com'], ['Amazon Prime Video', 'primevideo.com'],
+  ['YouTube', 'youtube.com'], ['Collectio', 'collectio.co.kr'],
+]) {
+  const mark = api.logo({ name });
+  assert.ok(mark.url?.includes(host), `${name} should use its first-party hosted mark`);
+}
+
+console.log('providers.test: canonical OTT matching + contextual provider artwork + first-party fallback OK');

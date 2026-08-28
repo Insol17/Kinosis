@@ -1,5 +1,5 @@
 import { imageUrl, json, tmdb } from '../lib/tmdb.mjs';
-import { KINOSIS_LOCALE } from '../lib/locale.mjs';
+import { KINOSIS_LOCALE, localizedLanguage, localizedRegion } from '../lib/locale.mjs';
 
 const STATIC_TTL = 24 * 60 * 60 * 1000;
 const staticCache = new Map();
@@ -52,8 +52,10 @@ export default async (request) => {
       writers,
       cinematographers,
       genres: (detail.genres || []).map((genre) => ({ id: genre.id, name: genre.name })),
-      productionCountries: (detail.production_countries || []).map((country) => country.name).filter(Boolean),
+      productionCountries: (detail.production_countries || []).map((country) => localizedRegion(country.iso_3166_1, country.name)).filter(Boolean),
       originalLanguage: detail.original_language || null,
+      originalLanguageLabel: localizedLanguage(detail.original_language),
+      spokenLanguages: (detail.spoken_languages || []).map((language) => localizedLanguage(language.iso_639_1 || language.english_name)).filter(Boolean),
       productionCompanies: (detail.production_companies || []).map((company) => company.name).filter(Boolean),
       posterUrl: imageUrl(detail.poster_path, 'w500'),
       backdropUrl: imageUrl(detail.backdrop_path, 'w1280'),

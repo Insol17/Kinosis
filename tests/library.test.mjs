@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { filterLibrary, renderWatchlistOverview } from '../assets/js/features/library.js';
+import { filterLibrary, renderWatchlistOverview, renderCollectionsDirectory, renderCollectionDetailSurface } from '../assets/js/features/library.js';
 import { renderMovieCard } from '../assets/js/ui/movie-card.js';
 
 const movies = [
@@ -54,4 +54,16 @@ const overviewContext = {
 const watchlistOverview = renderWatchlistOverview({ list: [{ id:'2', title:'B', runtime:95 }, { id:'4', title:'D', runtime:130 }], c: overviewContext });
 assert.ok(watchlistOverview.includes('전체 보기') && watchlistOverview.includes('지금 볼 수 있음') && watchlistOverview.includes('100분 안에 볼 수 있음'), 'Watchlist overview/full-list utility contract missing');
 
-console.log('library.test: relationship filters + watchlist utility + contextual Movie Card contracts OK');
+
+
+const collectionRenderContext = {
+  escapeHtml: (v) => String(v ?? ''), formatDate: (v) => v, icon: () => '<i></i>',
+  collectionMosaic: () => '<div class="mosaic"></div>',
+};
+const collectionDirectory = renderCollectionsDirectory({ collections: [{ id:'c1', name:'밤의 영화', description:'도시와 고독', movieIds:['1','2'], updatedAt:'2026-08-28T00:00:00Z' }], c: collectionRenderContext });
+assert.ok(collectionDirectory.includes('밤의 영화') && collectionDirectory.includes('2 작품') && collectionDirectory.includes('data-collection-card="c1"'), 'collection directory must expose title/count/navigation');
+const collectionDetail = renderCollectionDetailSurface({ collection:{ id:'c1', name:'밤의 영화', description:'도시와 고독', updatedAt:'2026-08-28T00:00:00Z' }, movies:[movies[0],movies[1]], posterGridHtml:'<div>grid</div>', orderEditorHtml:'<div>order</div>', c:collectionRenderContext });
+assert.ok(!collectionDetail.includes('data-collection-search-input') && collectionDetail.includes('작품들') && collectionDetail.includes('도시와 고독'), 'collection detail must remain a works-first reading surface');
+assert.ok(collectionDetail.includes('data-edit-collection="c1"'), 'Collection movie search/add must be reached through Edit rather than competing with the works grid');
+
+console.log('library.test: relationship filters + watchlist utility + works-first collection display + contextual Movie Card contracts OK');

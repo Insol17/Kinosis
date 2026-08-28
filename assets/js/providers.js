@@ -34,9 +34,13 @@
     const config = configFor(value);
     const source = typeof value === 'object' ? value : null;
     return {
-      url: config?.logoOverride || source?.logoUrl || null,
-      kind: config?.logoKind || 'tile',
-      source: config?.source || (source?.logoUrl ? 'TMDB / JustWatch' : null),
+      // Provider artwork returned with a film is usually the dedicated OTT mark
+      // (TMDB/JustWatch), while first-party favicon overrides are only a fallback.
+      // Prefer the contextual provider logo so Netflix/Disney/etc. do not render
+      // as tiny browser favicons inside movie cards.
+      url: source?.logoUrl || config?.logoOverride || null,
+      kind: source?.logoUrl ? 'tile' : (config?.logoKind || 'tile'),
+      source: source?.logoUrl ? 'TMDB / JustWatch' : (config?.source || null),
     };
   }
 

@@ -1,4 +1,4 @@
-# KINOSIS API and snapshot policy — 0.4.5.8
+# KINOSIS API and snapshot policy — 0.4.6.6
 
 ## Principle
 
@@ -43,7 +43,11 @@ TMDB remains the source for:
 
 ## Director Archive
 
-Director Archives are explicitly authored programmes. Studio/admin chooses the exact films that belong in each Archive; KINOSIS never auto-publishes a director's complete filmography. During trusted builds, `build-curations.mjs` enriches only those selected TMDB IDs with compact title/poster/backdrop/director snapshots. Public Arthouse renders those committed selections first and never needs a runtime director-filmography query.
+Authored Director Archives remain the canonical editorial objects. Studio/admin chooses the exact films that belong in those Archives; KINOSIS never auto-publishes a director's complete raw credit list. During trusted builds, `build-curations.mjs` enriches selected TMDB IDs with compact title/poster/backdrop/director snapshots.
+
+The larger Director Directory is an exploration index. If a director has no authored Archive, opening the portrait can create a temporary runtime entry point using `person + movie_credits` and a bounded representative-feature ranking. This runtime path deliberately avoids per-candidate movie-detail fan-out. It is a navigation aid, not an editorially verified canon; exact Archive membership should still be authored in Studio.
+
+Director portrait metadata is loaded only as cards approach the viewport and is batched through `/api/director-profiles`; its Function/CDN response is cached. A future trusted build-time person/profile snapshot is preferred if public traffic grows enough that cold name-search cost matters.
 
 `scripts/hydrate-director-snapshots.mjs` remains only as a legacy migration utility and is not part of the normal build path.
 
@@ -55,11 +59,13 @@ Availability is volatile and remains a background/live enrichment layer. It neve
 
 TMDB Watch Providers is powered by JustWatch. KINOSIS stores those rows as `source: tmdb-justwatch` and `confidence: reported`. They are useful discovery candidates, but KINOSIS must not present them as a directly verified real-time playback fact. The Detail surface therefore separates these rows under `외부 DB · 확인 필요`; they do not by themselves satisfy the watchlist/Discover `지금 볼 수 있음` predicate.
 
-### Collectio — direct official-catalogue verification
+### Collectio — daily homepage snapshot + exact official search fallback
 
-Collectio does not currently flow through TMDB's Korean provider list reliably enough for KINOSIS. `netlify/lib/collectio.mjs` performs a bounded title search against Collectio's public official catalogue, parses catalogue rows and accepts only exact normalized title + release-year matches. A match becomes `source: collectio-official`, `confidence: verified`. Searches are cached for 12 hours and time out quickly; failure is non-fatal.
+Collectio does not currently flow through TMDB's Korean provider list reliably enough for KINOSIS. A scheduled GitHub Action runs `scripts/update-collectio.mjs` once per day and parses the public Collectio homepage into `data/collectio-kr.{json,mjs}`. This committed snapshot is deliberately labeled `scope: homepage`: it is a low-cost cache of the catalogue surface visible on the homepage, **not** a claim that KINOSIS has mirrored Collectio's complete catalogue.
 
-This verifier is intentionally low-frequency and provider-specific. If Collectio changes its public markup, the parser can fail closed without converting absence into a false `not available` assertion.
+`netlify/lib/collectio.mjs` checks that snapshot first using exact normalized title + release-year matching. A snapshot hit becomes `source: collectio-official`, `confidence: verified` with the official page URL and snapshot timestamp. If the film is not present in the homepage snapshot, KINOSIS falls back to the existing bounded title search against Collectio's public official site; those searches retain the 12-hour cache and short timeout.
+
+The scheduled updater uses generate → validate → replace semantics: a network error or parser returning zero rows fails the job and leaves the last known-good committed snapshot untouched. If Collectio changes its markup, both snapshot and live parser therefore fail closed rather than converting absence into a false `not available` assertion.
 
 ### Manual verified supplements
 

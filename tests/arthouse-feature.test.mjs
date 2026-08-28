@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { selectProgrammeHeroes } from '../assets/js/features/arthouse.js';
 
 const programmes = [{ slug: 'a' }, { slug: 'b' }, { slug: 'c' }];
@@ -12,4 +13,13 @@ assert.equal(withoutMovie.length, 2, 'programme itself must remain representable
 assert.equal(withoutMovie[0].movie, null);
 assert.equal(withoutMovie[1].movie.id, '20');
 
-console.log('arthouse-feature.test: one-per-programme Hero allocation OK');
+
+const appSource = readFileSync(new URL('../assets/js/app.js', import.meta.url), 'utf8');
+const directorySource = readFileSync(new URL('../assets/js/features/arthouse-directory.js', import.meta.url), 'utf8');
+const cssSource = readFileSync(new URL('../assets/css/app.css', import.meta.url), 'utf8');
+assert.ok(appSource.includes("renderHeroCarousel('arthouseHero', heroSlidePool('arthouse'))"), 'Arthouse overview must keep the authored moving Hero');
+assert.ok(!appSource.includes('renderArthouseMasthead'), 'static Arthouse masthead must not replace the Hero');
+assert.ok(!directorySource.includes('arthouse-curation-banner-index'), 'Arthouse Curation banners must not show decorative numeric indexes');
+assert.ok(!cssSource.includes('01 / CURATION') && !cssSource.includes('02 / DIRECTORS'), 'Arthouse sections must not use decorative 01/02 labels');
+
+console.log('arthouse-feature.test: moving Hero allocation + clean index contracts OK');

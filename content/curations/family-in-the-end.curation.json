@@ -1,0 +1,21 @@
+{
+  "slug": "family-in-the-end",
+  "kind": "editorial",
+  "surface": "arthouse",
+  "eyebrow": "KINOSIS CURATION",
+  "title": "결국 가족이다",
+  "subtitle": "6 films on the people closest to us",
+  "description": "가족이라는 관계가 남기는 사랑과 상처, 세대와 선택을 서로 다른 방향에서 바라보는 여섯 편.",
+  "credit": "Curated by KINOSIS",
+  "priority": 6,
+  "heroMovieId": "545611",
+  "orderMode": "curated",
+  "movies": [
+    { "tmdbId": 545611, "note": "무한한 가능성을 통과한 끝에 남는 선택을 가족이라는 가장 가까운 관계로 되돌립니다." },
+    { "tmdbId": 25538, "note": "한 가족의 일상을 여러 세대의 시선으로 겹쳐 보며, 서로를 안다고 믿는 사람들 사이의 거리를 바라봅니다." },
+    { "tmdbId": 18148, "note": "부모와 자식의 시간이 엇갈리는 순간을 통해 가족이 영원한 공동체가 아니라 변화하는 관계임을 보여줍니다." },
+    { "tmdbId": 505192, "note": "혈연보다 함께 살아온 시간이 가족을 만들 수 있는지 묻고, 가족이라는 이름의 경계를 흔듭니다." },
+    { "tmdbId": 615643, "note": "낯선 땅에서 살아남으려는 가족을 통해 생존과 기대, 세대 간의 갈등이 한 집 안에서 어떻게 겹치는지 보여줍니다." },
+    { "tmdbId": 804095, "note": "가족의 기억이 한 사람의 창작과 자아를 어떻게 만들고 또 상처 입히는지를 개인의 성장과 함께 따라갑니다." }
+  ]
+}

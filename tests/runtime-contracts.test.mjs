@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import * as entitiesApi from '../assets/js/core/movie-entities.js';
 import { renderDetail } from '../assets/js/features/detail.js';
 import { createMovieLoader } from '../assets/js/services/movie-loader.js';
+import { createApiClient } from '../assets/js/infrastructure/api-client.js';
 
 const entityState = {
   library: { '15': {} },
@@ -30,7 +31,7 @@ const context = {
   watchAvailabilityHtml: () => '<section>watch</section>', viewingHistoryHtml: () => '', uniqueMovies: (rows) => rows, card: () => '', starRatingHtml: () => '<div>stars</div>',
 };
 assert.doesNotThrow(() => renderDetail(record, context), 'Detail renderer must accept boolean isSignedIn dependency');
-assert.ok(renderDetail(record, context).includes('로그인하고 내 영화로 기록하기'));
+assert.ok(renderDetail(record, context).includes('로그인하고 평가와 리뷰 남기기'));
 assert.ok(renderDetail(record, { ...context, isSignedIn: () => true }).includes('아직 감상 기록이 없습니다.'));
 for (const slop of ['이 영화는 무엇인가?', '지금 어디서 볼 수 있는가?', '나와 어떤 관계인가?']) assert.ok(!renderDetail(record, context).includes(slop));
 for (const label of ['작품 정보', '감상처', '내 기록']) assert.ok(renderDetail(record, context).includes(label));
@@ -40,6 +41,13 @@ assert.equal(preserved.cast?.[0]?.name, 'A', 'lightweight entity merge must pres
 assert.equal(preserved.director, '감독 A', 'lightweight entity merge must preserve director metadata');
 assert.equal(preserved.directorId, '99');
 assert.equal(preserved.runtime, 123);
+
+
+const prefetchCalls = [];
+const apiClient = createApiClient({ fetchImpl: async (path) => { prefetchCalls.push(String(path)); await new Promise((resolve) => setTimeout(resolve, 3)); return new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } }); } });
+await Promise.all([apiClient.prefetch('/api/movie-detail?id=15'), apiClient.prefetch('/api/movie-detail?id=15')]);
+await apiClient.prefetch('/api/movie-detail?id=15');
+assert.equal(prefetchCalls.length, 1, 'identical prefetches must coalesce in-flight and respect the short success TTL');
 
 const store = new Map();
 const calls = [];
@@ -77,4 +85,4 @@ await ap;
 assert.equal(store.get('22').title, '실제 제목', 'availability merge must not revert fresh detail metadata');
 assert.equal(store.get('22').metadataLoading, false);
 
-console.log('runtime-contracts.test: entity + detail + loader dedupe/race contracts OK');
+console.log('runtime-contracts.test: entity + detail + prefetch/loader dedupe/race contracts OK');

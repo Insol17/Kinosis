@@ -59,6 +59,7 @@ assert.ok(summaries.includes('.slice(0, 6)'), 'summary recovery batch must remai
 assert.ok(summaries.includes('Netlify-CDN-Cache-Control') && summaries.includes('durable'), 'summary recovery needs durable CDN caching');
 assert.ok(movieLoader.includes('index += 6') && movieLoader.includes('Math.min(2, chunks.length)'), 'summary hydration must avoid nested high-concurrency fan-out');
 assert.ok(director.includes("append_to_response:'credits'") && !director.includes('/credits`'), 'solo feature authoring must use one detail+credits request per candidate');
+assert.ok(director.includes('Runtime Director Archive deliberately avoids N+1 movie-detail requests') && director.includes("mode==='representative-features'"), 'runtime Director Archive must avoid per-film detail fan-out');
 assert.ok(hydrate.includes('--if-key'), 'legacy Director hydration utility should remain available for migration only');
 assert.ok(app.includes('data-studio-pick-hero-image') && app.includes('studioHeroImageDialog'), 'Studio direct Hero image picker missing');
 assert.ok(sql.includes("auth.jwt() -> 'app_metadata' ->> 'user_role'") && sql.includes("= 'admin'"), 'Studio writes must be protected by server-side admin RLS');

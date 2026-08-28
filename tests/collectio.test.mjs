@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { findCollectioMatch, parseCollectioSearchHtml } from '../netlify/lib/collectio.mjs';
+import { COLLECTIO_SNAPSHOT } from '../data/collectio-kr.mjs';
 
 const fixture = `
 <html><body>
@@ -15,5 +16,7 @@ assert.deepEqual(rows[0], { title: '체리 향기', creator: 'Abbas Kiarostami',
 assert.equal(findCollectioMatch(rows, { title: '체리 향기', originalTitle: 'Taste of Cherry', year: '1997' })?.title, '체리 향기');
 assert.equal(findCollectioMatch(rows, { title: '체리 향기', year: '1998' }), null, 'same title with wrong year must not be accepted');
 assert.equal(findCollectioMatch(rows, { title: '없는 영화', originalTitle: 'Missing', year: '1997' }), null);
+assert.equal(COLLECTIO_SNAPSHOT.scope, 'homepage', 'Collectio automation must not pretend the homepage snapshot is a complete catalogue');
+assert.ok(COLLECTIO_SNAPSHOT.entries.length > 0 && COLLECTIO_SNAPSHOT.sourceUrl.includes('collectio.co.kr'), 'Collectio daily snapshot must preserve official source provenance');
 
 console.log('collectio.test: official catalogue parsing + exact title/year matching OK');

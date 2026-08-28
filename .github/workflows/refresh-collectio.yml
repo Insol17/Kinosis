@@ -1,0 +1,31 @@
+name: Refresh Collectio snapshot
+on:
+  schedule:
+    - cron: '17 19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: collectio-snapshot
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node scripts/update-collectio.mjs
+      - name: Commit snapshot when changed
+        run: |
+          if git diff --quiet -- data/collectio-kr.json data/collectio-kr.mjs; then
+            echo "No Collectio changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/collectio-kr.json data/collectio-kr.mjs
+          git commit -m "chore: refresh Collectio snapshot"
+          git push

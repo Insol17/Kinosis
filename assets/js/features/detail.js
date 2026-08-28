@@ -18,6 +18,7 @@ export function renderDetailHero(record, c) {
   const posterUrl = c.poster(record);
   const backdropUrl = c.backdrop(record);
   const comment = commentOf(relationship);
+  const personalRating = relationship?.rating == null ? null : Number(relationship.rating);
   const director = directorButton(record, c);
   const isLoading = !!record.metadataLoading;
   const libraryAction = membership
@@ -37,10 +38,9 @@ export function renderDetailHero(record, c) {
         ${record.tagline ? `<p class="detail-tagline">${c.escapeHtml(record.tagline)}</p>` : ''}
         <div class="detail-actions"><button class="primary-button detail-action" data-action="log" data-id="${c.escapeHtml(record.id)}">${logs.length ? '감상 기록 추가' : '감상 기록'}</button><button class="detail-watchlist ${relationship?.watchlist ? 'is-active' : ''}" data-action="watchlist" data-id="${c.escapeHtml(record.id)}">${relationship?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button>${signedIn(c) ? `<button class="detail-favorite ${relationship?.favorite ? 'is-active' : ''}" data-action="favorite" data-id="${c.escapeHtml(record.id)}">${relationship?.favorite ? '♥ 좋아요' : '♡ 좋아요'}</button>` : ''}<details class="film-more"><summary class="detail-more" aria-label="더 보기">${c.icon('more')}</summary><div class="film-more-menu">${signedIn(c) ? libraryAction : ''}<button data-action="collection-add" data-id="${c.escapeHtml(record.id)}">＋ 컬렉션에 추가</button>${relationship || logs.length || membership ? `<button class="is-danger" data-delete-personal-movie="${c.escapeHtml(record.id)}">모든 개인 데이터 삭제…</button>` : ''}</div></details></div>
       </div>
-      <aside class="detail-relationship" aria-label="내 평가와 한줄평">
-        <p class="detail-relationship-kicker">RATING</p>
-        ${signedIn(c) ? `${c.starRatingHtml(record.id, relationship?.rating ?? null, 'detail')}<div class="detail-comment"><div class="detail-comment-head"><span>내 한줄평</span><button data-edit-relationship="${c.escapeHtml(record.id)}">${comment ? '수정' : '작성'}</button></div>${comment ? `<p>${c.escapeHtml(comment)}</p>` : '<p class="is-empty">이 영화에 대한 한줄평을 남겨보세요.</p>'}</div><div class="detail-personal-glance">${membership ? '<span>내 영화장에 보관됨</span>' : ''}${logs.length ? `<span>${logs.length}회 감상</span>` : ''}${relationship?.favorite ? '<span>좋아요</span>' : ''}</div>` : '<button class="streaming-signin compact" data-open-auth>로그인하고 내 영화로 기록하기</button>'}
-      </aside>
+      <div class="detail-personal-record" aria-label="내 평가와 리뷰">
+          ${signedIn(c) ? `<div class="detail-personal-rating"><div class="detail-personal-label"><span>내 평가</span><strong>${personalRating == null ? '평가 전' : `${personalRating.toFixed(1)} <small>/ 5.0</small>`}</strong></div>${c.starRatingHtml(record.id, relationship?.rating ?? null, 'detail')}</div><div class="detail-personal-review detail-comment"><div class="detail-comment-head"><span>내 리뷰</span><button data-edit-relationship="${c.escapeHtml(record.id)}">${comment ? '수정' : '작성'}</button></div>${comment ? `<p>${c.escapeHtml(comment)}</p>` : '<p class="is-empty">이 영화에 대한 짧은 감상평을 남겨보세요.</p>'}</div><div class="detail-personal-glance">${membership ? '<span>내 영화장</span>' : ''}${logs.length ? `<span>${logs.length}회 감상</span>` : ''}${relationship?.favorite ? '<span>좋아요</span>' : ''}</div>` : '<button class="streaming-signin compact" data-open-auth>로그인하고 평가와 리뷰 남기기</button>'}
+      </div>
     </div>
   </section>`;
 }
@@ -68,7 +68,7 @@ export function renderDetailMetadata(record, c) {
       ${writers.length ? `<div><dt>각본</dt><dd>${writers.map((p) => c.escapeHtml(p.name)).join(' · ')}</dd></div>` : ''}
       ${cinematographers.length ? `<div><dt>촬영</dt><dd>${cinematographers.map((p) => c.escapeHtml(p.name)).join(' · ')}</dd></div>` : ''}
       <div><dt>장르</dt><dd>${genres.map((g) => `<button data-search-query="${c.escapeHtml(g)}">${c.escapeHtml(g)}</button>`).join(' · ') || '—'}</dd></div>
-      ${c.country ? `<div><dt>국가</dt><dd>${c.escapeHtml(c.country)}</dd></div>` : ''}${record.originalLanguage ? `<div><dt>언어</dt><dd>${c.escapeHtml(String(record.originalLanguage).toUpperCase())}</dd></div>` : ''}${record.releaseDate ? `<div><dt>공개일</dt><dd>${c.escapeHtml(c.formatDate(record.releaseDate))}</dd></div>` : ''}${record.runtime ? `<div><dt>러닝타임</dt><dd>${c.escapeHtml(c.fmtRuntime(record.runtime))}</dd></div>` : ''}${record.voteAverage ? `<div><dt>TMDB</dt><dd>${Number(record.voteAverage).toFixed(1)}${record.voteCount ? ` · ${Number(record.voteCount).toLocaleString()}명` : ''}</dd></div>` : ''}
+      ${c.country ? `<div><dt>국가</dt><dd>${c.escapeHtml(c.country)}</dd></div>` : ''}${(record.spokenLanguages?.length || record.originalLanguageLabel || record.originalLanguage) ? `<div><dt>언어</dt><dd>${c.escapeHtml((record.spokenLanguages?.length ? record.spokenLanguages.slice(0, 3).join(' · ') : record.originalLanguageLabel) || String(record.originalLanguage).toUpperCase())}</dd></div>` : ''}${record.releaseDate ? `<div><dt>공개일</dt><dd>${c.escapeHtml(c.formatDate(record.releaseDate))}</dd></div>` : ''}${record.runtime ? `<div><dt>러닝타임</dt><dd>${c.escapeHtml(c.fmtRuntime(record.runtime))}</dd></div>` : ''}${record.voteAverage ? `<div><dt>TMDB</dt><dd>${Number(record.voteAverage).toFixed(1)}${record.voteCount ? ` · ${Number(record.voteCount).toLocaleString()}명` : ''}</dd></div>` : ''}
     </dl></section>
   </div></section>`;
 }
@@ -86,7 +86,7 @@ export function renderDetailMedia(record, c) {
   const trailer = media.trailers?.[0];
   const trailerHtml = trailer ? `<section class="detail-media-trailer"><div class="detail-section-head"><h3>트레일러</h3>${media.trailers.length > 1 ? `<span>${media.trailers.length}개 영상</span>` : ''}</div><div class="detail-trailer-frame"><iframe src="https://www.youtube-nocookie.com/embed/${c.escapeHtml(trailer.key)}" title="${c.escapeHtml(trailer.name || `${record.title} 트레일러`)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></section>` : '';
   const stills = (media.stills || []).slice(0, 8);
-  const stillHtml = stills.length ? `<section class="detail-media-stills"><div class="detail-section-head"><h3>스틸컷</h3><span>${stills.length}장</span></div><div class="detail-still-grid">${stills.map((still) => `<a href="${c.escapeHtml(still.originalUrl || still.url)}" target="_blank" rel="noopener noreferrer"><img src="${c.escapeHtml(still.url)}" alt="${c.escapeHtml(record.title)} 스틸컷" loading="lazy"></a>`).join('')}</div></section>` : '';
+  const stillHtml = stills.length ? `<section class="detail-media-stills"><div class="detail-section-head"><h3>스틸컷</h3><span>${stills.length}장 · 클릭해서 크게 보기</span></div><div class="detail-still-grid">${stills.map((still, index) => `<button type="button" class="detail-still-button" data-still-open="${c.escapeHtml(still.originalUrl || still.url)}" data-still-title="${c.escapeHtml(record.title)}" data-still-index="${index + 1}"><img src="${c.escapeHtml(still.url)}" alt="${c.escapeHtml(record.title)} 스틸컷 ${index + 1}" loading="lazy"></button>`).join('')}</div></section>` : '';
   return `<section class="detail-question detail-question-media" data-detail-part="media">${head}${trailerHtml || stillHtml ? `<div class="detail-media-grid">${trailerHtml}${stillHtml}</div>` : '<div class="detail-media-empty"><span>등록된 트레일러·스틸컷이 없습니다.</span></div>'}</section>`;
 }
 

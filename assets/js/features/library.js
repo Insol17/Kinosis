@@ -66,9 +66,9 @@ export function renderCollectionStrip(collections, allCount, c) {
 export function renderLibraryShelf({ list, filter, view, collections, hydrationHtml = '', c }) {
   const filtered = filterLibrary(list, filter, c);
   const empty = !list.length
-    ? '<div class="empty-state library-empty-primary"><b>아직 내 영화장에 담은 영화가 없습니다.</b><span>평가·한줄평·감상 기록·좋아요·컬렉션처럼 영화를 내 것으로 남기는 순간 이 서가에 자동으로 들어옵니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'
+    ? '<div class="empty-state library-empty-primary"><b>아직 내 영화장에 담은 영화가 없습니다.</b><span>평가·리뷰·감상 기록·좋아요·컬렉션처럼 영화를 내 것으로 남기는 순간 이 서가에 자동으로 들어옵니다.</span><button class="secondary-button" data-nav="discover">영화 둘러보기</button></div>'
     : '<div class="empty-state"><b>조건에 맞는 영화가 없습니다.</b><span>필터를 바꾸거나 다른 컬렉션을 확인해보세요.</span></div>';
-  return `${hydrationHtml}<section class="library-shelf library-primary-surface"><div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">MY SHELF</p><h1>내 영화장</h1><span>${filtered.length} / ${list.length}편</span></div></div>${renderLibraryToolbar(list, filter, view, c)}${filtered.length ? (view === 'grid' ? `<div class="library-grid">${filtered.map((record) => c.card(record, 'library')).join('')}</div>` : c.listRows(filtered)) : empty}</section>`;
+  return `${hydrationHtml}<section class="library-shelf library-primary-surface"><div class="library-section-head shelf-head stable-library-head"><div><p class="eyebrow">MY SHELF</p><h1>내 영화장</h1><span>${filtered.length} / ${list.length}편</span></div><button class="secondary-button library-find-movie" data-library-search-all>＋ 영화 찾기</button></div>${renderLibraryToolbar(list, filter, view, c)}${filtered.length ? (view === 'grid' ? `<div class="library-grid">${filtered.map((record) => c.card(record, 'library')).join('')}</div>` : c.listRows(filtered)) : empty}</section>`;
 }
 
 export function renderWatchlistShelf({ list, c }) {
@@ -106,5 +106,22 @@ export function renderWatchlistOverview({ list, c }) {
     ${watchlistRail('오래 기다린 영화', '보고싶어요에 6개월 이상 머문 영화', waiting, c)}
     ${watchlistRail('최근 담은 영화', '', recent, c)}
     <div class="watchlist-overview-footer"><button class="secondary-button" data-watchlist-all>보고싶어요 ${rows.length}편 전체 보기</button></div>
+  </section>`;
+}
+
+export function renderCollectionsDirectory({ collections = [], c }) {
+  const ordered = [...collections].sort((a, b) => String(b.updatedAt || b.createdAt || '').localeCompare(String(a.updatedAt || a.createdAt || '')));
+  const rows = ordered.length
+    ? ordered.map((collection) => `<button type="button" class="collection-directory-row" data-collection-card="${c.escapeHtml(collection.id)}"><span class="collection-directory-cover">${c.collectionMosaic(collection, 'collection-directory-mosaic')}</span><span class="collection-directory-copy"><span class="collection-directory-title"><b>${c.escapeHtml(collection.name)}</b><em>${collection.movieIds.length}</em></span>${collection.description ? `<small>${c.escapeHtml(collection.description)}</small>` : '<small class="is-muted">설명 없음</small>'}<span class="collection-directory-meta">${collection.movieIds.length} 작품${collection.updatedAt ? ` · 최근 수정 ${c.escapeHtml(c.formatDate(collection.updatedAt.slice(0, 10)))}` : ''}</span></span><span class="collection-directory-arrow">›</span></button>`).join('')
+    : '<div class="empty-state"><b>아직 컬렉션이 없습니다.</b><span>좋아하는 기준으로 영화를 묶어 나만의 목록을 만들어보세요.</span><button class="primary-button" data-new-collection>＋ 첫 컬렉션 만들기</button></div>';
+  return `<section class="collection-directory"><header class="collection-directory-head"><div><p class="eyebrow">COLLECTIONS</p><h1>컬렉션</h1><p>영화를 주제, 순위, 분위기처럼 나만의 기준으로 묶습니다.</p></div><button class="primary-button" data-new-collection>＋ 새 컬렉션</button></header><div class="collection-directory-list">${rows}</div></section>`;
+}
+
+export function renderCollectionDetailSurface({ collection, movies = [], posterGridHtml = '', orderEditorHtml = '', c }) {
+  const updated = collection.updatedAt ? c.formatDate(String(collection.updatedAt).slice(0, 10)) : '';
+  return `<section class="collection-profile">
+    <button type="button" class="collection-back" data-library="collections">← 컬렉션</button>
+    <header class="collection-profile-head"><div class="collection-profile-copy"><p class="eyebrow">COLLECTION</p><h1>${c.escapeHtml(collection.name)}</h1>${collection.description ? `<p>${c.escapeHtml(collection.description)}</p>` : ''}<div class="collection-profile-meta"><span>${movies.length} 작품</span>${updated ? `<span>최근 수정 ${c.escapeHtml(updated)}</span>` : ''}</div></div><div class="collection-head-actions"><button class="secondary-button collection-edit-button" data-edit-collection="${c.escapeHtml(collection.id)}">${c.icon('edit')} 편집</button><button class="danger-text-button" data-delete-collection="${c.escapeHtml(collection.id)}">삭제</button></div></header>
+    <section class="collection-work-section"><div class="section-head collection-work-head"><div><p class="eyebrow">WORKS</p><h2>작품들 <span>${movies.length}</span></h2></div></div>${posterGridHtml || '<div class="empty-state collection-empty-works"><b>아직 영화가 없습니다.</b><span>편집에서 영화를 검색해 컬렉션을 채워보세요.</span><button class="secondary-button collection-edit-button" data-edit-collection="'+c.escapeHtml(collection.id)+'">영화 추가하기</button></div>'}${orderEditorHtml}</section>
   </section>`;
 }

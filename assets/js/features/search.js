@@ -1,10 +1,13 @@
+import { createMovieSearchIndex } from './movie-search-index.js';
+
 export function createSearchController(deps) {
   const {
     catalogMovies, normalizeText, uniqueMovies, genreNames, escapeHtml, poster, rememberMovie,
-    lib, isSignedIn, canUseLiveApi, movieRepository, showDialog, closeDialog, prefetchMovieDetail,
+    lib, membership, isSignedIn, canUseLiveApi, movieRepository, showDialog, closeDialog, prefetchMovieDetail,
   } = deps;
   const MIN_CHARS = 2;
-  const DEBOUNCE = 180;
+  const DEBOUNCE = 120;
+  const localIndex = createMovieSearchIndex(catalogMovies || [], { normalizeText, genreNames });
   let timer = null;
   let aborter = null;
   let serial = 0;
@@ -30,20 +33,16 @@ export function createSearchController(deps) {
     return value;
   }
 
-  function localSearch(query) {
-    const needle = normalizeText(query);
-    if (!needle) return [];
-    return (catalogMovies || []).filter((record) => [record.title, record.originalTitle, record.director, ...(record.cast || []).map((p) => p?.name || p), ...genreNames(record)]
-      .filter(Boolean).map(normalizeText).join(' ').includes(needle));
-  }
+  function localSearch(query) { return localIndex.search(query, 30); }
   function combined(query) { return uniqueMovies([...localSearch(query), ...(live.query === query ? live.results : [])]).sort((a, b) => score(b, query) - score(a, query)); }
 
   // The listbox option itself is one button; personal actions are siblings, not
   // nested interactive controls inside role=option.
   function movieRow(record, exact = false) {
-    const actions = isSignedIn() ? `<div class="search-actions"><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(record.id)}">${lib(record.id)?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(record.id)}">감상 기록</button></div>` : '';
+    const inLibrary = !!membership?.(record.id);
+    const actions = isSignedIn() ? `<div class="search-actions"><button class="secondary-button ${inLibrary ? 'is-subtle-disabled' : ''}" ${inLibrary ? 'disabled' : `data-add-library="${escapeHtml(record.id)}"`}>${inLibrary ? '✓ 영화장' : '＋ 영화장'}</button><button class="secondary-button" data-action="watchlist" data-id="${escapeHtml(record.id)}">${lib(record.id)?.watchlist ? '✓ 보고싶어요' : '＋ 보고싶어요'}</button><button class="secondary-button" data-action="log" data-id="${escapeHtml(record.id)}">감상 기록</button></div>` : '';
     const posterUrl = poster(record);
-    const media = posterUrl ? `<span class="search-poster-media"><span class="search-poster-placeholder"><span>FILM</span></span><img data-poster-image src="${escapeHtml(posterUrl)}" alt=""></span>` : '<span class="search-poster-placeholder"><span>FILM</span></span>';
+    const media = posterUrl ? `<span class="search-poster-media"><span class="search-poster-placeholder"><span>FILM</span></span><img data-poster-image src="${escapeHtml(posterUrl)}" alt="" loading="lazy" decoding="async"></span>` : '<span class="search-poster-placeholder"><span>FILM</span></span>';
     return `<div class="search-result-row${exact ? ' is-exact' : ''}"><button class="search-result search-result-main" data-movie="${escapeHtml(record.id)}" tabindex="-1" role="option" aria-label="${escapeHtml(record.title)} ${record.year || ''}">${media}<span class="search-result-copy"><b>${escapeHtml(record.title)}</b><small>${record.originalTitle && record.originalTitle !== record.title ? `${escapeHtml(record.originalTitle)} · ` : ''}${record.year || '—'}${record.director ? ` · ${escapeHtml(record.director)}` : ''}${record.personRole ? ` · ${escapeHtml(record.personRole)}` : ''}</small></span></button>${actions}</div>`;
   }
   function personRow(row) { return `<button class="person-result" data-person-id="${escapeHtml(row.id)}" data-person-name="${escapeHtml(row.name)}" tabindex="-1" role="option">${row.profileUrl ? `<img src="${escapeHtml(row.profileUrl)}" alt="">` : '<span class="person-avatar-placeholder"></span>'}<span><b>${escapeHtml(row.name)}</b><small>${escapeHtml(row.knownForDepartment || 'Person')}</small></span><span class="person-arrow">›</span></button>`; }
@@ -82,8 +81,11 @@ export function createSearchController(deps) {
   function queue(value) {
     const query = value.trim(); lastQuery = query; clearTimeout(timer); const runSerial = ++serial; person = { status: 'idle', person: null, results: [] };
     if (query !== live.query) live = { query, status: 'idle', results: [], people: [], message: '' };
-    if (!composing && query.length >= MIN_CHARS && canUseLiveApi()) live = { ...live, query, status: 'queued' };
-    render(query); if (composing || query.length < MIN_CHARS || !canUseLiveApi()) return; timer = setTimeout(() => run(query, runSerial), DEBOUNCE);
+    const alreadyFresh = query === live.query && live.status === 'done';
+    if (!composing && !alreadyFresh && query.length >= MIN_CHARS && canUseLiveApi()) live = { ...live, query, status: 'queued' };
+    render(query);
+    if (composing || alreadyFresh || query.length < MIN_CHARS || !canUseLiveApi()) return;
+    timer = setTimeout(() => run(query, runSerial), DEBOUNCE);
   }
 
   function open({ reset = false } = {}) {

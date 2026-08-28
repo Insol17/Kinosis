@@ -17,10 +17,13 @@ function trailerScore(row) {
 async function load(id) {
   const hit = cache.get(id);
   if (hit?.expiresAt > Date.now()) return hit.value;
-  const [videos, images] = await Promise.all([
-    tmdb(`/movie/${id}/videos`, { language: KINOSIS_LOCALE.language }).catch(() => ({ results: [] })),
-    tmdb(`/movie/${id}/images`, { include_image_language: 'ko,en,null' }).catch(() => ({ backdrops: [] })),
-  ]);
+  const detail = await tmdb(`/movie/${id}`, {
+    language: KINOSIS_LOCALE.language,
+    append_to_response: 'videos,images',
+    include_image_language: 'ko,en,null',
+  });
+  const videos = detail.videos || { results: [] };
+  const images = detail.images || { backdrops: [] };
   const trailers = (videos.results || [])
     .filter((row) => row.site === 'YouTube' && row.key && ['Trailer', 'Teaser'].includes(row.type))
     .sort((a, b) => trailerScore(b) - trailerScore(a))

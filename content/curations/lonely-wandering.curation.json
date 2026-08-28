@@ -1,0 +1,21 @@
+{
+  "slug": "lonely-wandering",
+  "kind": "editorial",
+  "surface": "arthouse",
+  "eyebrow": "KINOSIS CURATION",
+  "title": "고독한 방황",
+  "subtitle": "6 films on solitude in motion",
+  "description": "도시와 길 위를 떠돌며 자신과 타인의 거리를 견디는 사람들. 고독이 분노와 상실, 평온으로 달라지는 여섯 편.",
+  "credit": "Curated by KINOSIS",
+  "priority": 7,
+  "heroMovieId": "103",
+  "orderMode": "curated",
+  "movies": [
+    { "tmdbId": 103, "note": "도시 한가운데 있으면서도 누구와도 연결되지 못한 고독이 어떻게 분노와 자기기만으로 변하는지 밀어붙입니다." },
+    { "tmdbId": 655, "note": "길 위의 방황을 관계의 상실과 연결하며, 돌아갈 곳을 찾는 일과 과거로 돌아가는 일이 다르다는 것을 보여줍니다." },
+    { "tmdbId": 11104, "note": "수많은 사람이 스쳐 가는 도시에서 외로움이 우연한 접촉과 상상으로 잠시 다른 얼굴을 얻습니다." },
+    { "tmdbId": 153, "note": "낯선 도시에서 만난 두 사람이 서로의 공백을 잠시 공유하며, 고독을 없애기보다 함께 견디는 시간을 만듭니다." },
+    { "tmdbId": 152601, "note": "가장 친밀한 관계조차 물리적 실체를 잃을 수 있는 시대에 연결과 고독의 경계를 다시 묻습니다." },
+    { "tmdbId": 976893, "note": "홀로 살아가는 일상이 반드시 결핍만을 뜻하지 않는다는 반대편의 가능성을 보여주며 큐레이션을 닫습니다." }
+  ]
+}

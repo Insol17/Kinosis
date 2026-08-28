@@ -51,23 +51,32 @@ export default async (request) => {
 
   try {
     const genreId = GENRES.get(query.toLocaleLowerCase(KINOSIS_LOCALE.language)) || GENRES.get(query);
-    const [movieData, personData, genreData] = await Promise.all([
-      tmdb('/search/movie', { query, language: KINOSIS_LOCALE.language, region: KINOSIS_LOCALE.region, include_adult: false, page: 1 }),
-      tmdb('/search/person', { query, language: KINOSIS_LOCALE.language, include_adult: false, page: 1 }).catch(() => ({ results: [] })),
+    // One multi-search replaces separate movie + person requests for ordinary queries.
+    // Genre discovery remains optional and runs only for an exact supported genre token.
+    const [multiData, genreData] = await Promise.all([
+      tmdb('/search/multi', { query, language: KINOSIS_LOCALE.language, include_adult: false, page: 1 }),
       genreId ? tmdb('/discover/movie', { language: KINOSIS_LOCALE.language, region: KINOSIS_LOCALE.region, include_adult: false, with_genres: genreId, sort_by: 'popularity.desc', page: 1 }).catch(() => ({ results: [] })) : Promise.resolve({ results: [] }),
     ]);
 
+    const multiResults = multiData.results || [];
+    const movieRows = multiResults.filter((row) => row?.media_type === 'movie' || (!row?.media_type && (row?.title || row?.original_title)));
+    const personRows = multiResults.filter((row) => row?.media_type === 'person');
+
     // TMDB movie id is the canonical identity. Title/year is never used to collapse two distinct TMDB records.
     const byId = new Map();
-    for (const raw of [...(movieData.results || []), ...(genreData.results || [])]) {
+    for (const raw of [...movieRows, ...(genreData.results || [])]) {
       if (!raw?.id || byId.has(String(raw.id))) continue;
       const normalized = normalizeMovie(raw);
       byId.set(normalized.id, normalized);
     }
     const results = [...byId.values()].sort((a, b) => movieScore(b, query) - movieScore(a, query)).slice(0, 30);
-    const people = (personData.results || []).map(normalizePerson).sort((a,b) => (norm(b.name) === norm(query) ? 1000 : 0) + Number(b.popularity || 0) - ((norm(a.name) === norm(query) ? 1000 : 0) + Number(a.popularity || 0))).slice(0, 8);
+    const people = personRows.map(normalizePerson).sort((a, b) => {
+      const bScore = (norm(b.name) === norm(query) ? 1000 : 0) + Number(b.popularity || 0);
+      const aScore = (norm(a.name) === norm(query) ? 1000 : 0) + Number(a.popularity || 0);
+      return bScore - aScore;
+    }).slice(0, 8);
 
-    return json({ query, page: movieData.page || 1, totalResults: movieData.total_results || results.length, genreMatched: genreId || null, results, people }, 200, 'public, max-age=0, s-maxage=300, stale-while-revalidate=1800');
+    return json({ query, page: multiData.page || 1, totalResults: multiData.total_results || results.length, genreMatched: genreId || null, results, people }, 200, 'public, max-age=0, s-maxage=300, stale-while-revalidate=1800');
   } catch (error) {
     console.error('movie-search:', error.message);
     return json({ error: error.message || 'Movie search failed.' }, error.status || 500);

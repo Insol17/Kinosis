@@ -1,28 +1,27 @@
-# KINOSIS 0.4.5.8
+# KINOSIS 0.4.6.6
 
 **KINOSIS is a Korea-first Personal Film Library — 나만의 영화장.**
 
-KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.5.8 moves more external data out of the user's critical path: KOBIS/TMDB are ingested into KINOSIS-owned snapshots, while Search/Detail remain user-driven network surfaces.
+KINOSIS keeps discovery, Korean theatrical context, current viewing availability, a present-tense shelf, a separate watchlist, ratings/comments, viewing history and Collections around one Movie Entity. 0.4.6.6 tightens the film-first Library/Collection flow, restores clearer Discover card grammar and keeps Arthouse's moving Curation Hero while giving the archive a restrained editorial identity.
 
 ```text
 DISCOVER  → KOBIS 기반 한국 박스오피스 / 개봉 예정 + 영화 발견
 ARTHOUSE  → Curation / Director Archive 프로그램 탐색
 DETAIL    → 작품 정보 / 감상 가능 / 현재 평가·기록
 LIBRARY   → 현재 내 영화장 + 별도의 보고싶어요 + Collections
-PROFILE   → 감상 기록 / 평가 / 한줄평 / cinematic calendar / 통계 / 설정
+PROFILE   → 감상 기록 / 평가 / 리뷰 / cinematic calendar / 통계 / 설정
 STUDIO    → admin only · Arthouse 프로그램 제작/미리보기/발행
 ```
 
-## 0.4.5.8 focus
+## 0.4.6.6 focus
 
-- **Availability provenance:** TMDB Watch Providers is treated as JustWatch-reported availability, not as a guaranteed real-time playback fact. Every row carries `source` + `confidence`.
-- **Verified vs reported UI:** Detail separates `확인된 감상처` from `외부 DB · 확인 필요`. Watchlist/Discover no longer use unverified rows for strong `지금 볼 수 있음` claims.
-- **Collectio official verification:** movie title + year are checked against Collectio's public official catalogue search. Exact matches are marked `collectio-official / verified` and can power `내 구독` availability.
-- **Failure isolation:** Collectio verification is cached, bounded by timeout and non-fatal. A provider-site failure cannot erase other availability data or break Detail.
-- **Verified correction merge:** the small emergency correction layer still exists for providers without a usable first-party source, but a verified row now upgrades a duplicate stale aggregator row rather than being dropped by deduplication.
-- **Existing 0.4.5.7 watchlist utility, theatrical-state fix, visual Discover work, KOBIS snapshot, Studio and Arthouse contracts remain intact.**
-
-See `PATCH-0.4.5.8.md`, `docs/API-SOURCES.md` and `docs/NETLIFY-DEPLOY.md`.
+- **Watch Now matches movie discovery:** verified streaming titles now reuse the same poster-card grammar as Box Office, with contextual OTT marks as a lightweight overlay instead of landscape promo cards.
+- **Genre stays wide:** Discover keeps the horizontal genre language in both preview and the expanded 18-genre directory.
+- **Box Office stays a rail:** no redundant full-view route; the rail accepts up to 30 genuine ranked rows when the source provides them, without inventing ranks.
+- **Collection is works-first:** Collection detail is a dense seven-column Library-sized film grid with a compact header; searching/adding/removing films lives inside Edit, where changes are staged until Save.
+- **Stable Arthouse navigation:** the desktop hover menu closes when hover/focus leaves, while subtle warm hairlines, restrained saturation and squarer programme surfaces distinguish Arthouse without decorative numbering.
+- **Safer controls:** Hero navigation has a reserved content gutter so previous/next arrows never cover programme copy.
+- **Provider marks:** movie-scoped TMDB/JustWatch provider artwork takes precedence over tiny first-party favicons; first-party marks remain fallback only.
 
 ## Run
 

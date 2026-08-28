@@ -1,0 +1,21 @@
+{
+  "slug": "nouvelle-vague-masterpieces",
+  "kind": "editorial",
+  "surface": "arthouse",
+  "eyebrow": "KINOSIS CURATION",
+  "title": "누벨바그 걸작선",
+  "subtitle": "From the first break to its reconstruction",
+  "description": "프랑스 누벨바그의 대표적인 변곡점들을 지나, 〈네 멋대로 해라〉의 탄생을 다시 바라보는 2025년의 〈누벨바그〉까지 이어지는 여섯 편.",
+  "credit": "Curated by KINOSIS",
+  "priority": 8,
+  "heroMovieId": "269",
+  "orderMode": "curated",
+  "movies": [
+    { "tmdbId": 147, "note": "개인의 체험과 거리의 감각을 영화의 형식 자체로 끌어들이며 새로운 세대의 출발점을 보여줍니다." },
+    { "tmdbId": 269, "note": "고전적인 영화 문법을 거칠게 끊고 다시 이어 붙이며 누벨바그의 자유로운 리듬을 가장 직접적으로 체감하게 합니다." },
+    { "tmdbId": 1254808, "note": "바로 앞의 〈네 멋대로 해라〉가 만들어지던 순간을 후대의 영화가 재구성합니다. 두 작품을 연속 배치해 원작과 회고를 곧바로 비교합니다." },
+    { "tmdbId": 499, "note": "실시간에 가까운 흐름 속에서 한 여성의 시선과 도시의 시간을 따라가며 누벨바그의 범위를 다른 방향으로 넓힙니다." },
+    { "tmdbId": 266, "note": "영화 산업과 사랑의 붕괴를 한 화면 안에 겹쳐 놓으며 이미지와 감정 사이의 균열을 전면에 내세웁니다." },
+    { "tmdbId": 2786, "note": "장르와 색채, 인용과 파국을 끝없이 충돌시키며 누벨바그의 실험성이 어디까지 확장될 수 있는지 보여줍니다." }
+  ]
+}

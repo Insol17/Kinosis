@@ -1,0 +1,26 @@
+export const COLLECTIO_SNAPSHOT = Object.freeze({
+  version: '0.4.6.5',
+  scope: 'homepage',
+  sourceUrl: 'https://collectio.co.kr/main/index.jsp',
+  updatedAt: '2026-08-28T04:30:00.000Z',
+  entries: [
+    { title: '미러 넘버 3', creator: 'Christian Petzold', year: '2025' },
+    { title: '돈', creator: 'Robert Bresson', year: '1983' },
+    { title: '잔다르크의 재판', creator: 'Robert Bresson', year: '1962' },
+    { title: '당나귀 발타자르', creator: 'Robert Bresson', year: '1966' },
+    { title: '사랑을 카피하다', creator: 'Abbas Kiarostami', year: '2010' },
+    { title: '제자리에 있는 건 없다', creator: 'Burak ÇEVIK', year: '2024' },
+    { title: '텐', creator: 'Abbas Kiarostami', year: '2002' },
+    { title: '다이렉트 액션', creator: 'Guillaume Cailleau · Ben Russell', year: '2024' },
+    { title: '입 속의 꽃잎', creator: 'Éric BAUDELAIRE', year: '2022' },
+    { title: '바람이 우리를 데려다 주리라', creator: 'Abbas Kiarostami', year: '1999' },
+    { title: '벌집의 정령', creator: 'Victor Erice', year: '1973' },
+    { title: '키메라', creator: 'Alice Rohrwacher', year: '2023' },
+    { title: '큐어', creator: 'Kiyoshi Kurosawa', year: '1997' },
+    { title: '스파이의 아내', creator: 'Kiyoshi Kurosawa', year: '2020' },
+    { title: '7월 이야기', creator: 'Guillaume Brac', year: '2018' },
+    { title: '소매치기', creator: 'Robert Bresson', year: '1960' },
+    { title: '남쪽', creator: 'Víctor Erice', year: '1983' },
+    { title: '클로즈 유어 아이즈', creator: 'Victor Erice', year: '2023' }
+  ]
+});

@@ -1,3 +1,4 @@
+import { COLLECTIO_SNAPSHOT } from '../../data/collectio-kr.mjs';
 const COLLECTIO_SEARCH = 'https://collectio.co.kr/main/search.jsp';
 const CACHE_TTL = 12 * 60 * 60 * 1000;
 const REQUEST_TIMEOUT = 4500;
@@ -76,7 +77,7 @@ async function fetchSearch(query) {
       headers: {
         Accept: 'text/html,application/xhtml+xml',
         'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.6',
-        'User-Agent': 'KINOSIS availability verifier/0.4.5.8',
+        'User-Agent': 'KINOSIS availability verifier/0.4.6.6',
       },
       signal: controller.signal,
     });
@@ -91,6 +92,16 @@ async function fetchSearch(query) {
 }
 
 export async function collectioAvailability({ title, originalTitle, year } = {}) {
+  const snapshotMatch = findCollectioMatch(COLLECTIO_SNAPSHOT?.entries || [], { title, originalTitle, year });
+  if (snapshotMatch) {
+    return {
+      provider: {
+        id: 'collectio-snapshot', name: 'Collectio', type: 'subscription', displayPriority: 2,
+        source: 'collectio-official', confidence: 'verified', verifiedAt: COLLECTIO_SNAPSHOT.updatedAt, sourceUrl: COLLECTIO_SNAPSHOT.sourceUrl,
+      },
+      checkedAt: COLLECTIO_SNAPSHOT.updatedAt, sourceUrl: COLLECTIO_SNAPSHOT.sourceUrl, match: snapshotMatch, snapshot: true,
+    };
+  }
   const queries = [...new Set([title, originalTitle].map((value) => String(value || '').trim()).filter(Boolean))];
   for (const query of queries) {
     try {

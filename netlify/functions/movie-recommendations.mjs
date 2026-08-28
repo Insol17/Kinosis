@@ -32,11 +32,14 @@ export default async (request) => {
 
   try {
     const payloads = await Promise.all(seeds.map(async (id) => {
-      const [recommended, similar] = await Promise.all([
-        tmdb(`/movie/${id}/recommendations`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] })),
-        tmdb(`/movie/${id}/similar`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] })),
-      ]);
-      return { id, recommended: recommended.results || [], similar: similar.results || [] };
+      const recommended = await tmdb(`/movie/${id}/recommendations`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] }));
+      const recommendedRows = recommended.results || [];
+      // Similar is a fallback, not a parallel default. Most films already have
+      // enough recommendations, so the common path uses one TMDB request.
+      const similar = recommendedRows.length >= 8
+        ? { results: [] }
+        : await tmdb(`/movie/${id}/similar`, { language: KINOSIS_LOCALE.language, page: 1 }).catch(() => ({ results: [] }));
+      return { id, recommended: recommendedRows, similar: similar.results || [] };
     }));
 
     const byId = new Map();

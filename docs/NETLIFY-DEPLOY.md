@@ -1,4 +1,4 @@
-# Netlify deployment — KINOSIS 0.4.5.8
+# Netlify deployment — KINOSIS 0.4.6.6
 
 ## Environment variables
 
@@ -51,7 +51,7 @@ Existing 0.4.5.3 project:
 supabase/006_kinosis_0454.sql
 ```
 
-The 0.4.5.8 migration adds lightweight Studio list metadata so the Studio home does not download every full Director snapshot.
+The 0.4.5.4 Studio migration adds lightweight list metadata so the Studio home does not download every full Director snapshot.
 
 ## Admin role
 

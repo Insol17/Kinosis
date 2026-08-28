@@ -26,6 +26,7 @@ try{
       return new Response(`<html><body>${row}</body></html>`,{status:200,headers:{'content-type':'text/html'}});
     }
     assert.equal(options.headers.Authorization,'Bearer test-token-not-real');
+    if(value.includes('/search/multi')) { const first={...movieFixture,media_type:'movie',release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}; return Response.json({page:1,total_results:3,results:[first,{...first,id:151,title:first.title,original_title:first.original_title},{id:2,media_type:'person',name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]}); }
     if(value.includes('/search/person')) return Response.json({results:[{id:2,name:'Orson Welles',known_for_department:'Directing',popularity:20,profile_path:'/person.jpg',known_for:[]}]});
     if(value.includes('/search/movie')) { const first={...movieFixture,release_date:value.includes('query=%EC%98%81%ED%99%94')?'2026-08-01':'1941-04-17'}; return Response.json({page:1,total_results:2,results:[first,{...first,id:151,title:first.title,original_title:first.original_title}]}); }
     if(value.includes('/watch/providers/movie')) return Response.json({results:[{provider_id:8,provider_name:'Netflix',logo_path:'/netflix.jpg',display_priority:1},{provider_id:97,provider_name:'Watcha',logo_path:'/watcha-wrong.jpg',display_priority:2}]});
@@ -46,7 +47,7 @@ try{
     if(value.includes('/movie/15/external_ids')) return Response.json({imdb_id:'tt0033467'});
     if(value.includes('/movie/15/watch/providers')) return Response.json({results:{KR:{link:'https://example.test/watch',flatrate:[{provider_id:8,provider_name:'Netflix',logo_path:'/netflix.jpg',display_priority:1}],ads:[{provider_id:8,provider_name:'Netflix Standard with Ads',logo_path:'/netflix.jpg',display_priority:2}]}}});
     if(value.includes('/movie/15/keywords')) return Response.json({keywords:[{name:'newspaper'}]});
-    if(value.includes('/movie/15')) return Response.json({...movieFixture,runtime:119,tagline:'',genres:[{id:18,name:'드라마'}],production_companies:[],production_countries:[{name:'미국'}],original_language:'en',credits:{crew:[{id:2,job:'Director',name:'Orson Welles'}],cast:[{id:2,name:'Orson Welles',character:'Kane'}]}});
+    if(value.includes('/movie/15')) return Response.json({...movieFixture,runtime:119,tagline:'',genres:[{id:18,name:'드라마'}],production_companies:[],production_countries:[{name:'미국'}],original_language:'en',credits:{crew:[{id:2,job:'Director',name:'Orson Welles'}],cast:[{id:2,name:'Orson Welles',character:'Kane'}]},videos:{results:[{site:'YouTube',key:'trailer123',name:'Official Trailer',type:'Trailer',official:true,iso_639_1:'ko',size:1080}]},images:{backdrops:[{file_path:'/still.jpg',width:1920,height:1080,vote_average:8}]}});
     throw new Error(`unexpected URL ${value}`);
   };
 

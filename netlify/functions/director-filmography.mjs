@@ -13,7 +13,9 @@ export default async request=>{
   const name=(u.searchParams.get('name')||'').trim();
   const id=(u.searchParams.get('id')||'').trim();
   const sort=u.searchParams.get('sort')==='release_desc'?'release_desc':'release_asc';
-  const mode=u.searchParams.get('mode')==='solo-features'?'solo-features':'all-directed';
+  const requestedMode=(u.searchParams.get('mode')||'').trim();
+  const mode=requestedMode==='representative-features'?'representative-features':requestedMode==='solo-features'?'solo-features':'all-directed';
+  const limit=Math.max(4,Math.min(12,Number(u.searchParams.get('limit')||10)));
   const include=parseIds(u.searchParams.get('include'));
   const exclude=new Set(parseIds(u.searchParams.get('exclude')));
   if(!name&&!/^\d+$/.test(id))return json({error:'Director name or id required.'},400);
@@ -36,17 +38,25 @@ export default async request=>{
     }
 
     let directed=[...byId.values()];
-    if(mode==='solo-features'){
-      // One TMDB request per candidate, not detail + credits as two separate calls.
-      // This path is mainly an authoring refresh; public archives use snapshots first.
-      const checked=await pool(directed.slice(0,30),3,async candidate=>{
+    if(mode==='representative-features'){
+      // Runtime Director Archive deliberately avoids N+1 movie-detail requests.
+      // TMDB movie_credits already contains release/vote/popularity/poster signals;
+      // use those to build a compact representative shortlist. Authored archives
+      // remain the canonical path when an exact feature-film list is required.
+      const score=row=>Math.log10(Number(row.vote_count||0)+1)*5+Number(row.vote_average||0)+Math.log10(Number(row.popularity||0)+1)*2.5+(row.poster_path?1.5:0)+(row.backdrop_path?1:0);
+      directed=directed
+        .filter(row=>row.release_date && !row.adult && (Number(row.vote_count||0)>=10 || Number(row.popularity||0)>=1))
+        .sort((a,b)=>score(b)-score(a))
+        .slice(0,limit);
+    } else if(mode==='solo-features'){
+      const candidates=directed.slice(0,30);
+      directed=await pool(candidates,4,async candidate=>{
         const detail=await tmdb(`/movie/${candidate.id}`,{language:KINOSIS_LOCALE.language,append_to_response:'credits'});
         const directors=[...new Set((detail.credits?.crew||[]).filter(row=>row.job==='Director'&&row.id).map(row=>String(row.id)))];
         if(Number(detail.runtime||0)<60)return null;
         if(directors.length!==1||directors[0]!==String(person.id))return null;
         return detail;
       });
-      directed=checked;
     }
 
     if(include.length){
@@ -57,7 +67,7 @@ export default async request=>{
 
     let results=uniqueMovies(directed).map(row=>movie(row,person));
     results.sort((a,b)=>{const ad=a.releaseDate||'9999-99-99',bd=b.releaseDate||'9999-99-99';return sort==='release_desc'?bd.localeCompare(ad):ad.localeCompare(bd)});
-    return json({person:{id:String(person.id),name:person.name,knownForDepartment:person.known_for_department||''},mode,results},200,'public, max-age=0, s-maxage=21600, stale-while-revalidate=86400');
+    return json({person:{id:String(person.id),name:person.name,knownForDepartment:person.known_for_department||''},mode,results},200,'public, max-age=3600, stale-while-revalidate=86400',{'Netlify-CDN-Cache-Control':'public, durable, max-age=604800, stale-while-revalidate=2592000'});
   }catch(e){console.error('director-filmography:',e.message);return json({error:e.message||'Director filmography failed.'},e.status||500)}
 };
 export const config={path:'/api/director-filmography',method:'GET',rateLimit:{action:'rate_limit',aggregateBy:['ip'],windowSize:60,windowLimit:30}};

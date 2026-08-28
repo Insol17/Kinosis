@@ -1,5 +1,71 @@
 # Changelog
 
+## 0.4.6.6
+- Replaced Watch Now landscape promo cards with the same poster-card object language used by Box Office; OTT marks remain a small overlay and contextual provider artwork is preferred over tiny favicon fallbacks.
+- Expanded the Genre directory to 18 categories while keeping every Genre tile in the same horizontal/wide format as the Discover preview.
+- Removed the Box Office full-view route; the main ranked rail can display up to 30 genuine source-ranked entries without fabricating missing KOBIS positions.
+- Moved Collection movie search/add/remove into the Edit dialog with staged changes, leaving Collection detail focused on a Library-density seven-column works grid and a smaller contextual title header.
+- Decoupled Collection membership from the current Library shelf: adding a film to a Collection no longer silently adds it to `내 영화장`; compact movie metadata is retained only so the Collection can render.
+- Fixed the ARTHOUSE hover submenu focus trap so it closes when hover/focus leaves, and restored restrained Arthouse identity through warm hairlines, desaturated imagery and squarer surfaces without numeric `01 / 02` ornament.
+- Reserved a dedicated Hero control gutter so previous/next controls no longer overlap programme copy.
+- Removed superseded Watch Now, Genre and Collection CSS rules so current component styles have a single owner instead of layered legacy overrides.
+
+## 0.4.6.5
+- Removed faint Discover section dividers and the Curation spotlight border so content hierarchy comes from spacing rather than gray framing.
+- Reworked `지금 바로 볼 수 있는 영화` into landscape image cards with provider marks only, `평가함 ★ x.x` personal-rating copy, and a full provider-grouped Watch Now directory instead of a settings shortcut when results exist.
+- Added a routed full Genre directory while keeping the four-genre Discover preview, plus a Box Office full view that is ready for up to 30 source-ranked rows without fabricating ranks beyond the KOBIS data actually available.
+- Increased previous/next affordance visibility through pill silhouettes, border contrast and luminance changes rather than a new accent color; Discover Curation controls now use clear directional arrows.
+- Removed Curation film-count noise such as `6 FILMS` from Discover/Arthouse programme surfaces.
+- Rebuilt Profile statistics as a 0.5–5.0 rating histogram and consolidated subscription, account/sync and data-movement settings into grouped panels.
+- Added metadata-only Profile avatar selection from already-loaded cast images, searchable by character, actor or movie, without a dedicated avatar API or Supabase image upload.
+- Replaced the old custom WATCHA mark and added first-party-hosted marks for Netflix, Coupang Play, Disney+, WATCHA, Apple TV+, Prime Video, YouTube and Collectio; CSP now explicitly permits those image hosts.
+- Added a daily GitHub Actions Collectio homepage snapshot and hybrid availability verification: snapshot hits verify immediately, misses fall back to the existing bounded official-title search. The homepage snapshot is explicitly not treated as the complete Collectio catalogue.
+
+## 0.4.6.4
+- Restored the original auto-advancing Arthouse Curation Hero instead of the 0.4.6.3 static editorial masthead.
+- Removed decorative `01 / 02` section indexes and numeric Curation-banner labels.
+- Simplified Arthouse styling: warm/desaturated media treatment, cleaner spacing, wide Curation banners and compact seven-column Director portraits without faux film-frame ornament.
+- Preserved routed Curation/Director full indexes, ARTHOUSE hover navigation, Discover Curation spotlight and works-first Collection behavior.
+
+## 0.4.6.3
+- Reversed Collection detail hierarchy so the movie grid is the primary content and movie search is a compact secondary tool in the Works header.
+- Removed default/recommended movie rows from Collection detail; results stay hidden until the user actually types a query.
+- Made Collection search add-only. Existing works are removed from the collection itself through a compact poster-level remove control, keeping add/remove semantics in their proper contexts.
+- Replaced Discover's single static Curation promo with a three-programme horizontal spotlight for `결국 가족이다`, `고독한 방황`, and `누벨바그 걸작선`, with previous/next controls, swipe, reduced-motion handling and viewport-gated autoplay.
+- Kept Discover product-like and Arthouse editorial/archive-like while tightening the visual boundary: rounded moving spotlight in Discover versus framed, warmer, square-indexed programme surfaces in Arthouse.
+- Extracted Discover Curation carousel timing/render policy to `features/discover-curation-carousel.js` and added regression coverage for spotlight selection, dormant Collection search and works-first hierarchy.
+
+## 0.4.6.2
+- Reworked the Library editing flow so Collection detail can search beyond the current shelf, add repeatedly in place, and remove films directly from both search results and the collection grid.
+- Added a direct `+ 영화장` action to global Search and a Library-level `+ 영화 찾기` entry so adding a film no longer requires an unnecessary Detail detour.
+- Extracted pure Collection mutation commands into `collection-editor.js` and added dedicated regression coverage for add/dedupe/move/remove behavior.
+- Changed Profile terminology from `한줄평` to `리뷰` and integrated personal rating + review into the Movie Detail information column instead of a detached third-column card.
+- Strengthened Arthouse's editorial/archive visual grammar with restrained frame, index and warmer paper cues while keeping Discover's cleaner discovery-oriented surface language.
+- Made static Preview useful for evaluation by proxying read-only movie APIs to the deployed KINOSIS backend; account/cloud/admin mutations still require Full/Netlify mode.
+
+## 0.4.6.1
+- Removed the redundant in-page Arthouse Curation / Director Archive switcher; the overview now goes straight to content while desktop category navigation remains in the ARTHOUSE menu.
+- Reworked Collections into a quieter WatchaPedia-inspired directory/detail hierarchy with title, description, work count and movie grid as the primary information.
+- Added an inline collection movie finder so users can search and add films repeatedly without leaving the collection detail.
+- Added a reusable pre-indexed local movie search for immediate client-side results, including saved/local movies available when the controller is created.
+- Reduced live-search debounce to 120 ms, preserved Korean IME composition handling and stale-request cancellation, and added a five-minute normalized-query repository cache.
+- Replaced ordinary TMDB movie + person double search with a single `/search/multi` request; exact genre discovery remains conditional.
+- Added regression coverage for search indexing/cache behavior and collection search/rendering.
+
+## 0.4.6.0
+- Split Arthouse into explicit Curation and Director Archive destinations, with hover category navigation on desktop and routed full-index pages.
+- Replaced Curation index cards with wide cinematic banners and changed Director preview density to 35 cards / seven columns on wide desktop.
+- Added stable generated-Director routes for refresh/share/back continuity.
+- Extracted Arthouse directory rendering and viewport-aware Director portrait loading into dedicated feature modules.
+- Reduced API pressure through prefetch dedupe, lazy Detail enrichment, appended media, Similar fallback, representative-director N+1 removal and targeted Watchlist availability refresh.
+- Moved historical patch/audit documents out of the repository root and documented current folder boundaries.
+
+## 0.4.5.9
+- Added three editorial curations and a portrait-first, grouped Director index with representative-feature drill-down.
+- Improved Detail rating prominence, Korean language/region labels, in-page still lightbox and clipped action-menu behavior.
+- Made availability provenance/freshness more explicit while retaining independent Collectio/manual verification alongside JustWatch-via-TMDB candidates.
+- Reworked personal Collections with poster mosaics, browse-first detail pages, expandable ordering and multi-collection assignment.
+
 ## 0.4.5.8
 - OTT availability now carries source/confidence provenance instead of treating TMDB/JustWatch rows as real-time truth.
 - Added direct Collectio official-catalogue verification with exact title/year matching and bounded cache/timeout.

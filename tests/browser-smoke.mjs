@@ -216,8 +216,8 @@ try {
   await waitFor(() => cdp.eval(`document.querySelector('[data-star-rating]')?.dataset.currentRating === '4.5'`), { label: '4.5 star rating' });
   await cdp.eval(`document.querySelector('[data-edit-relationship]').click(); true`);
   await waitFor(() => cdp.eval(`document.querySelector('#relationshipDialog')?.open || false`), { label: 'relationship dialog' });
-  await cdp.eval(`document.querySelector('#relationshipComment').value='브라우저 한줄평'; document.querySelector('#relationshipForm').requestSubmit(); true`);
-  await waitFor(() => cdp.eval(`document.querySelector('.detail-comment')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'Detail one-line comment' });
+  await cdp.eval(`document.querySelector('#relationshipComment').value='브라우저 리뷰'; document.querySelector('#relationshipForm').requestSubmit(); true`);
+  await waitFor(() => cdp.eval(`document.querySelector('.detail-comment')?.textContent?.includes('브라우저 리뷰') || false`), { label: 'Detail review' });
 
   // Rating/comment already promote the film into the current shelf; add a viewing event.
   await cdp.eval(`document.querySelector('[data-action="log"][data-id="${TEST_MOVIE_ID}"]').click(); true`);
@@ -236,7 +236,7 @@ try {
   await cdp.eval(`document.querySelector('[data-nav="my"]').click(); true`);
   await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'Profile' });
   await cdp.eval(`document.querySelector('[data-my-drill="reviews"]').click(); true`);
-  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'Profile one-line comment archive' });
+  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 리뷰') || false`), { label: 'Profile review archive' });
   assert.equal(await cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('첫 감상 메모') || false`), false, 'comment archive should show current comment, not per-viewing note');
 
   // Reload regression: local user cache must restore current relationship and viewing data.
@@ -246,11 +246,11 @@ try {
   await cdp.eval(`document.querySelector('[data-nav="my"]').click(); true`);
   await waitFor(() => cdp.eval(`!!document.querySelector('[data-my-drill="reviews"]')`), { label: 'Profile after reload' });
   await cdp.eval(`document.querySelector('[data-my-drill="reviews"]').click(); true`);
-  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 한줄평') || false`), { label: 'relationship restored after reload' });
+  await waitFor(() => cdp.eval(`document.querySelector('#myContent')?.textContent?.includes('브라우저 리뷰') || false`), { label: 'relationship restored after reload' });
 
   // Arthouse programme rails -> authored curation detail.
   await cdp.eval(`document.querySelector('[data-nav="arthouse"]').click(); true`);
-  await waitFor(() => cdp.eval(`document.querySelectorAll('.arthouse-collection-card, .curation-rail-section').length >= 5`), { timeout: 8000, label: 'arthouse programmes' });
+  await waitFor(() => cdp.eval(`document.querySelectorAll('.arthouse-curation-banner, .director-index-card').length >= 8`), { timeout: 8000, label: 'arthouse programmes' });
   await cdp.eval(`document.querySelector('[data-curation="kiarostami-life-continues"]').click(); true`);
   await waitFor(() => cdp.eval(`!!document.querySelector('.curation-collection-grid, .curation-ordered-list') && document.querySelectorAll('[data-movie]').length >= 5`), { timeout: 8000, label: 'collection-object curation detail' });
 

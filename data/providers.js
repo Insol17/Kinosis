@@ -1,5 +1,5 @@
 window.KINOSIS_PROVIDER_DATA = Object.freeze({
-  "version": "0.4.5.8",
+  "version": "0.4.6.6",
   "items": [
     {
       "key": "Netflix",
@@ -10,7 +10,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       ],
       "prefixes": [
         "netflix"
-      ]
+      ],
+      "logoOverride": "https://www.netflix.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "Netflix first-party site icon"
     },
     {
       "key": "TVING",
@@ -24,7 +27,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "label": "Coupang Play",
       "aliases": [
         "Coupang Play"
-      ]
+      ],
+      "logoOverride": "https://www.coupangplay.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "Coupang Play first-party site icon"
     },
     {
       "key": "Disney+",
@@ -36,7 +42,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "prefixes": [
         "disneyplus",
         "disney"
-      ]
+      ],
+      "logoOverride": "https://www.disneyplus.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "Disney+ first-party site icon"
     },
     {
       "key": "WATCHA",
@@ -48,9 +57,9 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "prefixes": [
         "watcha"
       ],
-      "logoOverride": "./assets/branding/providers/watcha-mark.svg",
+      "logoOverride": "https://watcha.com/favicon.ico",
       "logoKind": "mark",
-      "source": "WATCHA official media kit"
+      "source": "WATCHA official first-party site icon; BI cross-checked"
     },
     {
       "key": "Wavve",
@@ -69,7 +78,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "aliases": [
         "Apple TV Plus",
         "Apple TV+"
-      ]
+      ],
+      "logoOverride": "https://www.apple.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "Apple first-party site icon"
     },
     {
       "key": "Amazon Prime Video",
@@ -77,7 +89,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       "aliases": [
         "Amazon Prime Video",
         "Prime Video"
-      ]
+      ],
+      "logoOverride": "https://www.primevideo.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "Prime Video first-party site icon"
     },
     {
       "key": "Google Play Movies",
@@ -97,7 +112,10 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
       ],
       "prefixes": [
         "youtube"
-      ]
+      ],
+      "logoOverride": "https://www.youtube.com/favicon.ico",
+      "logoKind": "mark",
+      "source": "YouTube first-party site icon"
     },
     {
       "key": "Collectio",
@@ -107,7 +125,9 @@ window.KINOSIS_PROVIDER_DATA = Object.freeze({
         "COLLECTIO",
         "콜렉티오"
       ],
-      "source": "Collectio official catalogue verifier"
+      "logoOverride": "https://collectio.co.kr/favicon.ico",
+      "logoKind": "mark",
+      "source": "Collectio first-party site icon + official catalogue verifier"
     }
   ]
 });

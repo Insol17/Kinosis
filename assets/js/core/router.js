@@ -14,6 +14,14 @@ export function createRouter({ canUseHistory = () => true, locationRef = globalT
     if (from === 'curation' && fromCuration) url.searchParams.set('fromCuration', fromCuration);
     return `${url.pathname}${url.search}`;
   }
+  function directorUrl(name, displayName = '', personId = '') {
+    const url = baseUrl();
+    url.search = '';
+    url.searchParams.set('director', String(name));
+    if (displayName && displayName !== name) url.searchParams.set('displayName', String(displayName));
+    if (personId) url.searchParams.set('personId', String(personId));
+    return `${url.pathname}${url.search}`;
+  }
   function curationUrl(slug, from) {
     const url = baseUrl();
     url.search = '';
@@ -26,5 +34,5 @@ export function createRouter({ canUseHistory = () => true, locationRef = globalT
     if (mode === 'replace') historyRef.replaceState(state, '', url);
     else historyRef.pushState(state, '', url);
   }
-  return Object.freeze({ viewUrl, movieUrl, curationUrl, write });
+  return Object.freeze({ viewUrl, movieUrl, directorUrl, curationUrl, write });
 }

@@ -1,0 +1,17 @@
+KINOSIS LOCAL PREVIEW
+=====================
+
+Do not open index.html directly with file://.
+KINOSIS uses native ES Modules, which browsers block when loaded directly from the filesystem.
+
+UI CHECK (no install other than Node.js):
+1. Double-click START_KINOSIS_PREVIEW.bat
+2. Browser opens http://127.0.0.1:4173
+3. This mode is for layout/UI inspection. Netlify /api functions are not executed.
+
+FULL LOCAL APP:
+1. Ensure the project's environment variables are configured.
+2. Double-click START_KINOSIS_FULL.bat
+3. This runs `npm run dev` (Netlify Dev), including local Functions routing.
+
+Required runtime: Node.js 24+
