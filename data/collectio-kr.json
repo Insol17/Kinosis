@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-08-29T02:16:34.534Z",
+  "updatedAt": "2026-08-29T21:48:11.149Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,14 +60,19 @@
       "year": "2023"
     },
     {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
-    },
-    {
       "title": "국외자들",
       "creator": "Jean Luc Godard",
       "year": "1964"
+    },
+    {
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "벌집의 정령",
@@ -260,11 +265,6 @@
       "year": "2012"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
       "title": "엄마와 창녀",
       "creator": "Jean Eustache",
       "year": "1973"
@@ -313,11 +313,6 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
     },
     {
       "title": "절멸의 천사",
