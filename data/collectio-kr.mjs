@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-08-29T21:48:11.149Z",
+  "updatedAt": "2026-08-30T21:55:21.157Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,14 +55,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "그랜드 투어",
@@ -70,9 +70,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "페트라",
+      "creator": "Christian Petzold",
+      "year": "1998"
     },
     {
       "title": "벌집의 정령",
@@ -83,6 +83,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -160,11 +165,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -213,11 +213,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "쿠바 리브레",
       "creator": "Christian Petzold",
       "year": "1996"
-    },
-    {
-      "title": "페트라",
-      "creator": "Christian Petzold",
-      "year": "1998"
     },
     {
       "title": "파일럿",
