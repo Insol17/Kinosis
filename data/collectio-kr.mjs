@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-08-31T23:14:16.339Z",
+  "updatedAt": "2026-09-01T21:50:14.513Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
     },
     {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
-    },
-    {
-      "title": "피카소의 비밀",
-      "creator": "Henri-Georges Clouzot",
-      "year": "1956"
-    },
-    {
-      "title": "어파이어",
+      "title": "파일럿",
       "creator": "Christian Petzold",
-      "year": "2023"
+      "year": "1995"
+    },
+    {
+      "title": "7월 이야기",
+      "creator": "Guillaume Brac",
+      "year": "2018"
+    },
+    {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
+    },
+    {
+      "title": "다함께 여름!",
+      "creator": "Guillaume Brac",
+      "year": "2020"
     },
     {
       "title": "벌집의 정령",
@@ -145,11 +150,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1974"
     },
     {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
-    },
-    {
       "title": "그리고 삶은 계속된다",
       "creator": "Abbas Kiarostami",
       "year": "1991"
@@ -163,6 +163,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
@@ -220,9 +225,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1998"
     },
     {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
+      "title": "피카소의 비밀",
+      "creator": "Henri-Georges Clouzot",
+      "year": "1956"
     },
     {
       "title": "우리는 함께 늙지 않는다",
@@ -258,6 +263,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
