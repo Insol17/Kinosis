@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-01T21:50:14.513Z",
+  "updatedAt": "2026-09-02T21:52:35.943Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,29 +55,34 @@
       "year": "1999"
     },
     {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
-      "year": "2024"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
-      "title": "파일럿",
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "열망",
       "creator": "Christian Petzold",
-      "year": "1995"
+      "year": "2008"
     },
     {
-      "title": "7월 이야기",
-      "creator": "Guillaume Brac",
-      "year": "2018"
+      "title": "페트라",
+      "creator": "Christian Petzold",
+      "year": "1998"
     },
     {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
-      "title": "다함께 여름!",
-      "creator": "Guillaume Brac",
-      "year": "2020"
+      "title": "몽상가의 나흘 밤",
+      "creator": "Robert Bresson",
+      "year": "1971"
     },
     {
       "title": "벌집의 정령",
@@ -88,11 +93,6 @@
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -150,6 +150,11 @@
       "year": "1974"
     },
     {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
+    },
+    {
       "title": "그리고 삶은 계속된다",
       "creator": "Abbas Kiarostami",
       "year": "1991"
@@ -163,11 +168,6 @@
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
     },
     {
       "title": "운디네",
@@ -195,11 +195,6 @@
       "year": "2007"
     },
     {
-      "title": "열망",
-      "creator": "Christian Petzold",
-      "year": "2008"
-    },
-    {
       "title": "내가 속한 나라",
       "creator": "Christian Petzold",
       "year": "2000"
@@ -220,9 +215,9 @@
       "year": "1996"
     },
     {
-      "title": "페트라",
+      "title": "파일럿",
       "creator": "Christian Petzold",
-      "year": "1998"
+      "year": "1995"
     },
     {
       "title": "피카소의 비밀",
@@ -263,11 +258,6 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
