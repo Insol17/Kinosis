@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-05T21:19:52.451Z",
+  "updatedAt": "2026-09-06T21:25:43.890Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,6 +55,31 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
+    },
+    {
+      "title": "쿠바 리브레",
+      "creator": "Christian Petzold",
+      "year": "1996"
+    },
+    {
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
       "title": "도레미파 소녀의 피가 끓는다",
       "creator": "Kiyoshi Kurosawa",
       "year": "1985"
@@ -63,21 +88,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
-    },
-    {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
-      "year": "2024"
-    },
-    {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
-    },
-    {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
     },
     {
       "title": "남쪽",
@@ -165,11 +175,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -215,14 +220,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2003"
     },
     {
-      "title": "쿠바 리브레",
-      "creator": "Christian Petzold",
-      "year": "1996"
-    },
-    {
       "title": "페트라",
       "creator": "Christian Petzold",
       "year": "1998"
+    },
+    {
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
     },
     {
       "title": "피카소의 비밀",
@@ -263,11 +268,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
