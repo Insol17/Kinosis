@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-06T21:25:43.890Z",
+  "updatedAt": "2026-09-07T22:04:40.755Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,19 +60,9 @@
       "year": "2023"
     },
     {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
-    },
-    {
-      "title": "쿠바 리브레",
+      "title": "피닉스",
       "creator": "Christian Petzold",
-      "year": "1996"
-    },
-    {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
+      "year": "2014"
     },
     {
       "title": "키메라",
@@ -80,14 +70,19 @@
       "year": "2023"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
+    },
+    {
+      "title": "세탐정",
+      "creator": "Alan Martín SEGAL",
+      "year": "2022"
     },
     {
       "title": "남쪽",
@@ -122,11 +117,6 @@
     {
       "title": "애프터워터",
       "creator": "Dane Komljen",
-      "year": "2022"
-    },
-    {
-      "title": "세탐정",
-      "creator": "Alan Martín SEGAL",
       "year": "2022"
     },
     {
@@ -180,11 +170,6 @@
       "year": "2020"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -218,6 +203,11 @@
       "title": "볼프스부르크",
       "creator": "Christian Petzold",
       "year": "2003"
+    },
+    {
+      "title": "쿠바 리브레",
+      "creator": "Christian Petzold",
+      "year": "1996"
     },
     {
       "title": "페트라",
