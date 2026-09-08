@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-07T22:04:40.755Z",
+  "updatedAt": "2026-09-08T21:54:57.046Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,11 +55,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
@@ -75,24 +70,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
-      "year": "2024"
-    },
-    {
-      "title": "세탐정",
-      "creator": "Alan Martín SEGAL",
-      "year": "2022"
-    },
-    {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "너는 나를 불태워",
+      "creator": "Matías Piñeiro",
+      "year": "2025"
     },
     {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "노나",
@@ -117,6 +107,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
     {
       "title": "애프터워터",
       "creator": "Dane Komljen",
+      "year": "2022"
+    },
+    {
+      "title": "세탐정",
+      "creator": "Alan Martín SEGAL",
       "year": "2022"
     },
     {
@@ -163,6 +158,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
