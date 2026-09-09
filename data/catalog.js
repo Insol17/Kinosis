@@ -1,6 +1,6 @@
 window.KINOSIS_CATALOG = {
   "version": 2,
-  "updatedAt": "2026-09-02T23:29:14.469Z",
+  "updatedAt": "2026-09-09T23:26:17.546Z",
   "region": "KR",
   "language": "ko-KR",
   "mode": "live",
@@ -63,59 +63,59 @@ window.KINOSIS_CATALOG = {
       "Castle Rock Entertainment"
     ],
     "artSeed": false,
-    "voteAverage": 8.729,
-    "voteCount": 31208,
-    "popularity": 105.9697,
+    "voteAverage": 8.73,
+    "voteCount": 31276,
+    "popularity": 84.0858,
     "boxOfficeRank": null,
     "boxOfficeAudience": null,
     "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
     "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
     "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
     "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
-    "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
-    "logoUrl": "https://image.tmdb.org/t/p/original/1K53E8WXQW76Scg8upBObXSrbgN.png",
+    "heroBackdropUrl": null,
+    "logoUrl": null,
     "providers": [
       {
         "id": 8,
         "name": "Netflix",
         "type": "subscription",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
       },
       {
         "id": 356,
         "name": "wavve",
         "type": "subscription",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
       },
       {
         "id": 1796,
         "name": "Netflix Standard with Ads",
         "type": "subscription",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
       },
       {
         "id": 356,
         "name": "wavve",
         "type": "rent",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
       },
       {
         "id": 3,
         "name": "Google Play Movies",
         "type": "rent",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
       },
       {
         "id": 356,
         "name": "wavve",
         "type": "buy",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
       },
       {
         "id": 3,
         "name": "Google Play Movies",
         "type": "buy",
-        "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+        "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
       }
     ],
     "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
@@ -124,64 +124,6 @@ window.KINOSIS_CATALOG = {
     "demo": false
   },
   "featuredSlides": [
-    {
-      "id": 969681,
-      "title": "스파이더맨: 브랜드 뉴 데이",
-      "originalTitle": "Spider-Man: Brand New Day",
-      "year": 2026,
-      "releaseDate": "2026-07-29",
-      "director": "데스틴 대니얼 크레턴",
-      "runtime": 145,
-      "genres": [
-        "SF",
-        "액션",
-        "모험"
-      ],
-      "keywords": [
-        "mind control",
-        "new york city",
-        "hero",
-        "mutation",
-        "secret identity",
-        "superhero",
-        "spider",
-        "villain",
-        "based on comic",
-        "sequel",
-        "transhumanism",
-        "super power",
-        "masked vigilante",
-        "spider web",
-        "aftercreditsstinger",
-        "marvel cinematic universe (mcu)",
-        "masked superhero",
-        "fight for justice",
-        "genetic mutation"
-      ],
-      "productionCompanies": [
-        "Marvel Studios",
-        "Columbia Pictures",
-        "Pascal Pictures",
-        "TSG Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.873,
-      "voteCount": 2357,
-      "popularity": 952.532,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-      "tagline": "스파이더맨의 새로운 날을 확인하라!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/969681",
-      "imdbId": "tt22084616",
-      "demo": false
-    },
     {
       "id": 1368337,
       "title": "오디세이",
@@ -220,9 +162,9 @@ window.KINOSIS_CATALOG = {
         "Syncopy"
       ],
       "artSeed": false,
-      "voteAverage": 7.993,
-      "voteCount": 3407,
-      "popularity": 544.3226,
+      "voteAverage": 7.998,
+      "voteCount": 3568,
+      "popularity": 437.8516,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
@@ -256,8 +198,10 @@ window.KINOSIS_CATALOG = {
         "wish",
         "unrequited love",
         "couple",
+        "paranoid",
         "absurdism",
         "self-harm",
+        "anxious",
         "supernatural horror",
         "psychological",
         "independent film",
@@ -271,9 +215,9 @@ window.KINOSIS_CATALOG = {
         "Blumhouse Productions"
       ],
       "artSeed": false,
-      "voteAverage": 8.2,
-      "voteCount": 5238,
-      "popularity": 218.7101,
+      "voteAverage": 8.194,
+      "voteCount": 5388,
+      "popularity": 194.6239,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
@@ -286,102 +230,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1339713",
       "imdbId": "tt37287335",
-      "demo": false
-    },
-    {
-      "id": 278,
-      "title": "쇼생크 탈출",
-      "originalTitle": "The Shawshank Redemption",
-      "year": 1994,
-      "releaseDate": "1994-09-23",
-      "director": "프랭크 다라본트",
-      "runtime": 142,
-      "genres": [
-        "드라마",
-        "범죄"
-      ],
-      "keywords": [
-        "prison",
-        "friendship",
-        "police brutality",
-        "corruption",
-        "based on novel or book",
-        "freedom",
-        "hope",
-        "prison cell",
-        "delinquent",
-        "redemption",
-        "parole board",
-        "prison escape",
-        "wrongful imprisonment",
-        "interracial friendship",
-        "framed for murder",
-        "1940s",
-        "voiceover",
-        "epic"
-      ],
-      "productionCompanies": [
-        "Castle Rock Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 8.729,
-      "voteCount": 31208,
-      "popularity": 105.9697,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
-      "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/1K53E8WXQW76Scg8upBObXSrbgN.png",
-      "providers": [
-        {
-          "id": 8,
-          "name": "Netflix",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 1796,
-          "name": "Netflix Standard with Ads",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/278",
-      "imdbId": "tt0111161",
       "demo": false
     },
     {
@@ -423,9 +271,9 @@ window.KINOSIS_CATALOG = {
         "Waypoint Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 8.644,
-      "voteCount": 7501,
-      "popularity": 103.6085,
+      "voteAverage": 8.642,
+      "voteCount": 7624,
+      "popularity": 95.7346,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "눈을 떠보니 아득한 우주의 한가운데에서 깨어난 중학교 과학교사 그레이스는 희미한 기억 속에서 자신이 죽어가는 태양으로부터 지구와 인류를 살릴 마지막 희망으로 이곳에 왔다는 사실을 알게 된다. 잃어버린 기억으로 인해 모든 것이 혼란스러운 상황에서 그레이스는 우연히 우주 한복판에서 같은 목적으로 온 뜻밖의 존재 로키를 만나게 되고 그레이스와 로키는 각 두 행성의 운명을 건 마지막 미션을 수행하러 떠나게 되는데…",
@@ -439,67 +287,165 @@ window.KINOSIS_CATALOG = {
       "tmdbUrl": "https://www.themoviedb.org/movie/687163",
       "imdbId": "tt12042730",
       "demo": false
+    },
+    {
+      "id": 278,
+      "title": "쇼생크 탈출",
+      "originalTitle": "The Shawshank Redemption",
+      "year": 1994,
+      "releaseDate": "1994-09-23",
+      "director": "프랭크 다라본트",
+      "runtime": 142,
+      "genres": [
+        "드라마",
+        "범죄"
+      ],
+      "keywords": [
+        "prison",
+        "friendship",
+        "police brutality",
+        "corruption",
+        "based on novel or book",
+        "freedom",
+        "hope",
+        "prison cell",
+        "delinquent",
+        "redemption",
+        "parole board",
+        "prison escape",
+        "wrongful imprisonment",
+        "interracial friendship",
+        "framed for murder",
+        "1940s",
+        "voiceover",
+        "epic"
+      ],
+      "productionCompanies": [
+        "Castle Rock Entertainment"
+      ],
+      "artSeed": false,
+      "voteAverage": 8.73,
+      "voteCount": 31276,
+      "popularity": 84.0858,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
+      "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 8,
+          "name": "Netflix",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 1796,
+          "name": "Netflix Standard with Ads",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/278",
+      "imdbId": "tt0111161",
+      "demo": false
+    },
+    {
+      "id": 1083381,
+      "title": "백룸",
+      "originalTitle": "Backrooms",
+      "year": 2026,
+      "releaseDate": "2026-05-27",
+      "director": "케인 파슨스",
+      "runtime": 111,
+      "genres": [
+        "공포",
+        "미스터리",
+        "SF"
+      ],
+      "keywords": [
+        "california",
+        "monster",
+        "therapist",
+        "surrealism",
+        "childhood trauma",
+        "alcoholism",
+        "found footage",
+        "1990s",
+        "other dimension",
+        "based on web series",
+        "psychological",
+        "liminal",
+        "body horror",
+        "psychological horror",
+        "liminal space",
+        "analog horror",
+        "sci-fi horror",
+        "bewildered",
+        "foreboding",
+        "liminal horror"
+      ],
+      "productionCompanies": [
+        "Atomic Monster",
+        "21 Laps Entertainment",
+        "A24",
+        "Phobos",
+        "The North Road Company"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.057,
+      "voteCount": 3185,
+      "popularity": 92.7503,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
+      "tagline": "시작은 호기심이었다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/c3Cb7h4ecFsGfUM02KF638kbbtC.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/g0PswKqAFJdwGK3d1fKvj8LGnrW.png",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
+      "imdbId": "tt26657236",
+      "demo": false
     }
   ],
   "movies": [
-    {
-      "id": 969681,
-      "title": "스파이더맨: 브랜드 뉴 데이",
-      "originalTitle": "Spider-Man: Brand New Day",
-      "year": 2026,
-      "releaseDate": "2026-07-29",
-      "director": "데스틴 대니얼 크레턴",
-      "runtime": 145,
-      "genres": [
-        "SF",
-        "액션",
-        "모험"
-      ],
-      "keywords": [
-        "mind control",
-        "new york city",
-        "hero",
-        "mutation",
-        "secret identity",
-        "superhero",
-        "spider",
-        "villain",
-        "based on comic",
-        "sequel",
-        "transhumanism",
-        "super power",
-        "masked vigilante",
-        "spider web",
-        "aftercreditsstinger",
-        "marvel cinematic universe (mcu)",
-        "masked superhero",
-        "fight for justice",
-        "genetic mutation"
-      ],
-      "productionCompanies": [
-        "Marvel Studios",
-        "Columbia Pictures",
-        "Pascal Pictures",
-        "TSG Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.873,
-      "voteCount": 2357,
-      "popularity": 952.532,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-      "tagline": "스파이더맨의 새로운 날을 확인하라!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/969681",
-      "imdbId": "tt22084616",
-      "demo": false
-    },
     {
       "id": 1368337,
       "title": "오디세이",
@@ -538,9 +484,9 @@ window.KINOSIS_CATALOG = {
         "Syncopy"
       ],
       "artSeed": false,
-      "voteAverage": 7.993,
-      "voteCount": 3407,
-      "popularity": 544.3226,
+      "voteAverage": 7.998,
+      "voteCount": 3568,
+      "popularity": 437.8516,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
@@ -574,8 +520,10 @@ window.KINOSIS_CATALOG = {
         "wish",
         "unrequited love",
         "couple",
+        "paranoid",
         "absurdism",
         "self-harm",
+        "anxious",
         "supernatural horror",
         "psychological",
         "independent film",
@@ -589,9 +537,9 @@ window.KINOSIS_CATALOG = {
         "Blumhouse Productions"
       ],
       "artSeed": false,
-      "voteAverage": 8.2,
-      "voteCount": 5238,
-      "popularity": 218.7101,
+      "voteAverage": 8.194,
+      "voteCount": 5388,
+      "popularity": 194.6239,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
@@ -649,9 +597,9 @@ window.KINOSIS_CATALOG = {
         "The North Road Company"
       ],
       "artSeed": false,
-      "voteAverage": 7.063,
-      "voteCount": 3095,
-      "popularity": 122.1488,
+      "voteAverage": 7.057,
+      "voteCount": 3185,
+      "popularity": 92.7503,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
@@ -664,59 +612,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
       "imdbId": "tt26657236",
-      "demo": false
-    },
-    {
-      "id": 1384216,
-      "title": "도그 스타: 마지막 희망",
-      "originalTitle": "The Dog Stars",
-      "year": 2026,
-      "releaseDate": "2026-08-26",
-      "director": "리들리 스콧",
-      "runtime": 119,
-      "genres": [
-        "SF",
-        "모험",
-        "스릴러"
-      ],
-      "keywords": [
-        "based on novel or book",
-        "dystopia",
-        "denver, colorado",
-        "pilot",
-        "colorado",
-        "grief",
-        "pandemic",
-        "detached",
-        "lonely man",
-        "death of wife",
-        "scavengers",
-        "loving",
-        "joyful",
-        "group",
-        "dogs",
-        "post-apocalyptic"
-      ],
-      "productionCompanies": [
-        "20th Century Studios",
-        "Scott Free Productions"
-      ],
-      "artSeed": false,
-      "voteAverage": 6.691,
-      "voteCount": 165,
-      "popularity": 117.1592,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
-      "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/mk9IHaDuNrhF9hf5LNYFLsyrfUb.png",
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
-      "imdbId": "tt21285562",
       "demo": false
     },
     {
@@ -746,9 +641,9 @@ window.KINOSIS_CATALOG = {
         "Blue Rider Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 7.105,
-      "voteCount": 459,
-      "popularity": 79.0903,
+      "voteAverage": 7.121,
+      "voteCount": 475,
+      "popularity": 80.0368,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "로스앤젤레스발 상하이행 여객기가 화재로 폭발하며 태평양 한복판에 추락한다. 기적적으로 살아남은 승객들. 그러나 침몰하는 기체, 굶주린 식인 상어 떼 속에서 이제부터는 진짜 기적을 바라야 하는데...",
@@ -802,17 +697,17 @@ window.KINOSIS_CATALOG = {
         "Jackson Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 6.35,
-      "voteCount": 429,
-      "popularity": 77.1397,
+      "voteAverage": 6.354,
+      "voteCount": 463,
+      "popularity": 57.6922,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "1982년, 평화롭던 ‘오크 스트리트’ 마을이 하루아침에 통째로 선사시대로 옮겨졌다. 익숙했던 집과 골목은 순식간에 공룡들의 사냥터로 변하고, 육지와 하늘, 물속까지 점령한 거대 포식자들의 무차별 공격이 시작된다! 과연 ‘플랫’ 가족은 무사히 살아남아 원래의 일상으로 돌아갈 수 있을까?",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/oGqJr59UAwZfpmSkEkaW02o0ZLC.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/xm5OF5LINmyJLV7Cvq1UHxWeJHM.png",
       "providers": [],
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1101383",
@@ -820,47 +715,56 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1612018,
-      "title": "잭애스: 베스트 앤드 라스트",
-      "originalTitle": "Jackass: Best and Last",
+      "id": 1384216,
+      "title": "도그 스타: 마지막 희망",
+      "originalTitle": "The Dog Stars",
       "year": 2026,
-      "releaseDate": "2026-06-25",
-      "director": "Jeff Tremaine",
-      "runtime": 92,
+      "releaseDate": "2026-08-26",
+      "director": "리들리 스콧",
+      "runtime": 119,
       "genres": [
-        "액션",
-        "코미디",
-        "다큐멘터리"
+        "SF",
+        "드라마",
+        "모험"
       ],
       "keywords": [
-        "stunt",
-        "sequel",
-        "prank",
-        "hilarious",
-        "jackass"
+        "based on novel or book",
+        "dystopia",
+        "denver, colorado",
+        "pilot",
+        "colorado",
+        "grief",
+        "pandemic",
+        "detached",
+        "lonely man",
+        "death of wife",
+        "scavengers",
+        "loving",
+        "joyful",
+        "group",
+        "dogs",
+        "post-apocalyptic"
       ],
       "productionCompanies": [
-        "Paramount Pictures",
-        "MTV Entertainment Studios",
-        "Domain Entertainment",
-        "Dickhouse Productions"
+        "20th Century Studios",
+        "Scott Free Productions"
       ],
       "artSeed": false,
-      "voteAverage": 7.6,
-      "voteCount": 221,
-      "popularity": 73.8562,
+      "voteAverage": 6.6,
+      "voteCount": 231,
+      "popularity": 57.6304,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
+      "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
+      "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
-      "imdbId": "tt39316472",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
+      "imdbId": "tt21285562",
       "demo": false
     },
     {
@@ -898,9 +802,9 @@ window.KINOSIS_CATALOG = {
         "TSG Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 6.6,
-      "voteCount": 95,
-      "popularity": 70.6641,
+      "voteAverage": 6.5,
+      "voteCount": 126,
+      "popularity": 50.0771,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "사후세계의 악령들로부터 딸과 일상을 지키기 위해 사투를 벌이는 이야기",
@@ -916,43 +820,175 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 964849,
-      "title": "나이트본",
-      "originalTitle": "Yön lapsi",
+      "id": 1612018,
+      "title": "잭애스: 베스트 앤드 라스트",
+      "originalTitle": "Jackass: Best and Last",
       "year": 2026,
-      "releaseDate": "2026-07-01",
-      "director": "한나 베리홀름",
-      "runtime": 91,
+      "releaseDate": "2026-06-25",
+      "director": "Jeff Tremaine",
+      "runtime": 92,
       "genres": [
-        "공포"
+        "액션",
+        "코미디",
+        "다큐멘터리"
       ],
       "keywords": [
-        "finnish",
-        "folk horror",
-        "body horror"
+        "stunt",
+        "sequel",
+        "prank",
+        "hilarious",
+        "jackass"
       ],
       "productionCompanies": [
-        "Elokuvayhtiö Komeetta",
-        "Getaway Films",
-        "BlueLight",
-        "Filmai LT"
+        "Paramount Pictures",
+        "MTV Entertainment Studios",
+        "Domain Entertainment",
+        "Dickhouse Productions"
       ],
       "artSeed": false,
-      "voteAverage": 6.1,
-      "voteCount": 94,
-      "popularity": 65.3296,
+      "voteAverage": 7.5,
+      "voteCount": 234,
+      "popularity": 41.0715,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "핀란드의 고립된 숲속, 아내 '사가'는 갓 태어난 아기가 결코 인간이 아님을 직감한다. 남편마저 진실을 외면하는 완벽한 고립 속에서, 요람 속 존재는 점차 기괴한 본성을 드러내기 시작한다. 도망칠 곳 없는 서늘한 집 안, 그녀는 매일 밤 홀로 숨통을 조여오는 끔찍한 공포와 마주해야만 한다.",
-      "tagline": "우리는 악마를 낳았다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8lpzyhJxb1edjfG4ZPKRC2cymHN.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jVeYae744cR2ogx9ShQ3qXOcRiZ.jpg",
+      "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/964849",
-      "imdbId": "tt34383465",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
+      "imdbId": "tt39316472",
+      "demo": false
+    },
+    {
+      "id": 1302904,
+      "title": "프랙티컬 매직: 새로운 챕터",
+      "originalTitle": "Practical Magic 2",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "수잔 비에르",
+      "runtime": 110,
+      "genres": [
+        "로맨스",
+        "판타지",
+        "코미디"
+      ],
+      "keywords": [
+        "witch",
+        "based on novel or book",
+        "magic",
+        "family relationships",
+        "sequel",
+        "family",
+        "legacy"
+      ],
+      "productionCompanies": [
+        "Di Novi Pictures",
+        "Warner Bros. Pictures",
+        "Blossom Films",
+        "Fortis Films",
+        "Domain Entertainment",
+        "Alcon Entertainment"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.5,
+      "voteCount": 12,
+      "popularity": 37.882,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/wE6syT1vv6W24iLGfhR4kQHnIDN.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
+      "imdbId": "tt32588798",
+      "demo": false
+    },
+    {
+      "id": 1122573,
+      "title": "인 더 그레이",
+      "originalTitle": "In the Grey",
+      "year": 2026,
+      "releaseDate": "2026-05-13",
+      "director": "가이 리치",
+      "runtime": 97,
+      "genres": [
+        "액션",
+        "스릴러"
+      ],
+      "keywords": [
+        "mission",
+        "heist",
+        "agent",
+        "dangerous mission",
+        "irreverent",
+        "provocative",
+        "audacious",
+        "enthusiastic",
+        "sarcastic"
+      ],
+      "productionCompanies": [
+        "C2 Motion Picture Group",
+        "Toff Guy Films",
+        "Black Bear Pictures",
+        "Red Sea Film Foundation"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.576,
+      "voteCount": 912,
+      "popularity": 37.8176,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
+      "tagline": "합법과 불법 사이",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/2PIph5fGpL7xsNsRRjHOx1rkpYa.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qcIKxhqGMIj8uujsSoSMZWr8QqU.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1122573",
+      "imdbId": "tt27681354",
+      "demo": false
+    },
+    {
+      "id": 1180894,
+      "title": "잠들 수 없는 집",
+      "originalTitle": "Bajo tus pies",
+      "year": 2026,
+      "releaseDate": "2026-02-19",
+      "director": "Cristian Bernard",
+      "runtime": 94,
+      "genres": [
+        "공포"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Basque Films"
+      ],
+      "artSeed": false,
+      "voteAverage": 5.091,
+      "voteCount": 11,
+      "popularity": 97.2452,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "두 아이와 함께 도심의 고급 아파트로 이사 온 싱글맘, 이사벨. 저렴한 월세에 행운이라 믿었던 새집에서의 첫날밤, 발밑에서 정체 모를 기괴한 진동과 소음이 들려오기 시작한다. 아래층에서 매일 밤 들려오는 비명과 수상쩍은 이웃들. 벽 너머의 기이한 속삭임이 깊어질수록 아이들은 뭔가에 사로잡히고 그녀는 패닉에 빠진다. 꿈에 그리던 안락한 보금자리가 마침내 악몽의 공간으로 변하기 시작한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/fQTACeQLpFoMUqYitxY0DMzfQu9.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/wRRvCEb871lZPcssGwEnJt0l3KN.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/wRRvCEb871lZPcssGwEnJt0l3KN.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/zRX6UJ6nchFcIAVaQFOoROUklbr.png",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1180894",
+      "imdbId": "tt6215522",
       "demo": false
     },
     {
@@ -988,15 +1024,15 @@ window.KINOSIS_CATALOG = {
         "Marvel Studios"
       ],
       "artSeed": false,
-      "voteAverage": 8.2,
-      "voteCount": 28529,
-      "popularity": 65.5717,
+      "voteAverage": 8.241,
+      "voteCount": 28595,
+      "popularity": 58.0672,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
       "tagline": "운명을 바꿀 최후의 전쟁이 펼쳐진다",
       "posterUrl": "https://image.tmdb.org/t/p/w500/z7ilT5rNN9kDo8JZmgyhM6ej2xv.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/2xfV5Zdq4kCsFVReRXJKnJaUFCD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
       "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
       "logoUrl": "https://image.tmdb.org/t/p/original/gvGe333uy5FynrYAtGuQwlzzxku.png",
       "providers": [
@@ -1004,13 +1040,13 @@ window.KINOSIS_CATALOG = {
           "id": 337,
           "name": "Disney Plus",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=KR",
@@ -1048,19 +1084,69 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 62.6075,
+      "popularity": 43.5624,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/z0JdEEe4SyR1OGJRbe0ckZ1jvoU.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/6KDDoTq8Vq3HuQHULzuvPiCJbMI.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
       "logoUrl": "https://image.tmdb.org/t/p/original/enJPk9TdYB4zCO1mIwiRYAb5yqY.png",
       "providers": [],
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1003596",
       "imdbId": "tt21357150",
+      "demo": false
+    },
+    {
+      "id": 1423191,
+      "title": "레지던트 이블: 0번째 밤",
+      "originalTitle": "Resident Evil",
+      "year": 2026,
+      "releaseDate": "2026-09-16",
+      "director": "잭 크레거",
+      "runtime": 90,
+      "genres": [
+        "공포",
+        "SF"
+      ],
+      "keywords": [
+        "outbreak",
+        "survival",
+        "zombie",
+        "based on video game",
+        "survival horror",
+        "reboot",
+        "zombie apocalypse",
+        "body horror",
+        "zombie horror"
+      ],
+      "productionCompanies": [
+        "Constantin Film",
+        "Subconscious",
+        "Vertigo Entertainment",
+        "Davis Films",
+        "Columbia Pictures",
+        "PlayStation Productions",
+        "TriStar Pictures"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 41.967,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/gUcYDYaMhNppEhu3v2wnb8R23HW.png",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
+      "imdbId": "tt35538033",
       "demo": false
     },
     {
@@ -1094,68 +1180,21 @@ window.KINOSIS_CATALOG = {
         "Zhejiang Hengdian Film Production"
       ],
       "artSeed": false,
-      "voteAverage": 8.158,
-      "voteCount": 680,
-      "popularity": 55.124,
+      "voteAverage": 8.182,
+      "voteCount": 702,
+      "popularity": 41.1952,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "말을 할 수 없는 평범한 아버지 왕웨이. 어느 날 그의 딸 레이니가 거대 범죄 조직에 납치되고, 부패한 경찰마저 외면하자 직접 딸을 찾아 나선다. 그는 실종된 아내를 찾는 기자인 나빈과 힘을 합쳐 거침없이 조직의 심장부로 돌진한다. 마침내 마주한 딸 레이니. 하지만 그곳에는 수많은 아이들이 갇혀 있었고, 참담한 광경에 그들은 분노한다. 왕웨이와 나빈 그리고 레이니는 범죄 조직을 향해 거침없이 몸을 던지며, 폭발적인 무술 액션의 사투를 벌인다.",
       "tagline": "인간이 도달할 수 있는 가장 압도적인 액션의 극치",
       "posterUrl": "https://image.tmdb.org/t/p/w500/x959xPUa6DebrSj2xNtF0NYSiCm.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/9XwQphZxNJgGASfjL58mhIkJJpf.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/9XwQphZxNJgGASfjL58mhIkJJpf.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/msFWTNrFwfjsHKnMxDUexR9uofh.png",
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1280738",
-      "imdbId": "tt33311069",
-      "demo": false
-    },
-    {
-      "id": 1122573,
-      "title": "인 더 그레이",
-      "originalTitle": "In the Grey",
-      "year": 2026,
-      "releaseDate": "2026-05-13",
-      "director": "가이 리치",
-      "runtime": 97,
-      "genres": [
-        "액션",
-        "스릴러"
-      ],
-      "keywords": [
-        "mission",
-        "heist",
-        "agent",
-        "dangerous mission",
-        "irreverent",
-        "provocative",
-        "audacious",
-        "enthusiastic",
-        "sarcastic"
-      ],
-      "productionCompanies": [
-        "C2 Motion Picture Group",
-        "Toff Guy Films",
-        "Black Bear Pictures",
-        "Red Sea Film Foundation"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.6,
-      "voteCount": 859,
-      "popularity": 42.4835,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
-      "tagline": "합법과 불법 사이",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/2PIph5fGpL7xsNsRRjHOx1rkpYa.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qcIKxhqGMIj8uujsSoSMZWr8QqU.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/i0eR9O1FnCgBm1cH8WwqxGbAXMS.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1122573",
-      "imdbId": "tt27681354",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1280738",
+      "imdbId": "tt33311069",
       "demo": false
     },
     {
@@ -1179,11 +1218,9 @@ window.KINOSIS_CATALOG = {
         "engaged couple",
         "trust issues",
         "provocative",
-        "romantic",
-        "adoring",
+        "amused",
         "audacious",
-        "melodramatic",
-        "sympathetic"
+        "complicated"
       ],
       "productionCompanies": [
         "A24",
@@ -1191,9 +1228,9 @@ window.KINOSIS_CATALOG = {
         "Dilemma Films"
       ],
       "artSeed": false,
-      "voteAverage": 6.922,
-      "voteCount": 1691,
-      "popularity": 39.9098,
+      "voteAverage": 6.918,
+      "voteCount": 1742,
+      "popularity": 32.7912,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "결혼식을 일주일 앞둔 행복한 커플 엠마와 찰리. 우연히 알게 된 상대방의 비밀로 인해 단단했던 믿음이 흔들린다. 첫만남부터 서로를 완벽히 안다고 생각했던 두 사람, 작은 균열은 걷잡을 수 없이 커진 채 모두의 모습을 비추고…",
@@ -1206,103 +1243,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1325734",
       "imdbId": "tt33071426",
-      "demo": false
-    },
-    {
-      "id": 1423191,
-      "title": "레지던트 이블: 0번째 밤",
-      "originalTitle": "Resident Evil",
-      "year": 2026,
-      "releaseDate": "2026-09-16",
-      "director": "잭 크레거",
-      "runtime": 94,
-      "genres": [
-        "공포",
-        "SF"
-      ],
-      "keywords": [
-        "outbreak",
-        "survival",
-        "zombie",
-        "based on video game",
-        "survival horror",
-        "reboot",
-        "zombie apocalypse",
-        "body horror",
-        "zombie horror"
-      ],
-      "productionCompanies": [
-        "Constantin Film",
-        "Subconscious",
-        "Vertigo Entertainment",
-        "Davis Films",
-        "Columbia Pictures",
-        "PlayStation Productions",
-        "TriStar Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 28.7186,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddfXMkaPViSrg0P5aoYGFMc58x2.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
-      "imdbId": "tt35538033",
-      "demo": false
-    },
-    {
-      "id": 1302904,
-      "title": "프랙티컬 매직: 새로운 챕터",
-      "originalTitle": "Practical Magic 2",
-      "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "수잔 비에르",
-      "runtime": 130,
-      "genres": [
-        "로맨스",
-        "판타지",
-        "코미디"
-      ],
-      "keywords": [
-        "witch",
-        "based on novel or book",
-        "magic",
-        "sequel",
-        "family",
-        "legacy"
-      ],
-      "productionCompanies": [
-        "Di Novi Pictures",
-        "Warner Bros. Pictures",
-        "Blossom Films",
-        "Fortis Films",
-        "Domain Entertainment",
-        "Alcon Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 19.6741,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/2lSf1aoZA6UpTEBxVGqnJ7QayIP.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/nUcauJ000dFBYkgGpxyxJ5aWEH2.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
-      "imdbId": "tt32588798",
       "demo": false
     },
     {
@@ -1325,12 +1265,12 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 16.9766,
+      "popularity": 21.2956,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/fCjmdRjpaJdjmUkTFYWe62omR8j.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/7UAzxqezg5yvZyK3k62wOAzg0Zs.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/kPbyLj2OyjojqvR1jfK1VvXzabg.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
@@ -1349,11 +1289,11 @@ window.KINOSIS_CATALOG = {
       "director": "Januel Mercado",
       "runtime": 109,
       "genres": [
-        "모험",
         "애니메이션",
+        "모험",
+        "판타지",
         "코미디",
-        "가족",
-        "판타지"
+        "가족"
       ],
       "keywords": [
         "island",
@@ -1370,21 +1310,107 @@ window.KINOSIS_CATALOG = {
         "DreamWorks Animation"
       ],
       "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 14.8938,
+      "voteAverage": 10,
+      "voteCount": 1,
+      "popularity": 17.2757,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "",
+      "overview": "\"기억이 사라지는 신비의 섬에서 영원히 기억될 모험이 시작된다!\" 성격은 달라도 마음만큼은 누구보다 잘 통했던 ‘조’와 ‘라이사’는 최고의 베프로 모든 순간을 함께하며 둘만의 기억을 쌓아간다. 그러나 졸업과 함께 서로 다른 환경을 살아가던 두 사람의 우정은 조금씩 흔들리기 시작한다. 그러던 어느 날, 전설처럼 전해지던 신비한 포털을 발견한 두 사람은 기억이 사라지는 세계, ‘포가튼 아일랜드’로 빨려 들어가게 되고, 시공간의 경계를 넘나드는 이 섬을 떠나기 위해선 가장 소중한 추억을 포기해야 하는 규칙이 주어진다. 기억을 훔치는 섬의 지배자 ‘마낭’이 두 사람을 위협하는 가운데 ‘조’와 ‘라이사’는 섬에서 만난 새로운 친구들과 비밀을 쫓기 시작하지만 진실에 가까워질수록 두 사람의 기억은 사라질 위기에 처하는데…",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/kW1fH2jZZM5tVHwNaDdUOUXJvWU.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qhWwvo77nXAdiWuL4eP7JXLWErs.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8SGvtshZdIpUy9eyusyQeJchm9n.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/2o9FzuBzCqrDTdlHRuEVnGD2d5h.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1465063",
       "imdbId": "tt36583977",
+      "demo": false
+    },
+    {
+      "id": 1153576,
+      "title": "스트리트 파이터",
+      "originalTitle": "Street Fighter",
+      "year": 2026,
+      "releaseDate": "2026-10-14",
+      "director": "Kitao Sakurai",
+      "runtime": 108,
+      "genres": [
+        "액션",
+        "판타지"
+      ],
+      "keywords": [
+        "martial arts",
+        "based on video game",
+        "martial arts tournament",
+        "wuxia",
+        "hand to hand combat",
+        "1990s",
+        "battle royale",
+        "power",
+        "powers"
+      ],
+      "productionCompanies": [
+        "Capcom",
+        "Legendary Pictures"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 13.5998,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/pJmi3E0ywiGTLlPcvhzOZiFiCv9.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/5H5YphHsQmkQhrw13Wv1whCZKtN.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1153576",
+      "imdbId": "tt27419420",
+      "demo": false
+    },
+    {
+      "id": 1248832,
+      "title": "디거",
+      "originalTitle": "Digger",
+      "year": 2026,
+      "releaseDate": "2026-09-30",
+      "director": "알레한드로 곤살레스 이냐리투",
+      "runtime": 128,
+      "genres": [
+        "코미디"
+      ],
+      "keywords": [
+        "dark comedy",
+        "satire",
+        "political satire"
+      ],
+      "productionCompanies": [
+        "Warner Bros. Pictures",
+        "Legendary Pictures",
+        "TC Productions",
+        "M Productions",
+        "Domain Entertainment"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 12.0486,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "파느냐. 죽느냐.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/jV5Mfasg8dP3XK5nuXLetBN3APx.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/b7t3r39Oll5qPxBKzLZ8eHMBD7l.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1248832",
+      "imdbId": "tt31450459",
       "demo": false
     },
     {
@@ -1441,14 +1467,14 @@ window.KINOSIS_CATALOG = {
         "TOHO"
       ],
       "artSeed": false,
-      "voteAverage": 7.1,
-      "voteCount": 7,
-      "popularity": 10.5376,
+      "voteAverage": 7.313,
+      "voteCount": 8,
+      "popularity": 11.4127,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "어느 날, 광장에서 쉬고 있던 치이카와와 가르마 앞에 얼굴에 전단지를 붙인 토끼가 나타난다. 그곳엔 “특별한 섬으로의 초대”라는 글귀가 적혀 있는데... “섬에서 간단한 토벌만 해도 보수 100배!” “한정 섬라멘과 한정 디저트까지, 달콤한 것도 매콤한 것도 사실상 무료.” 솔깃한 문구에 이끌린 치이카와와 친구들은 섬에서 열리는 행사에 참가하기로 한다. 초대장의 내용이 어딘가 수상하다고 느끼는 해달과, 부푼 마음으로 배에 오르는 치이카와와 친구들. 모두가 기대를 안은 채 특별한 섬에 도착하는데! 과연 그 섬에는 어떤 비밀이 숨겨져 있을까...?!",
       "tagline": "언제까지나",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/5VtAjsDsGHghel4Bxr5Y7u8KQTI.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/5TMyytCI5Pfc9c1eNsljiCdiB05.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/6efIfUaOqYKKWI5sSCilvqLIpeL.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
@@ -1459,48 +1485,41 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1284016,
-      "title": "싱 어게인",
-      "originalTitle": "Power Ballad",
+      "id": 1447853,
+      "title": "오아시스: 돈 룩 백 인 앵거",
+      "originalTitle": "Oasis: Don't Look Back in Anger",
       "year": 2026,
-      "releaseDate": "2026-05-18",
-      "director": "존 카니",
-      "runtime": 99,
+      "releaseDate": "2026-09-09",
+      "director": "Dylan Southern",
+      "runtime": 123,
       "genres": [
-        "코미디",
-        "음악",
-        "드라마"
+        "다큐멘터리",
+        "음악"
       ],
       "keywords": [
-        "songwriting",
-        "boy band",
-        "music",
-        "past their prime"
+        "music documentary"
       ],
       "productionCompanies": [
-        "Likely Story",
-        "30WEST",
-        "Fís Éireann/Screen Ireland",
-        "Treasure Entertainment",
-        "Distressed Films",
-        "Media Capital Technologies"
+        "Magna Studios",
+        "Sony Music Vision",
+        "Sony Music Entertainment UK"
       ],
       "artSeed": false,
-      "voteAverage": 7.045,
-      "voteCount": 99,
-      "popularity": 9.8918,
+      "voteAverage": 7.5,
+      "voteCount": 2,
+      "popularity": 10.1706,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
-      "tagline": "단 한 곡이 두 사람의 인생을 뒤바꿨다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/19BfIkDHgbgLcHVbi9rKx7KUCgi.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
+      "overview": "리암 갤러거와 노엘 갤러거의 재결합 소식 이후 전 세계가 가장 기다려왔던 공연 ‘Oasis Live ’25 Tour’의 여정을 따라가는 다큐멘터리 영화",
+      "tagline": "기나긴 기다림은 끝났다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/pRMOGMnTKZO7P0J65UNORcXAU8G.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/7Ud7QIJo21odjCaev6V4md9sK16.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1284016",
-      "imdbId": "tt32267691",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1447853",
+      "imdbId": "tt36152310",
       "demo": false
     },
     {
@@ -1532,7 +1551,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 7.2849,
+      "popularity": 6.5369,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -1583,7 +1602,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 6.199,
       "voteCount": 136,
-      "popularity": 6.4696,
+      "popularity": 5.7366,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "몸을 석고처럼 굳게 만드는 혈액 매개 바이러스가 퍼지는 도시. 13세 소녀 알파는 친구들과의 파티에서 의문의 'A'자 문신을 새긴 채 집으로 돌아오고, 의사인 엄마는 알파가 바이러스에 감염됐을지 모른다는 불안감에 휩싸인다. 감염 여부 결과를 기다리는 2주 사이, 학교에는 소문이 퍼지기 시작하고 소문은 곧 낙인이 되어 알파를 옭아맨다. 그리고 삼촌의 등장은 알파와 엄마의 불안을 증폭시키는데…",
@@ -1637,7 +1656,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 5.8222,
+      "popularity": 5.5432,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "아버지를 여읜 후 어머니, 여동생과 함께 정든 집에서 쫓겨난 두 자매. 생존마저 위협받는 현실 속에서 차분하고 이성적인 언니 엘리너와 열정적이고 솔직한 동생 메리앤은 각자의 방식으로 삶과 사랑, 부당한 세상에 맞선다.",
@@ -1650,6 +1669,110 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1503762",
       "imdbId": "tt13609648",
+      "demo": false
+    },
+    {
+      "id": 1591675,
+      "title": "룩백",
+      "originalTitle": "ルックバック",
+      "year": 2026,
+      "releaseDate": "2026-09-11",
+      "director": "고레에다 히로카즈",
+      "runtime": 100,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [
+        "friendship",
+        "based on manga",
+        "mangaka",
+        "intimate",
+        "manga artist",
+        "empathetic",
+        "gentle",
+        "sincere",
+        "tragic"
+      ],
+      "productionCompanies": [
+        "K2 Pictures",
+        "Shueisha"
+      ],
+      "artSeed": false,
+      "voteAverage": 8.1,
+      "voteCount": 5,
+      "popularity": 5.0182,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
+      "tagline": "함께 그리며 우리가 되었어",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/mAfcD0lspaNlZDRrzT0fdWS5C01.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ceOdqFmZy5kKImbGThuDHuifGpm.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1591675",
+      "imdbId": "tt39094466",
+      "demo": false
+    },
+    {
+      "id": 42360,
+      "title": "이누야샤: 시대를 초월한 마음",
+      "originalTitle": "犬夜叉 時代を越える想い",
+      "year": 2001,
+      "releaseDate": "2001-12-15",
+      "director": "篠原俊哉",
+      "runtime": 99,
+      "genres": [
+        "액션",
+        "애니메이션",
+        "모험",
+        "판타지"
+      ],
+      "keywords": [
+        "monster",
+        "sword",
+        "time travel",
+        "demon",
+        "adult animation",
+        "youkai",
+        "quest",
+        "shounen",
+        "anime"
+      ],
+      "productionCompanies": [
+        "SUNRISE",
+        "Mini Art"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.532,
+      "voteCount": 202,
+      "popularity": 4.5957,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "만화계의 거장 다카하시 루미코 원작 만화가 극장판으로 찾아왔다. 전국시대의 반요괴 이누야샤와 현대 시대의 여고생 카고메의 시공을 초월한 모험과 사랑의 대서사시.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ixLZPFZuTSbl7nj9QPa46W84eWz.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/aWg40fkUvghFwrCya2fHvAEvjud.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 97,
+          "name": "Watcha",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/42360/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/42360",
+      "imdbId": "tt0322645",
       "demo": false
     },
     {
@@ -1683,13 +1806,13 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 6.8,
-      "voteCount": 224,
-      "popularity": 5.3809,
+      "voteCount": 226,
+      "popularity": 4.1432,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "청년 ‘뫼르소’는 어머니의 부고 소식을 듣고 장례를 치르지만 어딘가 무감하다. 집으로 돌아온 그는 해수욕장에서 옛 동료 ‘마리’를 우연히 만나 사랑을 나눈다. 이웃 ‘레몽’과 가깝게 지내던 ‘뫼르소’는 예상치 못한 비극에 휘말린다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/7hpPl0WVyy3w9JfIfalDLkRBj3E.jpg",
+      "tagline": "세상이 이해하지 못한 낯선 이름",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/2NoWaSTgKF7FcJ0Lr5NrvDDINOv.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/aTjFGxR7K32HPxrdvJOVeXX1UCe.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
@@ -1697,378 +1820,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1429348",
       "imdbId": "tt36243564",
-      "demo": false
-    },
-    {
-      "id": 42360,
-      "title": "이누야샤: 시대를 초월한 마음",
-      "originalTitle": "犬夜叉 時代を越える想い",
-      "year": 2001,
-      "releaseDate": "2001-12-15",
-      "director": "篠原俊哉",
-      "runtime": 99,
-      "genres": [
-        "액션",
-        "애니메이션",
-        "모험",
-        "판타지"
-      ],
-      "keywords": [
-        "monster",
-        "sword",
-        "time travel",
-        "demon",
-        "adult animation",
-        "youkai",
-        "quest",
-        "shounen",
-        "anime"
-      ],
-      "productionCompanies": [
-        "SUNRISE",
-        "Mini Art"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.5,
-      "voteCount": 201,
-      "popularity": 4.1828,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "만화계의 거장 다카하시 루미코 원작 만화가 극장판으로 찾아왔다. 전국시대의 반요괴 이누야샤와 현대 시대의 여고생 카고메의 시공을 초월한 모험과 사랑의 대서사시.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/ixLZPFZuTSbl7nj9QPa46W84eWz.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/aWg40fkUvghFwrCya2fHvAEvjud.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/42360/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/42360",
-      "imdbId": "tt0322645",
-      "demo": false
-    },
-    {
-      "id": 100271,
-      "title": "모모와 다락방의 수상한 요괴들",
-      "originalTitle": "ももへの手紙",
-      "year": 2012,
-      "releaseDate": "2012-04-21",
-      "director": "沖浦啓之",
-      "runtime": 120,
-      "genres": [
-        "코미디",
-        "판타지",
-        "애니메이션",
-        "드라마",
-        "가족"
-      ],
-      "keywords": [
-        "parent child relationship",
-        "supernatural",
-        "family relationships",
-        "animism",
-        "supernatural creature",
-        "youkai",
-        "anime"
-      ],
-      "productionCompanies": [
-        "TBS",
-        "KADOKAWA",
-        "Production I.G",
-        "KADOKAWA Shoten",
-        "Bandai Visual",
-        "CBC",
-        "Chugoku Broadcasting",
-        "Horipro",
-        "MBS",
-        "OLM",
-        "Tokyu Recreation",
-        "Yahoo! Japan",
-        "jeki"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.351,
-      "voteCount": 413,
-      "popularity": 4.0835,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "우리집 다락방에 요괴가 산다?!  엄마를 따라 작은 섬 시오지마로 이사 온 11살 도시 소녀 모모. 이사온 첫날, 모모는 다락방에서 오래된 그림책 한 권을 발견한다. 그날 이후, 다락방에서 이상한 소리가 들리는가 하면, 냉장고 속 간식이 사라지고, 급기야 그림책 속 요괴들이 모모의 눈앞에 나타나는데…  내 눈에만 보이는 사고뭉치 요괴 3인방~!  모모 덕에 봉인된 그림책에서 나왔다며 자신들을 소개하는 이와, 카와, 마메! 외모와는 다르게 은근 소심하고 먹보에 어리바리하기까지. 자칭 수호신이라며 큰 소리치지만 사고투성인 요괴 3인방과 웃지 못할 한집살이를 시작한 모모에게 어느 날 예상치 못한 위기가 찾아오는데……  도시 소녀 모모에게 찾아온 수상한 요괴 3인방! 그들의 초특급 모험이 시작된다!",
-      "tagline": "어느 날...그들이 나타났다!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/yB71TFQzTmULS08g4RatAEHoL8J.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/2vc5hXc4pMXcKOOsOuyI2MQ1AdK.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/100271/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/100271",
-      "imdbId": "tt1853614",
-      "demo": false
-    },
-    {
-      "id": 1274214,
-      "title": "파파조라 더 무비",
-      "originalTitle": "Papa Zola: The Movie",
-      "year": 2025,
-      "releaseDate": "2025-12-11",
-      "director": "Raja Nukman Raja Mohd Noordin",
-      "runtime": 111,
-      "genres": [
-        "애니메이션",
-        "액션",
-        "모험",
-        "코미디",
-        "가족",
-        "SF"
-      ],
-      "keywords": [
-        "mother",
-        "hero",
-        "baby",
-        "superhero",
-        "villain",
-        "father",
-        "based on cartoon",
-        "bumbling",
-        "supervillain",
-        "father daughter relationship",
-        "based on tv series",
-        "3d animation"
-      ],
-      "productionCompanies": [
-        "Astro Shaw",
-        "Monsta Studios"
-      ],
-      "artSeed": false,
-      "voteAverage": 9,
-      "voteCount": 3,
-      "popularity": 3.4819,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "외계인 침공으로부터 지구를 지키는 비밀 조직 ‘파파’! 일명 ‘파’멸 저지 ‘파’견팀, 파파의 팀장 ‘카착스 칸’, 정보 분석 요원 ‘질러’, 행동 요원 ‘조라’, 기술 지원 요원 ‘욘비’는 외계인 침공으로부터 지구를 지키기 위해 활약하며 임무를 완수했지만 조라와 질러는 기억을 잃게 된다. 그로부터 몇 년 후, 기억을 잃은 비밀 조직 파파 요원인 조라는 허세만렙 딸 바보, 가족 바라기 ‘극F’ 아빠로 아내 질러, 딸 피피와 소박하고 행복한 일상을 꾸려나간다. 가족 여행 자금을 모으기 위해 배달, 운전 등 투잡, 쓰리잡도 불사하던 중 사랑하는 딸 피피가 외계인에 납치되고, 외계인의 위협으로 지구가 다시 위험에 빠지게 되자 조라와 질러 앞에 파파 요원들이 다시 나타나는데!",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/x71IGbvjUSeqrTtslrMnwylidYf.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/AkNQCE7FijTFmneDVLCYpN9aMJ0.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1274214",
-      "imdbId": "tt30761647",
-      "demo": false
-    },
-    {
-      "id": 1325614,
-      "title": "배드랜드 스나이퍼",
-      "originalTitle": "Badland Rising",
-      "year": 2026,
-      "releaseDate": "2026-09-04",
-      "director": "Blair Moore",
-      "runtime": 97,
-      "genres": [
-        "액션",
-        "범죄"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Flying Billykart Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 5,
-      "voteCount": 1,
-      "popularity": 3.4805,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "전직 SAS 저격수 데이브. 건설 현장에서의 근무를 마치고 가족이 있는 농장으로 돌아가던 그는 우연히 강도 사건에 휘말리며 범죄자들의 표적이 된다. 엉망이 된 강도 작전 이후, 갱단과 러시아 킬러, 형사들까지 가세하며 그의 평범했던 귀갓길은 끝없는 추격전으로 변한다. 가족이 있는 집까지 19시간, 살아 돌아가기 위한 단 하나의 미션! 끝까지 추격해오는 자들로부터 가족과 삶의 터전을 지켜내야 한다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/97kdNvdoFdDGvN2N7tyQPC3vTo2.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kcw0kaZiGCu9RhroFlnjA1g04Yz.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1325614",
-      "imdbId": "tt31434090",
-      "demo": false
-    },
-    {
-      "id": 1285895,
-      "title": "나의 사적인 예술가",
-      "originalTitle": "Late Fame",
-      "year": 2026,
-      "releaseDate": "2026-08-07",
-      "director": "켄트 존스",
-      "runtime": 96,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [
-        "new york city",
-        "poet"
-      ],
-      "productionCompanies": [
-        "Killer Films",
-        "Fresh Fish Films",
-        "Morning Moon Productions",
-        "Working Barn Productions",
-        "mk2 Films"
-      ],
-      "artSeed": false,
-      "voteAverage": 6,
-      "voteCount": 2,
-      "popularity": 3.2848,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "과거 시집 한 권을 출간했지만 지금은 뉴욕의 우체국에서 일하며 평범한 일상을 살아가는 ‘에드 색스버거’. 어느 날, 그의 앞에 자신의 시에 매료된 젊은 예술 모임의 리더 ‘마이어스’가 찾아오고 그들의 모임에 ‘에드’를 초대한다. 뒤늦은 찬사 속에 잊고 있던 날들을 다시 떠올리게 된 ‘에드’. 그러나 점차 그들의 젊음과 부, 자신의 현실이 교차하고 마음 속에 예상치 못한 감정들이 피어나게 되는데...",
-      "tagline": "뉴욕의 잊혀진 시인, 재발견되다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/hv7zKr3cCdOFhNVcqWYj74Ij6KX.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/tDG3iVhR4gZOTtXoBEtqZgNrD1U.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1285895",
-      "imdbId": "tt32298494",
-      "demo": false
-    },
-    {
-      "id": 1512207,
-      "title": "리틀 드래곤:몬스터섬의 비밀",
-      "originalTitle": "Ruffen: Sjøormen som ikke kunne svømme",
-      "year": 2025,
-      "releaseDate": "2025-10-10",
-      "director": "Endre Skandfer",
-      "runtime": 74,
-      "genres": [
-        "애니메이션",
-        "가족"
-      ],
-      "keywords": [
-        "sea monster",
-        "sea serpent",
-        "3d animation"
-      ],
-      "productionCompanies": [
-        "Anima Vitae Point",
-        "Atmosphere Media",
-        "Maipo Film",
-        "NeXtFrames Animation"
-      ],
-      "artSeed": false,
-      "voteAverage": 7,
-      "voteCount": 4,
-      "popularity": 3.1008,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "수영을 못 하는 바다 드래곤 루피는 할머니와 단둘이 살아가고 있다. 어느 날, 연기를 내뿜어 인간으로부터 바다 괴물 섬을 지키는 세르팡의 마법목도리가 망가지고, 루드비그는 감기에 걸려 연기를 내뿜지 못한다. 루피는 오래전 섬을 떠난 자신의 이모할머니가 루드비그에게 목도리를 선물했다는 사실을 알게 되고, 할머니와 바다 몬스터 섬을 지키기 위해 이모할머니를 찾아 떠난다, 고래택시를 타고 육지에 도착하고 육지에서 사자,꼬끼리,거북이 등을 만나 그들과 함께 동물원을 탈출하여 다시 몬스터 섬으로 돌아와 위기를 극복한다.",
-      "tagline": "수영은 꽝! 용기는 짱! 꼬마 바다용의 첫 육지 상륙작전!!!!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/esGI8WI19wO0Hyvv2OFYUuvEPtx.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/mH7bfSIQelApYiTlefB8rKNJ81J.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1512207",
-      "imdbId": "tt32267711",
-      "demo": false
-    },
-    {
-      "id": 1473635,
-      "title": "말하지 않은 것들",
-      "originalTitle": "Le cose non dette",
-      "year": 2026,
-      "releaseDate": "2026-01-29",
-      "director": "Gabriele Muccino",
-      "runtime": 115,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Lotus Production",
-        "RAI Cinema",
-        "Asa Nisi Masa",
-        "Leone Film Group",
-        "MiC"
-      ],
-      "artSeed": false,
-      "voteAverage": 6.9,
-      "voteCount": 157,
-      "popularity": 3.0901,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "카를로는 대학교수이고, 엘리사는 기자다. 그들은 안나와 파올로, 그리고 그들의 딸 비토리아와 함께 모로코의 탕헤르로 여행을 떠난다. 멀리 떨어진 따뜻하고 고요한 풍경 속에서, 관계는 긴장을 고조시키고, 본모습을 드러내며, 변화한다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/jhAimZ4vUrq4zEAWgT0yBff1ooh.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/pBeB38aB3FfzPqCrSoxZpvLHxjt.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1473635",
-      "imdbId": "tt37096260",
-      "demo": false
-    },
-    {
-      "id": 1591675,
-      "title": "룩백",
-      "originalTitle": "ルックバック",
-      "year": 2026,
-      "releaseDate": "2026-09-11",
-      "director": "고레에다 히로카즈",
-      "runtime": 100,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [
-        "friendship",
-        "based on manga",
-        "mangaka",
-        "intimate",
-        "manga artist",
-        "empathetic",
-        "gentle",
-        "sincere",
-        "tragic"
-      ],
-      "productionCompanies": [
-        "K2 Pictures",
-        "Shueisha"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 3.0867,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
-      "tagline": "함께 그리며 우리가 되었어",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/mAfcD0lspaNlZDRrzT0fdWS5C01.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ceOdqFmZy5kKImbGThuDHuifGpm.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1591675",
-      "imdbId": "tt39094605",
       "demo": false
     },
     {
@@ -2099,7 +1850,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 7.6,
       "voteCount": 96,
-      "popularity": 2.767,
+      "popularity": 3.6055,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "디지몬 어드벤쳐, 그보다 좀 더 이전의 이야기. 야가미 타이치(신태일)와 그의 여동생인 히카리(신나리)가 어릴 적 코로몬과 운명적인 만남을 가졌던 때를 그리고 있다.",
@@ -2113,75 +1864,36 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/97787/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/97787",
       "imdbId": "tt2049430",
-      "demo": false
-    },
-    {
-      "id": 961214,
-      "title": "부활남: 더 레드",
-      "originalTitle": "부활남: 더 레드",
-      "year": 2026,
-      "releaseDate": "2026-09-30",
-      "director": "백",
-      "runtime": 102,
-      "genres": [
-        "액션",
-        "판타지"
-      ],
-      "keywords": [
-        "based on webcomic or webtoon"
-      ],
-      "productionCompanies": [
-        "Yong Film",
-        "Superfiction",
-        "YLAB",
-        "스튜디오눈길"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 2.5934,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
-      "tagline": "죽었는데요, 살아났습니다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/nLsyRK3SmtdIftozpCd8sGQMRGD.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kiDd05NykJBIoEvJPSG5SOd7qc6.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/961214",
-      "imdbId": "tt29452783",
       "demo": false
     },
     {
@@ -2209,15 +1921,15 @@ window.KINOSIS_CATALOG = {
         "Toei Animation"
       ],
       "artSeed": false,
-      "voteAverage": 8.047,
+      "voteAverage": 8,
       "voteCount": 74,
-      "popularity": 2.5373,
+      "popularity": 3.4316,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "디지털 월드의 모험으로부터 반 년 후. 인터넷 상에는 전 세계의 디지털 데이터를 먹고 성장하는 흉악한 디지몬 쿠라몬이 탄생한다. 쿠라몬은 디아블로몬으로 진화해 지구를 멸망시킬 수 있을 정도의 파급력을 지닌 핵미사일을 발사시키는데… 일촉즉발의 상황, 아이들과 디지몬들은 힘을 합쳐 세상을 구해내야만 한다!",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/jxrvPQjx2bg7xjyrq4gRGN1KhFG.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/9WS1AUI57GNpqYLqobaWjlio86S.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/m3g7v9ChQE2keBS4RMUxfmWn1xy.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [
@@ -2225,25 +1937,25 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/75571/watch?locale=KR",
@@ -2252,44 +1964,42 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1684016,
-      "title": "케이티 페리: 라이프타임스 투어 - 라이브 인 파리",
-      "originalTitle": "Katy Perry: The Lifetimes Tour – Live from Paris",
+      "id": 961214,
+      "title": "부활남: 더 레드",
+      "originalTitle": "부활남: 더 레드",
       "year": 2026,
-      "releaseDate": "2026-09-02",
-      "director": "Paul Dugdale",
-      "runtime": 119,
+      "releaseDate": "2026-09-30",
+      "director": "백",
+      "runtime": 102,
       "genres": [
-        "다큐멘터리",
-        "음악"
+        "액션",
+        "판타지"
       ],
       "keywords": [
-        "concert",
-        "katy perry",
-        "lifetimes tour",
-        "the lifetimes tour movie"
+        "based on webcomic or webtoon"
       ],
       "productionCompanies": [
-        "SiFi Productions",
-        "Silent House Productions",
-        "10 Lives Content"
+        "Yong Film",
+        "Superfiction",
+        "YLAB",
+        "STUDIO NU:NGIL"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 2.4602,
+      "popularity": 3.0104,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "세계적인 팝 스타 케이티 페리의 7년 만의 월드 투어 무대. 2025년 11월 파리 아코르 아레나 전석 매진 현장에서 펼쳐지는 화려한 공중 퍼포먼스와 무한한 에너지, 그리고 관객들과의 교감을 담아낸 콘서트 영화다.",
-      "tagline": "남들은 안 된다고 했지만. 나는 해냈고. 영화로 남겼다.",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/snmaFZZ0GCMnvGCcoSzztbCrwbV.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/1BfOqbDhvtmAv7SwyobM5eTjQMm.jpg",
+      "overview": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
+      "tagline": "죽었는데요, 살아났습니다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/nLsyRK3SmtdIftozpCd8sGQMRGD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kiDd05NykJBIoEvJPSG5SOd7qc6.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1684016",
-      "imdbId": "tt38882652",
+      "tmdbUrl": "https://www.themoviedb.org/movie/961214",
+      "imdbId": "tt29452783",
       "demo": false
     },
     {
@@ -2309,9 +2019,9 @@ window.KINOSIS_CATALOG = {
         "BH5"
       ],
       "artSeed": false,
-      "voteAverage": 6.982,
-      "voteCount": 56,
-      "popularity": 1.9712,
+      "voteAverage": 6.797,
+      "voteCount": 59,
+      "popularity": 2.9139,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "야간 근무로 피로에 찌든 보안 요원 브렌다는 끔찍한 뺑소니 사고를 내고 시신을 유기한다. 두려움을 숨긴 채 새로운 근무지인 시립 영안실로 향하지만, 외부와 완전히 차단된 그곳은 스산한 적막과 백색 소음만이 감도는 고립된 공간이다. 브렌다는 밀려오는 죄책감을 억누르며 심야 근무를 시작하지만, 시간이 흐를수록 폐쇄된 영안실의 침묵은 숨통을 조여온다. 냉동 보관함 너머의 기이한 소음과 CCTV 화면을 잠식한 정체불명의 실루엣, 정체불명의 그림자와 그녀가 두고 온 죽음의 흔적들은 그녀를 점차 압박해 온다. 현실과 무의식의 경계가 무너진 고립된 시체 보관소에서 브렌다는 늘 자신을 괴롭혔던 트라우마에 시달리며 극심한 패닉에 빠져 드는데…",
@@ -2324,6 +2034,295 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1575535",
       "imdbId": "tt38689148",
+      "demo": false
+    },
+    {
+      "id": 1364368,
+      "title": "연옥: 살인마들의 자치구역",
+      "originalTitle": "연옥: 살인마들의 자치구역",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "브루스 칸",
+      "runtime": 102,
+      "genres": [
+        "액션",
+        "스릴러",
+        "모험",
+        "범죄"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Greenfish Studio",
+        "Khan Film"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 2.9113,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "1급 흉악범들조차 살아남기 힘든 수용소 '연옥'. 법도 질서도 존재하지 않는 이곳에서는 오직 힘만이 살아남는다. 모든 죄수들이 두려워하는 연옥의 절대 권력자 ‘염왕’. 어느 날, 그를 제거해 달라는 위험한 제안을 받은 한 남자 ‘유성'. 생존과 자유를 걸고 연옥의 절대 권력에 맞서기 시작한다. 끝없는 폭력과 배신, 예측할 수 없는 함정 속에서 목숨을 건 마지막 사투가 시작된다!",
+      "tagline": "끝나지 않는 피바람, 살아있는 지옥의 시작",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1364368",
+      "imdbId": "tt43756804",
+      "demo": false
+    },
+    {
+      "id": 1279865,
+      "title": "파리스 그린이 밝는 날에",
+      "originalTitle": "花緑青が明ける日に",
+      "year": 2026,
+      "releaseDate": "2026-03-06",
+      "director": "四宮義俊",
+      "runtime": 75,
+      "genres": [
+        "애니메이션",
+        "드라마"
+      ],
+      "keywords": [
+        "factory",
+        "fireworks",
+        "anime"
+      ],
+      "productionCompanies": [
+        "Asmik Ace",
+        "Miyu Productions",
+        "Studio Outrigger"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.1,
+      "voteCount": 8,
+      "popularity": 2.7895,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "오랜 전통의 불꽃공장 '타테와키 불꽃점'은 마을 재개발로 인해 철거 위기에 놓여 있다. 그곳에서 자란 케이타로는 아버지를 대신해 환상의 불꽃 '슈하리'를 완성시키려 홀로 분투하고 있었다. 여름의 마지막 날, 도쿄에서 지내던 소꿉친구 카오루가 고향으로 돌아온다. 잃어버린 시간과 유대를 되찾으려는 듯 서로 부딪히면서, 불꽃의 완성과 발사를 둘러싼 놀라운 계획을 세우는데… 환상의 불꽃에 담긴 희망, 그리고 그 열쇠를 쥔 '카로쿠쇼'. 불티가 밤을 밝히고, 새로운 아침을 맞이할 때 케이타로와 친구들이 각자 손에 쥐게 될 미래는 무엇일까?",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/wIXWBILvfweBOPfnOsaK71AFtXm.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/uuVLGMIIGwz9QbBlvDvGlfU5HkI.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1279865",
+      "imdbId": "tt32192760",
+      "demo": false
+    },
+    {
+      "id": 1418428,
+      "title": "암살자(들)",
+      "originalTitle": "암살자(들)",
+      "year": 2026,
+      "releaseDate": "2026-09-23",
+      "director": "허진호",
+      "runtime": 131,
+      "genres": [
+        "드라마",
+        "범죄",
+        "스릴러",
+        "액션"
+      ],
+      "keywords": [
+        "politics",
+        "1970s",
+        "based on true story",
+        "president",
+        "conspiracy theory",
+        "conspiracy",
+        "first lady",
+        "political assassination",
+        "assassination attempt",
+        "korea president"
+      ],
+      "productionCompanies": [
+        "Hive Media Corp"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 2.7275,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "대한민국을 충격에 빠뜨린 8.15 저격 사건의 의혹과 배후를 추적하는 이야기를 그린 영화",
+      "tagline": "1974년 8월 15일 영부인 저격 사건, 사건의 배후는 누구인가",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/c55ijsOdntj6P25vDwHLdgsBpmV.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/mCUZLymzVjfYJXEON4wg8ilx2H8.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1418428",
+      "imdbId": "tt38708063",
+      "demo": false
+    },
+    {
+      "id": 1285895,
+      "title": "나의 사적인 예술가",
+      "originalTitle": "Late Fame",
+      "year": 2026,
+      "releaseDate": "2026-08-07",
+      "director": "켄트 존스",
+      "runtime": 96,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [
+        "new york city",
+        "poet"
+      ],
+      "productionCompanies": [
+        "Killer Films",
+        "Fresh Fish Films",
+        "Morning Moon Productions",
+        "Working Barn Productions",
+        "mk2 Films"
+      ],
+      "artSeed": false,
+      "voteAverage": 6,
+      "voteCount": 2,
+      "popularity": 2.6412,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "과거 시집 한 권을 출간했지만 지금은 뉴욕의 우체국에서 일하며 평범한 일상을 살아가는 ‘에드 색스버거’. 어느 날, 그의 앞에 자신의 시에 매료된 젊은 예술 모임의 리더 ‘마이어스’가 찾아오고 그들의 모임에 ‘에드’를 초대한다. 뒤늦은 찬사 속에 잊고 있던 날들을 다시 떠올리게 된 ‘에드’. 그러나 점차 그들의 젊음과 부, 자신의 현실이 교차하고 마음 속에 예상치 못한 감정들이 피어나게 되는데...",
+      "tagline": "뉴욕의 잊혀진 시인, 재발견되다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/hv7zKr3cCdOFhNVcqWYj74Ij6KX.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/tDG3iVhR4gZOTtXoBEtqZgNrD1U.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1285895",
+      "imdbId": "tt32298494",
+      "demo": false
+    },
+    {
+      "id": 1265717,
+      "title": "친숙한 손길",
+      "originalTitle": "Familiar Touch",
+      "year": 2025,
+      "releaseDate": "2025-06-20",
+      "director": "Sarah Friedland",
+      "runtime": 92,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Rathaus Films",
+        "Go for Thurm",
+        "Artemis Rising",
+        "Simbelle Productions"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.3,
+      "voteCount": 28,
+      "popularity": 2.5781,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "변화하는 기억 속, 요양 시설에서 새로운 삶을 시작하게 된 루스. 낯선 일상 속에서도 삶을 향한 열정을 잃지 않은 그녀는 새로운 관계를 맺으며 자신의 나이와 욕망을 다시금 마주한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/4tWJdFTBEg0hXHw41ZFCjj3Cvpo.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/sq2IW3AbdiH8J3JqHUIErAPRn86.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1265717",
+      "imdbId": "tt32928666",
+      "demo": false
+    },
+    {
+      "id": 1280401,
+      "title": "아가미",
+      "originalTitle": "아가미",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "안재훈",
+      "runtime": 106,
+      "genres": [
+        "애니메이션",
+        "드라마",
+        "판타지"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Meditation With a Pencil",
+        "Namu Animation"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 1.9948,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "“이야기가 길어질 텐데 괜찮아요?” 깊은 물 속에 던져진 날, 아가미가 생겨난 세상에서 유일한 아이 ‘곤’ 그리고 그의 세계에 전부였던 존재들의 눈부신 이야기",
+      "tagline": "\"내 세계를 찾고 있어\"",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/hy6PNPZ8JGWZf4sGuCB8bqHJ8rR.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/z4jh7RHSci98FSqBtYCB2Sjqq2b.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1280401/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1280401",
+      "imdbId": "tt32602819",
+      "demo": false
+    },
+    {
+      "id": 964849,
+      "title": "나이트본",
+      "originalTitle": "Yön lapsi",
+      "year": 2026,
+      "releaseDate": "2026-07-01",
+      "director": "한나 베리홀름",
+      "runtime": 91,
+      "genres": [
+        "공포"
+      ],
+      "keywords": [
+        "finnish",
+        "folk horror",
+        "body horror"
+      ],
+      "productionCompanies": [
+        "Elokuvayhtiö Komeetta",
+        "Getaway Films",
+        "BlueLight",
+        "Filmai LT"
+      ],
+      "artSeed": false,
+      "voteAverage": 6,
+      "voteCount": 115,
+      "popularity": 36.6018,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "핀란드의 고립된 숲속, 아내 '사가'는 갓 태어난 아기가 결코 인간이 아님을 직감한다. 남편마저 진실을 외면하는 완벽한 고립 속에서, 요람 속 존재는 점차 기괴한 본성을 드러내기 시작한다. 도망칠 곳 없는 서늘한 집 안, 그녀는 매일 밤 홀로 숨통을 조여오는 끔찍한 공포와 마주해야만 한다.",
+      "tagline": "우리는 악마를 낳았다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8lpzyhJxb1edjfG4ZPKRC2cymHN.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jVeYae744cR2ogx9ShQ3qXOcRiZ.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/964849",
+      "imdbId": "tt34383465",
       "demo": false
     },
     {
@@ -2363,9 +2362,9 @@ window.KINOSIS_CATALOG = {
         "Paramount Animation"
       ],
       "artSeed": false,
-      "voteAverage": 7.119,
-      "voteCount": 42,
-      "popularity": 34.6667,
+      "voteAverage": 7,
+      "voteCount": 49,
+      "popularity": 24.6682,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
@@ -2410,9 +2409,9 @@ window.KINOSIS_CATALOG = {
         "Architect"
       ],
       "artSeed": false,
-      "voteAverage": 5.833,
-      "voteCount": 27,
-      "popularity": 33.2378,
+      "voteAverage": 5.8,
+      "voteCount": 28,
+      "popularity": 21.7171,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "한때 평범한 일상을 꿈꾸던 두 절친 에마와 라니는 태국의 비밀스러운 상어 보호구역 에코 보트 투어에 나선다. 거대한 암컷 타이거 상어 '시나'가 보트를 들이받으며 배가 침몰하고, 두 사람은 망망대해 한가운데 고립되고 만다. 딱 한명만 탈 수 있는 구명보트 하나. 수면 아래의 상어보다 더 무서운 것은 같은 배 위의 인간들. 자연의 공포와 인간본성의 극한이 충돌하는 숨막히는 생존의 사투가 시작된다.",
@@ -2425,141 +2424,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1430698",
       "imdbId": "tt30217600",
-      "demo": false
-    },
-    {
-      "id": 1278,
-      "title": "몽상가들",
-      "originalTitle": "The Dreamers",
-      "year": 2003,
-      "releaseDate": "2003-10-10",
-      "director": "베르나르도 베르톨루치",
-      "runtime": 115,
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "keywords": [
-        "hotel",
-        "first time",
-        "paris, france",
-        "love triangle",
-        "students' movement",
-        "sexuality",
-        "bathing",
-        "flat",
-        "menage a trois",
-        "riot",
-        "crush",
-        "twins",
-        "incest",
-        "american abroad",
-        "polyamory",
-        "communism",
-        "1960s",
-        "brother sister relationship",
-        "sex",
-        "nudity",
-        "foreign student",
-        "pretentious",
-        "film"
-      ],
-      "productionCompanies": [
-        "Recorded Picture Company",
-        "Fiction",
-        "Peninsula Films",
-        "HanWay Films",
-        "Fox Searchlight Pictures",
-        "Medusa Film",
-        "Tele+"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.179,
-      "voteCount": 3155,
-      "popularity": 20.7456,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "자유를 외치는 젊은이들의 뜨거운 열기로 가득한 1968년 파리, 영화광인 미국인 유학생 매튜는 시네마테크에서 쌍둥이 남매 이사벨과 테오를 만나 가까워진다. 부모가 휴가를 떠난 이사벨과 테오의 집에서 한 달 간 지내게 된 매튜는 영화와 음악, 책, 혁명 등의 이야기를 자유롭게 나누며 특별한 추억을 쌓는다. 자연스레 이사벨에게 사랑을 느끼게 되는 매튜, 하지만 이사벨은 테오와 떨어지려 하지 않고 세 사람의 은밀하고 특별한 관계는 계속되는데...",
-      "tagline": "영원할 것 같았던 청춘의 열기, 사랑, 그리고 꿈",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/gb0vVzJlxumQrsN8Mnud647Zh0V.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/vaRCS4CCFXcWz1j9GKd6rGLsQQ2.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/1278-the-dreamers/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1278",
-      "imdbId": "tt0309987",
-      "demo": false
-    },
-    {
-      "id": 1470130,
-      "title": "모추어리 어시스턴트",
-      "originalTitle": "The Mortuary Assistant",
-      "year": 2026,
-      "releaseDate": "2026-02-13",
-      "director": "Jeremiah Kipp",
-      "runtime": 92,
-      "genres": [
-        "공포",
-        "미스터리"
-      ],
-      "keywords": [
-        "night shift",
-        "based on video game",
-        "mortuary",
-        "macabre",
-        "desperate",
-        "supernatural horror",
-        "psychological horror",
-        "callous"
-      ],
-      "productionCompanies": [
-        "Epic Pictures Group",
-        "Creativity Capital",
-        "Dread",
-        "Traverse Terror"
-      ],
-      "artSeed": false,
-      "voteAverage": 5.3,
-      "voteCount": 138,
-      "popularity": 20.6809,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "레베카는 시신 방부 처리 과정을 수료하고 안치실에서 일하게 된다. 첫 단독 근무 날, 평소라면 고요했을 안치실에서 환청이 들리기 시작하는데...",
-      "tagline": "차가운 영안실, 산 자는 나뿐이다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8ecHzn9eixgpfwZZWorXpCIL5cT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/gM1kQRPwOVW1Eos5tVWqcYmHR5S.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1470130",
-      "imdbId": "tt36647890",
       "demo": false
     },
     {
@@ -2598,9 +2462,9 @@ window.KINOSIS_CATALOG = {
         "Luc Besson Production"
       ],
       "artSeed": false,
-      "voteAverage": 7.242,
-      "voteCount": 1460,
-      "popularity": 20.3446,
+      "voteAverage": 7.248,
+      "voteCount": 1467,
+      "popularity": 18.9386,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "15세기, 전쟁으로 연인을 잃은 남자. 신을 버린 저주로 불멸의 드라큘라가 되고 그녀를 되찾기 위해 세상을 떠돈다. 400년의 기다림. 죽음도, 시간도, 신의 저주도 끝내 막지 못한 운명을 다시 만나는데…",
@@ -2613,6 +2477,142 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1246049",
       "imdbId": "tt31434030",
+      "demo": false
+    },
+    {
+      "id": 1470130,
+      "title": "모추어리 어시스턴트",
+      "originalTitle": "The Mortuary Assistant",
+      "year": 2026,
+      "releaseDate": "2026-02-13",
+      "director": "Jeremiah Kipp",
+      "runtime": 92,
+      "genres": [
+        "공포",
+        "미스터리"
+      ],
+      "keywords": [
+        "night shift",
+        "based on video game",
+        "mortuary",
+        "macabre",
+        "desperate",
+        "supernatural horror",
+        "psychological horror",
+        "callous"
+      ],
+      "productionCompanies": [
+        "Epic Pictures Group",
+        "Creativity Capital",
+        "Dread",
+        "Traverse Terror"
+      ],
+      "artSeed": false,
+      "voteAverage": 5.303,
+      "voteCount": 150,
+      "popularity": 17.5897,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "레베카는 시신 방부 처리 과정을 수료하고 안치실에서 일하게 된다. 첫 단독 근무 날, 평소라면 고요했을 안치실에서 환청이 들리기 시작하는데...",
+      "tagline": "차가운 영안실, 산 자는 나뿐이다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8ecHzn9eixgpfwZZWorXpCIL5cT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/gM1kQRPwOVW1Eos5tVWqcYmHR5S.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1470130",
+      "imdbId": "tt36647890",
+      "demo": false
+    },
+    {
+      "id": 1278,
+      "title": "몽상가들",
+      "originalTitle": "The Dreamers",
+      "year": 2003,
+      "releaseDate": "2003-10-10",
+      "director": "베르나르도 베르톨루치",
+      "runtime": 115,
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "keywords": [
+        "hotel",
+        "first time",
+        "paris, france",
+        "love triangle",
+        "students' movement",
+        "sexuality",
+        "bathing",
+        "flat",
+        "menage a trois",
+        "riot",
+        "crush",
+        "twins",
+        "incest",
+        "american abroad",
+        "polyamory",
+        "communism",
+        "1960s",
+        "brother sister relationship",
+        "sex",
+        "nudity",
+        "foreign student",
+        "pretentious",
+        "film",
+        "female full frontal nudity"
+      ],
+      "productionCompanies": [
+        "Recorded Picture Company",
+        "Fiction",
+        "Peninsula Films",
+        "HanWay Films",
+        "Fox Searchlight Pictures",
+        "Medusa Film",
+        "Tele+"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.18,
+      "voteCount": 3159,
+      "popularity": 16.8951,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "자유를 외치는 젊은이들의 뜨거운 열기로 가득한 1968년 파리, 영화광인 미국인 유학생 매튜는 시네마테크에서 쌍둥이 남매 이사벨과 테오를 만나 가까워진다. 부모가 휴가를 떠난 이사벨과 테오의 집에서 한 달 간 지내게 된 매튜는 영화와 음악, 책, 혁명 등의 이야기를 자유롭게 나누며 특별한 추억을 쌓는다. 자연스레 이사벨에게 사랑을 느끼게 되는 매튜, 하지만 이사벨은 테오와 떨어지려 하지 않고 세 사람의 은밀하고 특별한 관계는 계속되는데...",
+      "tagline": "영원할 것 같았던 청춘의 열기, 사랑, 그리고 꿈",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/gb0vVzJlxumQrsN8Mnud647Zh0V.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/vaRCS4CCFXcWz1j9GKd6rGLsQQ2.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1278-the-dreamers/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1278",
+      "imdbId": "tt0309987",
       "demo": false
     },
     {
@@ -2650,9 +2650,9 @@ window.KINOSIS_CATALOG = {
         "Shogakukan-Shueisha Productions"
       ],
       "artSeed": false,
-      "voteAverage": 7.5,
-      "voteCount": 19,
-      "popularity": 19.9826,
+      "voteAverage": 7.429,
+      "voteCount": 21,
+      "popularity": 15.6274,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "‘모터 사이클 페스티벌’이 열리는 요코하마로 향하던 코난 일행은 폭주하는 검은 오토바이 사건에 휘말리고 범인을 쫓던 ‘바람의 여신’ 가나가와현경 교통기동대 하기와라 치하야 경부보와 재회한다. 경찰의 추적을 모두 뿌리친 폭주 오토바이는 도쿄 시내에도 출물하고, 연쇄적으로 사상자가 발생한다. 이러한 가운데 최첨단 AI 기술을 탑재한 싸이카 ‘엔젤’과 폭주 오토바이가 매우 유사하다는 점이 밝혀지고, 이 정체불명의 존재를 ‘루시퍼’라고 명명, 점차 포위망을 좁혀간다. 한편, 사건을 쫓던 치하야는 문득 7년 전 11월 7일, 폭탄을 해체하다 순직한 남동생 하기와라 켄지와, 그의 죽음으로부터 4년 후 11월 7일, 같은 범인을 쫓다가 순직한 켄지의 친구이자 동료 마츠다 진페이에 대한 기억이 떠오르는데….",
@@ -2696,9 +2696,9 @@ window.KINOSIS_CATALOG = {
         "A24"
       ],
       "artSeed": false,
-      "voteAverage": 7.072,
-      "voteCount": 1587,
-      "popularity": 14.1316,
+      "voteAverage": 7.065,
+      "voteCount": 1599,
+      "popularity": 12.7578,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "2006년 이라크 라마디, 미국 네이비 씰 알파 원 소대는 야간 정찰 임무 수행 중 현지 2층 주택을 점령해 OP1으로 삼는다. 통신병 레이 멘도사는 공중 지원팀과 교신하며 팀의 위치를 모니터링하고, 저격수인 의무병 엘리엇은 동료 저격수 프랭크와 함께 거리를 감시하고 있다. 이때, 한 발의 수류탄이 저격수의 방으로 날아들고 알파 원은 이라크 군의 집중 공격을 받는다. 급습으로 초토화가 된 상황, 폭발물로 중상을 입은 엘리엇과 부사관 샘을 안전하게 기지로 후송해야만 한다.",
@@ -2755,8 +2755,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 7.331,
-      "voteCount": 1709,
-      "popularity": 12.8256,
+      "voteCount": 1715,
+      "popularity": 9.096,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "행방불명된 한 소녀를 찾기 위해 스코틀랜드의 외딴섬 '서머아일'을 찾은 경찰 하위. 마을을 지배하는 기이한 이교도 의식과 마주한 그는 주민들이 감추고 있는 거대한 비밀을 하나씩 파헤친다.",
@@ -2804,12 +2804,14 @@ window.KINOSIS_CATALOG = {
         "LD Entertainment",
         "Brouhaha Entertainment",
         "Range Media Partners",
-        "Oddfellows Entertainment"
+        "Oddfellows Entertainment",
+        "Mister Smith Entertainment",
+        "Animal Holdings"
       ],
       "artSeed": false,
-      "voteAverage": 6.469,
-      "voteCount": 691,
-      "popularity": 9.7074,
+      "voteAverage": 6.479,
+      "voteCount": 698,
+      "popularity": 8.0331,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "현실에서 벗어나기 위해 호주 골드 코스트를 찾은 서퍼 ‘제피르’. 평온한 바다에 서핑을 하러 가던 그녀는 살인마 ‘터커’에게 납치 된다. 상어에게 인간을 먹이로 주는 특이 취향을 가진 연쇄 살인마의 배에 감금된 ‘제피르’는 탈출을 시도 하지만 번번히 실패하고, 자신의 차례가 다가오자 마지막 사투를 벌인다. ‘제피르’는 바다 한 가운데에서 바다 아래 상어 그리고 그보다 더 위험한 존재인 인간과 맞서 살아남기 위한 사투를 시작한다.",
@@ -2822,6 +2824,151 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1285965",
       "imdbId": "tt32299316",
+      "demo": false
+    },
+    {
+      "id": 1284016,
+      "title": "싱 어게인",
+      "originalTitle": "Power Ballad",
+      "year": 2026,
+      "releaseDate": "2026-05-18",
+      "director": "존 카니",
+      "runtime": 99,
+      "genres": [
+        "코미디",
+        "음악",
+        "드라마"
+      ],
+      "keywords": [
+        "songwriting",
+        "boy band",
+        "music",
+        "past their prime"
+      ],
+      "productionCompanies": [
+        "Likely Story",
+        "30WEST",
+        "Fís Éireann/Screen Ireland",
+        "Treasure Entertainment",
+        "Distressed Films",
+        "Media Capital Technologies"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.025,
+      "voteCount": 102,
+      "popularity": 7.6901,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
+      "tagline": "단 한 곡이 두 사람의 인생을 뒤바꿨다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/19BfIkDHgbgLcHVbi9rKx7KUCgi.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1284016",
+      "imdbId": "tt32267691",
+      "demo": false
+    },
+    {
+      "id": 1307247,
+      "title": "오케이 마담 2",
+      "originalTitle": "오케이 마담 2",
+      "year": 2026,
+      "releaseDate": "2026-08-12",
+      "director": "이철하",
+      "runtime": 109,
+      "genres": [
+        "액션",
+        "코미디"
+      ],
+      "keywords": [
+        "sequel"
+      ],
+      "productionCompanies": [
+        "OAL"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 4.7281,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "사춘기 딸과의 전쟁, 허세 충만 백수 남편, 꽈배기집 폐업 위기까지. 지긋지긋한 현생을 견뎌오던 미영에게 초호화 크루즈 결혼식 초대장이 도착한다. “우리, 진짜 여행 가자!” 화려한 크루즈 여행을 만끽하던 것도 잠시. 범죄 조직의 리더 안야의 등장에 수백명이 탑승한 크루즈는 순식간에 사상 초유의 납치 사건 현장이 되어버린다. 도망칠 곳 없는 푸른 바다 한복판, 다시 한번 각성한 전직 레전드 요원 미영은 이제 가족을 구하고 세상을 지켜야 할 위험한 작전에 뛰어든다!",
+      "tagline": "이번엔 크루즈다!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/xDbrWXB9yb5aEdt4peVy8OWNP2Y.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddrLCUT8hqSlEICTTbdlFYB5q4a.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1307247",
+      "imdbId": "tt43669175",
+      "demo": false
+    },
+    {
+      "id": 100271,
+      "title": "모모와 다락방의 수상한 요괴들",
+      "originalTitle": "ももへの手紙",
+      "year": 2012,
+      "releaseDate": "2012-04-21",
+      "director": "沖浦啓之",
+      "runtime": 120,
+      "genres": [
+        "코미디",
+        "판타지",
+        "애니메이션",
+        "드라마",
+        "가족"
+      ],
+      "keywords": [
+        "parent child relationship",
+        "supernatural",
+        "family relationships",
+        "animism",
+        "supernatural creature",
+        "youkai",
+        "anime"
+      ],
+      "productionCompanies": [
+        "TBS",
+        "KADOKAWA",
+        "Production I.G",
+        "KADOKAWA Shoten",
+        "Bandai Visual",
+        "CBC",
+        "Chugoku Broadcasting",
+        "Horipro",
+        "MBS",
+        "OLM",
+        "Tokyu Recreation",
+        "Yahoo! Japan",
+        "jeki"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.351,
+      "voteCount": 413,
+      "popularity": 4.2053,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "우리집 다락방에 요괴가 산다?!  엄마를 따라 작은 섬 시오지마로 이사 온 11살 도시 소녀 모모. 이사온 첫날, 모모는 다락방에서 오래된 그림책 한 권을 발견한다. 그날 이후, 다락방에서 이상한 소리가 들리는가 하면, 냉장고 속 간식이 사라지고, 급기야 그림책 속 요괴들이 모모의 눈앞에 나타나는데…  내 눈에만 보이는 사고뭉치 요괴 3인방~!  모모 덕에 봉인된 그림책에서 나왔다며 자신들을 소개하는 이와, 카와, 마메! 외모와는 다르게 은근 소심하고 먹보에 어리바리하기까지. 자칭 수호신이라며 큰 소리치지만 사고투성인 요괴 3인방과 웃지 못할 한집살이를 시작한 모모에게 어느 날 예상치 못한 위기가 찾아오는데……  도시 소녀 모모에게 찾아온 수상한 요괴 3인방! 그들의 초특급 모험이 시작된다!",
+      "tagline": "어느 날...그들이 나타났다!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/yB71TFQzTmULS08g4RatAEHoL8J.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/2vc5hXc4pMXcKOOsOuyI2MQ1AdK.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 97,
+          "name": "Watcha",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/100271/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/100271",
+      "imdbId": "tt1853614",
       "demo": false
     },
     {
@@ -2848,7 +2995,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 5.913,
       "voteCount": 109,
-      "popularity": 4.714,
+      "popularity": 4.0318,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "천재적인 재능을 가졌지만 교도소에서 갓 출소한 열쇠 수리공 ‘밀러. 이제는 어두운 과거를 뒤로하고 형사가 된 전 여인 ‘베스’. 어린 딸과 함께 평범하고 정직한 새 삶을 시작하려 한다. 하지만 과거의 악연이었던 부패 경찰과 지역 갱단의 음모로 인해 어느 날 갑자기 딸이 납치되는 최악의 상황에 직면하고 마는데... 부패 경찰, 지역 갱단들의 음모 속에서 '밀러'는 딸을 무사히 구출해낼 수 있을 것인가?",
@@ -2861,6 +3008,58 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1075519",
       "imdbId": "tt15829724",
+      "demo": false
+    },
+    {
+      "id": 1274214,
+      "title": "파파조라 더 무비",
+      "originalTitle": "Papa Zola: The Movie",
+      "year": 2025,
+      "releaseDate": "2025-12-11",
+      "director": "Raja Nukman Raja Mohd Noordin",
+      "runtime": 111,
+      "genres": [
+        "애니메이션",
+        "액션",
+        "모험",
+        "코미디",
+        "가족",
+        "SF"
+      ],
+      "keywords": [
+        "mother",
+        "hero",
+        "baby",
+        "superhero",
+        "villain",
+        "father",
+        "based on cartoon",
+        "bumbling",
+        "supervillain",
+        "father daughter relationship",
+        "based on tv series",
+        "3d animation"
+      ],
+      "productionCompanies": [
+        "Astro Shaw",
+        "Monsta Studios"
+      ],
+      "artSeed": false,
+      "voteAverage": 9,
+      "voteCount": 3,
+      "popularity": 3.9034,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "외계인 침공으로부터 지구를 지키는 비밀 조직 ‘파파’! 일명 ‘파’멸 저지 ‘파’견팀, 파파의 팀장 ‘카착스 칸’, 정보 분석 요원 ‘질러’, 행동 요원 ‘조라’, 기술 지원 요원 ‘욘비’는 외계인 침공으로부터 지구를 지키기 위해 활약하며 임무를 완수했지만 조라와 질러는 기억을 잃게 된다. 그로부터 몇 년 후, 기억을 잃은 비밀 조직 파파 요원인 조라는 허세만렙 딸 바보, 가족 바라기 ‘극F’ 아빠로 아내 질러, 딸 피피와 소박하고 행복한 일상을 꾸려나간다. 가족 여행 자금을 모으기 위해 배달, 운전 등 투잡, 쓰리잡도 불사하던 중 사랑하는 딸 피피가 외계인에 납치되고, 외계인의 위협으로 지구가 다시 위험에 빠지게 되자 조라와 질러 앞에 파파 요원들이 다시 나타나는데!",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/x71IGbvjUSeqrTtslrMnwylidYf.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/AkNQCE7FijTFmneDVLCYpN9aMJ0.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1274214",
+      "imdbId": "tt30761647",
       "demo": false
     },
     {
@@ -2894,7 +3093,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 9,
       "voteCount": 2,
-      "popularity": 4.2416,
+      "popularity": 3.5722,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "엄마 옥실과 세 딸 장주, 영주, 동주는 8년 전 수학여행을 떠난 이후 다시는 돌아오지 못한 막내 경주의 생일을 맞아 단체 티셔츠까지 맞춰 입고 경주로 가족여행을 떠난다. 얼핏 단란하고 화목한 가족여행처럼 보이지만, 봉고차 트렁크에는 낯선 한 남자가 실려 있는데…",
@@ -2910,9 +3109,43 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
+      "id": 1325614,
+      "title": "배드랜드 스나이퍼",
+      "originalTitle": "Badland Rising",
+      "year": 2026,
+      "releaseDate": "2026-09-04",
+      "director": "Blair Moore",
+      "runtime": 97,
+      "genres": [
+        "액션",
+        "범죄"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Flying Billykart Entertainment"
+      ],
+      "artSeed": false,
+      "voteAverage": 5,
+      "voteCount": 1,
+      "popularity": 3.4849,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "전직 SAS 저격수 데이브. 건설 현장에서의 근무를 마치고 가족이 있는 농장으로 돌아가던 그는 우연히 강도 사건에 휘말리며 범죄자들의 표적이 된다. 엉망이 된 강도 작전 이후, 갱단과 러시아 킬러, 형사들까지 가세하며 그의 평범했던 귀갓길은 끝없는 추격전으로 변한다. 가족이 있는 집까지 19시간, 살아 돌아가기 위한 단 하나의 미션! 끝까지 추격해오는 자들로부터 가족과 삶의 터전을 지켜내야 한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/97kdNvdoFdDGvN2N7tyQPC3vTo2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kcw0kaZiGCu9RhroFlnjA1g04Yz.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1325614",
+      "imdbId": "tt31434090",
+      "demo": false
+    },
+    {
       "id": 1728113,
       "title": "캣츠아이 - 와일드 하츠",
-      "originalTitle": "KATSEYE: WILD HEARTS",
+      "originalTitle": "Katseye: Wild Hearts",
       "year": 2026,
       "releaseDate": "2026-08-12",
       "director": "Nadia Hallgren",
@@ -2935,9 +3168,9 @@ window.KINOSIS_CATALOG = {
         "Geffen Records"
       ],
       "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 4.1137,
+      "voteAverage": 1,
+      "voteCount": 1,
+      "popularity": 3.2753,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "GRAMMY® 후보에 두 차례 오른 글로벌 걸그룹 KATSEYE가 세 번째 EP WILD 발매를 앞두고, 특별한 극장 개봉작 <캣츠아이: 와일드 하츠>로 전 세계 관객들을 찾아온다. <캣츠아이: 와일드 하츠>는 KATSEYE의 대담한 새로운 시대를 조명하는 동시에, 오늘의 KATSEYE를 있게 한 팬들에게 바치는 특별한 여정이다. 최초 공개되는 미공개 영상과 EYEKONS 팬들의 영상, 멤버들의 진솔한 인터뷰를 통해 KATSEYE와 글로벌 팬덤 사이의 깊고 강한 유대감을 그려낸다. KATSEYE와 함께 이 여정을 만들어온 EYEKONS에게 보내는 러브레터인 이 작품은, KATSEYE의 이야기가 이제 막 시작되었음을 보여준다. 치열한 경쟁이 펼쳐졌던 Dream Academy부터 전 세계를 사로잡은 바이럴 히트와 차트 성공에 이르기까지, 관객들은 KATSEYE가 글로벌 팝 스타로 성장하는 과정에서 마주한 영광과 좌절, 희생, 그리고 결정적인 순간들을 함께 경험하게 된다. The New York Times, Vogue, Rolling Stone, Billboard 등 유수의 매체로부터 뛰어난 실력과 압도적인 라이브 퍼포먼스를 인정받은 KATSEYE는, 오늘날 가장 주목받는 글로벌 팝 그룹 중 하나로서 세계적인 영향력을 더욱 확고히 하고 있다. 넷플릭스 다큐멘터리 〈POP STAR ACADEMY〉 제작진이 다시 의기투합한 <캣츠아이: 와일드 하츠>는 Interscope Films와 Boardwalk Pictures가 제작하고, HYBE X GEFFEN과 협력하여 선보이는 작품으로, Nadia Hallgren이 연출을 맡았다.",
@@ -2981,7 +3214,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 7.8,
       "voteCount": 12,
-      "popularity": 3.1036,
+      "popularity": 3.1924,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "사토 마후유, 우에노야마 리츠카, 나카야마 하루키, 카지 아키히코로 구성된 밴드 ‘기븐’은 페스티벌 출전을 건 콘테스트에서 탈락하지만, 뜻밖에 메이저 데뷔 제안을 받게 된다. 다른 멤버들이 데뷔를 향해 나아가는 가운데, 마후유만은 쉽게 답을 내리지 못한 채 망설인다. 한편, 먼저 메이저 데뷔를 확정한 카시마 히이라기와 야기 시즈스미의 밴드 ‘syh’. ‘syh’에 임시 서포트 기타로 합류하게 된 리츠카는 히이라기가 맡긴 곡을 완성하기 위해 몰두하고 있었다. 그러던 중, 마후유로부터 “보고 싶어”라는 연락을 받은 리츠카는 심상치 않은 기운을 느끼고 곧바로 달려가고 음악을 밀어내듯 외면하는 ‘마후유’의 모습을 마주하게 된다. 리츠카를 향한 마음, 그리고 음악을 향한 마음. 수많은 감정의 소용돌이에서 길을 잃고 멈춰 서 버린 마후유. 그때 세계적인 바이올리니스트 ‘무라타 우게츠’가 나타나 말을 건네는데…",
@@ -2994,42 +3227,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1317276",
       "imdbId": "tt35631332",
-      "demo": false
-    },
-    {
-      "id": 1307247,
-      "title": "오케이 마담 2",
-      "originalTitle": "오케이 마담 2",
-      "year": 2026,
-      "releaseDate": "2026-08-12",
-      "director": "이철하",
-      "runtime": 109,
-      "genres": [
-        "액션",
-        "코미디"
-      ],
-      "keywords": [
-        "sequel"
-      ],
-      "productionCompanies": [
-        "OAL"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 3.0903,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "사춘기 딸과의 전쟁, 허세 충만 백수 남편, 꽈배기집 폐업 위기까지. 지긋지긋한 현생을 견뎌오던 미영에게 초호화 크루즈 결혼식 초대장이 도착한다. “우리, 진짜 여행 가자!” 화려한 크루즈 여행을 만끽하던 것도 잠시. 범죄 조직의 리더 안야의 등장에 수백명이 탑승한 크루즈는 순식간에 사상 초유의 납치 사건 현장이 되어버린다. 도망칠 곳 없는 푸른 바다 한복판, 다시 한번 각성한 전직 레전드 요원 미영은 이제 가족을 구하고 세상을 지켜야 할 위험한 작전에 뛰어든다!",
-      "tagline": "이번엔 크루즈다!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/xDbrWXB9yb5aEdt4peVy8OWNP2Y.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddrLCUT8hqSlEICTTbdlFYB5q4a.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1307247",
-      "imdbId": "tt43669175",
       "demo": false
     },
     {
@@ -3057,7 +3254,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 7.2,
       "voteCount": 162,
-      "popularity": 2.39,
+      "popularity": 3.0889,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "타이페이를 배경으로 세 젊은이의 사랑과 고독을 표현한 영화. 부동산 중개회사 직원인 메이, 납골당 판매원인 소강, 불법 노점상인 아정은 우연히 빈 아파트에서 조우하게 된다. 그러나 세 사람 사이에는 그 어떠한 사랑도 존재하지 않는다. 거의 대사가 없는 영화로 인물들의 고독이 극명하게 표현되어 있다. 영화에서 빈 집과 떠도는 주인공들의 감정은 가족붕괴로 인한 고독감을 느끼게 한다. 영화 후반, 메이가 울음을 터뜨리는 긴 지속시간의 장면이 특별한 느낌을 선사한다.",
@@ -3071,12 +3268,131 @@ window.KINOSIS_CATALOG = {
           "id": 701,
           "name": "FilmBox+",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/11985/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/11985",
       "imdbId": "tt0109066",
+      "demo": false
+    },
+    {
+      "id": 1512207,
+      "title": "리틀 드래곤:몬스터섬의 비밀",
+      "originalTitle": "Ruffen: Sjøormen som ikke kunne svømme",
+      "year": 2025,
+      "releaseDate": "2025-10-10",
+      "director": "Endre Skandfer",
+      "runtime": 74,
+      "genres": [
+        "애니메이션",
+        "가족"
+      ],
+      "keywords": [
+        "sea monster",
+        "sea serpent",
+        "3d animation"
+      ],
+      "productionCompanies": [
+        "Anima Vitae Point",
+        "Atmosphere Media",
+        "Maipo Film",
+        "NeXtFrames Animation"
+      ],
+      "artSeed": false,
+      "voteAverage": 7,
+      "voteCount": 4,
+      "popularity": 2.8627,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "수영을 못 하는 바다 드래곤 루피는 할머니와 단둘이 살아가고 있다. 어느 날, 연기를 내뿜어 인간으로부터 바다 괴물 섬을 지키는 세르팡의 마법목도리가 망가지고, 루드비그는 감기에 걸려 연기를 내뿜지 못한다. 루피는 오래전 섬을 떠난 자신의 이모할머니가 루드비그에게 목도리를 선물했다는 사실을 알게 되고, 할머니와 바다 몬스터 섬을 지키기 위해 이모할머니를 찾아 떠난다, 고래택시를 타고 육지에 도착하고 육지에서 사자,꼬끼리,거북이 등을 만나 그들과 함께 동물원을 탈출하여 다시 몬스터 섬으로 돌아와 위기를 극복한다.",
+      "tagline": "수영은 꽝! 용기는 짱! 꼬마 바다용의 첫 육지 상륙작전!!!!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/esGI8WI19wO0Hyvv2OFYUuvEPtx.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/mH7bfSIQelApYiTlefB8rKNJ81J.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1512207",
+      "imdbId": "tt32267711",
+      "demo": false
+    },
+    {
+      "id": 1473635,
+      "title": "말하지 않은 것들",
+      "originalTitle": "Le cose non dette",
+      "year": 2026,
+      "releaseDate": "2026-01-29",
+      "director": "Gabriele Muccino",
+      "runtime": 115,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Lotus Production",
+        "RAI Cinema",
+        "Asa Nisi Masa",
+        "Leone Film Group",
+        "MiC"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.9,
+      "voteCount": 157,
+      "popularity": 2.5374,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "카를로는 대학교수이고, 엘리사는 기자다. 그들은 안나와 파올로, 그리고 그들의 딸 비토리아와 함께 모로코의 탕헤르로 여행을 떠난다. 멀리 떨어진 따뜻하고 고요한 풍경 속에서, 관계는 긴장을 고조시키고, 본모습을 드러내며, 변화한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/jhAimZ4vUrq4zEAWgT0yBff1ooh.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/pBeB38aB3FfzPqCrSoxZpvLHxjt.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1473635",
+      "imdbId": "tt37096260",
+      "demo": false
+    },
+    {
+      "id": 1684016,
+      "title": "케이티 페리: 라이프타임스 투어 - 라이브 인 파리",
+      "originalTitle": "Katy Perry: The Lifetimes Tour – Live from Paris",
+      "year": 2026,
+      "releaseDate": "2026-09-02",
+      "director": "Paul Dugdale",
+      "runtime": 119,
+      "genres": [
+        "다큐멘터리",
+        "음악"
+      ],
+      "keywords": [
+        "concert",
+        "katy perry",
+        "lifetimes tour",
+        "the lifetimes tour movie"
+      ],
+      "productionCompanies": [
+        "SiFi Productions",
+        "Silent House Productions",
+        "10 Lives Content"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 2.2895,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "세계적인 팝 스타 케이티 페리의 7년 만의 월드 투어 무대. 2025년 11월 파리 아코르 아레나 전석 매진 현장에서 펼쳐지는 화려한 공중 퍼포먼스와 무한한 에너지, 그리고 관객들과의 교감을 담아낸 콘서트 영화다.",
+      "tagline": "남들은 안 된다고 했지만. 나는 해냈고. 영화로 남겼다.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/snmaFZZ0GCMnvGCcoSzztbCrwbV.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jJncm6HIZEzU8PSYCueGN1TrfFE.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1684016",
+      "imdbId": "tt38882652",
       "demo": false
     },
     {
@@ -3101,7 +3417,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 7.254,
       "voteCount": 319,
-      "popularity": 2.2652,
+      "popularity": 2.1882,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "카페 주인 ‘카토’는 우연히 자신의 2층 방 모니터와 1층 카페 TV가 2분의 시차를 두고 연결되어 있다는 사실을 알게 된다. 이를 알게 된 알바생과 카페 친구들은 2분 후 미래의 자신들이 시키는 대로 움직이며 큰 돈을 줍거나 짝사랑 고백 성공 유무를 확인하는 등 2분 후의 미래에 빠져든다. 더 먼 미래를 보기 위해 두 모니터를 마주 보게 해 2분 후의 미래가 이어지는 타임 TV를 설계하고 무한 타임 루프에 빠지게 되는데...",
@@ -3137,7 +3453,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 2.1467,
+      "popularity": 2.1732,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "하츄핑과 단짝이 된 로미는 행복한 나날을 보내고 있지만 하고 싶은 일과 해야만 하는 일 사이에 매번 엄마(벨리타)와 의견이 달라 다투게 되고… 그러던 어느 날, 바다를 뒤흔드는 사건과 함께 엄마는 흔적도 없이 바닷속으로 사라진다. 한 마디 사과도, 한 번의 포옹도 건네지 못한 채 엄마를 잃은 로미. 처음 만나는 바다 앞에서 단짝 하츄핑, 바다소년 카이트, 세 마리의 티니핑들과 함께 용기를 내보는데… 찬란한 바다 도시, 거대한 심해 생명체들과 맞서야 하는 이들. 마침내 로미는 엄마가 한 번도 들려준 적 없던 비밀을 마주하게 된다.",
@@ -3153,124 +3469,45 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1172563,
-      "title": "지난 여름",
-      "originalTitle": "지난 여름",
+      "id": 607833,
+      "title": "인턴",
+      "originalTitle": "인턴",
       "year": 2026,
-      "releaseDate": "2026-08-05",
-      "director": "최승우",
-      "runtime": 76,
+      "releaseDate": "2026-09-16",
+      "director": "김도영",
+      "runtime": 133,
       "genres": [
-        "드라마"
+        "드라마",
+        "코미디"
       ],
       "keywords": [
-        "rural"
+        "office",
+        "workplace",
+        "remake",
+        "internship",
+        "co-workers",
+        "female ceo"
       ],
       "productionCompanies": [
-        "파편화"
+        "Anthology Studios",
+        "Warner Bros. Korea"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.8314,
+      "popularity": 1.9414,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "어느 농촌 마을. 면사무소에서 일하는 젊은 청년 민우는 아버지와 할머니와 함께 살고 있으며 종종 친한 친구 성훈과 어울려 지낸다. 날씨는 꼭 농부들의 마음 같지만은 않고, 민우는 오늘도 조용한 삶을 지속한다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/nM49pL1dZXwxf19Rt1wpdnqhaHN.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yHubRxDl4ZeKFMFItcsYlbKfOjw.jpg",
+      "overview": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
+      "tagline": "오늘부터 [출근]합니다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/kRHjgsICPISgEClloeARkPHP96M.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/OroFBNgB2RBzj2X65CweVhhQQG.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1172563",
-      "imdbId": "tt29579094",
-      "demo": false
-    },
-    {
-      "id": 1364368,
-      "title": "연옥: 살인마들의 자치구역",
-      "originalTitle": "연옥: 살인마들의 자치구역",
-      "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "브루스 칸",
-      "runtime": 102,
-      "genres": [
-        "액션",
-        "스릴러",
-        "모험",
-        "범죄"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Greenfish Studio",
-        "Khan Film"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 1.7178,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "1급 흉악범들조차 살아남기 힘든 수용소 '연옥'. 법도 질서도 존재하지 않는 이곳에서는 오직 힘만이 살아남는다. 모든 죄수들이 두려워하는 연옥의 절대 권력자 ‘염왕’. 어느 날, 그를 제거해 달라는 위험한 제안을 받은 한 남자 ‘유성'. 생존과 자유를 걸고 연옥의 절대 권력에 맞서기 시작한다. 끝없는 폭력과 배신, 예측할 수 없는 함정 속에서 목숨을 건 마지막 사투가 시작된다!",
-      "tagline": "끝나지 않는 피바람, 살아있는 지옥의 시작",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1364368",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1280401,
-      "title": "아가미",
-      "originalTitle": "아가미",
-      "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "안재훈",
-      "runtime": 106,
-      "genres": [
-        "애니메이션",
-        "드라마",
-        "판타지"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Meditation With a Pencil",
-        "Namu Animation"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 1.4857,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "“이야기가 길어질 텐데 괜찮아요?” 깊은 물 속에 던져진 날, 아가미가 생겨난 세상에서 유일한 아이 ‘곤’ 그리고 그의 세계에 전부였던 존재들의 눈부신 이야기",
-      "tagline": "\"내 세계를 찾고 있어\"",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/hy6PNPZ8JGWZf4sGuCB8bqHJ8rR.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/z4jh7RHSci98FSqBtYCB2Sjqq2b.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/1280401/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1280401",
-      "imdbId": "tt32602819",
+      "tmdbUrl": "https://www.themoviedb.org/movie/607833",
+      "imdbId": "tt43741215",
       "demo": false
     },
     {
@@ -3296,7 +3533,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.4422,
+      "popularity": 1.7249,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "톱스타 부부 중구와 남미가 갑자기 나타난 중구의 딸 동주로 인해 파경을 맞은 뒤 8년 후 충격적인 사건에 휘말린 동주를 구하기 위해 마지막 남은 모든 것을 걸고 진실을 파헤치는 ‘미쓰백’ 이지원 감독의 찐한 가족 연대기",
@@ -3312,37 +3549,95 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1453301,
-      "title": "산양들",
-      "originalTitle": "산양들",
+      "id": 1522856,
+      "title": "카를로비바리",
+      "originalTitle": "카를로비바리",
       "year": 2026,
-      "releaseDate": "2026-07-29",
-      "director": "Yoo Jae-wook",
-      "runtime": 107,
+      "releaseDate": "2026-09-09",
+      "director": "이용석",
+      "runtime": 120,
       "genres": [
+        "코미디",
         "드라마"
       ],
       "keywords": [],
       "productionCompanies": [
-        "Cinema Dal",
-        "Giraffe Slide"
+        "애드히시브"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.3502,
+      "popularity": 1.7003,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "수능 D-day 200일, 다들 입시에 몰두할 때, 사육장 담당 인혜는 오리에게 설교하기 바쁘다. 어느 날, 칼을 소지한 벌로 서희도 인혜와 함께 사육장을 청소한다. 둘은 버려진 평원을 발견하는데, 사육장 오리 희선이를 그곳에서 잃어버린다. 한편, 진학부장 김아테 선생은 학교도, 부모도, 본인도 포기한 4인방을 모아 수시 면접반을 만든다. 대학교 면접 날, 인혜와 서희는 땡땡이 치고 희선이를 찾기 위해 평원으로 간다. 숲에서 텐트를 치고 야영하며 점점 야생에 적응해간다.",
-      "tagline": "수능보다 중요한 소동물 구출작전",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/v2SUJzaBeOsSY5RT3r6hlzEmcd9.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/d0rWwsiTiCxoAbmuh6FqAJKrNyR.jpg",
+      "overview": "체코 서부에 위치한 아름다운 도시, 카를로비바리. 영화감독 ‘성재’는 카를로비바리를 배경으로 대본을 완성하고, 이후 그의 작품은 각종 공모전 수상, 그리고 영화제작까지 투자를 받게 된다! 국내 세트장 촬영을 모두 마치고, 드디어 현지 촬영만을 남겨 둔 상황. 그런데… 투자받은 제작비가 모두 사라져 버린다! 투자금을 토해내지 않기 위해서는 무슨 일을 써서라도 반드시 영화를 완성해야 하는 상황! 과연 성재와 친구들은 카를로비바리를 가지 않고 무사히 영화를 완성할 수 있을까?",
+      "tagline": "\"체코로 갈 수 없다. 하지만 영화는 찍어야 한다!\"",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/kK5KblzoMJUU4DVjKouOQMrahF3.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/uQBNWozmdHyaNs05TwObBTMHTxu.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1453301",
-      "imdbId": "tt38523209",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1522856",
+      "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 384641,
+      "title": "귀향",
+      "originalTitle": "귀향",
+      "year": 2016,
+      "releaseDate": "2016-02-24",
+      "director": "조정래",
+      "runtime": 127,
+      "genres": [
+        "드라마",
+        "역사"
+      ],
+      "keywords": [
+        "world war ii",
+        "comfort women",
+        "japanese occupation of korea"
+      ],
+      "productionCompanies": [
+        "JO Entertainment",
+        "WAW Pictures"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.1,
+      "voteCount": 28,
+      "popularity": 1.6814,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "1943년, 천진난만한 열네 살 정민은 영문도 모른 채 일본군의 손에 이끌려 가족의 품을 떠난다. 함께 끌려온 영희, 그리고 수많은 아이들과 함께 기차에 실려 향한다 곳은 제2차 세계대전의 차디찬 전장 한 가운데. 그곳에서 그들을 맞이한 것은 끔찍한 고통과 아픔의 현장이었다. 소녀들은 영문도 모른 채 무지막지한 군홧발 아래서 성노예로 부림당한다. 끔찍한 삶 속에서 소녀들은 존재 자체로 서로의 위안이 된다. 1991년, 성폭행을 당해 반쯤 미친 소녀 은경은 만신 송희의 신딸로 지내다 과거 위안소 생활을 했던 영옥을 만난다.",
+      "tagline": "무엇이 소녀들을 지옥으로 보냈나",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/9ZZkrDtEG7yroF6PJ0PwiGw7KfT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 97,
+          "name": "Watcha",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/384641/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/384641",
+      "imdbId": "tt5503266",
       "demo": false
     },
     {
@@ -3372,7 +3667,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 8.6,
       "voteCount": 9,
-      "popularity": 1.3078,
+      "popularity": 1.681,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "아이유의 데뷔 15주년을 기념해 극장에서 개봉하는 첫 공연 실황 영화로, 눈과 귀를 황홀하게 만드는 아름다운 노래와 환상적인 무대연출로 올림픽주경기장을 가득 채웠던 우리들의 ‘골든 아워’를 스크린에 옮겼다.",
@@ -3388,127 +3683,78 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 384641,
-      "title": "귀향",
-      "originalTitle": "귀향",
-      "year": 2016,
-      "releaseDate": "2016-02-24",
-      "director": "조정래",
-      "runtime": 127,
+      "id": 1172563,
+      "title": "지난 여름",
+      "originalTitle": "지난 여름",
+      "year": 2026,
+      "releaseDate": "2026-08-05",
+      "director": "최승우",
+      "runtime": 76,
       "genres": [
-        "드라마",
-        "역사"
+        "드라마"
       ],
       "keywords": [
-        "world war ii",
-        "comfort women",
-        "japanese occupation of korea"
+        "rural"
       ],
       "productionCompanies": [
-        "JO Entertainment",
-        "WAW Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.1,
-      "voteCount": 28,
-      "popularity": 1.2965,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "1943년, 천진난만한 열네 살 정민은 영문도 모른 채 일본군의 손에 이끌려 가족의 품을 떠난다. 함께 끌려온 영희, 그리고 수많은 아이들과 함께 기차에 실려 향한다 곳은 제2차 세계대전의 차디찬 전장 한 가운데. 그곳에서 그들을 맞이한 것은 끔찍한 고통과 아픔의 현장이었다. 소녀들은 영문도 모른 채 무지막지한 군홧발 아래서 성노예로 부림당한다. 끔찍한 삶 속에서 소녀들은 존재 자체로 서로의 위안이 된다. 1991년, 성폭행을 당해 반쯤 미친 소녀 은경은 만신 송희의 신딸로 지내다 과거 위안소 생활을 했던 영옥을 만난다.",
-      "tagline": "무엇이 소녀들을 지옥으로 보냈나",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/9ZZkrDtEG7yroF6PJ0PwiGw7KfT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/384641/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/384641",
-      "imdbId": "tt5503266",
-      "demo": false
-    },
-    {
-      "id": 1447630,
-      "title": "빈집의 연인들",
-      "originalTitle": "빈집의 연인들",
-      "year": 2026,
-      "releaseDate": "2026-08-12",
-      "director": "김태휘",
-      "runtime": 94,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "pennyroyalfilm"
+        "파편화"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.2942,
+      "popularity": 1.6605,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "까칠한 언행으로 스스로 마을 공식 외톨이가 된 ‘은자’ 어느 날 집에 들이닥친 도둑을 때려잡고 보니 전국을 유랑하며 시골 빈집을 터는 ‘팔복’이란 놈이다. “나랑 같이 가겠소?” 빈집은 털어도 한탕은 일없는 ‘팔복’의 낭만에 끌려 동행하기로 한 ‘은자’의 심장은 팔딱팔딱 뛰는데…",
-      "tagline": "미친 청춘처럼 다시 심장이 뛴다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/ccMh9yIUMP2p5yi7ELp5BtoT1fc.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/xP86cianm8lthikP0Ef5Fg2vRrU.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1447630",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1535944,
-      "title": "고양이를 놓아줘",
-      "originalTitle": "猫を放つ",
-      "year": 2026,
-      "releaseDate": "2026-05-02",
-      "director": "Daisuke Shigaya",
-      "runtime": 102,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "HUT Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 1.1963,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "음악을 하는 ‘모리’와 사진을 찍는 ‘마이코’. 지친 마음을 달래기 위해 휴직 중이지만 제대로 된 음악 작업도 하지 못한 채 시간만 보내고 있는 ‘모리’와 다르게 ‘마이코’는 개인전까지 열며 성공한 사진작가에 한 발 더 다가선다. ‘마이코’의 전시회 마지막 날, 우연히 과거에 만났던 ‘아사코’와 재회하고 과거의 기억을 떠올리는 ‘모리’. 더 이상 존재하지 않는 과거와 현재 사이에서 ‘모리’는 미처 알아보지 못했던 사랑의 흔적과 마주하게 되는데… “다시 괜찮아질 수 있을까?”",
+      "overview": "어느 농촌 마을. 면사무소에서 일하는 젊은 청년 민우는 아버지와 할머니와 함께 살고 있으며 종종 친한 친구 성훈과 어울려 지낸다. 날씨는 꼭 농부들의 마음 같지만은 않고, 민우는 오늘도 조용한 삶을 지속한다.",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/4dS74FTvHkBzjCdZZSwfjwt4UQZ.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/e9frQsF6KycN2DuBuX3FRyzXpKS.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/nM49pL1dZXwxf19Rt1wpdnqhaHN.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yHubRxDl4ZeKFMFItcsYlbKfOjw.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1535944",
-      "imdbId": "tt38454778",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1172563",
+      "imdbId": "tt29579094",
+      "demo": false
+    },
+    {
+      "id": 1408553,
+      "title": "아이유 콘서트 : 더 위닝",
+      "originalTitle": "아이유 콘서트 : 더 위닝",
+      "year": 2025,
+      "releaseDate": "2025-01-24",
+      "director": "오윤동",
+      "runtime": 124,
+      "genres": [
+        "음악",
+        "다큐멘터리"
+      ],
+      "keywords": [
+        "concert",
+        "live performance",
+        "concert film",
+        "k-pop"
+      ],
+      "productionCompanies": [
+        "CJ 4DPLEX",
+        "ScreenX Studio"
+      ],
+      "artSeed": false,
+      "voteAverage": 8.2,
+      "voteCount": 4,
+      "popularity": 1.58,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "최초의 아이콘 아이유, 100번째 콘서트로 완성된 찬란한 기록. 'Love wins all', '홀씨', 'Shopper', 'Celebrity', 'Last Fantasy' 등 수많은 명곡으로 서울월드컵경기장을 가득 채운 아이유와 유애나의 뜨거운 에너지와 함성. 상암 하늘을 수놓은 환상적인 드론쇼까지! 승리를 위해 달려온 여정의 마지막 챕터가 지금 스크린에서 펼쳐진다!",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ld6Pp824MMzJ7vzCdowvTRtVRTN.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/l0kCHPN8COTu7zxl8dUk0M4u99K.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1408553",
+      "imdbId": "tt35426496",
       "demo": false
     },
     {
@@ -3533,7 +3779,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.1789,
+      "popularity": 1.5469,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "평생 부엌 근처엔 가본 적도 없는 가부장 아버지 ‘하응’. 결혼 이후 줄곧 가족들의 밥상을 차려온 아내 ‘순애’의 고마움은 모른 채, 삼시세끼 까탈스럽게 집밥만 찾는다. 어느 날 ‘순애’가 요리를 하지 못하는 ‘요리백지증’에 걸리자 집밥의 평화가 깨진 ‘하응’은 생존을 위해 인생 첫 요리에 도전한다. ‘순애’는 ‘하응’의 요리가 맛있으면 칭찬, 맛 없으면 벌점을 주기로 하고 “벌점 10점을 채우면 이혼!”이라는 청천벽력 선언을 내뱉는데…! 과연 ‘하응’은 집밥에 성공할 수 있을까?",
@@ -3549,78 +3795,129 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1425837,
-      "title": "캐리어를 끄는 소녀",
-      "originalTitle": "캐리어를 끄는 소녀",
+      "id": 1501239,
+      "title": "네 얼굴로는 울 수 없어",
+      "originalTitle": "君の顔では泣けない",
+      "year": 2025,
+      "releaseDate": "2025-11-14",
+      "director": "坂下雄一郎",
+      "runtime": 124,
+      "genres": [
+        "드라마",
+        "판타지"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Happinet Phantom Studios",
+        "Grasshoppa!",
+        "RIKI PROJECT"
+      ],
+      "artSeed": false,
+      "voteAverage": 7,
+      "voteCount": 1,
+      "popularity": 1.3944,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "열다섯 살 여름, ‘리쿠’와 ‘마나미’는 우연한 사고로 몸이 뒤바뀐다. 하루면 끝날 줄 알았던 시간은 어느새 15년이 되고, 첫사랑과 꿈, 취업과 연애까지 가장 소중한 순간들을 서로의 삶으로 살아가게 된다. 내 얼굴로 웃을 수도, 네 얼굴로 울 수도 없었던 시간. 그리고 15년 후, 다시 찾아온 여름은 두 사람의 운명을 다시 흔들기 시작하는데….",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/53R2XdofnpfR723dwplqXXZddND.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jwbAupZDLO9ZRDULCVLvmdi5zsw.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1501239",
+      "imdbId": "tt38504908",
+      "demo": false
+    },
+    {
+      "id": 1447630,
+      "title": "빈집의 연인들",
+      "originalTitle": "빈집의 연인들",
       "year": 2026,
-      "releaseDate": "2026-09-02",
-      "director": "윤심경",
-      "runtime": 107,
+      "releaseDate": "2026-08-12",
+      "director": "김태휘",
+      "runtime": 94,
       "genres": [
         "드라마"
       ],
       "keywords": [],
       "productionCompanies": [
-        "about Film"
+        "pennyroyalfilm"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.1751,
+      "popularity": 1.3042,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "양부모에게 버려진 15살 ‘영선’은 또래 ‘수아’의 테니스 훈련 파트너로 수아네 집에 머물게 된다. 갈 곳이 없던 ‘영선’은 이 집의 일원이 되고 싶다는 마음을 품고, 조용하지만 치열하게 ‘수아’네 가족 안으로 스며들기 위해 애쓴다. 하지만 각자의 결핍을 안고 있는 그들 안으로 들어가기는 쉽지 않은데…",
-      "tagline": "삶의 코트 위 가장 치열한 인생 랠리",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/owXQAokJPjvM2FKX4ctAfKpCUhD.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/9eMfuaPu5gE2obsmhP028ukmsAi.jpg",
+      "overview": "까칠한 언행으로 스스로 마을 공식 외톨이가 된 ‘은자’ 어느 날 집에 들이닥친 도둑을 때려잡고 보니 전국을 유랑하며 시골 빈집을 터는 ‘팔복’이란 놈이다. “나랑 같이 가겠소?” 빈집은 털어도 한탕은 일없는 ‘팔복’의 낭만에 끌려 동행하기로 한 ‘은자’의 심장은 팔딱팔딱 뛰는데…",
+      "tagline": "미친 청춘처럼 다시 심장이 뛴다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ccMh9yIUMP2p5yi7ELp5BtoT1fc.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/xP86cianm8lthikP0Ef5Fg2vRrU.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1425837",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1447630",
       "imdbId": null,
       "demo": false
     },
     {
-      "id": 1188968,
-      "title": "어떻게 해야 했을까?",
-      "originalTitle": "どうすればよかったか？",
-      "year": 2024,
-      "releaseDate": "2024-12-07",
-      "director": "Fujino Tomoaki",
-      "runtime": 102,
+      "id": 435506,
+      "title": "언더독",
+      "originalTitle": "언더독",
+      "year": 2019,
+      "releaseDate": "2019-01-16",
+      "director": "Lee Choon-baek",
+      "runtime": 101,
       "genres": [
-        "다큐멘터리"
+        "애니메이션",
+        "모험",
+        "가족",
+        "드라마"
       ],
       "keywords": [
-        "schizophrenia",
-        "sibling relationship",
-        "family secrets",
-        "dysfunctional family",
-        "mental illness",
-        "documentary",
-        "caregiver burden"
+        "friendship",
+        "dog",
+        "animals",
+        "stray dog",
+        "korean animation",
+        "aeni"
       ],
       "productionCompanies": [
-        "TOFOO FILMS, LLC",
-        "Zou-shima"
+        "Next Entertainment World",
+        "Odoltogi"
       ],
       "artSeed": false,
-      "voteAverage": 8.125,
-      "voteCount": 4,
-      "popularity": 1.1347,
+      "voteAverage": 7.8,
+      "voteCount": 44,
+      "popularity": 1.2515,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "스물넷, 다정하고 촉망받던 누나에게 조현병 증상이 나타난다. 부모님은 병원 대신 현관문에 자물쇠를 채우는 것을 택한다. 그렇게 닫힌 문 안에서, 가족은 20여 년간 서로에게 침묵했다. 더는 외면할 수 없었던 남동생은 카메라를 들고 그 침묵 속으로 들어간다. 누나에게, 부모에게, 그리고 자기 자신에게 묻기 위해. 그리고 끝내 우리에게 묻는다. “어떻게 해야 했을까?\"",
-      "tagline": "누구에게도 말하고 싶지 않은 가족의 이야기",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/7G0wrfzXcsh1uLtVKT4LvEYawuT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/1dqJn5aYX4jZgHV0OmQzGsTVu30.jpg",
+      "overview": "주인에게 버려져 하루아침에 유기견이 된 뭉치는 폐허가 된 재개발 지역에 숨어사는 짱아 일행을 만나게 된다. ‘기다리라’는 주인의 거짓말을 믿고 싶었지만 결국 버려졌다는 현실을 받아들인 뭉치는 짱아들과의 생활에 익숙해져 가고, 어느 날 숲 속에서 야생성을 잃지 않고 살아가는 밤이 일행을 만나게 된다. 도시의 편리함에 익숙한 짱아 일행과 야생의 습성을 지키려는 밤이 일행, 같으면서도 서로 다른 이들은 철거와 잔혹한 개 사냥꾼을 피해 모두가 행복하게 살 수 있다는 ‘그곳’을 향해 모험을 떠나게 된다. 위험천만한 도로와 날카로운 철조망을 넘고 개 사냥꾼의 집요한 추격을 피해 조금씩 조금씩 북쪽 방향으로 향하던 그들은 아름다운 풀밭과 반딧불만이 가득하다는 ‘그곳’에 무사히 도착할 수 있을까?",
+      "tagline": "견생역전을 꿈꾸는 댕댕이들의 위대한 모험이 시작된다!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/wm6Ys8g5STFrSch0w2hEu4V1VqK.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ycnD8iBGizGNJLDJYF3kXylR39b.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1188968",
-      "imdbId": "tt32335214",
+      "providers": [
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/435506/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/435506",
+      "imdbId": "tt7852002",
       "demo": false
     },
     {
@@ -3645,13 +3942,13 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.0639,
+      "popularity": 1.2383,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "영혼을 보는 싱어송라이터 '미타'. 어느 날 개성만점 고스트 4인방과 친구가 되어 '고스트밴드'를 결성하고 보컬을 맡아 난생처음 누군가의 앞에서 함께 노래하는 기쁨을 알게 된다. '미타'와 고스트밴드의 공연 영상이 SNS를 강타하며 마침내 꿈꾸던 무대를 눈앞에 둔 순간, 대형 기획사의 거대한 방해 공작으로 위기를 맞게 되는데...",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/iDYPfIKR263Srm33hrNc4m6ILja.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jdZAcdyZuZSPD5QNfQCJjbv6mdB.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/sBCxyB7v8IaBrCwSi0nMEBP18tv.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
@@ -3661,33 +3958,35 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1522680,
-      "title": "사진의 얼굴",
-      "originalTitle": "사진의 얼굴",
+      "id": 1532365,
+      "title": "철들 무렵",
+      "originalTitle": "철들 무렵",
       "year": 2026,
-      "releaseDate": "2026-09-02",
-      "director": "Koh Hee-young",
-      "runtime": 99,
+      "releaseDate": "2026-09-16",
+      "director": "정승오",
+      "runtime": 105,
       "genres": [
-        "다큐멘터리"
+        "드라마"
       ],
       "keywords": [],
-      "productionCompanies": [],
+      "productionCompanies": [
+        "Indiestory"
+      ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.0556,
+      "popularity": 1.1627,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "\"왜 일본놈이 한국을 찍는가!” 90세 일본 포토저널리즘의 거장 구와바라 시세이. 지난 60년간 100여 차례 한국을 오간 그는 청계천 서민들의 삶부터 민주화 운동, 동두천 기지촌, 베트남 파병, 평양의 일상 등 한반도를 관통한 크고 작은 사건들을 10만 컷의 사진으로 기록해 왔다. “그는 무엇을 보았는가?” ‘남한에서의 국외 추방, 북한에서의 입국 금지 등 갖은 고난을 당하면서도 그가 끝내 놓지 못했던 생생한 얼굴들. 2026년 바로 오늘, 스크린에서 거장의 뷰파인더를 통해 본 ‘사진의 얼굴’을 만난다.",
-      "tagline": "90세 거장, 60년의 기록, 10만 컷의 사진, \"그는 한국에서 무엇을 보았는가?\"",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/53yTiV0XOIQ0tUaqToO6yUfZFNA.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/8hr5Ap5nR3UC2GlViHjniCZO4It.jpg",
+      "overview": "용접기사 철택이 암 말기 선고를 받는다. 이 소식은 단역배우인 외동딸 정미뿐만 아니라, 철택과 사실상 이혼한 상태로 공무원 은퇴 후 노후를 즐기던 현숙, 구순을 앞둔 현숙의 어머니 옥남, 철택의 친형 관택과 관택의 손자 동민의 삶까지 영향을 미치기 시작한다. 멀리 지내던 양가 가족들은 과거를 반추하며, 서로에게 곪아 있던 마음의 고름과 마주하게 되는데… 죽음의 그림자와 함께 찾아온 이들의 시간, ‘철들 무렵’이다.",
+      "tagline": "행복은 가족 밖에 있습니다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/7gBqPAjf7jLZxbp61Zn2oak2SUW.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/1zNnHqA1FwJOmUNXAoucMmr9YXl.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1522680",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1532365",
       "imdbId": null,
       "demo": false
     },
@@ -3711,7 +4010,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.0493,
+      "popularity": 1.1464,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "서울에 취직하여 고군분투 중인 혜자는 반지하에서 오피스텔로 올라가기를 꿈꾼다. 보험사 콜센터에서 일하는 혜자는 거친 사투리와 불같은 성격 때문에 회사에서 어려움이 많다. 며칠 뒤, 오피스텔로 가기로 결심한 혜자는 엄마에게 돈을 빌리기 위해 부산행 기차를 탄다. 부산에 도착한 혜자는 아무리 문을 두드려도 엄마가 나오지 않자, 엄마의 친구 희숙에게 전화를 건다.",
@@ -3724,6 +4023,39 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1451416",
       "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 1739216,
+      "title": "청년 조용기",
+      "originalTitle": "청년 조용기",
+      "year": 2026,
+      "releaseDate": "2026-09-11",
+      "director": "Kwon Hyeok-man",
+      "runtime": 100,
+      "genres": [
+        "다큐멘터리"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Kwon Film"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 1.0343,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "1955년, 폐결핵으로 6개월 시한부 선고를 받은 열아홉 살 소년 조용기. 매일 밤 피를 토하며 세상과 신을 향한 저주를 일기장에 쏟아내던 그는, 죽음의 문턱에서 운명처럼 성경을 마주하며 삶의 놀라운 전환점을 맞이한다. 기적적으로 살아난 청년 조용기는 성전 대신 대조동 공동묘지 옆, 비바람에 흔들리는 24평의 낡은 천막 교회를 선택한다. 가난하고 소외된 이들의 벗이 되어 그들의 삶을 함께하며 복음을 전하지만, 차가운 세상의 시선 속에서 그의 개척은 매 순간 고난의 연속이다. 그럼에도 \"꿈꾸는 자에게는 끝이 없다\"라는 확신 하나로 걸음을 멈추지 않았던 한 청년. 그의 작은 시작은 마침내 전 세계를 향한 믿음의 여정으로 이어진다. 성공 신화 뒤에 가려져 있던 '인간 조용기'의 진짜 시작. 70년 만에 발굴된 일기장과 미공개 아카이브를 통해 한 청년이 절망을 딛고 시대의 목소리가 되기까지의 여정이 스크린 최초로 펼쳐진다.",
+      "tagline": "신을 저주하던 청년, 시대를 긋는 종이 되다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/2eU1IJWeDOXWT6SAHXB4lRE44DX.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/2eU1IJWeDOXWT6SAHXB4lRE44DX.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1739216",
+      "imdbId": "tt44064016",
       "demo": false
     },
     {
@@ -3744,7 +4076,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 1.0425,
+      "popularity": 1.0278,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "2022년 강원도 홍천에서 영화 '지난 여름'을 촬영한 민우와 성훈은 4년만에 마을을 방문한다.",
@@ -3760,107 +4092,137 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1223082,
-      "title": "불멸의 존재들. 이집트 박물관의 경이들",
-      "originalTitle": "Uomini e Dei - Le meraviglie del Museo Egizio",
-      "year": 2024,
-      "releaseDate": "2024-02-13",
-      "director": "Michele Mally",
-      "runtime": 87,
+      "id": 1760505,
+      "title": "올공, 2030 나라를 살리다",
+      "originalTitle": "올공, 2030 나라를 살리다",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "이영돈",
+      "runtime": 143,
       "genres": [
         "다큐멘터리"
       ],
-      "keywords": [],
-      "productionCompanies": [
-        "3D Produzioni",
-        "Nexo Digital",
-        "Sky",
-        "MiC"
+      "keywords": [
+        "politics",
+        "demonstration",
+        "conspiracy theory",
+        "election",
+        "election fraud"
       ],
-      "artSeed": false,
-      "voteAverage": 6,
-      "voteCount": 3,
-      "popularity": 1.0293,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "이 다큐멘터리는 이집트가 우리에게 남긴 가장 아름다운 고고학적 발견들 중 하나를 담은 여정이다. 바로, 파라오의 무덤을 설계하고 건설한 카의 마지막 여정이다. 영국 출신의 세계적인 배우, 제레미 아이언스가 내레이터로 변신하여 그의 여정 이야기를 들려준다. 그의 이야기는 이집트 신화, 종교, 장례 문화의 비밀스러운 세계로 우리를 안내하며, 1824년에 설립되어 2024년에 200주년을 맞이한 세계에서 가장 오래된 박물관인 이탈리아 토리노의 이집트 박물관(Museo Egizio)의 역사와 얽혀 있다. 실제로 카의 무덤은 가장 완전하고 귀중한 개인 부장품 컬렉션과 함께 이집트가 아닌 바로 이곳 토리노에서 발견되기 때문이다. 이 다큐멘터리는 나일 강을 따라 기자, 룩소르, 카르나크의 웅장한 유적지에서 왕들의 계곡, 그리고 노동자들의 마을인 데이르 엘 메디나까지 이어지는 여정이기도 하다. 아이언스가 들려주는 이야기는 이탈리아 탐험가와 고고학자들의 발자취를 따라가고, 여정은 카이로 박물관, 베를린의 이집트 박물관, 런던의 대영 박물관, 파리의 루브르 박물관 전시관으로도 이어진다.",
-      "tagline": "스크린으로 만나는 신비의 여정, 세계에서 가장 오래된 이집트 박물관의 보물들이 깨어난다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/glkllEqdM23MXXgphHu4tGQS5hy.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/wkOOSXyNNxZJB3b8P98Vn4C6xUb.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1223082",
-      "imdbId": "tt20420324",
-      "demo": false
-    },
-    {
-      "id": 1522856,
-      "title": "카를로비바리",
-      "originalTitle": "카를로비바리",
-      "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "이용석",
-      "runtime": 120,
-      "genres": [
-        "코미디",
-        "드라마"
-      ],
-      "keywords": [],
       "productionCompanies": [
-        "애드히시브"
+        "The Contents Maker"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.9857,
+      "popularity": 0.9738,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "체코 서부에 위치한 아름다운 도시, 카를로비바리. 영화감독 ‘성재’는 카를로비바리를 배경으로 대본을 완성하고, 이후 그의 작품은 각종 공모전 수상, 그리고 영화제작까지 투자를 받게 된다! 국내 세트장 촬영을 모두 마치고, 드디어 현지 촬영만을 남겨 둔 상황. 그런데… 투자받은 제작비가 모두 사라져 버린다! 투자금을 토해내지 않기 위해서는 무슨 일을 써서라도 반드시 영화를 완성해야 하는 상황! 과연 성재와 친구들은 카를로비바리를 가지 않고 무사히 영화를 완성할 수 있을까?",
-      "tagline": "\"체코로 갈 수 없다. 하지만 영화는 찍어야 한다!\"",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/kK5KblzoMJUU4DVjKouOQMrahF3.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/uQBNWozmdHyaNs05TwObBTMHTxu.jpg",
+      "overview": "2026년 6월 3일, 서울 송파구 잠실7동 제2투표소에서 투표용지 부족 사태가 벌어졌다. 유권자들은 돌아서지 않았다. 그날 밤 스레드에 올라온 한 문장 — \"지금 송파로 출발하겠다.\" 좋아요 2만. 이 한 문장이 한국 사회의 지도를 다시 그렸다. 경찰이 강제해산에 나서자 투표함은 올림픽공원 핸드볼경기장으로 이송되었고, 봉쇄가 시작됐다. 다음 날 6만명인 넘는 청년들이(경찰추산3만 3천 3백 명, 그 다음 날 3만 8천 7백 명)이 모였다. 그 중 20대가 34.2퍼센트, 30대가 24.1퍼센트 — 두 세대의 합이 58.3퍼센트였다. 그러나 정작 그들의 이재명 지지율은 20대 36퍼센트, 30대 47퍼센트에 그쳤다. 4050의 60퍼센트대에 훨씬 못 미치는, 정부에 가장 냉담한 세대였다. 이 모순이 이 다큐멘터리의 출발점이다. 청년들의 올공 선거혁명은 올공이라는 지역적 협의를 넘어 정치권에도 큰 영향을 끼치게 된다. 특히 선관위특검은 2030의 ‘부정선거 재선거 당일투표 수개표’ 부르짖음이 만들어낸 결과물이다. 대한민국 선거제도 변화의 기폭제가 된 올공혁명은 올공에서 비롯된 각종 변화를 심층 취재했다. 올공의 2030이 대한민국을 어떻게 변화시키고 있나? 이 현장과제를 영화는 충실히 수행한 것이다. 이영돈 감독은 6월 3일부터 7월 2일까지 30일 동안 잠실7동에서 올림픽공원으로 이어진 봉쇄의 광장을 현장 기록했다. 주최자도, 대표도, 깃발도 없이 오직 개인이 있었고, 오직 참정권이 있었으며, 오직 \"지키다\"라는 동사가 있었다. 그들이 지킨 것은 정권이 아니라 나라였고, 정치가 아니라 참정권이었으며, 이재명이 아니라 대한민국이었다. 이것이 6·3 선거혁명이며, 소셜 시티즌의 시간이다.",
+      "tagline": "잠실, 그곳에 자유대한민국이 있다.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/vB2rQ0kXcIBsqQpJBOMgO5gwkXo.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/vB2rQ0kXcIBsqQpJBOMgO5gwkXo.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1522856",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1760505",
       "imdbId": null,
       "demo": false
     },
     {
-      "id": 1384111,
-      "title": "트루먼의 사랑",
-      "originalTitle": "트루먼의 사랑",
+      "id": 1760178,
+      "title": "클로저",
+      "originalTitle": "클로저",
       "year": 2026,
-      "releaseDate": "2026-08-26",
-      "director": "김덕중",
-      "runtime": 147,
+      "releaseDate": "2026-09-15",
+      "director": "",
+      "runtime": null,
       "genres": [
-        "SF",
-        "로맨스"
+        "로맨스",
+        "드라마"
       ],
       "keywords": [],
-      "productionCompanies": [
-        "Pulip Film",
-        "Gozip Studio"
-      ],
+      "productionCompanies": [],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.9835,
+      "popularity": 0.9661,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "속기사 지연은 어느 날부터 세상이 멈추는 이상 현상을 목격한다. 에러가 발생하면 모두가 하던 행동을 멈추고 굳어버리지만, 트루먼인 지연만은 그 세계에 종속되지 않고 자유롭게 움직일 수 있다. 혼자가 아니라는 걸 확인하고 싶었던 지연은 또다른 트루먼을 찾아 헤매다 현식과 문성을 만난다. 셋은 이 거짓 세계의 바깥을 향해 함께 떠나려 하지만, 지연을 사이에 두고 두 남자 사이에 균열이 생기기 시작하는데…",
-      "tagline": "당신은 트루먼인가요?",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8Zb0UIeGV4mIaUbogykkts1L5oT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/lG0CFhTmsCaw3DfkTChmA8IEhNS.jpg",
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/dP7OVgA97dqpPb1682GKKnyVm7O.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/dP7OVgA97dqpPb1682GKKnyVm7O.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1384111",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1760178",
+      "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 1535944,
+      "title": "고양이를 놓아줘",
+      "originalTitle": "猫を放つ",
+      "year": 2026,
+      "releaseDate": "2026-05-02",
+      "director": "Daisuke Shigaya",
+      "runtime": 102,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "HUT Pictures"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.9634,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "음악을 하는 ‘모리’와 사진을 찍는 ‘마이코’. 지친 마음을 달래기 위해 휴직 중이지만 제대로 된 음악 작업도 하지 못한 채 시간만 보내고 있는 ‘모리’와 다르게 ‘마이코’는 개인전까지 열며 성공한 사진작가에 한 발 더 다가선다. ‘마이코’의 전시회 마지막 날, 우연히 과거에 만났던 ‘아사코’와 재회하고 과거의 기억을 떠올리는 ‘모리’. 더 이상 존재하지 않는 과거와 현재 사이에서 ‘모리’는 미처 알아보지 못했던 사랑의 흔적과 마주하게 되는데… “다시 괜찮아질 수 있을까?”",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/4dS74FTvHkBzjCdZZSwfjwt4UQZ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/e9frQsF6KycN2DuBuX3FRyzXpKS.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1535944",
+      "imdbId": "tt38454778",
+      "demo": false
+    },
+    {
+      "id": 1522680,
+      "title": "사진의 얼굴",
+      "originalTitle": "사진의 얼굴",
+      "year": 2026,
+      "releaseDate": "2026-09-02",
+      "director": "Koh Hee-young",
+      "runtime": 99,
+      "genres": [
+        "다큐멘터리"
+      ],
+      "keywords": [],
+      "productionCompanies": [],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.9601,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "\"왜 일본놈이 한국을 찍는가!” 90세 일본 포토저널리즘의 거장 구와바라 시세이. 지난 60년간 100여 차례 한국을 오간 그는 청계천 서민들의 삶부터 민주화 운동, 동두천 기지촌, 베트남 파병, 평양의 일상 등 한반도를 관통한 크고 작은 사건들을 10만 컷의 사진으로 기록해 왔다. “그는 무엇을 보았는가?” ‘남한에서의 국외 추방, 북한에서의 입국 금지 등 갖은 고난을 당하면서도 그가 끝내 놓지 못했던 생생한 얼굴들. 2026년 바로 오늘, 스크린에서 거장의 뷰파인더를 통해 본 ‘사진의 얼굴’을 만난다.",
+      "tagline": "90세 거장, 60년의 기록, 10만 컷의 사진, \"그는 한국에서 무엇을 보았는가?\"",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/53yTiV0XOIQ0tUaqToO6yUfZFNA.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/8hr5Ap5nR3UC2GlViHjniCZO4It.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1522680",
       "imdbId": null,
       "demo": false
     },
@@ -3882,7 +4244,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.9716,
+      "popularity": 0.9288,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "여배우를 꿈꾸는 효원은 고등학교를 중퇴한 은서와 함께 가출을 하여 서울역에 도착한다. 은서는 생활비를 벌기 위해 아르바이트를 하고 효원은 극단의 오디션을 보며 여배우가 되기를 꿈꾼다. 미래에 대한 각자의 희망으로 한껏 들뜬 그녀들이다. 효원은 극단의 단원이 되기 위해서 주연 배우 수연에게 연기 레슨을 받기 시작한다. 은서는 효원의 레슨비가 급해지자 허름한 식당에서 일을 하기 시작한다. 수연은 효원에게 가르친다. 연기란, 타인의 고통을 온전히 이해하고 표현하는 것이라고... 하지만 효원은 은서의 고통을 이해하지 못한다. 은서 또한 마찬가지다. 그녀들에게 삶은 의문투성이이다.",
@@ -3915,7 +4277,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.9414,
+      "popularity": 0.9135,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "시 한 편에서 비롯된 시나리오로 무성영화가 제작되었고, 그 영상을 바탕으로 하나의 정규 앨범이 만들어졌다. 획기적인 제작 방식을 통해 완성된 <산산조각>은 '하얀 기하', '까만 기하', '베개몬' 세 캐릭터의 세계를 따라가며 상실과 변화, 그리고 삶의 순환에 대한 이야기를 담아냈다.",
@@ -3931,73 +4293,103 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1746717,
-      "title": "스파이에어 저스트 라이크 디스 2025",
-      "originalTitle": "SPYAIR Just Like This 2025 -HISTORY of ANIME-",
+      "id": 1384111,
+      "title": "트루먼의 사랑",
+      "originalTitle": "트루먼의 사랑",
       "year": 2026,
       "releaseDate": "2026-08-26",
-      "director": "Yo Ohashi",
-      "runtime": 114,
+      "director": "김덕중",
+      "runtime": 147,
       "genres": [
-        "음악",
-        "다큐멘터리"
+        "SF",
+        "로맨스"
       ],
       "keywords": [],
       "productionCompanies": [
-        "Sony Music Labels"
+        "Pulip Film",
+        "Gozip Studio"
       ],
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.8724,
+      "popularity": 0.8526,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "2015년, 후지큐 하이랜드에서 처음 시작된 스파이에어의 시그니처 야외 단독 라이브 ‘JUST LIKE THIS’. 그로부터 10년 뒤 2025년, 후지산 아래에서 다시 모였다! 데뷔 15주년을 맞아 펼쳐진 이틀 간의 ‘JUST LIKE THIS 2025’ 공연 중 인기 애니메이션 OST를 총망라한 두번째 날의 무대 ‘History of ANIME’가 스크린에서 생생하게 펼쳐진다! 무대 위 멤버들의 폭발적인 에너지와 관객들이 함께 만든 현장의 열기까지! 2026년 돌아온 우리의 여름, 다시 SPYAIR를 만날 시간!",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+      "overview": "속기사 지연은 어느 날부터 세상이 멈추는 이상 현상을 목격한다. 에러가 발생하면 모두가 하던 행동을 멈추고 굳어버리지만, 트루먼인 지연만은 그 세계에 종속되지 않고 자유롭게 움직일 수 있다. 혼자가 아니라는 걸 확인하고 싶었던 지연은 또다른 트루먼을 찾아 헤매다 현식과 문성을 만난다. 셋은 이 거짓 세계의 바깥을 향해 함께 떠나려 하지만, 지연을 사이에 두고 두 남자 사이에 균열이 생기기 시작하는데…",
+      "tagline": "당신은 트루먼인가요?",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8Zb0UIeGV4mIaUbogykkts1L5oT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/lG0CFhTmsCaw3DfkTChmA8IEhNS.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1746717",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1384111",
       "imdbId": null,
       "demo": false
     },
     {
-      "id": 1501239,
-      "title": "네 얼굴로는 울 수 없어",
-      "originalTitle": "君の顔では泣けない",
-      "year": 2025,
-      "releaseDate": "2025-11-14",
-      "director": "坂下雄一郎",
-      "runtime": 124,
+      "id": 1535974,
+      "title": "착지연습",
+      "originalTitle": "착지연습",
+      "year": 2026,
+      "releaseDate": "2026-09-10",
+      "director": "마민지",
+      "runtime": 108,
       "genres": [
-        "드라마",
-        "판타지"
+        "다큐멘터리"
       ],
       "keywords": [],
       "productionCompanies": [
-        "Happinet Phantom Studios",
-        "Grasshoppa!",
-        "RIKI PROJECT"
+        "Seesaw Pictures",
+        "Shangma Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 7,
-      "voteCount": 1,
-      "popularity": 0.8472,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.8465,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "열다섯 살 여름, ‘리쿠’와 ‘마나미’는 우연한 사고로 몸이 뒤바뀐다. 하루면 끝날 줄 알았던 시간은 어느새 15년이 되고, 첫사랑과 꿈, 취업과 연애까지 가장 소중한 순간들을 서로의 삶으로 살아가게 된다. 내 얼굴로 웃을 수도, 네 얼굴로 울 수도 없었던 시간. 그리고 15년 후, 다시 찾아온 여름은 두 사람의 운명을 다시 흔들기 시작하는데….",
+      "overview": "출판계와 문단계의 성폭력 사건을 공론화한 탁은, 미투 이후 무너진 일상 속에서 다시 살아가기 위해 고군분투한다. 눈을 뜨고, 밥을 먹고, 씻고, 집 밖을 나서는 일상은 반복되는 긴장과 자신과의 싸움으로 채워진다. 그런 탁이 발 딛고 선 곳은 생존자와 연대인들이 함께 만든 예술-회복 공동체 ‘상여자의 착지술’이다. 이들은 매주 안전한 공간에 모여 간식을 나누고, 돌아온 가해자에 대한 분노를 털어놓고 함께 울고 웃는다. 또한 다양한 성폭력 생존자와 연대인을 대상으로 예술 프로그램을 기획하고 운영하며 안전한 공유지를 확장해 나간다. 하지만 이 공동체 역시 완벽하지는 않다. 기대가 어긋나고, 상처가 드러나며, 관계는 균열을 겪기도 한다. 영화는 완벽하지 않은 관계 속에서 다시 말하고, 움직이고, 연결되려 애써 온 지난 5년의 시간을 따라간다. 탁과 ‘상여자의 착지술’ 사람들은 각자의 속도로 더딘 회복의 능선을 따라 각자의 착지를 연습한다.",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/nxbVK5NzYIHyClTF1OqDvXctzow.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/jwbAupZDLO9ZRDULCVLvmdi5zsw.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/A6dQ9cWkz4LxqRaxvL8fScaUGfl.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/iyytXYPETbDZlpQiPHemzjNHUMc.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1501239",
-      "imdbId": "tt38504908",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1535974",
+      "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 1662250,
+      "title": "숨어드는 산",
+      "originalTitle": "숨어드는 산",
+      "year": 2026,
+      "releaseDate": "2026-08-12",
+      "director": "최창환",
+      "runtime": 106,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.8207,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "한국은 아직 제5공화국이다. 독재는 아직 끝나지 않았고 수많은 사람들이 산으로 숨어들었다. 대구시경 방첩대 형사인 인혁과 상준은 안보법 위반으로 수배 중인 최명훈의 처 이수경을 매일 감시하고 있다. 홀로 남은 이수경은 인터넷 댓글 알바를 하며 하루하루 살고 있다. 수경은 고달픈 삶과 남편과 자신을 돌봐주지 않은 남편의 가족에 대해 배신감이 들어 명훈의 소재를 인혁과 상준에게 알리기로 하고 순천으로 향한다. 수경에게 연민을 느끼고 있던 인혁은 토벌대의 기획수사에 반발하여 명훈을 잡는다는 조건을 걸고 대구시경과 협의하고 수경을 빼돌린다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1662250",
+      "imdbId": null,
       "demo": false
     },
     {
@@ -4019,7 +4411,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.7758,
+      "popularity": 0.819,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "5천 만원의 행운을 안겨준 꿈. 세탁기 속으로 사라진 내 눈에만 보이는 아이. 야구를 그만두고 인생의 막다른 길에 선 백수 '건우'와 갈 곳 없이 방황하던 사춘기 소녀 '미나'는 꿈속에서만 만날 수 있는 아이 '요섭'을 따라 현실과 묘하게 닮은 이상한 세계로 발을 들인다.",
@@ -4031,6 +4423,107 @@ window.KINOSIS_CATALOG = {
       "providers": [],
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1208274",
+      "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 1340331,
+      "title": "환희의 얼굴",
+      "originalTitle": "환희의 얼굴",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "이제한",
+      "runtime": 126,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Mareummo Film",
+        "CS Pictures"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.8151,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "여기 네 개의 이야기가 있고, 이야기 안에는 환희가 있다. 환희는 그 이야기 안에서 동정과 관심을 갈구하기도 하고, 자신이 머물 새로운 장소를 염원하기도 하며, 자신도 믿을 수 없는 배신을 저지르기도 한다. 그녀는 때론 냉정하고, 어떨 땐 희생적이며, 누군가에겐 사랑도 베푼다.",
+      "tagline": "오해와 이해로 만들어진 매일의 표정들",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/sNNmqlO0MIYM2yrZRUiYhwj3n51.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/v64CjRb8dhyJ2SAJNdidXeGvkIW.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1340331",
+      "imdbId": "tt38129020",
+      "demo": false
+    },
+    {
+      "id": 1746717,
+      "title": "스파이에어 저스트 라이크 디스 2025",
+      "originalTitle": "SPYAIR Just Like This 2025 -HISTORY of ANIME-",
+      "year": 2026,
+      "releaseDate": "2026-08-26",
+      "director": "Yo Ohashi",
+      "runtime": 114,
+      "genres": [
+        "음악",
+        "다큐멘터리"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Sony Music Labels"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.8003,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "2015년, 후지큐 하이랜드에서 처음 시작된 스파이에어의 시그니처 야외 단독 라이브 ‘JUST LIKE THIS’. 그로부터 10년 뒤 2025년, 후지산 아래에서 다시 모였다! 데뷔 15주년을 맞아 펼쳐진 이틀 간의 ‘JUST LIKE THIS 2025’ 공연 중 인기 애니메이션 OST를 총망라한 두번째 날의 무대 ‘History of ANIME’가 스크린에서 생생하게 펼쳐진다! 무대 위 멤버들의 폭발적인 에너지와 관객들이 함께 만든 현장의 열기까지! 2026년 돌아온 우리의 여름, 다시 SPYAIR를 만날 시간!",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w780/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1746717",
+      "imdbId": null,
+      "demo": false
+    },
+    {
+      "id": 1425837,
+      "title": "캐리어를 끄는 소녀",
+      "originalTitle": "캐리어를 끄는 소녀",
+      "year": 2026,
+      "releaseDate": "2026-09-02",
+      "director": "윤심경",
+      "runtime": 107,
+      "genres": [
+        "드라마"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "about Film"
+      ],
+      "artSeed": false,
+      "voteAverage": 0,
+      "voteCount": 0,
+      "popularity": 0.7862,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "양부모에게 버려진 15살 ‘영선’은 또래 ‘수아’의 테니스 훈련 파트너로 수아네 집에 머물게 된다. 갈 곳이 없던 ‘영선’은 이 집의 일원이 되고 싶다는 마음을 품고, 조용하지만 치열하게 ‘수아’네 가족 안으로 스며들기 위해 애쓴다. 하지만 각자의 결핍을 안고 있는 그들 안으로 들어가기는 쉽지 않은데…",
+      "tagline": "삶의 코트 위 가장 치열한 인생 랠리",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/owXQAokJPjvM2FKX4ctAfKpCUhD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/9eMfuaPu5gE2obsmhP028ukmsAi.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1425837",
       "imdbId": null,
       "demo": false
     },
@@ -4060,7 +4553,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 0,
       "voteCount": 0,
-      "popularity": 0.7484,
+      "popularity": 0.7488,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "밴드 터치드(TOUCHED)의 찬란했던 1년의 기록이 스크린에 펼쳐진다! 2026년 1월 티켓링크 라이브 아레나를 뜨겁게 물들였던 <터치드(TOUCHED) 단독 콘서트 'HIGHLIGHT IV'>가 영화로 팬들의 곁을 다시 찾는다. 폭발적인 가창력과 파워풀한 연주, 객석을 압도하는 강렬한 퍼포먼스가 담긴 공연 실황은 물론, 최초로 공개되는 콘서트 기획 회의부터 합주실과 리허설 현장 메이킹, 그리고 멤버들의 진솔한 인터뷰까지 더해져 공연의 감동을 더욱 깊게 만든다. 그날의 전율을 함께했던 이들에게는 현장의 열기를 다시 떠올리는 시간이 되고 아쉽게 함께하지 못했던 이들에게는 그 자리에 함께한 듯한 생생한 몰입감을 선사할 예정이다.",
@@ -4076,290 +4569,61 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1340331,
-      "title": "환희의 얼굴",
-      "originalTitle": "환희의 얼굴",
+      "id": 1108427,
+      "title": "모아나",
+      "originalTitle": "Moana",
       "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "이제한",
-      "runtime": 126,
+      "releaseDate": "2026-07-08",
+      "director": "토마스 카일",
+      "runtime": 115,
       "genres": [
-        "드라마"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Mareummo Film",
-        "CS Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.7095,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "여기 네 개의 이야기가 있고, 이야기 안에는 환희가 있다. 환희는 그 이야기 안에서 동정과 관심을 갈구하기도 하고, 자신이 머물 새로운 장소를 염원하기도 하며, 자신도 믿을 수 없는 배신을 저지르기도 한다. 그녀는 때론 냉정하고, 어떨 땐 희생적이며, 누군가에겐 사랑도 베푼다.",
-      "tagline": "오해와 이해로 만들어진 매일의 표정들",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/sNNmqlO0MIYM2yrZRUiYhwj3n51.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/v64CjRb8dhyJ2SAJNdidXeGvkIW.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1340331",
-      "imdbId": "tt38129020",
-      "demo": false
-    },
-    {
-      "id": 1662250,
-      "title": "숨어드는 산",
-      "originalTitle": "숨어드는 산",
-      "year": 2026,
-      "releaseDate": "2026-08-12",
-      "director": "최창환",
-      "runtime": 106,
-      "genres": [
-        "드라마"
-      ],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.7028,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "한국은 아직 제5공화국이다. 독재는 아직 끝나지 않았고 수많은 사람들이 산으로 숨어들었다. 대구시경 방첩대 형사인 인혁과 상준은 안보법 위반으로 수배 중인 최명훈의 처 이수경을 매일 감시하고 있다. 홀로 남은 이수경은 인터넷 댓글 알바를 하며 하루하루 살고 있다. 수경은 고달픈 삶과 남편과 자신을 돌봐주지 않은 남편의 가족에 대해 배신감이 들어 명훈의 소재를 인혁과 상준에게 알리기로 하고 순천으로 향한다. 수경에게 연민을 느끼고 있던 인혁은 토벌대의 기획수사에 반발하여 명훈을 잡는다는 조건을 걸고 대구시경과 협의하고 수경을 빼돌린다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1662250",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1741921,
-      "title": "Endless Ride: TOMORROW X TOGETHER VR Concert",
-      "originalTitle": "Endless Ride: TOMORROW X TOGETHER VR Concert",
-      "year": 2026,
-      "releaseDate": "2026-07-31",
-      "director": "",
-      "runtime": 60,
-      "genres": [],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.6672,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/uvagwUTiF2QX7gTIblZKlglMrRA.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/7hpE3D1m8kCVKX47V4IWYmEl7OG.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1741921",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1158941,
-      "title": "콘크리트 녹색섬",
-      "originalTitle": "콘크리트 녹색섬",
-      "year": 2026,
-      "releaseDate": "2026-08-19",
-      "director": "이성민",
-      "runtime": 104,
-      "genres": [
-        "다큐멘터리"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Studio Siot"
-      ],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.6459,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "개포주공 키즈인 ‘나’는 어린 시절 추억이 담긴 아파트가 재개발로 사라진다는 소식을 듣고 그곳에 얽힌 사람들의 이야기를 기록하기 시작한다. 모두가 아파트 단지 속 녹색섬을 기억하고 있음을 알게 되고 나무와 그 안에 담긴 시간을 지키고자 하는데⋯",
-      "tagline": "개포주공 1단지, 22그루의 나무가 남아있다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/pnZy0mRf0c0PAqBTFdquK4zWeNY.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/sC9x3dMq0ZSUXrcty3iWISU4ddG.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1158941",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1752201,
-      "title": "파뿌리 24: 좀비 아일랜드",
-      "originalTitle": "파뿌리 24: 좀비 아일랜드",
-      "year": 2026,
-      "releaseDate": "2026-08-22",
-      "director": "Seo Ji-won",
-      "runtime": 89,
-      "genres": [
-        "공포"
+        "가족",
+        "판타지",
+        "코미디",
+        "모험"
       ],
       "keywords": [
-        "based on web series"
+        "sailboat",
+        "sea",
+        "friendship",
+        "ocean",
+        "leaving one's family",
+        "musical",
+        "remake",
+        "curse",
+        "explorer",
+        "based on movie",
+        "demigod",
+        "polynesia",
+        "sea adventure",
+        "giant crab",
+        "animal sidekick",
+        "seafarer",
+        "live action remake",
+        "female explorer"
       ],
       "productionCompanies": [
-        "Sandbox Network Inc."
+        "Walt Disney Pictures",
+        "Seven Bucks Productions",
+        "Flynn Picture Company",
+        "5000 Broadway Productions"
       ],
       "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.5711,
+      "voteAverage": 6.792,
+      "voteCount": 406,
+      "popularity": 260.8674,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "1,000만 조회수 달성 리벤지!! 파뿌리 무인도 편이 스크린으로 돌아왔다! '무인도 리벤지 챌린지' 촬영을 위해 무인도에 입도한 파뿌리 완전체 (강호이, 진렬이, 노랭이, 신짜오, 짱배)! \"근데 얘들아, 이 섬... 뭔가 이상한데?!\" 단순 예능 촬영으로 왔던 그 무인도는 과거 정체불명의 바이러스가 퍼져 수많은 사람들이 좀비로 변했던 섬이었다! 대한민국 정부가 즉각 봉쇄하고 국가기밀로 숨겨온 광기 어린 과학자의 '좀비 아일랜드'! 좀비로 가득한 고립된 섬에서 펼쳐지는 좀비 리얼 추리 서바이벌! 과연 파뿌리 멤버들은 24시간 안에 숨겨진 음모를 파헤치고, 좀비의 위협을 뚫고 무사히 탈출할 수 있을 것인가!",
-      "tagline": "희망은 단 하나, 백신",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/eWUxAk8lBOB5SmvcjCJE1ZbPlXq.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/eWUxAk8lBOB5SmvcjCJE1ZbPlXq.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
+      "overview": "끝없는 바다 너머 새로운 세상을 꿈꾸던 모투누이 섬의 소녀 모아나. 어느 날 모투누이에 깊은 어둠이 드리우자, 모아나는 저주에 빠진 섬을 구하기 위해 전설의 영웅 마우이를 찾아, 그와 함께 운명을 건 항해에 나선다. 눈부신 파도, 거대한 모험, 그리고 운명을 바꿀 항해! 오감을 깨울 환상적인 바다가 생생하게 펼쳐진다!",
+      "tagline": "더 생생하게 펼쳐질 운명적 항해",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/etJXeoQovaAcQD8gG0vebtoIlMH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dmwb15BCkqjoXA9dXIsoY2Hn10F.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/dmwb15BCkqjoXA9dXIsoY2Hn10F.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/y3pH8UJapy8JbOafvRJuOkANSc7.png",
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1752201",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1739995,
-      "title": "Camphor Tiger Chase",
-      "originalTitle": "Camphor Tiger Chase",
-      "year": 2026,
-      "releaseDate": "2026-07-29",
-      "director": "Li Shuen Lam",
-      "runtime": 30,
-      "genres": [],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.5537,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": null,
-      "backdropUrl": null,
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1739995",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1753658,
-      "title": "강령사바",
-      "originalTitle": "강령사바",
-      "year": 2026,
-      "releaseDate": "2026-08-12",
-      "director": "",
-      "runtime": null,
-      "genres": [],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.4884,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "‘강령사바’는 과거 강령술로 단짝 친구를 혼수상태에 빠뜨린 초등학생 세연의 이야기에서 시작한다. 전학 간 학교에서 새로운 친구들을 만난 세연은 폐수련원을 찾았다가 다시 금기의 강령술을 시도하게 되고, 이후 현실과 환각의 경계가 무너지기 시작한다.  아이들의 호기심으로 시작된 의식은 연이은 희생으로 이어진다. 학교와 폐수련원이라는 익숙한 공간은 폐쇄적인 공포의 무대로 변하고, 무엇이 현실이고 악귀가 만들어낸 환영인지 알 수 없는 상황이 펼쳐진다.  특히 폐수련원은 악귀와 맞서야 하는 장소인 동시에 세연이 과거의 죄책감과 다시 마주하는 공간으로 그려진다. 푸른 조명과 짙은 그림자, 좁은 실내와 풀숲 등을 활용해 제한된 시야 속에서 악귀의 정체와 사건의 실체를 쫓게 한다.  ‘강령사바’는 초자연적인 공포뿐 아니라 살아남은 세연의 죄책감과 고립에도 초점을 맞춘다. 자신이 겪은 일을 아무도 믿어주지 않자 세연은 결국 다른 사람과 관계를 맺지 않는 삶을 택한다.  금기를 어긴 대가와 친구들의 희생, 진실을 증명할 수 없는 무력감을 한 인물의 서사에 담아내면서 강령술을 소재로 한 오컬트 공포에 생존자의 심리적 후유증을 더했다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/hVhyktaD1Z4VCWvxgBIw3uqTJRD.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/hVhyktaD1Z4VCWvxgBIw3uqTJRD.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/1753658/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1753658",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1752166,
-      "title": "IN KOREA",
-      "originalTitle": "IN KOREA",
-      "year": 2026,
-      "releaseDate": "2026-08-19",
-      "director": "Lim Hee-je",
-      "runtime": 4,
-      "genres": [],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.486,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/dFQgBeleun0WtOzsMOWjBMQhiTn.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w780/dFQgBeleun0WtOzsMOWjBMQhiTn.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1752166",
-      "imdbId": null,
-      "demo": false
-    },
-    {
-      "id": 1251630,
-      "title": "담요를 입은 사람",
-      "originalTitle": "담요를 입은 사람",
-      "year": 2026,
-      "releaseDate": "2026-09-09",
-      "director": "박정미",
-      "runtime": 117,
-      "genres": [
-        "다큐멘터리"
-      ],
-      "keywords": [],
-      "productionCompanies": [],
-      "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 0.4603,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "“오늘부터 돈 없이 살아보겠습니다!” 런던 한복판에서 생계의 벼랑 끝에 선 정미, 돈이라는 보호막을 벗어던지고, 두려움의 한가운데로 걸어 들어간다. 빈 건물에서 잠들고, 버려진 음식으로 배를 채우며, 숱한 위험 속에서 만난 기적 같은 연결들, 그 끝에서 마침내 발견한 진짜 살아갈 이유! 떠도는 삶을 끝내고 마음이 머물 수 있는 ‘집’으로의 여정이 지금 시작된다!",
-      "tagline": "어디에 있든 나는 늘 집에 있다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/h7v2FBQMnUaBVPh9p6uOc2Alwpl.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/dNUla5Gme5agDWMyWmY4G7e8RXj.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1251630",
-      "imdbId": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
+      "imdbId": "tt27419466",
       "demo": false
     },
     {
@@ -4367,11 +4631,12 @@ window.KINOSIS_CATALOG = {
       "title": "더 러너",
       "originalTitle": "The Runner",
       "year": 2026,
-      "releaseDate": "2026-09-17",
+      "releaseDate": "2026-09-03",
       "director": "케빈 맥도널드",
       "runtime": 86,
       "genres": [
-        "스릴러"
+        "스릴러",
+        "액션"
       ],
       "keywords": [
         "mother",
@@ -4379,85 +4644,158 @@ window.KINOSIS_CATALOG = {
         "kidnapping",
         "son",
         "child kidnapping",
+        "nervous",
         "abduction",
         "child rescue",
         "mother son relationship",
+        "anxious",
         "child abduction",
+        "serious",
         "attorney",
-        "intense"
+        "dramatic",
+        "suspenseful"
       ],
       "productionCompanies": [
         "Amazon MGM Studios",
         "Rockwood Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 0,
-      "voteCount": 0,
-      "popularity": 8.2741,
+      "voteAverage": 6.725,
+      "voteCount": 353,
+      "popularity": 284.4272,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "심리 스릴러 \"더 러너\". 런던의 유능한 변호사 마이아 마틴은 아침 조깅 중 아들이 납치됐다는 전화 한 통을 받고 평온했던 삶이 산산조각 난다. 아들을 구하기 위한 유일한 조건은 멈추지 말고 달릴 것, 냉혹한 명령에 복종할 것, 그리고 아무도 믿지 말 것. 1분 1초마다 자식을 구하려는 어머니의 한계가 시험대에 오른다.",
+      "overview": "런던의 유능한 변호사 마이아 마틴은 아침 조깅 중 아들이 납치됐다는 전화 한 통을 받고 평온했던 삶이 산산조각 난다. 아들을 구하기 위한 유일한 조건은 멈추지 말고 달릴 것, 냉혹한 명령에 복종할 것, 그리고 아무도 믿지 말 것. 1분 1초마다 자식을 구하려는 어머니의 한계가 시험대에 오른다.",
       "tagline": "\"멈추면, 아이를 잃는다\"",
       "posterUrl": "https://image.tmdb.org/t/p/w500/mpZURuhnfMHT4cF2f6Rl24tg0yG.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
       "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
       "logoUrl": "https://image.tmdb.org/t/p/original/pp7728TSDWCBUOTYSLHnSprv530.png",
-      "providers": [],
-      "watchLink": null,
+      "providers": [
+        {
+          "id": 119,
+          "name": "Amazon Prime Video",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1386315-the-runner/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/1386315",
       "imdbId": "tt34564059",
       "demo": false
     },
     {
-      "id": 860508,
-      "title": "위스퍼맨",
-      "originalTitle": "The Whisper Man",
+      "id": 969681,
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "originalTitle": "Spider-Man: Brand New Day",
       "year": 2026,
-      "releaseDate": "2026-08-27",
-      "director": "James Ashcroft",
-      "runtime": 114,
+      "releaseDate": "2026-07-29",
+      "director": "데스틴 대니얼 크레턴",
+      "runtime": 145,
       "genres": [
-        "범죄",
-        "드라마",
-        "스릴러"
+        "SF",
+        "액션",
+        "모험"
       ],
       "keywords": [
-        "based on novel or book",
-        "serial killer",
-        "father son relationship"
+        "mind control",
+        "new york city",
+        "hero",
+        "mutation",
+        "secret identity",
+        "superhero",
+        "spider",
+        "villain",
+        "based on comic",
+        "sequel",
+        "transhumanism",
+        "super power",
+        "masked vigilante",
+        "spider web",
+        "aftercreditsstinger",
+        "marvel cinematic universe (mcu)",
+        "masked superhero",
+        "fight for justice",
+        "genetic mutation"
       ],
       "productionCompanies": [
-        "AGBO"
+        "Marvel Studios",
+        "Columbia Pictures",
+        "Pascal Pictures",
+        "TSG Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 6.4,
-      "voteCount": 278,
-      "popularity": 233.5012,
+      "voteAverage": 7.861,
+      "voteCount": 2543,
+      "popularity": 839.8698,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "아내를 잃은 범죄 소설가. 8살 아들이 납치되자 오랫동안 소원했던 아버지를 찾아가 도움을 청한다. 전직 형사인 아버지와 함께 아들의 행방을 쫓던 중, 수십 년 전 유죄 판결을 받은 연쇄 살인마 '위스퍼맨'과의 연결 고리를 발견한다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/dQLxR7i2A3jiKHuQMC8NKdvtgAZ.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/8XLaNOl48ZXOy1x0a9CPD21fsfO.png",
+      "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "tagline": "스파이더맨의 새로운 날을 확인하라!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/969681",
+      "imdbId": "tt22084616",
+      "demo": false
+    },
+    {
+      "id": 1137844,
+      "title": "'메이데이' - Mayday",
+      "originalTitle": "Mayday",
+      "year": 2026,
+      "releaseDate": "2026-09-03",
+      "director": "조나단 골드스테인",
+      "runtime": 111,
+      "genres": [
+        "액션",
+        "코미디"
+      ],
+      "keywords": [
+        "cold war",
+        "fighter pilot",
+        "u.s. navy",
+        "behind enemy lines",
+        "ex kgb",
+        "buddy comedy"
+      ],
+      "productionCompanies": [
+        "Skydance Media",
+        "Maximum Effort",
+        "GoldDay"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.955,
+      "voteCount": 346,
+      "popularity": 237.6288,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "냉전 시대 극비 임무 중 적진 한복판에 고립된 미 해군 조종사가 살아남을 유일한 방법은 전직 KGB 요원과 손을 잡는 것뿐이다.",
+      "tagline": "생존을 위한 살벌한 우정.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/zlDomMaVxMTydLj1pwBhPvEqC2q.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/bWWkJ8ik9U96KMDktgLE9UMySYG.png",
       "providers": [
         {
-          "id": 8,
-          "name": "Netflix",
+          "id": 350,
+          "name": "Apple TV",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/9icYBfYFcwgCbky5VdGUIKJ4C5i.png"
         },
         {
-          "id": 1796,
-          "name": "Netflix Standard with Ads",
+          "id": 1883,
+          "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         }
       ],
-      "watchLink": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/860508",
-      "imdbId": "tt11561116",
+      "watchLink": "https://www.themoviedb.org/movie/1137844-mayday/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1137844",
+      "imdbId": "tt28014327",
       "demo": false
     },
     {
@@ -4495,17 +4833,17 @@ window.KINOSIS_CATALOG = {
         "Warner Bros. Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 7.815,
-      "voteCount": 92,
-      "popularity": 246.8996,
+      "voteAverage": 7.66,
+      "voteCount": 265,
+      "popularity": 643.9483,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/lMUII956Ti1A6uKolpghZVlBYbV.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/7GOW6jod9lLurW5utokAatxg7ql.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7GOW6jod9lLurW5utokAatxg7ql.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/g5VgGbno3iPkc95KZI0agJVf5Rs.png",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/l9mFW9HQnAZ4r1ChZJHoOT3jaal.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
       "providers": [],
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/1204680",
@@ -4536,15 +4874,15 @@ window.KINOSIS_CATALOG = {
         "MadRiver Pictures"
       ],
       "artSeed": false,
-      "voteAverage": 6.344,
-      "voteCount": 257,
-      "popularity": 412.2288,
+      "voteAverage": 6.359,
+      "voteCount": 334,
+      "popularity": 394.5615,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "억만장자인 상사의 살해 현장을 목격하고 그 죄를 뒤집어쓴 콜 리드는 상사의 죽음을 복수하기 위해 홀로 화물선에 올라타지만, 그곳에서 국제적인 음모를 발견하게 된다.",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/pu2VxGlpGwffOx292w18b1tv96j.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qDa0fqDqIBCovRp975RvtGPcuN3.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/e2QAGrEmbpmZpMymDRkDisJkvg9.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
@@ -4554,60 +4892,186 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1516698,
-      "title": "라스트 선라이즈",
-      "originalTitle": "The Last Sunrise",
+      "id": 1433367,
+      "title": "원나잇 온리",
+      "originalTitle": "One Night Only",
       "year": 2026,
-      "releaseDate": "2026-08-26",
-      "director": "칼슨 영",
-      "runtime": 107,
+      "releaseDate": "2026-07-28",
+      "director": "윌 글럭",
+      "runtime": 103,
       "genres": [
-        "로맨스",
-        "드라마"
+        "코미디",
+        "로맨스"
       ],
       "keywords": [
-        "spain",
-        "based on novel or book",
-        "tension",
-        "summer",
-        "woman director",
-        "chronic illness",
-        "appreciative",
-        "audacious",
-        "comforting",
+        "new york city",
+        "romcom",
+        "meet cute",
+        "searching for love",
+        "single man",
+        "single woman",
+        "lyrical",
+        "strangers",
+        "lighthearted",
+        "romantic",
         "enthusiastic"
       ],
       "productionCompanies": [
-        "Amazon MGM Studios",
-        "Ethea Entertainment",
-        "Luber-Roklin Entertainment",
-        "Pitt Street Productions",
-        "Aquarius Films",
-        "The Last Sunrise"
+        "Universal Pictures",
+        "Olive Bridge Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 6.603,
-      "voteCount": 92,
-      "popularity": 318.6222,
+      "voteAverage": 6.888,
+      "voteCount": 85,
+      "popularity": 71.2824,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "인기 소설을 원작으로 한 영화 \"라스트 선라이즈\". 지병을 앓고 있는 대학생 라이는 엄마와 함께 마요르카로 여름휴가를 떠난다. 그곳에서 훌리안을 만나 예기치 못한 사랑에 빠지고 비로소 현재를 살아가는 법을 배우기 시작하는 라이. 하지만 여름이 끝나기 전, 지병이 악화하고 오랫동안 묻혀 있던 집안의 비밀이 드러나며 모든 것이 송두리째 흔들리기 시작한다.",
+      "overview": "",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/szN4VQ9eNhpWBHyq8MPrXQPYeNO.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/zFCWfU2ViMIm38G1W8UsnSpqmWn.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/5lB7yPaRhJHQ9dx7AnvPUi0GZDU.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/mU9S6Ow00Jbg3mXDZBrwdYEghXt.png",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/46q8z1TbbVcF8uhRHsvt5s0h2SH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/bpll0oy6gHwLvypfFNfT2QI4VkT.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1433367",
+      "imdbId": "tt37853455",
+      "demo": false
+    },
+    {
+      "id": 1440098,
+      "title": "Enfrentados: Marfil",
+      "originalTitle": "Enfrentados: Marfil",
+      "year": 2026,
+      "releaseDate": "2026-09-09",
+      "director": "Óscar Pedraza",
+      "runtime": 104,
+      "genres": [
+        "로맨스",
+        "드라마",
+        "스릴러"
+      ],
+      "keywords": [
+        "based on novel or book",
+        "kidnapping",
+        "bodyguard",
+        "family secrets",
+        "sexual tension",
+        "dark romance",
+        "romantic drama",
+        "thriller"
+      ],
+      "productionCompanies": [
+        "Pokeepsie Films"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.923,
+      "voteCount": 13,
+      "popularity": 17.8363,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/umlft1ztFbUcnHf960pXJocjpdv.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/oZkk6B15Ak4uTa2aVrJaDmSk3Xl.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1440098",
+      "imdbId": "tt36073210",
+      "demo": false
+    },
+    {
+      "id": 1522689,
+      "title": "내가 왜 또 결혼했을까?",
+      "originalTitle": "Why Did I Get Married Again?",
+      "year": 2026,
+      "releaseDate": "2026-09-08",
+      "director": "타일러 페리",
+      "runtime": 112,
+      "genres": [
+        "로맨스",
+        "코미디",
+        "드라마"
+      ],
+      "keywords": [
+        "sequel"
+      ],
+      "productionCompanies": [
+        "Tyler Perry Studios"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.2,
+      "voteCount": 4,
+      "popularity": 2.9048,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "마커스와 앤절라의 딸 결혼식을 위해 커플들이 다시 모인다. 오래된 갈등과 새로운 사건이 이어지는 가운데, 이들은 되묻는다. '우린 왜 또 결혼했을까?'",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/rwaxLuOkJ5mMvJU5juNaPcKADOW.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/lJYniNRM2i9wXnfWVHOB4PxygFZ.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1522689",
+      "imdbId": "tt38061210",
+      "demo": false
+    },
+    {
+      "id": 860508,
+      "title": "위스퍼맨",
+      "originalTitle": "The Whisper Man",
+      "year": 2026,
+      "releaseDate": "2026-08-27",
+      "director": "James Ashcroft",
+      "runtime": 114,
+      "genres": [
+        "범죄",
+        "드라마",
+        "스릴러"
+      ],
+      "keywords": [
+        "based on novel or book",
+        "serial killer",
+        "writer",
+        "abduction",
+        "father son relationship",
+        "retired detective"
+      ],
+      "productionCompanies": [
+        "AGBO"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.789,
+      "voteCount": 551,
+      "popularity": 118.3923,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "아내를 잃은 범죄 소설가. 8살 아들이 납치되자 오랫동안 소원했던 아버지를 찾아가 도움을 청한다. 전직 형사인 아버지와 함께 아들의 행방을 쫓던 중, 수십 년 전 유죄 판결을 받은 연쇄 살인마 '위스퍼맨'과의 연결 고리를 발견한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/dQLxR7i2A3jiKHuQMC8NKdvtgAZ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
       "providers": [
         {
-          "id": 119,
-          "name": "Amazon Prime Video",
+          "id": 8,
+          "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
+        },
+        {
+          "id": 1796,
+          "name": "Netflix Standard with Ads",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         }
       ],
-      "watchLink": "https://www.themoviedb.org/movie/1516698-the-last-sunrise/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1516698",
-      "imdbId": "tt37654096",
+      "watchLink": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/860508",
+      "imdbId": "tt11561116",
       "demo": false
     },
     {
@@ -4657,15 +5121,15 @@ window.KINOSIS_CATALOG = {
         "Pixar"
       ],
       "artSeed": false,
-      "voteAverage": 8.317,
-      "voteCount": 1896,
-      "popularity": 205.144,
+      "voteAverage": 8.35,
+      "voteCount": 2048,
+      "popularity": 163.306,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "“시대는 변해도, 친구들은 영원하다\" 스마트 태블릿 ’릴리패드'의 등장으로 온라인 세계에 모여들게 된 아이들. 친구들과 어울리기 위해 ‘보니’에게도 ‘릴리패드’가 생기게 되고, 장난감들은 점점 일상에서 밀려나게 된다. '제시'는 이 위기를 해결하기 위해 자신만의 길을 떠났던 '우디'에게 도움을 요청하게 되는데… 다시 뭉친 '제시', '우디', '버즈'는 '보니'의 마음을 되돌리고 ‘보니’의 진정한 친구를 찾아줄 수 있을까? \"장난감 VS 전자기기! 새로운 세상 속, 멈춰있던 장난감들이 다시 움직이기 시작한다!\"",
       "tagline": "장남감의 시대는 끝났다?!",
       "posterUrl": "https://image.tmdb.org/t/p/w500/AqrJx3nVVMlKWXGaPIH32GzjEJA.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/8sSKdEmlmqF4kJUd28SqthXC4yZ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/qjTqY5coNiz6sVtPng40IzltsoN.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
@@ -4675,355 +5139,45 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 1288059,
-      "title": "아이 원트 유어 섹스",
-      "originalTitle": "I Want Your Sex",
+      "id": 1101412,
+      "title": "폴 2: 데드포인트",
+      "originalTitle": "Fall 2: Deadpoint",
       "year": 2026,
-      "releaseDate": "2026-07-29",
-      "director": "그렉 아라키",
-      "runtime": 90,
+      "releaseDate": "2026-09-01",
+      "director": "Peter Spierig",
+      "runtime": 98,
       "genres": [
-        "코미디"
+        "스릴러"
       ],
       "keywords": [
-        "eroticism",
-        "artist",
-        "satire",
-        "muse",
-        "sexual harassment",
-        "sexual art",
-        "mansion",
-        "los angeles, california",
-        "art gallery",
-        "masturbation",
-        "sexual desire",
-        "threesome",
-        "dildo",
-        "missing person",
-        "bdsm",
-        "lgbt",
-        "police interrogation",
-        "generation z",
-        "independent film",
-        "cliché"
-      ],
-      "productionCompanies": [
-        "Black Bear Pictures",
-        "Desperate Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 6.2,
-      "voteCount": 31,
-      "popularity": 58.1643,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/pR7SIX3AwqdoD96OI44oLG98e7g.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/xKPKNJI93LO2QPlIMLM8mthlCPi.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1288059",
-      "imdbId": "tt32332915",
-      "demo": false
-    },
-    {
-      "id": 1315772,
-      "title": "미니언즈 & 몬스터즈",
-      "originalTitle": "Minions & Monsters",
-      "year": 2026,
-      "releaseDate": "2026-06-24",
-      "director": "피에르 코팽",
-      "runtime": 90,
-      "genres": [
-        "모험",
-        "애니메이션",
-        "코미디",
-        "가족",
-        "판타지"
-      ],
-      "keywords": [
-        "magic",
         "sequel",
-        "alien",
-        "prequel",
-        "hollywood",
-        "spin off",
-        "henchman",
-        "filmmaking",
-        "silent film",
-        "framing device",
-        "duringcreditsstinger",
-        "women's suffrage",
-        "1920s",
-        "humanoid robot",
-        "3d animation",
-        "monsters",
-        "hilarious",
-        "vibrant",
-        "early sound film"
+        "rock climbing",
+        "sport climbing",
+        "climb",
+        "mountain climber"
       ],
       "productionCompanies": [
-        "Universal Pictures",
-        "Illumination"
+        "Tea Shop Productions",
+        "Capstone Pictures",
+        "Flawless Production",
+        "Cousin Jones"
       ],
       "artSeed": false,
-      "voteAverage": 7.6,
-      "voteCount": 977,
-      "popularity": 183.0322,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "영화 배우로 성공했던 미니언즈들은 모든 것을 잃고 뜻하지 않게 몬스터를 세상에 소환한다. 예상치 못한 대혼란이 벌어지자 미니언즈들은 사태를 해결하기 위해 힘을 모은다. 새롭게 등장한 캐릭터들과 함께 좌충우돌 모험이 이어진다. 지구를 구하기 위한 미니언즈들의 유쾌한 작전이 시작된다.",
-      "tagline": "괴물 신인 등-장!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/8uvgppq5obV06X9X8SogQiU79Kd.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kkcwhgSFd81QDlXo8ytrpHPQjhy.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
-      "imdbId": "tt32890033",
-      "demo": false
-    },
-    {
-      "id": 1631807,
-      "title": "더 시크릿 우먼",
-      "originalTitle": "Den hemmelige kvinde",
-      "year": 2026,
-      "releaseDate": "2026-08-28",
-      "director": "바르바라 톱쇠로텐보르",
-      "runtime": 119,
-      "genres": [
-        "드라마",
-        "스릴러",
-        "미스터리"
-      ],
-      "keywords": [
-        "based on novel or book",
-        "psychological",
-        "ominous"
-      ],
-      "productionCompanies": [
-        "SF Studios"
-      ],
-      "artSeed": false,
-      "voteAverage": 6.333,
-      "voteCount": 42,
-      "popularity": 78.4959,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "기억을 잃은 여성. 자신에게 가족과 초대형 해운 기업이 있다는 것을 알게 된다. 부유하고 모든 것이 완벽해 보이는 과거로 돌아가는 그녀는 이제 자신이 그곳을 떠나온 이유를 알아나간다. 노르웨이의 한 섬에서 작은 카페를 운영하며 파트너 요아킴과 조용히 살아가는 루이즈 안데르센. 그러던 어느 여름날, 낯선 방문객이 나타나 그녀는 루이즈가 아니라 3년 전 덴마크에서 실종된 헬레네 쇠데르베르라고 주장하고, 평화롭던 두 사람의 삶에 파문이 인다. 게다가 그녀에겐 남편뿐 아니라 어린 아들까지 있다는 것을 알게 되는데. 가족을 만나고 실종되던 밤의 진상을 밝히려는 루이즈는 요아킴과 익숙한 생활을 뒤로하고 떠난다. 그리고 헬레네가 되어 미스터리를 깊이 파헤쳐 가던 그녀는 자신의 인생을 송두리째 뒤흔들 진실을 알게 된다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/AcalurfNjQTiLIzICTwtAq86tWC.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ziOpmyZufqM7IusfThzBr1E9wqa.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 8,
-          "name": "Netflix",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
-        },
-        {
-          "id": 1796,
-          "name": "Netflix Standard with Ads",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1631807",
-      "imdbId": "tt37275992",
-      "demo": false
-    },
-    {
-      "id": 87513,
-      "title": "모터 시티",
-      "originalTitle": "Motor City",
-      "year": 2026,
-      "releaseDate": "2026-07-23",
-      "director": "Potsy Ponciroli",
-      "runtime": 104,
-      "genres": [
-        "액션",
-        "스릴러",
-        "범죄"
-      ],
-      "keywords": [
-        "gangster",
-        "1970s",
-        "revenge",
-        "detroit, michigan",
-        "joyous",
-        "awestruck"
-      ],
-      "productionCompanies": [
-        "Stampede Ventures",
-        "Gramercy Park Media",
-        "Peachtree Media Partners",
-        "Ace of Spades",
-        "Syndicate Entertainment",
-        "Third Man Records",
-        "Black Bear Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 6.302,
-      "voteCount": 91,
-      "popularity": 91.561,
+      "voteAverage": 6.773,
+      "voteCount": 22,
+      "popularity": 91.8535,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/dx2dblJL3GAKcXXXPjC2FSaMTWW.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/l7asYmqOad01F2u0oCMM8nQjoEP.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yBDxqDB29kpH9VojTytjGWBgmdJ.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
       "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/87513",
-      "imdbId": "tt2012616",
-      "demo": false
-    },
-    {
-      "id": 192139,
-      "title": "레이캬비크",
-      "originalTitle": "The Brink of War",
-      "year": 2026,
-      "releaseDate": "2026-08-14",
-      "director": "Michael Russell Gunn",
-      "runtime": 117,
-      "genres": [
-        "드라마",
-        "역사"
-      ],
-      "keywords": [
-        "cold war",
-        "ronald reagan",
-        "mikhail gorbachev",
-        "1980s",
-        "political struggle",
-        "reykjavík, iceland",
-        "independent film",
-        "conservative propaganda"
-      ],
-      "productionCompanies": [
-        "2521 Entertainment",
-        "SK Global Entertainment",
-        "Designed Epic",
-        "Angel Studios"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.4,
-      "voteCount": 11,
-      "popularity": 14.9399,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/vCIQeQ2ynVqEjIvtbOXGnKtcgAX.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/E812GNXYQqjJwN0cVPY3icHpaj.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/192139",
-      "imdbId": "tt33070884",
-      "demo": false
-    },
-    {
-      "id": 1228710,
-      "title": "만달로리안과 그로구",
-      "originalTitle": "The Mandalorian and Grogu",
-      "year": 2026,
-      "releaseDate": "2026-05-20",
-      "director": "존 파브로",
-      "runtime": 132,
-      "genres": [
-        "액션",
-        "모험",
-        "SF"
-      ],
-      "keywords": [
-        "galaxy",
-        "bounty hunter",
-        "spin off",
-        "space opera",
-        "nostalgic",
-        "space adventure",
-        "based on tv series",
-        "master apprentice relationship",
-        "bold"
-      ],
-      "productionCompanies": [
-        "Lucasfilm Ltd.",
-        "Fairview Entertainment"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.5,
-      "voteCount": 1441,
-      "popularity": 60.597,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "은하계를 누비는 현상금 사냥꾼 ‘딘 자린’ & 치명적인 귀여움의 ‘그로구’",
-      "tagline": "은하계의 운명을 건 위대한 임무가 시작된다!",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/tMP99wq45GQMoeZwITgjAS8Wihm.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/wFKDH8nAz7l9iyVobjcNAPTrkNz.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1228710",
-      "imdbId": "tt30825738",
-      "demo": false
-    },
-    {
-      "id": 950028,
-      "title": "완벽한 초대",
-      "originalTitle": "The Invite",
-      "year": 2026,
-      "releaseDate": "2026-06-25",
-      "director": "올리비아 와일드",
-      "runtime": 107,
-      "genres": [
-        "코미디",
-        "드라마",
-        "로맨스"
-      ],
-      "keywords": [
-        "husband wife relationship",
-        "san francisco, california",
-        "remake",
-        "firefighter",
-        "sexologist",
-        "candid",
-        "anxious",
-        "exuberant",
-        "neighbors"
-      ],
-      "productionCompanies": [
-        "Annapurna Pictures",
-        "FilmNation Entertainment",
-        "Permut Presentations"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.272,
-      "voteCount": 414,
-      "popularity": 56.5576,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/b7Dr8Chzse8VagexAporUu2RtLx.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/lEwqBGNR65KZv6Ej5ufcmhZu2y2.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/950028",
-      "imdbId": "tt14173636",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1101412",
+      "imdbId": "tt31192372",
       "demo": false
     },
     {
@@ -5050,15 +5204,15 @@ window.KINOSIS_CATALOG = {
         "Highland Film Group"
       ],
       "artSeed": false,
-      "voteAverage": 6.5,
-      "voteCount": 16,
-      "popularity": 54.8034,
+      "voteAverage": 6.485,
+      "voteCount": 33,
+      "popularity": 64.0573,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/lBWfbmUj9Jw0EM1OYtDXr0B5FPW.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/tieojVpH6eW44JQOQEWnf8t4khG.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [],
@@ -5077,7 +5231,6 @@ window.KINOSIS_CATALOG = {
       "runtime": 99,
       "genres": [
         "애니메이션",
-        "액션",
         "모험",
         "판타지"
       ],
@@ -5097,9 +5250,9 @@ window.KINOSIS_CATALOG = {
         "Avatar Studios"
       ],
       "artSeed": false,
-      "voteAverage": 9.196,
-      "voteCount": 1036,
-      "popularity": 82.0412,
+      "voteAverage": 9.2,
+      "voteCount": 1081,
+      "popularity": 87.5842,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -5112,42 +5265,6 @@ window.KINOSIS_CATALOG = {
       "watchLink": null,
       "tmdbUrl": "https://www.themoviedb.org/movie/980431",
       "imdbId": "tt18259538",
-      "demo": false
-    },
-    {
-      "id": 1632181,
-      "title": "Socias por accidente",
-      "originalTitle": "Socias por accidente",
-      "year": 2026,
-      "releaseDate": "2026-03-12",
-      "director": "Ihtzi Hurtado",
-      "runtime": 110,
-      "genres": [
-        "코미디",
-        "로맨스"
-      ],
-      "keywords": [],
-      "productionCompanies": [
-        "Videocine",
-        "ViX",
-        "TelevisaUnivision Mexico"
-      ],
-      "artSeed": false,
-      "voteAverage": 8.874,
-      "voteCount": 366,
-      "popularity": 19.5005,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
-      "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/1632181",
-      "imdbId": "tt40187050",
       "demo": false
     },
     {
@@ -5181,9 +5298,9 @@ window.KINOSIS_CATALOG = {
         "Skydance Animation"
       ],
       "artSeed": false,
-      "voteAverage": 8.873,
-      "voteCount": 2152,
-      "popularity": 49.167,
+      "voteAverage": 8.87,
+      "voteCount": 2162,
+      "popularity": 38.9886,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "갑자기 몸이 뒤바뀌게 된 작은 숲속 생물과 위풍당당한 새. 일생일대의 모험을 헤쳐나가기 위해 어쩔 수 없이 힘을 합친다.",
@@ -5197,18 +5314,54 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1007757-swapped/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/1007757",
       "imdbId": "tt29552248",
+      "demo": false
+    },
+    {
+      "id": 1632181,
+      "title": "Socias por accidente",
+      "originalTitle": "Socias por accidente",
+      "year": 2026,
+      "releaseDate": "2026-03-12",
+      "director": "Ihtzi Hurtado",
+      "runtime": 110,
+      "genres": [
+        "코미디",
+        "로맨스"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Videocine",
+        "ViX",
+        "TelevisaUnivision Mexico"
+      ],
+      "artSeed": false,
+      "voteAverage": 8.849,
+      "voteCount": 372,
+      "popularity": 19.9249,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+      "logoUrl": null,
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/1632181",
+      "imdbId": "tt40187050",
       "demo": false
     },
     {
@@ -5232,9 +5385,9 @@ window.KINOSIS_CATALOG = {
         "Draco Films"
       ],
       "artSeed": false,
-      "voteAverage": 8.85,
-      "voteCount": 458,
-      "popularity": 275.713,
+      "voteAverage": 8.795,
+      "voteCount": 571,
+      "popularity": 151.4053,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "무자비한 카르텔 두목을 적으로 돌린 두 멕시코 경찰. 근무 종료까지 남은 몇 시간을 어떻게든 무사히 버텨야 한다. 실화를 바탕으로 한 범죄 드라마.",
@@ -5248,13 +5401,13 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1621552-la-captura/watch?locale=KR",
@@ -5291,9 +5444,9 @@ window.KINOSIS_CATALOG = {
         "Shueisha"
       ],
       "artSeed": false,
-      "voteAverage": 8.788,
-      "voteCount": 2044,
-      "popularity": 82.6003,
+      "voteAverage": 8.784,
+      "voteCount": 2102,
+      "popularity": 68.9203,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
@@ -5307,19 +5460,19 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 1883,
           "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1311031/watch?locale=KR",
@@ -5363,59 +5516,59 @@ window.KINOSIS_CATALOG = {
         "Castle Rock Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 8.729,
-      "voteCount": 31208,
-      "popularity": 105.9697,
+      "voteAverage": 8.73,
+      "voteCount": 31276,
+      "popularity": 84.0858,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
       "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
       "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
-      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
-      "logoUrl": "https://image.tmdb.org/t/p/original/1K53E8WXQW76Scg8upBObXSrbgN.png",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
       "providers": [
         {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
@@ -5465,14 +5618,14 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.686,
-      "voteCount": 23471,
-      "popularity": 59.5003,
+      "voteCount": 23516,
+      "popularity": 58.8376,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "시실리에서 이민온 뒤, 정치권까지 영향력을 미치는 거물로 자리잡은 돈 꼴레오네는 갖가지 고민을 호소하는 사람들의 문제를 해결해주며 대부라 불리운다. 한편 솔로소라는 인물은 꼴레오네가와 라이벌인 탓타리아 패밀리와 손잡고 새로운 마약 사업을 제안한다. 돈 꼴레오네가 마약 사업에 참여하지 않기로 하자, 돈 꼴레오네를 저격해 그는 중상을 입고 사경을 헤매게 된다. 그 뒤, 돈 꼴레오네의 아들 소니는 조직력을 총 동원해 다른 패밀리들과 피를 부르는 전쟁을 시작하는데... 가족의 사업과 상관없이 대학에 진학한 뒤 인텔리로 지내왔던 막내 아들 마이클은 아버지가 총격을 당한 뒤, 아버지를 구하기 위해 위험천만한 협상 자리에 나선다.",
       "tagline": "영화사상 최고의 걸작",
       "posterUrl": "https://image.tmdb.org/t/p/w500/1yvBkSv4ZLS1GohlmMDmdpSgfYo.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/tSPT36ZKlP2WVHJLM4cQPLSzv3b.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [
@@ -5480,13 +5633,13 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/238-the-godfather/watch?locale=KR",
@@ -5533,9 +5686,9 @@ window.KINOSIS_CATALOG = {
         "Optimum Productions"
       ],
       "artSeed": false,
-      "voteAverage": 8.655,
-      "voteCount": 4242,
-      "popularity": 67.4345,
+      "voteAverage": 8.647,
+      "voteCount": 4290,
+      "popularity": 58.042,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "어린 나이에 형제들과 ‘잭슨 파이브’ 그룹의 막내로 데뷔하자마자 음악적 천재성과 스타성으로 주목을 받은 ‘마이클 잭슨’. 전세계적인 스타로 성공하지만, 그는 가족에 대한 책임감과 자신의 음악적 정체성 사이에서 고민에 빠지게 된다.",
@@ -5589,9 +5742,9 @@ window.KINOSIS_CATALOG = {
         "Waypoint Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 8.644,
-      "voteCount": 7501,
-      "popularity": 103.6085,
+      "voteAverage": 8.642,
+      "voteCount": 7624,
+      "popularity": 95.7346,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "눈을 떠보니 아득한 우주의 한가운데에서 깨어난 중학교 과학교사 그레이스는 희미한 기억 속에서 자신이 죽어가는 태양으로부터 지구와 인류를 살릴 마지막 희망으로 이곳에 왔다는 사실을 알게 된다. 잃어버린 기억으로 인해 모든 것이 혼란스러운 상황에서 그레이스는 우연히 우주 한복판에서 같은 목적으로 온 뜻밖의 존재 로키를 만나게 되고 그레이스와 로키는 각 두 행성의 운명을 건 마지막 미션을 수행하러 떠나게 되는데…",
@@ -5651,9 +5804,9 @@ window.KINOSIS_CATALOG = {
         "American Zoetrope"
       ],
       "artSeed": false,
-      "voteAverage": 8.6,
-      "voteCount": 14272,
-      "popularity": 38.0945,
+      "voteAverage": 8.572,
+      "voteCount": 14301,
+      "popularity": 30.103,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "아버지의 장례식 도중에 맏아들 파올로가 총에 맞아 죽고, 비토(로버트 드니로)는 겨우 도망쳐 미국으로 건너온다. 대부로 성장한 후 비토는 다시 치치오를 찾아 복수를 한다. 새롭게 등장한 젊은 대부 마이클(알 파치노)은 본거지를 라스베가스로 옮기고 가족의 사업을 가능한 합법적인 것으로 바꾸려고 애쓴다. 그런 과중 중에 자신을 제거하려는 음모를 알게되고 그는 냉혹하고 신속하게 반대파들을 제거, 조직을 더욱 확대해 나간다. 이를 위해 마이클은 배신한 형마저 죽이고, 일 때문에 아내와 헤어지는 등 인간적으로는 계속 외로워져 가는데...",
@@ -5667,25 +5820,25 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/240-the-godfather-part-ii/watch?locale=KR",
@@ -5733,8 +5886,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.571,
-      "voteCount": 10315,
-      "popularity": 32.7379,
+      "voteCount": 10340,
+      "popularity": 31.0822,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "뉴욕시의 법정에 아버지를 칼로 찌른 한 소년의 살인혐의를 두고, 12인의 배심원들은 만장일치 합의를 통해 소년의 유무죄 여부를 가려줄 것을 요구받는다. 판사는 유죄일 경우 이 소년은 사형이 불가피하다는 것을 이들에게 미리 일러둔다.  배심원 방에 모인 이들은 투표를 통해 유무죄 여부를 가리기로 한다. 사람들이 전부 소년이 유죄로 판단하는 가운데, 오직 한 배심원만이 소년이 무죄라고 주장하는데...",
@@ -5792,8 +5945,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.57,
-      "voteCount": 17842,
-      "popularity": 34.3614,
+      "voteCount": 17877,
+      "popularity": 33.5162,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "2차 세계대전 당시 독일군이 점령한 폴란드. 시류에 맞춰 자신의 성공을 추구하는 기회주의자 쉰들러는 유태인이 경영하는 그릇 공장을 인수한다. 그는 공장을 인수하기 위해 나찌 당원이 되고 독일군에게 뇌물을 바치는 등 갖은 방법을 동원한다. 그러나 냉혹한 기회주의자였던 쉰들러는 유태인 회계사인 스턴과 친분을 맺으면서 냉혹한 유태인 학살에 대한 양심의 소리를 듣기 시작한다. 마침내 그는 강제 수용소로 끌려가 죽음을 맞게될 유태인들을 구해내기로 결심하고, 독일군 장교에게 빼내는 사람 숫자대로 뇌물을 주는 방법으로 유태인들을 구해내려는 계획을 세우는데...",
@@ -5807,37 +5960,37 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/424-schindler-s-list/watch?locale=KR",
@@ -5885,9 +6038,9 @@ window.KINOSIS_CATALOG = {
         "Kwassa Films"
       ],
       "artSeed": false,
-      "voteAverage": 8.562,
-      "voteCount": 307,
-      "popularity": 20.8379,
+      "voteAverage": 8.561,
+      "voteCount": 309,
+      "popularity": 15.9591,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "14세의 엘리아스는 새로운 이웃인 알렉산더(14)에게 끌린다. 곧 그는 처음으로 진정한 사랑에 빠졌음을 깨닫는다. 친구와 가족과의 교류는 답을 얻기보다 오히려 더 많은 질문을 가져오고, 솟구치는 감정에 혼란스러운 엘리아스는 자신의 내면의 혼란을 정리하며 알렉산더의 마음을 받을 가치가 있음을 증명하려고 노력한다.",
@@ -5936,22 +6089,18 @@ window.KINOSIS_CATALOG = {
         "introspective",
         "depressed",
         "dramatic",
-        "romantic",
         "bitter",
         "awestruck",
         "distressing",
-        "exhilarated",
-        "foreboding",
-        "ominous",
         "optimistic"
       ],
       "productionCompanies": [
         "MAPPA"
       ],
       "artSeed": false,
-      "voteAverage": 8.5,
-      "voteCount": 1148,
-      "popularity": 35.0801,
+      "voteAverage": 8.546,
+      "voteCount": 1168,
+      "popularity": 32.3422,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "데블 헌터로 일하는 소년 ‘덴지’는 조직의 배신으로 죽음에 내몰린 순간 전기톱 악마견 ‘포치타’와의 계약으로 하나로 합쳐져 누구도 막을 수 없는 존재 ‘체인소 맨’으로 다시 태어난다. 악마와 사냥꾼, 그리고 정체불명의 적들이 얽힌 잔혹한 전쟁 속에서 ‘레제’라는 이름의 미스터리한 소녀가 ‘덴지’ 앞에 나타나는데… ‘덴지’는 사랑이라는 감정에 이끌려 지금껏 가장 위험한 배틀에 몸을 던진다!",
@@ -5976,7 +6125,6 @@ window.KINOSIS_CATALOG = {
       "runtime": 152,
       "genres": [
         "액션",
-        "범죄",
         "스릴러"
       ],
       "keywords": [
@@ -6006,9 +6154,9 @@ window.KINOSIS_CATALOG = {
         "DC"
       ],
       "artSeed": false,
-      "voteAverage": 8.534,
-      "voteCount": 36582,
-      "popularity": 65.069,
+      "voteAverage": 8.535,
+      "voteCount": 36652,
+      "popularity": 55.4015,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "범죄와 부정부패를 제거하여 고담시를 지키려는 배트맨. 그는 짐 고든 형사와 패기 넘치는 고담시 지방 검사 하비 덴트와 함께 도시를 범죄 조직으로부터 영원히 구원하고자 한다. 세 명의 의기투합으로 위기에 처한 악당들이 모인 자리에 보라색 양복을 입고 얼굴에 짙게 화장을 한 괴이한 존재가 나타나 배트맨을 죽이자는 사상 초유의 제안을 한다. 그는 바로 어떠한 룰도, 목적도 없는 사상 최악의 악당 미치광이 살인광대 조커. 배트맨을 죽이고 고담시를 끝장내버리기 위한 조커의 광기 어린 행각에 도시는 혼란에 빠지는데...",
@@ -6022,31 +6170,31 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/155-the-dark-knight/watch?locale=KR",
@@ -6091,8 +6239,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.534,
-      "voteCount": 18813,
-      "popularity": 39.2083,
+      "voteCount": 18861,
+      "popularity": 37.7592,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "평범한 열 살 짜리 소녀 치히로 식구는 이사 가던 중 길을 잘못 들어 낡은 터널을 지나가게 된다. 터널 저편엔 폐허가 된 놀이공원이 있었고 그곳엔 이상한 기운이 흘렀다. 인기척 하나 없는 이 마을의 낯선 분위기에 불길한 기운을 느낀 치히로는 부모님에게 돌아가자고 조르지만 부모님은 호기심에 들떠 마을 곳곳을 돌아다니기 시작한다. 어느 음식점에 도착한 치히로의 부모님은 그 곳에 차려진 음식들을 보고 즐거워하며 허겁지겁 먹어대다가 돼지로 변해버린다. 겁에 질려 당황하는 치히로에게 낯선 소년 하쿠가 나타나 빨리 이곳을 나가라고 소리치는데...",
@@ -6106,25 +6254,25 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/129/watch?locale=KR",
@@ -6172,8 +6320,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.506,
-      "voteCount": 19730,
-      "popularity": 34.7426,
+      "voteCount": 19768,
+      "popularity": 40.1123,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "미국 루이지애나의 콜드 마운틴 교도소. 폴은 사형수 감방의 간수장으로 일하고 있다. 그의 일은 사형수들을 감독하고, 그린 마일이라 불리는 초록색 복도를 거쳐 그들을 사형 집행장까지 안내하는 것. 폴은 그들이 죽음을 맞이하는 순간까지 평화롭게 지낼 수 있도록 최선을 다한다. 어느 날 존 커피라는 사형수가 이송되어 온다. 그는 쌍둥이 여자아이를 살해한 흉악범. 하지만 순진한 눈망울에 겁을 잔뜩 집어먹은 그의 모습에 폴은 당혹감을 느낀다. 게다가 그는 초자연적 능력으로 폴의 지병을 깨끗하게 치료해주기까지 한다. 존을 전기 의자로 데려가야 할 날이 다가오면서 폴은 그가 무죄라는 확신을 갖게 되는데...",
@@ -6187,25 +6335,25 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/497-the-green-mile/watch?locale=KR",
@@ -6275,9 +6423,9 @@ window.KINOSIS_CATALOG = {
         "The Saul Zaentz Company"
       ],
       "artSeed": false,
-      "voteAverage": 8.506,
-      "voteCount": 27244,
-      "popularity": 48.8627,
+      "voteAverage": 8.505,
+      "voteCount": 27302,
+      "popularity": 46.3069,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "사우론이 인간들의 마지막 요새인 곤도르를 향해 야욕을 드러내고 있는 한편, 아라곤은 쇠락해가고 있는 곤도르의 재건을 위해 왕위 계승을 신중하게 결정지어야만 하는 상황. 이제 중간대륙의 미래는 그의 어깨에 달려있는 것. 사우론이 이끄는 어둠의 군대와의 마지막 전투를 위해 간달프는 곤도르에 흩어져 있던 병사들을 모으고, 로한의 왕 세오덴에게 도움을 받기도 하지만 사우론의 군대에 비하면 열세를 면치 못한다. 그러나 그들은 중간대륙을 사우론의 야욕으로부터 지키려는 사명감과, 마지막 반지 운반자에게 임무를 끝낼 기회를 주기 위해 어둠의 군대를 향해 돌진하게 되는데...",
@@ -6291,37 +6439,37 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/122-the-lord-of-the-rings-the-return-of-the-king/watch?locale=KR",
@@ -6354,9 +6502,9 @@ window.KINOSIS_CATALOG = {
         "Yash Raj Films"
       ],
       "artSeed": false,
-      "voteAverage": 8.503,
-      "voteCount": 4618,
-      "popularity": 14.3307,
+      "voteAverage": 8.5,
+      "voteCount": 4619,
+      "popularity": 14.9914,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "영국에서 유학중인 라즈(샤룩 칸)와 인도 처녀 심란(까졸).  심란은 부모님이 정해주신 약혼자가 있는데 약혼을 앞두고 친구들과 유럽 여행을 떠나게 된다.  여행 중 우연히 만남 샤룩과 까졸. 두 남녀의 연속된 우연과 좌충우돌 사랑 만들기.  그렇게 사랑하게 된 그들이지만 까졸은 약혼자가 있는 몸. 인도로 돌아가게 된다.  샤룩 또한 그녀를 못 잊어 인도로 뒤 따라 들어가지만 엄격한 까졸의 부모를 설득하기가 힘이 든다. 도망가자는 까졸의 제안을 거부하고 샤룩은 끝내 그녀의 부모님의 허락을 얻어 내기 위해 고군분투한다.",
@@ -6370,13 +6518,13 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/19404/watch?locale=KR",
@@ -6420,14 +6568,14 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 8.49,
-      "voteCount": 21224,
-      "popularity": 36.7909,
+      "voteCount": 21261,
+      "popularity": 37.8704,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "전원 백수로 살 길 막막하지만 사이는 좋은 기택 가족. 장남 기우에게 명문대생 친구가 연결시켜 준 고액 과외 자리는 모처럼 싹튼 고정수입의 희망이다. 온 가족의 도움과 기대 속에 박 사장 집으로 향하는 기우. 글로벌 IT기업의 CEO인 박 사장의 저택에 도착하자 젊고 아름다운 사모님 연교와 가정부 문광이 기우를 맞이한다. 큰 문제 없이 박 사장의 딸 다혜의 과외를 시작한 기우. 그러나 이렇게 시작된 두 가족의 만남 뒤로, 걷잡을 수 없는 사건이 기다리고  있는데.....",
       "tagline": "행복은 나눌수록 커지잖아요",
       "posterUrl": "https://image.tmdb.org/t/p/w500/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [
@@ -6435,49 +6583,49 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 1883,
           "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/496243/watch?locale=KR",
@@ -6509,7 +6657,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": false,
       "voteAverage": 5.2,
       "voteCount": 5,
-      "popularity": 270.7527,
+      "popularity": 215.0149,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "길거리에서 부딪힌 것을 계기로 몸이 뒤바뀌고 만 소설가 '타카시'와 미용사 '사토미'. 그들은 다시 원래의 몸으로 돌아갈 방법을 찾을 때까지 서로를 연기하며 생활하기로 한다. 그러던 중, 둘 다 사랑하는 사람과의 관계가 삐걱이고 있음을 알게 된다. 타인이면서 본인인 '타카시'와 '사토미'는 서로의 인생을 나아지게 하기 위한 고군분투를 시작하는데...",
@@ -6523,36 +6671,145 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1285366/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/1285366",
       "imdbId": "tt33349025",
+      "demo": false
+    },
+    {
+      "id": 1516698,
+      "title": "라스트 선라이즈",
+      "originalTitle": "The Last Sunrise",
+      "year": 2026,
+      "releaseDate": "2026-08-26",
+      "director": "칼슨 영",
+      "runtime": 107,
+      "genres": [
+        "로맨스",
+        "드라마"
+      ],
+      "keywords": [
+        "spain",
+        "based on novel or book",
+        "tension",
+        "summer",
+        "woman director",
+        "chronic illness",
+        "appreciative",
+        "audacious",
+        "comforting",
+        "enthusiastic"
+      ],
+      "productionCompanies": [
+        "Amazon MGM Studios",
+        "Ethea Entertainment",
+        "Luber-Roklin Entertainment",
+        "Pitt Street Productions",
+        "Aquarius Films",
+        "The Last Sunrise"
+      ],
+      "artSeed": false,
+      "voteAverage": 6.65,
+      "voteCount": 141,
+      "popularity": 172.2452,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "인기 소설을 원작으로 한 영화 \"라스트 선라이즈\". 지병을 앓고 있는 대학생 라이는 엄마와 함께 마요르카로 여름휴가를 떠난다. 그곳에서 훌리안을 만나 예기치 못한 사랑에 빠지고 비로소 현재를 살아가는 법을 배우기 시작하는 라이. 하지만 여름이 끝나기 전, 지병이 악화하고 오랫동안 묻혀 있던 집안의 비밀이 드러나며 모든 것이 송두리째 흔들리기 시작한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/szN4VQ9eNhpWBHyq8MPrXQPYeNO.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/zFCWfU2ViMIm38G1W8UsnSpqmWn.jpg",
+      "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/5lB7yPaRhJHQ9dx7AnvPUi0GZDU.jpg",
+      "logoUrl": "https://image.tmdb.org/t/p/original/mU9S6Ow00Jbg3mXDZBrwdYEghXt.png",
+      "providers": [
+        {
+          "id": 119,
+          "name": "Amazon Prime Video",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1516698-the-last-sunrise/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1516698",
+      "imdbId": "tt37654096",
+      "demo": false
+    },
+    {
+      "id": 1228710,
+      "title": "만달로리안과 그로구",
+      "originalTitle": "The Mandalorian and Grogu",
+      "year": 2026,
+      "releaseDate": "2026-05-20",
+      "director": "존 파브로",
+      "runtime": 132,
+      "genres": [
+        "액션",
+        "모험",
+        "SF"
+      ],
+      "keywords": [
+        "galaxy",
+        "bounty hunter",
+        "spin off",
+        "space opera",
+        "space adventure",
+        "based on tv series",
+        "lighthearted",
+        "master apprentice relationship"
+      ],
+      "productionCompanies": [
+        "Lucasfilm Ltd.",
+        "Fairview Entertainment"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.5,
+      "voteCount": 1542,
+      "popularity": 91.0785,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "은하계를 누비는 현상금 사냥꾼 ‘딘 자린’ & 치명적인 귀여움의 ‘그로구’",
+      "tagline": "은하계의 운명을 건 위대한 임무가 시작된다!",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/tMP99wq45GQMoeZwITgjAS8Wihm.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/wFKDH8nAz7l9iyVobjcNAPTrkNz.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 337,
+          "name": "Disney Plus",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1228710-the-mandalorian-and-grogu/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1228710",
+      "imdbId": "tt30825738",
       "demo": false
     },
     {
@@ -6585,9 +6842,9 @@ window.KINOSIS_CATALOG = {
         "Patrick Aiello Productions"
       ],
       "artSeed": false,
-      "voteAverage": 4.036,
-      "voteCount": 1115,
-      "popularity": 94.7523,
+      "voteAverage": 4.02,
+      "voteCount": 1125,
+      "popularity": 82.9374,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "전설적인 동명 소설을 새롭게 재해석한 이번 작품은 거대한 침공의 서막을 알린다. 에바 롱고리아와 전설적인 래퍼이자 배우 아이스 큐브, 그리고 마이클 오닐과 이만 벤슨이 합류해, 기술과 감시, 사생활이라는 현대적 주제를 아우르는 짜릿한 우주급 모험을 선보인다.",
@@ -6601,7 +6858,7 @@ window.KINOSIS_CATALOG = {
           "id": 119,
           "name": "Amazon Prime Video",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/755898-war-of-the-worlds/watch?locale=KR",
@@ -6610,12 +6867,61 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
+      "id": 1355228,
+      "title": "간다리",
+      "originalTitle": "गांधारी",
+      "year": 2026,
+      "releaseDate": "2026-09-03",
+      "director": "Devashish Makhija",
+      "runtime": 117,
+      "genres": [
+        "액션",
+        "드라마",
+        "스릴러"
+      ],
+      "keywords": [],
+      "productionCompanies": [
+        "Kathha Pictures",
+        "Outsiders Films"
+      ],
+      "artSeed": false,
+      "voteAverage": 4.929,
+      "voteCount": 7,
+      "popularity": 72.3274,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "한 어머니가 시력을 잃고 딸이 납치당하자, 그녀는 직접 나서서 범인들을 추적한다.",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/hCHei97aPYCCsh4vicz9X0wmdFV.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/sT5WVT8LzvDwIbfy9BGXK0fvf3s.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 8,
+          "name": "Netflix",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
+        },
+        {
+          "id": 1796,
+          "name": "Netflix Standard with Ads",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/1355228/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1355228",
+      "imdbId": "tt33354945",
+      "demo": false
+    },
+    {
       "id": 299536,
       "title": "어벤져스: 인피니티 워",
       "originalTitle": "Avengers: Infinity War",
       "year": 2018,
       "releaseDate": "2018-04-25",
-      "director": "안소니 루소",
+      "director": "조 루소",
       "runtime": 149,
       "genres": [
         "모험",
@@ -6641,9 +6947,9 @@ window.KINOSIS_CATALOG = {
         "Marvel Studios"
       ],
       "artSeed": false,
-      "voteAverage": 8.2,
-      "voteCount": 32779,
-      "popularity": 91.1625,
+      "voteAverage": 8.242,
+      "voteCount": 32842,
+      "popularity": 67.9591,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "타노스는 6개의 인피니티 스톤을 획득해 신으로 군림하려 한다. 그것은 곧 인류의 절반을 학살해 우주의 균형을 맞추겠다는 뜻. 타노스는 닥터 스트레인지가 소유한 타임 스톤, 비전의 이마에 박혀 있는 마인드 스톤을 차지하기 위해 지구를 침략한다. 아이언맨과 스파이더맨은 가디언즈 오브 갤럭시의 멤버들과 타노스를 상대한다. 지구에선 캡틴 아메리카, 완다, 블랙 위도우, 블랙 팬서 등이 비전을 지키기 위해 뭉친다.",
@@ -6657,13 +6963,13 @@ window.KINOSIS_CATALOG = {
           "id": 337,
           "name": "Disney Plus",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/299536-avengers-infinity-war/watch?locale=KR",
@@ -6672,121 +6978,72 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 454639,
-      "title": "마스터즈 오브 유니버스",
-      "originalTitle": "Masters of the Universe",
-      "year": 2026,
-      "releaseDate": "2026-06-03",
-      "director": "트래비스 나이트",
-      "runtime": 141,
+      "id": 1419406,
+      "title": "포풍추영",
+      "originalTitle": "捕风追影",
+      "year": 2025,
+      "releaseDate": "2025-08-16",
+      "director": "杨子",
+      "runtime": 142,
       "genres": [
         "액션",
-        "판타지",
-        "SF"
-      ],
-      "keywords": [
-        "skeleton",
-        "superhero",
-        "nostalgia",
-        "alien planet",
-        "based on toy",
-        "super power",
-        "reboot",
-        "aftercreditsstinger",
-        "duringcreditsstinger",
-        "warrior",
-        "sword and planet",
-        "father son conflict",
-        "sword and sorcery",
-        "father daughter relationship",
-        "based on tv series"
-      ],
-      "productionCompanies": [
-        "Escape Artists",
-        "Mattel Studios",
-        "Amazon MGM Studios"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.2,
-      "voteCount": 2029,
-      "popularity": 85.5991,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "아담이 전설의 검과 함께 자신의 운명을 받아들여 우주 최강의 전사 ‘히맨’으로 각성하게 되고, 파괴된 세계를 구하기 위해 스켈레토에 맞서 싸우는 SF히어로액션",
-      "tagline": "전설의 힘이 깨어난다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/2hH4UGcfyuuQGA2dhCB1lLXPwv7.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/yQIdU11DYQQp0neGtGtGxbGfRer.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 119,
-          "name": "Amazon Prime Video",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/454639-masters-of-the-universe/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/454639",
-      "imdbId": "tt0427340",
-      "demo": false
-    },
-    {
-      "id": 1284041,
-      "title": "라스트 하우스",
-      "originalTitle": "The Last House",
-      "year": 2026,
-      "releaseDate": "2026-08-06",
-      "director": "루이스 레테리어",
-      "runtime": 110,
-      "genres": [
-        "공포",
-        "SF",
+        "범죄",
+        "드라마",
         "스릴러"
       ],
       "keywords": [
-        "monster",
-        "isolation",
-        "water monster",
-        "sea creature",
-        "baffled",
-        "disapproving",
-        "excited",
-        "dangerous rain"
+        "race against time",
+        "ex-cop",
+        "betrayal",
+        "nostalgic",
+        "macau",
+        "hand to hand combat",
+        "manhunt",
+        "hidden agenda",
+        "dramatic",
+        "hacked camera system",
+        "cryptocurrency",
+        "security breach",
+        "tracking expert",
+        "spectacular action scenes",
+        "surveillance city",
+        "family stakes"
       ],
       "productionCompanies": [
-        "Chernin Entertainment",
-        "3 Arts Entertainment"
+        "iQIYI Pictures （重复 同 iQiyi Motion Pictures）",
+        "Tao Piao Piao 淘票票",
+        "Hairun Pictures Company",
+        "Dong Fang Chen Xiang"
       ],
       "artSeed": false,
-      "voteAverage": 6.9,
-      "voteCount": 1196,
-      "popularity": 84.6298,
+      "voteAverage": 8.229,
+      "voteCount": 1364,
+      "popularity": 67.6069,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "정체불명의 힘에 의해 집 안에 갇힌 한 가족. 살아남으려면 점점 줄어드는 물자와 그들을 가둔 불길한 존재에 맞서 힘을 합쳐야 한다.",
-      "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/t7efaqaALl5svgOR5MBoxNOCrv3.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/1RhfevWmWCVHtEqxWBEjPOC5KG1.jpg",
+      "overview": "첨단 감시 시스템과 삼엄한 보안망을 무력화하고, 수십억을 탈취한 정체불명의 범죄 조직. 통제 불능의 범죄에 마카오 경찰은 결국 은퇴한 전설의 범죄 추적 전문가 ‘황더중’에게 도움을 요청한다. 황더중은 신입 경찰 ‘허추궈’와 함께 최정예 감시반을 구성해, 범죄 조직의 수장 ‘푸룽성’을 추적하기 시작한다. 하지만 수사망이 조여올수록 상대의 덫과 함정은 더욱 교묘해지고, 예상치 못한 반격 속에 황더중 역시 추적당하기 시작하는데…",
+      "tagline": "베테랑 vs 베테랑",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/uiIT7CsJ4V7rMnTqy7xYvj9IRhs.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/4BtL2vvEufDXDP4u6xQjjQ1Y2aT.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [
         {
-          "id": 8,
-          "name": "Netflix",
+          "id": 97,
+          "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
-          "id": 1796,
-          "name": "Netflix Standard with Ads",
+          "id": 1883,
+          "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         }
       ],
-      "watchLink": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1284041",
-      "imdbId": "tt32268156",
+      "watchLink": "https://www.themoviedb.org/movie/1419406/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/1419406",
+      "imdbId": "tt34610311",
       "demo": false
     },
     {
@@ -6828,8 +7085,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 7.674,
-      "voteCount": 3370,
-      "popularity": 77.6121,
+      "voteCount": 3398,
+      "popularity": 65.7241,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "미스터리한 뱀 게리가 나타난 순간, 주토피아가 다시 흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해 환상의 콤비 주디와 닉이 잠입 수사에 나서고 상상 그 이상의 진실과 위협을 마주하게 되는데...!",
@@ -6843,7 +7100,7 @@ window.KINOSIS_CATALOG = {
           "id": 337,
           "name": "Disney Plus",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1084242-zootopia-2/watch?locale=KR",
@@ -6886,15 +7143,15 @@ window.KINOSIS_CATALOG = {
         "TSG Entertainment"
       ],
       "artSeed": false,
-      "voteAverage": 7.651,
-      "voteCount": 4249,
-      "popularity": 77.3222,
+      "voteAverage": 7.646,
+      "voteCount": 4288,
+      "popularity": 64.0908,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "인간들과의 전쟁으로 첫째 아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는 깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이 이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰 위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게 되는데…",
       "tagline": "",
       "posterUrl": "https://image.tmdb.org/t/p/w500/l18o0AK18KS118tWeROOKYkF0ng.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/sdZSjtGUTSN8B3al5o0f2WoQfQQ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/u8DU5fkLoM5tTRukzPC31oGPxaQ.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
       "providers": [
@@ -6902,209 +7159,12 @@ window.KINOSIS_CATALOG = {
           "id": 337,
           "name": "Disney Plus",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/83533-avatar-fire-and-ash/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/83533",
       "imdbId": "tt1757678",
-      "demo": false
-    },
-    {
-      "id": 1314481,
-      "title": "악마는 프라다를 입는다 2",
-      "originalTitle": "The Devil Wears Prada 2",
-      "year": 2026,
-      "releaseDate": "2026-04-29",
-      "director": "데이비드 프랭클",
-      "runtime": 119,
-      "genres": [
-        "코미디",
-        "드라마"
-      ],
-      "keywords": [
-        "new york city",
-        "based on novel or book",
-        "sequel",
-        "fashion",
-        "fashion magazine",
-        "dramedy",
-        "magazine editor",
-        "fashion industry",
-        "fashionista",
-        "whimsical",
-        "ambiguous"
-      ],
-      "productionCompanies": [
-        "20th Century Studios",
-        "Wendy Finerman Productions"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.055,
-      "voteCount": 2244,
-      "popularity": 71.9343,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "전 세계 트렌드를 주도해 온 전설적인 패션 매거진 런웨이가 급변하는 미디어 시장 속에서 예기치 못한 위기에 직면한다. 런웨이를 지켜내려는 편집장 미란다와 20년 만에 신임 기획 에디터로 당당히 돌아온 앤디, 그리고 이제는 럭셔리 브랜드 임원이 되어 다시 나타난 에밀리까지 더 화려하고, 치열해진 뉴욕 패션계에서 주도권을 차지하기 위해 벌이는 이들의 새로운 이야기가 펼쳐진다!",
-      "tagline": "영원한 아이콘의 귀환",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/28A1VUDML1RzENYNtIU1WkBLT9V.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/Af907x5h9W1wVis8XrSd7ynTWuy.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 337,
-          "name": "Disney Plus",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/1314481-the-devil-wears-prada-2/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/1314481",
-      "imdbId": "tt33612209",
-      "demo": false
-    },
-    {
-      "id": 24428,
-      "title": "어벤져스",
-      "originalTitle": "The Avengers",
-      "year": 2012,
-      "releaseDate": "2012-04-25",
-      "director": "조스 웨던",
-      "runtime": 142,
-      "genres": [
-        "SF",
-        "액션",
-        "모험"
-      ],
-      "keywords": [
-        "new york city",
-        "superhero",
-        "shield",
-        "based on comic",
-        "alien invasion",
-        "superhero team",
-        "aftercreditsstinger",
-        "duringcreditsstinger",
-        "marvel cinematic universe (mcu)"
-      ],
-      "productionCompanies": [
-        "Marvel Studios"
-      ],
-      "artSeed": false,
-      "voteAverage": 8.1,
-      "voteCount": 39560,
-      "popularity": 69.1245,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "에너지원 큐브를 이용한 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드의 국장 닉 퓨리는 어벤져스 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 어벤져스의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데...",
-      "tagline": "최강의 슈퍼히어로들이 모였다.",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/krgjV3rJtBcEpQehODKXNCt6uFL.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/nNmJRkg8wWnRmzQDe2FwKbPIsJV.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 337,
-          "name": "Disney Plus",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Google Play Movies",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/24428-the-avengers/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/24428",
-      "imdbId": "tt0848228",
-      "demo": false
-    },
-    {
-      "id": 557,
-      "title": "스파이더맨",
-      "originalTitle": "Spider-Man",
-      "year": 2002,
-      "releaseDate": "2002-05-01",
-      "director": "샘 레이미",
-      "runtime": 121,
-      "genres": [
-        "액션",
-        "SF"
-      ],
-      "keywords": [
-        "new york city",
-        "adolescence",
-        "photographer",
-        "loss of loved one",
-        "photography",
-        "secret identity",
-        "hostility",
-        "superhero",
-        "spider",
-        "bad boss",
-        "villain",
-        "based on comic",
-        "teenage boy",
-        "teenage love",
-        "evil",
-        "super villain",
-        "taking responsibility"
-      ],
-      "productionCompanies": [
-        "Marvel Enterprises",
-        "Laura Ziskin Productions",
-        "Columbia Pictures"
-      ],
-      "artSeed": false,
-      "voteAverage": 7.351,
-      "voteCount": 21316,
-      "popularity": 68.8126,
-      "boxOfficeRank": null,
-      "boxOfficeAudience": null,
-      "overview": "평범하고 내성적인 고등학생 피터 파커는 우연히 방사능에 감염된 거미에 물린다.그 후, 피터는 손에서 거미줄이 튀어 나오고 벽을 기어 오를 수 있는 거미와 같은 능력을 갖게 된다. 다가오는 위험을 본능적으로 감지하는 초감각과 엄청난 파워를 소유하게 된 것이다. 피터는 짝사랑하던 메리 제인의 관심을 끌기 위해 멋진 스포츠카를 구입하는데 초능력을 처음 사용한다. 그러다 사랑하는 벤 아저씨의 죽음을 계기로 그 힘을 악의 세력에 대항하는데 쓰기로 결심한다. 한편 피터의 절친 해리 오스본의 아버지인 노만은 실험 도중 가스에 중독되어 악의 화신 그린 고블린으로 변하는데...",
-      "tagline": "큰 힘에는 큰 책임이 따른다",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/4xOhtzXGt0if74dTmS4qtizFelX.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/zQ8AxTPiCiS5nnwXpwTBPBHSaa5.jpg",
-      "heroBackdropUrl": null,
-      "logoUrl": null,
-      "providers": [
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/557",
-      "imdbId": "tt0145487",
       "demo": false
     },
     {
@@ -7157,9 +7217,9 @@ window.KINOSIS_CATALOG = {
         "Lynda Obst Productions"
       ],
       "artSeed": false,
-      "voteAverage": 8.487,
-      "voteCount": 41008,
-      "popularity": 66.9007,
+      "voteAverage": 8.486,
+      "voteCount": 41097,
+      "popularity": 63.656,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다. 지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다. 나사 소속 우주비행사였던 쿠퍼는 지구에 몰아친 식량난으로 옥수수나 키우며 살고 있다. 거센 황사가 몰아친 어느 날 알 수 없는 힘에 이끌려 딸과 함께 도착한 곳은 인류가 이주할 행성을 찾는 나사의 비밀본부. 이 때 시공간에 불가사의한 틈이 열리고, 이 곳을 탐험해 인류를 구해야 하는 임무를 위해 쿠퍼는 만류하는 딸을 뒤로한 채 우주선에 탑승하는데...",
@@ -7173,18 +7233,142 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/157336-interstellar/watch?locale=KR",
       "tmdbUrl": "https://www.themoviedb.org/movie/157336",
       "imdbId": "tt0816692",
+      "demo": false
+    },
+    {
+      "id": 24428,
+      "title": "어벤져스",
+      "originalTitle": "The Avengers",
+      "year": 2012,
+      "releaseDate": "2012-04-25",
+      "director": "조스 웨던",
+      "runtime": 142,
+      "genres": [
+        "SF",
+        "액션",
+        "모험"
+      ],
+      "keywords": [
+        "new york city",
+        "superhero",
+        "shield",
+        "based on comic",
+        "alien invasion",
+        "superhero team",
+        "aftercreditsstinger",
+        "duringcreditsstinger",
+        "marvel cinematic universe (mcu)"
+      ],
+      "productionCompanies": [
+        "Marvel Studios"
+      ],
+      "artSeed": false,
+      "voteAverage": 8.073,
+      "voteCount": 39639,
+      "popularity": 62.9242,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "에너지원 큐브를 이용한 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드의 국장 닉 퓨리는 어벤져스 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 어벤져스의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데...",
+      "tagline": "최강의 슈퍼히어로들이 모였다.",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/krgjV3rJtBcEpQehODKXNCt6uFL.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/pGFQCp12a8andfPlpnmXz44IIvY.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 337,
+          "name": "Disney Plus",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 3,
+          "name": "Google Play Movies",
+          "type": "buy",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/24428-the-avengers/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/24428",
+      "imdbId": "tt0848228",
+      "demo": false
+    },
+    {
+      "id": 454639,
+      "title": "마스터즈 오브 유니버스",
+      "originalTitle": "Masters of the Universe",
+      "year": 2026,
+      "releaseDate": "2026-06-03",
+      "director": "트래비스 나이트",
+      "runtime": 141,
+      "genres": [
+        "액션",
+        "판타지",
+        "SF"
+      ],
+      "keywords": [
+        "skeleton",
+        "superhero",
+        "nostalgia",
+        "alien planet",
+        "based on toy",
+        "super power",
+        "reboot",
+        "aftercreditsstinger",
+        "duringcreditsstinger",
+        "warrior",
+        "sword and planet",
+        "father son conflict",
+        "sword and sorcery",
+        "father daughter relationship",
+        "based on tv series"
+      ],
+      "productionCompanies": [
+        "Escape Artists",
+        "Mattel Studios",
+        "Amazon MGM Studios"
+      ],
+      "artSeed": false,
+      "voteAverage": 7.148,
+      "voteCount": 2078,
+      "popularity": 62.5416,
+      "boxOfficeRank": null,
+      "boxOfficeAudience": null,
+      "overview": "아담이 전설의 검과 함께 자신의 운명을 받아들여 우주 최강의 전사 ‘히맨’으로 각성하게 되고, 파괴된 세계를 구하기 위해 스켈레토에 맞서 싸우는 SF히어로액션",
+      "tagline": "전설의 힘이 깨어난다",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/2hH4UGcfyuuQGA2dhCB1lLXPwv7.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/5MUMB3aPEPEQPCIAaygXFUTWE9Y.jpg",
+      "heroBackdropUrl": null,
+      "logoUrl": null,
+      "providers": [
+        {
+          "id": 119,
+          "name": "Amazon Prime Video",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/454639-masters-of-the-universe/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/454639",
+      "imdbId": "tt0427340",
       "demo": false
     },
     {
@@ -7224,8 +7408,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": false,
       "voteAverage": 7.333,
-      "voteCount": 23814,
-      "popularity": 65.0164,
+      "voteCount": 23857,
+      "popularity": 58.7473,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "토니 스타크의 제안을 받고 시빌 워에 참여한 피터 파커는 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한 이웃에 머무는 것은 피터의 성에 차지 않는다. 한편 어벤져스 군단과 외계 세력의 전투로 생긴 산업폐기물을 처리하던 아드리안 툼즈는 그 일이 토니 스타크와 정부에 넘어가면서 하루아침에 빈털터리가 된다. 이에 앙심을 품은 아드리안은 외계 첨단무기를 훔쳐서 개조하는 빌런이 되고, 그의 존재를 알게 된 피터는 도움을 빌리지 않고 자기가 일을 해결해보려고 한다.",
@@ -7239,43 +7423,43 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/315635-spider-man-homecoming/watch?locale=KR",
@@ -7304,7 +7488,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 8,
       "voteCount": 1,
-      "popularity": 1.0508,
+      "popularity": 0.7282,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -7355,8 +7539,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.968,
-      "voteCount": 6195,
-      "popularity": 11.2851,
+      "voteCount": 6214,
+      "popularity": 12.1148,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "1940년 뉴욕 인콰이어러지를 비롯, 수 많은 신문들의 발행인이었던 찰스 포스터 케인이 죽는다. 그는 당시 70세로 세계에서 손꼽히는 부자였으며, 죽음 직전에는 플로리다의 대저택에서 은둔 생활을 하고 있었다. 생전에 많은 정치인과도 친분을 맺고 있었고, 미국 정책에 막강한 영향력을 발휘하기도 했던 그는 자신에 대한 여러 얘기들에 대해 \"나는 현재 미국인이고 과거에도 미국인이었으며 앞으로도 항상 미국인일 것이다\"라고 일축하곤 했다. 잡지 편집장 록스톤은 그의 죽음을 취재하고자 기자 톰슨에게 케인이 죽기 전에 말했다는 장미꽃 봉오리가 무슨 뜻인지 알아오라고 한다. 톰슨은 케인의 주변 인물을 샅샅이 취재하기 시작하는데...",
@@ -7370,7 +7554,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=KR",
@@ -7399,7 +7583,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 5.852,
       "voteCount": 61,
-      "popularity": 2.3119,
+      "popularity": 2.5492,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -7464,8 +7648,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 8.1,
-      "voteCount": 1256,
-      "popularity": 8.654,
+      "voteCount": 1259,
+      "popularity": 6.7327,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "2차 세계대전 후. 결혼하여 도쿄에 살고 있는 자식들을 만나기 위해 노부부가 상경한다. 의사 장남과 미용실을 운영하는 둘째 딸은 곧 부모님의 방문을 부담스러워하고 바쁜 일상을 핑계로 소홀히 대한다. 전쟁 중 남편을 잃은 며느리 노리코만이 노부부를 극진히 모시는데…",
@@ -7479,19 +7663,19 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 701,
           "name": "FilmBox+",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/18148/watch?locale=KR",
@@ -7531,7 +7715,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.2,
       "voteCount": 341,
-      "popularity": 2.477,
+      "popularity": 2.4744,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "풍족한 생활의 남부럽지 않은 영국인 부부 캐서린과 알렉스 조이스는 그동안 연락이 없었던 호머 삼촌이 그들에게 유산으로 남겨준 별장을 처분하기 위해 나폴리로 향한다. 결혼해서 살면서 아무 일없이 살았었지만 일상을 벗어나 단둘만이 있게 된 그들은 서로를 전혀 모른다는 사실을 깨닫게 되고 그들은 그렇게 위기를 맞게 된다. 캐서린은 나폴리로, 알렉스는 우연히 만난 줄리의 친구들과 카프리섬으로 각자의 여행길로 떠난다. 이들 둘은 각기 이탈리아 여행 도중 많은 유혹과 고독에 시달리며 방황을 반복하며 다시 집으로 돌아오지만 그들에게 변한것은 아무것도 없었다. 그러던 중 화산 폭발로 멸망한 폼페이 유물 발굴 형장에서 함께 죽음을 맞이한 부부 한쌍의 석고상을 보고 그들은 또 다른 감동을 받게 되는데...",
@@ -7545,7 +7729,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/2748-viaggio-in-italia/watch?locale=KR",
@@ -7581,7 +7765,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 8.3,
       "voteCount": 582,
-      "popularity": 5.4214,
+      "popularity": 5.5472,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "제2차 세계대전이 끝난 지 10여년이 지나 버려진 수용소의 현재 모습은 흑백의 기록화면으로 이어진다. 12년 전 빈 들판엔 수용소 건설이 진행되었고 ‘밤과 안개’ 작전으로 유대인들이 수감되기 시작했다.",
@@ -7595,13 +7779,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 11,
           "name": "MUBI",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/x570VpH2C9EKDf1riP83rYc5dnL.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/k7iSlvgWzZuO4zU5PcBjhABMuia.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/803-nuit-et-brouillard/watch?locale=KR",
@@ -7651,9 +7835,9 @@ window.KINOSIS_CATALOG = {
         "Buster Keaton Productions"
       ],
       "artSeed": true,
-      "voteAverage": 8.043,
-      "voteCount": 1199,
-      "popularity": 5.7625,
+      "voteAverage": 8.041,
+      "voteCount": 1201,
+      "popularity": 5.2507,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "극장에서 영사기사로 일하는 버스터는 케이트린에게 구애하지만, 그녀의 아버지는 그를 탐탁치 않게 생각한다. 그러던 중 사랑의 라이벌 워드가 케이트린 아버지의 시계를 훔쳐 버스터에게 누명을 씌운다. 버스터는 영화 속 주인공인 셜록 주니어가 되어 진짜 범인을 찾기 시작한다.",
@@ -7667,13 +7851,13 @@ window.KINOSIS_CATALOG = {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/992-sherlock-jr/watch?locale=KR",
@@ -7717,7 +7901,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.315,
       "voteCount": 205,
-      "popularity": 2.9695,
+      "popularity": 3.2146,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "존은 샌프란시스코의 한 평범한 치과의사로, 아내 트리나는 복권에 당첨되어 뜻하지 않게 부를 얻게 된다. 등장인물들은 갑작스럽게 얻은 부에 대한 욕망과 집착 때문에 치명적인 선택을 하게 되는데…\r 무성영화 시대의 거장 에리히 폰 스트로하임이 무려 8시간으로 연출했으나 제작사와의 문제로 편집되고 만 비운의 걸작. 성공과 돈 앞에서 어쩔 수 없이 나약해지는 인간의 심성을 리얼리즘 형식으로 담아냈다.",
@@ -7769,14 +7953,14 @@ window.KINOSIS_CATALOG = {
         "Mosfilm"
       ],
       "artSeed": true,
-      "voteAverage": 7.577,
-      "voteCount": 1329,
-      "popularity": 6.0467,
+      "voteAverage": 7.6,
+      "voteCount": 1332,
+      "popularity": 5.6098,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "1905년, 제정 러시아 시대. 전함 포템킨의 수병들은 장교들의 학대와 열약한 근무 조건에 불만을 가지게 된다. 썩은 고기를 식량으로 사용한 사실은 그들의 반란의 기폭제로 작용한다. 수병을 없애버리라는 장교의 명령에 포병들은 거역하고 수병과 포병은 힘을 합쳐 동지가 된다.  전함을 완전히 장악한 이들은 승리감에 젖어 흑해 오뎃사 항구로 향하고 이 소식을 전해들은 시민들은 수병들을 환영하러 부두로 나온다. 한편 짜르의 명령을 받은 정예 코자크 군대가 출동하여 그들에 반항하는 시민들에게 무차별 공격을 가한다. 전함 포템킨에 탄 수병들을 환영하려 했던 시민들은 갑작스런 군대에 의해 피를 흘리며 쓰러져 간다.  수 많은 희생자가 나지만, 분노한 시민들은 수병들과 합세하여 봉기, 짜르의 군대와 싸우며 혁명의 대열에 서는데...",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/4NnztjJeJq4g66Lxu2mxgSzSORM.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/zP52DTxAVgdc3q7pURqiNrvBfWK.jpg",
       "backdropUrl": "https://image.tmdb.org/t/p/w1280/3RH61Z7BP3f215936PJBEG2qQrT.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
@@ -7785,19 +7969,19 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/643/watch?locale=KR",
@@ -7852,8 +8036,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.8,
-      "voteCount": 7251,
-      "popularity": 16.8683,
+      "voteCount": 7264,
+      "popularity": 14.5101,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "헐리웃 스타의 꿈을 안고 LA에 온 베티는 멀홀랜드 드라이브에서 일어난 자동차 사고로 이름조차 기억하지 못하는 리타를 만나 그녀가 기억을 되찾을 수 있도록 도와준다. 베티의 적극적인 도움으로 단서를 찾아가던 리타는 한 카페의 여종업원 명찰에서 다이안이라는 이름을 보고 어떤 것을 떠올리게 된다. 베티는 이 이름이 분명 리타와 관계된 사람의 이름일 것이라 말하며 다이안이라는 인물을 찾기 시작한다. 마침내 다이안의 집을 찾아간 두 여인. 그러나 그들은 곧 상상을 초월하는 끔찍한 비밀을 발견하게 되는데...",
@@ -7867,19 +8051,19 @@ window.KINOSIS_CATALOG = {
           "id": 1883,
           "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=KR",
@@ -7916,9 +8100,9 @@ window.KINOSIS_CATALOG = {
         "SISTER"
       ],
       "artSeed": true,
-      "voteAverage": 6.165,
-      "voteCount": 1116,
-      "popularity": 9.6864,
+      "voteAverage": 6.163,
+      "voteCount": 1124,
+      "popularity": 8.1003,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "취재를 위해 초호화 크루즈에 승선한 기자가 한 승객이 바다로 추락하는 모습을 목격한다. 하지만 아무도 자신의 말을 믿어주지 않자, 그녀는 위험을 무릅쓰고 진실을 밝혀내려 한다.",
@@ -7932,13 +8116,13 @@ window.KINOSIS_CATALOG = {
           "id": 8,
           "name": "Netflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
         },
         {
           "id": 1796,
           "name": "Netflix Standard with Ads",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1290879-the-woman-in-cabin-10/watch?locale=KR",
@@ -7982,9 +8166,9 @@ window.KINOSIS_CATALOG = {
         "Réalisation d'Art Cinématographique"
       ],
       "artSeed": true,
-      "voteAverage": 7.86,
-      "voteCount": 795,
-      "popularity": 2.7994,
+      "voteAverage": 7.859,
+      "voteCount": 796,
+      "popularity": 3.4048,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "정비공 출신이지만 장교로 진급한 마레샬 중위와 직업 장교인 볼디외 대위가 탄 비행기가 독일군 라펜슈타인 사령관에 의해 격추당한다. 볼디외와 같은 귀족계급인 라펜슈타인은 마레샬과 볼디외를 수용소에 보내기 전, 정중하게 식사에 초대한다. 수용소에 입소한 두 프랑스 군인들은 배우, 교수, 토지 측량기사 등 다양한 출신의 수감자들과 곧 친해진다. 특히 부유한 은행가의 아들인 로젠탈 덕분에 이들은 그에게 배달되어온 물품과 음식들로 초라하지 않은 수용소 생활을 영위한다.",
@@ -7998,7 +8182,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/777-la-grande-illusion/watch?locale=KR",
@@ -8039,7 +8223,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.5,
       "voteCount": 678,
-      "popularity": 3.0957,
+      "popularity": 2.937,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "인상파 화가 르노와르의 아들인 장 르노와르의 야유와 풍자가 난무하는 클래식 필름. 프랑스 지배계층에 대한 부도덕한 묘사로 인해 1959년에야 검열 삭제 부분이 복원, 완성된 영화로 공개되는 비운을 겪기도 했다. 영화가 표현할 수 있는 미장센의 모든 것을 담고 있는 작품이라 추앙받기도 하는 이 작품은 갖가지 계층의 프랑스인들이 모인 대저택에서 벌어지는 며칠간의 에피소드를 줄거리로 하고 있다. 하지만 줄거리 보다도 내러티브, 즉흥연기, 딥 포커스, 카메라 무브먼트, 모짜르트 음악 등이 영화의 풍부함을 더해준다. 감독 스스로가 이야기하는 이 영화의 주제는 '인생은 멈추어 있지 않고 항상 흐른다'라는 것.",
@@ -8053,7 +8237,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/776-la-regle-du-jeu/watch?locale=KR",
@@ -8088,7 +8272,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.295,
       "voteCount": 224,
-      "popularity": 1.7113,
+      "popularity": 1.4431,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "모파상의 단편소설을 각색한 영화. 파리의 상인 일가가 시골로 소풍을 오고, 순수하고 아름다운 딸은 그곳 여관에서 만난 남자와 사랑에 빠진다. 프랑수아 트뤼포가 장 르누아르의 영화 중 ‘가장 감각적인 영화’라고 찬미한 작품으로, 사랑의 두근거림과 아픔을 매혹적으로 그려내고 있다. 어떠한 설명에도 의존하지 않으면서 40여분 간 시적인 이야기를 펼쳐 보이는 르누아르의 솜씨가 돋보이는 작품.",
@@ -8130,9 +8314,9 @@ window.KINOSIS_CATALOG = {
         "Paris Film Production"
       ],
       "artSeed": true,
-      "voteAverage": 7.06,
+      "voteAverage": 7.1,
       "voteCount": 249,
-      "popularity": 1.9233,
+      "popularity": 1.969,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "기차를 타고 프랑스 르아브르 항구로 돌아온 괴로운 철도원 자크 랑티에는 충동적인 역장 루바드와 그의 아내 세베린을 우연히 만나게 됩니다.",
@@ -8176,9 +8360,9 @@ window.KINOSIS_CATALOG = {
         "Universal International Pictures"
       ],
       "artSeed": true,
-      "voteAverage": 7.746,
-      "voteCount": 1639,
-      "popularity": 5.1792,
+      "voteAverage": 7.742,
+      "voteCount": 1640,
+      "popularity": 4.4152,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "마크 바르가스는 멕시코의 마약 단속 책임자이다. 아름다운 미국인 아내 수잔과 멕시코 국경에서 짧은 신혼여행을 보내던 바르가스는 미국의 돈 많은 택지 개발 업자가 폭발사고로 죽는 것을 목격하게 되고 정의감 넘치는 바르가스는 스스로 이 사건에 뛰어든다. 그 와중에 비협조적인 부패 경찰 행크 퀸란과 부딪히게 된다.  한편 바르가스는 조만간 마약왕이 그란데에 대한 증언을 하기로 되어 있었고, 그란데는 바르가스의 부인인 수잔을 납치, 협박하여 바르가스의 입을 틀어막으려고 한다. 어딘가 구린 구석이 있어 보이는 행크는 택지 개발 업자의 사건을 멕시코 측으로 은근 슬쩍 넘기기 위해 그란데와 결탁하여 바르가스를 궁지로 몰아넣는데...",
@@ -8192,19 +8376,19 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1480-touch-of-evil/watch?locale=KR",
@@ -8242,9 +8426,9 @@ window.KINOSIS_CATALOG = {
         "Columbia Pictures"
       ],
       "artSeed": true,
-      "voteAverage": 7.336,
-      "voteCount": 743,
-      "popularity": 3.8815,
+      "voteAverage": 7.337,
+      "voteCount": 744,
+      "popularity": 2.9205,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "1940년대 뉴욕. 매력적이고, 냉소적인 언어의 소유자인 선원 마이클 오하라는 우연히 미국 최고의 변호사이자 부호인 아서 베니스터의 부인 엘사를 만난다. 강도로부터 엘사를 구한 마이클은 첫눈에 엘사에게 반하고, 엘사 또한 돈 때문에 결혼한 남편과는 달리 젊은 선원 마이클을 사랑하게 된다. 베니스터가 부인을 구해준 고마움으로 자신의 지중해 항해에 마이클을 선원으로 채용하면서 세 사람의 오묘한 관계는 시작된다. 시종일관 마이클로부터 눈을 떼지 못하는 엘사와 엘사를 거부하지 못하는 마 이클앞에 두 사람의 관계를 눈치챈 베니스터의 동료 조지 그리스비가 접근한다. 그는 현재의 삶에서 도망치고 싶으니, 마이클에게 자신을 죽여달라는 부탁을 하고, 그 대신 5천 달러를 주겠다는 거래를 한다. 그리고 자신은 소리 소문 없이 사라져 주겠다는 것. 평소 이성적이던 마이클도 엘사와의 사랑에 눈이 멀어 그의 거래를 받아들 이기로 하는데... 그러나 사라지기로 한 그리스비가 시체로 발견되고, 마이클은 살인혐의로 기소된다. 베니스터는 자청하여 마이클의 변론을 맡게 되는데...",
@@ -8258,19 +8442,19 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/3766-the-lady-from-shanghai/watch?locale=KR",
@@ -8337,9 +8521,9 @@ window.KINOSIS_CATALOG = {
         "Finanziaria Cinematografica Italiana (FICIT)"
       ],
       "artSeed": true,
-      "voteAverage": 7.394,
-      "voteCount": 582,
-      "popularity": 5.6972,
+      "voteAverage": 7.395,
+      "voteCount": 583,
+      "popularity": 6.3626,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "섬세하고 나약한 지식인인 조셉 케이의 집에 경찰이 들이닥치고 그는 죄목도 밝히지 않은 채 구속된다. 그 뒤 케이는 자신의 무죄 석방을 위해 경찰과 변호사, 법관들, 끝내는 신까지 차례로 만난다. 한편 경찰과 변호사, 법관들도 인간인지라 헛점 투성이였고, 그들이 헛점을 위장하기 위해 허세를 부리는 것을 목격한 케이는 좌절하며 반항한다.",
@@ -8353,7 +8537,7 @@ window.KINOSIS_CATALOG = {
           "id": 2623,
           "name": "Artiflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/3009-le-proces/watch?locale=KR",
@@ -8405,9 +8589,9 @@ window.KINOSIS_CATALOG = {
         "SNC"
       ],
       "artSeed": true,
-      "voteAverage": 7.481,
-      "voteCount": 2082,
-      "popularity": 6.2777,
+      "voteAverage": 7.5,
+      "voteCount": 2084,
+      "popularity": 6.1039,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "기자 지망생 ‘파트리시아’는 샹젤리제에서 신문을 팔다 마주친 ‘미셸’과 시간을 보내다 신문에 실린 사진으로 그의 정체를 알게 된다.",
@@ -8421,13 +8605,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 1883,
           "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/269-a-bout-de-souffle/watch?locale=KR",
@@ -8465,7 +8649,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.7,
       "voteCount": 718,
-      "popularity": 4.1941,
+      "popularity": 3.2004,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "레코드 샵의 점원으로 일하는 나나는 영화를 사랑하고 배우를 동경하는 파리지이다. 그녀는 생계를 걱정해야 하는 힘든 삶 속에서도 언젠가는 세상을 놀라게 할 스타가 되겠다는 꿈을 가지고 있다. 그러나 그녀에 삶은 가혹하기만 하다. 자신의 꿈을 이해하지 못하는 남편, 돈을 빌려가고 소식이 없는 동료, 영화업자들에게 소개해주겠다며 나나를 이용하려는 에이전시 직원. 결국 나나는 삶의 고단함 속에 자신의 꿈을 포기한다. 비정한 도시에서 살아남기 위해 안간힘을 쓰던 나나는 우연히 남편에게 버림받고 '거리의 여자'가 된 옛 친구 이베뜨를 통해 포주 라울을 소개받는데...",
@@ -8479,7 +8663,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/1626-vivre-sa-vie-film-en-douze-tableaux/watch?locale=KR",
@@ -8519,9 +8703,9 @@ window.KINOSIS_CATALOG = {
         "Films Georges de Beauregard"
       ],
       "artSeed": true,
-      "voteAverage": 7.321,
+      "voteAverage": 7.3,
       "voteCount": 962,
-      "popularity": 4.06,
+      "popularity": 3.8738,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "부르주아의 속물 근성이 몸에 밴 아내가 역겨워진 페르디낭은 옛 애인 마리안을 파티장에서 우연히 만난다. 두 사람은 해안가로 함께 도피하지만 마리안은 곧 도회지에 나가 춤을 추고 싶어하고, 페르디낭은 해안가에서 글을 쓰고 싶어한다. 둘의 관계는 점점 파국으로 치닫는다.",
@@ -8535,19 +8719,19 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/2786-pierrot-le-fou/watch?locale=KR",
@@ -8556,70 +8740,47 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 266,
-      "title": "경멸",
-      "originalTitle": "Le Mépris",
-      "year": 1963,
-      "releaseDate": "1963-10-29",
+      "id": 8073,
+      "title": "국외자들",
+      "originalTitle": "Bande à part",
+      "year": 1964,
+      "releaseDate": "1964-08-05",
       "director": "장뤽 고다르",
-      "runtime": 104,
+      "runtime": 97,
       "genres": [
+        "범죄",
         "드라마",
-        "로맨스"
+        "코미디"
       ],
       "keywords": [
-        "jealousy",
-        "based on novel or book",
-        "villa",
+        "robbery",
+        "paris, france",
         "love triangle",
-        "italy",
-        "movie business",
-        "capri",
-        "screenwriter",
-        "car crash",
-        "divorce",
-        "film industry"
+        "louvre museum",
+        "woman between two men",
+        "bastille",
+        "black and white"
       ],
       "productionCompanies": [
-        "Rome-Paris Films",
-        "Les Films Concordia",
-        "C. C. Champion"
+        "Orsay Films",
+        "Anouchka Films"
       ],
       "artSeed": true,
-      "voteAverage": 7.036,
-      "voteCount": 989,
-      "popularity": 4.6293,
+      "voteAverage": 7.483,
+      "voteCount": 621,
+      "popularity": 5.1667,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "지중해의 뜨거운 태양, 카프리섬의 푸른 바다. 극작가 폴은 영화 '오디세이'의 대본 일을 맡으며 자신의 아름다운 아내 카미유를 영화 제작자에게 소개한다.",
+      "overview": "오딜은 영어 수업에서 프란츠와 그의 친구 아르튀르를 만난다. 파리 근교에서 이모와 사는 오딜은 이모 부부가 엄청난 액수의 현금을 집에 숨겨 두었다는 걸 프란츠에게 이야기하고, 프란츠와 아르튀르는 오딜을 설득해 이모 부부의 돈을 훔치자고 한다. 셋은 함께 시간을 보내고, 오딜은 아르튀르와 사랑에 빠진다. 마침내 결전의 날, 그들의 절도 행각은 계획대로 진행되지 않는데... 장뤽 고다르가 25일만에 촬영을 마쳤다고 하는 영화. 오딜, 아르튀르, 프란츠가 카페에서 춤을 추는 장면은 특히 명장면으로 손꼽힌다.",
       "tagline": "",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/2w6C65VGURrfKbUze8pwT5Kewil.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/afxEiYxANGG88xXVYpNtAHFzTIV.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/6YfEp9vSL6jK34vRxDM9meqcfrE.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/kKsy8sCjfOtfHPBT2i8z13bIRij.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
-      "providers": [
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        },
-        {
-          "id": 97,
-          "name": "Watcha",
-          "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-        },
-        {
-          "id": 356,
-          "name": "wavve",
-          "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-        }
-      ],
-      "watchLink": "https://www.themoviedb.org/movie/266-le-mepris/watch?locale=KR",
-      "tmdbUrl": "https://www.themoviedb.org/movie/266",
-      "imdbId": "tt0057345",
+      "providers": [],
+      "watchLink": null,
+      "tmdbUrl": "https://www.themoviedb.org/movie/8073",
+      "imdbId": "tt0057869",
       "demo": false
     },
     {
@@ -8645,9 +8806,9 @@ window.KINOSIS_CATALOG = {
         "Shochiku"
       ],
       "artSeed": true,
-      "voteAverage": 8.031,
-      "voteCount": 491,
-      "popularity": 3.866,
+      "voteAverage": 8.026,
+      "voteCount": 493,
+      "popularity": 4.2853,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "노리코는 아내를 잃고 혼자된 아버지 소미야 교수를 돌보며 행복하게 살고 있지만, 소미야 교수와 고모 마사는 노리코의 장래를 염려한다. 아버지를 홀로 두고 자신만의 행복을 위해 시집가기를 꺼려 하는 딸을 위해 아버지와 고모는 마치 아버지가 재혼하려는 것처럼 노리코를 속인다. 재혼을 결심한 아버지에게 배신감을 느낀 노리꼬는 사다께와 선보기로 결심한다. 사다께를 마음에 들어 하면서도 아버지에 대한 서운함과 그를 남겨두고 떠나야 한다는 사실에 괴로워한다.",
@@ -8661,13 +8822,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/20530/watch?locale=KR",
@@ -8701,8 +8862,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.9,
-      "voteCount": 331,
-      "popularity": 3.0547,
+      "voteCount": 333,
+      "popularity": 4.1641,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "딸 미치코와 함께 살고 있는 초로의 신사 히라야마. 히라야마는 친한 친구로부터 딸을 결혼시키라는 이야기를 듣지만 자신의 눈에 비친 딸은 어리게만 보인다. 이후 술에 취한 중학교 은사를 집까지 배웅했다가, 그 옛날 아름다웠던 은사의 딸이 결혼도 하지 않은 채 아버지를 걱정하며 늙고 초췌한 모습으로 변해있는 모습을 보고 딸 미치코를 떠올린다.\r 일본영화계 전체가 하향세를 그릴 즈음 오즈와 노다 콤비가 만든 마지막 작품이자 오즈의 유작. 실제 미혼으로 평생을 살았던 오즈가 어머니에 대해 느끼는 애정은 남달랐고, 이 작품의 시나리오 집필 중에 어머니를 잃은 오즈가 바라보는 노년의 고독 또한 다른 사람들보다 더욱 가혹하고 엄격할 수밖에 없어 보인다. 밝고 유머러스한 화면의 저변에 흐르는 적막감이 선명하게 그려져 가슴을 에이는 이 영화는 이제까지의 작품 중 최고의 원숙미를 자랑하는 영화다. 부드러운 유머와 함께 이제까지 즐겨 다루어왔던 이전 테마로 다시 돌아간 작품이다.",
@@ -8716,13 +8877,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/50759/watch?locale=KR",
@@ -8772,9 +8933,9 @@ window.KINOSIS_CATALOG = {
         "Shochiku"
       ],
       "artSeed": true,
-      "voteAverage": 7.713,
-      "voteCount": 327,
-      "popularity": 3.5039,
+      "voteAverage": 7.72,
+      "voteCount": 329,
+      "popularity": 2.5507,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "오밀조밀 모여 서로가 서로에 대해 훤히 알고 지내는 마을에서 이웃들간에 사소한 여러 가지 일들이 벌어진다. 접촉이 많으니 만큼 별 것 아닌 마찰도 많고 서로에 대한 구설수도 많다. 보수적인 이웃사람들로부터 문제아로 손가락질받는 신세대 부부는 텔레비젼을 갖고 있고, 그래서 그 집에는 동네 아이들이 항상 들끓는다. 어른들은 아이들이 신세대 부부와 접촉하는 것을 못마땅해 하며 눈살을 찌푸린다. 그 집에 모이는 아이들 중에는 미노루와 이사무 형제도 끼어 있는데, 부모에게 텔레비젼을 사달라고 조른다. 부모는 안된다고 딱 잘라 말하지만, 어린 두 꼬마는 묵비권을 행사하며 불만을 표시한다. 가족들에게는 물론 이웃 어른에게나 학교 선생님에게까지도 계속되는 침묵의 시위는 많은 문제를 야기시킨다. 아침인사를 먼저 건낸 이웃집 아주머니는 아이들의 묵묵부답이 부모가 시켜서 일부러 모른 척하는 것이 아닐까 하는 오해를 하게 되고, 이것은 이웃간의 불화를 조장하는 하나의 시발점이 된다.",
@@ -8788,13 +8949,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/28276/watch?locale=KR",
@@ -8834,9 +8995,9 @@ window.KINOSIS_CATALOG = {
         "Excelsa Film"
       ],
       "artSeed": true,
-      "voteAverage": 8.011,
+      "voteAverage": 8,
       "voteCount": 996,
-      "popularity": 2.936,
+      "popularity": 4.4275,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "제2차 세계대전 말기 로마가 독일에 의해 점령되었던 시기에 실제로 일어났던 사건에서 소재를 취해 재구성한 영화. 연인의 밀고로 체포되어 사살된 레지스탕스 지도자, 레지스탕스를 돕다가 처형된 신부, 게슈타포에 끌려가는 애인을 향해 달려가다 총에 맞아 죽은 여인의 이야기 등이 엮여있다.",
@@ -8850,13 +9011,13 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 2623,
           "name": "Artiflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/307-roma-citta-aperta/watch?locale=KR",
@@ -8894,7 +9055,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.6,
       "voteCount": 433,
-      "popularity": 2.6599,
+      "popularity": 2.2363,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "1947년, 제2차 세계대전이 끝나고 폐허의 흔적으로 가득한 베를린에서 생계의 위협 속에 어린 에드문트는 먹거리와 일거리를 찾아 거리로 나선다. 에드문트의 형은 전쟁이 끝난 후 징용을 당할지도 모른다는 공포에 떨며 집안에 틀어박혀 있고, 아버지는 전쟁의 세파를 겪고 난 후 병들어 누워있으며, 누이는 밤마다 카페에서 일을 한다. 에드문트는 거리를 헤매다 학교의 선생님을 만난다. 나치 잔당의 일원이었던 선생님은 에드문트를 사주해 아픈 아버지를 독살하도록 유도하는데...",
@@ -8908,7 +9069,7 @@ window.KINOSIS_CATALOG = {
           "id": 701,
           "name": "FilmBox+",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/8016-germania-anno-zero/watch?locale=KR",
@@ -8942,7 +9103,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.514,
       "voteCount": 364,
-      "popularity": 2.1257,
+      "popularity": 2.2886,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "영화적 리얼리즘의 새로운 영토를 개척한 영화로 평가된다. 다양한 유형의 인물들을 통해 전쟁 중의 황량한 물질적, 육체적 조건들이 사실적인 모습으로 묘사되고 있다.  1943년 연합군이 시실리에 상륙했을 때를 시작으로 시간과 공간이 모두 상향 이동된 여섯 개의 에피소드들로 구성되어 있으며, 이 에피소드들은 모두 전쟁의 의미가 고통과 죽음뿐이라는 메시지를 전달한다.  2차 대전 말기, 연합군이 이탈리아 남부에 상륙하여 독일군을 차례로 격퇴시키며 북부로 진격해 올라가는 과정에서 있었던 여러 가지 사건들을 다룬 작품. 로셀리니는 여기서 군인, 민간인, 레지스탕스, 그리고 수도원의 수도사들 등 다양한 인물군상을 등장시켜 특정한 역사적 국면에 놓여 있던 특정한 공간의 사람들에 대한 완벽한 프레스코화를 그려내는 데 성공했다.",
@@ -8956,7 +9117,7 @@ window.KINOSIS_CATALOG = {
           "id": 701,
           "name": "FilmBox+",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/8429-paisa/watch?locale=KR",
@@ -8998,8 +9159,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.7,
-      "voteCount": 948,
-      "popularity": 3.7678,
+      "voteCount": 950,
+      "popularity": 3.8019,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "영화 <평화>를 촬영하기 위해 히로시마에 온 프랑스 여배우 '그녀'는 일본인 건축가, '그'와 우연히 만나 이틀간의 관계를 가진다. 그러나 히로시마에 머물러 달라는 남자의 청을 무언가에 사로잡혀 있는 듯한 그녀는 거절한다. 그녀에겐 고향 느베르에서 자신의 첫사랑인 독일군 병사와의 사랑의 대가로 죽음을 목격하고, 그 사랑의 이름으로 지하실에 감금되어 끔찍한 고통을 겪은 상처가 존재한다. 사랑으로 인한 좌절과 고통, 그리고 절망이라는 이름의 과거가 떠나질 않는다. 원자폭탄이 투하된 도시, 히로시마에서 그녀의 고통스러웠던 과거가 현실과 중첩되면서 그와 그녀의 침묵의 대화는 이어진다.",
@@ -9013,7 +9174,7 @@ window.KINOSIS_CATALOG = {
           "id": 11,
           "name": "MUBI",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/x570VpH2C9EKDf1riP83rYc5dnL.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/k7iSlvgWzZuO4zU5PcBjhABMuia.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/5544-hiroshima-mon-amour/watch?locale=KR",
@@ -9056,9 +9217,9 @@ window.KINOSIS_CATALOG = {
         "Les Films Tamara"
       ],
       "artSeed": true,
-      "voteAverage": 7.438,
-      "voteCount": 552,
-      "popularity": 3.3241,
+      "voteAverage": 7.4,
+      "voteCount": 553,
+      "popularity": 3.5181,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "바로크풍의 거대한 성을 배경으로 남녀가 서로 다른 과거의 기억을 떠올린다. 남자는 여자에게 둘이 예전에 서로 사랑했고, 그녀가 정한 약속을 지키기 위해 자신이 왔으며, 이제 그녀를 데려가겠다고 말한다. 하지만 여자는 남자의 주장을 부인하는데...",
@@ -9072,13 +9233,13 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/4024-l-annee-derniere-a-marienbad/watch?locale=KR",
@@ -9114,7 +9275,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7,
       "voteCount": 213,
-      "popularity": 1.7279,
+      "popularity": 1.569,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "장은 우연히 보러 간 연극에서 여배우 자닌을 만난다. 이내 두 사람은 깊은 사이로 발전하게 된다. 장은 그녀와 함께 살기 위해 아내와 아이들을 버리고 집을 나온다. 그러나 장이 친구의 배신으로 국장직에서 밀려나게 되고 그 스트레스로 신장병이 재발하게 되면서 두 사람의 사랑에 위기가 찾아온다. 그러던 어느날, 장의 아내가 몰래 자닌에게 찾아와 자신이 죽을 병에 걸렸음을 알리며 마지막 남은 시간을 남편과 함께 보낼 수 있게 해달라고 부탁한다. 자닌은 장과 헤어진 후 여배우에서 디자이너로 변신한다. 한편 르네는 아버지의 고루한 농장 경영에 환멸을 느끼고 집을 뛰쳐나와 파리의 의류회사에 취직한다. 보잘것없는 학력이지만 르네는 타고난 성실근면함으로 말단 직원에서 직원 200명을 거느린 공장장으로 승진하게 된다. 그러나 최신 공정이 도입되고 경쟁이 치열해지면서 르네의 위치는 점점 불안해지게 되고, 결국 경쟁에서 밀려나 지방에 있는 공장으로 자리를 옮기게 된다. 가족들과도 헤어져 회사를 위해 온몸을 바쳐 일하지만 희망은 점점 멀어져간다. 결국 르네는 회사의 디자이너 자닌으로부터 레스토랑의 매니저로 가라는 굴욕적인 제안을 받게 된다. 자닌은 2년이라는 시간이 흘렀어도 여전히 그를 잊지 못한다. 르네에게 회사의 방침을 전달하러 내려간 시골에서 그녀는 우연히 그렇게 그리워하던 장을 만나지만 그의 아내가 여전히 건강하다는 이야기를 듣고 자신이 속았음을 깨닫는데...",
@@ -9128,19 +9289,19 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=KR",
@@ -9183,9 +9344,9 @@ window.KINOSIS_CATALOG = {
         "Buster Keaton Productions"
       ],
       "artSeed": true,
-      "voteAverage": 7.918,
-      "voteCount": 1450,
-      "popularity": 6.2936,
+      "voteAverage": 7.916,
+      "voteCount": 1451,
+      "popularity": 6.0013,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "증기기관차 ‘제너럴’과 여자친구 애너벨 리를 사랑하는 기관사 조니는 남북전쟁이 발발하자 남군에 입대하려 하지만 거절당한다. 이 때문에 애너벨은 그가 겁쟁이라고 생각하게 된다. 어느 날 북군이 애너벨이 타고 있는 제너럴을 훔쳐가자, 조니는 자신의 두 연인을 구해내고 용기를 입증하려 하는데...",
@@ -9199,19 +9360,19 @@ window.KINOSIS_CATALOG = {
           "id": 2623,
           "name": "Artiflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
         },
         {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         },
         {
           "id": 538,
           "name": "Plex",
           "type": "ads",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/961-the-general/watch?locale=KR",
@@ -9239,8 +9400,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.851,
-      "voteCount": 338,
-      "popularity": 2.7648,
+      "voteCount": 339,
+      "popularity": 3.0288,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "신혼부부 버스터와 시빌은 조립식 이동가옥을 선물받는다. 하지만 시빌을 쫓아다니던 버스터의 연적이 조립상자의 번호를 바꿔버리는 통에 집은 점점 이상한 모양새가 되어간다. 달콤한 신혼을 보내야 할 첫 일주일 동안 매일 같이 사고가 발생하는데 버스터는 과연 이 난관을 극복할 수 있을까?",
@@ -9296,7 +9457,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.601,
       "voteCount": 405,
-      "popularity": 2.2596,
+      "popularity": 2.3911,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "윌리엄 캔필드 시니어(어니스트 토렌스)는 미시시피강에서 사람과 짐을 운반하는 증기보트의 선주이다. 그는 어느 날 신흥부호인 킹(톰 맥과이어)이 거대한 자본을 앞세워 들여온 최신식 증기보트에 의해 위기에 처한다. 때마침 대학을 마친 아들 윌리엄 캔필드 주니어(버스터 키튼)가 돌아온다는 소식을 들은 아버지는 아들과 함께 이 위기상황을 극복할 수 있을 것이라 다짐한다.  그러나 돌아온 아들은 심약하고 어리바리한 그야말로 도시에 물든 대학졸업생에 지나지 않는다. 어떤 힘든 일도 감당해내는 아버지는 겉멋만 들어 돌아온 아들에게 실망하는데 한술 더 떠 아들은 아버지의 원수인 킹의 딸에게 반해버린다.",
@@ -9307,10 +9468,16 @@ window.KINOSIS_CATALOG = {
       "logoUrl": null,
       "providers": [
         {
+          "id": 2623,
+          "name": "Artiflix",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
+        },
+        {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/25768-steamboat-bill-jr/watch?locale=KR",
@@ -9341,7 +9508,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 6.473,
       "voteCount": 110,
-      "popularity": 1.3246,
+      "popularity": 1.6209,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "어리석고 뻔뻔할 정도로 무성의하고 여자라면 가리지 않지만 위험한 상황에서는 비겁하기 그지 없는 카람진 백작은 무심한 미국 외교관의 아내, 앨렌 휴즈를 유혹하는데...",
@@ -9355,7 +9522,7 @@ window.KINOSIS_CATALOG = {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/35227-foolish-wives/watch?locale=KR",
@@ -9389,7 +9556,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 7.1,
       "voteCount": 44,
-      "popularity": 1.1187,
+      "popularity": 1.1818,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -9403,7 +9570,7 @@ window.KINOSIS_CATALOG = {
           "id": 2285,
           "name": "JustWatch TV",
           "type": "free",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/42537-the-wedding-march/watch?locale=KR",
@@ -9436,7 +9603,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 6.5,
       "voteCount": 51,
-      "popularity": 1.2272,
+      "popularity": 1.3333,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "",
@@ -9509,9 +9676,9 @@ window.KINOSIS_CATALOG = {
         "Brooksfilms"
       ],
       "artSeed": true,
-      "voteAverage": 8.052,
-      "voteCount": 4035,
-      "popularity": 12.5635,
+      "voteAverage": 8.1,
+      "voteCount": 4042,
+      "popularity": 10.9925,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "차마 보기 힘들 만큼의 선천적인 기형을 가지고 태어나 시장에서 사람들에게 비인간적인 학대를 받으며 살아가는 '엘리펀트 맨', 존을 발견한 의사 프레디는 그를 병원으로 데려와 보살펴준다. 존은 흉측한 외모와는 달리 지적이고 선한 마음을 지닌 인물이였다. 그에 대한 기사와 연구논문이 세상에 알려지자 사람들은 그를 보기 위해 찾아오기 시작한다.",
@@ -9560,9 +9727,9 @@ window.KINOSIS_CATALOG = {
         "DEG"
       ],
       "artSeed": true,
-      "voteAverage": 7.61,
-      "voteCount": 3932,
-      "popularity": 11.472,
+      "voteAverage": 7.609,
+      "voteCount": 3939,
+      "popularity": 10.2669,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "미국 작은 도시에 사는 순수한 남학생 제프리는 산책 중 잘린 귀 한쪽을 발견하고 윌리엄 형사에게 사건을 신고한다. <블루 벨벳>을 노래하는 매력적인 여가수 도로시가 사건의 용의자로 의심받자 제프리는 묘한 끌림과 호기심으로 그녀의 아파트에 몰래 숨어들어가지만 곧 들키고 만다. 그때, 갑자기 정체불명의 남자 프랭크가 들이닥쳐 옷장에 숨게 되고 이내 그곳에서 충격적인 장면을 엿보게 되는데...",
@@ -9631,9 +9798,9 @@ window.KINOSIS_CATALOG = {
         "Asymmetrical Productions"
       ],
       "artSeed": true,
-      "voteAverage": 7.55,
-      "voteCount": 3030,
-      "popularity": 13.4338,
+      "voteAverage": 7.5,
+      "voteCount": 3039,
+      "popularity": 12.77,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "아름다운 아내와 살고 있는 성공한 뮤지션. 그러나 그들의 결혼 생활은 일종의 침체상태다. 너무나 일상적인, 간단한 몇마디만을 주고 받을 뿐인 한 남자와 한 여자. 낯선 이방인의 돌연한 출연이 있기 전까지 그들의 삶엔 변화가 없다. 현관 층계에 놓인 한 장의 봉투, 그 안에 들어있는 의문의 비디오 테잎. 외부의 누군가에 의해 찍혀진 집안 내부. 밤이면 남자는 클럽에서 색소폰을 분다. 그리고 집에 오면 아내와 아무런 느낌도 없이 사랑을 나눈다. 그는 심한 두통에 시달린다. 이어 피범벅이 된 여자의 시체가 나타난다. 살인자가 되어버린 남자. 교도소 독방에 웅크리고 앉은 그는 여전히 두통에 시달리고, 어느 순간 그와 전혀 상관없는 젊은 정비공이 그의 자리를 차지하고 있다. 풀려나온 정비공은 다시 일을 하고, 윤기나는 금발에 그린듯 촉촉한 입술의 여인이 검은색 캐딜락과 함께 나타난다. 그리고 이어서 임상적이고 단색적이지만 숨막히는 첫번째 이야기만큼 화려하면서도 색채적인 두번째 이야기가 시작되는데...",
@@ -9647,7 +9814,7 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/638-lost-highway/watch?locale=KR",
@@ -9696,8 +9863,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.7,
-      "voteCount": 731,
-      "popularity": 5.0156,
+      "voteCount": 732,
+      "popularity": 4.8284,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "한 남자가 자동차를 몰고 황량한 벌판을 달려간다. 그는 지나치는 사람들을 눈여겨보며 자신의 차에 동승할 사람을 찾는다. 그가 찾고 있는 사람은 수면제를 먹고 누운 자신이 위로 흙을 덮어줄 사람, 돈은 얼마든지 주겠다는 그의 간절한 부탁에도 사람들은 고개를 젓는다. 앳된 얼굴의 군인도, 온화한 미소의 신학도도 ‘죽음’이란 단어 앞에선 단호하게 외면할 뿐. 그런데 드디어 한 노인이 그의 제안을 수락한다.",
@@ -9711,19 +9878,19 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/30020/watch?locale=KR",
@@ -9757,7 +9924,7 @@ window.KINOSIS_CATALOG = {
       "artSeed": true,
       "voteAverage": 8,
       "voteCount": 458,
-      "popularity": 3.4234,
+      "popularity": 3.1875,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "버스에서 모흐센 마흐말바프의 책을 읽고 있는 실업자 알리 사브지안에게 어느 상류층 여인이 말을 걸어온다. 알리는 자신도 모르게 자신이 바로 마흐말바프라고 거짓말을 한다. 이 말을 믿고 알리에게 호감을 느낀 여자는 그를 집에 초대하는데 그곳에서 그녀의 남편과 예술에 관심이 많은 아들을 만나게 된다. 알리는 그들의 집을 배경으로 하고, 아들을 주인공으로 하는 영화를 찍겠다는 말로 이들의 환심을 산다.그러나 알리의 거짓말을 알게 된 가족은 화가 나 알리를 고소하고 인자한 판사는 가족에게 고소를 취하하도록 설득한다. 알리가 재판을 받고 있는 동안 카메라는 영화 밖으로 시선을 옮기는데, 이 영화의 감독인 압바스 키아로스타미가 모든 재판 상황을 소재로 삼아 영화를 계속 진행시키기로 한다.",
@@ -9802,8 +9969,11 @@ window.KINOSIS_CATALOG = {
         "kid",
         "boy",
         "admiring",
+        "adoring",
         "amused",
         "appreciative",
+        "assertive",
+        "compassionate",
         "familiar",
         "angry teacher",
         "children",
@@ -9825,9 +9995,9 @@ window.KINOSIS_CATALOG = {
         "Farabi Cinema"
       ],
       "artSeed": true,
-      "voteAverage": 7.918,
-      "voteCount": 449,
-      "popularity": 3.653,
+      "voteAverage": 7.9,
+      "voteCount": 451,
+      "popularity": 3.4171,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "공포의 숙제 검사 시간이 돌아왔다! 이란의 북부 지방, 코케 마을의 한 초등학교. 신나게 떠들던 아이들은 선생님의 출현으로 순간 긴장에 휩싸인다. 바로 숙제 검사 시간. 네마자데는 근심 어린 표정으로 선생님의 동정을 기다린다. 어제 저녁을 사촌의 집에서 보내는 바람에 숙제를 공책에 하지 못한 것이다. 결국 선생님의 꾸중을 들은 네마자데는 울음을 터트리고 짝꿍인 아마드의 마음을 애처롭게 만든다. 방과 후 집에 돌아온 아마드는 숙제를 하기 위해 가방을 여는데 똑같은 모양의 공책이 두 권! 아뿔싸! 실수로 네마자데의 공책을 가져온 아마드의 눈앞에는 선생님께 추궁 당하고 훌쩍이던 친구 네마자데의 모습이 어른거리기 시작한다. 아마 내일 선생님은 네마자데를 창밖으로 던져 버릴 것이다. 결국 착한 아마드는 친구의 공책을 집어들고 집을 나선다. 네마자데가 산다는 마을 포시테를 향해...",
@@ -9869,8 +10039,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 7.017,
-      "voteCount": 459,
-      "popularity": 3.1185,
+      "voteCount": 460,
+      "popularity": 3.2739,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "영국인 작가 제임스 밀러는 새로 펴낸 <기막힌 복제품>이란 책의 강연차 들른 이탈리아 토스카나에서 그녀와 만나게 된다. 아름답고 예민한 그녀는 홀로 아이를 키우며 골동품 가게를 운영하는 프랑스 여성으로 <기막힌 복제품>의 팬이다. 그의 책에 매료된 그녀는 하루 동안 토스카나의 시골지역을 소개해 주겠다고 자청하고, 함께 하면서 서로에 대해 알아가게 될 때쯤 두 사람은 ‘진짜 부부’인 척하는 장난스러운 역할극을 시작한다. 가벼운 마음으로 시작한 그들의 역할극은 점점 진지해지고, 진실과 거짓이 모호한 감정의 소용돌이 속으로 휘말리기 시작하는데...",
@@ -9884,37 +10054,37 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 1883,
           "name": "TVING",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/48303-copie-conforme/watch?locale=KR",
@@ -9974,9 +10144,9 @@ window.KINOSIS_CATALOG = {
         "SF Studios"
       ],
       "artSeed": true,
-      "voteAverage": 8.141,
-      "voteCount": 3441,
-      "popularity": 9.9734,
+      "voteAverage": 8.14,
+      "voteCount": 3443,
+      "popularity": 8.8538,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "14세기 중엽, 기사 안토니우스 블로크는 십자군 전쟁에 참여했다가 10년만에 고국 스웨덴으로 돌아왔으나 페스트가 온 나라를 휩쓸어 고국은 황폐해져 있다. 그의 종자 옌스와 함께 고향으로 돌아가는 여정에서 기사는 죽음의 사자의 방문을 받는다. 기사는 자신의 죽음을 지연시키기 위해 사자에게 체스 게임을 제안하고 사자는 그에 동의한다. 승산이 없는 이 내기에서 블로크가 원하는 것은 체스 게임이 진행되는 동안을 말미 삼아 신의 존재와 구원에 대한 확신을 얻는 것이다. 죽음을 앞둔 삶의 허무를 극복하기 위해 기사는 교회를 찾아가기도 하고 마녀로 낙인이 찍힌 소녀 옆을 지키기도 하지만 그 어디에도 죽음만이 보일 뿐, 신의 구원을 찾을 수 없다. 그러던 중 기사는 광대 부부와 그들의 아기를 만나 충만한 평화를 느끼게 되고, 그들을 지키기 위해 동행을 자처한 기사는 자신의 시종 옌스와 그를 따라나선 여인과 일행을 이루어 길을 떠나는데…",
@@ -9990,7 +10160,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/490-det-sjunde-inseglet/watch?locale=KR",
@@ -10038,9 +10208,9 @@ window.KINOSIS_CATALOG = {
         "SF Studios"
       ],
       "artSeed": true,
-      "voteAverage": 8.121,
+      "voteAverage": 8.1,
       "voteCount": 2475,
-      "popularity": 4.8054,
+      "popularity": 5.2904,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "유명 연극배우인 엘리자벳은 연극 <엘렉트라>를 공연하던 중 갑자기 말을 잃게 되고, 신경쇠약으로 병원을 거쳐 요양을 떠나게 된다. 그녀의 요양에 동행한 간호사 알마는 엘리자벳에 대해 간호사로서의 친절과 인간적인 호감, 동경 등을 느끼지만 말이 없는 엘리자벳에게 자기를 털어놓는 과정에서 그녀가 자신을 구경거리로 관찰하고 있다는 사실을 깨닫고 공격적인 비난의 태도를 취하게 된다.",
@@ -10054,37 +10224,37 @@ window.KINOSIS_CATALOG = {
           "id": 356,
           "name": "wavve",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         },
         {
           "id": 2623,
           "name": "Artiflix",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
         },
         {
           "id": 356,
           "name": "wavve",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "rent",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         },
         {
           "id": 3,
           "name": "Google Play Movies",
           "type": "buy",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/797-persona/watch?locale=KR",
@@ -10121,8 +10291,8 @@ window.KINOSIS_CATALOG = {
       ],
       "artSeed": true,
       "voteAverage": 8.074,
-      "voteCount": 1849,
-      "popularity": 6.7168,
+      "voteCount": 1851,
+      "popularity": 5.2394,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
       "overview": "보르그 교수는 78의 나이로 한평생 의사로써 살아온 학자이다. 그는 룬트에 있는 성당에서 명예 학위를 수여받기로 되어있다. 그날 새벽 그는 이상한 꿈을 꾼다. 기분이 상한 그는 비행기 대신 차로 룬트까지 가기로 결심하고 며느리 마리안느도 그를 따라나서기로 한다. 가는 도중 그의 식구들이 여름마다 와서 지내던 시골집에 도착한다. 그는 거기서 자신이 처음 사랑했던 사촌 사라와 그녀와 결국 결혼한 형 지그프로트를 회상한다.이때 이집에 산다는 사라라는 아가씨가 이탈리아로 가는 중이라면서 차를 얻어탈 것을 제의한다. 그는 사라에게서 자신의 젊은 시절을 회상한다. 가는 도중 이번에는 싸움이 잦은 부부를 보르그 교수의 차에 태우게 된다. 이들 부부는 서로 사랑하지 않고 미워하나 이들에게서도 자신의 결혼 생활을 기억해 낸다. 어머니를 만나는 보르그를 본 마리안은 얼음처럼 차가운 어머니를 보고 왜 남편이 차갑고 외로운지 이해하게 된다.",
@@ -10136,7 +10306,7 @@ window.KINOSIS_CATALOG = {
           "id": 97,
           "name": "Watcha",
           "type": "subscription",
-          "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
         }
       ],
       "watchLink": "https://www.themoviedb.org/movie/614-smultronstallet/watch?locale=KR",
@@ -10145,114 +10315,89 @@ window.KINOSIS_CATALOG = {
       "demo": false
     },
     {
-      "id": 12761,
-      "title": "가을 소나타",
-      "originalTitle": "Höstsonaten",
-      "year": 1978,
-      "releaseDate": "1978-10-08",
+      "id": 5961,
+      "title": "화니와 알렉산더",
+      "originalTitle": "Fanny och Alexander",
+      "year": 1982,
+      "releaseDate": "1982-12-17",
       "director": "잉마르 베리만",
-      "runtime": 93,
+      "runtime": 188,
       "genres": [
+        "판타지",
         "드라마",
-        "음악"
+        "미스터리"
       ],
       "keywords": [
+        "dying and death",
+        "child abuse",
+        "sibling relationship",
+        "funeral",
         "loss of loved one",
-        "marriage",
-        "pianist",
-        "invalid",
-        "mother daughter reunion",
-        "mother daughter relationship",
-        "introspective",
-        "intimate",
+        "sweden",
+        "bishop",
+        "theatre group",
+        "child prodigy",
+        "dysfunctional family",
+        "ghost",
+        "hamlet",
+        "shocking",
+        "turn of the century",
+        "christmas",
+        "1900s",
+        "20th century",
         "dramatic",
-        "intense",
-        "depressing"
+        "suspenseful",
+        "harsh",
+        "hopeful"
       ],
       "productionCompanies": [
-        "Suede Film",
+        "Cinematograph AB",
+        "Svenska Filminstitutet",
+        "SVT",
+        "Gaumont",
         "Personafilm",
-        "ITC Entertainment"
+        "Tobis"
       ],
       "artSeed": true,
-      "voteAverage": 8,
-      "voteCount": 724,
-      "popularity": 4.8372,
+      "voteAverage": 7.763,
+      "voteCount": 909,
+      "popularity": 4.9157,
       "boxOfficeRank": null,
       "boxOfficeAudience": null,
-      "overview": "어느 가을날 목사의 아내 에바는 유명 피아니스트인 어머니 샬롯을 집으로 초대한다. 연주 여행차 전세계를 순회하느라 바쁜 샬롯은 최근 오랜 연인 레오나르도의 죽음으로 상심한 상태다. 7년 만에 어머니를 만난 에바는 반갑게 샬롯을 맞이하지만, 샬롯이 미처 몰랐던 사실을 이야기하면서 둘 사이가 서먹해진다. 심각한 신체 장애를 가진 채 요양원에 방치되어 있던 여동생 헬레나가 2년 전부터 에바의 집에서 함께 지내고 있었던 것. 샬롯은 예술가로서 명성과 경력을 위해 자식들을 돌보지 않고 일에만 몰두해 왔던 것이다. 자의식 강한 샬롯은 자신의 선택을 애써 정당화하려 하지만, 에바는 무책임한 샬롯에 대한 원망과 애증을 안고 있다. 마침내 두 모녀는 오래 묵혀두었던 서로의 상처를 드러내며 감정적 회오리를 겪는다.",
-      "tagline": "아름다운 엄마, 외로운 딸... 그들이 펼치는 화해의 이중주",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/7q8H7zlKLffcqcxoyL4ivdC1aIh.jpg",
-      "backdropUrl": "https://image.tmdb.org/t/p/w1280/ozNapY9iczRr6FYKRbLLM00szCW.jpg",
+      "overview": "극장을 운영하고 있는 에카달 가족의 집에서 크리스마스 파티가 열리고 있다. 화니와 알렉산더는 이 집의 첫째 아들인 오스카 에카달의 자녀로 할머니 헬레나의 사랑을 독차지하고 있다.  그러나 어느날 가족들이 지켜보는 가운데 연극 무대에서 연습중이던 오스카가 갑자기 쓰러져 숨을 거두고 만다. 이후 시간이 흘러, 수업을 마치고 집에 돌아온 화니와 알렉산더에게 에밀리가 목사와 결혼한다는 놀라운 사실을 발표한다. 이에 화니와 알렉산더는 엄마를 따라 목사의 집으로 들어간다. 그러나 목사는 화니와 알렉산더의 생활을 하나하나 억압하며 간섭을 한다. 에밀리는 목사의 횡포에 질려 이혼을 요구하나 아이들을 빼앗겠다는 협박만을 받는데...",
+      "tagline": "",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/juvLwVTZiinswdzP6ASYx4HMdu2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/w1280/8reX3CMog1QHqGoym2Esvuk5MnK.jpg",
       "heroBackdropUrl": null,
       "logoUrl": null,
-      "providers": [],
-      "watchLink": null,
-      "tmdbUrl": "https://www.themoviedb.org/movie/12761",
-      "imdbId": "tt0077711",
+      "providers": [
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        },
+        {
+          "id": 97,
+          "name": "Watcha",
+          "type": "subscription",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+        },
+        {
+          "id": 356,
+          "name": "wavve",
+          "type": "rent",
+          "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+        }
+      ],
+      "watchLink": "https://www.themoviedb.org/movie/5961-fanny-och-alexander/watch?locale=KR",
+      "tmdbUrl": "https://www.themoviedb.org/movie/5961",
+      "imdbId": "tt0083922",
       "demo": false
     }
   ],
   "sections": {
     "boxOffice": [
-      {
-        "id": 969681,
-        "title": "스파이더맨: 브랜드 뉴 데이",
-        "originalTitle": "Spider-Man: Brand New Day",
-        "year": 2026,
-        "releaseDate": "2026-07-29",
-        "director": "데스틴 대니얼 크레턴",
-        "runtime": 145,
-        "genres": [
-          "SF",
-          "액션",
-          "모험"
-        ],
-        "keywords": [
-          "mind control",
-          "new york city",
-          "hero",
-          "mutation",
-          "secret identity",
-          "superhero",
-          "spider",
-          "villain",
-          "based on comic",
-          "sequel",
-          "transhumanism",
-          "super power",
-          "masked vigilante",
-          "spider web",
-          "aftercreditsstinger",
-          "marvel cinematic universe (mcu)",
-          "masked superhero",
-          "fight for justice",
-          "genetic mutation"
-        ],
-        "productionCompanies": [
-          "Marvel Studios",
-          "Columbia Pictures",
-          "Pascal Pictures",
-          "TSG Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.873,
-        "voteCount": 2357,
-        "popularity": 952.532,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-        "tagline": "스파이더맨의 새로운 날을 확인하라!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/969681",
-        "imdbId": "tt22084616",
-        "demo": false
-      },
       {
         "id": 1368337,
         "title": "오디세이",
@@ -10291,9 +10436,9 @@ window.KINOSIS_CATALOG = {
           "Syncopy"
         ],
         "artSeed": false,
-        "voteAverage": 7.993,
-        "voteCount": 3407,
-        "popularity": 544.3226,
+        "voteAverage": 7.998,
+        "voteCount": 3568,
+        "popularity": 437.8516,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
@@ -10327,8 +10472,10 @@ window.KINOSIS_CATALOG = {
           "wish",
           "unrequited love",
           "couple",
+          "paranoid",
           "absurdism",
           "self-harm",
+          "anxious",
           "supernatural horror",
           "psychological",
           "independent film",
@@ -10342,9 +10489,9 @@ window.KINOSIS_CATALOG = {
           "Blumhouse Productions"
         ],
         "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 5238,
-        "popularity": 218.7101,
+        "voteAverage": 8.194,
+        "voteCount": 5388,
+        "popularity": 194.6239,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
@@ -10402,9 +10549,9 @@ window.KINOSIS_CATALOG = {
           "The North Road Company"
         ],
         "artSeed": false,
-        "voteAverage": 7.063,
-        "voteCount": 3095,
-        "popularity": 122.1488,
+        "voteAverage": 7.057,
+        "voteCount": 3185,
+        "popularity": 92.7503,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
@@ -10417,59 +10564,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
         "imdbId": "tt26657236",
-        "demo": false
-      },
-      {
-        "id": 1384216,
-        "title": "도그 스타: 마지막 희망",
-        "originalTitle": "The Dog Stars",
-        "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "리들리 스콧",
-        "runtime": 119,
-        "genres": [
-          "SF",
-          "모험",
-          "스릴러"
-        ],
-        "keywords": [
-          "based on novel or book",
-          "dystopia",
-          "denver, colorado",
-          "pilot",
-          "colorado",
-          "grief",
-          "pandemic",
-          "detached",
-          "lonely man",
-          "death of wife",
-          "scavengers",
-          "loving",
-          "joyful",
-          "group",
-          "dogs",
-          "post-apocalyptic"
-        ],
-        "productionCompanies": [
-          "20th Century Studios",
-          "Scott Free Productions"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.691,
-        "voteCount": 165,
-        "popularity": 117.1592,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
-        "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/mk9IHaDuNrhF9hf5LNYFLsyrfUb.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
-        "imdbId": "tt21285562",
         "demo": false
       },
       {
@@ -10499,9 +10593,9 @@ window.KINOSIS_CATALOG = {
           "Blue Rider Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 7.105,
-        "voteCount": 459,
-        "popularity": 79.0903,
+        "voteAverage": 7.121,
+        "voteCount": 475,
+        "popularity": 80.0368,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "로스앤젤레스발 상하이행 여객기가 화재로 폭발하며 태평양 한복판에 추락한다. 기적적으로 살아남은 승객들. 그러나 침몰하는 기체, 굶주린 식인 상어 떼 속에서 이제부터는 진짜 기적을 바라야 하는데...",
@@ -10555,17 +10649,17 @@ window.KINOSIS_CATALOG = {
           "Jackson Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 6.35,
-        "voteCount": 429,
-        "popularity": 77.1397,
+        "voteAverage": 6.354,
+        "voteCount": 463,
+        "popularity": 57.6922,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1982년, 평화롭던 ‘오크 스트리트’ 마을이 하루아침에 통째로 선사시대로 옮겨졌다. 익숙했던 집과 골목은 순식간에 공룡들의 사냥터로 변하고, 육지와 하늘, 물속까지 점령한 거대 포식자들의 무차별 공격이 시작된다! 과연 ‘플랫’ 가족은 무사히 살아남아 원래의 일상으로 돌아갈 수 있을까?",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/oGqJr59UAwZfpmSkEkaW02o0ZLC.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/xm5OF5LINmyJLV7Cvq1UHxWeJHM.png",
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1101383",
@@ -10573,47 +10667,56 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1612018,
-        "title": "잭애스: 베스트 앤드 라스트",
-        "originalTitle": "Jackass: Best and Last",
+        "id": 1384216,
+        "title": "도그 스타: 마지막 희망",
+        "originalTitle": "The Dog Stars",
         "year": 2026,
-        "releaseDate": "2026-06-25",
-        "director": "Jeff Tremaine",
-        "runtime": 92,
+        "releaseDate": "2026-08-26",
+        "director": "리들리 스콧",
+        "runtime": 119,
         "genres": [
-          "액션",
-          "코미디",
-          "다큐멘터리"
+          "SF",
+          "드라마",
+          "모험"
         ],
         "keywords": [
-          "stunt",
-          "sequel",
-          "prank",
-          "hilarious",
-          "jackass"
+          "based on novel or book",
+          "dystopia",
+          "denver, colorado",
+          "pilot",
+          "colorado",
+          "grief",
+          "pandemic",
+          "detached",
+          "lonely man",
+          "death of wife",
+          "scavengers",
+          "loving",
+          "joyful",
+          "group",
+          "dogs",
+          "post-apocalyptic"
         ],
         "productionCompanies": [
-          "Paramount Pictures",
-          "MTV Entertainment Studios",
-          "Domain Entertainment",
-          "Dickhouse Productions"
+          "20th Century Studios",
+          "Scott Free Productions"
         ],
         "artSeed": false,
-        "voteAverage": 7.6,
-        "voteCount": 221,
-        "popularity": 73.8562,
+        "voteAverage": 6.6,
+        "voteCount": 231,
+        "popularity": 57.6304,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
+        "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
+        "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
-        "imdbId": "tt39316472",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
+        "imdbId": "tt21285562",
         "demo": false
       },
       {
@@ -10651,9 +10754,9 @@ window.KINOSIS_CATALOG = {
           "TSG Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 6.6,
-        "voteCount": 95,
-        "popularity": 70.6641,
+        "voteAverage": 6.5,
+        "voteCount": 126,
+        "popularity": 50.0771,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "사후세계의 악령들로부터 딸과 일상을 지키기 위해 사투를 벌이는 이야기",
@@ -10669,96 +10772,177 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 964849,
-        "title": "나이트본",
-        "originalTitle": "Yön lapsi",
+        "id": 1612018,
+        "title": "잭애스: 베스트 앤드 라스트",
+        "originalTitle": "Jackass: Best and Last",
         "year": 2026,
-        "releaseDate": "2026-07-01",
-        "director": "한나 베리홀름",
-        "runtime": 91,
+        "releaseDate": "2026-06-25",
+        "director": "Jeff Tremaine",
+        "runtime": 92,
         "genres": [
-          "공포"
+          "액션",
+          "코미디",
+          "다큐멘터리"
         ],
         "keywords": [
-          "finnish",
-          "folk horror",
-          "body horror"
+          "stunt",
+          "sequel",
+          "prank",
+          "hilarious",
+          "jackass"
         ],
         "productionCompanies": [
-          "Elokuvayhtiö Komeetta",
-          "Getaway Films",
-          "BlueLight",
-          "Filmai LT"
+          "Paramount Pictures",
+          "MTV Entertainment Studios",
+          "Domain Entertainment",
+          "Dickhouse Productions"
         ],
         "artSeed": false,
-        "voteAverage": 6.1,
-        "voteCount": 94,
-        "popularity": 65.3296,
+        "voteAverage": 7.5,
+        "voteCount": 234,
+        "popularity": 41.0715,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "핀란드의 고립된 숲속, 아내 '사가'는 갓 태어난 아기가 결코 인간이 아님을 직감한다. 남편마저 진실을 외면하는 완벽한 고립 속에서, 요람 속 존재는 점차 기괴한 본성을 드러내기 시작한다. 도망칠 곳 없는 서늘한 집 안, 그녀는 매일 밤 홀로 숨통을 조여오는 끔찍한 공포와 마주해야만 한다.",
-        "tagline": "우리는 악마를 낳았다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8lpzyhJxb1edjfG4ZPKRC2cymHN.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jVeYae744cR2ogx9ShQ3qXOcRiZ.jpg",
+        "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/964849",
-        "imdbId": "tt34383465",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
+        "imdbId": "tt39316472",
+        "demo": false
+      },
+      {
+        "id": 1302904,
+        "title": "프랙티컬 매직: 새로운 챕터",
+        "originalTitle": "Practical Magic 2",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "수잔 비에르",
+        "runtime": 110,
+        "genres": [
+          "로맨스",
+          "판타지",
+          "코미디"
+        ],
+        "keywords": [
+          "witch",
+          "based on novel or book",
+          "magic",
+          "family relationships",
+          "sequel",
+          "family",
+          "legacy"
+        ],
+        "productionCompanies": [
+          "Di Novi Pictures",
+          "Warner Bros. Pictures",
+          "Blossom Films",
+          "Fortis Films",
+          "Domain Entertainment",
+          "Alcon Entertainment"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.5,
+        "voteCount": 12,
+        "popularity": 37.882,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wE6syT1vv6W24iLGfhR4kQHnIDN.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
+        "imdbId": "tt32588798",
+        "demo": false
+      },
+      {
+        "id": 1122573,
+        "title": "인 더 그레이",
+        "originalTitle": "In the Grey",
+        "year": 2026,
+        "releaseDate": "2026-05-13",
+        "director": "가이 리치",
+        "runtime": 97,
+        "genres": [
+          "액션",
+          "스릴러"
+        ],
+        "keywords": [
+          "mission",
+          "heist",
+          "agent",
+          "dangerous mission",
+          "irreverent",
+          "provocative",
+          "audacious",
+          "enthusiastic",
+          "sarcastic"
+        ],
+        "productionCompanies": [
+          "C2 Motion Picture Group",
+          "Toff Guy Films",
+          "Black Bear Pictures",
+          "Red Sea Film Foundation"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.576,
+        "voteCount": 912,
+        "popularity": 37.8176,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
+        "tagline": "합법과 불법 사이",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2PIph5fGpL7xsNsRRjHOx1rkpYa.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qcIKxhqGMIj8uujsSoSMZWr8QqU.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1122573",
+        "imdbId": "tt27681354",
         "demo": false
       }
     ],
     "upcoming": [
       {
-        "id": 1339713,
-        "title": "옵세션",
-        "originalTitle": "Obsession",
+        "id": 1180894,
+        "title": "잠들 수 없는 집",
+        "originalTitle": "Bajo tus pies",
         "year": 2026,
-        "releaseDate": "2026-05-13",
-        "director": "커리 바커",
-        "runtime": 109,
+        "releaseDate": "2026-02-19",
+        "director": "Cristian Bernard",
+        "runtime": 94,
         "genres": [
-          "공포",
-          "스릴러"
+          "공포"
         ],
-        "keywords": [
-          "obsession",
-          "supernatural",
-          "possession",
-          "wish",
-          "unrequited love",
-          "couple",
-          "absurdism",
-          "self-harm",
-          "supernatural horror",
-          "psychological",
-          "independent film",
-          "psychological horror",
-          "cursed object"
-        ],
+        "keywords": [],
         "productionCompanies": [
-          "Tea Shop Productions",
-          "Under the Shell",
-          "Capstone Pictures",
-          "Blumhouse Productions"
+          "Basque Films"
         ],
         "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 5238,
-        "popularity": 218.7101,
+        "voteAverage": 5.091,
+        "voteCount": 11,
+        "popularity": 97.2452,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
-        "tagline": "사랑해 줄게, 죽을 때까지",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/df4rpubfWy0g7HCzBNtPLLKnoMH.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/2y6qVk9YIPxTzO43anxUQ9iTuh4.png",
+        "overview": "두 아이와 함께 도심의 고급 아파트로 이사 온 싱글맘, 이사벨. 저렴한 월세에 행운이라 믿었던 새집에서의 첫날밤, 발밑에서 정체 모를 기괴한 진동과 소음이 들려오기 시작한다. 아래층에서 매일 밤 들려오는 비명과 수상쩍은 이웃들. 벽 너머의 기이한 속삭임이 깊어질수록 아이들은 뭔가에 사로잡히고 그녀는 패닉에 빠진다. 꿈에 그리던 안락한 보금자리가 마침내 악몽의 공간으로 변하기 시작한다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/fQTACeQLpFoMUqYitxY0DMzfQu9.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wRRvCEb871lZPcssGwEnJt0l3KN.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/wRRvCEb871lZPcssGwEnJt0l3KN.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/zRX6UJ6nchFcIAVaQFOoROUklbr.png",
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1339713",
-        "imdbId": "tt37287335",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1180894",
+        "imdbId": "tt6215522",
         "demo": false
       },
       {
@@ -10788,9 +10972,9 @@ window.KINOSIS_CATALOG = {
           "Blue Rider Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 7.105,
-        "voteCount": 459,
-        "popularity": 79.0903,
+        "voteAverage": 7.121,
+        "voteCount": 475,
+        "popularity": 80.0368,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "로스앤젤레스발 상하이행 여객기가 화재로 폭발하며 태평양 한복판에 추락한다. 기적적으로 살아남은 승객들. 그러나 침몰하는 기체, 굶주린 식인 상어 떼 속에서 이제부터는 진짜 기적을 바라야 하는데...",
@@ -10838,15 +11022,15 @@ window.KINOSIS_CATALOG = {
           "Marvel Studios"
         ],
         "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 28529,
-        "popularity": 65.5717,
+        "voteAverage": 8.241,
+        "voteCount": 28595,
+        "popularity": 58.0672,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
         "tagline": "운명을 바꿀 최후의 전쟁이 펼쳐진다",
         "posterUrl": "https://image.tmdb.org/t/p/w500/z7ilT5rNN9kDo8JZmgyhM6ej2xv.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/2xfV5Zdq4kCsFVReRXJKnJaUFCD.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
         "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
         "logoUrl": "https://image.tmdb.org/t/p/original/gvGe333uy5FynrYAtGuQwlzzxku.png",
         "providers": [
@@ -10854,13 +11038,13 @@ window.KINOSIS_CATALOG = {
             "id": 337,
             "name": "Disney Plus",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=KR",
@@ -10898,19 +11082,69 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 62.6075,
+        "popularity": 43.5624,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/z0JdEEe4SyR1OGJRbe0ckZ1jvoU.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/6KDDoTq8Vq3HuQHULzuvPiCJbMI.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
         "logoUrl": "https://image.tmdb.org/t/p/original/enJPk9TdYB4zCO1mIwiRYAb5yqY.png",
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1003596",
         "imdbId": "tt21357150",
+        "demo": false
+      },
+      {
+        "id": 1423191,
+        "title": "레지던트 이블: 0번째 밤",
+        "originalTitle": "Resident Evil",
+        "year": 2026,
+        "releaseDate": "2026-09-16",
+        "director": "잭 크레거",
+        "runtime": 90,
+        "genres": [
+          "공포",
+          "SF"
+        ],
+        "keywords": [
+          "outbreak",
+          "survival",
+          "zombie",
+          "based on video game",
+          "survival horror",
+          "reboot",
+          "zombie apocalypse",
+          "body horror",
+          "zombie horror"
+        ],
+        "productionCompanies": [
+          "Constantin Film",
+          "Subconscious",
+          "Vertigo Entertainment",
+          "Davis Films",
+          "Columbia Pictures",
+          "PlayStation Productions",
+          "TriStar Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 41.967,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/gUcYDYaMhNppEhu3v2wnb8R23HW.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
+        "imdbId": "tt35538033",
         "demo": false
       },
       {
@@ -10944,17 +11178,17 @@ window.KINOSIS_CATALOG = {
           "Zhejiang Hengdian Film Production"
         ],
         "artSeed": false,
-        "voteAverage": 8.158,
-        "voteCount": 680,
-        "popularity": 55.124,
+        "voteAverage": 8.182,
+        "voteCount": 702,
+        "popularity": 41.1952,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "말을 할 수 없는 평범한 아버지 왕웨이. 어느 날 그의 딸 레이니가 거대 범죄 조직에 납치되고, 부패한 경찰마저 외면하자 직접 딸을 찾아 나선다. 그는 실종된 아내를 찾는 기자인 나빈과 힘을 합쳐 거침없이 조직의 심장부로 돌진한다. 마침내 마주한 딸 레이니. 하지만 그곳에는 수많은 아이들이 갇혀 있었고, 참담한 광경에 그들은 분노한다. 왕웨이와 나빈 그리고 레이니는 범죄 조직을 향해 거침없이 몸을 던지며, 폭발적인 무술 액션의 사투를 벌인다.",
         "tagline": "인간이 도달할 수 있는 가장 압도적인 액션의 극치",
         "posterUrl": "https://image.tmdb.org/t/p/w500/x959xPUa6DebrSj2xNtF0NYSiCm.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/9XwQphZxNJgGASfjL58mhIkJJpf.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/9XwQphZxNJgGASfjL58mhIkJJpf.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/msFWTNrFwfjsHKnMxDUexR9uofh.png",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/i0eR9O1FnCgBm1cH8WwqxGbAXMS.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1280738",
@@ -10962,50 +11196,51 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1122573,
-        "title": "인 더 그레이",
-        "originalTitle": "In the Grey",
+        "id": 1302904,
+        "title": "프랙티컬 매직: 새로운 챕터",
+        "originalTitle": "Practical Magic 2",
         "year": 2026,
-        "releaseDate": "2026-05-13",
-        "director": "가이 리치",
-        "runtime": 97,
+        "releaseDate": "2026-09-09",
+        "director": "수잔 비에르",
+        "runtime": 110,
         "genres": [
-          "액션",
-          "스릴러"
+          "로맨스",
+          "판타지",
+          "코미디"
         ],
         "keywords": [
-          "mission",
-          "heist",
-          "agent",
-          "dangerous mission",
-          "irreverent",
-          "provocative",
-          "audacious",
-          "enthusiastic",
-          "sarcastic"
+          "witch",
+          "based on novel or book",
+          "magic",
+          "family relationships",
+          "sequel",
+          "family",
+          "legacy"
         ],
         "productionCompanies": [
-          "C2 Motion Picture Group",
-          "Toff Guy Films",
-          "Black Bear Pictures",
-          "Red Sea Film Foundation"
+          "Di Novi Pictures",
+          "Warner Bros. Pictures",
+          "Blossom Films",
+          "Fortis Films",
+          "Domain Entertainment",
+          "Alcon Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 7.6,
-        "voteCount": 859,
-        "popularity": 42.4835,
+        "voteAverage": 6.5,
+        "voteCount": 12,
+        "popularity": 37.882,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
-        "tagline": "합법과 불법 사이",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2PIph5fGpL7xsNsRRjHOx1rkpYa.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qcIKxhqGMIj8uujsSoSMZWr8QqU.jpg",
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wE6syT1vv6W24iLGfhR4kQHnIDN.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1122573",
-        "imdbId": "tt27681354",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
+        "imdbId": "tt32588798",
         "demo": false
       },
       {
@@ -11029,11 +11264,9 @@ window.KINOSIS_CATALOG = {
           "engaged couple",
           "trust issues",
           "provocative",
-          "romantic",
-          "adoring",
+          "amused",
           "audacious",
-          "melodramatic",
-          "sympathetic"
+          "complicated"
         ],
         "productionCompanies": [
           "A24",
@@ -11041,9 +11274,9 @@ window.KINOSIS_CATALOG = {
           "Dilemma Films"
         ],
         "artSeed": false,
-        "voteAverage": 6.922,
-        "voteCount": 1691,
-        "popularity": 39.9098,
+        "voteAverage": 6.918,
+        "voteCount": 1742,
+        "popularity": 32.7912,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "결혼식을 일주일 앞둔 행복한 커플 엠마와 찰리. 우연히 알게 된 상대방의 비밀로 인해 단단했던 믿음이 흔들린다. 첫만남부터 서로를 완벽히 안다고 생각했던 두 사람, 작은 균열은 걷잡을 수 없이 커진 채 모두의 모습을 비추고…",
@@ -11056,103 +11289,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1325734",
         "imdbId": "tt33071426",
-        "demo": false
-      },
-      {
-        "id": 1423191,
-        "title": "레지던트 이블: 0번째 밤",
-        "originalTitle": "Resident Evil",
-        "year": 2026,
-        "releaseDate": "2026-09-16",
-        "director": "잭 크레거",
-        "runtime": 94,
-        "genres": [
-          "공포",
-          "SF"
-        ],
-        "keywords": [
-          "outbreak",
-          "survival",
-          "zombie",
-          "based on video game",
-          "survival horror",
-          "reboot",
-          "zombie apocalypse",
-          "body horror",
-          "zombie horror"
-        ],
-        "productionCompanies": [
-          "Constantin Film",
-          "Subconscious",
-          "Vertigo Entertainment",
-          "Davis Films",
-          "Columbia Pictures",
-          "PlayStation Productions",
-          "TriStar Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 28.7186,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddfXMkaPViSrg0P5aoYGFMc58x2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
-        "imdbId": "tt35538033",
-        "demo": false
-      },
-      {
-        "id": 1302904,
-        "title": "프랙티컬 매직: 새로운 챕터",
-        "originalTitle": "Practical Magic 2",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "수잔 비에르",
-        "runtime": 130,
-        "genres": [
-          "로맨스",
-          "판타지",
-          "코미디"
-        ],
-        "keywords": [
-          "witch",
-          "based on novel or book",
-          "magic",
-          "sequel",
-          "family",
-          "legacy"
-        ],
-        "productionCompanies": [
-          "Di Novi Pictures",
-          "Warner Bros. Pictures",
-          "Blossom Films",
-          "Fortis Films",
-          "Domain Entertainment",
-          "Alcon Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 19.6741,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2lSf1aoZA6UpTEBxVGqnJ7QayIP.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/nUcauJ000dFBYkgGpxyxJ5aWEH2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
-        "imdbId": "tt32588798",
         "demo": false
       },
       {
@@ -11175,12 +11311,12 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 16.9766,
+        "popularity": 21.2956,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/fCjmdRjpaJdjmUkTFYWe62omR8j.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/7UAzxqezg5yvZyK3k62wOAzg0Zs.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/kPbyLj2OyjojqvR1jfK1VvXzabg.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
@@ -11199,11 +11335,11 @@ window.KINOSIS_CATALOG = {
         "director": "Januel Mercado",
         "runtime": 109,
         "genres": [
-          "모험",
           "애니메이션",
+          "모험",
+          "판타지",
           "코미디",
-          "가족",
-          "판타지"
+          "가족"
         ],
         "keywords": [
           "island",
@@ -11220,21 +11356,107 @@ window.KINOSIS_CATALOG = {
           "DreamWorks Animation"
         ],
         "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 14.8938,
+        "voteAverage": 10,
+        "voteCount": 1,
+        "popularity": 17.2757,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "",
+        "overview": "\"기억이 사라지는 신비의 섬에서 영원히 기억될 모험이 시작된다!\" 성격은 달라도 마음만큼은 누구보다 잘 통했던 ‘조’와 ‘라이사’는 최고의 베프로 모든 순간을 함께하며 둘만의 기억을 쌓아간다. 그러나 졸업과 함께 서로 다른 환경을 살아가던 두 사람의 우정은 조금씩 흔들리기 시작한다. 그러던 어느 날, 전설처럼 전해지던 신비한 포털을 발견한 두 사람은 기억이 사라지는 세계, ‘포가튼 아일랜드’로 빨려 들어가게 되고, 시공간의 경계를 넘나드는 이 섬을 떠나기 위해선 가장 소중한 추억을 포기해야 하는 규칙이 주어진다. 기억을 훔치는 섬의 지배자 ‘마낭’이 두 사람을 위협하는 가운데 ‘조’와 ‘라이사’는 섬에서 만난 새로운 친구들과 비밀을 쫓기 시작하지만 진실에 가까워질수록 두 사람의 기억은 사라질 위기에 처하는데…",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/kW1fH2jZZM5tVHwNaDdUOUXJvWU.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qhWwvo77nXAdiWuL4eP7JXLWErs.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8SGvtshZdIpUy9eyusyQeJchm9n.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/2o9FzuBzCqrDTdlHRuEVnGD2d5h.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1465063",
         "imdbId": "tt36583977",
+        "demo": false
+      },
+      {
+        "id": 1153576,
+        "title": "스트리트 파이터",
+        "originalTitle": "Street Fighter",
+        "year": 2026,
+        "releaseDate": "2026-10-14",
+        "director": "Kitao Sakurai",
+        "runtime": 108,
+        "genres": [
+          "액션",
+          "판타지"
+        ],
+        "keywords": [
+          "martial arts",
+          "based on video game",
+          "martial arts tournament",
+          "wuxia",
+          "hand to hand combat",
+          "1990s",
+          "battle royale",
+          "power",
+          "powers"
+        ],
+        "productionCompanies": [
+          "Capcom",
+          "Legendary Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 13.5998,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/pJmi3E0ywiGTLlPcvhzOZiFiCv9.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/5H5YphHsQmkQhrw13Wv1whCZKtN.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1153576",
+        "imdbId": "tt27419420",
+        "demo": false
+      },
+      {
+        "id": 1248832,
+        "title": "디거",
+        "originalTitle": "Digger",
+        "year": 2026,
+        "releaseDate": "2026-09-30",
+        "director": "알레한드로 곤살레스 이냐리투",
+        "runtime": 128,
+        "genres": [
+          "코미디"
+        ],
+        "keywords": [
+          "dark comedy",
+          "satire",
+          "political satire"
+        ],
+        "productionCompanies": [
+          "Warner Bros. Pictures",
+          "Legendary Pictures",
+          "TC Productions",
+          "M Productions",
+          "Domain Entertainment"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 12.0486,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "파느냐. 죽느냐.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/jV5Mfasg8dP3XK5nuXLetBN3APx.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/b7t3r39Oll5qPxBKzLZ8eHMBD7l.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1248832",
+        "imdbId": "tt31450459",
         "demo": false
       },
       {
@@ -11291,14 +11513,14 @@ window.KINOSIS_CATALOG = {
           "TOHO"
         ],
         "artSeed": false,
-        "voteAverage": 7.1,
-        "voteCount": 7,
-        "popularity": 10.5376,
+        "voteAverage": 7.313,
+        "voteCount": 8,
+        "popularity": 11.4127,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "어느 날, 광장에서 쉬고 있던 치이카와와 가르마 앞에 얼굴에 전단지를 붙인 토끼가 나타난다. 그곳엔 “특별한 섬으로의 초대”라는 글귀가 적혀 있는데... “섬에서 간단한 토벌만 해도 보수 100배!” “한정 섬라멘과 한정 디저트까지, 달콤한 것도 매콤한 것도 사실상 무료.” 솔깃한 문구에 이끌린 치이카와와 친구들은 섬에서 열리는 행사에 참가하기로 한다. 초대장의 내용이 어딘가 수상하다고 느끼는 해달과, 부푼 마음으로 배에 오르는 치이카와와 친구들. 모두가 기대를 안은 채 특별한 섬에 도착하는데! 과연 그 섬에는 어떤 비밀이 숨겨져 있을까...?!",
         "tagline": "언제까지나",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/5VtAjsDsGHghel4Bxr5Y7u8KQTI.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/5TMyytCI5Pfc9c1eNsljiCdiB05.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/6efIfUaOqYKKWI5sSCilvqLIpeL.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
@@ -11309,48 +11531,41 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1284016,
-        "title": "싱 어게인",
-        "originalTitle": "Power Ballad",
+        "id": 1447853,
+        "title": "오아시스: 돈 룩 백 인 앵거",
+        "originalTitle": "Oasis: Don't Look Back in Anger",
         "year": 2026,
-        "releaseDate": "2026-05-18",
-        "director": "존 카니",
-        "runtime": 99,
+        "releaseDate": "2026-09-09",
+        "director": "Dylan Southern",
+        "runtime": 123,
         "genres": [
-          "코미디",
-          "음악",
-          "드라마"
+          "다큐멘터리",
+          "음악"
         ],
         "keywords": [
-          "songwriting",
-          "boy band",
-          "music",
-          "past their prime"
+          "music documentary"
         ],
         "productionCompanies": [
-          "Likely Story",
-          "30WEST",
-          "Fís Éireann/Screen Ireland",
-          "Treasure Entertainment",
-          "Distressed Films",
-          "Media Capital Technologies"
+          "Magna Studios",
+          "Sony Music Vision",
+          "Sony Music Entertainment UK"
         ],
         "artSeed": false,
-        "voteAverage": 7.045,
-        "voteCount": 99,
-        "popularity": 9.8918,
+        "voteAverage": 7.5,
+        "voteCount": 2,
+        "popularity": 10.1706,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
-        "tagline": "단 한 곡이 두 사람의 인생을 뒤바꿨다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/19BfIkDHgbgLcHVbi9rKx7KUCgi.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
+        "overview": "리암 갤러거와 노엘 갤러거의 재결합 소식 이후 전 세계가 가장 기다려왔던 공연 ‘Oasis Live ’25 Tour’의 여정을 따라가는 다큐멘터리 영화",
+        "tagline": "기나긴 기다림은 끝났다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/pRMOGMnTKZO7P0J65UNORcXAU8G.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7Ud7QIJo21odjCaev6V4md9sK16.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1284016",
-        "imdbId": "tt32267691",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1447853",
+        "imdbId": "tt36152310",
         "demo": false
       },
       {
@@ -11382,7 +11597,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 7.2849,
+        "popularity": 6.5369,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -11433,7 +11648,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 6.199,
         "voteCount": 136,
-        "popularity": 6.4696,
+        "popularity": 5.7366,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "몸을 석고처럼 굳게 만드는 혈액 매개 바이러스가 퍼지는 도시. 13세 소녀 알파는 친구들과의 파티에서 의문의 'A'자 문신을 새긴 채 집으로 돌아오고, 의사인 엄마는 알파가 바이러스에 감염됐을지 모른다는 불안감에 휩싸인다. 감염 여부 결과를 기다리는 2주 사이, 학교에는 소문이 퍼지기 시작하고 소문은 곧 낙인이 되어 알파를 옭아맨다. 그리고 삼촌의 등장은 알파와 엄마의 불안을 증폭시키는데…",
@@ -11487,7 +11702,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 5.8222,
+        "popularity": 5.5432,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "아버지를 여읜 후 어머니, 여동생과 함께 정든 집에서 쫓겨난 두 자매. 생존마저 위협받는 현실 속에서 차분하고 이성적인 언니 엘리너와 열정적이고 솔직한 동생 메리앤은 각자의 방식으로 삶과 사랑, 부당한 세상에 맞선다.",
@@ -11500,6 +11715,110 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1503762",
         "imdbId": "tt13609648",
+        "demo": false
+      },
+      {
+        "id": 1591675,
+        "title": "룩백",
+        "originalTitle": "ルックバック",
+        "year": 2026,
+        "releaseDate": "2026-09-11",
+        "director": "고레에다 히로카즈",
+        "runtime": 100,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [
+          "friendship",
+          "based on manga",
+          "mangaka",
+          "intimate",
+          "manga artist",
+          "empathetic",
+          "gentle",
+          "sincere",
+          "tragic"
+        ],
+        "productionCompanies": [
+          "K2 Pictures",
+          "Shueisha"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.1,
+        "voteCount": 5,
+        "popularity": 5.0182,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
+        "tagline": "함께 그리며 우리가 되었어",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/mAfcD0lspaNlZDRrzT0fdWS5C01.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ceOdqFmZy5kKImbGThuDHuifGpm.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1591675",
+        "imdbId": "tt39094466",
+        "demo": false
+      },
+      {
+        "id": 42360,
+        "title": "이누야샤: 시대를 초월한 마음",
+        "originalTitle": "犬夜叉 時代を越える想い",
+        "year": 2001,
+        "releaseDate": "2001-12-15",
+        "director": "篠原俊哉",
+        "runtime": 99,
+        "genres": [
+          "액션",
+          "애니메이션",
+          "모험",
+          "판타지"
+        ],
+        "keywords": [
+          "monster",
+          "sword",
+          "time travel",
+          "demon",
+          "adult animation",
+          "youkai",
+          "quest",
+          "shounen",
+          "anime"
+        ],
+        "productionCompanies": [
+          "SUNRISE",
+          "Mini Art"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.532,
+        "voteCount": 202,
+        "popularity": 4.5957,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "만화계의 거장 다카하시 루미코 원작 만화가 극장판으로 찾아왔다. 전국시대의 반요괴 이누야샤와 현대 시대의 여고생 카고메의 시공을 초월한 모험과 사랑의 대서사시.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ixLZPFZuTSbl7nj9QPa46W84eWz.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/aWg40fkUvghFwrCya2fHvAEvjud.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/42360/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/42360",
+        "imdbId": "tt0322645",
         "demo": false
       },
       {
@@ -11533,13 +11852,13 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 6.8,
-        "voteCount": 224,
-        "popularity": 5.3809,
+        "voteCount": 226,
+        "popularity": 4.1432,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "청년 ‘뫼르소’는 어머니의 부고 소식을 듣고 장례를 치르지만 어딘가 무감하다. 집으로 돌아온 그는 해수욕장에서 옛 동료 ‘마리’를 우연히 만나 사랑을 나눈다. 이웃 ‘레몽’과 가깝게 지내던 ‘뫼르소’는 예상치 못한 비극에 휘말린다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/7hpPl0WVyy3w9JfIfalDLkRBj3E.jpg",
+        "tagline": "세상이 이해하지 못한 낯선 이름",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2NoWaSTgKF7FcJ0Lr5NrvDDINOv.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/aTjFGxR7K32HPxrdvJOVeXX1UCe.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
@@ -11547,378 +11866,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1429348",
         "imdbId": "tt36243564",
-        "demo": false
-      },
-      {
-        "id": 42360,
-        "title": "이누야샤: 시대를 초월한 마음",
-        "originalTitle": "犬夜叉 時代を越える想い",
-        "year": 2001,
-        "releaseDate": "2001-12-15",
-        "director": "篠原俊哉",
-        "runtime": 99,
-        "genres": [
-          "액션",
-          "애니메이션",
-          "모험",
-          "판타지"
-        ],
-        "keywords": [
-          "monster",
-          "sword",
-          "time travel",
-          "demon",
-          "adult animation",
-          "youkai",
-          "quest",
-          "shounen",
-          "anime"
-        ],
-        "productionCompanies": [
-          "SUNRISE",
-          "Mini Art"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.5,
-        "voteCount": 201,
-        "popularity": 4.1828,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "만화계의 거장 다카하시 루미코 원작 만화가 극장판으로 찾아왔다. 전국시대의 반요괴 이누야샤와 현대 시대의 여고생 카고메의 시공을 초월한 모험과 사랑의 대서사시.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/ixLZPFZuTSbl7nj9QPa46W84eWz.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/aWg40fkUvghFwrCya2fHvAEvjud.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/42360/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/42360",
-        "imdbId": "tt0322645",
-        "demo": false
-      },
-      {
-        "id": 100271,
-        "title": "모모와 다락방의 수상한 요괴들",
-        "originalTitle": "ももへの手紙",
-        "year": 2012,
-        "releaseDate": "2012-04-21",
-        "director": "沖浦啓之",
-        "runtime": 120,
-        "genres": [
-          "코미디",
-          "판타지",
-          "애니메이션",
-          "드라마",
-          "가족"
-        ],
-        "keywords": [
-          "parent child relationship",
-          "supernatural",
-          "family relationships",
-          "animism",
-          "supernatural creature",
-          "youkai",
-          "anime"
-        ],
-        "productionCompanies": [
-          "TBS",
-          "KADOKAWA",
-          "Production I.G",
-          "KADOKAWA Shoten",
-          "Bandai Visual",
-          "CBC",
-          "Chugoku Broadcasting",
-          "Horipro",
-          "MBS",
-          "OLM",
-          "Tokyu Recreation",
-          "Yahoo! Japan",
-          "jeki"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.351,
-        "voteCount": 413,
-        "popularity": 4.0835,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "우리집 다락방에 요괴가 산다?!  엄마를 따라 작은 섬 시오지마로 이사 온 11살 도시 소녀 모모. 이사온 첫날, 모모는 다락방에서 오래된 그림책 한 권을 발견한다. 그날 이후, 다락방에서 이상한 소리가 들리는가 하면, 냉장고 속 간식이 사라지고, 급기야 그림책 속 요괴들이 모모의 눈앞에 나타나는데…  내 눈에만 보이는 사고뭉치 요괴 3인방~!  모모 덕에 봉인된 그림책에서 나왔다며 자신들을 소개하는 이와, 카와, 마메! 외모와는 다르게 은근 소심하고 먹보에 어리바리하기까지. 자칭 수호신이라며 큰 소리치지만 사고투성인 요괴 3인방과 웃지 못할 한집살이를 시작한 모모에게 어느 날 예상치 못한 위기가 찾아오는데……  도시 소녀 모모에게 찾아온 수상한 요괴 3인방! 그들의 초특급 모험이 시작된다!",
-        "tagline": "어느 날...그들이 나타났다!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/yB71TFQzTmULS08g4RatAEHoL8J.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/2vc5hXc4pMXcKOOsOuyI2MQ1AdK.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/100271/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/100271",
-        "imdbId": "tt1853614",
-        "demo": false
-      },
-      {
-        "id": 1274214,
-        "title": "파파조라 더 무비",
-        "originalTitle": "Papa Zola: The Movie",
-        "year": 2025,
-        "releaseDate": "2025-12-11",
-        "director": "Raja Nukman Raja Mohd Noordin",
-        "runtime": 111,
-        "genres": [
-          "애니메이션",
-          "액션",
-          "모험",
-          "코미디",
-          "가족",
-          "SF"
-        ],
-        "keywords": [
-          "mother",
-          "hero",
-          "baby",
-          "superhero",
-          "villain",
-          "father",
-          "based on cartoon",
-          "bumbling",
-          "supervillain",
-          "father daughter relationship",
-          "based on tv series",
-          "3d animation"
-        ],
-        "productionCompanies": [
-          "Astro Shaw",
-          "Monsta Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 9,
-        "voteCount": 3,
-        "popularity": 3.4819,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "외계인 침공으로부터 지구를 지키는 비밀 조직 ‘파파’! 일명 ‘파’멸 저지 ‘파’견팀, 파파의 팀장 ‘카착스 칸’, 정보 분석 요원 ‘질러’, 행동 요원 ‘조라’, 기술 지원 요원 ‘욘비’는 외계인 침공으로부터 지구를 지키기 위해 활약하며 임무를 완수했지만 조라와 질러는 기억을 잃게 된다. 그로부터 몇 년 후, 기억을 잃은 비밀 조직 파파 요원인 조라는 허세만렙 딸 바보, 가족 바라기 ‘극F’ 아빠로 아내 질러, 딸 피피와 소박하고 행복한 일상을 꾸려나간다. 가족 여행 자금을 모으기 위해 배달, 운전 등 투잡, 쓰리잡도 불사하던 중 사랑하는 딸 피피가 외계인에 납치되고, 외계인의 위협으로 지구가 다시 위험에 빠지게 되자 조라와 질러 앞에 파파 요원들이 다시 나타나는데!",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/x71IGbvjUSeqrTtslrMnwylidYf.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/AkNQCE7FijTFmneDVLCYpN9aMJ0.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1274214",
-        "imdbId": "tt30761647",
-        "demo": false
-      },
-      {
-        "id": 1325614,
-        "title": "배드랜드 스나이퍼",
-        "originalTitle": "Badland Rising",
-        "year": 2026,
-        "releaseDate": "2026-09-04",
-        "director": "Blair Moore",
-        "runtime": 97,
-        "genres": [
-          "액션",
-          "범죄"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Flying Billykart Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 5,
-        "voteCount": 1,
-        "popularity": 3.4805,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "전직 SAS 저격수 데이브. 건설 현장에서의 근무를 마치고 가족이 있는 농장으로 돌아가던 그는 우연히 강도 사건에 휘말리며 범죄자들의 표적이 된다. 엉망이 된 강도 작전 이후, 갱단과 러시아 킬러, 형사들까지 가세하며 그의 평범했던 귀갓길은 끝없는 추격전으로 변한다. 가족이 있는 집까지 19시간, 살아 돌아가기 위한 단 하나의 미션! 끝까지 추격해오는 자들로부터 가족과 삶의 터전을 지켜내야 한다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/97kdNvdoFdDGvN2N7tyQPC3vTo2.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kcw0kaZiGCu9RhroFlnjA1g04Yz.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1325614",
-        "imdbId": "tt31434090",
-        "demo": false
-      },
-      {
-        "id": 1285895,
-        "title": "나의 사적인 예술가",
-        "originalTitle": "Late Fame",
-        "year": 2026,
-        "releaseDate": "2026-08-07",
-        "director": "켄트 존스",
-        "runtime": 96,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [
-          "new york city",
-          "poet"
-        ],
-        "productionCompanies": [
-          "Killer Films",
-          "Fresh Fish Films",
-          "Morning Moon Productions",
-          "Working Barn Productions",
-          "mk2 Films"
-        ],
-        "artSeed": false,
-        "voteAverage": 6,
-        "voteCount": 2,
-        "popularity": 3.2848,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "과거 시집 한 권을 출간했지만 지금은 뉴욕의 우체국에서 일하며 평범한 일상을 살아가는 ‘에드 색스버거’. 어느 날, 그의 앞에 자신의 시에 매료된 젊은 예술 모임의 리더 ‘마이어스’가 찾아오고 그들의 모임에 ‘에드’를 초대한다. 뒤늦은 찬사 속에 잊고 있던 날들을 다시 떠올리게 된 ‘에드’. 그러나 점차 그들의 젊음과 부, 자신의 현실이 교차하고 마음 속에 예상치 못한 감정들이 피어나게 되는데...",
-        "tagline": "뉴욕의 잊혀진 시인, 재발견되다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/hv7zKr3cCdOFhNVcqWYj74Ij6KX.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/tDG3iVhR4gZOTtXoBEtqZgNrD1U.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1285895",
-        "imdbId": "tt32298494",
-        "demo": false
-      },
-      {
-        "id": 1512207,
-        "title": "리틀 드래곤:몬스터섬의 비밀",
-        "originalTitle": "Ruffen: Sjøormen som ikke kunne svømme",
-        "year": 2025,
-        "releaseDate": "2025-10-10",
-        "director": "Endre Skandfer",
-        "runtime": 74,
-        "genres": [
-          "애니메이션",
-          "가족"
-        ],
-        "keywords": [
-          "sea monster",
-          "sea serpent",
-          "3d animation"
-        ],
-        "productionCompanies": [
-          "Anima Vitae Point",
-          "Atmosphere Media",
-          "Maipo Film",
-          "NeXtFrames Animation"
-        ],
-        "artSeed": false,
-        "voteAverage": 7,
-        "voteCount": 4,
-        "popularity": 3.1008,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "수영을 못 하는 바다 드래곤 루피는 할머니와 단둘이 살아가고 있다. 어느 날, 연기를 내뿜어 인간으로부터 바다 괴물 섬을 지키는 세르팡의 마법목도리가 망가지고, 루드비그는 감기에 걸려 연기를 내뿜지 못한다. 루피는 오래전 섬을 떠난 자신의 이모할머니가 루드비그에게 목도리를 선물했다는 사실을 알게 되고, 할머니와 바다 몬스터 섬을 지키기 위해 이모할머니를 찾아 떠난다, 고래택시를 타고 육지에 도착하고 육지에서 사자,꼬끼리,거북이 등을 만나 그들과 함께 동물원을 탈출하여 다시 몬스터 섬으로 돌아와 위기를 극복한다.",
-        "tagline": "수영은 꽝! 용기는 짱! 꼬마 바다용의 첫 육지 상륙작전!!!!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/esGI8WI19wO0Hyvv2OFYUuvEPtx.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mH7bfSIQelApYiTlefB8rKNJ81J.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1512207",
-        "imdbId": "tt32267711",
-        "demo": false
-      },
-      {
-        "id": 1473635,
-        "title": "말하지 않은 것들",
-        "originalTitle": "Le cose non dette",
-        "year": 2026,
-        "releaseDate": "2026-01-29",
-        "director": "Gabriele Muccino",
-        "runtime": 115,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Lotus Production",
-          "RAI Cinema",
-          "Asa Nisi Masa",
-          "Leone Film Group",
-          "MiC"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.9,
-        "voteCount": 157,
-        "popularity": 3.0901,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "카를로는 대학교수이고, 엘리사는 기자다. 그들은 안나와 파올로, 그리고 그들의 딸 비토리아와 함께 모로코의 탕헤르로 여행을 떠난다. 멀리 떨어진 따뜻하고 고요한 풍경 속에서, 관계는 긴장을 고조시키고, 본모습을 드러내며, 변화한다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/jhAimZ4vUrq4zEAWgT0yBff1ooh.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/pBeB38aB3FfzPqCrSoxZpvLHxjt.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1473635",
-        "imdbId": "tt37096260",
-        "demo": false
-      },
-      {
-        "id": 1591675,
-        "title": "룩백",
-        "originalTitle": "ルックバック",
-        "year": 2026,
-        "releaseDate": "2026-09-11",
-        "director": "고레에다 히로카즈",
-        "runtime": 100,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [
-          "friendship",
-          "based on manga",
-          "mangaka",
-          "intimate",
-          "manga artist",
-          "empathetic",
-          "gentle",
-          "sincere",
-          "tragic"
-        ],
-        "productionCompanies": [
-          "K2 Pictures",
-          "Shueisha"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 3.0867,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
-        "tagline": "함께 그리며 우리가 되었어",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/mAfcD0lspaNlZDRrzT0fdWS5C01.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ceOdqFmZy5kKImbGThuDHuifGpm.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1591675",
-        "imdbId": "tt39094605",
         "demo": false
       },
       {
@@ -11949,7 +11896,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 7.6,
         "voteCount": 96,
-        "popularity": 2.767,
+        "popularity": 3.6055,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "디지몬 어드벤쳐, 그보다 좀 더 이전의 이야기. 야가미 타이치(신태일)와 그의 여동생인 히카리(신나리)가 어릴 적 코로몬과 운명적인 만남을 가졌던 때를 그리고 있다.",
@@ -11963,75 +11910,36 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/97787/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/97787",
         "imdbId": "tt2049430",
-        "demo": false
-      },
-      {
-        "id": 961214,
-        "title": "부활남: 더 레드",
-        "originalTitle": "부활남: 더 레드",
-        "year": 2026,
-        "releaseDate": "2026-09-30",
-        "director": "백",
-        "runtime": 102,
-        "genres": [
-          "액션",
-          "판타지"
-        ],
-        "keywords": [
-          "based on webcomic or webtoon"
-        ],
-        "productionCompanies": [
-          "Yong Film",
-          "Superfiction",
-          "YLAB",
-          "스튜디오눈길"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 2.5934,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
-        "tagline": "죽었는데요, 살아났습니다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/nLsyRK3SmtdIftozpCd8sGQMRGD.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kiDd05NykJBIoEvJPSG5SOd7qc6.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/961214",
-        "imdbId": "tt29452783",
         "demo": false
       },
       {
@@ -12059,15 +11967,15 @@ window.KINOSIS_CATALOG = {
           "Toei Animation"
         ],
         "artSeed": false,
-        "voteAverage": 8.047,
+        "voteAverage": 8,
         "voteCount": 74,
-        "popularity": 2.5373,
+        "popularity": 3.4316,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "디지털 월드의 모험으로부터 반 년 후. 인터넷 상에는 전 세계의 디지털 데이터를 먹고 성장하는 흉악한 디지몬 쿠라몬이 탄생한다. 쿠라몬은 디아블로몬으로 진화해 지구를 멸망시킬 수 있을 정도의 파급력을 지닌 핵미사일을 발사시키는데… 일촉즉발의 상황, 아이들과 디지몬들은 힘을 합쳐 세상을 구해내야만 한다!",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/jxrvPQjx2bg7xjyrq4gRGN1KhFG.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/9WS1AUI57GNpqYLqobaWjlio86S.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/m3g7v9ChQE2keBS4RMUxfmWn1xy.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
@@ -12075,25 +11983,25 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/75571/watch?locale=KR",
@@ -12102,44 +12010,42 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1684016,
-        "title": "케이티 페리: 라이프타임스 투어 - 라이브 인 파리",
-        "originalTitle": "Katy Perry: The Lifetimes Tour – Live from Paris",
+        "id": 961214,
+        "title": "부활남: 더 레드",
+        "originalTitle": "부활남: 더 레드",
         "year": 2026,
-        "releaseDate": "2026-09-02",
-        "director": "Paul Dugdale",
-        "runtime": 119,
+        "releaseDate": "2026-09-30",
+        "director": "백",
+        "runtime": 102,
         "genres": [
-          "다큐멘터리",
-          "음악"
+          "액션",
+          "판타지"
         ],
         "keywords": [
-          "concert",
-          "katy perry",
-          "lifetimes tour",
-          "the lifetimes tour movie"
+          "based on webcomic or webtoon"
         ],
         "productionCompanies": [
-          "SiFi Productions",
-          "Silent House Productions",
-          "10 Lives Content"
+          "Yong Film",
+          "Superfiction",
+          "YLAB",
+          "STUDIO NU:NGIL"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 2.4602,
+        "popularity": 3.0104,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "세계적인 팝 스타 케이티 페리의 7년 만의 월드 투어 무대. 2025년 11월 파리 아코르 아레나 전석 매진 현장에서 펼쳐지는 화려한 공중 퍼포먼스와 무한한 에너지, 그리고 관객들과의 교감을 담아낸 콘서트 영화다.",
-        "tagline": "남들은 안 된다고 했지만. 나는 해냈고. 영화로 남겼다.",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/snmaFZZ0GCMnvGCcoSzztbCrwbV.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/1BfOqbDhvtmAv7SwyobM5eTjQMm.jpg",
+        "overview": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
+        "tagline": "죽었는데요, 살아났습니다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/nLsyRK3SmtdIftozpCd8sGQMRGD.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kiDd05NykJBIoEvJPSG5SOd7qc6.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1684016",
-        "imdbId": "tt38882652",
+        "tmdbUrl": "https://www.themoviedb.org/movie/961214",
+        "imdbId": "tt29452783",
         "demo": false
       },
       {
@@ -12159,9 +12065,9 @@ window.KINOSIS_CATALOG = {
           "BH5"
         ],
         "artSeed": false,
-        "voteAverage": 6.982,
-        "voteCount": 56,
-        "popularity": 1.9712,
+        "voteAverage": 6.797,
+        "voteCount": 59,
+        "popularity": 2.9139,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "야간 근무로 피로에 찌든 보안 요원 브렌다는 끔찍한 뺑소니 사고를 내고 시신을 유기한다. 두려움을 숨긴 채 새로운 근무지인 시립 영안실로 향하지만, 외부와 완전히 차단된 그곳은 스산한 적막과 백색 소음만이 감도는 고립된 공간이다. 브렌다는 밀려오는 죄책감을 억누르며 심야 근무를 시작하지만, 시간이 흐를수록 폐쇄된 영안실의 침묵은 숨통을 조여온다. 냉동 보관함 너머의 기이한 소음과 CCTV 화면을 잠식한 정체불명의 실루엣, 정체불명의 그림자와 그녀가 두고 온 죽음의 흔적들은 그녀를 점차 압박해 온다. 현실과 무의식의 경계가 무너진 고립된 시체 보관소에서 브렌다는 늘 자신을 괴롭혔던 트라우마에 시달리며 극심한 패닉에 빠져 드는데…",
@@ -12175,67 +12081,258 @@ window.KINOSIS_CATALOG = {
         "tmdbUrl": "https://www.themoviedb.org/movie/1575535",
         "imdbId": "tt38689148",
         "demo": false
+      },
+      {
+        "id": 1364368,
+        "title": "연옥: 살인마들의 자치구역",
+        "originalTitle": "연옥: 살인마들의 자치구역",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "브루스 칸",
+        "runtime": 102,
+        "genres": [
+          "액션",
+          "스릴러",
+          "모험",
+          "범죄"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Greenfish Studio",
+          "Khan Film"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 2.9113,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "1급 흉악범들조차 살아남기 힘든 수용소 '연옥'. 법도 질서도 존재하지 않는 이곳에서는 오직 힘만이 살아남는다. 모든 죄수들이 두려워하는 연옥의 절대 권력자 ‘염왕’. 어느 날, 그를 제거해 달라는 위험한 제안을 받은 한 남자 ‘유성'. 생존과 자유를 걸고 연옥의 절대 권력에 맞서기 시작한다. 끝없는 폭력과 배신, 예측할 수 없는 함정 속에서 목숨을 건 마지막 사투가 시작된다!",
+        "tagline": "끝나지 않는 피바람, 살아있는 지옥의 시작",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1364368",
+        "imdbId": "tt43756804",
+        "demo": false
+      },
+      {
+        "id": 1279865,
+        "title": "파리스 그린이 밝는 날에",
+        "originalTitle": "花緑青が明ける日に",
+        "year": 2026,
+        "releaseDate": "2026-03-06",
+        "director": "四宮義俊",
+        "runtime": 75,
+        "genres": [
+          "애니메이션",
+          "드라마"
+        ],
+        "keywords": [
+          "factory",
+          "fireworks",
+          "anime"
+        ],
+        "productionCompanies": [
+          "Asmik Ace",
+          "Miyu Productions",
+          "Studio Outrigger"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.1,
+        "voteCount": 8,
+        "popularity": 2.7895,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "오랜 전통의 불꽃공장 '타테와키 불꽃점'은 마을 재개발로 인해 철거 위기에 놓여 있다. 그곳에서 자란 케이타로는 아버지를 대신해 환상의 불꽃 '슈하리'를 완성시키려 홀로 분투하고 있었다. 여름의 마지막 날, 도쿄에서 지내던 소꿉친구 카오루가 고향으로 돌아온다. 잃어버린 시간과 유대를 되찾으려는 듯 서로 부딪히면서, 불꽃의 완성과 발사를 둘러싼 놀라운 계획을 세우는데… 환상의 불꽃에 담긴 희망, 그리고 그 열쇠를 쥔 '카로쿠쇼'. 불티가 밤을 밝히고, 새로운 아침을 맞이할 때 케이타로와 친구들이 각자 손에 쥐게 될 미래는 무엇일까?",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/wIXWBILvfweBOPfnOsaK71AFtXm.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/uuVLGMIIGwz9QbBlvDvGlfU5HkI.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1279865",
+        "imdbId": "tt32192760",
+        "demo": false
+      },
+      {
+        "id": 1418428,
+        "title": "암살자(들)",
+        "originalTitle": "암살자(들)",
+        "year": 2026,
+        "releaseDate": "2026-09-23",
+        "director": "허진호",
+        "runtime": 131,
+        "genres": [
+          "드라마",
+          "범죄",
+          "스릴러",
+          "액션"
+        ],
+        "keywords": [
+          "politics",
+          "1970s",
+          "based on true story",
+          "president",
+          "conspiracy theory",
+          "conspiracy",
+          "first lady",
+          "political assassination",
+          "assassination attempt",
+          "korea president"
+        ],
+        "productionCompanies": [
+          "Hive Media Corp"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 2.7275,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "대한민국을 충격에 빠뜨린 8.15 저격 사건의 의혹과 배후를 추적하는 이야기를 그린 영화",
+        "tagline": "1974년 8월 15일 영부인 저격 사건, 사건의 배후는 누구인가",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/c55ijsOdntj6P25vDwHLdgsBpmV.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mCUZLymzVjfYJXEON4wg8ilx2H8.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1418428",
+        "imdbId": "tt38708063",
+        "demo": false
+      },
+      {
+        "id": 1285895,
+        "title": "나의 사적인 예술가",
+        "originalTitle": "Late Fame",
+        "year": 2026,
+        "releaseDate": "2026-08-07",
+        "director": "켄트 존스",
+        "runtime": 96,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [
+          "new york city",
+          "poet"
+        ],
+        "productionCompanies": [
+          "Killer Films",
+          "Fresh Fish Films",
+          "Morning Moon Productions",
+          "Working Barn Productions",
+          "mk2 Films"
+        ],
+        "artSeed": false,
+        "voteAverage": 6,
+        "voteCount": 2,
+        "popularity": 2.6412,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "과거 시집 한 권을 출간했지만 지금은 뉴욕의 우체국에서 일하며 평범한 일상을 살아가는 ‘에드 색스버거’. 어느 날, 그의 앞에 자신의 시에 매료된 젊은 예술 모임의 리더 ‘마이어스’가 찾아오고 그들의 모임에 ‘에드’를 초대한다. 뒤늦은 찬사 속에 잊고 있던 날들을 다시 떠올리게 된 ‘에드’. 그러나 점차 그들의 젊음과 부, 자신의 현실이 교차하고 마음 속에 예상치 못한 감정들이 피어나게 되는데...",
+        "tagline": "뉴욕의 잊혀진 시인, 재발견되다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/hv7zKr3cCdOFhNVcqWYj74Ij6KX.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/tDG3iVhR4gZOTtXoBEtqZgNrD1U.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1285895",
+        "imdbId": "tt32298494",
+        "demo": false
+      },
+      {
+        "id": 1265717,
+        "title": "친숙한 손길",
+        "originalTitle": "Familiar Touch",
+        "year": 2025,
+        "releaseDate": "2025-06-20",
+        "director": "Sarah Friedland",
+        "runtime": 92,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Rathaus Films",
+          "Go for Thurm",
+          "Artemis Rising",
+          "Simbelle Productions"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.3,
+        "voteCount": 28,
+        "popularity": 2.5781,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "변화하는 기억 속, 요양 시설에서 새로운 삶을 시작하게 된 루스. 낯선 일상 속에서도 삶을 향한 열정을 잃지 않은 그녀는 새로운 관계를 맺으며 자신의 나이와 욕망을 다시금 마주한다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/4tWJdFTBEg0hXHw41ZFCjj3Cvpo.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/sq2IW3AbdiH8J3JqHUIErAPRn86.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1265717",
+        "imdbId": "tt32928666",
+        "demo": false
+      },
+      {
+        "id": 1280401,
+        "title": "아가미",
+        "originalTitle": "아가미",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "안재훈",
+        "runtime": 106,
+        "genres": [
+          "애니메이션",
+          "드라마",
+          "판타지"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Meditation With a Pencil",
+          "Namu Animation"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 1.9948,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "“이야기가 길어질 텐데 괜찮아요?” 깊은 물 속에 던져진 날, 아가미가 생겨난 세상에서 유일한 아이 ‘곤’ 그리고 그의 세계에 전부였던 존재들의 눈부신 이야기",
+        "tagline": "\"내 세계를 찾고 있어\"",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/hy6PNPZ8JGWZf4sGuCB8bqHJ8rR.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/z4jh7RHSci98FSqBtYCB2Sjqq2b.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1280401/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1280401",
+        "imdbId": "tt32602819",
+        "demo": false
       }
     ],
     "theatres": [
-      {
-        "id": 969681,
-        "title": "스파이더맨: 브랜드 뉴 데이",
-        "originalTitle": "Spider-Man: Brand New Day",
-        "year": 2026,
-        "releaseDate": "2026-07-29",
-        "director": "데스틴 대니얼 크레턴",
-        "runtime": 145,
-        "genres": [
-          "SF",
-          "액션",
-          "모험"
-        ],
-        "keywords": [
-          "mind control",
-          "new york city",
-          "hero",
-          "mutation",
-          "secret identity",
-          "superhero",
-          "spider",
-          "villain",
-          "based on comic",
-          "sequel",
-          "transhumanism",
-          "super power",
-          "masked vigilante",
-          "spider web",
-          "aftercreditsstinger",
-          "marvel cinematic universe (mcu)",
-          "masked superhero",
-          "fight for justice",
-          "genetic mutation"
-        ],
-        "productionCompanies": [
-          "Marvel Studios",
-          "Columbia Pictures",
-          "Pascal Pictures",
-          "TSG Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.873,
-        "voteCount": 2357,
-        "popularity": 952.532,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-        "tagline": "스파이더맨의 새로운 날을 확인하라!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/969681",
-        "imdbId": "tt22084616",
-        "demo": false
-      },
       {
         "id": 1368337,
         "title": "오디세이",
@@ -12274,9 +12371,9 @@ window.KINOSIS_CATALOG = {
           "Syncopy"
         ],
         "artSeed": false,
-        "voteAverage": 7.993,
-        "voteCount": 3407,
-        "popularity": 544.3226,
+        "voteAverage": 7.998,
+        "voteCount": 3568,
+        "popularity": 437.8516,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
@@ -12310,8 +12407,10 @@ window.KINOSIS_CATALOG = {
           "wish",
           "unrequited love",
           "couple",
+          "paranoid",
           "absurdism",
           "self-harm",
+          "anxious",
           "supernatural horror",
           "psychological",
           "independent film",
@@ -12325,9 +12424,9 @@ window.KINOSIS_CATALOG = {
           "Blumhouse Productions"
         ],
         "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 5238,
-        "popularity": 218.7101,
+        "voteAverage": 8.194,
+        "voteCount": 5388,
+        "popularity": 194.6239,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
@@ -12385,9 +12484,9 @@ window.KINOSIS_CATALOG = {
           "The North Road Company"
         ],
         "artSeed": false,
-        "voteAverage": 7.063,
-        "voteCount": 3095,
-        "popularity": 122.1488,
+        "voteAverage": 7.057,
+        "voteCount": 3185,
+        "popularity": 92.7503,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
@@ -12400,59 +12499,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
         "imdbId": "tt26657236",
-        "demo": false
-      },
-      {
-        "id": 1384216,
-        "title": "도그 스타: 마지막 희망",
-        "originalTitle": "The Dog Stars",
-        "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "리들리 스콧",
-        "runtime": 119,
-        "genres": [
-          "SF",
-          "모험",
-          "스릴러"
-        ],
-        "keywords": [
-          "based on novel or book",
-          "dystopia",
-          "denver, colorado",
-          "pilot",
-          "colorado",
-          "grief",
-          "pandemic",
-          "detached",
-          "lonely man",
-          "death of wife",
-          "scavengers",
-          "loving",
-          "joyful",
-          "group",
-          "dogs",
-          "post-apocalyptic"
-        ],
-        "productionCompanies": [
-          "20th Century Studios",
-          "Scott Free Productions"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.691,
-        "voteCount": 165,
-        "popularity": 117.1592,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
-        "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/mk9IHaDuNrhF9hf5LNYFLsyrfUb.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
-        "imdbId": "tt21285562",
         "demo": false
       },
       {
@@ -12482,9 +12528,9 @@ window.KINOSIS_CATALOG = {
           "Blue Rider Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 7.105,
-        "voteCount": 459,
-        "popularity": 79.0903,
+        "voteAverage": 7.121,
+        "voteCount": 475,
+        "popularity": 80.0368,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "로스앤젤레스발 상하이행 여객기가 화재로 폭발하며 태평양 한복판에 추락한다. 기적적으로 살아남은 승객들. 그러나 침몰하는 기체, 굶주린 식인 상어 떼 속에서 이제부터는 진짜 기적을 바라야 하는데...",
@@ -12538,17 +12584,17 @@ window.KINOSIS_CATALOG = {
           "Jackson Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 6.35,
-        "voteCount": 429,
-        "popularity": 77.1397,
+        "voteAverage": 6.354,
+        "voteCount": 463,
+        "popularity": 57.6922,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1982년, 평화롭던 ‘오크 스트리트’ 마을이 하루아침에 통째로 선사시대로 옮겨졌다. 익숙했던 집과 골목은 순식간에 공룡들의 사냥터로 변하고, 육지와 하늘, 물속까지 점령한 거대 포식자들의 무차별 공격이 시작된다! 과연 ‘플랫’ 가족은 무사히 살아남아 원래의 일상으로 돌아갈 수 있을까?",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/oGqJr59UAwZfpmSkEkaW02o0ZLC.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/xm5OF5LINmyJLV7Cvq1UHxWeJHM.png",
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1101383",
@@ -12556,47 +12602,56 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1612018,
-        "title": "잭애스: 베스트 앤드 라스트",
-        "originalTitle": "Jackass: Best and Last",
+        "id": 1384216,
+        "title": "도그 스타: 마지막 희망",
+        "originalTitle": "The Dog Stars",
         "year": 2026,
-        "releaseDate": "2026-06-25",
-        "director": "Jeff Tremaine",
-        "runtime": 92,
+        "releaseDate": "2026-08-26",
+        "director": "리들리 스콧",
+        "runtime": 119,
         "genres": [
-          "액션",
-          "코미디",
-          "다큐멘터리"
+          "SF",
+          "드라마",
+          "모험"
         ],
         "keywords": [
-          "stunt",
-          "sequel",
-          "prank",
-          "hilarious",
-          "jackass"
+          "based on novel or book",
+          "dystopia",
+          "denver, colorado",
+          "pilot",
+          "colorado",
+          "grief",
+          "pandemic",
+          "detached",
+          "lonely man",
+          "death of wife",
+          "scavengers",
+          "loving",
+          "joyful",
+          "group",
+          "dogs",
+          "post-apocalyptic"
         ],
         "productionCompanies": [
-          "Paramount Pictures",
-          "MTV Entertainment Studios",
-          "Domain Entertainment",
-          "Dickhouse Productions"
+          "20th Century Studios",
+          "Scott Free Productions"
         ],
         "artSeed": false,
-        "voteAverage": 7.6,
-        "voteCount": 221,
-        "popularity": 73.8562,
+        "voteAverage": 6.6,
+        "voteCount": 231,
+        "popularity": 57.6304,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
+        "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
+        "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
-        "imdbId": "tt39316472",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
+        "imdbId": "tt21285562",
         "demo": false
       },
       {
@@ -12634,9 +12689,9 @@ window.KINOSIS_CATALOG = {
           "TSG Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 6.6,
-        "voteCount": 95,
-        "popularity": 70.6641,
+        "voteAverage": 6.5,
+        "voteCount": 126,
+        "popularity": 50.0771,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "사후세계의 악령들로부터 딸과 일상을 지키기 위해 사투를 벌이는 이야기",
@@ -12652,43 +12707,95 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 964849,
-        "title": "나이트본",
-        "originalTitle": "Yön lapsi",
+        "id": 1612018,
+        "title": "잭애스: 베스트 앤드 라스트",
+        "originalTitle": "Jackass: Best and Last",
         "year": 2026,
-        "releaseDate": "2026-07-01",
-        "director": "한나 베리홀름",
-        "runtime": 91,
+        "releaseDate": "2026-06-25",
+        "director": "Jeff Tremaine",
+        "runtime": 92,
         "genres": [
-          "공포"
+          "액션",
+          "코미디",
+          "다큐멘터리"
         ],
         "keywords": [
-          "finnish",
-          "folk horror",
-          "body horror"
+          "stunt",
+          "sequel",
+          "prank",
+          "hilarious",
+          "jackass"
         ],
         "productionCompanies": [
-          "Elokuvayhtiö Komeetta",
-          "Getaway Films",
-          "BlueLight",
-          "Filmai LT"
+          "Paramount Pictures",
+          "MTV Entertainment Studios",
+          "Domain Entertainment",
+          "Dickhouse Productions"
         ],
         "artSeed": false,
-        "voteAverage": 6.1,
-        "voteCount": 94,
-        "popularity": 65.3296,
+        "voteAverage": 7.5,
+        "voteCount": 234,
+        "popularity": 41.0715,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "핀란드의 고립된 숲속, 아내 '사가'는 갓 태어난 아기가 결코 인간이 아님을 직감한다. 남편마저 진실을 외면하는 완벽한 고립 속에서, 요람 속 존재는 점차 기괴한 본성을 드러내기 시작한다. 도망칠 곳 없는 서늘한 집 안, 그녀는 매일 밤 홀로 숨통을 조여오는 끔찍한 공포와 마주해야만 한다.",
-        "tagline": "우리는 악마를 낳았다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8lpzyhJxb1edjfG4ZPKRC2cymHN.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jVeYae744cR2ogx9ShQ3qXOcRiZ.jpg",
+        "overview": "위험한 스턴트와 장난으로 유명한 잭애스 팀이 혼신을 다해 선사하는 시리즈의 마지막 영화",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/5xyyeCw2vrOtwJOfk7mApgf2VNU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dUbP1HNdI0aCq1zgRJw28PWSqmk.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/964849",
-        "imdbId": "tt34383465",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1612018",
+        "imdbId": "tt39316472",
+        "demo": false
+      },
+      {
+        "id": 1302904,
+        "title": "프랙티컬 매직: 새로운 챕터",
+        "originalTitle": "Practical Magic 2",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "수잔 비에르",
+        "runtime": 110,
+        "genres": [
+          "로맨스",
+          "판타지",
+          "코미디"
+        ],
+        "keywords": [
+          "witch",
+          "based on novel or book",
+          "magic",
+          "family relationships",
+          "sequel",
+          "family",
+          "legacy"
+        ],
+        "productionCompanies": [
+          "Di Novi Pictures",
+          "Warner Bros. Pictures",
+          "Blossom Films",
+          "Fortis Films",
+          "Domain Entertainment",
+          "Alcon Entertainment"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.5,
+        "voteCount": 12,
+        "popularity": 37.882,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wE6syT1vv6W24iLGfhR4kQHnIDN.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
+        "imdbId": "tt32588798",
         "demo": false
       },
       {
@@ -12721,9 +12828,9 @@ window.KINOSIS_CATALOG = {
           "Red Sea Film Foundation"
         ],
         "artSeed": false,
-        "voteAverage": 7.6,
-        "voteCount": 859,
-        "popularity": 42.4835,
+        "voteAverage": 7.576,
+        "voteCount": 912,
+        "popularity": 37.8176,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
@@ -12736,6 +12843,46 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1122573",
         "imdbId": "tt27681354",
+        "demo": false
+      },
+      {
+        "id": 964849,
+        "title": "나이트본",
+        "originalTitle": "Yön lapsi",
+        "year": 2026,
+        "releaseDate": "2026-07-01",
+        "director": "한나 베리홀름",
+        "runtime": 91,
+        "genres": [
+          "공포"
+        ],
+        "keywords": [
+          "finnish",
+          "folk horror",
+          "body horror"
+        ],
+        "productionCompanies": [
+          "Elokuvayhtiö Komeetta",
+          "Getaway Films",
+          "BlueLight",
+          "Filmai LT"
+        ],
+        "artSeed": false,
+        "voteAverage": 6,
+        "voteCount": 115,
+        "popularity": 36.6018,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "핀란드의 고립된 숲속, 아내 '사가'는 갓 태어난 아기가 결코 인간이 아님을 직감한다. 남편마저 진실을 외면하는 완벽한 고립 속에서, 요람 속 존재는 점차 기괴한 본성을 드러내기 시작한다. 도망칠 곳 없는 서늘한 집 안, 그녀는 매일 밤 홀로 숨통을 조여오는 끔찍한 공포와 마주해야만 한다.",
+        "tagline": "우리는 악마를 낳았다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8lpzyhJxb1edjfG4ZPKRC2cymHN.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jVeYae744cR2ogx9ShQ3qXOcRiZ.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/964849",
+        "imdbId": "tt34383465",
         "demo": false
       },
       {
@@ -12759,11 +12906,9 @@ window.KINOSIS_CATALOG = {
           "engaged couple",
           "trust issues",
           "provocative",
-          "romantic",
-          "adoring",
+          "amused",
           "audacious",
-          "melodramatic",
-          "sympathetic"
+          "complicated"
         ],
         "productionCompanies": [
           "A24",
@@ -12771,9 +12916,9 @@ window.KINOSIS_CATALOG = {
           "Dilemma Films"
         ],
         "artSeed": false,
-        "voteAverage": 6.922,
-        "voteCount": 1691,
-        "popularity": 39.9098,
+        "voteAverage": 6.918,
+        "voteCount": 1742,
+        "popularity": 32.7912,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "결혼식을 일주일 앞둔 행복한 커플 엠마와 찰리. 우연히 알게 된 상대방의 비밀로 인해 단단했던 믿음이 흔들린다. 첫만남부터 서로를 완벽히 안다고 생각했던 두 사람, 작은 균열은 걷잡을 수 없이 커진 채 모두의 모습을 비추고…",
@@ -12825,9 +12970,9 @@ window.KINOSIS_CATALOG = {
           "Paramount Animation"
         ],
         "artSeed": false,
-        "voteAverage": 7.119,
-        "voteCount": 42,
-        "popularity": 34.6667,
+        "voteAverage": 7,
+        "voteCount": 49,
+        "popularity": 24.6682,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
@@ -12872,9 +13017,9 @@ window.KINOSIS_CATALOG = {
           "Architect"
         ],
         "artSeed": false,
-        "voteAverage": 5.833,
-        "voteCount": 27,
-        "popularity": 33.2378,
+        "voteAverage": 5.8,
+        "voteCount": 28,
+        "popularity": 21.7171,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "한때 평범한 일상을 꿈꾸던 두 절친 에마와 라니는 태국의 비밀스러운 상어 보호구역 에코 보트 투어에 나선다. 거대한 암컷 타이거 상어 '시나'가 보트를 들이받으며 배가 침몰하고, 두 사람은 망망대해 한가운데 고립되고 만다. 딱 한명만 탈 수 있는 구명보트 하나. 수면 아래의 상어보다 더 무서운 것은 같은 배 위의 인간들. 자연의 공포와 인간본성의 극한이 충돌하는 숨막히는 생존의 사투가 시작된다.",
@@ -12887,141 +13032,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1430698",
         "imdbId": "tt30217600",
-        "demo": false
-      },
-      {
-        "id": 1278,
-        "title": "몽상가들",
-        "originalTitle": "The Dreamers",
-        "year": 2003,
-        "releaseDate": "2003-10-10",
-        "director": "베르나르도 베르톨루치",
-        "runtime": 115,
-        "genres": [
-          "드라마",
-          "로맨스"
-        ],
-        "keywords": [
-          "hotel",
-          "first time",
-          "paris, france",
-          "love triangle",
-          "students' movement",
-          "sexuality",
-          "bathing",
-          "flat",
-          "menage a trois",
-          "riot",
-          "crush",
-          "twins",
-          "incest",
-          "american abroad",
-          "polyamory",
-          "communism",
-          "1960s",
-          "brother sister relationship",
-          "sex",
-          "nudity",
-          "foreign student",
-          "pretentious",
-          "film"
-        ],
-        "productionCompanies": [
-          "Recorded Picture Company",
-          "Fiction",
-          "Peninsula Films",
-          "HanWay Films",
-          "Fox Searchlight Pictures",
-          "Medusa Film",
-          "Tele+"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.179,
-        "voteCount": 3155,
-        "popularity": 20.7456,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "자유를 외치는 젊은이들의 뜨거운 열기로 가득한 1968년 파리, 영화광인 미국인 유학생 매튜는 시네마테크에서 쌍둥이 남매 이사벨과 테오를 만나 가까워진다. 부모가 휴가를 떠난 이사벨과 테오의 집에서 한 달 간 지내게 된 매튜는 영화와 음악, 책, 혁명 등의 이야기를 자유롭게 나누며 특별한 추억을 쌓는다. 자연스레 이사벨에게 사랑을 느끼게 되는 매튜, 하지만 이사벨은 테오와 떨어지려 하지 않고 세 사람의 은밀하고 특별한 관계는 계속되는데...",
-        "tagline": "영원할 것 같았던 청춘의 열기, 사랑, 그리고 꿈",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/gb0vVzJlxumQrsN8Mnud647Zh0V.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/vaRCS4CCFXcWz1j9GKd6rGLsQQ2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1278-the-dreamers/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1278",
-        "imdbId": "tt0309987",
-        "demo": false
-      },
-      {
-        "id": 1470130,
-        "title": "모추어리 어시스턴트",
-        "originalTitle": "The Mortuary Assistant",
-        "year": 2026,
-        "releaseDate": "2026-02-13",
-        "director": "Jeremiah Kipp",
-        "runtime": 92,
-        "genres": [
-          "공포",
-          "미스터리"
-        ],
-        "keywords": [
-          "night shift",
-          "based on video game",
-          "mortuary",
-          "macabre",
-          "desperate",
-          "supernatural horror",
-          "psychological horror",
-          "callous"
-        ],
-        "productionCompanies": [
-          "Epic Pictures Group",
-          "Creativity Capital",
-          "Dread",
-          "Traverse Terror"
-        ],
-        "artSeed": false,
-        "voteAverage": 5.3,
-        "voteCount": 138,
-        "popularity": 20.6809,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "레베카는 시신 방부 처리 과정을 수료하고 안치실에서 일하게 된다. 첫 단독 근무 날, 평소라면 고요했을 안치실에서 환청이 들리기 시작하는데...",
-        "tagline": "차가운 영안실, 산 자는 나뿐이다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8ecHzn9eixgpfwZZWorXpCIL5cT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/gM1kQRPwOVW1Eos5tVWqcYmHR5S.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1470130",
-        "imdbId": "tt36647890",
         "demo": false
       },
       {
@@ -13060,9 +13070,9 @@ window.KINOSIS_CATALOG = {
           "Luc Besson Production"
         ],
         "artSeed": false,
-        "voteAverage": 7.242,
-        "voteCount": 1460,
-        "popularity": 20.3446,
+        "voteAverage": 7.248,
+        "voteCount": 1467,
+        "popularity": 18.9386,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "15세기, 전쟁으로 연인을 잃은 남자. 신을 버린 저주로 불멸의 드라큘라가 되고 그녀를 되찾기 위해 세상을 떠돈다. 400년의 기다림. 죽음도, 시간도, 신의 저주도 끝내 막지 못한 운명을 다시 만나는데…",
@@ -13075,6 +13085,142 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1246049",
         "imdbId": "tt31434030",
+        "demo": false
+      },
+      {
+        "id": 1470130,
+        "title": "모추어리 어시스턴트",
+        "originalTitle": "The Mortuary Assistant",
+        "year": 2026,
+        "releaseDate": "2026-02-13",
+        "director": "Jeremiah Kipp",
+        "runtime": 92,
+        "genres": [
+          "공포",
+          "미스터리"
+        ],
+        "keywords": [
+          "night shift",
+          "based on video game",
+          "mortuary",
+          "macabre",
+          "desperate",
+          "supernatural horror",
+          "psychological horror",
+          "callous"
+        ],
+        "productionCompanies": [
+          "Epic Pictures Group",
+          "Creativity Capital",
+          "Dread",
+          "Traverse Terror"
+        ],
+        "artSeed": false,
+        "voteAverage": 5.303,
+        "voteCount": 150,
+        "popularity": 17.5897,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "레베카는 시신 방부 처리 과정을 수료하고 안치실에서 일하게 된다. 첫 단독 근무 날, 평소라면 고요했을 안치실에서 환청이 들리기 시작하는데...",
+        "tagline": "차가운 영안실, 산 자는 나뿐이다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8ecHzn9eixgpfwZZWorXpCIL5cT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/gM1kQRPwOVW1Eos5tVWqcYmHR5S.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1470130",
+        "imdbId": "tt36647890",
+        "demo": false
+      },
+      {
+        "id": 1278,
+        "title": "몽상가들",
+        "originalTitle": "The Dreamers",
+        "year": 2003,
+        "releaseDate": "2003-10-10",
+        "director": "베르나르도 베르톨루치",
+        "runtime": 115,
+        "genres": [
+          "드라마",
+          "로맨스"
+        ],
+        "keywords": [
+          "hotel",
+          "first time",
+          "paris, france",
+          "love triangle",
+          "students' movement",
+          "sexuality",
+          "bathing",
+          "flat",
+          "menage a trois",
+          "riot",
+          "crush",
+          "twins",
+          "incest",
+          "american abroad",
+          "polyamory",
+          "communism",
+          "1960s",
+          "brother sister relationship",
+          "sex",
+          "nudity",
+          "foreign student",
+          "pretentious",
+          "film",
+          "female full frontal nudity"
+        ],
+        "productionCompanies": [
+          "Recorded Picture Company",
+          "Fiction",
+          "Peninsula Films",
+          "HanWay Films",
+          "Fox Searchlight Pictures",
+          "Medusa Film",
+          "Tele+"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.18,
+        "voteCount": 3159,
+        "popularity": 16.8951,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "자유를 외치는 젊은이들의 뜨거운 열기로 가득한 1968년 파리, 영화광인 미국인 유학생 매튜는 시네마테크에서 쌍둥이 남매 이사벨과 테오를 만나 가까워진다. 부모가 휴가를 떠난 이사벨과 테오의 집에서 한 달 간 지내게 된 매튜는 영화와 음악, 책, 혁명 등의 이야기를 자유롭게 나누며 특별한 추억을 쌓는다. 자연스레 이사벨에게 사랑을 느끼게 되는 매튜, 하지만 이사벨은 테오와 떨어지려 하지 않고 세 사람의 은밀하고 특별한 관계는 계속되는데...",
+        "tagline": "영원할 것 같았던 청춘의 열기, 사랑, 그리고 꿈",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/gb0vVzJlxumQrsN8Mnud647Zh0V.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/vaRCS4CCFXcWz1j9GKd6rGLsQQ2.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1278-the-dreamers/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1278",
+        "imdbId": "tt0309987",
         "demo": false
       },
       {
@@ -13112,9 +13258,9 @@ window.KINOSIS_CATALOG = {
           "Shogakukan-Shueisha Productions"
         ],
         "artSeed": false,
-        "voteAverage": 7.5,
-        "voteCount": 19,
-        "popularity": 19.9826,
+        "voteAverage": 7.429,
+        "voteCount": 21,
+        "popularity": 15.6274,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "‘모터 사이클 페스티벌’이 열리는 요코하마로 향하던 코난 일행은 폭주하는 검은 오토바이 사건에 휘말리고 범인을 쫓던 ‘바람의 여신’ 가나가와현경 교통기동대 하기와라 치하야 경부보와 재회한다. 경찰의 추적을 모두 뿌리친 폭주 오토바이는 도쿄 시내에도 출물하고, 연쇄적으로 사상자가 발생한다. 이러한 가운데 최첨단 AI 기술을 탑재한 싸이카 ‘엔젤’과 폭주 오토바이가 매우 유사하다는 점이 밝혀지고, 이 정체불명의 존재를 ‘루시퍼’라고 명명, 점차 포위망을 좁혀간다. 한편, 사건을 쫓던 치하야는 문득 7년 전 11월 7일, 폭탄을 해체하다 순직한 남동생 하기와라 켄지와, 그의 죽음으로부터 4년 후 11월 7일, 같은 범인을 쫓다가 순직한 켄지의 친구이자 동료 마츠다 진페이에 대한 기억이 떠오르는데….",
@@ -13127,53 +13273,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1545621",
         "imdbId": "tt39123115",
-        "demo": false
-      },
-      {
-        "id": 1302904,
-        "title": "프랙티컬 매직: 새로운 챕터",
-        "originalTitle": "Practical Magic 2",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "수잔 비에르",
-        "runtime": 130,
-        "genres": [
-          "로맨스",
-          "판타지",
-          "코미디"
-        ],
-        "keywords": [
-          "witch",
-          "based on novel or book",
-          "magic",
-          "sequel",
-          "family",
-          "legacy"
-        ],
-        "productionCompanies": [
-          "Di Novi Pictures",
-          "Warner Bros. Pictures",
-          "Blossom Films",
-          "Fortis Films",
-          "Domain Entertainment",
-          "Alcon Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 19.6741,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2lSf1aoZA6UpTEBxVGqnJ7QayIP.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/nUcauJ000dFBYkgGpxyxJ5aWEH2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
-        "imdbId": "tt32588798",
         "demo": false
       },
       {
@@ -13205,9 +13304,9 @@ window.KINOSIS_CATALOG = {
           "A24"
         ],
         "artSeed": false,
-        "voteAverage": 7.072,
-        "voteCount": 1587,
-        "popularity": 14.1316,
+        "voteAverage": 7.065,
+        "voteCount": 1599,
+        "popularity": 12.7578,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "2006년 이라크 라마디, 미국 네이비 씰 알파 원 소대는 야간 정찰 임무 수행 중 현지 2층 주택을 점령해 OP1으로 삼는다. 통신병 레이 멘도사는 공중 지원팀과 교신하며 팀의 위치를 모니터링하고, 저격수인 의무병 엘리엇은 동료 저격수 프랭크와 함께 거리를 감시하고 있다. 이때, 한 발의 수류탄이 저격수의 방으로 날아들고 알파 원은 이라크 군의 집중 공격을 받는다. 급습으로 초토화가 된 상황, 폭발물로 중상을 입은 엘리엇과 부사관 샘을 안전하게 기지로 후송해야만 한다.",
@@ -13220,6 +13319,44 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1241436",
         "imdbId": "tt31434639",
+        "demo": false
+      },
+      {
+        "id": 1447853,
+        "title": "오아시스: 돈 룩 백 인 앵거",
+        "originalTitle": "Oasis: Don't Look Back in Anger",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "Dylan Southern",
+        "runtime": 123,
+        "genres": [
+          "다큐멘터리",
+          "음악"
+        ],
+        "keywords": [
+          "music documentary"
+        ],
+        "productionCompanies": [
+          "Magna Studios",
+          "Sony Music Vision",
+          "Sony Music Entertainment UK"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.5,
+        "voteCount": 2,
+        "popularity": 10.1706,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "리암 갤러거와 노엘 갤러거의 재결합 소식 이후 전 세계가 가장 기다려왔던 공연 ‘Oasis Live ’25 Tour’의 여정을 따라가는 다큐멘터리 영화",
+        "tagline": "기나긴 기다림은 끝났다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/pRMOGMnTKZO7P0J65UNORcXAU8G.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7Ud7QIJo21odjCaev6V4md9sK16.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1447853",
+        "imdbId": "tt36152310",
         "demo": false
       },
       {
@@ -13264,8 +13401,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 7.331,
-        "voteCount": 1709,
-        "popularity": 12.8256,
+        "voteCount": 1715,
+        "popularity": 9.096,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "행방불명된 한 소녀를 찾기 위해 스코틀랜드의 외딴섬 '서머아일'을 찾은 경찰 하위. 마을을 지배하는 기이한 이교도 의식과 마주한 그는 주민들이 감추고 있는 거대한 비밀을 하나씩 파헤친다.",
@@ -13278,51 +13415,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/16307",
         "imdbId": "tt0070917",
-        "demo": false
-      },
-      {
-        "id": 1284016,
-        "title": "싱 어게인",
-        "originalTitle": "Power Ballad",
-        "year": 2026,
-        "releaseDate": "2026-05-18",
-        "director": "존 카니",
-        "runtime": 99,
-        "genres": [
-          "코미디",
-          "음악",
-          "드라마"
-        ],
-        "keywords": [
-          "songwriting",
-          "boy band",
-          "music",
-          "past their prime"
-        ],
-        "productionCompanies": [
-          "Likely Story",
-          "30WEST",
-          "Fís Éireann/Screen Ireland",
-          "Treasure Entertainment",
-          "Distressed Films",
-          "Media Capital Technologies"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.045,
-        "voteCount": 99,
-        "popularity": 9.8918,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
-        "tagline": "단 한 곡이 두 사람의 인생을 뒤바꿨다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/19BfIkDHgbgLcHVbi9rKx7KUCgi.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1284016",
-        "imdbId": "tt32267691",
         "demo": false
       },
       {
@@ -13358,12 +13450,14 @@ window.KINOSIS_CATALOG = {
           "LD Entertainment",
           "Brouhaha Entertainment",
           "Range Media Partners",
-          "Oddfellows Entertainment"
+          "Oddfellows Entertainment",
+          "Mister Smith Entertainment",
+          "Animal Holdings"
         ],
         "artSeed": false,
-        "voteAverage": 6.469,
-        "voteCount": 691,
-        "popularity": 9.7074,
+        "voteAverage": 6.479,
+        "voteCount": 698,
+        "popularity": 8.0331,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "현실에서 벗어나기 위해 호주 골드 코스트를 찾은 서퍼 ‘제피르’. 평온한 바다에 서핑을 하러 가던 그녀는 살인마 ‘터커’에게 납치 된다. 상어에게 인간을 먹이로 주는 특이 취향을 가진 연쇄 살인마의 배에 감금된 ‘제피르’는 탈출을 시도 하지만 번번히 실패하고, 자신의 차례가 다가오자 마지막 사투를 벌인다. ‘제피르’는 바다 한 가운데에서 바다 아래 상어 그리고 그보다 더 위험한 존재인 인간과 맞서 살아남기 위한 사투를 시작한다.",
@@ -13379,88 +13473,84 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1075519,
-        "title": "데드락",
-        "originalTitle": "The Locksmith",
-        "year": 2023,
-        "releaseDate": "2023-02-03",
-        "director": "Nicolas Harvard",
-        "runtime": 91,
+        "id": 1284016,
+        "title": "싱 어게인",
+        "originalTitle": "Power Ballad",
+        "year": 2026,
+        "releaseDate": "2026-05-18",
+        "director": "존 카니",
+        "runtime": 99,
         "genres": [
-          "스릴러",
-          "미스터리",
-          "액션",
-          "범죄",
+          "코미디",
+          "음악",
           "드라마"
         ],
-        "keywords": [],
+        "keywords": [
+          "songwriting",
+          "boy band",
+          "music",
+          "past their prime"
+        ],
         "productionCompanies": [
-          "Chicken Soup for the Soul Entertainment",
-          "Screen Media Films",
-          "Arclight Films"
+          "Likely Story",
+          "30WEST",
+          "Fís Éireann/Screen Ireland",
+          "Treasure Entertainment",
+          "Distressed Films",
+          "Media Capital Technologies"
         ],
         "artSeed": false,
-        "voteAverage": 5.913,
-        "voteCount": 109,
-        "popularity": 4.714,
+        "voteAverage": 7.025,
+        "voteCount": 102,
+        "popularity": 7.6901,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "천재적인 재능을 가졌지만 교도소에서 갓 출소한 열쇠 수리공 ‘밀러. 이제는 어두운 과거를 뒤로하고 형사가 된 전 여인 ‘베스’. 어린 딸과 함께 평범하고 정직한 새 삶을 시작하려 한다. 하지만 과거의 악연이었던 부패 경찰과 지역 갱단의 음모로 인해 어느 날 갑자기 딸이 납치되는 최악의 상황에 직면하고 마는데... 부패 경찰, 지역 갱단들의 음모 속에서 '밀러'는 딸을 무사히 구출해낼 수 있을 것인가?",
-        "tagline": "단 한 번의 실수, 완벽한 함정의 문이 열렸다!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/cAwWHeyeu6VApJxKUCxjXiDCQFa.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/PFJ2wNS3m5A85CFNPszc3bbDsc.jpg",
+        "overview": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
+        "tagline": "단 한 곡이 두 사람의 인생을 뒤바꿨다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/19BfIkDHgbgLcHVbi9rKx7KUCgi.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1075519",
-        "imdbId": "tt15829724",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1284016",
+        "imdbId": "tt32267691",
         "demo": false
       },
       {
-        "id": 1235769,
-        "title": "경주기행",
-        "originalTitle": "경주기행",
+        "id": 1307247,
+        "title": "오케이 마담 2",
+        "originalTitle": "오케이 마담 2",
         "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "김미조",
-        "runtime": 111,
+        "releaseDate": "2026-08-12",
+        "director": "이철하",
+        "runtime": 109,
         "genres": [
-          "드라마",
-          "미스터리",
-          "범죄",
-          "스릴러"
+          "액션",
+          "코미디"
         ],
         "keywords": [
-          "loss of loved one",
-          "school trip",
-          "sister",
-          "revenge",
-          "death of sister",
-          "road movie",
-          "mother daughter relationship",
-          "sister sister relationship",
-          "gyeongju, south korea"
+          "sequel"
         ],
         "productionCompanies": [
-          "Studio Highfive"
+          "OAL"
         ],
         "artSeed": false,
-        "voteAverage": 9,
-        "voteCount": 2,
-        "popularity": 4.2416,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 4.7281,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "엄마 옥실과 세 딸 장주, 영주, 동주는 8년 전 수학여행을 떠난 이후 다시는 돌아오지 못한 막내 경주의 생일을 맞아 단체 티셔츠까지 맞춰 입고 경주로 가족여행을 떠난다. 얼핏 단란하고 화목한 가족여행처럼 보이지만, 봉고차 트렁크에는 낯선 한 남자가 실려 있는데…",
-        "tagline": "살인범을 납치했다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2dAd2APyFUyJ6qEv9VFHdHQtQI6.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/A58FVNOQ9qXxt0vdKGQ9kCo17El.jpg",
+        "overview": "사춘기 딸과의 전쟁, 허세 충만 백수 남편, 꽈배기집 폐업 위기까지. 지긋지긋한 현생을 견뎌오던 미영에게 초호화 크루즈 결혼식 초대장이 도착한다. “우리, 진짜 여행 가자!” 화려한 크루즈 여행을 만끽하던 것도 잠시. 범죄 조직의 리더 안야의 등장에 수백명이 탑승한 크루즈는 순식간에 사상 초유의 납치 사건 현장이 되어버린다. 도망칠 곳 없는 푸른 바다 한복판, 다시 한번 각성한 전직 레전드 요원 미영은 이제 가족을 구하고 세상을 지켜야 할 위험한 작전에 뛰어든다!",
+        "tagline": "이번엔 크루즈다!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/xDbrWXB9yb5aEdt4peVy8OWNP2Y.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddrLCUT8hqSlEICTTbdlFYB5q4a.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1235769",
-        "imdbId": "tt38814489",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1307247",
+        "imdbId": "tt43669175",
         "demo": false
       },
       {
@@ -13493,9 +13583,9 @@ window.KINOSIS_CATALOG = {
           "Mini Art"
         ],
         "artSeed": false,
-        "voteAverage": 7.5,
-        "voteCount": 201,
-        "popularity": 4.1828,
+        "voteAverage": 7.532,
+        "voteCount": 202,
+        "popularity": 4.5957,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "만화계의 거장 다카하시 루미코 원작 만화가 극장판으로 찾아왔다. 전국시대의 반요괴 이누야샤와 현대 시대의 여고생 카고메의 시공을 초월한 모험과 사랑의 대서사시.",
@@ -13509,61 +13599,18 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/42360/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/42360",
         "imdbId": "tt0322645",
-        "demo": false
-      },
-      {
-        "id": 1728113,
-        "title": "캣츠아이 - 와일드 하츠",
-        "originalTitle": "KATSEYE: WILD HEARTS",
-        "year": 2026,
-        "releaseDate": "2026-08-12",
-        "director": "Nadia Hallgren",
-        "runtime": 84,
-        "genres": [
-          "다큐멘터리",
-          "음악"
-        ],
-        "keywords": [
-          "behind the scenes",
-          "girl group",
-          "music documentary",
-          "behind the music",
-          "k-pop group"
-        ],
-        "productionCompanies": [
-          "Interscope Films",
-          "Boardwalk Pictures",
-          "HYBE America",
-          "Geffen Records"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 4.1137,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "GRAMMY® 후보에 두 차례 오른 글로벌 걸그룹 KATSEYE가 세 번째 EP WILD 발매를 앞두고, 특별한 극장 개봉작 <캣츠아이: 와일드 하츠>로 전 세계 관객들을 찾아온다. <캣츠아이: 와일드 하츠>는 KATSEYE의 대담한 새로운 시대를 조명하는 동시에, 오늘의 KATSEYE를 있게 한 팬들에게 바치는 특별한 여정이다. 최초 공개되는 미공개 영상과 EYEKONS 팬들의 영상, 멤버들의 진솔한 인터뷰를 통해 KATSEYE와 글로벌 팬덤 사이의 깊고 강한 유대감을 그려낸다. KATSEYE와 함께 이 여정을 만들어온 EYEKONS에게 보내는 러브레터인 이 작품은, KATSEYE의 이야기가 이제 막 시작되었음을 보여준다. 치열한 경쟁이 펼쳐졌던 Dream Academy부터 전 세계를 사로잡은 바이럴 히트와 차트 성공에 이르기까지, 관객들은 KATSEYE가 글로벌 팝 스타로 성장하는 과정에서 마주한 영광과 좌절, 희생, 그리고 결정적인 순간들을 함께 경험하게 된다. The New York Times, Vogue, Rolling Stone, Billboard 등 유수의 매체로부터 뛰어난 실력과 압도적인 라이브 퍼포먼스를 인정받은 KATSEYE는, 오늘날 가장 주목받는 글로벌 팝 그룹 중 하나로서 세계적인 영향력을 더욱 확고히 하고 있다. 넷플릭스 다큐멘터리 〈POP STAR ACADEMY〉 제작진이 다시 의기투합한 <캣츠아이: 와일드 하츠>는 Interscope Films와 Boardwalk Pictures가 제작하고, HYBE X GEFFEN과 협력하여 선보이는 작품으로, Nadia Hallgren이 연출을 맡았다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/qVmnPdA2P3RfRXY2CCSUaSfXxDA.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/q6Iq6wutoM7AqekJ831ycBOqCxp.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1728113",
-        "imdbId": "tt43657324",
         "demo": false
       },
       {
@@ -13608,7 +13655,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 7.351,
         "voteCount": 413,
-        "popularity": 4.0835,
+        "popularity": 4.2053,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "우리집 다락방에 요괴가 산다?!  엄마를 따라 작은 섬 시오지마로 이사 온 11살 도시 소녀 모모. 이사온 첫날, 모모는 다락방에서 오래된 그림책 한 권을 발견한다. 그날 이후, 다락방에서 이상한 소리가 들리는가 하면, 냉장고 속 간식이 사라지고, 급기야 그림책 속 요괴들이 모모의 눈앞에 나타나는데…  내 눈에만 보이는 사고뭉치 요괴 3인방~!  모모 덕에 봉인된 그림책에서 나왔다며 자신들을 소개하는 이와, 카와, 마메! 외모와는 다르게 은근 소심하고 먹보에 어리바리하기까지. 자칭 수호신이라며 큰 소리치지만 사고투성인 요괴 3인방과 웃지 못할 한집살이를 시작한 모모에게 어느 날 예상치 못한 위기가 찾아오는데……  도시 소녀 모모에게 찾아온 수상한 요괴 3인방! 그들의 초특급 모험이 시작된다!",
@@ -13622,12 +13669,51 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/100271/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/100271",
         "imdbId": "tt1853614",
+        "demo": false
+      },
+      {
+        "id": 1075519,
+        "title": "데드락",
+        "originalTitle": "The Locksmith",
+        "year": 2023,
+        "releaseDate": "2023-02-03",
+        "director": "Nicolas Harvard",
+        "runtime": 91,
+        "genres": [
+          "스릴러",
+          "미스터리",
+          "액션",
+          "범죄",
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Chicken Soup for the Soul Entertainment",
+          "Screen Media Films",
+          "Arclight Films"
+        ],
+        "artSeed": false,
+        "voteAverage": 5.913,
+        "voteCount": 109,
+        "popularity": 4.0318,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "천재적인 재능을 가졌지만 교도소에서 갓 출소한 열쇠 수리공 ‘밀러. 이제는 어두운 과거를 뒤로하고 형사가 된 전 여인 ‘베스’. 어린 딸과 함께 평범하고 정직한 새 삶을 시작하려 한다. 하지만 과거의 악연이었던 부패 경찰과 지역 갱단의 음모로 인해 어느 날 갑자기 딸이 납치되는 최악의 상황에 직면하고 마는데... 부패 경찰, 지역 갱단들의 음모 속에서 '밀러'는 딸을 무사히 구출해낼 수 있을 것인가?",
+        "tagline": "단 한 번의 실수, 완벽한 함정의 문이 열렸다!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/cAwWHeyeu6VApJxKUCxjXiDCQFa.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/PFJ2wNS3m5A85CFNPszc3bbDsc.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1075519",
+        "imdbId": "tt15829724",
         "demo": false
       },
       {
@@ -13667,7 +13753,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 9,
         "voteCount": 3,
-        "popularity": 3.4819,
+        "popularity": 3.9034,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "외계인 침공으로부터 지구를 지키는 비밀 조직 ‘파파’! 일명 ‘파’멸 저지 ‘파’견팀, 파파의 팀장 ‘카착스 칸’, 정보 분석 요원 ‘질러’, 행동 요원 ‘조라’, 기술 지원 요원 ‘욘비’는 외계인 침공으로부터 지구를 지키기 위해 활약하며 임무를 완수했지만 조라와 질러는 기억을 잃게 된다. 그로부터 몇 년 후, 기억을 잃은 비밀 조직 파파 요원인 조라는 허세만렙 딸 바보, 가족 바라기 ‘극F’ 아빠로 아내 질러, 딸 피피와 소박하고 행복한 일상을 꾸려나간다. 가족 여행 자금을 모으기 위해 배달, 운전 등 투잡, 쓰리잡도 불사하던 중 사랑하는 딸 피피가 외계인에 납치되고, 외계인의 위협으로 지구가 다시 위험에 빠지게 되자 조라와 질러 앞에 파파 요원들이 다시 나타나는데!",
@@ -13680,6 +13766,126 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1274214",
         "imdbId": "tt30761647",
+        "demo": false
+      },
+      {
+        "id": 97787,
+        "title": "디지몬 어드벤처: 운명적 만남",
+        "originalTitle": "映画 デジモンアドベンチャー",
+        "year": 1999,
+        "releaseDate": "1999-03-06",
+        "director": "호소다 마모루",
+        "runtime": 20,
+        "genres": [
+          "애니메이션",
+          "모험",
+          "액션",
+          "판타지",
+          "가족"
+        ],
+        "keywords": [
+          "monster",
+          "computer",
+          "giant monster",
+          "digital",
+          "anime"
+        ],
+        "productionCompanies": [
+          "Toei Animation"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.6,
+        "voteCount": 96,
+        "popularity": 3.6055,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "디지몬 어드벤쳐, 그보다 좀 더 이전의 이야기. 야가미 타이치(신태일)와 그의 여동생인 히카리(신나리)가 어릴 적 코로몬과 운명적인 만남을 가졌던 때를 그리고 있다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/p0SmmqmDvgpTg75hc0wPxTdsAlS.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xNlNH4Rv0Grba4HR2XIZwgWUFlE.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/97787/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/97787",
+        "imdbId": "tt2049430",
+        "demo": false
+      },
+      {
+        "id": 1235769,
+        "title": "경주기행",
+        "originalTitle": "경주기행",
+        "year": 2026,
+        "releaseDate": "2026-08-26",
+        "director": "김미조",
+        "runtime": 111,
+        "genres": [
+          "드라마",
+          "미스터리",
+          "범죄",
+          "스릴러"
+        ],
+        "keywords": [
+          "loss of loved one",
+          "school trip",
+          "sister",
+          "revenge",
+          "death of sister",
+          "road movie",
+          "mother daughter relationship",
+          "sister sister relationship",
+          "gyeongju, south korea"
+        ],
+        "productionCompanies": [
+          "Studio Highfive"
+        ],
+        "artSeed": false,
+        "voteAverage": 9,
+        "voteCount": 2,
+        "popularity": 3.5722,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "엄마 옥실과 세 딸 장주, 영주, 동주는 8년 전 수학여행을 떠난 이후 다시는 돌아오지 못한 막내 경주의 생일을 맞아 단체 티셔츠까지 맞춰 입고 경주로 가족여행을 떠난다. 얼핏 단란하고 화목한 가족여행처럼 보이지만, 봉고차 트렁크에는 낯선 한 남자가 실려 있는데…",
+        "tagline": "살인범을 납치했다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2dAd2APyFUyJ6qEv9VFHdHQtQI6.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/A58FVNOQ9qXxt0vdKGQ9kCo17El.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1235769",
+        "imdbId": "tt38814489",
         "demo": false
       },
       {
@@ -13701,7 +13907,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 5,
         "voteCount": 1,
-        "popularity": 3.4805,
+        "popularity": 3.4849,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "전직 SAS 저격수 데이브. 건설 현장에서의 근무를 마치고 가족이 있는 농장으로 돌아가던 그는 우연히 강도 사건에 휘말리며 범죄자들의 표적이 된다. 엉망이 된 강도 작전 이후, 갱단과 러시아 킬러, 형사들까지 가세하며 그의 평범했던 귀갓길은 끝없는 추격전으로 변한다. 가족이 있는 집까지 19시간, 살아 돌아가기 위한 단 하나의 미션! 끝까지 추격해오는 자들로부터 가족과 삶의 터전을 지켜내야 한다.",
@@ -13714,6 +13920,116 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1325614",
         "imdbId": "tt31434090",
+        "demo": false
+      },
+      {
+        "id": 75571,
+        "title": "디지몬 어드벤처: 우리들의 워 게임!",
+        "originalTitle": "デジモンアドベンチャー ぼくらのウォーゲーム!",
+        "year": 2000,
+        "releaseDate": "2000-03-04",
+        "director": "호소다 마모루",
+        "runtime": 41,
+        "genres": [
+          "모험",
+          "애니메이션",
+          "액션",
+          "SF",
+          "가족"
+        ],
+        "keywords": [
+          "monster",
+          "nuclear missile",
+          "anime",
+          "proxy battle"
+        ],
+        "productionCompanies": [
+          "Toei Animation"
+        ],
+        "artSeed": false,
+        "voteAverage": 8,
+        "voteCount": 74,
+        "popularity": 3.4316,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "디지털 월드의 모험으로부터 반 년 후. 인터넷 상에는 전 세계의 디지털 데이터를 먹고 성장하는 흉악한 디지몬 쿠라몬이 탄생한다. 쿠라몬은 디아블로몬으로 진화해 지구를 멸망시킬 수 있을 정도의 파급력을 지닌 핵미사일을 발사시키는데… 일촉즉발의 상황, 아이들과 디지몬들은 힘을 합쳐 세상을 구해내야만 한다!",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/jxrvPQjx2bg7xjyrq4gRGN1KhFG.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/m3g7v9ChQE2keBS4RMUxfmWn1xy.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/75571/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/75571",
+        "imdbId": "tt0313441",
+        "demo": false
+      },
+      {
+        "id": 1728113,
+        "title": "캣츠아이 - 와일드 하츠",
+        "originalTitle": "Katseye: Wild Hearts",
+        "year": 2026,
+        "releaseDate": "2026-08-12",
+        "director": "Nadia Hallgren",
+        "runtime": 84,
+        "genres": [
+          "다큐멘터리",
+          "음악"
+        ],
+        "keywords": [
+          "behind the scenes",
+          "girl group",
+          "music documentary",
+          "behind the music",
+          "k-pop group"
+        ],
+        "productionCompanies": [
+          "Interscope Films",
+          "Boardwalk Pictures",
+          "HYBE America",
+          "Geffen Records"
+        ],
+        "artSeed": false,
+        "voteAverage": 1,
+        "voteCount": 1,
+        "popularity": 3.2753,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "GRAMMY® 후보에 두 차례 오른 글로벌 걸그룹 KATSEYE가 세 번째 EP WILD 발매를 앞두고, 특별한 극장 개봉작 <캣츠아이: 와일드 하츠>로 전 세계 관객들을 찾아온다. <캣츠아이: 와일드 하츠>는 KATSEYE의 대담한 새로운 시대를 조명하는 동시에, 오늘의 KATSEYE를 있게 한 팬들에게 바치는 특별한 여정이다. 최초 공개되는 미공개 영상과 EYEKONS 팬들의 영상, 멤버들의 진솔한 인터뷰를 통해 KATSEYE와 글로벌 팬덤 사이의 깊고 강한 유대감을 그려낸다. KATSEYE와 함께 이 여정을 만들어온 EYEKONS에게 보내는 러브레터인 이 작품은, KATSEYE의 이야기가 이제 막 시작되었음을 보여준다. 치열한 경쟁이 펼쳐졌던 Dream Academy부터 전 세계를 사로잡은 바이럴 히트와 차트 성공에 이르기까지, 관객들은 KATSEYE가 글로벌 팝 스타로 성장하는 과정에서 마주한 영광과 좌절, 희생, 그리고 결정적인 순간들을 함께 경험하게 된다. The New York Times, Vogue, Rolling Stone, Billboard 등 유수의 매체로부터 뛰어난 실력과 압도적인 라이브 퍼포먼스를 인정받은 KATSEYE는, 오늘날 가장 주목받는 글로벌 팝 그룹 중 하나로서 세계적인 영향력을 더욱 확고히 하고 있다. 넷플릭스 다큐멘터리 〈POP STAR ACADEMY〉 제작진이 다시 의기투합한 <캣츠아이: 와일드 하츠>는 Interscope Films와 Boardwalk Pictures가 제작하고, HYBE X GEFFEN과 협력하여 선보이는 작품으로, Nadia Hallgren이 연출을 맡았다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/qVmnPdA2P3RfRXY2CCSUaSfXxDA.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/q6Iq6wutoM7AqekJ831ycBOqCxp.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1728113",
+        "imdbId": "tt43657324",
         "demo": false
       },
       {
@@ -13745,7 +14061,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 7.8,
         "voteCount": 12,
-        "popularity": 3.1036,
+        "popularity": 3.1924,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "사토 마후유, 우에노야마 리츠카, 나카야마 하루키, 카지 아키히코로 구성된 밴드 ‘기븐’은 페스티벌 출전을 건 콘테스트에서 탈락하지만, 뜻밖에 메이저 데뷔 제안을 받게 된다. 다른 멤버들이 데뷔를 향해 나아가는 가운데, 마후유만은 쉽게 답을 내리지 못한 채 망설인다. 한편, 먼저 메이저 데뷔를 확정한 카시마 히이라기와 야기 시즈스미의 밴드 ‘syh’. ‘syh’에 임시 서포트 기타로 합류하게 된 리츠카는 히이라기가 맡긴 곡을 완성하기 위해 몰두하고 있었다. 그러던 중, 마후유로부터 “보고 싶어”라는 연락을 받은 리츠카는 심상치 않은 기운을 느끼고 곧바로 달려가고 음악을 밀어내듯 외면하는 ‘마후유’의 모습을 마주하게 된다. 리츠카를 향한 마음, 그리고 음악을 향한 마음. 수많은 감정의 소용돌이에서 길을 잃고 멈춰 서 버린 마후유. 그때 세계적인 바이올리니스트 ‘무라타 우게츠’가 나타나 말을 건네는데…",
@@ -13758,6 +14074,90 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1317276",
         "imdbId": "tt35631332",
+        "demo": false
+      },
+      {
+        "id": 11985,
+        "title": "애정만세",
+        "originalTitle": "愛情萬歲",
+        "year": 1994,
+        "releaseDate": "1994-09-02",
+        "director": "차이밍량",
+        "runtime": 118,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [
+          "jealousy",
+          "love triangle",
+          "rejection",
+          "urban life",
+          "woman between two men",
+          "male homosexuality"
+        ],
+        "productionCompanies": [
+          "Central Motion Picture Corporation"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.2,
+        "voteCount": 162,
+        "popularity": 3.0889,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "타이페이를 배경으로 세 젊은이의 사랑과 고독을 표현한 영화. 부동산 중개회사 직원인 메이, 납골당 판매원인 소강, 불법 노점상인 아정은 우연히 빈 아파트에서 조우하게 된다. 그러나 세 사람 사이에는 그 어떠한 사랑도 존재하지 않는다. 거의 대사가 없는 영화로 인물들의 고독이 극명하게 표현되어 있다. 영화에서 빈 집과 떠도는 주인공들의 감정은 가족붕괴로 인한 고독감을 느끼게 한다. 영화 후반, 메이가 울음을 터뜨리는 긴 지속시간의 장면이 특별한 느낌을 선사한다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/jcVE0NZzjcF7M2ZY4DJGTyJvY3L.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/zcY5MpaNI7pSnxf4IcOMQ2xKICT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 701,
+            "name": "FilmBox+",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/11985/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/11985",
+        "imdbId": "tt0109066",
+        "demo": false
+      },
+      {
+        "id": 1364368,
+        "title": "연옥: 살인마들의 자치구역",
+        "originalTitle": "연옥: 살인마들의 자치구역",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "브루스 칸",
+        "runtime": 102,
+        "genres": [
+          "액션",
+          "스릴러",
+          "모험",
+          "범죄"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Greenfish Studio",
+          "Khan Film"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 2.9113,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "1급 흉악범들조차 살아남기 힘든 수용소 '연옥'. 법도 질서도 존재하지 않는 이곳에서는 오직 힘만이 살아남는다. 모든 죄수들이 두려워하는 연옥의 절대 권력자 ‘염왕’. 어느 날, 그를 제거해 달라는 위험한 제안을 받은 한 남자 ‘유성'. 생존과 자유를 걸고 연옥의 절대 권력에 맞서기 시작한다. 끝없는 폭력과 배신, 예측할 수 없는 함정 속에서 목숨을 건 마지막 사투가 시작된다!",
+        "tagline": "끝나지 않는 피바람, 살아있는 지옥의 시작",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1364368",
+        "imdbId": "tt43756804",
         "demo": false
       },
       {
@@ -13786,7 +14186,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 7,
         "voteCount": 4,
-        "popularity": 3.1008,
+        "popularity": 2.8627,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "수영을 못 하는 바다 드래곤 루피는 할머니와 단둘이 살아가고 있다. 어느 날, 연기를 내뿜어 인간으로부터 바다 괴물 섬을 지키는 세르팡의 마법목도리가 망가지고, 루드비그는 감기에 걸려 연기를 내뿜지 못한다. 루피는 오래전 섬을 떠난 자신의 이모할머니가 루드비그에게 목도리를 선물했다는 사실을 알게 되고, 할머니와 바다 몬스터 섬을 지키기 위해 이모할머니를 찾아 떠난다, 고래택시를 타고 육지에 도착하고 육지에서 사자,꼬끼리,거북이 등을 만나 그들과 함께 동물원을 탈출하여 다시 몬스터 섬으로 돌아와 위기를 극복한다.",
@@ -13799,42 +14199,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1512207",
         "imdbId": "tt32267711",
-        "demo": false
-      },
-      {
-        "id": 1307247,
-        "title": "오케이 마담 2",
-        "originalTitle": "오케이 마담 2",
-        "year": 2026,
-        "releaseDate": "2026-08-12",
-        "director": "이철하",
-        "runtime": 109,
-        "genres": [
-          "액션",
-          "코미디"
-        ],
-        "keywords": [
-          "sequel"
-        ],
-        "productionCompanies": [
-          "OAL"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 3.0903,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "사춘기 딸과의 전쟁, 허세 충만 백수 남편, 꽈배기집 폐업 위기까지. 지긋지긋한 현생을 견뎌오던 미영에게 초호화 크루즈 결혼식 초대장이 도착한다. “우리, 진짜 여행 가자!” 화려한 크루즈 여행을 만끽하던 것도 잠시. 범죄 조직의 리더 안야의 등장에 수백명이 탑승한 크루즈는 순식간에 사상 초유의 납치 사건 현장이 되어버린다. 도망칠 곳 없는 푸른 바다 한복판, 다시 한번 각성한 전직 레전드 요원 미영은 이제 가족을 구하고 세상을 지켜야 할 위험한 작전에 뛰어든다!",
-        "tagline": "이번엔 크루즈다!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/xDbrWXB9yb5aEdt4peVy8OWNP2Y.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddrLCUT8hqSlEICTTbdlFYB5q4a.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1307247",
-        "imdbId": "tt43669175",
         "demo": false
       },
       {
@@ -13859,7 +14223,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 6.9,
         "voteCount": 157,
-        "popularity": 3.0901,
+        "popularity": 2.5374,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "카를로는 대학교수이고, 엘리사는 기자다. 그들은 안나와 파올로, 그리고 그들의 딸 비토리아와 함께 모로코의 탕헤르로 여행을 떠난다. 멀리 떨어진 따뜻하고 고요한 풍경 속에서, 관계는 긴장을 고조시키고, 본모습을 드러내며, 변화한다.",
@@ -13900,66 +14264,19 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 2.4602,
+        "popularity": 2.2895,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "세계적인 팝 스타 케이티 페리의 7년 만의 월드 투어 무대. 2025년 11월 파리 아코르 아레나 전석 매진 현장에서 펼쳐지는 화려한 공중 퍼포먼스와 무한한 에너지, 그리고 관객들과의 교감을 담아낸 콘서트 영화다.",
         "tagline": "남들은 안 된다고 했지만. 나는 해냈고. 영화로 남겼다.",
         "posterUrl": "https://image.tmdb.org/t/p/w500/snmaFZZ0GCMnvGCcoSzztbCrwbV.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/1BfOqbDhvtmAv7SwyobM5eTjQMm.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jJncm6HIZEzU8PSYCueGN1TrfFE.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1684016",
         "imdbId": "tt38882652",
-        "demo": false
-      },
-      {
-        "id": 11985,
-        "title": "애정만세",
-        "originalTitle": "愛情萬歲",
-        "year": 1994,
-        "releaseDate": "1994-09-02",
-        "director": "차이밍량",
-        "runtime": 118,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [
-          "jealousy",
-          "love triangle",
-          "rejection",
-          "urban life",
-          "woman between two men",
-          "male homosexuality"
-        ],
-        "productionCompanies": [
-          "Central Motion Picture Corporation"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.2,
-        "voteCount": 162,
-        "popularity": 2.39,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "타이페이를 배경으로 세 젊은이의 사랑과 고독을 표현한 영화. 부동산 중개회사 직원인 메이, 납골당 판매원인 소강, 불법 노점상인 아정은 우연히 빈 아파트에서 조우하게 된다. 그러나 세 사람 사이에는 그 어떠한 사랑도 존재하지 않는다. 거의 대사가 없는 영화로 인물들의 고독이 극명하게 표현되어 있다. 영화에서 빈 집과 떠도는 주인공들의 감정은 가족붕괴로 인한 고독감을 느끼게 한다. 영화 후반, 메이가 울음을 터뜨리는 긴 지속시간의 장면이 특별한 느낌을 선사한다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/jcVE0NZzjcF7M2ZY4DJGTyJvY3L.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/zcY5MpaNI7pSnxf4IcOMQ2xKICT.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 701,
-            "name": "FilmBox+",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/11985/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/11985",
-        "imdbId": "tt0109066",
         "demo": false
       },
       {
@@ -13984,7 +14301,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 7.254,
         "voteCount": 319,
-        "popularity": 2.2652,
+        "popularity": 2.1882,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "카페 주인 ‘카토’는 우연히 자신의 2층 방 모니터와 1층 카페 TV가 2분의 시차를 두고 연결되어 있다는 사실을 알게 된다. 이를 알게 된 알바생과 카페 친구들은 2분 후 미래의 자신들이 시키는 대로 움직이며 큰 돈을 줍거나 짝사랑 고백 성공 유무를 확인하는 등 2분 후의 미래에 빠져든다. 더 먼 미래를 보기 위해 두 모니터를 마주 보게 해 2분 후의 미래가 이어지는 타임 TV를 설계하고 무한 타임 루프에 빠지게 되는데...",
@@ -14020,7 +14337,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 2.1467,
+        "popularity": 2.1732,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "하츄핑과 단짝이 된 로미는 행복한 나날을 보내고 있지만 하고 싶은 일과 해야만 하는 일 사이에 매번 엄마(벨리타)와 의견이 달라 다투게 되고… 그러던 어느 날, 바다를 뒤흔드는 사건과 함께 엄마는 흔적도 없이 바닷속으로 사라진다. 한 마디 사과도, 한 번의 포옹도 건네지 못한 채 엄마를 잃은 로미. 처음 만나는 바다 앞에서 단짝 하츄핑, 바다소년 카이트, 세 마리의 티니핑들과 함께 용기를 내보는데… 찬란한 바다 도시, 거대한 심해 생명체들과 맞서야 하는 이들. 마침내 로미는 엄마가 한 번도 들려준 적 없던 비밀을 마주하게 된다.",
@@ -14033,78 +14350,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1436168",
         "imdbId": "tt43754385",
-        "demo": false
-      },
-      {
-        "id": 1172563,
-        "title": "지난 여름",
-        "originalTitle": "지난 여름",
-        "year": 2026,
-        "releaseDate": "2026-08-05",
-        "director": "최승우",
-        "runtime": 76,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [
-          "rural"
-        ],
-        "productionCompanies": [
-          "파편화"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 1.8314,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "어느 농촌 마을. 면사무소에서 일하는 젊은 청년 민우는 아버지와 할머니와 함께 살고 있으며 종종 친한 친구 성훈과 어울려 지낸다. 날씨는 꼭 농부들의 마음 같지만은 않고, 민우는 오늘도 조용한 삶을 지속한다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/nM49pL1dZXwxf19Rt1wpdnqhaHN.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yHubRxDl4ZeKFMFItcsYlbKfOjw.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1172563",
-        "imdbId": "tt29579094",
-        "demo": false
-      },
-      {
-        "id": 1364368,
-        "title": "연옥: 살인마들의 자치구역",
-        "originalTitle": "연옥: 살인마들의 자치구역",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "브루스 칸",
-        "runtime": 102,
-        "genres": [
-          "액션",
-          "스릴러",
-          "모험",
-          "범죄"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Greenfish Studio",
-          "Khan Film"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 1.7178,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "1급 흉악범들조차 살아남기 힘든 수용소 '연옥'. 법도 질서도 존재하지 않는 이곳에서는 오직 힘만이 살아남는다. 모든 죄수들이 두려워하는 연옥의 절대 권력자 ‘염왕’. 어느 날, 그를 제거해 달라는 위험한 제안을 받은 한 남자 ‘유성'. 생존과 자유를 걸고 연옥의 절대 권력에 맞서기 시작한다. 끝없는 폭력과 배신, 예측할 수 없는 함정 속에서 목숨을 건 마지막 사투가 시작된다!",
-        "tagline": "끝나지 않는 피바람, 살아있는 지옥의 시작",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/Aw2oCnLMoMiWA8r9LfdCK94JnaT.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1364368",
-        "imdbId": null,
         "demo": false
       },
       {
@@ -14128,7 +14373,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.4857,
+        "popularity": 1.9948,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "“이야기가 길어질 텐데 괜찮아요?” 깊은 물 속에 던져진 날, 아가미가 생겨난 세상에서 유일한 아이 ‘곤’ 그리고 그의 세계에 전부였던 존재들의 눈부신 이야기",
@@ -14142,18 +14387,60 @@ window.KINOSIS_CATALOG = {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1280401/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/1280401",
         "imdbId": "tt32602819",
+        "demo": false
+      },
+      {
+        "id": 607833,
+        "title": "인턴",
+        "originalTitle": "인턴",
+        "year": 2026,
+        "releaseDate": "2026-09-16",
+        "director": "김도영",
+        "runtime": 133,
+        "genres": [
+          "드라마",
+          "코미디"
+        ],
+        "keywords": [
+          "office",
+          "workplace",
+          "remake",
+          "internship",
+          "co-workers",
+          "female ceo"
+        ],
+        "productionCompanies": [
+          "Anthology Studios",
+          "Warner Bros. Korea"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 1.9414,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
+        "tagline": "오늘부터 [출근]합니다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/kRHjgsICPISgEClloeARkPHP96M.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/OroFBNgB2RBzj2X65CweVhhQQG.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/607833",
+        "imdbId": "tt43741215",
         "demo": false
       },
       {
@@ -14179,7 +14466,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.4422,
+        "popularity": 1.7249,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "톱스타 부부 중구와 남미가 갑자기 나타난 중구의 딸 동주로 인해 파경을 맞은 뒤 8년 후 충격적인 사건에 휘말린 동주를 구하기 위해 마지막 남은 모든 것을 걸고 진실을 파헤치는 ‘미쓰백’ 이지원 감독의 찐한 가족 연대기",
@@ -14195,37 +14482,95 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1453301,
-        "title": "산양들",
-        "originalTitle": "산양들",
+        "id": 1522856,
+        "title": "카를로비바리",
+        "originalTitle": "카를로비바리",
         "year": 2026,
-        "releaseDate": "2026-07-29",
-        "director": "Yoo Jae-wook",
-        "runtime": 107,
+        "releaseDate": "2026-09-09",
+        "director": "이용석",
+        "runtime": 120,
         "genres": [
+          "코미디",
           "드라마"
         ],
         "keywords": [],
         "productionCompanies": [
-          "Cinema Dal",
-          "Giraffe Slide"
+          "애드히시브"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.3502,
+        "popularity": 1.7003,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "수능 D-day 200일, 다들 입시에 몰두할 때, 사육장 담당 인혜는 오리에게 설교하기 바쁘다. 어느 날, 칼을 소지한 벌로 서희도 인혜와 함께 사육장을 청소한다. 둘은 버려진 평원을 발견하는데, 사육장 오리 희선이를 그곳에서 잃어버린다. 한편, 진학부장 김아테 선생은 학교도, 부모도, 본인도 포기한 4인방을 모아 수시 면접반을 만든다. 대학교 면접 날, 인혜와 서희는 땡땡이 치고 희선이를 찾기 위해 평원으로 간다. 숲에서 텐트를 치고 야영하며 점점 야생에 적응해간다.",
-        "tagline": "수능보다 중요한 소동물 구출작전",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/v2SUJzaBeOsSY5RT3r6hlzEmcd9.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/d0rWwsiTiCxoAbmuh6FqAJKrNyR.jpg",
+        "overview": "체코 서부에 위치한 아름다운 도시, 카를로비바리. 영화감독 ‘성재’는 카를로비바리를 배경으로 대본을 완성하고, 이후 그의 작품은 각종 공모전 수상, 그리고 영화제작까지 투자를 받게 된다! 국내 세트장 촬영을 모두 마치고, 드디어 현지 촬영만을 남겨 둔 상황. 그런데… 투자받은 제작비가 모두 사라져 버린다! 투자금을 토해내지 않기 위해서는 무슨 일을 써서라도 반드시 영화를 완성해야 하는 상황! 과연 성재와 친구들은 카를로비바리를 가지 않고 무사히 영화를 완성할 수 있을까?",
+        "tagline": "\"체코로 갈 수 없다. 하지만 영화는 찍어야 한다!\"",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/kK5KblzoMJUU4DVjKouOQMrahF3.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/uQBNWozmdHyaNs05TwObBTMHTxu.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1453301",
-        "imdbId": "tt38523209",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1522856",
+        "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 384641,
+        "title": "귀향",
+        "originalTitle": "귀향",
+        "year": 2016,
+        "releaseDate": "2016-02-24",
+        "director": "조정래",
+        "runtime": 127,
+        "genres": [
+          "드라마",
+          "역사"
+        ],
+        "keywords": [
+          "world war ii",
+          "comfort women",
+          "japanese occupation of korea"
+        ],
+        "productionCompanies": [
+          "JO Entertainment",
+          "WAW Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.1,
+        "voteCount": 28,
+        "popularity": 1.6814,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "1943년, 천진난만한 열네 살 정민은 영문도 모른 채 일본군의 손에 이끌려 가족의 품을 떠난다. 함께 끌려온 영희, 그리고 수많은 아이들과 함께 기차에 실려 향한다 곳은 제2차 세계대전의 차디찬 전장 한 가운데. 그곳에서 그들을 맞이한 것은 끔찍한 고통과 아픔의 현장이었다. 소녀들은 영문도 모른 채 무지막지한 군홧발 아래서 성노예로 부림당한다. 끔찍한 삶 속에서 소녀들은 존재 자체로 서로의 위안이 된다. 1991년, 성폭행을 당해 반쯤 미친 소녀 은경은 만신 송희의 신딸로 지내다 과거 위안소 생활을 했던 영옥을 만난다.",
+        "tagline": "무엇이 소녀들을 지옥으로 보냈나",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/9ZZkrDtEG7yroF6PJ0PwiGw7KfT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/384641/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/384641",
+        "imdbId": "tt5503266",
         "demo": false
       },
       {
@@ -14255,7 +14600,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 8.6,
         "voteCount": 9,
-        "popularity": 1.3078,
+        "popularity": 1.681,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "아이유의 데뷔 15주년을 기념해 극장에서 개봉하는 첫 공연 실황 영화로, 눈과 귀를 황홀하게 만드는 아름다운 노래와 환상적인 무대연출로 올림픽주경기장을 가득 채웠던 우리들의 ‘골든 아워’를 스크린에 옮겼다.",
@@ -14271,127 +14616,78 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 384641,
-        "title": "귀향",
-        "originalTitle": "귀향",
-        "year": 2016,
-        "releaseDate": "2016-02-24",
-        "director": "조정래",
-        "runtime": 127,
+        "id": 1172563,
+        "title": "지난 여름",
+        "originalTitle": "지난 여름",
+        "year": 2026,
+        "releaseDate": "2026-08-05",
+        "director": "최승우",
+        "runtime": 76,
         "genres": [
-          "드라마",
-          "역사"
+          "드라마"
         ],
         "keywords": [
-          "world war ii",
-          "comfort women",
-          "japanese occupation of korea"
+          "rural"
         ],
         "productionCompanies": [
-          "JO Entertainment",
-          "WAW Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.1,
-        "voteCount": 28,
-        "popularity": 1.2965,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "1943년, 천진난만한 열네 살 정민은 영문도 모른 채 일본군의 손에 이끌려 가족의 품을 떠난다. 함께 끌려온 영희, 그리고 수많은 아이들과 함께 기차에 실려 향한다 곳은 제2차 세계대전의 차디찬 전장 한 가운데. 그곳에서 그들을 맞이한 것은 끔찍한 고통과 아픔의 현장이었다. 소녀들은 영문도 모른 채 무지막지한 군홧발 아래서 성노예로 부림당한다. 끔찍한 삶 속에서 소녀들은 존재 자체로 서로의 위안이 된다. 1991년, 성폭행을 당해 반쯤 미친 소녀 은경은 만신 송희의 신딸로 지내다 과거 위안소 생활을 했던 영옥을 만난다.",
-        "tagline": "무엇이 소녀들을 지옥으로 보냈나",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/9ZZkrDtEG7yroF6PJ0PwiGw7KfT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/384641/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/384641",
-        "imdbId": "tt5503266",
-        "demo": false
-      },
-      {
-        "id": 1447630,
-        "title": "빈집의 연인들",
-        "originalTitle": "빈집의 연인들",
-        "year": 2026,
-        "releaseDate": "2026-08-12",
-        "director": "김태휘",
-        "runtime": 94,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "pennyroyalfilm"
+          "파편화"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.2942,
+        "popularity": 1.6605,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "까칠한 언행으로 스스로 마을 공식 외톨이가 된 ‘은자’ 어느 날 집에 들이닥친 도둑을 때려잡고 보니 전국을 유랑하며 시골 빈집을 터는 ‘팔복’이란 놈이다. “나랑 같이 가겠소?” 빈집은 털어도 한탕은 일없는 ‘팔복’의 낭만에 끌려 동행하기로 한 ‘은자’의 심장은 팔딱팔딱 뛰는데…",
-        "tagline": "미친 청춘처럼 다시 심장이 뛴다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/ccMh9yIUMP2p5yi7ELp5BtoT1fc.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xP86cianm8lthikP0Ef5Fg2vRrU.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1447630",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1535944,
-        "title": "고양이를 놓아줘",
-        "originalTitle": "猫を放つ",
-        "year": 2026,
-        "releaseDate": "2026-05-02",
-        "director": "Daisuke Shigaya",
-        "runtime": 102,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "HUT Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 1.1963,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "음악을 하는 ‘모리’와 사진을 찍는 ‘마이코’. 지친 마음을 달래기 위해 휴직 중이지만 제대로 된 음악 작업도 하지 못한 채 시간만 보내고 있는 ‘모리’와 다르게 ‘마이코’는 개인전까지 열며 성공한 사진작가에 한 발 더 다가선다. ‘마이코’의 전시회 마지막 날, 우연히 과거에 만났던 ‘아사코’와 재회하고 과거의 기억을 떠올리는 ‘모리’. 더 이상 존재하지 않는 과거와 현재 사이에서 ‘모리’는 미처 알아보지 못했던 사랑의 흔적과 마주하게 되는데… “다시 괜찮아질 수 있을까?”",
+        "overview": "어느 농촌 마을. 면사무소에서 일하는 젊은 청년 민우는 아버지와 할머니와 함께 살고 있으며 종종 친한 친구 성훈과 어울려 지낸다. 날씨는 꼭 농부들의 마음 같지만은 않고, 민우는 오늘도 조용한 삶을 지속한다.",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/4dS74FTvHkBzjCdZZSwfjwt4UQZ.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/e9frQsF6KycN2DuBuX3FRyzXpKS.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/nM49pL1dZXwxf19Rt1wpdnqhaHN.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yHubRxDl4ZeKFMFItcsYlbKfOjw.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1535944",
-        "imdbId": "tt38454778",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1172563",
+        "imdbId": "tt29579094",
+        "demo": false
+      },
+      {
+        "id": 1408553,
+        "title": "아이유 콘서트 : 더 위닝",
+        "originalTitle": "아이유 콘서트 : 더 위닝",
+        "year": 2025,
+        "releaseDate": "2025-01-24",
+        "director": "오윤동",
+        "runtime": 124,
+        "genres": [
+          "음악",
+          "다큐멘터리"
+        ],
+        "keywords": [
+          "concert",
+          "live performance",
+          "concert film",
+          "k-pop"
+        ],
+        "productionCompanies": [
+          "CJ 4DPLEX",
+          "ScreenX Studio"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.2,
+        "voteCount": 4,
+        "popularity": 1.58,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "최초의 아이콘 아이유, 100번째 콘서트로 완성된 찬란한 기록. 'Love wins all', '홀씨', 'Shopper', 'Celebrity', 'Last Fantasy' 등 수많은 명곡으로 서울월드컵경기장을 가득 채운 아이유와 유애나의 뜨거운 에너지와 함성. 상암 하늘을 수놓은 환상적인 드론쇼까지! 승리를 위해 달려온 여정의 마지막 챕터가 지금 스크린에서 펼쳐진다!",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ld6Pp824MMzJ7vzCdowvTRtVRTN.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/l0kCHPN8COTu7zxl8dUk0M4u99K.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1408553",
+        "imdbId": "tt35426496",
         "demo": false
       },
       {
@@ -14416,7 +14712,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.1789,
+        "popularity": 1.5469,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "평생 부엌 근처엔 가본 적도 없는 가부장 아버지 ‘하응’. 결혼 이후 줄곧 가족들의 밥상을 차려온 아내 ‘순애’의 고마움은 모른 채, 삼시세끼 까탈스럽게 집밥만 찾는다. 어느 날 ‘순애’가 요리를 하지 못하는 ‘요리백지증’에 걸리자 집밥의 평화가 깨진 ‘하응’은 생존을 위해 인생 첫 요리에 도전한다. ‘순애’는 ‘하응’의 요리가 맛있으면 칭찬, 맛 없으면 벌점을 주기로 하고 “벌점 10점을 채우면 이혼!”이라는 청천벽력 선언을 내뱉는데…! 과연 ‘하응’은 집밥에 성공할 수 있을까?",
@@ -14432,78 +14728,129 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1425837,
-        "title": "캐리어를 끄는 소녀",
-        "originalTitle": "캐리어를 끄는 소녀",
+        "id": 1501239,
+        "title": "네 얼굴로는 울 수 없어",
+        "originalTitle": "君の顔では泣けない",
+        "year": 2025,
+        "releaseDate": "2025-11-14",
+        "director": "坂下雄一郎",
+        "runtime": 124,
+        "genres": [
+          "드라마",
+          "판타지"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Happinet Phantom Studios",
+          "Grasshoppa!",
+          "RIKI PROJECT"
+        ],
+        "artSeed": false,
+        "voteAverage": 7,
+        "voteCount": 1,
+        "popularity": 1.3944,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "열다섯 살 여름, ‘리쿠’와 ‘마나미’는 우연한 사고로 몸이 뒤바뀐다. 하루면 끝날 줄 알았던 시간은 어느새 15년이 되고, 첫사랑과 꿈, 취업과 연애까지 가장 소중한 순간들을 서로의 삶으로 살아가게 된다. 내 얼굴로 웃을 수도, 네 얼굴로 울 수도 없었던 시간. 그리고 15년 후, 다시 찾아온 여름은 두 사람의 운명을 다시 흔들기 시작하는데….",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/53R2XdofnpfR723dwplqXXZddND.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jwbAupZDLO9ZRDULCVLvmdi5zsw.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1501239",
+        "imdbId": "tt38504908",
+        "demo": false
+      },
+      {
+        "id": 1447630,
+        "title": "빈집의 연인들",
+        "originalTitle": "빈집의 연인들",
         "year": 2026,
-        "releaseDate": "2026-09-02",
-        "director": "윤심경",
-        "runtime": 107,
+        "releaseDate": "2026-08-12",
+        "director": "김태휘",
+        "runtime": 94,
         "genres": [
           "드라마"
         ],
         "keywords": [],
         "productionCompanies": [
-          "about Film"
+          "pennyroyalfilm"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.1751,
+        "popularity": 1.3042,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "양부모에게 버려진 15살 ‘영선’은 또래 ‘수아’의 테니스 훈련 파트너로 수아네 집에 머물게 된다. 갈 곳이 없던 ‘영선’은 이 집의 일원이 되고 싶다는 마음을 품고, 조용하지만 치열하게 ‘수아’네 가족 안으로 스며들기 위해 애쓴다. 하지만 각자의 결핍을 안고 있는 그들 안으로 들어가기는 쉽지 않은데…",
-        "tagline": "삶의 코트 위 가장 치열한 인생 랠리",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/owXQAokJPjvM2FKX4ctAfKpCUhD.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/9eMfuaPu5gE2obsmhP028ukmsAi.jpg",
+        "overview": "까칠한 언행으로 스스로 마을 공식 외톨이가 된 ‘은자’ 어느 날 집에 들이닥친 도둑을 때려잡고 보니 전국을 유랑하며 시골 빈집을 터는 ‘팔복’이란 놈이다. “나랑 같이 가겠소?” 빈집은 털어도 한탕은 일없는 ‘팔복’의 낭만에 끌려 동행하기로 한 ‘은자’의 심장은 팔딱팔딱 뛰는데…",
+        "tagline": "미친 청춘처럼 다시 심장이 뛴다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ccMh9yIUMP2p5yi7ELp5BtoT1fc.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xP86cianm8lthikP0Ef5Fg2vRrU.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1425837",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1447630",
         "imdbId": null,
         "demo": false
       },
       {
-        "id": 1188968,
-        "title": "어떻게 해야 했을까?",
-        "originalTitle": "どうすればよかったか？",
-        "year": 2024,
-        "releaseDate": "2024-12-07",
-        "director": "Fujino Tomoaki",
-        "runtime": 102,
+        "id": 435506,
+        "title": "언더독",
+        "originalTitle": "언더독",
+        "year": 2019,
+        "releaseDate": "2019-01-16",
+        "director": "Lee Choon-baek",
+        "runtime": 101,
         "genres": [
-          "다큐멘터리"
+          "애니메이션",
+          "모험",
+          "가족",
+          "드라마"
         ],
         "keywords": [
-          "schizophrenia",
-          "sibling relationship",
-          "family secrets",
-          "dysfunctional family",
-          "mental illness",
-          "documentary",
-          "caregiver burden"
+          "friendship",
+          "dog",
+          "animals",
+          "stray dog",
+          "korean animation",
+          "aeni"
         ],
         "productionCompanies": [
-          "TOFOO FILMS, LLC",
-          "Zou-shima"
+          "Next Entertainment World",
+          "Odoltogi"
         ],
         "artSeed": false,
-        "voteAverage": 8.125,
-        "voteCount": 4,
-        "popularity": 1.1347,
+        "voteAverage": 7.8,
+        "voteCount": 44,
+        "popularity": 1.2515,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "스물넷, 다정하고 촉망받던 누나에게 조현병 증상이 나타난다. 부모님은 병원 대신 현관문에 자물쇠를 채우는 것을 택한다. 그렇게 닫힌 문 안에서, 가족은 20여 년간 서로에게 침묵했다. 더는 외면할 수 없었던 남동생은 카메라를 들고 그 침묵 속으로 들어간다. 누나에게, 부모에게, 그리고 자기 자신에게 묻기 위해. 그리고 끝내 우리에게 묻는다. “어떻게 해야 했을까?\"",
-        "tagline": "누구에게도 말하고 싶지 않은 가족의 이야기",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/7G0wrfzXcsh1uLtVKT4LvEYawuT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/1dqJn5aYX4jZgHV0OmQzGsTVu30.jpg",
+        "overview": "주인에게 버려져 하루아침에 유기견이 된 뭉치는 폐허가 된 재개발 지역에 숨어사는 짱아 일행을 만나게 된다. ‘기다리라’는 주인의 거짓말을 믿고 싶었지만 결국 버려졌다는 현실을 받아들인 뭉치는 짱아들과의 생활에 익숙해져 가고, 어느 날 숲 속에서 야생성을 잃지 않고 살아가는 밤이 일행을 만나게 된다. 도시의 편리함에 익숙한 짱아 일행과 야생의 습성을 지키려는 밤이 일행, 같으면서도 서로 다른 이들은 철거와 잔혹한 개 사냥꾼을 피해 모두가 행복하게 살 수 있다는 ‘그곳’을 향해 모험을 떠나게 된다. 위험천만한 도로와 날카로운 철조망을 넘고 개 사냥꾼의 집요한 추격을 피해 조금씩 조금씩 북쪽 방향으로 향하던 그들은 아름다운 풀밭과 반딧불만이 가득하다는 ‘그곳’에 무사히 도착할 수 있을까?",
+        "tagline": "견생역전을 꿈꾸는 댕댕이들의 위대한 모험이 시작된다!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/wm6Ys8g5STFrSch0w2hEu4V1VqK.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ycnD8iBGizGNJLDJYF3kXylR39b.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1188968",
-        "imdbId": "tt32335214",
+        "providers": [
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/435506/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/435506",
+        "imdbId": "tt7852002",
         "demo": false
       },
       {
@@ -14528,13 +14875,13 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.0639,
+        "popularity": 1.2383,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "영혼을 보는 싱어송라이터 '미타'. 어느 날 개성만점 고스트 4인방과 친구가 되어 '고스트밴드'를 결성하고 보컬을 맡아 난생처음 누군가의 앞에서 함께 노래하는 기쁨을 알게 된다. '미타'와 고스트밴드의 공연 영상이 SNS를 강타하며 마침내 꿈꾸던 무대를 눈앞에 둔 순간, 대형 기획사의 거대한 방해 공작으로 위기를 맞게 되는데...",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/iDYPfIKR263Srm33hrNc4m6ILja.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jdZAcdyZuZSPD5QNfQCJjbv6mdB.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/sBCxyB7v8IaBrCwSi0nMEBP18tv.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
@@ -14544,33 +14891,35 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1522680,
-        "title": "사진의 얼굴",
-        "originalTitle": "사진의 얼굴",
+        "id": 1532365,
+        "title": "철들 무렵",
+        "originalTitle": "철들 무렵",
         "year": 2026,
-        "releaseDate": "2026-09-02",
-        "director": "Koh Hee-young",
-        "runtime": 99,
+        "releaseDate": "2026-09-16",
+        "director": "정승오",
+        "runtime": 105,
         "genres": [
-          "다큐멘터리"
+          "드라마"
         ],
         "keywords": [],
-        "productionCompanies": [],
+        "productionCompanies": [
+          "Indiestory"
+        ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.0556,
+        "popularity": 1.1627,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "\"왜 일본놈이 한국을 찍는가!” 90세 일본 포토저널리즘의 거장 구와바라 시세이. 지난 60년간 100여 차례 한국을 오간 그는 청계천 서민들의 삶부터 민주화 운동, 동두천 기지촌, 베트남 파병, 평양의 일상 등 한반도를 관통한 크고 작은 사건들을 10만 컷의 사진으로 기록해 왔다. “그는 무엇을 보았는가?” ‘남한에서의 국외 추방, 북한에서의 입국 금지 등 갖은 고난을 당하면서도 그가 끝내 놓지 못했던 생생한 얼굴들. 2026년 바로 오늘, 스크린에서 거장의 뷰파인더를 통해 본 ‘사진의 얼굴’을 만난다.",
-        "tagline": "90세 거장, 60년의 기록, 10만 컷의 사진, \"그는 한국에서 무엇을 보았는가?\"",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/53yTiV0XOIQ0tUaqToO6yUfZFNA.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/8hr5Ap5nR3UC2GlViHjniCZO4It.jpg",
+        "overview": "용접기사 철택이 암 말기 선고를 받는다. 이 소식은 단역배우인 외동딸 정미뿐만 아니라, 철택과 사실상 이혼한 상태로 공무원 은퇴 후 노후를 즐기던 현숙, 구순을 앞둔 현숙의 어머니 옥남, 철택의 친형 관택과 관택의 손자 동민의 삶까지 영향을 미치기 시작한다. 멀리 지내던 양가 가족들은 과거를 반추하며, 서로에게 곪아 있던 마음의 고름과 마주하게 되는데… 죽음의 그림자와 함께 찾아온 이들의 시간, ‘철들 무렵’이다.",
+        "tagline": "행복은 가족 밖에 있습니다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/7gBqPAjf7jLZxbp61Zn2oak2SUW.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/1zNnHqA1FwJOmUNXAoucMmr9YXl.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1522680",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1532365",
         "imdbId": null,
         "demo": false
       },
@@ -14594,7 +14943,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.0493,
+        "popularity": 1.1464,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "서울에 취직하여 고군분투 중인 혜자는 반지하에서 오피스텔로 올라가기를 꿈꾼다. 보험사 콜센터에서 일하는 혜자는 거친 사투리와 불같은 성격 때문에 회사에서 어려움이 많다. 며칠 뒤, 오피스텔로 가기로 결심한 혜자는 엄마에게 돈을 빌리기 위해 부산행 기차를 탄다. 부산에 도착한 혜자는 아무리 문을 두드려도 엄마가 나오지 않자, 엄마의 친구 희숙에게 전화를 건다.",
@@ -14607,6 +14956,39 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1451416",
         "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 1739216,
+        "title": "청년 조용기",
+        "originalTitle": "청년 조용기",
+        "year": 2026,
+        "releaseDate": "2026-09-11",
+        "director": "Kwon Hyeok-man",
+        "runtime": 100,
+        "genres": [
+          "다큐멘터리"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Kwon Film"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 1.0343,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "1955년, 폐결핵으로 6개월 시한부 선고를 받은 열아홉 살 소년 조용기. 매일 밤 피를 토하며 세상과 신을 향한 저주를 일기장에 쏟아내던 그는, 죽음의 문턱에서 운명처럼 성경을 마주하며 삶의 놀라운 전환점을 맞이한다. 기적적으로 살아난 청년 조용기는 성전 대신 대조동 공동묘지 옆, 비바람에 흔들리는 24평의 낡은 천막 교회를 선택한다. 가난하고 소외된 이들의 벗이 되어 그들의 삶을 함께하며 복음을 전하지만, 차가운 세상의 시선 속에서 그의 개척은 매 순간 고난의 연속이다. 그럼에도 \"꿈꾸는 자에게는 끝이 없다\"라는 확신 하나로 걸음을 멈추지 않았던 한 청년. 그의 작은 시작은 마침내 전 세계를 향한 믿음의 여정으로 이어진다. 성공 신화 뒤에 가려져 있던 '인간 조용기'의 진짜 시작. 70년 만에 발굴된 일기장과 미공개 아카이브를 통해 한 청년이 절망을 딛고 시대의 목소리가 되기까지의 여정이 스크린 최초로 펼쳐진다.",
+        "tagline": "신을 저주하던 청년, 시대를 긋는 종이 되다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2eU1IJWeDOXWT6SAHXB4lRE44DX.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/2eU1IJWeDOXWT6SAHXB4lRE44DX.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1739216",
+        "imdbId": "tt44064016",
         "demo": false
       },
       {
@@ -14627,7 +15009,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 1.0425,
+        "popularity": 1.0278,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "2022년 강원도 홍천에서 영화 '지난 여름'을 촬영한 민우와 성훈은 4년만에 마을을 방문한다.",
@@ -14643,107 +15025,137 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1223082,
-        "title": "불멸의 존재들. 이집트 박물관의 경이들",
-        "originalTitle": "Uomini e Dei - Le meraviglie del Museo Egizio",
-        "year": 2024,
-        "releaseDate": "2024-02-13",
-        "director": "Michele Mally",
-        "runtime": 87,
+        "id": 1760505,
+        "title": "올공, 2030 나라를 살리다",
+        "originalTitle": "올공, 2030 나라를 살리다",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "이영돈",
+        "runtime": 143,
         "genres": [
           "다큐멘터리"
         ],
-        "keywords": [],
-        "productionCompanies": [
-          "3D Produzioni",
-          "Nexo Digital",
-          "Sky",
-          "MiC"
+        "keywords": [
+          "politics",
+          "demonstration",
+          "conspiracy theory",
+          "election",
+          "election fraud"
         ],
-        "artSeed": false,
-        "voteAverage": 6,
-        "voteCount": 3,
-        "popularity": 1.0293,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "이 다큐멘터리는 이집트가 우리에게 남긴 가장 아름다운 고고학적 발견들 중 하나를 담은 여정이다. 바로, 파라오의 무덤을 설계하고 건설한 카의 마지막 여정이다. 영국 출신의 세계적인 배우, 제레미 아이언스가 내레이터로 변신하여 그의 여정 이야기를 들려준다. 그의 이야기는 이집트 신화, 종교, 장례 문화의 비밀스러운 세계로 우리를 안내하며, 1824년에 설립되어 2024년에 200주년을 맞이한 세계에서 가장 오래된 박물관인 이탈리아 토리노의 이집트 박물관(Museo Egizio)의 역사와 얽혀 있다. 실제로 카의 무덤은 가장 완전하고 귀중한 개인 부장품 컬렉션과 함께 이집트가 아닌 바로 이곳 토리노에서 발견되기 때문이다. 이 다큐멘터리는 나일 강을 따라 기자, 룩소르, 카르나크의 웅장한 유적지에서 왕들의 계곡, 그리고 노동자들의 마을인 데이르 엘 메디나까지 이어지는 여정이기도 하다. 아이언스가 들려주는 이야기는 이탈리아 탐험가와 고고학자들의 발자취를 따라가고, 여정은 카이로 박물관, 베를린의 이집트 박물관, 런던의 대영 박물관, 파리의 루브르 박물관 전시관으로도 이어진다.",
-        "tagline": "스크린으로 만나는 신비의 여정, 세계에서 가장 오래된 이집트 박물관의 보물들이 깨어난다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/glkllEqdM23MXXgphHu4tGQS5hy.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wkOOSXyNNxZJB3b8P98Vn4C6xUb.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1223082",
-        "imdbId": "tt20420324",
-        "demo": false
-      },
-      {
-        "id": 1522856,
-        "title": "카를로비바리",
-        "originalTitle": "카를로비바리",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "이용석",
-        "runtime": 120,
-        "genres": [
-          "코미디",
-          "드라마"
-        ],
-        "keywords": [],
         "productionCompanies": [
-          "애드히시브"
+          "The Contents Maker"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.9857,
+        "popularity": 0.9738,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "체코 서부에 위치한 아름다운 도시, 카를로비바리. 영화감독 ‘성재’는 카를로비바리를 배경으로 대본을 완성하고, 이후 그의 작품은 각종 공모전 수상, 그리고 영화제작까지 투자를 받게 된다! 국내 세트장 촬영을 모두 마치고, 드디어 현지 촬영만을 남겨 둔 상황. 그런데… 투자받은 제작비가 모두 사라져 버린다! 투자금을 토해내지 않기 위해서는 무슨 일을 써서라도 반드시 영화를 완성해야 하는 상황! 과연 성재와 친구들은 카를로비바리를 가지 않고 무사히 영화를 완성할 수 있을까?",
-        "tagline": "\"체코로 갈 수 없다. 하지만 영화는 찍어야 한다!\"",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/kK5KblzoMJUU4DVjKouOQMrahF3.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/uQBNWozmdHyaNs05TwObBTMHTxu.jpg",
+        "overview": "2026년 6월 3일, 서울 송파구 잠실7동 제2투표소에서 투표용지 부족 사태가 벌어졌다. 유권자들은 돌아서지 않았다. 그날 밤 스레드에 올라온 한 문장 — \"지금 송파로 출발하겠다.\" 좋아요 2만. 이 한 문장이 한국 사회의 지도를 다시 그렸다. 경찰이 강제해산에 나서자 투표함은 올림픽공원 핸드볼경기장으로 이송되었고, 봉쇄가 시작됐다. 다음 날 6만명인 넘는 청년들이(경찰추산3만 3천 3백 명, 그 다음 날 3만 8천 7백 명)이 모였다. 그 중 20대가 34.2퍼센트, 30대가 24.1퍼센트 — 두 세대의 합이 58.3퍼센트였다. 그러나 정작 그들의 이재명 지지율은 20대 36퍼센트, 30대 47퍼센트에 그쳤다. 4050의 60퍼센트대에 훨씬 못 미치는, 정부에 가장 냉담한 세대였다. 이 모순이 이 다큐멘터리의 출발점이다. 청년들의 올공 선거혁명은 올공이라는 지역적 협의를 넘어 정치권에도 큰 영향을 끼치게 된다. 특히 선관위특검은 2030의 ‘부정선거 재선거 당일투표 수개표’ 부르짖음이 만들어낸 결과물이다. 대한민국 선거제도 변화의 기폭제가 된 올공혁명은 올공에서 비롯된 각종 변화를 심층 취재했다. 올공의 2030이 대한민국을 어떻게 변화시키고 있나? 이 현장과제를 영화는 충실히 수행한 것이다. 이영돈 감독은 6월 3일부터 7월 2일까지 30일 동안 잠실7동에서 올림픽공원으로 이어진 봉쇄의 광장을 현장 기록했다. 주최자도, 대표도, 깃발도 없이 오직 개인이 있었고, 오직 참정권이 있었으며, 오직 \"지키다\"라는 동사가 있었다. 그들이 지킨 것은 정권이 아니라 나라였고, 정치가 아니라 참정권이었으며, 이재명이 아니라 대한민국이었다. 이것이 6·3 선거혁명이며, 소셜 시티즌의 시간이다.",
+        "tagline": "잠실, 그곳에 자유대한민국이 있다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/vB2rQ0kXcIBsqQpJBOMgO5gwkXo.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/vB2rQ0kXcIBsqQpJBOMgO5gwkXo.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1522856",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1760505",
         "imdbId": null,
         "demo": false
       },
       {
-        "id": 1384111,
-        "title": "트루먼의 사랑",
-        "originalTitle": "트루먼의 사랑",
+        "id": 1760178,
+        "title": "클로저",
+        "originalTitle": "클로저",
         "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "김덕중",
-        "runtime": 147,
+        "releaseDate": "2026-09-15",
+        "director": "",
+        "runtime": null,
         "genres": [
-          "SF",
-          "로맨스"
+          "로맨스",
+          "드라마"
         ],
         "keywords": [],
-        "productionCompanies": [
-          "Pulip Film",
-          "Gozip Studio"
-        ],
+        "productionCompanies": [],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.9835,
+        "popularity": 0.9661,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "속기사 지연은 어느 날부터 세상이 멈추는 이상 현상을 목격한다. 에러가 발생하면 모두가 하던 행동을 멈추고 굳어버리지만, 트루먼인 지연만은 그 세계에 종속되지 않고 자유롭게 움직일 수 있다. 혼자가 아니라는 걸 확인하고 싶었던 지연은 또다른 트루먼을 찾아 헤매다 현식과 문성을 만난다. 셋은 이 거짓 세계의 바깥을 향해 함께 떠나려 하지만, 지연을 사이에 두고 두 남자 사이에 균열이 생기기 시작하는데…",
-        "tagline": "당신은 트루먼인가요?",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8Zb0UIeGV4mIaUbogykkts1L5oT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/lG0CFhTmsCaw3DfkTChmA8IEhNS.jpg",
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/dP7OVgA97dqpPb1682GKKnyVm7O.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/dP7OVgA97dqpPb1682GKKnyVm7O.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1384111",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1760178",
+        "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 1535944,
+        "title": "고양이를 놓아줘",
+        "originalTitle": "猫を放つ",
+        "year": 2026,
+        "releaseDate": "2026-05-02",
+        "director": "Daisuke Shigaya",
+        "runtime": 102,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "HUT Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.9634,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "음악을 하는 ‘모리’와 사진을 찍는 ‘마이코’. 지친 마음을 달래기 위해 휴직 중이지만 제대로 된 음악 작업도 하지 못한 채 시간만 보내고 있는 ‘모리’와 다르게 ‘마이코’는 개인전까지 열며 성공한 사진작가에 한 발 더 다가선다. ‘마이코’의 전시회 마지막 날, 우연히 과거에 만났던 ‘아사코’와 재회하고 과거의 기억을 떠올리는 ‘모리’. 더 이상 존재하지 않는 과거와 현재 사이에서 ‘모리’는 미처 알아보지 못했던 사랑의 흔적과 마주하게 되는데… “다시 괜찮아질 수 있을까?”",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/4dS74FTvHkBzjCdZZSwfjwt4UQZ.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/e9frQsF6KycN2DuBuX3FRyzXpKS.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1535944",
+        "imdbId": "tt38454778",
+        "demo": false
+      },
+      {
+        "id": 1522680,
+        "title": "사진의 얼굴",
+        "originalTitle": "사진의 얼굴",
+        "year": 2026,
+        "releaseDate": "2026-09-02",
+        "director": "Koh Hee-young",
+        "runtime": 99,
+        "genres": [
+          "다큐멘터리"
+        ],
+        "keywords": [],
+        "productionCompanies": [],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.9601,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "\"왜 일본놈이 한국을 찍는가!” 90세 일본 포토저널리즘의 거장 구와바라 시세이. 지난 60년간 100여 차례 한국을 오간 그는 청계천 서민들의 삶부터 민주화 운동, 동두천 기지촌, 베트남 파병, 평양의 일상 등 한반도를 관통한 크고 작은 사건들을 10만 컷의 사진으로 기록해 왔다. “그는 무엇을 보았는가?” ‘남한에서의 국외 추방, 북한에서의 입국 금지 등 갖은 고난을 당하면서도 그가 끝내 놓지 못했던 생생한 얼굴들. 2026년 바로 오늘, 스크린에서 거장의 뷰파인더를 통해 본 ‘사진의 얼굴’을 만난다.",
+        "tagline": "90세 거장, 60년의 기록, 10만 컷의 사진, \"그는 한국에서 무엇을 보았는가?\"",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/53yTiV0XOIQ0tUaqToO6yUfZFNA.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/8hr5Ap5nR3UC2GlViHjniCZO4It.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1522680",
         "imdbId": null,
         "demo": false
       },
@@ -14765,7 +15177,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.9716,
+        "popularity": 0.9288,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "여배우를 꿈꾸는 효원은 고등학교를 중퇴한 은서와 함께 가출을 하여 서울역에 도착한다. 은서는 생활비를 벌기 위해 아르바이트를 하고 효원은 극단의 오디션을 보며 여배우가 되기를 꿈꾼다. 미래에 대한 각자의 희망으로 한껏 들뜬 그녀들이다. 효원은 극단의 단원이 되기 위해서 주연 배우 수연에게 연기 레슨을 받기 시작한다. 은서는 효원의 레슨비가 급해지자 허름한 식당에서 일을 하기 시작한다. 수연은 효원에게 가르친다. 연기란, 타인의 고통을 온전히 이해하고 표현하는 것이라고... 하지만 효원은 은서의 고통을 이해하지 못한다. 은서 또한 마찬가지다. 그녀들에게 삶은 의문투성이이다.",
@@ -14798,7 +15210,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.9414,
+        "popularity": 0.9135,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "시 한 편에서 비롯된 시나리오로 무성영화가 제작되었고, 그 영상을 바탕으로 하나의 정규 앨범이 만들어졌다. 획기적인 제작 방식을 통해 완성된 <산산조각>은 '하얀 기하', '까만 기하', '베개몬' 세 캐릭터의 세계를 따라가며 상실과 변화, 그리고 삶의 순환에 대한 이야기를 담아냈다.",
@@ -14814,73 +15226,103 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1746717,
-        "title": "스파이에어 저스트 라이크 디스 2025",
-        "originalTitle": "SPYAIR Just Like This 2025 -HISTORY of ANIME-",
+        "id": 1384111,
+        "title": "트루먼의 사랑",
+        "originalTitle": "트루먼의 사랑",
         "year": 2026,
         "releaseDate": "2026-08-26",
-        "director": "Yo Ohashi",
-        "runtime": 114,
+        "director": "김덕중",
+        "runtime": 147,
         "genres": [
-          "음악",
-          "다큐멘터리"
+          "SF",
+          "로맨스"
         ],
         "keywords": [],
         "productionCompanies": [
-          "Sony Music Labels"
+          "Pulip Film",
+          "Gozip Studio"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.8724,
+        "popularity": 0.8526,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "2015년, 후지큐 하이랜드에서 처음 시작된 스파이에어의 시그니처 야외 단독 라이브 ‘JUST LIKE THIS’. 그로부터 10년 뒤 2025년, 후지산 아래에서 다시 모였다! 데뷔 15주년을 맞아 펼쳐진 이틀 간의 ‘JUST LIKE THIS 2025’ 공연 중 인기 애니메이션 OST를 총망라한 두번째 날의 무대 ‘History of ANIME’가 스크린에서 생생하게 펼쳐진다! 무대 위 멤버들의 폭발적인 에너지와 관객들이 함께 만든 현장의 열기까지! 2026년 돌아온 우리의 여름, 다시 SPYAIR를 만날 시간!",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+        "overview": "속기사 지연은 어느 날부터 세상이 멈추는 이상 현상을 목격한다. 에러가 발생하면 모두가 하던 행동을 멈추고 굳어버리지만, 트루먼인 지연만은 그 세계에 종속되지 않고 자유롭게 움직일 수 있다. 혼자가 아니라는 걸 확인하고 싶었던 지연은 또다른 트루먼을 찾아 헤매다 현식과 문성을 만난다. 셋은 이 거짓 세계의 바깥을 향해 함께 떠나려 하지만, 지연을 사이에 두고 두 남자 사이에 균열이 생기기 시작하는데…",
+        "tagline": "당신은 트루먼인가요?",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8Zb0UIeGV4mIaUbogykkts1L5oT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/lG0CFhTmsCaw3DfkTChmA8IEhNS.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1746717",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1384111",
         "imdbId": null,
         "demo": false
       },
       {
-        "id": 1501239,
-        "title": "네 얼굴로는 울 수 없어",
-        "originalTitle": "君の顔では泣けない",
-        "year": 2025,
-        "releaseDate": "2025-11-14",
-        "director": "坂下雄一郎",
-        "runtime": 124,
+        "id": 1535974,
+        "title": "착지연습",
+        "originalTitle": "착지연습",
+        "year": 2026,
+        "releaseDate": "2026-09-10",
+        "director": "마민지",
+        "runtime": 108,
         "genres": [
-          "드라마",
-          "판타지"
+          "다큐멘터리"
         ],
         "keywords": [],
         "productionCompanies": [
-          "Happinet Phantom Studios",
-          "Grasshoppa!",
-          "RIKI PROJECT"
+          "Seesaw Pictures",
+          "Shangma Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 7,
-        "voteCount": 1,
-        "popularity": 0.8472,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.8465,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "열다섯 살 여름, ‘리쿠’와 ‘마나미’는 우연한 사고로 몸이 뒤바뀐다. 하루면 끝날 줄 알았던 시간은 어느새 15년이 되고, 첫사랑과 꿈, 취업과 연애까지 가장 소중한 순간들을 서로의 삶으로 살아가게 된다. 내 얼굴로 웃을 수도, 네 얼굴로 울 수도 없었던 시간. 그리고 15년 후, 다시 찾아온 여름은 두 사람의 운명을 다시 흔들기 시작하는데….",
+        "overview": "출판계와 문단계의 성폭력 사건을 공론화한 탁은, 미투 이후 무너진 일상 속에서 다시 살아가기 위해 고군분투한다. 눈을 뜨고, 밥을 먹고, 씻고, 집 밖을 나서는 일상은 반복되는 긴장과 자신과의 싸움으로 채워진다. 그런 탁이 발 딛고 선 곳은 생존자와 연대인들이 함께 만든 예술-회복 공동체 ‘상여자의 착지술’이다. 이들은 매주 안전한 공간에 모여 간식을 나누고, 돌아온 가해자에 대한 분노를 털어놓고 함께 울고 웃는다. 또한 다양한 성폭력 생존자와 연대인을 대상으로 예술 프로그램을 기획하고 운영하며 안전한 공유지를 확장해 나간다. 하지만 이 공동체 역시 완벽하지는 않다. 기대가 어긋나고, 상처가 드러나며, 관계는 균열을 겪기도 한다. 영화는 완벽하지 않은 관계 속에서 다시 말하고, 움직이고, 연결되려 애써 온 지난 5년의 시간을 따라간다. 탁과 ‘상여자의 착지술’ 사람들은 각자의 속도로 더딘 회복의 능선을 따라 각자의 착지를 연습한다.",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/nxbVK5NzYIHyClTF1OqDvXctzow.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jwbAupZDLO9ZRDULCVLvmdi5zsw.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/A6dQ9cWkz4LxqRaxvL8fScaUGfl.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/iyytXYPETbDZlpQiPHemzjNHUMc.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1501239",
-        "imdbId": "tt38504908",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1535974",
+        "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 1662250,
+        "title": "숨어드는 산",
+        "originalTitle": "숨어드는 산",
+        "year": 2026,
+        "releaseDate": "2026-08-12",
+        "director": "최창환",
+        "runtime": 106,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.8207,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "한국은 아직 제5공화국이다. 독재는 아직 끝나지 않았고 수많은 사람들이 산으로 숨어들었다. 대구시경 방첩대 형사인 인혁과 상준은 안보법 위반으로 수배 중인 최명훈의 처 이수경을 매일 감시하고 있다. 홀로 남은 이수경은 인터넷 댓글 알바를 하며 하루하루 살고 있다. 수경은 고달픈 삶과 남편과 자신을 돌봐주지 않은 남편의 가족에 대해 배신감이 들어 명훈의 소재를 인혁과 상준에게 알리기로 하고 순천으로 향한다. 수경에게 연민을 느끼고 있던 인혁은 토벌대의 기획수사에 반발하여 명훈을 잡는다는 조건을 걸고 대구시경과 협의하고 수경을 빼돌린다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1662250",
+        "imdbId": null,
         "demo": false
       },
       {
@@ -14902,7 +15344,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.7758,
+        "popularity": 0.819,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "5천 만원의 행운을 안겨준 꿈. 세탁기 속으로 사라진 내 눈에만 보이는 아이. 야구를 그만두고 인생의 막다른 길에 선 백수 '건우'와 갈 곳 없이 방황하던 사춘기 소녀 '미나'는 꿈속에서만 만날 수 있는 아이 '요섭'을 따라 현실과 묘하게 닮은 이상한 세계로 발을 들인다.",
@@ -14914,6 +15356,107 @@ window.KINOSIS_CATALOG = {
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1208274",
+        "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 1340331,
+        "title": "환희의 얼굴",
+        "originalTitle": "환희의 얼굴",
+        "year": 2026,
+        "releaseDate": "2026-09-09",
+        "director": "이제한",
+        "runtime": 126,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Mareummo Film",
+          "CS Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.8151,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "여기 네 개의 이야기가 있고, 이야기 안에는 환희가 있다. 환희는 그 이야기 안에서 동정과 관심을 갈구하기도 하고, 자신이 머물 새로운 장소를 염원하기도 하며, 자신도 믿을 수 없는 배신을 저지르기도 한다. 그녀는 때론 냉정하고, 어떨 땐 희생적이며, 누군가에겐 사랑도 베푼다.",
+        "tagline": "오해와 이해로 만들어진 매일의 표정들",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/sNNmqlO0MIYM2yrZRUiYhwj3n51.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/v64CjRb8dhyJ2SAJNdidXeGvkIW.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1340331",
+        "imdbId": "tt38129020",
+        "demo": false
+      },
+      {
+        "id": 1746717,
+        "title": "스파이에어 저스트 라이크 디스 2025",
+        "originalTitle": "SPYAIR Just Like This 2025 -HISTORY of ANIME-",
+        "year": 2026,
+        "releaseDate": "2026-08-26",
+        "director": "Yo Ohashi",
+        "runtime": 114,
+        "genres": [
+          "음악",
+          "다큐멘터리"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Sony Music Labels"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.8003,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "2015년, 후지큐 하이랜드에서 처음 시작된 스파이에어의 시그니처 야외 단독 라이브 ‘JUST LIKE THIS’. 그로부터 10년 뒤 2025년, 후지산 아래에서 다시 모였다! 데뷔 15주년을 맞아 펼쳐진 이틀 간의 ‘JUST LIKE THIS 2025’ 공연 중 인기 애니메이션 OST를 총망라한 두번째 날의 무대 ‘History of ANIME’가 스크린에서 생생하게 펼쳐진다! 무대 위 멤버들의 폭발적인 에너지와 관객들이 함께 만든 현장의 열기까지! 2026년 돌아온 우리의 여름, 다시 SPYAIR를 만날 시간!",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w780/d6O1YfYwol9WgYTnanSWJx1HgPd.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1746717",
+        "imdbId": null,
+        "demo": false
+      },
+      {
+        "id": 1425837,
+        "title": "캐리어를 끄는 소녀",
+        "originalTitle": "캐리어를 끄는 소녀",
+        "year": 2026,
+        "releaseDate": "2026-09-02",
+        "director": "윤심경",
+        "runtime": 107,
+        "genres": [
+          "드라마"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "about Film"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 0.7862,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "양부모에게 버려진 15살 ‘영선’은 또래 ‘수아’의 테니스 훈련 파트너로 수아네 집에 머물게 된다. 갈 곳이 없던 ‘영선’은 이 집의 일원이 되고 싶다는 마음을 품고, 조용하지만 치열하게 ‘수아’네 가족 안으로 스며들기 위해 애쓴다. 하지만 각자의 결핍을 안고 있는 그들 안으로 들어가기는 쉽지 않은데…",
+        "tagline": "삶의 코트 위 가장 치열한 인생 랠리",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/owXQAokJPjvM2FKX4ctAfKpCUhD.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/9eMfuaPu5gE2obsmhP028ukmsAi.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1425837",
         "imdbId": null,
         "demo": false
       },
@@ -14943,7 +15486,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 0.7484,
+        "popularity": 0.7488,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "밴드 터치드(TOUCHED)의 찬란했던 1년의 기록이 스크린에 펼쳐진다! 2026년 1월 티켓링크 라이브 아레나를 뜨겁게 물들였던 <터치드(TOUCHED) 단독 콘서트 'HIGHLIGHT IV'>가 영화로 팬들의 곁을 다시 찾는다. 폭발적인 가창력과 파워풀한 연주, 객석을 압도하는 강렬한 퍼포먼스가 담긴 공연 실황은 물론, 최초로 공개되는 콘서트 기획 회의부터 합주실과 리허설 현장 메이킹, 그리고 멤버들의 진솔한 인터뷰까지 더해져 공연의 감동을 더욱 깊게 만든다. 그날의 전율을 함께했던 이들에게는 현장의 열기를 다시 떠올리는 시간이 되고 아쉽게 함께하지 못했던 이들에게는 그 자리에 함께한 듯한 생생한 몰입감을 선사할 예정이다.",
@@ -14957,306 +15500,133 @@ window.KINOSIS_CATALOG = {
         "tmdbUrl": "https://www.themoviedb.org/movie/1739218",
         "imdbId": null,
         "demo": false
-      },
-      {
-        "id": 1340331,
-        "title": "환희의 얼굴",
-        "originalTitle": "환희의 얼굴",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "이제한",
-        "runtime": 126,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Mareummo Film",
-          "CS Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.7095,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "여기 네 개의 이야기가 있고, 이야기 안에는 환희가 있다. 환희는 그 이야기 안에서 동정과 관심을 갈구하기도 하고, 자신이 머물 새로운 장소를 염원하기도 하며, 자신도 믿을 수 없는 배신을 저지르기도 한다. 그녀는 때론 냉정하고, 어떨 땐 희생적이며, 누군가에겐 사랑도 베푼다.",
-        "tagline": "오해와 이해로 만들어진 매일의 표정들",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/sNNmqlO0MIYM2yrZRUiYhwj3n51.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/v64CjRb8dhyJ2SAJNdidXeGvkIW.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1340331",
-        "imdbId": "tt38129020",
-        "demo": false
-      },
-      {
-        "id": 1662250,
-        "title": "숨어드는 산",
-        "originalTitle": "숨어드는 산",
-        "year": 2026,
-        "releaseDate": "2026-08-12",
-        "director": "최창환",
-        "runtime": 106,
-        "genres": [
-          "드라마"
-        ],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.7028,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "한국은 아직 제5공화국이다. 독재는 아직 끝나지 않았고 수많은 사람들이 산으로 숨어들었다. 대구시경 방첩대 형사인 인혁과 상준은 안보법 위반으로 수배 중인 최명훈의 처 이수경을 매일 감시하고 있다. 홀로 남은 이수경은 인터넷 댓글 알바를 하며 하루하루 살고 있다. 수경은 고달픈 삶과 남편과 자신을 돌봐주지 않은 남편의 가족에 대해 배신감이 들어 명훈의 소재를 인혁과 상준에게 알리기로 하고 순천으로 향한다. 수경에게 연민을 느끼고 있던 인혁은 토벌대의 기획수사에 반발하여 명훈을 잡는다는 조건을 걸고 대구시경과 협의하고 수경을 빼돌린다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/sL69lvZ9pNRq7NeRXLQtfWiMucT.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1662250",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1741921,
-        "title": "Endless Ride: TOMORROW X TOGETHER VR Concert",
-        "originalTitle": "Endless Ride: TOMORROW X TOGETHER VR Concert",
-        "year": 2026,
-        "releaseDate": "2026-07-31",
-        "director": "",
-        "runtime": 60,
-        "genres": [],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.6672,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/uvagwUTiF2QX7gTIblZKlglMrRA.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7hpE3D1m8kCVKX47V4IWYmEl7OG.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1741921",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1158941,
-        "title": "콘크리트 녹색섬",
-        "originalTitle": "콘크리트 녹색섬",
-        "year": 2026,
-        "releaseDate": "2026-08-19",
-        "director": "이성민",
-        "runtime": 104,
-        "genres": [
-          "다큐멘터리"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Studio Siot"
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.6459,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "개포주공 키즈인 ‘나’는 어린 시절 추억이 담긴 아파트가 재개발로 사라진다는 소식을 듣고 그곳에 얽힌 사람들의 이야기를 기록하기 시작한다. 모두가 아파트 단지 속 녹색섬을 기억하고 있음을 알게 되고 나무와 그 안에 담긴 시간을 지키고자 하는데⋯",
-        "tagline": "개포주공 1단지, 22그루의 나무가 남아있다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/pnZy0mRf0c0PAqBTFdquK4zWeNY.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/sC9x3dMq0ZSUXrcty3iWISU4ddG.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1158941",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1752201,
-        "title": "파뿌리 24: 좀비 아일랜드",
-        "originalTitle": "파뿌리 24: 좀비 아일랜드",
-        "year": 2026,
-        "releaseDate": "2026-08-22",
-        "director": "Seo Ji-won",
-        "runtime": 89,
-        "genres": [
-          "공포"
-        ],
-        "keywords": [
-          "based on web series"
-        ],
-        "productionCompanies": [
-          "Sandbox Network Inc."
-        ],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.5711,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "1,000만 조회수 달성 리벤지!! 파뿌리 무인도 편이 스크린으로 돌아왔다! '무인도 리벤지 챌린지' 촬영을 위해 무인도에 입도한 파뿌리 완전체 (강호이, 진렬이, 노랭이, 신짜오, 짱배)! \"근데 얘들아, 이 섬... 뭔가 이상한데?!\" 단순 예능 촬영으로 왔던 그 무인도는 과거 정체불명의 바이러스가 퍼져 수많은 사람들이 좀비로 변했던 섬이었다! 대한민국 정부가 즉각 봉쇄하고 국가기밀로 숨겨온 광기 어린 과학자의 '좀비 아일랜드'! 좀비로 가득한 고립된 섬에서 펼쳐지는 좀비 리얼 추리 서바이벌! 과연 파뿌리 멤버들은 24시간 안에 숨겨진 음모를 파헤치고, 좀비의 위협을 뚫고 무사히 탈출할 수 있을 것인가!",
-        "tagline": "희망은 단 하나, 백신",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/eWUxAk8lBOB5SmvcjCJE1ZbPlXq.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/eWUxAk8lBOB5SmvcjCJE1ZbPlXq.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1752201",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1739995,
-        "title": "Camphor Tiger Chase",
-        "originalTitle": "Camphor Tiger Chase",
-        "year": 2026,
-        "releaseDate": "2026-07-29",
-        "director": "Li Shuen Lam",
-        "runtime": 30,
-        "genres": [],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.5537,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": null,
-        "backdropUrl": null,
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1739995",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1753658,
-        "title": "강령사바",
-        "originalTitle": "강령사바",
-        "year": 2026,
-        "releaseDate": "2026-08-12",
-        "director": "",
-        "runtime": null,
-        "genres": [],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.4884,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "‘강령사바’는 과거 강령술로 단짝 친구를 혼수상태에 빠뜨린 초등학생 세연의 이야기에서 시작한다. 전학 간 학교에서 새로운 친구들을 만난 세연은 폐수련원을 찾았다가 다시 금기의 강령술을 시도하게 되고, 이후 현실과 환각의 경계가 무너지기 시작한다.  아이들의 호기심으로 시작된 의식은 연이은 희생으로 이어진다. 학교와 폐수련원이라는 익숙한 공간은 폐쇄적인 공포의 무대로 변하고, 무엇이 현실이고 악귀가 만들어낸 환영인지 알 수 없는 상황이 펼쳐진다.  특히 폐수련원은 악귀와 맞서야 하는 장소인 동시에 세연이 과거의 죄책감과 다시 마주하는 공간으로 그려진다. 푸른 조명과 짙은 그림자, 좁은 실내와 풀숲 등을 활용해 제한된 시야 속에서 악귀의 정체와 사건의 실체를 쫓게 한다.  ‘강령사바’는 초자연적인 공포뿐 아니라 살아남은 세연의 죄책감과 고립에도 초점을 맞춘다. 자신이 겪은 일을 아무도 믿어주지 않자 세연은 결국 다른 사람과 관계를 맺지 않는 삶을 택한다.  금기를 어긴 대가와 친구들의 희생, 진실을 증명할 수 없는 무력감을 한 인물의 서사에 담아내면서 강령술을 소재로 한 오컬트 공포에 생존자의 심리적 후유증을 더했다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/hVhyktaD1Z4VCWvxgBIw3uqTJRD.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/hVhyktaD1Z4VCWvxgBIw3uqTJRD.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1753658/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1753658",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1752166,
-        "title": "IN KOREA",
-        "originalTitle": "IN KOREA",
-        "year": 2026,
-        "releaseDate": "2026-08-19",
-        "director": "Lim Hee-je",
-        "runtime": 4,
-        "genres": [],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.486,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/dFQgBeleun0WtOzsMOWjBMQhiTn.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w780/dFQgBeleun0WtOzsMOWjBMQhiTn.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1752166",
-        "imdbId": null,
-        "demo": false
-      },
-      {
-        "id": 1251630,
-        "title": "담요를 입은 사람",
-        "originalTitle": "담요를 입은 사람",
-        "year": 2026,
-        "releaseDate": "2026-09-09",
-        "director": "박정미",
-        "runtime": 117,
-        "genres": [
-          "다큐멘터리"
-        ],
-        "keywords": [],
-        "productionCompanies": [],
-        "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 0.4603,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "“오늘부터 돈 없이 살아보겠습니다!” 런던 한복판에서 생계의 벼랑 끝에 선 정미, 돈이라는 보호막을 벗어던지고, 두려움의 한가운데로 걸어 들어간다. 빈 건물에서 잠들고, 버려진 음식으로 배를 채우며, 숱한 위험 속에서 만난 기적 같은 연결들, 그 끝에서 마침내 발견한 진짜 살아갈 이유! 떠도는 삶을 끝내고 마음이 머물 수 있는 ‘집’으로의 여정이 지금 시작된다!",
-        "tagline": "어디에 있든 나는 늘 집에 있다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/h7v2FBQMnUaBVPh9p6uOc2Alwpl.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dNUla5Gme5agDWMyWmY4G7e8RXj.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1251630",
-        "imdbId": null,
-        "demo": false
       }
     ],
     "trending": [
+      {
+        "id": 1108427,
+        "title": "모아나",
+        "originalTitle": "Moana",
+        "year": 2026,
+        "releaseDate": "2026-07-08",
+        "director": "토마스 카일",
+        "runtime": 115,
+        "genres": [
+          "가족",
+          "판타지",
+          "코미디",
+          "모험"
+        ],
+        "keywords": [
+          "sailboat",
+          "sea",
+          "friendship",
+          "ocean",
+          "leaving one's family",
+          "musical",
+          "remake",
+          "curse",
+          "explorer",
+          "based on movie",
+          "demigod",
+          "polynesia",
+          "sea adventure",
+          "giant crab",
+          "animal sidekick",
+          "seafarer",
+          "live action remake",
+          "female explorer"
+        ],
+        "productionCompanies": [
+          "Walt Disney Pictures",
+          "Seven Bucks Productions",
+          "Flynn Picture Company",
+          "5000 Broadway Productions"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.792,
+        "voteCount": 406,
+        "popularity": 260.8674,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "끝없는 바다 너머 새로운 세상을 꿈꾸던 모투누이 섬의 소녀 모아나. 어느 날 모투누이에 깊은 어둠이 드리우자, 모아나는 저주에 빠진 섬을 구하기 위해 전설의 영웅 마우이를 찾아, 그와 함께 운명을 건 항해에 나선다. 눈부신 파도, 거대한 모험, 그리고 운명을 바꿀 항해! 오감을 깨울 환상적인 바다가 생생하게 펼쳐진다!",
+        "tagline": "더 생생하게 펼쳐질 운명적 항해",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/etJXeoQovaAcQD8gG0vebtoIlMH.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dmwb15BCkqjoXA9dXIsoY2Hn10F.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/dmwb15BCkqjoXA9dXIsoY2Hn10F.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/y3pH8UJapy8JbOafvRJuOkANSc7.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1108427",
+        "imdbId": "tt27419466",
+        "demo": false
+      },
+      {
+        "id": 1368337,
+        "title": "오디세이",
+        "originalTitle": "The Odyssey",
+        "year": 2026,
+        "releaseDate": "2026-07-15",
+        "director": "크리스토퍼 놀란",
+        "runtime": 173,
+        "genres": [
+          "모험",
+          "액션",
+          "판타지"
+        ],
+        "keywords": [
+          "ship",
+          "trojan war",
+          "greek mythology",
+          "historical fiction",
+          "ancient world",
+          "period drama",
+          "based on song, poem or rhyme",
+          "greek history",
+          "voyage",
+          "peplum",
+          "ancient",
+          "trojan horse",
+          "mediterranean sea",
+          "bronze age",
+          "mythical",
+          "odyssey",
+          "sword and sandal",
+          "epic fantasy"
+        ],
+        "productionCompanies": [
+          "Universal Pictures",
+          "Syncopy"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.998,
+        "voteCount": 3568,
+        "popularity": 437.8516,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
+        "tagline": "신에 맞서다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/8ze9OcVuFiy94s6FFPvsn4oC2e1.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/RMXG8myu1aGlNUsRjtxzmpdMK0.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/twiVn9oFXOVR0uoYgawyEBlnFu8.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/kX6ZX4GL7km04332caiOVapR2lb.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
+        "imdbId": "tt33764258",
+        "demo": false
+      },
       {
         "id": 1386315,
         "title": "더 러너",
         "originalTitle": "The Runner",
         "year": 2026,
-        "releaseDate": "2026-09-17",
+        "releaseDate": "2026-09-03",
         "director": "케빈 맥도널드",
         "runtime": 86,
         "genres": [
-          "스릴러"
+          "스릴러",
+          "액션"
         ],
         "keywords": [
           "mother",
@@ -15264,85 +15634,44 @@ window.KINOSIS_CATALOG = {
           "kidnapping",
           "son",
           "child kidnapping",
+          "nervous",
           "abduction",
           "child rescue",
           "mother son relationship",
+          "anxious",
           "child abduction",
+          "serious",
           "attorney",
-          "intense"
+          "dramatic",
+          "suspenseful"
         ],
         "productionCompanies": [
           "Amazon MGM Studios",
           "Rockwood Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 0,
-        "voteCount": 0,
-        "popularity": 8.2741,
+        "voteAverage": 6.725,
+        "voteCount": 353,
+        "popularity": 284.4272,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "심리 스릴러 \"더 러너\". 런던의 유능한 변호사 마이아 마틴은 아침 조깅 중 아들이 납치됐다는 전화 한 통을 받고 평온했던 삶이 산산조각 난다. 아들을 구하기 위한 유일한 조건은 멈추지 말고 달릴 것, 냉혹한 명령에 복종할 것, 그리고 아무도 믿지 말 것. 1분 1초마다 자식을 구하려는 어머니의 한계가 시험대에 오른다.",
+        "overview": "런던의 유능한 변호사 마이아 마틴은 아침 조깅 중 아들이 납치됐다는 전화 한 통을 받고 평온했던 삶이 산산조각 난다. 아들을 구하기 위한 유일한 조건은 멈추지 말고 달릴 것, 냉혹한 명령에 복종할 것, 그리고 아무도 믿지 말 것. 1분 1초마다 자식을 구하려는 어머니의 한계가 시험대에 오른다.",
         "tagline": "\"멈추면, 아이를 잃는다\"",
         "posterUrl": "https://image.tmdb.org/t/p/w500/mpZURuhnfMHT4cF2f6Rl24tg0yG.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
         "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
         "logoUrl": "https://image.tmdb.org/t/p/original/pp7728TSDWCBUOTYSLHnSprv530.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1386315",
-        "imdbId": "tt34564059",
-        "demo": false
-      },
-      {
-        "id": 860508,
-        "title": "위스퍼맨",
-        "originalTitle": "The Whisper Man",
-        "year": 2026,
-        "releaseDate": "2026-08-27",
-        "director": "James Ashcroft",
-        "runtime": 114,
-        "genres": [
-          "범죄",
-          "드라마",
-          "스릴러"
-        ],
-        "keywords": [
-          "based on novel or book",
-          "serial killer",
-          "father son relationship"
-        ],
-        "productionCompanies": [
-          "AGBO"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.4,
-        "voteCount": 278,
-        "popularity": 233.5012,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "아내를 잃은 범죄 소설가. 8살 아들이 납치되자 오랫동안 소원했던 아버지를 찾아가 도움을 청한다. 전직 형사인 아버지와 함께 아들의 행방을 쫓던 중, 수십 년 전 유죄 판결을 받은 연쇄 살인마 '위스퍼맨'과의 연결 고리를 발견한다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/dQLxR7i2A3jiKHuQMC8NKdvtgAZ.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/8XLaNOl48ZXOy1x0a9CPD21fsfO.png",
         "providers": [
           {
-            "id": 8,
-            "name": "Netflix",
+            "id": 119,
+            "name": "Amazon Prime Video",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
-          },
-          {
-            "id": 1796,
-            "name": "Netflix Standard with Ads",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
           }
         ],
-        "watchLink": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/860508",
-        "imdbId": "tt11561116",
+        "watchLink": "https://www.themoviedb.org/movie/1386315-the-runner/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1386315",
+        "imdbId": "tt34564059",
         "demo": false
       },
       {
@@ -15386,21 +15715,77 @@ window.KINOSIS_CATALOG = {
           "TSG Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 7.873,
-        "voteCount": 2357,
-        "popularity": 952.532,
+        "voteAverage": 7.861,
+        "voteCount": 2543,
+        "popularity": 839.8698,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
         "tagline": "스파이더맨의 새로운 날을 확인하라!",
         "posterUrl": "https://image.tmdb.org/t/p/w500/8mLepBa5l591xFidRpn65xV7hb4.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
         "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/vjMvFSmGUxEtqVdaZgvFee9XkZl.jpg",
         "logoUrl": "https://image.tmdb.org/t/p/original/vbZcDHC5IFylYuRnp3eyOs5rTV1.png",
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/969681",
         "imdbId": "tt22084616",
+        "demo": false
+      },
+      {
+        "id": 1137844,
+        "title": "'메이데이' - Mayday",
+        "originalTitle": "Mayday",
+        "year": 2026,
+        "releaseDate": "2026-09-03",
+        "director": "조나단 골드스테인",
+        "runtime": 111,
+        "genres": [
+          "액션",
+          "코미디"
+        ],
+        "keywords": [
+          "cold war",
+          "fighter pilot",
+          "u.s. navy",
+          "behind enemy lines",
+          "ex kgb",
+          "buddy comedy"
+        ],
+        "productionCompanies": [
+          "Skydance Media",
+          "Maximum Effort",
+          "GoldDay"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.955,
+        "voteCount": 346,
+        "popularity": 237.6288,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "냉전 시대 극비 임무 중 적진 한복판에 고립된 미 해군 조종사가 살아남을 유일한 방법은 전직 KGB 요원과 손을 잡는 것뿐이다.",
+        "tagline": "생존을 위한 살벌한 우정.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/zlDomMaVxMTydLj1pwBhPvEqC2q.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/bWWkJ8ik9U96KMDktgLE9UMySYG.png",
+        "providers": [
+          {
+            "id": 350,
+            "name": "Apple TV",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/9icYBfYFcwgCbky5VdGUIKJ4C5i.png"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1137844-mayday/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1137844",
+        "imdbId": "tt28014327",
         "demo": false
       },
       {
@@ -15438,17 +15823,17 @@ window.KINOSIS_CATALOG = {
           "Warner Bros. Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 7.815,
-        "voteCount": 92,
-        "popularity": 246.8996,
+        "voteAverage": 7.66,
+        "voteCount": 265,
+        "popularity": 643.9483,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/lMUII956Ti1A6uKolpghZVlBYbV.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7GOW6jod9lLurW5utokAatxg7ql.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7GOW6jod9lLurW5utokAatxg7ql.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/g5VgGbno3iPkc95KZI0agJVf5Rs.png",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/l9mFW9HQnAZ4r1ChZJHoOT3jaal.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [],
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/1204680",
@@ -15456,109 +15841,51 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1368337,
-        "title": "오디세이",
-        "originalTitle": "The Odyssey",
+        "id": 1302904,
+        "title": "프랙티컬 매직: 새로운 챕터",
+        "originalTitle": "Practical Magic 2",
         "year": 2026,
-        "releaseDate": "2026-07-15",
-        "director": "크리스토퍼 놀란",
-        "runtime": 173,
+        "releaseDate": "2026-09-09",
+        "director": "수잔 비에르",
+        "runtime": 110,
         "genres": [
-          "모험",
-          "액션",
-          "판타지"
+          "로맨스",
+          "판타지",
+          "코미디"
         ],
         "keywords": [
-          "ship",
-          "trojan war",
-          "greek mythology",
-          "historical fiction",
-          "ancient world",
-          "period drama",
-          "based on song, poem or rhyme",
-          "greek history",
-          "voyage",
-          "peplum",
-          "ancient",
-          "trojan horse",
-          "mediterranean sea",
-          "bronze age",
-          "mythical",
-          "odyssey",
-          "sword and sandal",
-          "epic fantasy"
+          "witch",
+          "based on novel or book",
+          "magic",
+          "family relationships",
+          "sequel",
+          "family",
+          "legacy"
         ],
         "productionCompanies": [
-          "Universal Pictures",
-          "Syncopy"
+          "Di Novi Pictures",
+          "Warner Bros. Pictures",
+          "Blossom Films",
+          "Fortis Films",
+          "Domain Entertainment",
+          "Alcon Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 7.993,
-        "voteCount": 3407,
-        "popularity": 544.3226,
+        "voteAverage": 6.5,
+        "voteCount": 12,
+        "popularity": 37.882,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
-        "tagline": "신에 맞서다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8ze9OcVuFiy94s6FFPvsn4oC2e1.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/RMXG8myu1aGlNUsRjtxzmpdMK0.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/twiVn9oFXOVR0uoYgawyEBlnFu8.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/kX6ZX4GL7km04332caiOVapR2lb.png",
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wE6syT1vv6W24iLGfhR4kQHnIDN.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1368337",
-        "imdbId": "tt33764258",
-        "demo": false
-      },
-      {
-        "id": 1339713,
-        "title": "옵세션",
-        "originalTitle": "Obsession",
-        "year": 2026,
-        "releaseDate": "2026-05-13",
-        "director": "커리 바커",
-        "runtime": 109,
-        "genres": [
-          "공포",
-          "스릴러"
-        ],
-        "keywords": [
-          "obsession",
-          "supernatural",
-          "possession",
-          "wish",
-          "unrequited love",
-          "couple",
-          "absurdism",
-          "self-harm",
-          "supernatural horror",
-          "psychological",
-          "independent film",
-          "psychological horror",
-          "cursed object"
-        ],
-        "productionCompanies": [
-          "Tea Shop Productions",
-          "Under the Shell",
-          "Capstone Pictures",
-          "Blumhouse Productions"
-        ],
-        "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 5238,
-        "popularity": 218.7101,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
-        "tagline": "사랑해 줄게, 죽을 때까지",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/df4rpubfWy0g7HCzBNtPLLKnoMH.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/2y6qVk9YIPxTzO43anxUQ9iTuh4.png",
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1339713",
-        "imdbId": "tt37287335",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1302904",
+        "imdbId": "tt32588798",
         "demo": false
       },
       {
@@ -15585,15 +15912,15 @@ window.KINOSIS_CATALOG = {
           "MadRiver Pictures"
         ],
         "artSeed": false,
-        "voteAverage": 6.344,
-        "voteCount": 257,
-        "popularity": 412.2288,
+        "voteAverage": 6.359,
+        "voteCount": 334,
+        "popularity": 394.5615,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "억만장자인 상사의 살해 현장을 목격하고 그 죄를 뒤집어쓴 콜 리드는 상사의 죽음을 복수하기 위해 홀로 화물선에 올라타지만, 그곳에서 국제적인 음모를 발견하게 된다.",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/pu2VxGlpGwffOx292w18b1tv96j.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qDa0fqDqIBCovRp975RvtGPcuN3.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/e2QAGrEmbpmZpMymDRkDisJkvg9.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
@@ -15603,173 +15930,343 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1083381,
-        "title": "백룸",
-        "originalTitle": "Backrooms",
+        "id": 1185806,
+        "title": "퍼피 구조대: 더 다이노 무비",
+        "originalTitle": "PAW Patrol: The Dino Movie",
         "year": 2026,
-        "releaseDate": "2026-05-27",
-        "director": "케인 파슨스",
-        "runtime": 111,
+        "releaseDate": "2026-07-23",
+        "director": "Cal Brunker",
+        "runtime": 89,
         "genres": [
-          "공포",
-          "미스터리",
-          "SF"
+          "애니메이션",
+          "모험",
+          "가족",
+          "판타지",
+          "코미디"
         ],
         "keywords": [
-          "california",
-          "monster",
-          "therapist",
-          "surrealism",
-          "childhood trauma",
-          "alcoholism",
-          "found footage",
-          "1990s",
-          "other dimension",
-          "based on web series",
-          "psychological",
-          "liminal",
-          "body horror",
-          "psychological horror",
-          "liminal space",
-          "analog horror",
-          "sci-fi horror",
-          "bewildered",
-          "foreboding",
-          "liminal horror"
+          "diamond mine",
+          "sequel",
+          "based on cartoon",
+          "based on toy",
+          "prehistory",
+          "dinosaur",
+          "dog",
+          "corrupt mayor",
+          "children's adventure",
+          "talking animal",
+          "adventure comedy",
+          "based on tv series",
+          "illegal mining",
+          "physically disabled"
         ],
         "productionCompanies": [
-          "Atomic Monster",
-          "21 Laps Entertainment",
-          "A24",
-          "Phobos",
-          "The North Road Company"
+          "Spin Master",
+          "Nickelodeon Movies",
+          "Paramount Animation"
         ],
         "artSeed": false,
-        "voteAverage": 7.063,
-        "voteCount": 3095,
-        "popularity": 122.1488,
+        "voteAverage": 7,
+        "voteCount": 49,
+        "popularity": 24.6682,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
-        "tagline": "시작은 호기심이었다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/c3Cb7h4ecFsGfUM02KF638kbbtC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/g0PswKqAFJdwGK3d1fKvj8LGnrW.png",
+        "overview": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
+        "tagline": "화산 폭발 카운트다운! 공룡 친구들을 구할 초대형 구조 작전 시작!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/AnG0YQdnIf3mMYEVc2onMeAROzU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/6TSxLmwT7j1ugtKi8NyMmdzWAGj.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
-        "imdbId": "tt26657236",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1185806",
+        "imdbId": "tt29356163",
         "demo": false
       },
       {
-        "id": 1516698,
-        "title": "라스트 선라이즈",
-        "originalTitle": "The Last Sunrise",
+        "id": 1339713,
+        "title": "옵세션",
+        "originalTitle": "Obsession",
         "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "칼슨 영",
-        "runtime": 107,
+        "releaseDate": "2026-05-13",
+        "director": "커리 바커",
+        "runtime": 109,
         "genres": [
-          "로맨스",
-          "드라마"
+          "공포",
+          "스릴러"
         ],
         "keywords": [
-          "spain",
-          "based on novel or book",
-          "tension",
-          "summer",
-          "woman director",
-          "chronic illness",
-          "appreciative",
-          "audacious",
-          "comforting",
+          "obsession",
+          "supernatural",
+          "possession",
+          "wish",
+          "unrequited love",
+          "couple",
+          "paranoid",
+          "absurdism",
+          "self-harm",
+          "anxious",
+          "supernatural horror",
+          "psychological",
+          "independent film",
+          "psychological horror",
+          "cursed object"
+        ],
+        "productionCompanies": [
+          "Tea Shop Productions",
+          "Under the Shell",
+          "Capstone Pictures",
+          "Blumhouse Productions"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.194,
+        "voteCount": 5388,
+        "popularity": 194.6239,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
+        "tagline": "사랑해 줄게, 죽을 때까지",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/df4rpubfWy0g7HCzBNtPLLKnoMH.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/2y6qVk9YIPxTzO43anxUQ9iTuh4.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1339713",
+        "imdbId": "tt37287335",
+        "demo": false
+      },
+      {
+        "id": 1433367,
+        "title": "원나잇 온리",
+        "originalTitle": "One Night Only",
+        "year": 2026,
+        "releaseDate": "2026-07-28",
+        "director": "윌 글럭",
+        "runtime": 103,
+        "genres": [
+          "코미디",
+          "로맨스"
+        ],
+        "keywords": [
+          "new york city",
+          "romcom",
+          "meet cute",
+          "searching for love",
+          "single man",
+          "single woman",
+          "lyrical",
+          "strangers",
+          "lighthearted",
+          "romantic",
           "enthusiastic"
         ],
         "productionCompanies": [
-          "Amazon MGM Studios",
-          "Ethea Entertainment",
-          "Luber-Roklin Entertainment",
-          "Pitt Street Productions",
-          "Aquarius Films",
-          "The Last Sunrise"
+          "Universal Pictures",
+          "Olive Bridge Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 6.603,
-        "voteCount": 92,
-        "popularity": 318.6222,
+        "voteAverage": 6.888,
+        "voteCount": 85,
+        "popularity": 71.2824,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "인기 소설을 원작으로 한 영화 \"라스트 선라이즈\". 지병을 앓고 있는 대학생 라이는 엄마와 함께 마요르카로 여름휴가를 떠난다. 그곳에서 훌리안을 만나 예기치 못한 사랑에 빠지고 비로소 현재를 살아가는 법을 배우기 시작하는 라이. 하지만 여름이 끝나기 전, 지병이 악화하고 오랫동안 묻혀 있던 집안의 비밀이 드러나며 모든 것이 송두리째 흔들리기 시작한다.",
+        "overview": "",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/szN4VQ9eNhpWBHyq8MPrXQPYeNO.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/zFCWfU2ViMIm38G1W8UsnSpqmWn.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/5lB7yPaRhJHQ9dx7AnvPUi0GZDU.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/mU9S6Ow00Jbg3mXDZBrwdYEghXt.png",
-        "providers": [
-          {
-            "id": 119,
-            "name": "Amazon Prime Video",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1516698-the-last-sunrise/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1516698",
-        "imdbId": "tt37654096",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/46q8z1TbbVcF8uhRHsvt5s0h2SH.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/bpll0oy6gHwLvypfFNfT2QI4VkT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1433367",
+        "imdbId": "tt37853455",
         "demo": false
       },
       {
-        "id": 1384216,
-        "title": "도그 스타: 마지막 희망",
-        "originalTitle": "The Dog Stars",
+        "id": 1440098,
+        "title": "Enfrentados: Marfil",
+        "originalTitle": "Enfrentados: Marfil",
         "year": 2026,
-        "releaseDate": "2026-08-26",
-        "director": "리들리 스콧",
-        "runtime": 119,
+        "releaseDate": "2026-09-09",
+        "director": "Óscar Pedraza",
+        "runtime": 104,
         "genres": [
-          "SF",
-          "모험",
+          "로맨스",
+          "드라마",
           "스릴러"
         ],
         "keywords": [
           "based on novel or book",
-          "dystopia",
-          "denver, colorado",
-          "pilot",
-          "colorado",
-          "grief",
-          "pandemic",
-          "detached",
-          "lonely man",
-          "death of wife",
-          "scavengers",
-          "loving",
-          "joyful",
-          "group",
-          "dogs",
-          "post-apocalyptic"
+          "kidnapping",
+          "bodyguard",
+          "family secrets",
+          "sexual tension",
+          "dark romance",
+          "romantic drama",
+          "thriller"
         ],
         "productionCompanies": [
-          "20th Century Studios",
-          "Scott Free Productions"
+          "Pokeepsie Films"
         ],
         "artSeed": false,
-        "voteAverage": 6.691,
-        "voteCount": 165,
-        "popularity": 117.1592,
+        "voteAverage": 6.923,
+        "voteCount": 13,
+        "popularity": 17.8363,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
-        "tagline": "세상의 종말, 그리고 모든 게 시작되었다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/cttXvh438Mqp55loQMDofsd4yiC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/mk9IHaDuNrhF9hf5LNYFLsyrfUb.png",
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/umlft1ztFbUcnHf960pXJocjpdv.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/oZkk6B15Ak4uTa2aVrJaDmSk3Xl.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1384216",
-        "imdbId": "tt21285562",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1440098",
+        "imdbId": "tt36073210",
+        "demo": false
+      },
+      {
+        "id": 1522689,
+        "title": "내가 왜 또 결혼했을까?",
+        "originalTitle": "Why Did I Get Married Again?",
+        "year": 2026,
+        "releaseDate": "2026-09-08",
+        "director": "타일러 페리",
+        "runtime": 112,
+        "genres": [
+          "로맨스",
+          "코미디",
+          "드라마"
+        ],
+        "keywords": [
+          "sequel"
+        ],
+        "productionCompanies": [
+          "Tyler Perry Studios"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.2,
+        "voteCount": 4,
+        "popularity": 2.9048,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "마커스와 앤절라의 딸 결혼식을 위해 커플들이 다시 모인다. 오래된 갈등과 새로운 사건이 이어지는 가운데, 이들은 되묻는다. '우린 왜 또 결혼했을까?'",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/rwaxLuOkJ5mMvJU5juNaPcKADOW.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/lJYniNRM2i9wXnfWVHOB4PxygFZ.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1522689",
+        "imdbId": "tt38061210",
+        "demo": false
+      },
+      {
+        "id": 1423191,
+        "title": "레지던트 이블: 0번째 밤",
+        "originalTitle": "Resident Evil",
+        "year": 2026,
+        "releaseDate": "2026-09-16",
+        "director": "잭 크레거",
+        "runtime": 90,
+        "genres": [
+          "공포",
+          "SF"
+        ],
+        "keywords": [
+          "outbreak",
+          "survival",
+          "zombie",
+          "based on video game",
+          "survival horror",
+          "reboot",
+          "zombie apocalypse",
+          "body horror",
+          "zombie horror"
+        ],
+        "productionCompanies": [
+          "Constantin Film",
+          "Subconscious",
+          "Vertigo Entertainment",
+          "Davis Films",
+          "Columbia Pictures",
+          "PlayStation Productions",
+          "TriStar Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 0,
+        "voteCount": 0,
+        "popularity": 41.967,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/mRM28tIIm8y0gKy9GKYGwotxuPM.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/gUcYDYaMhNppEhu3v2wnb8R23HW.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
+        "imdbId": "tt35538033",
+        "demo": false
+      },
+      {
+        "id": 860508,
+        "title": "위스퍼맨",
+        "originalTitle": "The Whisper Man",
+        "year": 2026,
+        "releaseDate": "2026-08-27",
+        "director": "James Ashcroft",
+        "runtime": 114,
+        "genres": [
+          "범죄",
+          "드라마",
+          "스릴러"
+        ],
+        "keywords": [
+          "based on novel or book",
+          "serial killer",
+          "writer",
+          "abduction",
+          "father son relationship",
+          "retired detective"
+        ],
+        "productionCompanies": [
+          "AGBO"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.789,
+        "voteCount": 551,
+        "popularity": 118.3923,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "아내를 잃은 범죄 소설가. 8살 아들이 납치되자 오랫동안 소원했던 아버지를 찾아가 도움을 청한다. 전직 형사인 아버지와 함께 아들의 행방을 쫓던 중, 수십 년 전 유죄 판결을 받은 연쇄 살인마 '위스퍼맨'과의 연결 고리를 발견한다.",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/dQLxR7i2A3jiKHuQMC8NKdvtgAZ.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 8,
+            "name": "Netflix",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
+          },
+          {
+            "id": 1796,
+            "name": "Netflix Standard with Ads",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/860508",
+        "imdbId": "tt11561116",
         "demo": false
       },
       {
@@ -15819,15 +16316,15 @@ window.KINOSIS_CATALOG = {
           "Pixar"
         ],
         "artSeed": false,
-        "voteAverage": 8.317,
-        "voteCount": 1896,
-        "popularity": 205.144,
+        "voteAverage": 8.35,
+        "voteCount": 2048,
+        "popularity": 163.306,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "“시대는 변해도, 친구들은 영원하다\" 스마트 태블릿 ’릴리패드'의 등장으로 온라인 세계에 모여들게 된 아이들. 친구들과 어울리기 위해 ‘보니’에게도 ‘릴리패드’가 생기게 되고, 장난감들은 점점 일상에서 밀려나게 된다. '제시'는 이 위기를 해결하기 위해 자신만의 길을 떠났던 '우디'에게 도움을 요청하게 되는데… 다시 뭉친 '제시', '우디', '버즈'는 '보니'의 마음을 되돌리고 ‘보니’의 진정한 친구를 찾아줄 수 있을까? \"장난감 VS 전자기기! 새로운 세상 속, 멈춰있던 장난감들이 다시 움직이기 시작한다!\"",
         "tagline": "장남감의 시대는 끝났다?!",
         "posterUrl": "https://image.tmdb.org/t/p/w500/AqrJx3nVVMlKWXGaPIH32GzjEJA.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/8sSKdEmlmqF4kJUd28SqthXC4yZ.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/qjTqY5coNiz6sVtPng40IzltsoN.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
@@ -15837,405 +16334,150 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1288059,
-        "title": "아이 원트 유어 섹스",
-        "originalTitle": "I Want Your Sex",
+        "id": 1083381,
+        "title": "백룸",
+        "originalTitle": "Backrooms",
         "year": 2026,
-        "releaseDate": "2026-07-29",
-        "director": "그렉 아라키",
-        "runtime": 90,
-        "genres": [
-          "코미디"
-        ],
-        "keywords": [
-          "eroticism",
-          "artist",
-          "satire",
-          "muse",
-          "sexual harassment",
-          "sexual art",
-          "mansion",
-          "los angeles, california",
-          "art gallery",
-          "masturbation",
-          "sexual desire",
-          "threesome",
-          "dildo",
-          "missing person",
-          "bdsm",
-          "lgbt",
-          "police interrogation",
-          "generation z",
-          "independent film",
-          "cliché"
-        ],
-        "productionCompanies": [
-          "Black Bear Pictures",
-          "Desperate Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.2,
-        "voteCount": 31,
-        "popularity": 58.1643,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/pR7SIX3AwqdoD96OI44oLG98e7g.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/xKPKNJI93LO2QPlIMLM8mthlCPi.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1288059",
-        "imdbId": "tt32332915",
-        "demo": false
-      },
-      {
-        "id": 1423191,
-        "title": "레지던트 이블: 0번째 밤",
-        "originalTitle": "Resident Evil",
-        "year": 2026,
-        "releaseDate": "2026-09-16",
-        "director": "잭 크레거",
-        "runtime": 94,
+        "releaseDate": "2026-05-27",
+        "director": "케인 파슨스",
+        "runtime": 111,
         "genres": [
           "공포",
+          "미스터리",
           "SF"
         ],
         "keywords": [
-          "outbreak",
-          "survival",
-          "zombie",
-          "based on video game",
-          "survival horror",
-          "reboot",
-          "zombie apocalypse",
+          "california",
+          "monster",
+          "therapist",
+          "surrealism",
+          "childhood trauma",
+          "alcoholism",
+          "found footage",
+          "1990s",
+          "other dimension",
+          "based on web series",
+          "psychological",
+          "liminal",
           "body horror",
-          "zombie horror"
+          "psychological horror",
+          "liminal space",
+          "analog horror",
+          "sci-fi horror",
+          "bewildered",
+          "foreboding",
+          "liminal horror"
         ],
         "productionCompanies": [
-          "Constantin Film",
-          "Subconscious",
-          "Vertigo Entertainment",
-          "Davis Films",
-          "Columbia Pictures",
-          "PlayStation Productions",
-          "TriStar Pictures"
+          "Atomic Monster",
+          "21 Laps Entertainment",
+          "A24",
+          "Phobos",
+          "The North Road Company"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.057,
+        "voteCount": 3185,
+        "popularity": 92.7503,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "그곳은 대체 무엇인가? 낯설지만 익숙한 세계, 출구도 입구도 찾을 수 없다. 당신도 입장하시겠습니까?",
+        "tagline": "시작은 호기심이었다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/c3Cb7h4ecFsGfUM02KF638kbbtC.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/g0PswKqAFJdwGK3d1fKvj8LGnrW.png",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1083381",
+        "imdbId": "tt26657236",
+        "demo": false
+      },
+      {
+        "id": 1003596,
+        "title": "어벤져스: 둠스데이",
+        "originalTitle": "Avengers: Doomsday",
+        "year": 2026,
+        "releaseDate": "2026-12-16",
+        "director": "조 루소",
+        "runtime": 165,
+        "genres": [
+          "SF",
+          "액션",
+          "모험"
+        ],
+        "keywords": [
+          "superhero",
+          "based on comic",
+          "sequel",
+          "superhero team",
+          "marvel cinematic universe (mcu)",
+          "team up",
+          "multiverse"
+        ],
+        "productionCompanies": [
+          "Marvel Studios",
+          "Kevin Feige Productions",
+          "AGBO"
         ],
         "artSeed": false,
         "voteAverage": 0,
         "voteCount": 0,
-        "popularity": 28.7186,
+        "popularity": 43.5624,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/nLdMgzagovjiz35YDdAKZrs2rdL.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ddfXMkaPViSrg0P5aoYGFMc58x2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/z0JdEEe4SyR1OGJRbe0ckZ1jvoU.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/s4v0UX1anfXm0UvloLsTTJ4v222.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/enJPk9TdYB4zCO1mIwiRYAb5yqY.png",
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1423191",
-        "imdbId": "tt35538033",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1003596",
+        "imdbId": "tt21357150",
         "demo": false
       },
       {
-        "id": 1315772,
-        "title": "미니언즈 & 몬스터즈",
-        "originalTitle": "Minions & Monsters",
+        "id": 1101412,
+        "title": "폴 2: 데드포인트",
+        "originalTitle": "Fall 2: Deadpoint",
         "year": 2026,
-        "releaseDate": "2026-06-24",
-        "director": "피에르 코팽",
-        "runtime": 90,
+        "releaseDate": "2026-09-01",
+        "director": "Peter Spierig",
+        "runtime": 98,
         "genres": [
-          "모험",
-          "애니메이션",
-          "코미디",
-          "가족",
-          "판타지"
+          "스릴러"
         ],
         "keywords": [
-          "magic",
           "sequel",
-          "alien",
-          "prequel",
-          "hollywood",
-          "spin off",
-          "henchman",
-          "filmmaking",
-          "silent film",
-          "framing device",
-          "duringcreditsstinger",
-          "women's suffrage",
-          "1920s",
-          "humanoid robot",
-          "3d animation",
-          "monsters",
-          "hilarious",
-          "vibrant",
-          "early sound film"
+          "rock climbing",
+          "sport climbing",
+          "climb",
+          "mountain climber"
         ],
         "productionCompanies": [
-          "Universal Pictures",
-          "Illumination"
+          "Tea Shop Productions",
+          "Capstone Pictures",
+          "Flawless Production",
+          "Cousin Jones"
         ],
         "artSeed": false,
-        "voteAverage": 7.6,
-        "voteCount": 977,
-        "popularity": 183.0322,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "영화 배우로 성공했던 미니언즈들은 모든 것을 잃고 뜻하지 않게 몬스터를 세상에 소환한다. 예상치 못한 대혼란이 벌어지자 미니언즈들은 사태를 해결하기 위해 힘을 모은다. 새롭게 등장한 캐릭터들과 함께 좌충우돌 모험이 이어진다. 지구를 구하기 위한 미니언즈들의 유쾌한 작전이 시작된다.",
-        "tagline": "괴물 신인 등-장!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/8uvgppq5obV06X9X8SogQiU79Kd.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kkcwhgSFd81QDlXo8ytrpHPQjhy.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1315772",
-        "imdbId": "tt32890033",
-        "demo": false
-      },
-      {
-        "id": 1631807,
-        "title": "더 시크릿 우먼",
-        "originalTitle": "Den hemmelige kvinde",
-        "year": 2026,
-        "releaseDate": "2026-08-28",
-        "director": "바르바라 톱쇠로텐보르",
-        "runtime": 119,
-        "genres": [
-          "드라마",
-          "스릴러",
-          "미스터리"
-        ],
-        "keywords": [
-          "based on novel or book",
-          "psychological",
-          "ominous"
-        ],
-        "productionCompanies": [
-          "SF Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.333,
-        "voteCount": 42,
-        "popularity": 78.4959,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "기억을 잃은 여성. 자신에게 가족과 초대형 해운 기업이 있다는 것을 알게 된다. 부유하고 모든 것이 완벽해 보이는 과거로 돌아가는 그녀는 이제 자신이 그곳을 떠나온 이유를 알아나간다. 노르웨이의 한 섬에서 작은 카페를 운영하며 파트너 요아킴과 조용히 살아가는 루이즈 안데르센. 그러던 어느 여름날, 낯선 방문객이 나타나 그녀는 루이즈가 아니라 3년 전 덴마크에서 실종된 헬레네 쇠데르베르라고 주장하고, 평화롭던 두 사람의 삶에 파문이 인다. 게다가 그녀에겐 남편뿐 아니라 어린 아들까지 있다는 것을 알게 되는데. 가족을 만나고 실종되던 밤의 진상을 밝히려는 루이즈는 요아킴과 익숙한 생활을 뒤로하고 떠난다. 그리고 헬레네가 되어 미스터리를 깊이 파헤쳐 가던 그녀는 자신의 인생을 송두리째 뒤흔들 진실을 알게 된다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/AcalurfNjQTiLIzICTwtAq86tWC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ziOpmyZufqM7IusfThzBr1E9wqa.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 8,
-            "name": "Netflix",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
-          },
-          {
-            "id": 1796,
-            "name": "Netflix Standard with Ads",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1631807",
-        "imdbId": "tt37275992",
-        "demo": false
-      },
-      {
-        "id": 87513,
-        "title": "모터 시티",
-        "originalTitle": "Motor City",
-        "year": 2026,
-        "releaseDate": "2026-07-23",
-        "director": "Potsy Ponciroli",
-        "runtime": 104,
-        "genres": [
-          "액션",
-          "스릴러",
-          "범죄"
-        ],
-        "keywords": [
-          "gangster",
-          "1970s",
-          "revenge",
-          "detroit, michigan",
-          "joyous",
-          "awestruck"
-        ],
-        "productionCompanies": [
-          "Stampede Ventures",
-          "Gramercy Park Media",
-          "Peachtree Media Partners",
-          "Ace of Spades",
-          "Syndicate Entertainment",
-          "Third Man Records",
-          "Black Bear Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 6.302,
-        "voteCount": 91,
-        "popularity": 91.561,
+        "voteAverage": 6.773,
+        "voteCount": 22,
+        "popularity": 91.8535,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/dx2dblJL3GAKcXXXPjC2FSaMTWW.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/l7asYmqOad01F2u0oCMM8nQjoEP.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yBDxqDB29kpH9VojTytjGWBgmdJ.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
         "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/87513",
-        "imdbId": "tt2012616",
-        "demo": false
-      },
-      {
-        "id": 192139,
-        "title": "레이캬비크",
-        "originalTitle": "The Brink of War",
-        "year": 2026,
-        "releaseDate": "2026-08-14",
-        "director": "Michael Russell Gunn",
-        "runtime": 117,
-        "genres": [
-          "드라마",
-          "역사"
-        ],
-        "keywords": [
-          "cold war",
-          "ronald reagan",
-          "mikhail gorbachev",
-          "1980s",
-          "political struggle",
-          "reykjavík, iceland",
-          "independent film",
-          "conservative propaganda"
-        ],
-        "productionCompanies": [
-          "2521 Entertainment",
-          "SK Global Entertainment",
-          "Designed Epic",
-          "Angel Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.4,
-        "voteCount": 11,
-        "popularity": 14.9399,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/vCIQeQ2ynVqEjIvtbOXGnKtcgAX.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/E812GNXYQqjJwN0cVPY3icHpaj.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/192139",
-        "imdbId": "tt33070884",
-        "demo": false
-      },
-      {
-        "id": 1228710,
-        "title": "만달로리안과 그로구",
-        "originalTitle": "The Mandalorian and Grogu",
-        "year": 2026,
-        "releaseDate": "2026-05-20",
-        "director": "존 파브로",
-        "runtime": 132,
-        "genres": [
-          "액션",
-          "모험",
-          "SF"
-        ],
-        "keywords": [
-          "galaxy",
-          "bounty hunter",
-          "spin off",
-          "space opera",
-          "nostalgic",
-          "space adventure",
-          "based on tv series",
-          "master apprentice relationship",
-          "bold"
-        ],
-        "productionCompanies": [
-          "Lucasfilm Ltd.",
-          "Fairview Entertainment"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.5,
-        "voteCount": 1441,
-        "popularity": 60.597,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "은하계를 누비는 현상금 사냥꾼 ‘딘 자린’ & 치명적인 귀여움의 ‘그로구’",
-        "tagline": "은하계의 운명을 건 위대한 임무가 시작된다!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/tMP99wq45GQMoeZwITgjAS8Wihm.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wFKDH8nAz7l9iyVobjcNAPTrkNz.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1228710",
-        "imdbId": "tt30825738",
-        "demo": false
-      },
-      {
-        "id": 950028,
-        "title": "완벽한 초대",
-        "originalTitle": "The Invite",
-        "year": 2026,
-        "releaseDate": "2026-06-25",
-        "director": "올리비아 와일드",
-        "runtime": 107,
-        "genres": [
-          "코미디",
-          "드라마",
-          "로맨스"
-        ],
-        "keywords": [
-          "husband wife relationship",
-          "san francisco, california",
-          "remake",
-          "firefighter",
-          "sexologist",
-          "candid",
-          "anxious",
-          "exuberant",
-          "neighbors"
-        ],
-        "productionCompanies": [
-          "Annapurna Pictures",
-          "FilmNation Entertainment",
-          "Permut Presentations"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.272,
-        "voteCount": 414,
-        "popularity": 56.5576,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/b7Dr8Chzse8VagexAporUu2RtLx.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/lEwqBGNR65KZv6Ej5ufcmhZu2y2.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/950028",
-        "imdbId": "tt14173636",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1101412",
+        "imdbId": "tt31192372",
         "demo": false
       },
       {
@@ -16262,15 +16504,15 @@ window.KINOSIS_CATALOG = {
           "Highland Film Group"
         ],
         "artSeed": false,
-        "voteAverage": 6.5,
-        "voteCount": 16,
-        "popularity": 54.8034,
+        "voteAverage": 6.485,
+        "voteCount": 33,
+        "popularity": 64.0573,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/glALx6QaIgw1u4joXsnfHTjWi6D.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/lBWfbmUj9Jw0EM1OYtDXr0B5FPW.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/tieojVpH6eW44JQOQEWnf8t4khG.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [],
@@ -16291,7 +16533,6 @@ window.KINOSIS_CATALOG = {
         "runtime": 99,
         "genres": [
           "애니메이션",
-          "액션",
           "모험",
           "판타지"
         ],
@@ -16311,9 +16552,9 @@ window.KINOSIS_CATALOG = {
           "Avatar Studios"
         ],
         "artSeed": false,
-        "voteAverage": 9.196,
-        "voteCount": 1036,
-        "popularity": 82.0412,
+        "voteAverage": 9.2,
+        "voteCount": 1081,
+        "popularity": 87.5842,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -16326,42 +16567,6 @@ window.KINOSIS_CATALOG = {
         "watchLink": null,
         "tmdbUrl": "https://www.themoviedb.org/movie/980431",
         "imdbId": "tt18259538",
-        "demo": false
-      },
-      {
-        "id": 1632181,
-        "title": "Socias por accidente",
-        "originalTitle": "Socias por accidente",
-        "year": 2026,
-        "releaseDate": "2026-03-12",
-        "director": "Ihtzi Hurtado",
-        "runtime": 110,
-        "genres": [
-          "코미디",
-          "로맨스"
-        ],
-        "keywords": [],
-        "productionCompanies": [
-          "Videocine",
-          "ViX",
-          "TelevisaUnivision Mexico"
-        ],
-        "artSeed": false,
-        "voteAverage": 8.874,
-        "voteCount": 366,
-        "popularity": 19.5005,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
-        "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/1632181",
-        "imdbId": "tt40187050",
         "demo": false
       },
       {
@@ -16395,9 +16600,9 @@ window.KINOSIS_CATALOG = {
           "Skydance Animation"
         ],
         "artSeed": false,
-        "voteAverage": 8.873,
-        "voteCount": 2152,
-        "popularity": 49.167,
+        "voteAverage": 8.87,
+        "voteCount": 2162,
+        "popularity": 38.9886,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "갑자기 몸이 뒤바뀌게 된 작은 숲속 생물과 위풍당당한 새. 일생일대의 모험을 헤쳐나가기 위해 어쩔 수 없이 힘을 합친다.",
@@ -16411,18 +16616,54 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1007757-swapped/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/1007757",
         "imdbId": "tt29552248",
+        "demo": false
+      },
+      {
+        "id": 1632181,
+        "title": "Socias por accidente",
+        "originalTitle": "Socias por accidente",
+        "year": 2026,
+        "releaseDate": "2026-03-12",
+        "director": "Ihtzi Hurtado",
+        "runtime": 110,
+        "genres": [
+          "코미디",
+          "로맨스"
+        ],
+        "keywords": [],
+        "productionCompanies": [
+          "Videocine",
+          "ViX",
+          "TelevisaUnivision Mexico"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.849,
+        "voteCount": 372,
+        "popularity": 19.9249,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+        "logoUrl": null,
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/1632181",
+        "imdbId": "tt40187050",
         "demo": false
       },
       {
@@ -16446,9 +16687,9 @@ window.KINOSIS_CATALOG = {
           "Draco Films"
         ],
         "artSeed": false,
-        "voteAverage": 8.85,
-        "voteCount": 458,
-        "popularity": 275.713,
+        "voteAverage": 8.795,
+        "voteCount": 571,
+        "popularity": 151.4053,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "무자비한 카르텔 두목을 적으로 돌린 두 멕시코 경찰. 근무 종료까지 남은 몇 시간을 어떻게든 무사히 버텨야 한다. 실화를 바탕으로 한 범죄 드라마.",
@@ -16462,13 +16703,13 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1621552-la-captura/watch?locale=KR",
@@ -16505,9 +16746,9 @@ window.KINOSIS_CATALOG = {
           "Shueisha"
         ],
         "artSeed": false,
-        "voteAverage": 8.788,
-        "voteCount": 2044,
-        "popularity": 82.6003,
+        "voteAverage": 8.784,
+        "voteCount": 2102,
+        "popularity": 68.9203,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
@@ -16521,19 +16762,19 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1311031/watch?locale=KR",
@@ -16577,59 +16818,59 @@ window.KINOSIS_CATALOG = {
           "Castle Rock Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 8.729,
-        "voteCount": 31208,
-        "popularity": 105.9697,
+        "voteAverage": 8.73,
+        "voteCount": 31276,
+        "popularity": 84.0858,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
         "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
         "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/1K53E8WXQW76Scg8upBObXSrbgN.png",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [
           {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
@@ -16679,14 +16920,14 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.686,
-        "voteCount": 23471,
-        "popularity": 59.5003,
+        "voteCount": 23516,
+        "popularity": 58.8376,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "시실리에서 이민온 뒤, 정치권까지 영향력을 미치는 거물로 자리잡은 돈 꼴레오네는 갖가지 고민을 호소하는 사람들의 문제를 해결해주며 대부라 불리운다. 한편 솔로소라는 인물은 꼴레오네가와 라이벌인 탓타리아 패밀리와 손잡고 새로운 마약 사업을 제안한다. 돈 꼴레오네가 마약 사업에 참여하지 않기로 하자, 돈 꼴레오네를 저격해 그는 중상을 입고 사경을 헤매게 된다. 그 뒤, 돈 꼴레오네의 아들 소니는 조직력을 총 동원해 다른 패밀리들과 피를 부르는 전쟁을 시작하는데... 가족의 사업과 상관없이 대학에 진학한 뒤 인텔리로 지내왔던 막내 아들 마이클은 아버지가 총격을 당한 뒤, 아버지를 구하기 위해 위험천만한 협상 자리에 나선다.",
         "tagline": "영화사상 최고의 걸작",
         "posterUrl": "https://image.tmdb.org/t/p/w500/1yvBkSv4ZLS1GohlmMDmdpSgfYo.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/tSPT36ZKlP2WVHJLM4cQPLSzv3b.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
@@ -16694,13 +16935,13 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/238-the-godfather/watch?locale=KR",
@@ -16747,9 +16988,9 @@ window.KINOSIS_CATALOG = {
           "Optimum Productions"
         ],
         "artSeed": false,
-        "voteAverage": 8.655,
-        "voteCount": 4242,
-        "popularity": 67.4345,
+        "voteAverage": 8.647,
+        "voteCount": 4290,
+        "popularity": 58.042,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "어린 나이에 형제들과 ‘잭슨 파이브’ 그룹의 막내로 데뷔하자마자 음악적 천재성과 스타성으로 주목을 받은 ‘마이클 잭슨’. 전세계적인 스타로 성공하지만, 그는 가족에 대한 책임감과 자신의 음악적 정체성 사이에서 고민에 빠지게 된다.",
@@ -16803,9 +17044,9 @@ window.KINOSIS_CATALOG = {
           "Waypoint Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 8.644,
-        "voteCount": 7501,
-        "popularity": 103.6085,
+        "voteAverage": 8.642,
+        "voteCount": 7624,
+        "popularity": 95.7346,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "눈을 떠보니 아득한 우주의 한가운데에서 깨어난 중학교 과학교사 그레이스는 희미한 기억 속에서 자신이 죽어가는 태양으로부터 지구와 인류를 살릴 마지막 희망으로 이곳에 왔다는 사실을 알게 된다. 잃어버린 기억으로 인해 모든 것이 혼란스러운 상황에서 그레이스는 우연히 우주 한복판에서 같은 목적으로 온 뜻밖의 존재 로키를 만나게 되고 그레이스와 로키는 각 두 행성의 운명을 건 마지막 미션을 수행하러 떠나게 되는데…",
@@ -16865,9 +17106,9 @@ window.KINOSIS_CATALOG = {
           "American Zoetrope"
         ],
         "artSeed": false,
-        "voteAverage": 8.6,
-        "voteCount": 14272,
-        "popularity": 38.0945,
+        "voteAverage": 8.572,
+        "voteCount": 14301,
+        "popularity": 30.103,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "아버지의 장례식 도중에 맏아들 파올로가 총에 맞아 죽고, 비토(로버트 드니로)는 겨우 도망쳐 미국으로 건너온다. 대부로 성장한 후 비토는 다시 치치오를 찾아 복수를 한다. 새롭게 등장한 젊은 대부 마이클(알 파치노)은 본거지를 라스베가스로 옮기고 가족의 사업을 가능한 합법적인 것으로 바꾸려고 애쓴다. 그런 과중 중에 자신을 제거하려는 음모를 알게되고 그는 냉혹하고 신속하게 반대파들을 제거, 조직을 더욱 확대해 나간다. 이를 위해 마이클은 배신한 형마저 죽이고, 일 때문에 아내와 헤어지는 등 인간적으로는 계속 외로워져 가는데...",
@@ -16881,25 +17122,25 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/240-the-godfather-part-ii/watch?locale=KR",
@@ -16947,8 +17188,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.571,
-        "voteCount": 10315,
-        "popularity": 32.7379,
+        "voteCount": 10340,
+        "popularity": 31.0822,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "뉴욕시의 법정에 아버지를 칼로 찌른 한 소년의 살인혐의를 두고, 12인의 배심원들은 만장일치 합의를 통해 소년의 유무죄 여부를 가려줄 것을 요구받는다. 판사는 유죄일 경우 이 소년은 사형이 불가피하다는 것을 이들에게 미리 일러둔다.  배심원 방에 모인 이들은 투표를 통해 유무죄 여부를 가리기로 한다. 사람들이 전부 소년이 유죄로 판단하는 가운데, 오직 한 배심원만이 소년이 무죄라고 주장하는데...",
@@ -17006,8 +17247,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.57,
-        "voteCount": 17842,
-        "popularity": 34.3614,
+        "voteCount": 17877,
+        "popularity": 33.5162,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "2차 세계대전 당시 독일군이 점령한 폴란드. 시류에 맞춰 자신의 성공을 추구하는 기회주의자 쉰들러는 유태인이 경영하는 그릇 공장을 인수한다. 그는 공장을 인수하기 위해 나찌 당원이 되고 독일군에게 뇌물을 바치는 등 갖은 방법을 동원한다. 그러나 냉혹한 기회주의자였던 쉰들러는 유태인 회계사인 스턴과 친분을 맺으면서 냉혹한 유태인 학살에 대한 양심의 소리를 듣기 시작한다. 마침내 그는 강제 수용소로 끌려가 죽음을 맞게될 유태인들을 구해내기로 결심하고, 독일군 장교에게 빼내는 사람 숫자대로 뇌물을 주는 방법으로 유태인들을 구해내려는 계획을 세우는데...",
@@ -17021,37 +17262,37 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/424-schindler-s-list/watch?locale=KR",
@@ -17099,9 +17340,9 @@ window.KINOSIS_CATALOG = {
           "Kwassa Films"
         ],
         "artSeed": false,
-        "voteAverage": 8.562,
-        "voteCount": 307,
-        "popularity": 20.8379,
+        "voteAverage": 8.561,
+        "voteCount": 309,
+        "popularity": 15.9591,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "14세의 엘리아스는 새로운 이웃인 알렉산더(14)에게 끌린다. 곧 그는 처음으로 진정한 사랑에 빠졌음을 깨닫는다. 친구와 가족과의 교류는 답을 얻기보다 오히려 더 많은 질문을 가져오고, 솟구치는 감정에 혼란스러운 엘리아스는 자신의 내면의 혼란을 정리하며 알렉산더의 마음을 받을 가치가 있음을 증명하려고 노력한다.",
@@ -17150,22 +17391,18 @@ window.KINOSIS_CATALOG = {
           "introspective",
           "depressed",
           "dramatic",
-          "romantic",
           "bitter",
           "awestruck",
           "distressing",
-          "exhilarated",
-          "foreboding",
-          "ominous",
           "optimistic"
         ],
         "productionCompanies": [
           "MAPPA"
         ],
         "artSeed": false,
-        "voteAverage": 8.5,
-        "voteCount": 1148,
-        "popularity": 35.0801,
+        "voteAverage": 8.546,
+        "voteCount": 1168,
+        "popularity": 32.3422,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "데블 헌터로 일하는 소년 ‘덴지’는 조직의 배신으로 죽음에 내몰린 순간 전기톱 악마견 ‘포치타’와의 계약으로 하나로 합쳐져 누구도 막을 수 없는 존재 ‘체인소 맨’으로 다시 태어난다. 악마와 사냥꾼, 그리고 정체불명의 적들이 얽힌 잔혹한 전쟁 속에서 ‘레제’라는 이름의 미스터리한 소녀가 ‘덴지’ 앞에 나타나는데… ‘덴지’는 사랑이라는 감정에 이끌려 지금껏 가장 위험한 배틀에 몸을 던진다!",
@@ -17190,7 +17427,6 @@ window.KINOSIS_CATALOG = {
         "runtime": 152,
         "genres": [
           "액션",
-          "범죄",
           "스릴러"
         ],
         "keywords": [
@@ -17220,9 +17456,9 @@ window.KINOSIS_CATALOG = {
           "DC"
         ],
         "artSeed": false,
-        "voteAverage": 8.534,
-        "voteCount": 36582,
-        "popularity": 65.069,
+        "voteAverage": 8.535,
+        "voteCount": 36652,
+        "popularity": 55.4015,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "범죄와 부정부패를 제거하여 고담시를 지키려는 배트맨. 그는 짐 고든 형사와 패기 넘치는 고담시 지방 검사 하비 덴트와 함께 도시를 범죄 조직으로부터 영원히 구원하고자 한다. 세 명의 의기투합으로 위기에 처한 악당들이 모인 자리에 보라색 양복을 입고 얼굴에 짙게 화장을 한 괴이한 존재가 나타나 배트맨을 죽이자는 사상 초유의 제안을 한다. 그는 바로 어떠한 룰도, 목적도 없는 사상 최악의 악당 미치광이 살인광대 조커. 배트맨을 죽이고 고담시를 끝장내버리기 위한 조커의 광기 어린 행각에 도시는 혼란에 빠지는데...",
@@ -17236,31 +17472,31 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/155-the-dark-knight/watch?locale=KR",
@@ -17305,8 +17541,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.534,
-        "voteCount": 18813,
-        "popularity": 39.2083,
+        "voteCount": 18861,
+        "popularity": 37.7592,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "평범한 열 살 짜리 소녀 치히로 식구는 이사 가던 중 길을 잘못 들어 낡은 터널을 지나가게 된다. 터널 저편엔 폐허가 된 놀이공원이 있었고 그곳엔 이상한 기운이 흘렀다. 인기척 하나 없는 이 마을의 낯선 분위기에 불길한 기운을 느낀 치히로는 부모님에게 돌아가자고 조르지만 부모님은 호기심에 들떠 마을 곳곳을 돌아다니기 시작한다. 어느 음식점에 도착한 치히로의 부모님은 그 곳에 차려진 음식들을 보고 즐거워하며 허겁지겁 먹어대다가 돼지로 변해버린다. 겁에 질려 당황하는 치히로에게 낯선 소년 하쿠가 나타나 빨리 이곳을 나가라고 소리치는데...",
@@ -17320,25 +17556,25 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/129/watch?locale=KR",
@@ -17386,8 +17622,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.506,
-        "voteCount": 19730,
-        "popularity": 34.7426,
+        "voteCount": 19768,
+        "popularity": 40.1123,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "미국 루이지애나의 콜드 마운틴 교도소. 폴은 사형수 감방의 간수장으로 일하고 있다. 그의 일은 사형수들을 감독하고, 그린 마일이라 불리는 초록색 복도를 거쳐 그들을 사형 집행장까지 안내하는 것. 폴은 그들이 죽음을 맞이하는 순간까지 평화롭게 지낼 수 있도록 최선을 다한다. 어느 날 존 커피라는 사형수가 이송되어 온다. 그는 쌍둥이 여자아이를 살해한 흉악범. 하지만 순진한 눈망울에 겁을 잔뜩 집어먹은 그의 모습에 폴은 당혹감을 느낀다. 게다가 그는 초자연적 능력으로 폴의 지병을 깨끗하게 치료해주기까지 한다. 존을 전기 의자로 데려가야 할 날이 다가오면서 폴은 그가 무죄라는 확신을 갖게 되는데...",
@@ -17401,25 +17637,25 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/497-the-green-mile/watch?locale=KR",
@@ -17489,9 +17725,9 @@ window.KINOSIS_CATALOG = {
           "The Saul Zaentz Company"
         ],
         "artSeed": false,
-        "voteAverage": 8.506,
-        "voteCount": 27244,
-        "popularity": 48.8627,
+        "voteAverage": 8.505,
+        "voteCount": 27302,
+        "popularity": 46.3069,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "사우론이 인간들의 마지막 요새인 곤도르를 향해 야욕을 드러내고 있는 한편, 아라곤은 쇠락해가고 있는 곤도르의 재건을 위해 왕위 계승을 신중하게 결정지어야만 하는 상황. 이제 중간대륙의 미래는 그의 어깨에 달려있는 것. 사우론이 이끄는 어둠의 군대와의 마지막 전투를 위해 간달프는 곤도르에 흩어져 있던 병사들을 모으고, 로한의 왕 세오덴에게 도움을 받기도 하지만 사우론의 군대에 비하면 열세를 면치 못한다. 그러나 그들은 중간대륙을 사우론의 야욕으로부터 지키려는 사명감과, 마지막 반지 운반자에게 임무를 끝낼 기회를 주기 위해 어둠의 군대를 향해 돌진하게 되는데...",
@@ -17505,37 +17741,37 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/122-the-lord-of-the-rings-the-return-of-the-king/watch?locale=KR",
@@ -17568,9 +17804,9 @@ window.KINOSIS_CATALOG = {
           "Yash Raj Films"
         ],
         "artSeed": false,
-        "voteAverage": 8.503,
-        "voteCount": 4618,
-        "popularity": 14.3307,
+        "voteAverage": 8.5,
+        "voteCount": 4619,
+        "popularity": 14.9914,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "영국에서 유학중인 라즈(샤룩 칸)와 인도 처녀 심란(까졸).  심란은 부모님이 정해주신 약혼자가 있는데 약혼을 앞두고 친구들과 유럽 여행을 떠나게 된다.  여행 중 우연히 만남 샤룩과 까졸. 두 남녀의 연속된 우연과 좌충우돌 사랑 만들기.  그렇게 사랑하게 된 그들이지만 까졸은 약혼자가 있는 몸. 인도로 돌아가게 된다.  샤룩 또한 그녀를 못 잊어 인도로 뒤 따라 들어가지만 엄격한 까졸의 부모를 설득하기가 힘이 든다. 도망가자는 까졸의 제안을 거부하고 샤룩은 끝내 그녀의 부모님의 허락을 얻어 내기 위해 고군분투한다.",
@@ -17584,13 +17820,13 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/19404/watch?locale=KR",
@@ -17634,14 +17870,14 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 8.49,
-        "voteCount": 21224,
-        "popularity": 36.7909,
+        "voteCount": 21261,
+        "popularity": 37.8704,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "전원 백수로 살 길 막막하지만 사이는 좋은 기택 가족. 장남 기우에게 명문대생 친구가 연결시켜 준 고액 과외 자리는 모처럼 싹튼 고정수입의 희망이다. 온 가족의 도움과 기대 속에 박 사장 집으로 향하는 기우. 글로벌 IT기업의 CEO인 박 사장의 저택에 도착하자 젊고 아름다운 사모님 연교와 가정부 문광이 기우를 맞이한다. 큰 문제 없이 박 사장의 딸 다혜의 과외를 시작한 기우. 그러나 이렇게 시작된 두 가족의 만남 뒤로, 걷잡을 수 없는 사건이 기다리고  있는데.....",
         "tagline": "행복은 나눌수록 커지잖아요",
         "posterUrl": "https://image.tmdb.org/t/p/w500/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
@@ -17649,49 +17885,49 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/496243/watch?locale=KR",
@@ -17701,6 +17937,190 @@ window.KINOSIS_CATALOG = {
       }
     ],
     "streaming": [
+      {
+        "id": 1386315,
+        "title": "더 러너",
+        "originalTitle": "The Runner",
+        "year": 2026,
+        "releaseDate": "2026-09-03",
+        "director": "케빈 맥도널드",
+        "runtime": 86,
+        "genres": [
+          "스릴러",
+          "액션"
+        ],
+        "keywords": [
+          "mother",
+          "london, england",
+          "kidnapping",
+          "son",
+          "child kidnapping",
+          "nervous",
+          "abduction",
+          "child rescue",
+          "mother son relationship",
+          "anxious",
+          "child abduction",
+          "serious",
+          "attorney",
+          "dramatic",
+          "suspenseful"
+        ],
+        "productionCompanies": [
+          "Amazon MGM Studios",
+          "Rockwood Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 6.725,
+        "voteCount": 353,
+        "popularity": 284.4272,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "런던의 유능한 변호사 마이아 마틴은 아침 조깅 중 아들이 납치됐다는 전화 한 통을 받고 평온했던 삶이 산산조각 난다. 아들을 구하기 위한 유일한 조건은 멈추지 말고 달릴 것, 냉혹한 명령에 복종할 것, 그리고 아무도 믿지 말 것. 1분 1초마다 자식을 구하려는 어머니의 한계가 시험대에 오른다.",
+        "tagline": "\"멈추면, 아이를 잃는다\"",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/mpZURuhnfMHT4cF2f6Rl24tg0yG.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/pp7728TSDWCBUOTYSLHnSprv530.png",
+        "providers": [
+          {
+            "id": 119,
+            "name": "Amazon Prime Video",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1386315-the-runner/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1386315",
+        "imdbId": "tt34564059",
+        "demo": false
+      },
+      {
+        "id": 1137844,
+        "title": "'메이데이' - Mayday",
+        "originalTitle": "Mayday",
+        "year": 2026,
+        "releaseDate": "2026-09-03",
+        "director": "조나단 골드스테인",
+        "runtime": 111,
+        "genres": [
+          "액션",
+          "코미디"
+        ],
+        "keywords": [
+          "cold war",
+          "fighter pilot",
+          "u.s. navy",
+          "behind enemy lines",
+          "ex kgb",
+          "buddy comedy"
+        ],
+        "productionCompanies": [
+          "Skydance Media",
+          "Maximum Effort",
+          "GoldDay"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.955,
+        "voteCount": 346,
+        "popularity": 237.6288,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "냉전 시대 극비 임무 중 적진 한복판에 고립된 미 해군 조종사가 살아남을 유일한 방법은 전직 KGB 요원과 손을 잡는 것뿐이다.",
+        "tagline": "생존을 위한 살벌한 우정.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/zlDomMaVxMTydLj1pwBhPvEqC2q.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/bWWkJ8ik9U96KMDktgLE9UMySYG.png",
+        "providers": [
+          {
+            "id": 350,
+            "name": "Apple TV",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/9icYBfYFcwgCbky5VdGUIKJ4C5i.png"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1137844-mayday/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1137844",
+        "imdbId": "tt28014327",
+        "demo": false
+      },
+      {
+        "id": 1285366,
+        "title": "사랑의 형태",
+        "originalTitle": "愛のぬくもり",
+        "year": 2024,
+        "releaseDate": "2024-07-06",
+        "director": "今岡信治",
+        "runtime": 92,
+        "genres": [
+          "로맨스"
+        ],
+        "keywords": [
+          "supernatural",
+          "older man younger woman relationship",
+          "body-swap",
+          "girls' love (gl)",
+          "age-gap relationship"
+        ],
+        "productionCompanies": [
+          "Legend Pictures"
+        ],
+        "artSeed": false,
+        "voteAverage": 5.2,
+        "voteCount": 5,
+        "popularity": 215.0149,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "길거리에서 부딪힌 것을 계기로 몸이 뒤바뀌고 만 소설가 '타카시'와 미용사 '사토미'. 그들은 다시 원래의 몸으로 돌아갈 방법을 찾을 때까지 서로를 연기하며 생활하기로 한다. 그러던 중, 둘 다 사랑하는 사람과의 관계가 삐걱이고 있음을 알게 된다. 타인이면서 본인인 '타카시'와 '사토미'는 서로의 인생을 나아지게 하기 위한 고군분투를 시작하는데...",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/vTtq8iqEQlmgDTec9oe3YzjkOGT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yjK3ardrgdS8suZG8KMU82Q7U38.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yjK3ardrgdS8suZG8KMU82Q7U38.jpg",
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1285366/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1285366",
+        "imdbId": "tt33349025",
+        "demo": false
+      },
       {
         "id": 1516698,
         "title": "라스트 선라이즈",
@@ -17734,9 +18154,9 @@ window.KINOSIS_CATALOG = {
           "The Last Sunrise"
         ],
         "artSeed": false,
-        "voteAverage": 6.603,
-        "voteCount": 92,
-        "popularity": 318.6222,
+        "voteAverage": 6.65,
+        "voteCount": 141,
+        "popularity": 172.2452,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "인기 소설을 원작으로 한 영화 \"라스트 선라이즈\". 지병을 앓고 있는 대학생 라이는 엄마와 함께 마요르카로 여름휴가를 떠난다. 그곳에서 훌리안을 만나 예기치 못한 사랑에 빠지고 비로소 현재를 살아가는 법을 배우기 시작하는 라이. 하지만 여름이 끝나기 전, 지병이 악화하고 오랫동안 묻혀 있던 집안의 비밀이 드러나며 모든 것이 송두리째 흔들리기 시작한다.",
@@ -17750,7 +18170,7 @@ window.KINOSIS_CATALOG = {
             "id": 119,
             "name": "Amazon Prime Video",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1516698-the-last-sunrise/watch?locale=KR",
@@ -17779,9 +18199,9 @@ window.KINOSIS_CATALOG = {
           "Draco Films"
         ],
         "artSeed": false,
-        "voteAverage": 8.85,
-        "voteCount": 458,
-        "popularity": 275.713,
+        "voteAverage": 8.795,
+        "voteCount": 571,
+        "popularity": 151.4053,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "무자비한 카르텔 두목을 적으로 돌린 두 멕시코 경찰. 근무 종료까지 남은 몇 시간을 어떻게든 무사히 버텨야 한다. 실화를 바탕으로 한 범죄 드라마.",
@@ -17795,88 +18215,18 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1621552-la-captura/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/1621552",
         "imdbId": "tt39390497",
-        "demo": false
-      },
-      {
-        "id": 1285366,
-        "title": "사랑의 형태",
-        "originalTitle": "愛のぬくもり",
-        "year": 2024,
-        "releaseDate": "2024-07-06",
-        "director": "今岡信治",
-        "runtime": 92,
-        "genres": [
-          "로맨스"
-        ],
-        "keywords": [
-          "supernatural",
-          "older man younger woman relationship",
-          "body-swap",
-          "girls' love (gl)",
-          "age-gap relationship"
-        ],
-        "productionCompanies": [
-          "Legend Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 5.2,
-        "voteCount": 5,
-        "popularity": 270.7527,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "길거리에서 부딪힌 것을 계기로 몸이 뒤바뀌고 만 소설가 '타카시'와 미용사 '사토미'. 그들은 다시 원래의 몸으로 돌아갈 방법을 찾을 때까지 서로를 연기하며 생활하기로 한다. 그러던 중, 둘 다 사랑하는 사람과의 관계가 삐걱이고 있음을 알게 된다. 타인이면서 본인인 '타카시'와 '사토미'는 서로의 인생을 나아지게 하기 위한 고군분투를 시작하는데...",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/vTtq8iqEQlmgDTec9oe3YzjkOGT.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yjK3ardrgdS8suZG8KMU82Q7U38.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/yjK3ardrgdS8suZG8KMU82Q7U38.jpg",
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1285366/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1285366",
-        "imdbId": "tt33349025",
         "demo": false
       },
       {
@@ -17895,40 +18245,95 @@ window.KINOSIS_CATALOG = {
         "keywords": [
           "based on novel or book",
           "serial killer",
-          "father son relationship"
+          "writer",
+          "abduction",
+          "father son relationship",
+          "retired detective"
         ],
         "productionCompanies": [
           "AGBO"
         ],
         "artSeed": false,
-        "voteAverage": 6.4,
-        "voteCount": 278,
-        "popularity": 233.5012,
+        "voteAverage": 6.789,
+        "voteCount": 551,
+        "popularity": 118.3923,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "아내를 잃은 범죄 소설가. 8살 아들이 납치되자 오랫동안 소원했던 아버지를 찾아가 도움을 청한다. 전직 형사인 아버지와 함께 아들의 행방을 쫓던 중, 수십 년 전 유죄 판결을 받은 연쇄 살인마 '위스퍼맨'과의 연결 고리를 발견한다.",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/dQLxR7i2A3jiKHuQMC8NKdvtgAZ.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/xSJJQeAp9GBFmiKusysTRG6jQjt.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/8XLaNOl48ZXOy1x0a9CPD21fsfO.png",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [
           {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/860508",
         "imdbId": "tt11561116",
+        "demo": false
+      },
+      {
+        "id": 1228710,
+        "title": "만달로리안과 그로구",
+        "originalTitle": "The Mandalorian and Grogu",
+        "year": 2026,
+        "releaseDate": "2026-05-20",
+        "director": "존 파브로",
+        "runtime": 132,
+        "genres": [
+          "액션",
+          "모험",
+          "SF"
+        ],
+        "keywords": [
+          "galaxy",
+          "bounty hunter",
+          "spin off",
+          "space opera",
+          "space adventure",
+          "based on tv series",
+          "lighthearted",
+          "master apprentice relationship"
+        ],
+        "productionCompanies": [
+          "Lucasfilm Ltd.",
+          "Fairview Entertainment"
+        ],
+        "artSeed": false,
+        "voteAverage": 7.5,
+        "voteCount": 1542,
+        "popularity": 91.0785,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "은하계를 누비는 현상금 사냥꾼 ‘딘 자린’ & 치명적인 귀여움의 ‘그로구’",
+        "tagline": "은하계의 운명을 건 위대한 임무가 시작된다!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/tMP99wq45GQMoeZwITgjAS8Wihm.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/wFKDH8nAz7l9iyVobjcNAPTrkNz.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney Plus",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1228710-the-mandalorian-and-grogu/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1228710",
+        "imdbId": "tt30825738",
         "demo": false
       },
       {
@@ -17967,59 +18372,59 @@ window.KINOSIS_CATALOG = {
           "Castle Rock Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 8.729,
-        "voteCount": 31208,
-        "popularity": 105.9697,
+        "voteAverage": 8.73,
+        "voteCount": 31276,
+        "popularity": 84.0858,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "촉망받는 은행 간부 앤디 듀프레인은 아내와 그녀의 정부를 살해했다는 누명을 쓴다. 주변의 증언과 살해 현장의 그럴듯한 증거들로 그는 종신형을 선고받고 악질범들만 수용한다는 지옥같은 교도소 쇼생크로 향한다. 인간 말종 쓰레기들만 모인 그곳에서 그는 이루 말할 수 없는 억압과 짐승보다 못한 취급을 당한다. 그러던 어느 날, 간수의 세금을 면제받게 해 준 덕분에 그는 일약 교도소의 비공식 회계사로 일하게 된다. 그 와중에 교도소 소장은 죄수들을 이리저리 부리면서 검은 돈을 긁어 모으고 앤디는 이 돈을 세탁하여 불려주면서 그의 돈을 관리하는데...",
         "tagline": "두려움은 너를 죄수로 가두고 희망은 너를 자유롭게 하리라",
         "posterUrl": "https://image.tmdb.org/t/p/w500/qV9BQZdiM8foEzDz0Ag5hGWE5qM.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/1K53E8WXQW76Scg8upBObXSrbgN.png",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [
           {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=KR",
@@ -18057,9 +18462,9 @@ window.KINOSIS_CATALOG = {
           "Patrick Aiello Productions"
         ],
         "artSeed": false,
-        "voteAverage": 4.036,
-        "voteCount": 1115,
-        "popularity": 94.7523,
+        "voteAverage": 4.02,
+        "voteCount": 1125,
+        "popularity": 82.9374,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "전설적인 동명 소설을 새롭게 재해석한 이번 작품은 거대한 침공의 서막을 알린다. 에바 롱고리아와 전설적인 래퍼이자 배우 아이스 큐브, 그리고 마이클 오닐과 이만 벤슨이 합류해, 기술과 감시, 사생활이라는 현대적 주제를 아우르는 짜릿한 우주급 모험을 선보인다.",
@@ -18073,7 +18478,7 @@ window.KINOSIS_CATALOG = {
             "id": 119,
             "name": "Amazon Prime Video",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/755898-war-of-the-worlds/watch?locale=KR",
@@ -18082,164 +18487,33 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 299536,
-        "title": "어벤져스: 인피니티 워",
-        "originalTitle": "Avengers: Infinity War",
-        "year": 2018,
-        "releaseDate": "2018-04-25",
-        "director": "안소니 루소",
-        "runtime": 149,
-        "genres": [
-          "모험",
-          "액션",
-          "SF"
-        ],
-        "keywords": [
-          "sacrifice",
-          "magic",
-          "superhero",
-          "based on comic",
-          "space",
-          "battlefield",
-          "genocide",
-          "magical object",
-          "super power",
-          "superhero team",
-          "aftercreditsstinger",
-          "marvel cinematic universe (mcu)",
-          "cosmic"
-        ],
-        "productionCompanies": [
-          "Marvel Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 32779,
-        "popularity": 91.1625,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "타노스는 6개의 인피니티 스톤을 획득해 신으로 군림하려 한다. 그것은 곧 인류의 절반을 학살해 우주의 균형을 맞추겠다는 뜻. 타노스는 닥터 스트레인지가 소유한 타임 스톤, 비전의 이마에 박혀 있는 마인드 스톤을 차지하기 위해 지구를 침략한다. 아이언맨과 스파이더맨은 가디언즈 오브 갤럭시의 멤버들과 타노스를 상대한다. 지구에선 캡틴 아메리카, 완다, 블랙 위도우, 블랙 팬서 등이 비전을 지키기 위해 뭉친다.",
-        "tagline": "영화의 역사를 뒤바꿀 마블의 클라이맥스!",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/kmP6viwzcEkZeoi1LaVcQemcvZh.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 337,
-            "name": "Disney Plus",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/299536-avengers-infinity-war/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/299536",
-        "imdbId": "tt4154756",
-        "demo": false
-      },
-      {
-        "id": 454639,
-        "title": "마스터즈 오브 유니버스",
-        "originalTitle": "Masters of the Universe",
+        "id": 1355228,
+        "title": "간다리",
+        "originalTitle": "गांधारी",
         "year": 2026,
-        "releaseDate": "2026-06-03",
-        "director": "트래비스 나이트",
-        "runtime": 141,
+        "releaseDate": "2026-09-03",
+        "director": "Devashish Makhija",
+        "runtime": 117,
         "genres": [
           "액션",
-          "판타지",
-          "SF"
-        ],
-        "keywords": [
-          "skeleton",
-          "superhero",
-          "nostalgia",
-          "alien planet",
-          "based on toy",
-          "super power",
-          "reboot",
-          "aftercreditsstinger",
-          "duringcreditsstinger",
-          "warrior",
-          "sword and planet",
-          "father son conflict",
-          "sword and sorcery",
-          "father daughter relationship",
-          "based on tv series"
-        ],
-        "productionCompanies": [
-          "Escape Artists",
-          "Mattel Studios",
-          "Amazon MGM Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.2,
-        "voteCount": 2029,
-        "popularity": 85.5991,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "아담이 전설의 검과 함께 자신의 운명을 받아들여 우주 최강의 전사 ‘히맨’으로 각성하게 되고, 파괴된 세계를 구하기 위해 스켈레토에 맞서 싸우는 SF히어로액션",
-        "tagline": "전설의 힘이 깨어난다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2hH4UGcfyuuQGA2dhCB1lLXPwv7.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/yQIdU11DYQQp0neGtGtGxbGfRer.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 119,
-            "name": "Amazon Prime Video",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pvske1MyAoymrs5bguRfVqYiM9a.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/454639-masters-of-the-universe/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/454639",
-        "imdbId": "tt0427340",
-        "demo": false
-      },
-      {
-        "id": 1284041,
-        "title": "라스트 하우스",
-        "originalTitle": "The Last House",
-        "year": 2026,
-        "releaseDate": "2026-08-06",
-        "director": "루이스 레테리어",
-        "runtime": 110,
-        "genres": [
-          "공포",
-          "SF",
+          "드라마",
           "스릴러"
         ],
-        "keywords": [
-          "monster",
-          "isolation",
-          "water monster",
-          "sea creature",
-          "baffled",
-          "disapproving",
-          "excited",
-          "dangerous rain"
-        ],
+        "keywords": [],
         "productionCompanies": [
-          "Chernin Entertainment",
-          "3 Arts Entertainment"
+          "Kathha Pictures",
+          "Outsiders Films"
         ],
         "artSeed": false,
-        "voteAverage": 6.9,
-        "voteCount": 1196,
-        "popularity": 84.6298,
+        "voteAverage": 4.929,
+        "voteCount": 7,
+        "popularity": 72.3274,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "정체불명의 힘에 의해 집 안에 갇힌 한 가족. 살아남으려면 점점 줄어드는 물자와 그들을 가둔 불길한 존재에 맞서 힘을 합쳐야 한다.",
+        "overview": "한 어머니가 시력을 잃고 딸이 납치당하자, 그녀는 직접 나서서 범인들을 추적한다.",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/t7efaqaALl5svgOR5MBoxNOCrv3.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/1RhfevWmWCVHtEqxWBEjPOC5KG1.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/hCHei97aPYCCsh4vicz9X0wmdFV.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/sT5WVT8LzvDwIbfy9BGXK0fvf3s.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
@@ -18247,18 +18521,18 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
-        "watchLink": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1284041",
-        "imdbId": "tt32268156",
+        "watchLink": "https://www.themoviedb.org/movie/1355228/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1355228",
+        "imdbId": "tt33354945",
         "demo": false
       },
       {
@@ -18290,9 +18564,9 @@ window.KINOSIS_CATALOG = {
           "Shueisha"
         ],
         "artSeed": false,
-        "voteAverage": 8.788,
-        "voteCount": 2044,
-        "popularity": 82.6003,
+        "voteAverage": 8.784,
+        "voteCount": 2102,
+        "popularity": 68.9203,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
@@ -18306,19 +18580,19 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1311031/watch?locale=KR",
@@ -18327,55 +18601,134 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 1631807,
-        "title": "더 시크릿 우먼",
-        "originalTitle": "Den hemmelige kvinde",
-        "year": 2026,
-        "releaseDate": "2026-08-28",
-        "director": "바르바라 톱쇠로텐보르",
-        "runtime": 119,
+        "id": 299536,
+        "title": "어벤져스: 인피니티 워",
+        "originalTitle": "Avengers: Infinity War",
+        "year": 2018,
+        "releaseDate": "2018-04-25",
+        "director": "조 루소",
+        "runtime": 149,
         "genres": [
-          "드라마",
-          "스릴러",
-          "미스터리"
+          "모험",
+          "액션",
+          "SF"
         ],
         "keywords": [
-          "based on novel or book",
-          "psychological",
-          "ominous"
+          "sacrifice",
+          "magic",
+          "superhero",
+          "based on comic",
+          "space",
+          "battlefield",
+          "genocide",
+          "magical object",
+          "super power",
+          "superhero team",
+          "aftercreditsstinger",
+          "marvel cinematic universe (mcu)",
+          "cosmic"
         ],
         "productionCompanies": [
-          "SF Studios"
+          "Marvel Studios"
         ],
         "artSeed": false,
-        "voteAverage": 6.333,
-        "voteCount": 42,
-        "popularity": 78.4959,
+        "voteAverage": 8.242,
+        "voteCount": 32842,
+        "popularity": 67.9591,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "기억을 잃은 여성. 자신에게 가족과 초대형 해운 기업이 있다는 것을 알게 된다. 부유하고 모든 것이 완벽해 보이는 과거로 돌아가는 그녀는 이제 자신이 그곳을 떠나온 이유를 알아나간다. 노르웨이의 한 섬에서 작은 카페를 운영하며 파트너 요아킴과 조용히 살아가는 루이즈 안데르센. 그러던 어느 여름날, 낯선 방문객이 나타나 그녀는 루이즈가 아니라 3년 전 덴마크에서 실종된 헬레네 쇠데르베르라고 주장하고, 평화롭던 두 사람의 삶에 파문이 인다. 게다가 그녀에겐 남편뿐 아니라 어린 아들까지 있다는 것을 알게 되는데. 가족을 만나고 실종되던 밤의 진상을 밝히려는 루이즈는 요아킴과 익숙한 생활을 뒤로하고 떠난다. 그리고 헬레네가 되어 미스터리를 깊이 파헤쳐 가던 그녀는 자신의 인생을 송두리째 뒤흔들 진실을 알게 된다.",
-        "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/AcalurfNjQTiLIzICTwtAq86tWC.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ziOpmyZufqM7IusfThzBr1E9wqa.jpg",
+        "overview": "타노스는 6개의 인피니티 스톤을 획득해 신으로 군림하려 한다. 그것은 곧 인류의 절반을 학살해 우주의 균형을 맞추겠다는 뜻. 타노스는 닥터 스트레인지가 소유한 타임 스톤, 비전의 이마에 박혀 있는 마인드 스톤을 차지하기 위해 지구를 침략한다. 아이언맨과 스파이더맨은 가디언즈 오브 갤럭시의 멤버들과 타노스를 상대한다. 지구에선 캡틴 아메리카, 완다, 블랙 위도우, 블랙 팬서 등이 비전을 지키기 위해 뭉친다.",
+        "tagline": "영화의 역사를 뒤바꿀 마블의 클라이맥스!",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/kmP6viwzcEkZeoi1LaVcQemcvZh.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
           {
-            "id": 8,
-            "name": "Netflix",
+            "id": 337,
+            "name": "Disney Plus",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
           },
           {
-            "id": 1796,
-            "name": "Netflix Standard with Ads",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
-        "watchLink": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1631807",
-        "imdbId": "tt37275992",
+        "watchLink": "https://www.themoviedb.org/movie/299536-avengers-infinity-war/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/299536",
+        "imdbId": "tt4154756",
+        "demo": false
+      },
+      {
+        "id": 1419406,
+        "title": "포풍추영",
+        "originalTitle": "捕风追影",
+        "year": 2025,
+        "releaseDate": "2025-08-16",
+        "director": "杨子",
+        "runtime": 142,
+        "genres": [
+          "액션",
+          "범죄",
+          "드라마",
+          "스릴러"
+        ],
+        "keywords": [
+          "race against time",
+          "ex-cop",
+          "betrayal",
+          "nostalgic",
+          "macau",
+          "hand to hand combat",
+          "manhunt",
+          "hidden agenda",
+          "dramatic",
+          "hacked camera system",
+          "cryptocurrency",
+          "security breach",
+          "tracking expert",
+          "spectacular action scenes",
+          "surveillance city",
+          "family stakes"
+        ],
+        "productionCompanies": [
+          "iQIYI Pictures （重复 同 iQiyi Motion Pictures）",
+          "Tao Piao Piao 淘票票",
+          "Hairun Pictures Company",
+          "Dong Fang Chen Xiang"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.229,
+        "voteCount": 1364,
+        "popularity": 67.6069,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "첨단 감시 시스템과 삼엄한 보안망을 무력화하고, 수십억을 탈취한 정체불명의 범죄 조직. 통제 불능의 범죄에 마카오 경찰은 결국 은퇴한 전설의 범죄 추적 전문가 ‘황더중’에게 도움을 요청한다. 황더중은 신입 경찰 ‘허추궈’와 함께 최정예 감시반을 구성해, 범죄 조직의 수장 ‘푸룽성’을 추적하기 시작한다. 하지만 수사망이 조여올수록 상대의 덫과 함정은 더욱 교묘해지고, 예상치 못한 반격 속에 황더중 역시 추적당하기 시작하는데…",
+        "tagline": "베테랑 vs 베테랑",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/uiIT7CsJ4V7rMnTqy7xYvj9IRhs.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/4BtL2vvEufDXDP4u6xQjjQ1Y2aT.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
+        "providers": [
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          },
+          {
+            "id": 1883,
+            "name": "TVING",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/1419406/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/1419406",
+        "imdbId": "tt34610311",
         "demo": false
       },
       {
@@ -18417,8 +18770,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 7.674,
-        "voteCount": 3370,
-        "popularity": 77.6121,
+        "voteCount": 3398,
+        "popularity": 65.7241,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "미스터리한 뱀 게리가 나타난 순간, 주토피아가 다시 흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해 환상의 콤비 주디와 닉이 잠입 수사에 나서고 상상 그 이상의 진실과 위협을 마주하게 되는데...!",
@@ -18432,7 +18785,7 @@ window.KINOSIS_CATALOG = {
             "id": 337,
             "name": "Disney Plus",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1084242-zootopia-2/watch?locale=KR",
@@ -18475,15 +18828,15 @@ window.KINOSIS_CATALOG = {
           "TSG Entertainment"
         ],
         "artSeed": false,
-        "voteAverage": 7.651,
-        "voteCount": 4249,
-        "popularity": 77.3222,
+        "voteAverage": 7.646,
+        "voteCount": 4288,
+        "popularity": 64.0908,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "인간들과의 전쟁으로 첫째 아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는 깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이 이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰 위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게 되는데…",
         "tagline": "",
         "posterUrl": "https://image.tmdb.org/t/p/w500/l18o0AK18KS118tWeROOKYkF0ng.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/sdZSjtGUTSN8B3al5o0f2WoQfQQ.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/u8DU5fkLoM5tTRukzPC31oGPxaQ.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
@@ -18491,209 +18844,12 @@ window.KINOSIS_CATALOG = {
             "id": 337,
             "name": "Disney Plus",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/83533-avatar-fire-and-ash/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/83533",
         "imdbId": "tt1757678",
-        "demo": false
-      },
-      {
-        "id": 1314481,
-        "title": "악마는 프라다를 입는다 2",
-        "originalTitle": "The Devil Wears Prada 2",
-        "year": 2026,
-        "releaseDate": "2026-04-29",
-        "director": "데이비드 프랭클",
-        "runtime": 119,
-        "genres": [
-          "코미디",
-          "드라마"
-        ],
-        "keywords": [
-          "new york city",
-          "based on novel or book",
-          "sequel",
-          "fashion",
-          "fashion magazine",
-          "dramedy",
-          "magazine editor",
-          "fashion industry",
-          "fashionista",
-          "whimsical",
-          "ambiguous"
-        ],
-        "productionCompanies": [
-          "20th Century Studios",
-          "Wendy Finerman Productions"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.055,
-        "voteCount": 2244,
-        "popularity": 71.9343,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "전 세계 트렌드를 주도해 온 전설적인 패션 매거진 런웨이가 급변하는 미디어 시장 속에서 예기치 못한 위기에 직면한다. 런웨이를 지켜내려는 편집장 미란다와 20년 만에 신임 기획 에디터로 당당히 돌아온 앤디, 그리고 이제는 럭셔리 브랜드 임원이 되어 다시 나타난 에밀리까지 더 화려하고, 치열해진 뉴욕 패션계에서 주도권을 차지하기 위해 벌이는 이들의 새로운 이야기가 펼쳐진다!",
-        "tagline": "영원한 아이콘의 귀환",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/28A1VUDML1RzENYNtIU1WkBLT9V.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/Af907x5h9W1wVis8XrSd7ynTWuy.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 337,
-            "name": "Disney Plus",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/1314481-the-devil-wears-prada-2/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/1314481",
-        "imdbId": "tt33612209",
-        "demo": false
-      },
-      {
-        "id": 24428,
-        "title": "어벤져스",
-        "originalTitle": "The Avengers",
-        "year": 2012,
-        "releaseDate": "2012-04-25",
-        "director": "조스 웨던",
-        "runtime": 142,
-        "genres": [
-          "SF",
-          "액션",
-          "모험"
-        ],
-        "keywords": [
-          "new york city",
-          "superhero",
-          "shield",
-          "based on comic",
-          "alien invasion",
-          "superhero team",
-          "aftercreditsstinger",
-          "duringcreditsstinger",
-          "marvel cinematic universe (mcu)"
-        ],
-        "productionCompanies": [
-          "Marvel Studios"
-        ],
-        "artSeed": false,
-        "voteAverage": 8.1,
-        "voteCount": 39560,
-        "popularity": 69.1245,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "에너지원 큐브를 이용한 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드의 국장 닉 퓨리는 어벤져스 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 어벤져스의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데...",
-        "tagline": "최강의 슈퍼히어로들이 모였다.",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/krgjV3rJtBcEpQehODKXNCt6uFL.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/nNmJRkg8wWnRmzQDe2FwKbPIsJV.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 337,
-            "name": "Disney Plus",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/24428-the-avengers/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/24428",
-        "imdbId": "tt0848228",
-        "demo": false
-      },
-      {
-        "id": 557,
-        "title": "스파이더맨",
-        "originalTitle": "Spider-Man",
-        "year": 2002,
-        "releaseDate": "2002-05-01",
-        "director": "샘 레이미",
-        "runtime": 121,
-        "genres": [
-          "액션",
-          "SF"
-        ],
-        "keywords": [
-          "new york city",
-          "adolescence",
-          "photographer",
-          "loss of loved one",
-          "photography",
-          "secret identity",
-          "hostility",
-          "superhero",
-          "spider",
-          "bad boss",
-          "villain",
-          "based on comic",
-          "teenage boy",
-          "teenage love",
-          "evil",
-          "super villain",
-          "taking responsibility"
-        ],
-        "productionCompanies": [
-          "Marvel Enterprises",
-          "Laura Ziskin Productions",
-          "Columbia Pictures"
-        ],
-        "artSeed": false,
-        "voteAverage": 7.351,
-        "voteCount": 21316,
-        "popularity": 68.8126,
-        "boxOfficeRank": null,
-        "boxOfficeAudience": null,
-        "overview": "평범하고 내성적인 고등학생 피터 파커는 우연히 방사능에 감염된 거미에 물린다.그 후, 피터는 손에서 거미줄이 튀어 나오고 벽을 기어 오를 수 있는 거미와 같은 능력을 갖게 된다. 다가오는 위험을 본능적으로 감지하는 초감각과 엄청난 파워를 소유하게 된 것이다. 피터는 짝사랑하던 메리 제인의 관심을 끌기 위해 멋진 스포츠카를 구입하는데 초능력을 처음 사용한다. 그러다 사랑하는 벤 아저씨의 죽음을 계기로 그 힘을 악의 세력에 대항하는데 쓰기로 결심한다. 한편 피터의 절친 해리 오스본의 아버지인 노만은 실험 도중 가스에 중독되어 악의 화신 그린 고블린으로 변하는데...",
-        "tagline": "큰 힘에는 큰 책임이 따른다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/4xOhtzXGt0if74dTmS4qtizFelX.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/zQ8AxTPiCiS5nnwXpwTBPBHSaa5.jpg",
-        "heroBackdropUrl": null,
-        "logoUrl": null,
-        "providers": [
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/557",
-        "imdbId": "tt0145487",
         "demo": false
       },
       {
@@ -18746,9 +18902,9 @@ window.KINOSIS_CATALOG = {
           "Lynda Obst Productions"
         ],
         "artSeed": false,
-        "voteAverage": 8.487,
-        "voteCount": 41008,
-        "popularity": 66.9007,
+        "voteAverage": 8.486,
+        "voteCount": 41097,
+        "popularity": 63.656,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다. 지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다. 나사 소속 우주비행사였던 쿠퍼는 지구에 몰아친 식량난으로 옥수수나 키우며 살고 있다. 거센 황사가 몰아친 어느 날 알 수 없는 힘에 이끌려 딸과 함께 도착한 곳은 인류가 이주할 행성을 찾는 나사의 비밀본부. 이 때 시공간에 불가사의한 틈이 열리고, 이 곳을 탐험해 인류를 구해야 하는 임무를 위해 쿠퍼는 만류하는 딸을 뒤로한 채 우주선에 탑승하는데...",
@@ -18762,13 +18918,13 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/157336-interstellar/watch?locale=KR",
@@ -18777,154 +18933,127 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 299534,
-        "title": "어벤져스: 엔드게임",
-        "originalTitle": "Avengers: Endgame",
-        "year": 2019,
-        "releaseDate": "2019-04-24",
-        "director": "안소니 루소",
-        "runtime": 181,
+        "id": 24428,
+        "title": "어벤져스",
+        "originalTitle": "The Avengers",
+        "year": 2012,
+        "releaseDate": "2012-04-25",
+        "director": "조스 웨던",
+        "runtime": 142,
         "genres": [
-          "모험",
           "SF",
-          "액션"
+          "액션",
+          "모험"
         ],
         "keywords": [
+          "new york city",
           "superhero",
-          "time travel",
-          "space travel",
-          "time machine",
+          "shield",
           "based on comic",
-          "sequel",
           "alien invasion",
           "superhero team",
-          "marvel cinematic universe (mcu)",
-          "alternate timeline",
-          "father daughter relationship",
-          "sister sister relationship",
-          "teamwork",
-          "excited"
+          "aftercreditsstinger",
+          "duringcreditsstinger",
+          "marvel cinematic universe (mcu)"
         ],
         "productionCompanies": [
           "Marvel Studios"
         ],
         "artSeed": false,
-        "voteAverage": 8.2,
-        "voteCount": 28529,
-        "popularity": 65.5717,
+        "voteAverage": 8.073,
+        "voteCount": 39639,
+        "popularity": 62.9242,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
-        "tagline": "운명을 바꿀 최후의 전쟁이 펼쳐진다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/z7ilT5rNN9kDo8JZmgyhM6ej2xv.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/2xfV5Zdq4kCsFVReRXJKnJaUFCD.jpg",
-        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
-        "logoUrl": "https://image.tmdb.org/t/p/original/gvGe333uy5FynrYAtGuQwlzzxku.png",
+        "overview": "에너지원 큐브를 이용한 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드의 국장 닉 퓨리는 어벤져스 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 어벤져스의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데...",
+        "tagline": "최강의 슈퍼히어로들이 모였다.",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/krgjV3rJtBcEpQehODKXNCt6uFL.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/pGFQCp12a8andfPlpnmXz44IIvY.jpg",
+        "heroBackdropUrl": null,
+        "logoUrl": null,
         "providers": [
           {
             "id": 337,
             "name": "Disney Plus",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/97yvRBw1GzX7fXprcF80er19ot.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
-        "watchLink": "https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/299534",
-        "imdbId": "tt4154796",
+        "watchLink": "https://www.themoviedb.org/movie/24428-the-avengers/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/24428",
+        "imdbId": "tt0848228",
         "demo": false
       },
       {
-        "id": 155,
-        "title": "다크 나이트",
-        "originalTitle": "The Dark Knight",
-        "year": 2008,
-        "releaseDate": "2008-07-16",
-        "director": "크리스토퍼 놀란",
-        "runtime": 152,
+        "id": 454639,
+        "title": "마스터즈 오브 유니버스",
+        "originalTitle": "Masters of the Universe",
+        "year": 2026,
+        "releaseDate": "2026-06-03",
+        "director": "트래비스 나이트",
+        "runtime": 141,
         "genres": [
           "액션",
-          "범죄",
-          "스릴러"
+          "판타지",
+          "SF"
         ],
         "keywords": [
-          "sadism",
-          "chaos",
-          "secret identity",
-          "crime fighter",
+          "skeleton",
           "superhero",
-          "anti hero",
-          "scarecrow",
-          "based on comic",
-          "vigilante",
-          "organized crime",
-          "tragic hero",
-          "anti villain",
-          "criminal mastermind",
-          "district attorney",
+          "nostalgia",
+          "alien planet",
+          "based on toy",
           "super power",
-          "super villain",
-          "neo-noir",
-          "bold"
+          "reboot",
+          "aftercreditsstinger",
+          "duringcreditsstinger",
+          "warrior",
+          "sword and planet",
+          "father son conflict",
+          "sword and sorcery",
+          "father daughter relationship",
+          "based on tv series"
         ],
         "productionCompanies": [
-          "Warner Bros. Pictures",
-          "Legendary Pictures",
-          "Syncopy",
-          "DC"
+          "Escape Artists",
+          "Mattel Studios",
+          "Amazon MGM Studios"
         ],
         "artSeed": false,
-        "voteAverage": 8.534,
-        "voteCount": 36582,
-        "popularity": 65.069,
+        "voteAverage": 7.148,
+        "voteCount": 2078,
+        "popularity": 62.5416,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "범죄와 부정부패를 제거하여 고담시를 지키려는 배트맨. 그는 짐 고든 형사와 패기 넘치는 고담시 지방 검사 하비 덴트와 함께 도시를 범죄 조직으로부터 영원히 구원하고자 한다. 세 명의 의기투합으로 위기에 처한 악당들이 모인 자리에 보라색 양복을 입고 얼굴에 짙게 화장을 한 괴이한 존재가 나타나 배트맨을 죽이자는 사상 초유의 제안을 한다. 그는 바로 어떠한 룰도, 목적도 없는 사상 최악의 악당 미치광이 살인광대 조커. 배트맨을 죽이고 고담시를 끝장내버리기 위한 조커의 광기 어린 행각에 도시는 혼란에 빠지는데...",
-        "tagline": "이 도시에 정의는 죽었다",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/9ICUbdveP56jRoMMVkXSOr3ceyV.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/9FE5eD92WfVCiivM9Pq9GVSrlWk.jpg",
+        "overview": "아담이 전설의 검과 함께 자신의 운명을 받아들여 우주 최강의 전사 ‘히맨’으로 각성하게 되고, 파괴된 세계를 구하기 위해 스켈레토에 맞서 싸우는 SF히어로액션",
+        "tagline": "전설의 힘이 깨어난다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/2hH4UGcfyuuQGA2dhCB1lLXPwv7.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/5MUMB3aPEPEQPCIAaygXFUTWE9Y.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
         "providers": [
           {
-            "id": 356,
-            "name": "wavve",
+            "id": 119,
+            "name": "Amazon Prime Video",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 3,
-            "name": "Google Play Movies",
-            "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/gMZdpavHmxFNnLpMHwVxfqeux2g.png"
           }
         ],
-        "watchLink": "https://www.themoviedb.org/movie/155-the-dark-knight/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/155",
-        "imdbId": "tt0468569",
+        "watchLink": "https://www.themoviedb.org/movie/454639-masters-of-the-universe/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/454639",
+        "imdbId": "tt0427340",
         "demo": false
       },
       {
@@ -18964,8 +19093,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": false,
         "voteAverage": 7.333,
-        "voteCount": 23814,
-        "popularity": 65.0164,
+        "voteCount": 23857,
+        "popularity": 58.7473,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "토니 스타크의 제안을 받고 시빌 워에 참여한 피터 파커는 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한 이웃에 머무는 것은 피터의 성에 차지 않는다. 한편 어벤져스 군단과 외계 세력의 전투로 생긴 산업폐기물을 처리하던 아드리안 툼즈는 그 일이 토니 스타크와 정부에 넘어가면서 하루아침에 빈털터리가 된다. 이에 앙심을 품은 아드리안은 외계 첨단무기를 훔쳐서 개조하는 빌런이 되고, 그의 존재를 알게 된 피터는 도움을 빌리지 않고 자기가 일을 해결해보려고 한다.",
@@ -18979,48 +19108,111 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/315635-spider-man-homecoming/watch?locale=KR",
         "tmdbUrl": "https://www.themoviedb.org/movie/315635",
         "imdbId": "tt2250912",
+        "demo": false
+      },
+      {
+        "id": 299534,
+        "title": "어벤져스: 엔드게임",
+        "originalTitle": "Avengers: Endgame",
+        "year": 2019,
+        "releaseDate": "2019-04-24",
+        "director": "안소니 루소",
+        "runtime": 181,
+        "genres": [
+          "모험",
+          "SF",
+          "액션"
+        ],
+        "keywords": [
+          "superhero",
+          "time travel",
+          "space travel",
+          "time machine",
+          "based on comic",
+          "sequel",
+          "alien invasion",
+          "superhero team",
+          "marvel cinematic universe (mcu)",
+          "alternate timeline",
+          "father daughter relationship",
+          "sister sister relationship",
+          "teamwork",
+          "excited"
+        ],
+        "productionCompanies": [
+          "Marvel Studios"
+        ],
+        "artSeed": false,
+        "voteAverage": 8.241,
+        "voteCount": 28595,
+        "popularity": 58.0672,
+        "boxOfficeRank": null,
+        "boxOfficeAudience": null,
+        "overview": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
+        "tagline": "운명을 바꿀 최후의 전쟁이 펼쳐진다",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/z7ilT5rNN9kDo8JZmgyhM6ej2xv.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+        "heroBackdropUrl": "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+        "logoUrl": "https://image.tmdb.org/t/p/original/gvGe333uy5FynrYAtGuQwlzzxku.png",
+        "providers": [
+          {
+            "id": 337,
+            "name": "Disney Plus",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/5eZ872CghnHFLB1j8grszbrx0dx.png"
+          },
+          {
+            "id": 3,
+            "name": "Google Play Movies",
+            "type": "buy",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/299534",
+        "imdbId": "tt4154796",
         "demo": false
       }
     ],
@@ -19046,7 +19238,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 8,
         "voteCount": 1,
-        "popularity": 1.0508,
+        "popularity": 0.7282,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -19097,8 +19289,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.968,
-        "voteCount": 6195,
-        "popularity": 11.2851,
+        "voteCount": 6214,
+        "popularity": 12.1148,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1940년 뉴욕 인콰이어러지를 비롯, 수 많은 신문들의 발행인이었던 찰스 포스터 케인이 죽는다. 그는 당시 70세로 세계에서 손꼽히는 부자였으며, 죽음 직전에는 플로리다의 대저택에서 은둔 생활을 하고 있었다. 생전에 많은 정치인과도 친분을 맺고 있었고, 미국 정책에 막강한 영향력을 발휘하기도 했던 그는 자신에 대한 여러 얘기들에 대해 \"나는 현재 미국인이고 과거에도 미국인이었으며 앞으로도 항상 미국인일 것이다\"라고 일축하곤 했다. 잡지 편집장 록스톤은 그의 죽음을 취재하고자 기자 톰슨에게 케인이 죽기 전에 말했다는 장미꽃 봉오리가 무슨 뜻인지 알아오라고 한다. 톰슨은 케인의 주변 인물을 샅샅이 취재하기 시작하는데...",
@@ -19112,7 +19304,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=KR",
@@ -19141,7 +19333,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 5.852,
         "voteCount": 61,
-        "popularity": 2.3119,
+        "popularity": 2.5492,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -19206,8 +19398,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 8.1,
-        "voteCount": 1256,
-        "popularity": 8.654,
+        "voteCount": 1259,
+        "popularity": 6.7327,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "2차 세계대전 후. 결혼하여 도쿄에 살고 있는 자식들을 만나기 위해 노부부가 상경한다. 의사 장남과 미용실을 운영하는 둘째 딸은 곧 부모님의 방문을 부담스러워하고 바쁜 일상을 핑계로 소홀히 대한다. 전쟁 중 남편을 잃은 며느리 노리코만이 노부부를 극진히 모시는데…",
@@ -19221,19 +19413,19 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 701,
             "name": "FilmBox+",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/18148/watch?locale=KR",
@@ -19273,7 +19465,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.2,
         "voteCount": 341,
-        "popularity": 2.477,
+        "popularity": 2.4744,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "풍족한 생활의 남부럽지 않은 영국인 부부 캐서린과 알렉스 조이스는 그동안 연락이 없었던 호머 삼촌이 그들에게 유산으로 남겨준 별장을 처분하기 위해 나폴리로 향한다. 결혼해서 살면서 아무 일없이 살았었지만 일상을 벗어나 단둘만이 있게 된 그들은 서로를 전혀 모른다는 사실을 깨닫게 되고 그들은 그렇게 위기를 맞게 된다. 캐서린은 나폴리로, 알렉스는 우연히 만난 줄리의 친구들과 카프리섬으로 각자의 여행길로 떠난다. 이들 둘은 각기 이탈리아 여행 도중 많은 유혹과 고독에 시달리며 방황을 반복하며 다시 집으로 돌아오지만 그들에게 변한것은 아무것도 없었다. 그러던 중 화산 폭발로 멸망한 폼페이 유물 발굴 형장에서 함께 죽음을 맞이한 부부 한쌍의 석고상을 보고 그들은 또 다른 감동을 받게 되는데...",
@@ -19287,7 +19479,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/2748-viaggio-in-italia/watch?locale=KR",
@@ -19323,7 +19515,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 8.3,
         "voteCount": 582,
-        "popularity": 5.4214,
+        "popularity": 5.5472,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "제2차 세계대전이 끝난 지 10여년이 지나 버려진 수용소의 현재 모습은 흑백의 기록화면으로 이어진다. 12년 전 빈 들판엔 수용소 건설이 진행되었고 ‘밤과 안개’ 작전으로 유대인들이 수감되기 시작했다.",
@@ -19337,13 +19529,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 11,
             "name": "MUBI",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/x570VpH2C9EKDf1riP83rYc5dnL.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/k7iSlvgWzZuO4zU5PcBjhABMuia.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/803-nuit-et-brouillard/watch?locale=KR",
@@ -19393,9 +19585,9 @@ window.KINOSIS_CATALOG = {
           "Buster Keaton Productions"
         ],
         "artSeed": true,
-        "voteAverage": 8.043,
-        "voteCount": 1199,
-        "popularity": 5.7625,
+        "voteAverage": 8.041,
+        "voteCount": 1201,
+        "popularity": 5.2507,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "극장에서 영사기사로 일하는 버스터는 케이트린에게 구애하지만, 그녀의 아버지는 그를 탐탁치 않게 생각한다. 그러던 중 사랑의 라이벌 워드가 케이트린 아버지의 시계를 훔쳐 버스터에게 누명을 씌운다. 버스터는 영화 속 주인공인 셜록 주니어가 되어 진짜 범인을 찾기 시작한다.",
@@ -19409,13 +19601,13 @@ window.KINOSIS_CATALOG = {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/992-sherlock-jr/watch?locale=KR",
@@ -19459,7 +19651,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.315,
         "voteCount": 205,
-        "popularity": 2.9695,
+        "popularity": 3.2146,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "존은 샌프란시스코의 한 평범한 치과의사로, 아내 트리나는 복권에 당첨되어 뜻하지 않게 부를 얻게 된다. 등장인물들은 갑작스럽게 얻은 부에 대한 욕망과 집착 때문에 치명적인 선택을 하게 되는데…\r 무성영화 시대의 거장 에리히 폰 스트로하임이 무려 8시간으로 연출했으나 제작사와의 문제로 편집되고 만 비운의 걸작. 성공과 돈 앞에서 어쩔 수 없이 나약해지는 인간의 심성을 리얼리즘 형식으로 담아냈다.",
@@ -19511,14 +19703,14 @@ window.KINOSIS_CATALOG = {
           "Mosfilm"
         ],
         "artSeed": true,
-        "voteAverage": 7.577,
-        "voteCount": 1329,
-        "popularity": 6.0467,
+        "voteAverage": 7.6,
+        "voteCount": 1332,
+        "popularity": 5.6098,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1905년, 제정 러시아 시대. 전함 포템킨의 수병들은 장교들의 학대와 열약한 근무 조건에 불만을 가지게 된다. 썩은 고기를 식량으로 사용한 사실은 그들의 반란의 기폭제로 작용한다. 수병을 없애버리라는 장교의 명령에 포병들은 거역하고 수병과 포병은 힘을 합쳐 동지가 된다.  전함을 완전히 장악한 이들은 승리감에 젖어 흑해 오뎃사 항구로 향하고 이 소식을 전해들은 시민들은 수병들을 환영하러 부두로 나온다. 한편 짜르의 명령을 받은 정예 코자크 군대가 출동하여 그들에 반항하는 시민들에게 무차별 공격을 가한다. 전함 포템킨에 탄 수병들을 환영하려 했던 시민들은 갑작스런 군대에 의해 피를 흘리며 쓰러져 간다.  수 많은 희생자가 나지만, 분노한 시민들은 수병들과 합세하여 봉기, 짜르의 군대와 싸우며 혁명의 대열에 서는데...",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/4NnztjJeJq4g66Lxu2mxgSzSORM.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/zP52DTxAVgdc3q7pURqiNrvBfWK.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/3RH61Z7BP3f215936PJBEG2qQrT.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
@@ -19527,19 +19719,19 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/643/watch?locale=KR",
@@ -19594,8 +19786,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.8,
-        "voteCount": 7251,
-        "popularity": 16.8683,
+        "voteCount": 7264,
+        "popularity": 14.5101,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "헐리웃 스타의 꿈을 안고 LA에 온 베티는 멀홀랜드 드라이브에서 일어난 자동차 사고로 이름조차 기억하지 못하는 리타를 만나 그녀가 기억을 되찾을 수 있도록 도와준다. 베티의 적극적인 도움으로 단서를 찾아가던 리타는 한 카페의 여종업원 명찰에서 다이안이라는 이름을 보고 어떤 것을 떠올리게 된다. 베티는 이 이름이 분명 리타와 관계된 사람의 이름일 것이라 말하며 다이안이라는 인물을 찾기 시작한다. 마침내 다이안의 집을 찾아간 두 여인. 그러나 그들은 곧 상상을 초월하는 끔찍한 비밀을 발견하게 되는데...",
@@ -19609,19 +19801,19 @@ window.KINOSIS_CATALOG = {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=KR",
@@ -19658,9 +19850,9 @@ window.KINOSIS_CATALOG = {
           "SISTER"
         ],
         "artSeed": true,
-        "voteAverage": 6.165,
-        "voteCount": 1116,
-        "popularity": 9.6864,
+        "voteAverage": 6.163,
+        "voteCount": 1124,
+        "popularity": 8.1003,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "취재를 위해 초호화 크루즈에 승선한 기자가 한 승객이 바다로 추락하는 모습을 목격한다. 하지만 아무도 자신의 말을 믿어주지 않자, 그녀는 위험을 무릅쓰고 진실을 밝혀내려 한다.",
@@ -19674,13 +19866,13 @@ window.KINOSIS_CATALOG = {
             "id": 8,
             "name": "Netflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/rK1KljqmbvO9HQa1PBFLILWah72.png"
           },
           {
             "id": 1796,
             "name": "Netflix Standard with Ads",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/eGUwOOIxcazwEBxqJpSN5sWEu6V.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1290879-the-woman-in-cabin-10/watch?locale=KR",
@@ -19724,9 +19916,9 @@ window.KINOSIS_CATALOG = {
           "Réalisation d'Art Cinématographique"
         ],
         "artSeed": true,
-        "voteAverage": 7.86,
-        "voteCount": 795,
-        "popularity": 2.7994,
+        "voteAverage": 7.859,
+        "voteCount": 796,
+        "popularity": 3.4048,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "정비공 출신이지만 장교로 진급한 마레샬 중위와 직업 장교인 볼디외 대위가 탄 비행기가 독일군 라펜슈타인 사령관에 의해 격추당한다. 볼디외와 같은 귀족계급인 라펜슈타인은 마레샬과 볼디외를 수용소에 보내기 전, 정중하게 식사에 초대한다. 수용소에 입소한 두 프랑스 군인들은 배우, 교수, 토지 측량기사 등 다양한 출신의 수감자들과 곧 친해진다. 특히 부유한 은행가의 아들인 로젠탈 덕분에 이들은 그에게 배달되어온 물품과 음식들로 초라하지 않은 수용소 생활을 영위한다.",
@@ -19740,7 +19932,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/777-la-grande-illusion/watch?locale=KR",
@@ -19781,7 +19973,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.5,
         "voteCount": 678,
-        "popularity": 3.0957,
+        "popularity": 2.937,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "인상파 화가 르노와르의 아들인 장 르노와르의 야유와 풍자가 난무하는 클래식 필름. 프랑스 지배계층에 대한 부도덕한 묘사로 인해 1959년에야 검열 삭제 부분이 복원, 완성된 영화로 공개되는 비운을 겪기도 했다. 영화가 표현할 수 있는 미장센의 모든 것을 담고 있는 작품이라 추앙받기도 하는 이 작품은 갖가지 계층의 프랑스인들이 모인 대저택에서 벌어지는 며칠간의 에피소드를 줄거리로 하고 있다. 하지만 줄거리 보다도 내러티브, 즉흥연기, 딥 포커스, 카메라 무브먼트, 모짜르트 음악 등이 영화의 풍부함을 더해준다. 감독 스스로가 이야기하는 이 영화의 주제는 '인생은 멈추어 있지 않고 항상 흐른다'라는 것.",
@@ -19795,7 +19987,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/776-la-regle-du-jeu/watch?locale=KR",
@@ -19830,7 +20022,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.295,
         "voteCount": 224,
-        "popularity": 1.7113,
+        "popularity": 1.4431,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "모파상의 단편소설을 각색한 영화. 파리의 상인 일가가 시골로 소풍을 오고, 순수하고 아름다운 딸은 그곳 여관에서 만난 남자와 사랑에 빠진다. 프랑수아 트뤼포가 장 르누아르의 영화 중 ‘가장 감각적인 영화’라고 찬미한 작품으로, 사랑의 두근거림과 아픔을 매혹적으로 그려내고 있다. 어떠한 설명에도 의존하지 않으면서 40여분 간 시적인 이야기를 펼쳐 보이는 르누아르의 솜씨가 돋보이는 작품.",
@@ -19872,9 +20064,9 @@ window.KINOSIS_CATALOG = {
           "Paris Film Production"
         ],
         "artSeed": true,
-        "voteAverage": 7.06,
+        "voteAverage": 7.1,
         "voteCount": 249,
-        "popularity": 1.9233,
+        "popularity": 1.969,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "기차를 타고 프랑스 르아브르 항구로 돌아온 괴로운 철도원 자크 랑티에는 충동적인 역장 루바드와 그의 아내 세베린을 우연히 만나게 됩니다.",
@@ -19918,9 +20110,9 @@ window.KINOSIS_CATALOG = {
           "Universal International Pictures"
         ],
         "artSeed": true,
-        "voteAverage": 7.746,
-        "voteCount": 1639,
-        "popularity": 5.1792,
+        "voteAverage": 7.742,
+        "voteCount": 1640,
+        "popularity": 4.4152,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "마크 바르가스는 멕시코의 마약 단속 책임자이다. 아름다운 미국인 아내 수잔과 멕시코 국경에서 짧은 신혼여행을 보내던 바르가스는 미국의 돈 많은 택지 개발 업자가 폭발사고로 죽는 것을 목격하게 되고 정의감 넘치는 바르가스는 스스로 이 사건에 뛰어든다. 그 와중에 비협조적인 부패 경찰 행크 퀸란과 부딪히게 된다.  한편 바르가스는 조만간 마약왕이 그란데에 대한 증언을 하기로 되어 있었고, 그란데는 바르가스의 부인인 수잔을 납치, 협박하여 바르가스의 입을 틀어막으려고 한다. 어딘가 구린 구석이 있어 보이는 행크는 택지 개발 업자의 사건을 멕시코 측으로 은근 슬쩍 넘기기 위해 그란데와 결탁하여 바르가스를 궁지로 몰아넣는데...",
@@ -19934,19 +20126,19 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1480-touch-of-evil/watch?locale=KR",
@@ -19984,9 +20176,9 @@ window.KINOSIS_CATALOG = {
           "Columbia Pictures"
         ],
         "artSeed": true,
-        "voteAverage": 7.336,
-        "voteCount": 743,
-        "popularity": 3.8815,
+        "voteAverage": 7.337,
+        "voteCount": 744,
+        "popularity": 2.9205,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1940년대 뉴욕. 매력적이고, 냉소적인 언어의 소유자인 선원 마이클 오하라는 우연히 미국 최고의 변호사이자 부호인 아서 베니스터의 부인 엘사를 만난다. 강도로부터 엘사를 구한 마이클은 첫눈에 엘사에게 반하고, 엘사 또한 돈 때문에 결혼한 남편과는 달리 젊은 선원 마이클을 사랑하게 된다. 베니스터가 부인을 구해준 고마움으로 자신의 지중해 항해에 마이클을 선원으로 채용하면서 세 사람의 오묘한 관계는 시작된다. 시종일관 마이클로부터 눈을 떼지 못하는 엘사와 엘사를 거부하지 못하는 마 이클앞에 두 사람의 관계를 눈치챈 베니스터의 동료 조지 그리스비가 접근한다. 그는 현재의 삶에서 도망치고 싶으니, 마이클에게 자신을 죽여달라는 부탁을 하고, 그 대신 5천 달러를 주겠다는 거래를 한다. 그리고 자신은 소리 소문 없이 사라져 주겠다는 것. 평소 이성적이던 마이클도 엘사와의 사랑에 눈이 멀어 그의 거래를 받아들 이기로 하는데... 그러나 사라지기로 한 그리스비가 시체로 발견되고, 마이클은 살인혐의로 기소된다. 베니스터는 자청하여 마이클의 변론을 맡게 되는데...",
@@ -20000,19 +20192,19 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/3766-the-lady-from-shanghai/watch?locale=KR",
@@ -20079,9 +20271,9 @@ window.KINOSIS_CATALOG = {
           "Finanziaria Cinematografica Italiana (FICIT)"
         ],
         "artSeed": true,
-        "voteAverage": 7.394,
-        "voteCount": 582,
-        "popularity": 5.6972,
+        "voteAverage": 7.395,
+        "voteCount": 583,
+        "popularity": 6.3626,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "섬세하고 나약한 지식인인 조셉 케이의 집에 경찰이 들이닥치고 그는 죄목도 밝히지 않은 채 구속된다. 그 뒤 케이는 자신의 무죄 석방을 위해 경찰과 변호사, 법관들, 끝내는 신까지 차례로 만난다. 한편 경찰과 변호사, 법관들도 인간인지라 헛점 투성이였고, 그들이 헛점을 위장하기 위해 허세를 부리는 것을 목격한 케이는 좌절하며 반항한다.",
@@ -20095,7 +20287,7 @@ window.KINOSIS_CATALOG = {
             "id": 2623,
             "name": "Artiflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/3009-le-proces/watch?locale=KR",
@@ -20147,9 +20339,9 @@ window.KINOSIS_CATALOG = {
           "SNC"
         ],
         "artSeed": true,
-        "voteAverage": 7.481,
-        "voteCount": 2082,
-        "popularity": 6.2777,
+        "voteAverage": 7.5,
+        "voteCount": 2084,
+        "popularity": 6.1039,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "기자 지망생 ‘파트리시아’는 샹젤리제에서 신문을 팔다 마주친 ‘미셸’과 시간을 보내다 신문에 실린 사진으로 그의 정체를 알게 된다.",
@@ -20163,13 +20355,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/269-a-bout-de-souffle/watch?locale=KR",
@@ -20207,7 +20399,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.7,
         "voteCount": 718,
-        "popularity": 4.1941,
+        "popularity": 3.2004,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "레코드 샵의 점원으로 일하는 나나는 영화를 사랑하고 배우를 동경하는 파리지이다. 그녀는 생계를 걱정해야 하는 힘든 삶 속에서도 언젠가는 세상을 놀라게 할 스타가 되겠다는 꿈을 가지고 있다. 그러나 그녀에 삶은 가혹하기만 하다. 자신의 꿈을 이해하지 못하는 남편, 돈을 빌려가고 소식이 없는 동료, 영화업자들에게 소개해주겠다며 나나를 이용하려는 에이전시 직원. 결국 나나는 삶의 고단함 속에 자신의 꿈을 포기한다. 비정한 도시에서 살아남기 위해 안간힘을 쓰던 나나는 우연히 남편에게 버림받고 '거리의 여자'가 된 옛 친구 이베뜨를 통해 포주 라울을 소개받는데...",
@@ -20221,7 +20413,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/1626-vivre-sa-vie-film-en-douze-tableaux/watch?locale=KR",
@@ -20261,9 +20453,9 @@ window.KINOSIS_CATALOG = {
           "Films Georges de Beauregard"
         ],
         "artSeed": true,
-        "voteAverage": 7.321,
+        "voteAverage": 7.3,
         "voteCount": 962,
-        "popularity": 4.06,
+        "popularity": 3.8738,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "부르주아의 속물 근성이 몸에 밴 아내가 역겨워진 페르디낭은 옛 애인 마리안을 파티장에서 우연히 만난다. 두 사람은 해안가로 함께 도피하지만 마리안은 곧 도회지에 나가 춤을 추고 싶어하고, 페르디낭은 해안가에서 글을 쓰고 싶어한다. 둘의 관계는 점점 파국으로 치닫는다.",
@@ -20277,19 +20469,19 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/2786-pierrot-le-fou/watch?locale=KR",
@@ -20298,70 +20490,47 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 266,
-        "title": "경멸",
-        "originalTitle": "Le Mépris",
-        "year": 1963,
-        "releaseDate": "1963-10-29",
+        "id": 8073,
+        "title": "국외자들",
+        "originalTitle": "Bande à part",
+        "year": 1964,
+        "releaseDate": "1964-08-05",
         "director": "장뤽 고다르",
-        "runtime": 104,
+        "runtime": 97,
         "genres": [
+          "범죄",
           "드라마",
-          "로맨스"
+          "코미디"
         ],
         "keywords": [
-          "jealousy",
-          "based on novel or book",
-          "villa",
+          "robbery",
+          "paris, france",
           "love triangle",
-          "italy",
-          "movie business",
-          "capri",
-          "screenwriter",
-          "car crash",
-          "divorce",
-          "film industry"
+          "louvre museum",
+          "woman between two men",
+          "bastille",
+          "black and white"
         ],
         "productionCompanies": [
-          "Rome-Paris Films",
-          "Les Films Concordia",
-          "C. C. Champion"
+          "Orsay Films",
+          "Anouchka Films"
         ],
         "artSeed": true,
-        "voteAverage": 7.036,
-        "voteCount": 989,
-        "popularity": 4.6293,
+        "voteAverage": 7.483,
+        "voteCount": 621,
+        "popularity": 5.1667,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "지중해의 뜨거운 태양, 카프리섬의 푸른 바다. 극작가 폴은 영화 '오디세이'의 대본 일을 맡으며 자신의 아름다운 아내 카미유를 영화 제작자에게 소개한다.",
+        "overview": "오딜은 영어 수업에서 프란츠와 그의 친구 아르튀르를 만난다. 파리 근교에서 이모와 사는 오딜은 이모 부부가 엄청난 액수의 현금을 집에 숨겨 두었다는 걸 프란츠에게 이야기하고, 프란츠와 아르튀르는 오딜을 설득해 이모 부부의 돈을 훔치자고 한다. 셋은 함께 시간을 보내고, 오딜은 아르튀르와 사랑에 빠진다. 마침내 결전의 날, 그들의 절도 행각은 계획대로 진행되지 않는데... 장뤽 고다르가 25일만에 촬영을 마쳤다고 하는 영화. 오딜, 아르튀르, 프란츠가 카페에서 춤을 추는 장면은 특히 명장면으로 손꼽힌다.",
         "tagline": "",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/2w6C65VGURrfKbUze8pwT5Kewil.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/afxEiYxANGG88xXVYpNtAHFzTIV.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/6YfEp9vSL6jK34vRxDM9meqcfrE.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/kKsy8sCjfOtfHPBT2i8z13bIRij.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
-        "providers": [
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          },
-          {
-            "id": 97,
-            "name": "Watcha",
-            "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
-          },
-          {
-            "id": 356,
-            "name": "wavve",
-            "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
-          }
-        ],
-        "watchLink": "https://www.themoviedb.org/movie/266-le-mepris/watch?locale=KR",
-        "tmdbUrl": "https://www.themoviedb.org/movie/266",
-        "imdbId": "tt0057345",
+        "providers": [],
+        "watchLink": null,
+        "tmdbUrl": "https://www.themoviedb.org/movie/8073",
+        "imdbId": "tt0057869",
         "demo": false
       },
       {
@@ -20387,9 +20556,9 @@ window.KINOSIS_CATALOG = {
           "Shochiku"
         ],
         "artSeed": true,
-        "voteAverage": 8.031,
-        "voteCount": 491,
-        "popularity": 3.866,
+        "voteAverage": 8.026,
+        "voteCount": 493,
+        "popularity": 4.2853,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "노리코는 아내를 잃고 혼자된 아버지 소미야 교수를 돌보며 행복하게 살고 있지만, 소미야 교수와 고모 마사는 노리코의 장래를 염려한다. 아버지를 홀로 두고 자신만의 행복을 위해 시집가기를 꺼려 하는 딸을 위해 아버지와 고모는 마치 아버지가 재혼하려는 것처럼 노리코를 속인다. 재혼을 결심한 아버지에게 배신감을 느낀 노리꼬는 사다께와 선보기로 결심한다. 사다께를 마음에 들어 하면서도 아버지에 대한 서운함과 그를 남겨두고 떠나야 한다는 사실에 괴로워한다.",
@@ -20403,13 +20572,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/20530/watch?locale=KR",
@@ -20443,8 +20612,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.9,
-        "voteCount": 331,
-        "popularity": 3.0547,
+        "voteCount": 333,
+        "popularity": 4.1641,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "딸 미치코와 함께 살고 있는 초로의 신사 히라야마. 히라야마는 친한 친구로부터 딸을 결혼시키라는 이야기를 듣지만 자신의 눈에 비친 딸은 어리게만 보인다. 이후 술에 취한 중학교 은사를 집까지 배웅했다가, 그 옛날 아름다웠던 은사의 딸이 결혼도 하지 않은 채 아버지를 걱정하며 늙고 초췌한 모습으로 변해있는 모습을 보고 딸 미치코를 떠올린다.\r 일본영화계 전체가 하향세를 그릴 즈음 오즈와 노다 콤비가 만든 마지막 작품이자 오즈의 유작. 실제 미혼으로 평생을 살았던 오즈가 어머니에 대해 느끼는 애정은 남달랐고, 이 작품의 시나리오 집필 중에 어머니를 잃은 오즈가 바라보는 노년의 고독 또한 다른 사람들보다 더욱 가혹하고 엄격할 수밖에 없어 보인다. 밝고 유머러스한 화면의 저변에 흐르는 적막감이 선명하게 그려져 가슴을 에이는 이 영화는 이제까지의 작품 중 최고의 원숙미를 자랑하는 영화다. 부드러운 유머와 함께 이제까지 즐겨 다루어왔던 이전 테마로 다시 돌아간 작품이다.",
@@ -20458,13 +20627,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/50759/watch?locale=KR",
@@ -20514,9 +20683,9 @@ window.KINOSIS_CATALOG = {
           "Shochiku"
         ],
         "artSeed": true,
-        "voteAverage": 7.713,
-        "voteCount": 327,
-        "popularity": 3.5039,
+        "voteAverage": 7.72,
+        "voteCount": 329,
+        "popularity": 2.5507,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "오밀조밀 모여 서로가 서로에 대해 훤히 알고 지내는 마을에서 이웃들간에 사소한 여러 가지 일들이 벌어진다. 접촉이 많으니 만큼 별 것 아닌 마찰도 많고 서로에 대한 구설수도 많다. 보수적인 이웃사람들로부터 문제아로 손가락질받는 신세대 부부는 텔레비젼을 갖고 있고, 그래서 그 집에는 동네 아이들이 항상 들끓는다. 어른들은 아이들이 신세대 부부와 접촉하는 것을 못마땅해 하며 눈살을 찌푸린다. 그 집에 모이는 아이들 중에는 미노루와 이사무 형제도 끼어 있는데, 부모에게 텔레비젼을 사달라고 조른다. 부모는 안된다고 딱 잘라 말하지만, 어린 두 꼬마는 묵비권을 행사하며 불만을 표시한다. 가족들에게는 물론 이웃 어른에게나 학교 선생님에게까지도 계속되는 침묵의 시위는 많은 문제를 야기시킨다. 아침인사를 먼저 건낸 이웃집 아주머니는 아이들의 묵묵부답이 부모가 시켜서 일부러 모른 척하는 것이 아닐까 하는 오해를 하게 되고, 이것은 이웃간의 불화를 조장하는 하나의 시발점이 된다.",
@@ -20530,13 +20699,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/28276/watch?locale=KR",
@@ -20576,9 +20745,9 @@ window.KINOSIS_CATALOG = {
           "Excelsa Film"
         ],
         "artSeed": true,
-        "voteAverage": 8.011,
+        "voteAverage": 8,
         "voteCount": 996,
-        "popularity": 2.936,
+        "popularity": 4.4275,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "제2차 세계대전 말기 로마가 독일에 의해 점령되었던 시기에 실제로 일어났던 사건에서 소재를 취해 재구성한 영화. 연인의 밀고로 체포되어 사살된 레지스탕스 지도자, 레지스탕스를 돕다가 처형된 신부, 게슈타포에 끌려가는 애인을 향해 달려가다 총에 맞아 죽은 여인의 이야기 등이 엮여있다.",
@@ -20592,13 +20761,13 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 2623,
             "name": "Artiflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/307-roma-citta-aperta/watch?locale=KR",
@@ -20636,7 +20805,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.6,
         "voteCount": 433,
-        "popularity": 2.6599,
+        "popularity": 2.2363,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "1947년, 제2차 세계대전이 끝나고 폐허의 흔적으로 가득한 베를린에서 생계의 위협 속에 어린 에드문트는 먹거리와 일거리를 찾아 거리로 나선다. 에드문트의 형은 전쟁이 끝난 후 징용을 당할지도 모른다는 공포에 떨며 집안에 틀어박혀 있고, 아버지는 전쟁의 세파를 겪고 난 후 병들어 누워있으며, 누이는 밤마다 카페에서 일을 한다. 에드문트는 거리를 헤매다 학교의 선생님을 만난다. 나치 잔당의 일원이었던 선생님은 에드문트를 사주해 아픈 아버지를 독살하도록 유도하는데...",
@@ -20650,7 +20819,7 @@ window.KINOSIS_CATALOG = {
             "id": 701,
             "name": "FilmBox+",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/8016-germania-anno-zero/watch?locale=KR",
@@ -20684,7 +20853,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.514,
         "voteCount": 364,
-        "popularity": 2.1257,
+        "popularity": 2.2886,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "영화적 리얼리즘의 새로운 영토를 개척한 영화로 평가된다. 다양한 유형의 인물들을 통해 전쟁 중의 황량한 물질적, 육체적 조건들이 사실적인 모습으로 묘사되고 있다.  1943년 연합군이 시실리에 상륙했을 때를 시작으로 시간과 공간이 모두 상향 이동된 여섯 개의 에피소드들로 구성되어 있으며, 이 에피소드들은 모두 전쟁의 의미가 고통과 죽음뿐이라는 메시지를 전달한다.  2차 대전 말기, 연합군이 이탈리아 남부에 상륙하여 독일군을 차례로 격퇴시키며 북부로 진격해 올라가는 과정에서 있었던 여러 가지 사건들을 다룬 작품. 로셀리니는 여기서 군인, 민간인, 레지스탕스, 그리고 수도원의 수도사들 등 다양한 인물군상을 등장시켜 특정한 역사적 국면에 놓여 있던 특정한 공간의 사람들에 대한 완벽한 프레스코화를 그려내는 데 성공했다.",
@@ -20698,7 +20867,7 @@ window.KINOSIS_CATALOG = {
             "id": 701,
             "name": "FilmBox+",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hfooLkJnxKlZRzY1yNK8ryKiijf.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/8429-paisa/watch?locale=KR",
@@ -20740,8 +20909,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.7,
-        "voteCount": 948,
-        "popularity": 3.7678,
+        "voteCount": 950,
+        "popularity": 3.8019,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "영화 <평화>를 촬영하기 위해 히로시마에 온 프랑스 여배우 '그녀'는 일본인 건축가, '그'와 우연히 만나 이틀간의 관계를 가진다. 그러나 히로시마에 머물러 달라는 남자의 청을 무언가에 사로잡혀 있는 듯한 그녀는 거절한다. 그녀에겐 고향 느베르에서 자신의 첫사랑인 독일군 병사와의 사랑의 대가로 죽음을 목격하고, 그 사랑의 이름으로 지하실에 감금되어 끔찍한 고통을 겪은 상처가 존재한다. 사랑으로 인한 좌절과 고통, 그리고 절망이라는 이름의 과거가 떠나질 않는다. 원자폭탄이 투하된 도시, 히로시마에서 그녀의 고통스러웠던 과거가 현실과 중첩되면서 그와 그녀의 침묵의 대화는 이어진다.",
@@ -20755,7 +20924,7 @@ window.KINOSIS_CATALOG = {
             "id": 11,
             "name": "MUBI",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/x570VpH2C9EKDf1riP83rYc5dnL.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/k7iSlvgWzZuO4zU5PcBjhABMuia.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/5544-hiroshima-mon-amour/watch?locale=KR",
@@ -20798,9 +20967,9 @@ window.KINOSIS_CATALOG = {
           "Les Films Tamara"
         ],
         "artSeed": true,
-        "voteAverage": 7.438,
-        "voteCount": 552,
-        "popularity": 3.3241,
+        "voteAverage": 7.4,
+        "voteCount": 553,
+        "popularity": 3.5181,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "바로크풍의 거대한 성을 배경으로 남녀가 서로 다른 과거의 기억을 떠올린다. 남자는 여자에게 둘이 예전에 서로 사랑했고, 그녀가 정한 약속을 지키기 위해 자신이 왔으며, 이제 그녀를 데려가겠다고 말한다. 하지만 여자는 남자의 주장을 부인하는데...",
@@ -20814,13 +20983,13 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/4024-l-annee-derniere-a-marienbad/watch?locale=KR",
@@ -20856,7 +21025,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7,
         "voteCount": 213,
-        "popularity": 1.7279,
+        "popularity": 1.569,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "장은 우연히 보러 간 연극에서 여배우 자닌을 만난다. 이내 두 사람은 깊은 사이로 발전하게 된다. 장은 그녀와 함께 살기 위해 아내와 아이들을 버리고 집을 나온다. 그러나 장이 친구의 배신으로 국장직에서 밀려나게 되고 그 스트레스로 신장병이 재발하게 되면서 두 사람의 사랑에 위기가 찾아온다. 그러던 어느날, 장의 아내가 몰래 자닌에게 찾아와 자신이 죽을 병에 걸렸음을 알리며 마지막 남은 시간을 남편과 함께 보낼 수 있게 해달라고 부탁한다. 자닌은 장과 헤어진 후 여배우에서 디자이너로 변신한다. 한편 르네는 아버지의 고루한 농장 경영에 환멸을 느끼고 집을 뛰쳐나와 파리의 의류회사에 취직한다. 보잘것없는 학력이지만 르네는 타고난 성실근면함으로 말단 직원에서 직원 200명을 거느린 공장장으로 승진하게 된다. 그러나 최신 공정이 도입되고 경쟁이 치열해지면서 르네의 위치는 점점 불안해지게 되고, 결국 경쟁에서 밀려나 지방에 있는 공장으로 자리를 옮기게 된다. 가족들과도 헤어져 회사를 위해 온몸을 바쳐 일하지만 희망은 점점 멀어져간다. 결국 르네는 회사의 디자이너 자닌으로부터 레스토랑의 매니저로 가라는 굴욕적인 제안을 받게 된다. 자닌은 2년이라는 시간이 흘렀어도 여전히 그를 잊지 못한다. 르네에게 회사의 방침을 전달하러 내려간 시골에서 그녀는 우연히 그렇게 그리워하던 장을 만나지만 그의 아내가 여전히 건강하다는 이야기를 듣고 자신이 속았음을 깨닫는데...",
@@ -20870,19 +21039,19 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=KR",
@@ -20925,9 +21094,9 @@ window.KINOSIS_CATALOG = {
           "Buster Keaton Productions"
         ],
         "artSeed": true,
-        "voteAverage": 7.918,
-        "voteCount": 1450,
-        "popularity": 6.2936,
+        "voteAverage": 7.916,
+        "voteCount": 1451,
+        "popularity": 6.0013,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "증기기관차 ‘제너럴’과 여자친구 애너벨 리를 사랑하는 기관사 조니는 남북전쟁이 발발하자 남군에 입대하려 하지만 거절당한다. 이 때문에 애너벨은 그가 겁쟁이라고 생각하게 된다. 어느 날 북군이 애너벨이 타고 있는 제너럴을 훔쳐가자, 조니는 자신의 두 연인을 구해내고 용기를 입증하려 하는데...",
@@ -20941,19 +21110,19 @@ window.KINOSIS_CATALOG = {
             "id": 2623,
             "name": "Artiflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
           },
           {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           },
           {
             "id": 538,
             "name": "Plex",
             "type": "ads",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/blAEhvx3XX8sV0fFVFk88FFjubs.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/961-the-general/watch?locale=KR",
@@ -20981,8 +21150,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.851,
-        "voteCount": 338,
-        "popularity": 2.7648,
+        "voteCount": 339,
+        "popularity": 3.0288,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "신혼부부 버스터와 시빌은 조립식 이동가옥을 선물받는다. 하지만 시빌을 쫓아다니던 버스터의 연적이 조립상자의 번호를 바꿔버리는 통에 집은 점점 이상한 모양새가 되어간다. 달콤한 신혼을 보내야 할 첫 일주일 동안 매일 같이 사고가 발생하는데 버스터는 과연 이 난관을 극복할 수 있을까?",
@@ -21038,7 +21207,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.601,
         "voteCount": 405,
-        "popularity": 2.2596,
+        "popularity": 2.3911,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "윌리엄 캔필드 시니어(어니스트 토렌스)는 미시시피강에서 사람과 짐을 운반하는 증기보트의 선주이다. 그는 어느 날 신흥부호인 킹(톰 맥과이어)이 거대한 자본을 앞세워 들여온 최신식 증기보트에 의해 위기에 처한다. 때마침 대학을 마친 아들 윌리엄 캔필드 주니어(버스터 키튼)가 돌아온다는 소식을 들은 아버지는 아들과 함께 이 위기상황을 극복할 수 있을 것이라 다짐한다.  그러나 돌아온 아들은 심약하고 어리바리한 그야말로 도시에 물든 대학졸업생에 지나지 않는다. 어떤 힘든 일도 감당해내는 아버지는 겉멋만 들어 돌아온 아들에게 실망하는데 한술 더 떠 아들은 아버지의 원수인 킹의 딸에게 반해버린다.",
@@ -21049,10 +21218,16 @@ window.KINOSIS_CATALOG = {
         "logoUrl": null,
         "providers": [
           {
+            "id": 2623,
+            "name": "Artiflix",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
+          },
+          {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/25768-steamboat-bill-jr/watch?locale=KR",
@@ -21083,7 +21258,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 6.473,
         "voteCount": 110,
-        "popularity": 1.3246,
+        "popularity": 1.6209,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "어리석고 뻔뻔할 정도로 무성의하고 여자라면 가리지 않지만 위험한 상황에서는 비겁하기 그지 없는 카람진 백작은 무심한 미국 외교관의 아내, 앨렌 휴즈를 유혹하는데...",
@@ -21097,7 +21272,7 @@ window.KINOSIS_CATALOG = {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/35227-foolish-wives/watch?locale=KR",
@@ -21131,7 +21306,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 7.1,
         "voteCount": 44,
-        "popularity": 1.1187,
+        "popularity": 1.1818,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -21145,7 +21320,7 @@ window.KINOSIS_CATALOG = {
             "id": 2285,
             "name": "JustWatch TV",
             "type": "free",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/y2wjCLxPrzPbghH07Sekqw5D1bE.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aJXLTvX11u4fBLMPRVJZVKkLYHP.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/42537-the-wedding-march/watch?locale=KR",
@@ -21178,7 +21353,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 6.5,
         "voteCount": 51,
-        "popularity": 1.2272,
+        "popularity": 1.3333,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "",
@@ -21251,9 +21426,9 @@ window.KINOSIS_CATALOG = {
           "Brooksfilms"
         ],
         "artSeed": true,
-        "voteAverage": 8.052,
-        "voteCount": 4035,
-        "popularity": 12.5635,
+        "voteAverage": 8.1,
+        "voteCount": 4042,
+        "popularity": 10.9925,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "차마 보기 힘들 만큼의 선천적인 기형을 가지고 태어나 시장에서 사람들에게 비인간적인 학대를 받으며 살아가는 '엘리펀트 맨', 존을 발견한 의사 프레디는 그를 병원으로 데려와 보살펴준다. 존은 흉측한 외모와는 달리 지적이고 선한 마음을 지닌 인물이였다. 그에 대한 기사와 연구논문이 세상에 알려지자 사람들은 그를 보기 위해 찾아오기 시작한다.",
@@ -21302,9 +21477,9 @@ window.KINOSIS_CATALOG = {
           "DEG"
         ],
         "artSeed": true,
-        "voteAverage": 7.61,
-        "voteCount": 3932,
-        "popularity": 11.472,
+        "voteAverage": 7.609,
+        "voteCount": 3939,
+        "popularity": 10.2669,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "미국 작은 도시에 사는 순수한 남학생 제프리는 산책 중 잘린 귀 한쪽을 발견하고 윌리엄 형사에게 사건을 신고한다. <블루 벨벳>을 노래하는 매력적인 여가수 도로시가 사건의 용의자로 의심받자 제프리는 묘한 끌림과 호기심으로 그녀의 아파트에 몰래 숨어들어가지만 곧 들키고 만다. 그때, 갑자기 정체불명의 남자 프랭크가 들이닥쳐 옷장에 숨게 되고 이내 그곳에서 충격적인 장면을 엿보게 되는데...",
@@ -21373,9 +21548,9 @@ window.KINOSIS_CATALOG = {
           "Asymmetrical Productions"
         ],
         "artSeed": true,
-        "voteAverage": 7.55,
-        "voteCount": 3030,
-        "popularity": 13.4338,
+        "voteAverage": 7.5,
+        "voteCount": 3039,
+        "popularity": 12.77,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "아름다운 아내와 살고 있는 성공한 뮤지션. 그러나 그들의 결혼 생활은 일종의 침체상태다. 너무나 일상적인, 간단한 몇마디만을 주고 받을 뿐인 한 남자와 한 여자. 낯선 이방인의 돌연한 출연이 있기 전까지 그들의 삶엔 변화가 없다. 현관 층계에 놓인 한 장의 봉투, 그 안에 들어있는 의문의 비디오 테잎. 외부의 누군가에 의해 찍혀진 집안 내부. 밤이면 남자는 클럽에서 색소폰을 분다. 그리고 집에 오면 아내와 아무런 느낌도 없이 사랑을 나눈다. 그는 심한 두통에 시달린다. 이어 피범벅이 된 여자의 시체가 나타난다. 살인자가 되어버린 남자. 교도소 독방에 웅크리고 앉은 그는 여전히 두통에 시달리고, 어느 순간 그와 전혀 상관없는 젊은 정비공이 그의 자리를 차지하고 있다. 풀려나온 정비공은 다시 일을 하고, 윤기나는 금발에 그린듯 촉촉한 입술의 여인이 검은색 캐딜락과 함께 나타난다. 그리고 이어서 임상적이고 단색적이지만 숨막히는 첫번째 이야기만큼 화려하면서도 색채적인 두번째 이야기가 시작되는데...",
@@ -21389,7 +21564,7 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/638-lost-highway/watch?locale=KR",
@@ -21438,8 +21613,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.7,
-        "voteCount": 731,
-        "popularity": 5.0156,
+        "voteCount": 732,
+        "popularity": 4.8284,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "한 남자가 자동차를 몰고 황량한 벌판을 달려간다. 그는 지나치는 사람들을 눈여겨보며 자신의 차에 동승할 사람을 찾는다. 그가 찾고 있는 사람은 수면제를 먹고 누운 자신이 위로 흙을 덮어줄 사람, 돈은 얼마든지 주겠다는 그의 간절한 부탁에도 사람들은 고개를 젓는다. 앳된 얼굴의 군인도, 온화한 미소의 신학도도 ‘죽음’이란 단어 앞에선 단호하게 외면할 뿐. 그런데 드디어 한 노인이 그의 제안을 수락한다.",
@@ -21453,19 +21628,19 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/30020/watch?locale=KR",
@@ -21499,7 +21674,7 @@ window.KINOSIS_CATALOG = {
         "artSeed": true,
         "voteAverage": 8,
         "voteCount": 458,
-        "popularity": 3.4234,
+        "popularity": 3.1875,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "버스에서 모흐센 마흐말바프의 책을 읽고 있는 실업자 알리 사브지안에게 어느 상류층 여인이 말을 걸어온다. 알리는 자신도 모르게 자신이 바로 마흐말바프라고 거짓말을 한다. 이 말을 믿고 알리에게 호감을 느낀 여자는 그를 집에 초대하는데 그곳에서 그녀의 남편과 예술에 관심이 많은 아들을 만나게 된다. 알리는 그들의 집을 배경으로 하고, 아들을 주인공으로 하는 영화를 찍겠다는 말로 이들의 환심을 산다.그러나 알리의 거짓말을 알게 된 가족은 화가 나 알리를 고소하고 인자한 판사는 가족에게 고소를 취하하도록 설득한다. 알리가 재판을 받고 있는 동안 카메라는 영화 밖으로 시선을 옮기는데, 이 영화의 감독인 압바스 키아로스타미가 모든 재판 상황을 소재로 삼아 영화를 계속 진행시키기로 한다.",
@@ -21544,8 +21719,11 @@ window.KINOSIS_CATALOG = {
           "kid",
           "boy",
           "admiring",
+          "adoring",
           "amused",
           "appreciative",
+          "assertive",
+          "compassionate",
           "familiar",
           "angry teacher",
           "children",
@@ -21567,9 +21745,9 @@ window.KINOSIS_CATALOG = {
           "Farabi Cinema"
         ],
         "artSeed": true,
-        "voteAverage": 7.918,
-        "voteCount": 449,
-        "popularity": 3.653,
+        "voteAverage": 7.9,
+        "voteCount": 451,
+        "popularity": 3.4171,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "공포의 숙제 검사 시간이 돌아왔다! 이란의 북부 지방, 코케 마을의 한 초등학교. 신나게 떠들던 아이들은 선생님의 출현으로 순간 긴장에 휩싸인다. 바로 숙제 검사 시간. 네마자데는 근심 어린 표정으로 선생님의 동정을 기다린다. 어제 저녁을 사촌의 집에서 보내는 바람에 숙제를 공책에 하지 못한 것이다. 결국 선생님의 꾸중을 들은 네마자데는 울음을 터트리고 짝꿍인 아마드의 마음을 애처롭게 만든다. 방과 후 집에 돌아온 아마드는 숙제를 하기 위해 가방을 여는데 똑같은 모양의 공책이 두 권! 아뿔싸! 실수로 네마자데의 공책을 가져온 아마드의 눈앞에는 선생님께 추궁 당하고 훌쩍이던 친구 네마자데의 모습이 어른거리기 시작한다. 아마 내일 선생님은 네마자데를 창밖으로 던져 버릴 것이다. 결국 착한 아마드는 친구의 공책을 집어들고 집을 나선다. 네마자데가 산다는 마을 포시테를 향해...",
@@ -21611,8 +21789,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 7.017,
-        "voteCount": 459,
-        "popularity": 3.1185,
+        "voteCount": 460,
+        "popularity": 3.2739,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "영국인 작가 제임스 밀러는 새로 펴낸 <기막힌 복제품>이란 책의 강연차 들른 이탈리아 토스카나에서 그녀와 만나게 된다. 아름답고 예민한 그녀는 홀로 아이를 키우며 골동품 가게를 운영하는 프랑스 여성으로 <기막힌 복제품>의 팬이다. 그의 책에 매료된 그녀는 하루 동안 토스카나의 시골지역을 소개해 주겠다고 자청하고, 함께 하면서 서로에 대해 알아가게 될 때쯤 두 사람은 ‘진짜 부부’인 척하는 장난스러운 역할극을 시작한다. 가벼운 마음으로 시작한 그들의 역할극은 점점 진지해지고, 진실과 거짓이 모호한 감정의 소용돌이 속으로 휘말리기 시작하는데...",
@@ -21626,37 +21804,37 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 1883,
             "name": "TVING",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/qHThQdkJuROK0k5QTCrknaNukWe.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/w4ov8Zx73eu2TjHsDs5EmiuYKA4.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/48303-copie-conforme/watch?locale=KR",
@@ -21716,9 +21894,9 @@ window.KINOSIS_CATALOG = {
           "SF Studios"
         ],
         "artSeed": true,
-        "voteAverage": 8.141,
-        "voteCount": 3441,
-        "popularity": 9.9734,
+        "voteAverage": 8.14,
+        "voteCount": 3443,
+        "popularity": 8.8538,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "14세기 중엽, 기사 안토니우스 블로크는 십자군 전쟁에 참여했다가 10년만에 고국 스웨덴으로 돌아왔으나 페스트가 온 나라를 휩쓸어 고국은 황폐해져 있다. 그의 종자 옌스와 함께 고향으로 돌아가는 여정에서 기사는 죽음의 사자의 방문을 받는다. 기사는 자신의 죽음을 지연시키기 위해 사자에게 체스 게임을 제안하고 사자는 그에 동의한다. 승산이 없는 이 내기에서 블로크가 원하는 것은 체스 게임이 진행되는 동안을 말미 삼아 신의 존재와 구원에 대한 확신을 얻는 것이다. 죽음을 앞둔 삶의 허무를 극복하기 위해 기사는 교회를 찾아가기도 하고 마녀로 낙인이 찍힌 소녀 옆을 지키기도 하지만 그 어디에도 죽음만이 보일 뿐, 신의 구원을 찾을 수 없다. 그러던 중 기사는 광대 부부와 그들의 아기를 만나 충만한 평화를 느끼게 되고, 그들을 지키기 위해 동행을 자처한 기사는 자신의 시종 옌스와 그를 따라나선 여인과 일행을 이루어 길을 떠나는데…",
@@ -21732,7 +21910,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/490-det-sjunde-inseglet/watch?locale=KR",
@@ -21780,9 +21958,9 @@ window.KINOSIS_CATALOG = {
           "SF Studios"
         ],
         "artSeed": true,
-        "voteAverage": 8.121,
+        "voteAverage": 8.1,
         "voteCount": 2475,
-        "popularity": 4.8054,
+        "popularity": 5.2904,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "유명 연극배우인 엘리자벳은 연극 <엘렉트라>를 공연하던 중 갑자기 말을 잃게 되고, 신경쇠약으로 병원을 거쳐 요양을 떠나게 된다. 그녀의 요양에 동행한 간호사 알마는 엘리자벳에 대해 간호사로서의 친절과 인간적인 호감, 동경 등을 느끼지만 말이 없는 엘리자벳에게 자기를 털어놓는 과정에서 그녀가 자신을 구경거리로 관찰하고 있다는 사실을 깨닫고 공격적인 비난의 태도를 취하게 된다.",
@@ -21796,37 +21974,37 @@ window.KINOSIS_CATALOG = {
             "id": 356,
             "name": "wavve",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           },
           {
             "id": 2623,
             "name": "Artiflix",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5MsbQCp7FpYr3INLpeKDLJrlDh8.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/hO4tZhtSJ7VrVnJusimkY3MltSx.png"
           },
           {
             "id": 356,
             "name": "wavve",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "rent",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           },
           {
             "id": 3,
             "name": "Google Play Movies",
             "type": "buy",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aZRENwYILujqs0RVOZutTh0BVGV.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/797-persona/watch?locale=KR",
@@ -21863,8 +22041,8 @@ window.KINOSIS_CATALOG = {
         ],
         "artSeed": true,
         "voteAverage": 8.074,
-        "voteCount": 1849,
-        "popularity": 6.7168,
+        "voteCount": 1851,
+        "popularity": 5.2394,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
         "overview": "보르그 교수는 78의 나이로 한평생 의사로써 살아온 학자이다. 그는 룬트에 있는 성당에서 명예 학위를 수여받기로 되어있다. 그날 새벽 그는 이상한 꿈을 꾼다. 기분이 상한 그는 비행기 대신 차로 룬트까지 가기로 결심하고 며느리 마리안느도 그를 따라나서기로 한다. 가는 도중 그의 식구들이 여름마다 와서 지내던 시골집에 도착한다. 그는 거기서 자신이 처음 사랑했던 사촌 사라와 그녀와 결국 결혼한 형 지그프로트를 회상한다.이때 이집에 산다는 사라라는 아가씨가 이탈리아로 가는 중이라면서 차를 얻어탈 것을 제의한다. 그는 사라에게서 자신의 젊은 시절을 회상한다. 가는 도중 이번에는 싸움이 잦은 부부를 보르그 교수의 차에 태우게 된다. 이들 부부는 서로 사랑하지 않고 미워하나 이들에게서도 자신의 결혼 생활을 기억해 낸다. 어머니를 만나는 보르그를 본 마리안은 얼음처럼 차가운 어머니를 보고 왜 남편이 차갑고 외로운지 이해하게 된다.",
@@ -21878,7 +22056,7 @@ window.KINOSIS_CATALOG = {
             "id": 97,
             "name": "Watcha",
             "type": "subscription",
-            "logoUrl": "https://image.tmdb.org/t/p/w92/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg"
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
           }
         ],
         "watchLink": "https://www.themoviedb.org/movie/614-smultronstallet/watch?locale=KR",
@@ -21887,51 +22065,84 @@ window.KINOSIS_CATALOG = {
         "demo": false
       },
       {
-        "id": 12761,
-        "title": "가을 소나타",
-        "originalTitle": "Höstsonaten",
-        "year": 1978,
-        "releaseDate": "1978-10-08",
+        "id": 5961,
+        "title": "화니와 알렉산더",
+        "originalTitle": "Fanny och Alexander",
+        "year": 1982,
+        "releaseDate": "1982-12-17",
         "director": "잉마르 베리만",
-        "runtime": 93,
+        "runtime": 188,
         "genres": [
+          "판타지",
           "드라마",
-          "음악"
+          "미스터리"
         ],
         "keywords": [
+          "dying and death",
+          "child abuse",
+          "sibling relationship",
+          "funeral",
           "loss of loved one",
-          "marriage",
-          "pianist",
-          "invalid",
-          "mother daughter reunion",
-          "mother daughter relationship",
-          "introspective",
-          "intimate",
+          "sweden",
+          "bishop",
+          "theatre group",
+          "child prodigy",
+          "dysfunctional family",
+          "ghost",
+          "hamlet",
+          "shocking",
+          "turn of the century",
+          "christmas",
+          "1900s",
+          "20th century",
           "dramatic",
-          "intense",
-          "depressing"
+          "suspenseful",
+          "harsh",
+          "hopeful"
         ],
         "productionCompanies": [
-          "Suede Film",
+          "Cinematograph AB",
+          "Svenska Filminstitutet",
+          "SVT",
+          "Gaumont",
           "Personafilm",
-          "ITC Entertainment"
+          "Tobis"
         ],
         "artSeed": true,
-        "voteAverage": 8,
-        "voteCount": 724,
-        "popularity": 4.8372,
+        "voteAverage": 7.763,
+        "voteCount": 909,
+        "popularity": 4.9157,
         "boxOfficeRank": null,
         "boxOfficeAudience": null,
-        "overview": "어느 가을날 목사의 아내 에바는 유명 피아니스트인 어머니 샬롯을 집으로 초대한다. 연주 여행차 전세계를 순회하느라 바쁜 샬롯은 최근 오랜 연인 레오나르도의 죽음으로 상심한 상태다. 7년 만에 어머니를 만난 에바는 반갑게 샬롯을 맞이하지만, 샬롯이 미처 몰랐던 사실을 이야기하면서 둘 사이가 서먹해진다. 심각한 신체 장애를 가진 채 요양원에 방치되어 있던 여동생 헬레나가 2년 전부터 에바의 집에서 함께 지내고 있었던 것. 샬롯은 예술가로서 명성과 경력을 위해 자식들을 돌보지 않고 일에만 몰두해 왔던 것이다. 자의식 강한 샬롯은 자신의 선택을 애써 정당화하려 하지만, 에바는 무책임한 샬롯에 대한 원망과 애증을 안고 있다. 마침내 두 모녀는 오래 묵혀두었던 서로의 상처를 드러내며 감정적 회오리를 겪는다.",
-        "tagline": "아름다운 엄마, 외로운 딸... 그들이 펼치는 화해의 이중주",
-        "posterUrl": "https://image.tmdb.org/t/p/w500/7q8H7zlKLffcqcxoyL4ivdC1aIh.jpg",
-        "backdropUrl": "https://image.tmdb.org/t/p/w1280/ozNapY9iczRr6FYKRbLLM00szCW.jpg",
+        "overview": "극장을 운영하고 있는 에카달 가족의 집에서 크리스마스 파티가 열리고 있다. 화니와 알렉산더는 이 집의 첫째 아들인 오스카 에카달의 자녀로 할머니 헬레나의 사랑을 독차지하고 있다.  그러나 어느날 가족들이 지켜보는 가운데 연극 무대에서 연습중이던 오스카가 갑자기 쓰러져 숨을 거두고 만다. 이후 시간이 흘러, 수업을 마치고 집에 돌아온 화니와 알렉산더에게 에밀리가 목사와 결혼한다는 놀라운 사실을 발표한다. 이에 화니와 알렉산더는 엄마를 따라 목사의 집으로 들어간다. 그러나 목사는 화니와 알렉산더의 생활을 하나하나 억압하며 간섭을 한다. 에밀리는 목사의 횡포에 질려 이혼을 요구하나 아이들을 빼앗겠다는 협박만을 받는데...",
+        "tagline": "",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/juvLwVTZiinswdzP6ASYx4HMdu2.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/8reX3CMog1QHqGoym2Esvuk5MnK.jpg",
         "heroBackdropUrl": null,
         "logoUrl": null,
-        "providers": [],
-        "watchLink": null,
-        "tmdbUrl": "https://www.themoviedb.org/movie/12761",
-        "imdbId": "tt0077711",
+        "providers": [
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          },
+          {
+            "id": 97,
+            "name": "Watcha",
+            "type": "subscription",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ppQIS7UMtBwJSspSoGqDR8wO1Gr.png"
+          },
+          {
+            "id": 356,
+            "name": "wavve",
+            "type": "rent",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/mh1vBeclG7Eq15TjRnmyustqp3v.png"
+          }
+        ],
+        "watchLink": "https://www.themoviedb.org/movie/5961-fanny-och-alexander/watch?locale=KR",
+        "tmdbUrl": "https://www.themoviedb.org/movie/5961",
+        "imdbId": "tt0083922",
         "demo": false
       }
     ]
