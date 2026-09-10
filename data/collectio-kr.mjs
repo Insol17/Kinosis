@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-09T21:44:31.362Z",
+  "updatedAt": "2026-09-10T21:41:11.278Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,14 +55,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "벌집의 정령",
@@ -70,24 +65,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
-    },
-    {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
-    },
-    {
-      "title": "중국식 룰렛",
+      "title": "불안은 영혼을 잠식한다",
       "creator": "Rainer Werner Fassbinder",
-      "year": "1976"
+      "year": "1974"
     },
     {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
     },
     {
       "title": "남쪽",
@@ -170,6 +160,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1991"
     },
     {
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
+    },
+    {
       "title": "어파이어",
       "creator": "Christian Petzold",
       "year": "2023"
@@ -178,6 +173,16 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
     },
     {
       "title": "바바라",
@@ -220,6 +225,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1998"
     },
     {
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
+    },
+    {
       "title": "피카소의 비밀",
       "creator": "Henri-Georges Clouzot",
       "year": "1956"
@@ -238,11 +248,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
     },
     {
       "title": "비리디아나",
@@ -323,6 +328,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "마리아 브라운의 결혼",
       "creator": "Rainer Werner Fassbinder",
       "year": "1979"
+    },
+    {
+      "title": "중국식 룰렛",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1976"
     },
     {
       "title": "성스러운 창녀를 주목하라",
