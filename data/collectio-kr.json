@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-10T21:41:11.278Z",
+  "updatedAt": "2026-09-11T21:45:57.662Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,19 +55,19 @@
       "year": "1999"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
+      "title": "페트라 폰 칸트의 쓰디쓴 눈물",
       "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
+      "year": "1971"
     },
     {
       "title": "키메라",
@@ -75,19 +75,29 @@
       "year": "2023"
     },
     {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
-    },
-    {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "노나",
@@ -170,16 +180,6 @@
       "year": "2023"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -225,11 +225,6 @@
       "year": "1998"
     },
     {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
-    },
-    {
       "title": "피카소의 비밀",
       "creator": "Henri-Georges Clouzot",
       "year": "1956"
@@ -248,6 +243,11 @@
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
+    },
+    {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
     },
     {
       "title": "비리디아나",
@@ -343,11 +343,6 @@
       "title": "카젤마허",
       "creator": "Rainer Werner Fassbinder",
       "year": "1969"
-    },
-    {
-      "title": "페트라 폰 칸트의 쓰디쓴 눈물",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1971"
     },
     {
       "title": "사계절의 상인",
