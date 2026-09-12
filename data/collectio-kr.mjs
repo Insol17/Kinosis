@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-11T21:45:57.662Z",
+  "updatedAt": "2026-09-12T21:28:55.193Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,19 +60,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2014"
     },
     {
-      "title": "파일럿",
+      "title": "운디네",
       "creator": "Christian Petzold",
-      "year": "1995"
-    },
-    {
-      "title": "페트라 폰 칸트의 쓰디쓴 눈물",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1971"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "year": "2020"
     },
     {
       "title": "도레미파 소녀의 피가 끓는다",
@@ -80,9 +70,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1985"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
+      "title": "몽상가의 나흘 밤",
+      "creator": "Robert Bresson",
+      "year": "1971"
+    },
+    {
+      "title": "주말",
+      "creator": "Jean Luc Godard",
+      "year": "1967"
     },
     {
       "title": "벌집의 정령",
@@ -90,14 +85,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -225,6 +220,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1998"
     },
     {
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
+    },
+    {
       "title": "피카소의 비밀",
       "creator": "Henri-Georges Clouzot",
       "year": "1956"
@@ -263,6 +263,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
@@ -343,6 +348,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "카젤마허",
       "creator": "Rainer Werner Fassbinder",
       "year": "1969"
+    },
+    {
+      "title": "페트라 폰 칸트의 쓰디쓴 눈물",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1971"
     },
     {
       "title": "사계절의 상인",
