@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-12T21:28:55.193Z",
+  "updatedAt": "2026-09-13T21:28:20.354Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,34 +55,14 @@
       "year": "1999"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
-      "title": "몽상가의 나흘 밤",
+      "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
-      "year": "1971"
+      "year": "1956"
     },
     {
-      "title": "주말",
-      "creator": "Jean Luc Godard",
-      "year": "1967"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
     },
     {
       "title": "남쪽",
@@ -93,6 +73,11 @@
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "노나",
@@ -175,6 +160,16 @@
       "year": "2023"
     },
     {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -253,11 +248,6 @@
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
-    },
-    {
-      "title": "사형수 탈옥하다",
-      "creator": "Robert Bresson",
-      "year": "1956"
     },
     {
       "title": "홀리 모터스",
