@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-13T21:28:20.354Z",
+  "updatedAt": "2026-09-14T22:33:45.169Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,14 +55,39 @@
       "year": "1999"
     },
     {
-      "title": "사형수 탈옥하다",
-      "creator": "Robert Bresson",
-      "year": "1956"
+      "title": "잇츠 낫 미",
+      "creator": "Leos Carax",
+      "year": "2024"
     },
     {
-      "title": "이제 다시 시작하려고 해",
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "어거스트 버진",
       "creator": "Jonas Trueba",
-      "year": "2024"
+      "year": "2022"
+    },
+    {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
+    },
+    {
+      "title": "중국식 룰렛",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1976"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -73,11 +98,6 @@
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
     },
     {
       "title": "노나",
@@ -135,11 +155,6 @@
       "year": "1974"
     },
     {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
-    },
-    {
       "title": "그리고 삶은 계속된다",
       "creator": "Abbas Kiarostami",
       "year": "1991"
@@ -155,19 +170,9 @@
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -250,6 +255,11 @@
       "year": "1961"
     },
     {
+      "title": "사형수 탈옥하다",
+      "creator": "Robert Bresson",
+      "year": "1956"
+    },
+    {
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
@@ -323,11 +333,6 @@
       "title": "마리아 브라운의 결혼",
       "creator": "Rainer Werner Fassbinder",
       "year": "1979"
-    },
-    {
-      "title": "중국식 룰렛",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1976"
     },
     {
       "title": "성스러운 창녀를 주목하라",
