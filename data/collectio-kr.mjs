@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-14T22:33:45.169Z",
+  "updatedAt": "2026-09-15T22:18:26.840Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,34 +55,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "잇츠 낫 미",
-      "creator": "Leos Carax",
-      "year": "2024"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
     },
     {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
-    },
-    {
-      "title": "어거스트 버진",
-      "creator": "Jonas Trueba",
-      "year": "2022"
-    },
-    {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
-    },
-    {
-      "title": "중국식 룰렛",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1976"
     },
     {
       "title": "벌집의 정령",
@@ -155,6 +140,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1974"
     },
     {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
+    },
+    {
       "title": "그리고 삶은 계속된다",
       "creator": "Abbas Kiarostami",
       "year": "1991"
@@ -168,6 +158,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
@@ -245,11 +240,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1962"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -263,11 +253,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
@@ -333,6 +318,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "마리아 브라운의 결혼",
       "creator": "Rainer Werner Fassbinder",
       "year": "1979"
+    },
+    {
+      "title": "중국식 룰렛",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1976"
     },
     {
       "title": "성스러운 창녀를 주목하라",
