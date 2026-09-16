@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-15T22:18:26.840Z",
+  "updatedAt": "2026-09-16T22:13:06.869Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,9 +55,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "불안은 영혼을 잠식한다",
@@ -65,14 +75,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1974"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
+      "title": "잇츠 낫 미",
+      "creator": "Leos Carax",
+      "year": "2024"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
       "year": "1973"
+    },
+    {
+      "title": "자마",
+      "creator": "Lucrecia Martel",
+      "year": "2017"
     },
     {
       "title": "남쪽",
@@ -160,14 +175,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -253,11 +268,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
