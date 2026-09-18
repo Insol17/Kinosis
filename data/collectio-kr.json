@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-17T22:15:17.969Z",
+  "updatedAt": "2026-09-18T21:43:50.133Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,6 +60,21 @@
       "year": "2023"
     },
     {
+      "title": "중국여인",
+      "creator": "Jean Luc Godard",
+      "year": "1967"
+    },
+    {
+      "title": "세 가지 시대",
+      "creator": "Three Ages",
+      "year": "1923"
+    },
+    {
+      "title": "우리의 환대",
+      "creator": "Our Hospitality",
+      "year": "1923"
+    },
+    {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
@@ -70,34 +85,14 @@
       "year": "2023"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
       "year": "1973"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
     },
     {
       "title": "노나",
@@ -175,6 +170,16 @@
       "year": "1997"
     },
     {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -245,6 +250,11 @@
       "year": "1962"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -258,6 +268,11 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
