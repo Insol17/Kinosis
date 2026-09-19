@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-18T21:43:50.133Z",
+  "updatedAt": "2026-09-19T21:28:55.976Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,33 +55,13 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "중국여인",
-      "creator": "Jean Luc Godard",
-      "year": "1967"
-    },
-    {
-      "title": "세 가지 시대",
-      "creator": "Three Ages",
-      "year": "1923"
-    },
-    {
-      "title": "우리의 환대",
-      "creator": "Our Hospitality",
-      "year": "1923"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
       "title": "어파이어",
       "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
@@ -90,9 +70,24 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "알레고리",
+      "creator": "Alice Rohrwacher",
+      "year": "2024"
+    },
+    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -248,11 +243,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
     },
     {
       "title": "비리디아나",
