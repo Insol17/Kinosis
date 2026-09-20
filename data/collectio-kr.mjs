@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-19T21:28:55.976Z",
+  "updatedAt": "2026-09-20T21:37:41.982Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,9 +55,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "키메라",
@@ -65,24 +65,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "불안은 영혼을 잠식한다",
       "creator": "Rainer Werner Fassbinder",
       "year": "1974"
     },
     {
-      "title": "알레고리",
+      "title": "천상의 몸",
       "creator": "Alice Rohrwacher",
-      "year": "2024"
+      "year": "2011"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "결혼한 여자",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
+      "title": "자마",
+      "creator": "Lucrecia Martel",
+      "year": "2017"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -163,6 +168,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
