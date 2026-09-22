@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-21T22:37:10.881Z",
+  "updatedAt": "2026-09-22T22:16:59.429Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,9 +55,19 @@
       "year": "1999"
     },
     {
-      "title": "알레고리",
-      "creator": "Alice Rohrwacher",
-      "year": "2024"
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "하데비치",
+      "creator": "Bruno Dumont",
+      "year": "2009"
     },
     {
       "title": "자마",
@@ -65,19 +75,19 @@
       "year": "2017"
     },
     {
-      "title": "몽상가의 나흘 밤",
-      "creator": "Robert Bresson",
-      "year": "1971"
+      "title": "일곱 번의 기회",
+      "creator": "Seven Chances",
+      "year": "1925"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
-      "title": "쿠바 리브레",
-      "creator": "Christian Petzold",
-      "year": "1996"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "벌집의 정령",
@@ -88,11 +98,6 @@
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -170,11 +175,6 @@
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -220,6 +220,11 @@
       "year": "2003"
     },
     {
+      "title": "쿠바 리브레",
+      "creator": "Christian Petzold",
+      "year": "1996"
+    },
+    {
       "title": "페트라",
       "creator": "Christian Petzold",
       "year": "1998"
@@ -250,6 +255,11 @@
       "year": "1962"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -263,11 +273,6 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
@@ -398,11 +403,6 @@
       "title": "릴 퀸퀸(에피소드 4): 알라신은 위대하다!",
       "creator": "Bruno Dumont",
       "year": "2014"
-    },
-    {
-      "title": "하데비치",
-      "creator": "Bruno Dumont",
-      "year": "2009"
     },
     {
       "title": "예수의 삶",
