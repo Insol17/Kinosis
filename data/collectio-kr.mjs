@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-22T22:16:59.429Z",
+  "updatedAt": "2026-09-23T22:21:31.299Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,39 +55,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "하데비치",
-      "creator": "Bruno Dumont",
-      "year": "2009"
-    },
-    {
-      "title": "자마",
-      "creator": "Lucrecia Martel",
-      "year": "2017"
-    },
-    {
-      "title": "일곱 번의 기회",
-      "creator": "Seven Chances",
-      "year": "1925"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
     },
     {
       "title": "벌집의 정령",
@@ -98,6 +68,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -173,6 +148,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
@@ -403,6 +383,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "릴 퀸퀸(에피소드 4): 알라신은 위대하다!",
       "creator": "Bruno Dumont",
       "year": "2014"
+    },
+    {
+      "title": "하데비치",
+      "creator": "Bruno Dumont",
+      "year": "2009"
     },
     {
       "title": "예수의 삶",
