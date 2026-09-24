@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-23T22:21:31.299Z",
+  "updatedAt": "2026-09-24T22:29:10.792Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,8 +55,23 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
+      "title": "사막의 시몬",
+      "creator": "Luis Buñuel",
+      "year": "1965"
+    },
+    {
+      "title": "7월 이야기",
+      "creator": "Guillaume Brac",
+      "year": "2018"
+    },
+    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
       "year": "2023"
     },
     {
@@ -148,11 +163,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
     },
     {
       "title": "운디네",
