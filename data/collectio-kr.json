@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-09-29T23:00:51.989Z",
+  "updatedAt": "2026-09-30T23:03:42.564Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,11 +55,6 @@
       "year": "1999"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
@@ -75,14 +70,34 @@
       "year": "2023"
     },
     {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "쿠바 리브레",
+      "creator": "Christian Petzold",
+      "year": "1996"
+    },
+    {
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
+    },
+    {
+      "title": "너는 나를 불태워",
+      "creator": "Matías Piñeiro",
+      "year": "2025"
+    },
+    {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
     },
     {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -165,11 +180,6 @@
       "year": "1997"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
@@ -208,11 +218,6 @@
       "title": "볼프스부르크",
       "creator": "Christian Petzold",
       "year": "2003"
-    },
-    {
-      "title": "쿠바 리브레",
-      "creator": "Christian Petzold",
-      "year": "1996"
     },
     {
       "title": "페트라",
@@ -318,6 +323,11 @@
       "title": "그랜드 투어",
       "creator": "Miguel Gomes",
       "year": "2024"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
       "title": "마리아 브라운의 결혼",
