@@ -334,7 +334,7 @@ window.KINOSIS_CURATIONS = {
             "runtime": 103,
             "overview": "경찰 223은 헤어진 옛 애인을 기다리며, 1달 동안 그녀에게서 연락이 오지 않으면 그녀를 잊기로 마음먹는다. 같은 시간, 마약 딜러는 자신을 배신한 마약 중개인을 제거한 뒤 술집을 찾고 그곳에서 경찰 223은 술집으로 처음 들어오는 여자를 사랑하겠노라 마음먹는다. 한편 패스트푸드점에서 일하는 점원 페이는 언제나처럼 똑같은 샐러드를 고른 경찰 663을 남몰래 좋아하고 있다. 어느 날, 경찰 663의 애인이 이별의 편지와 함께 경찰 663의 아파트 열쇠를 페이의 가게에게 맡긴다. 페이는 경찰 663이 집을 비운 사이 남아있는 그녀의 흔적을 하나 둘 지워나가는데...",
             "posterUrl": "https://image.tmdb.org/t/p/w500/pT12E2OfHSSRTCASe2gkJfrBUAE.jpg",
-            "backdropUrl": "https://image.tmdb.org/t/p/w1280/vuglA60RqvpHK9rIcG8sXaiWw1L.jpg",
+            "backdropUrl": "https://image.tmdb.org/t/p/w1280/8e6avmXiqurj5LHkmdHBq6rc5jm.jpg",
             "source": "programme-snapshot",
             "detailLoaded": false
           }
@@ -1291,7 +1291,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-09-23T23:52:31.632Z"
+        "snapshotGeneratedAt": "2026-10-01T00:42:00.052Z"
       },
       "movies": [
         {
@@ -1776,7 +1776,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-09-23T23:52:31.764Z"
+        "snapshotGeneratedAt": "2026-10-01T00:42:00.198Z"
       },
       "movies": [
         {
@@ -2042,8 +2042,8 @@ window.KINOSIS_CURATIONS = {
             "id": "88811",
             "title": "남국재견",
             "originalTitle": "南國再見，南國",
-            "year": "1996",
-            "releaseDate": "1996-05-13",
+            "year": "1998",
+            "releaseDate": "1998-01-15",
             "director": "허우샤오셴",
             "directorId": "64992",
             "runtime": 0,
@@ -2204,7 +2204,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-09-23T23:52:31.536Z"
+        "snapshotGeneratedAt": "2026-10-01T00:41:59.934Z"
       },
       "movies": [
         {
@@ -2443,7 +2443,7 @@ window.KINOSIS_CURATIONS = {
             "runtime": 0,
             "overview": "",
             "posterUrl": "https://image.tmdb.org/t/p/w500/mqK1qQGQ0h3SxxMTAcO31lslvUq.jpg",
-            "backdropUrl": null,
+            "backdropUrl": "https://image.tmdb.org/t/p/w1280/dStrcaE2Q2A0JR6pGtnHaO5fq2D.jpg",
             "source": "director-snapshot",
             "detailLoaded": false
           },
@@ -2628,7 +2628,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-09-23T23:52:31.424Z"
+        "snapshotGeneratedAt": "2026-10-01T00:41:59.814Z"
       },
       "movies": [
         {
