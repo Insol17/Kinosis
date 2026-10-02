@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-01T23:14:45.717Z",
+  "updatedAt": "2026-10-02T23:02:16.674Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
-      "title": "옐라",
+      "title": "피닉스",
       "creator": "Christian Petzold",
-      "year": "2007"
-    },
-    {
-      "title": "성스러운 창녀를 주목하라",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1971"
+      "year": "2014"
     },
     {
       "title": "키메라",
@@ -80,9 +65,24 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
+    },
+    {
+      "title": "주말",
+      "creator": "Jean Luc Godard",
+      "year": "1967"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -165,19 +165,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -188,6 +178,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "바바라",
       "creator": "Christian Petzold",
       "year": "2012"
+    },
+    {
+      "title": "옐라",
+      "creator": "Christian Petzold",
+      "year": "2007"
     },
     {
       "title": "열망",
@@ -333,6 +328,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "중국식 룰렛",
       "creator": "Rainer Werner Fassbinder",
       "year": "1976"
+    },
+    {
+      "title": "성스러운 창녀를 주목하라",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1971"
     },
     {
       "title": "카젤마허",
