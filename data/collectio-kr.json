@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-02T23:02:16.674Z",
+  "updatedAt": "2026-10-03T22:10:50.255Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,19 +55,14 @@
       "year": "1999"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "벌집의 정령",
@@ -75,14 +70,14 @@
       "year": "1973"
     },
     {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
+    },
+    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "주말",
-      "creator": "Jean Luc Godard",
-      "year": "1967"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -165,9 +160,19 @@
       "year": "1997"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "트랜짓",
