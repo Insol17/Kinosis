@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-06T00:51:53.318Z",
+  "updatedAt": "2026-10-06T23:06:12.898Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,9 @@
       "year": "1999"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "몽상가의 나흘 밤",
-      "creator": "Robert Bresson",
-      "year": "1971"
-    },
-    {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "도레미파 소녀의 피가 끓는다",
@@ -80,9 +65,24 @@
       "year": "1985"
     },
     {
-      "title": "피닉스",
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
       "creator": "Christian Petzold",
-      "year": "2014"
+      "year": "2023"
+    },
+    {
+      "title": "내가 속한 나라",
+      "creator": "Christian Petzold",
+      "year": "2000"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "벌집의 정령",
@@ -165,9 +165,9 @@
       "year": "1991"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
     },
     {
       "title": "운디네",
@@ -193,11 +193,6 @@
       "title": "열망",
       "creator": "Christian Petzold",
       "year": "2008"
-    },
-    {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
     },
     {
       "title": "유령",
