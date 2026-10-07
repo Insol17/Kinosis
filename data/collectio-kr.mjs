@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-06T23:06:12.898Z",
+  "updatedAt": "2026-10-07T23:36:50.889Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,19 +60,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2014"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "어파이어",
+      "title": "바바라",
       "creator": "Christian Petzold",
-      "year": "2023"
+      "year": "2012"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "내가 속한 나라",
@@ -80,9 +80,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2000"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
+      "title": "디어스킨",
+      "creator": "Quentin Dupieux",
+      "year": "2019"
     },
     {
       "title": "벌집의 정령",
@@ -90,9 +90,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -170,6 +170,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -178,11 +183,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
-    },
-    {
-      "title": "바바라",
-      "creator": "Christian Petzold",
-      "year": "2012"
     },
     {
       "title": "옐라",
