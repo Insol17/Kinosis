@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-07T23:36:50.889Z",
+  "updatedAt": "2026-10-08T23:46:37.557Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,14 @@
       "year": "1999"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "바바라",
-      "creator": "Christian Petzold",
-      "year": "2012"
-    },
-    {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "우리의 최선",
+      "creator": "Alejandro Fernández ALMENDRAS",
+      "year": "2019"
     },
     {
       "title": "내가 속한 나라",
@@ -80,14 +70,9 @@
       "year": "2000"
     },
     {
-      "title": "디어스킨",
-      "creator": "Quentin Dupieux",
-      "year": "2019"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -95,13 +80,23 @@
       "year": "2023"
     },
     {
-      "title": "노나",
-      "creator": "Camila José DONOSO",
-      "year": "2019"
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
     },
     {
-      "title": "우리의 최선",
-      "creator": "Alejandro Fernández ALMENDRAS",
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
+    },
+    {
+      "title": "노나",
+      "creator": "Camila José DONOSO",
       "year": "2019"
     },
     {
@@ -180,9 +175,19 @@
       "year": "2020"
     },
     {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
+    },
+    {
+      "title": "바바라",
+      "creator": "Christian Petzold",
+      "year": "2012"
     },
     {
       "title": "옐라",
