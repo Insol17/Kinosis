@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-08T23:46:37.557Z",
+  "updatedAt": "2026-10-09T23:18:51.595Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,23 +60,23 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "우리의 최선",
-      "creator": "Alejandro Fernández ALMENDRAS",
-      "year": "2019"
-    },
-    {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "녹색광선",
+      "creator": "Eric Rohmer",
+      "year": "1986"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
       "year": "2023"
     },
     {
@@ -85,9 +85,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1985"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "몽상가의 나흘 밤",
+      "creator": "Robert Bresson",
+      "year": "1971"
     },
     {
       "title": "남쪽",
@@ -97,6 +97,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
     {
       "title": "노나",
       "creator": "Camila José DONOSO",
+      "year": "2019"
+    },
+    {
+      "title": "우리의 최선",
+      "creator": "Alejandro Fernández ALMENDRAS",
       "year": "2019"
     },
     {
@@ -165,11 +170,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -198,6 +198,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "열망",
       "creator": "Christian Petzold",
       "year": "2008"
+    },
+    {
+      "title": "내가 속한 나라",
+      "creator": "Christian Petzold",
+      "year": "2000"
     },
     {
       "title": "유령",
