@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-09T23:18:51.595Z",
+  "updatedAt": "2026-10-10T22:38:42.004Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,8 +55,8 @@
       "year": "1999"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
+      "title": "어파이어",
+      "creator": "Christian Petzold",
       "year": "2023"
     },
     {
@@ -65,34 +65,19 @@
       "year": "1973"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "녹색광선",
-      "creator": "Eric Rohmer",
-      "year": "1986"
-    },
-    {
-      "title": "어파이어",
+      "title": "바바라",
       "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
-    },
-    {
-      "title": "몽상가의 나흘 밤",
-      "creator": "Robert Bresson",
-      "year": "1971"
+      "year": "2012"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -185,11 +170,6 @@
       "year": "2018"
     },
     {
-      "title": "바바라",
-      "creator": "Christian Petzold",
-      "year": "2012"
-    },
-    {
       "title": "옐라",
       "creator": "Christian Petzold",
       "year": "2007"
@@ -268,6 +248,11 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
