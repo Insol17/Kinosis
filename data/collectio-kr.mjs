@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-10T22:38:42.004Z",
+  "updatedAt": "2026-10-11T22:57:57.861Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,8 +55,13 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
       "year": "2023"
     },
     {
@@ -65,19 +70,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "바바라",
-      "creator": "Christian Petzold",
-      "year": "2012"
+      "title": "아마도 악마가",
+      "creator": "Robert Bresson",
+      "year": "1977"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -155,6 +155,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1997"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -168,6 +173,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
+    },
+    {
+      "title": "바바라",
+      "creator": "Christian Petzold",
+      "year": "2012"
     },
     {
       "title": "옐라",
@@ -248,11 +258,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
