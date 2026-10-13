@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-13T01:24:33.506Z",
+  "updatedAt": "2026-10-13T23:18:30.917Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,39 +55,44 @@
       "year": "1999"
     },
     {
-      "title": "경험",
-      "creator": "Abbas Kiarostami",
-      "year": "1973"
-    },
-    {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
-      "year": "2024"
-    },
-    {
-      "title": "소매치기",
-      "creator": "Robert Bresson",
-      "year": "1960"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
       "title": "어파이어",
       "creator": "Christian Petzold",
       "year": "2023"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "아웃사이드 노이즈",
+      "creator": "Ted FENDT",
+      "year": "2021"
+    },
+    {
+      "title": "경험",
+      "creator": "Abbas Kiarostami",
+      "year": "1973"
+    },
+    {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -108,11 +113,6 @@
       "title": "이사도라의 아이들",
       "creator": "Damien Manivel",
       "year": "2019"
-    },
-    {
-      "title": "아웃사이드 노이즈",
-      "creator": "Ted FENDT",
-      "year": "2021"
     },
     {
       "title": "애프터워터",
@@ -165,19 +165,9 @@
       "year": "1997"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
     },
     {
       "title": "바바라",
@@ -263,6 +253,11 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
