@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-11T22:57:57.861Z",
+  "updatedAt": "2026-10-13T01:24:33.506Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,9 +55,9 @@
       "year": "1999"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "경험",
+      "creator": "Abbas Kiarostami",
+      "year": "1973"
     },
     {
       "title": "클로즈 유어 아이즈",
@@ -70,9 +70,24 @@
       "year": "1973"
     },
     {
-      "title": "아마도 악마가",
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
+    },
+    {
+      "title": "소매치기",
       "creator": "Robert Bresson",
-      "year": "1977"
+      "year": "1960"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "남쪽",
@@ -120,11 +135,6 @@
       "year": "2024"
     },
     {
-      "title": "경험",
-      "creator": "Abbas Kiarostami",
-      "year": "1973"
-    },
-    {
       "title": "결혼식을 위한 양복",
       "creator": "Abbas Kiarostami",
       "year": "1974"
@@ -153,11 +163,6 @@
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
     },
     {
       "title": "운디네",
