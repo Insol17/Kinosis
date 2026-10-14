@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-13T23:18:30.917Z",
+  "updatedAt": "2026-10-14T22:21:37.862Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,44 +55,29 @@
       "year": "1999"
     },
     {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "아웃사이드 노이즈",
-      "creator": "Ted FENDT",
-      "year": "2021"
-    },
-    {
-      "title": "경험",
-      "creator": "Abbas Kiarostami",
-      "year": "1973"
-    },
-    {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
-    },
-    {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "더 원더스",
+      "creator": "Alice Rohrwacher",
+      "year": "2014"
+    },
+    {
+      "title": "알레고리",
+      "creator": "Alice Rohrwacher",
+      "year": "2024"
     },
     {
       "title": "남쪽",
@@ -115,6 +100,11 @@
       "year": "2019"
     },
     {
+      "title": "아웃사이드 노이즈",
+      "creator": "Ted FENDT",
+      "year": "2021"
+    },
+    {
       "title": "애프터워터",
       "creator": "Dane Komljen",
       "year": "2022"
@@ -133,6 +123,11 @@
       "title": "구름이 그림자를 숨길 때",
       "creator": "José Luis TORRES LEIVA",
       "year": "2024"
+    },
+    {
+      "title": "경험",
+      "creator": "Abbas Kiarostami",
+      "year": "1973"
     },
     {
       "title": "결혼식을 위한 양복",
@@ -165,9 +160,24 @@
       "year": "1997"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
     },
     {
       "title": "바바라",
@@ -255,11 +265,6 @@
       "year": "2012"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
       "title": "엄마와 창녀",
       "creator": "Jean Eustache",
       "year": "1973"
@@ -273,11 +278,6 @@
       "title": "R.M.N.",
       "creator": "Cristian Mungiu",
       "year": "2022"
-    },
-    {
-      "title": "더 원더스",
-      "creator": "Alice Rohrwacher",
-      "year": "2014"
     },
     {
       "title": "휴머니티",
