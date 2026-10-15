@@ -24,7 +24,7 @@ window.KINOSIS_CURATIONS = {
             "title": "체리 향기",
             "originalTitle": "طعم گيلاس",
             "year": "1997",
-            "releaseDate": "1997-09-28",
+            "releaseDate": "1997-10-10",
             "director": "압바스 키아로스타미",
             "directorId": "119294",
             "runtime": 99,
@@ -935,7 +935,7 @@ window.KINOSIS_CURATIONS = {
             "title": "체리 향기",
             "originalTitle": "طعم گيلاس",
             "year": "1997",
-            "releaseDate": "1997-09-28",
+            "releaseDate": "1997-10-10",
             "director": "압바스 키아로스타미",
             "directorId": "119294",
             "runtime": 0,
@@ -1291,7 +1291,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-10-08T01:11:21.849Z"
+        "snapshotGeneratedAt": "2026-10-15T00:00:45.402Z"
       },
       "movies": [
         {
@@ -1359,7 +1359,7 @@ window.KINOSIS_CURATIONS = {
             "title": "체리 향기",
             "originalTitle": "طعم گيلاس",
             "year": "1997",
-            "releaseDate": "1997-09-28",
+            "releaseDate": "1997-10-10",
             "director": "압바스 키아로스타미",
             "directorId": "119294",
             "runtime": 99,
@@ -1776,7 +1776,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-10-08T01:11:21.892Z"
+        "snapshotGeneratedAt": "2026-10-15T00:00:45.478Z"
       },
       "movies": [
         {
@@ -2204,7 +2204,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-10-08T01:11:21.806Z"
+        "snapshotGeneratedAt": "2026-10-15T00:00:45.329Z"
       },
       "movies": [
         {
@@ -2628,7 +2628,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-10-08T01:11:21.750Z"
+        "snapshotGeneratedAt": "2026-10-15T00:00:45.234Z"
       },
       "movies": [
         {
