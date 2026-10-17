@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-16T22:07:35.835Z",
+  "updatedAt": "2026-10-17T21:30:31.778Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -60,13 +60,13 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1934"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
@@ -75,19 +75,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
-      "title": "호수의 란슬롯",
-      "creator": "Robert Bresson",
-      "year": "1974"
-    },
-    {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -158,6 +153,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "올리브 나무 사이로",
       "creator": "Abbas Kiarostami",
       "year": "1991"
+    },
+    {
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
     },
     {
       "title": "어파이어",
