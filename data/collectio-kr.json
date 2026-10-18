@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-17T21:30:31.778Z",
+  "updatedAt": "2026-10-18T21:34:10.646Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,24 @@
       "year": "1999"
     },
     {
-      "title": "라탈랑트",
-      "creator": "Jean Vigo",
-      "year": "1934"
-    },
-    {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
+      "title": "어파이어",
+      "creator": "Christian Petzold",
       "year": "2023"
     },
     {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "라탈랑트",
+      "creator": "Jean Vigo",
+      "year": "1934"
+    },
+    {
+      "title": "알레고리",
+      "creator": "Alice Rohrwacher",
+      "year": "2024"
     },
     {
       "title": "남쪽",
@@ -158,11 +158,6 @@
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
     },
     {
       "title": "운디네",
@@ -263,6 +258,11 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
