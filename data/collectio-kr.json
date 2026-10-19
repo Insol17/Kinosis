@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-18T21:34:10.646Z",
+  "updatedAt": "2026-10-19T22:55:20.475Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,9 +55,9 @@
       "year": "1999"
     },
     {
-      "title": "어파이어",
+      "title": "볼프스부르크",
       "creator": "Christian Petzold",
-      "year": "2023"
+      "year": "2003"
     },
     {
       "title": "벌집의 정령",
@@ -65,14 +65,34 @@
       "year": "1973"
     },
     {
+      "title": "이제 다시 시작하려고 해",
+      "creator": "Jonas Trueba",
+      "year": "2024"
+    },
+    {
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
+    },
+    {
       "title": "라탈랑트",
       "creator": "Jean Vigo",
       "year": "1934"
     },
     {
-      "title": "알레고리",
-      "creator": "Alice Rohrwacher",
-      "year": "2024"
+      "title": "피카소의 비밀",
+      "creator": "Henri-Georges Clouzot",
+      "year": "1956"
+    },
+    {
+      "title": "예수의 삶",
+      "creator": "Bruno Dumont",
+      "year": "1997"
     },
     {
       "title": "남쪽",
@@ -160,6 +180,11 @@
       "year": "1997"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -200,11 +225,6 @@
       "year": "2005"
     },
     {
-      "title": "볼프스부르크",
-      "creator": "Christian Petzold",
-      "year": "2003"
-    },
-    {
       "title": "쿠바 리브레",
       "creator": "Christian Petzold",
       "year": "1996"
@@ -213,16 +233,6 @@
       "title": "페트라",
       "creator": "Christian Petzold",
       "year": "1998"
-    },
-    {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
-    },
-    {
-      "title": "피카소의 비밀",
-      "creator": "Henri-Georges Clouzot",
-      "year": "1956"
     },
     {
       "title": "우리는 함께 늙지 않는다",
@@ -320,11 +330,6 @@
       "year": "2024"
     },
     {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
-    },
-    {
       "title": "마리아 브라운의 결혼",
       "creator": "Rainer Werner Fassbinder",
       "year": "1979"
@@ -398,11 +403,6 @@
       "title": "하데비치",
       "creator": "Bruno Dumont",
       "year": "2009"
-    },
-    {
-      "title": "예수의 삶",
-      "creator": "Bruno Dumont",
-      "year": "1997"
     },
     {
       "title": "외로운 아내",
