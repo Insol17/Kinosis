@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-19T22:55:20.475Z",
+  "updatedAt": "2026-10-20T22:22:40.565Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,24 +55,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "볼프스부르크",
-      "creator": "Christian Petzold",
-      "year": "2003"
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "노 베어스",
+      "creator": "Jafar Panahi",
+      "year": "2022"
     },
     {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
+      "title": "알레고리",
+      "creator": "Alice Rohrwacher",
       "year": "2024"
-    },
-    {
-      "title": "파일럿",
-      "creator": "Christian Petzold",
-      "year": "1995"
     },
     {
       "title": "절멸의 천사",
@@ -80,19 +75,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1962"
     },
     {
-      "title": "라탈랑트",
-      "creator": "Jean Vigo",
-      "year": "1934"
+      "title": "셜록 주니어",
+      "creator": "Sherlock Jr.",
+      "year": "1924"
     },
     {
-      "title": "피카소의 비밀",
-      "creator": "Henri-Georges Clouzot",
-      "year": "1956"
-    },
-    {
-      "title": "예수의 삶",
-      "creator": "Bruno Dumont",
-      "year": "1997"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -225,6 +215,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2005"
     },
     {
+      "title": "볼프스부르크",
+      "creator": "Christian Petzold",
+      "year": "2003"
+    },
+    {
       "title": "쿠바 리브레",
       "creator": "Christian Petzold",
       "year": "1996"
@@ -235,14 +230,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1998"
     },
     {
+      "title": "파일럿",
+      "creator": "Christian Petzold",
+      "year": "1995"
+    },
+    {
+      "title": "피카소의 비밀",
+      "creator": "Henri-Georges Clouzot",
+      "year": "1956"
+    },
+    {
       "title": "우리는 함께 늙지 않는다",
       "creator": "Maurice Pialat",
       "year": "1972"
-    },
-    {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
     },
     {
       "title": "5시부터 7시까지 클레오",
@@ -403,6 +403,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "하데비치",
       "creator": "Bruno Dumont",
       "year": "2009"
+    },
+    {
+      "title": "예수의 삶",
+      "creator": "Bruno Dumont",
+      "year": "1997"
     },
     {
       "title": "외로운 아내",
