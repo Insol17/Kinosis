@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-20T22:22:40.565Z",
+  "updatedAt": "2026-10-21T22:26:35.220Z",
   "entries": [
     {
       "title": "미러 넘버 3",
@@ -55,34 +55,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
-    },
-    {
-      "title": "노 베어스",
-      "creator": "Jafar Panahi",
-      "year": "2022"
-    },
-    {
-      "title": "알레고리",
-      "creator": "Alice Rohrwacher",
-      "year": "2024"
-    },
-    {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
-    },
-    {
-      "title": "셜록 주니어",
-      "creator": "Sherlock Jr.",
-      "year": "1924"
-    },
-    {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "라탈랑트",
+      "creator": "Jean Vigo",
+      "year": "1934"
     },
     {
       "title": "남쪽",
@@ -245,14 +240,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1972"
     },
     {
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
+    },
+    {
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
     },
     {
       "title": "비리디아나",
@@ -268,11 +263,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
@@ -328,6 +318,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "그랜드 투어",
       "creator": "Miguel Gomes",
       "year": "2024"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
       "title": "마리아 브라운의 결혼",
