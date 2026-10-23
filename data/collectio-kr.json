@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-22T22:26:46.546Z",
+  "updatedAt": "2026-10-23T22:18:53.605Z",
   "entries": [
     {
       "title": "행복한 라짜로",
@@ -55,8 +55,18 @@
       "year": "2024"
     },
     {
+      "title": "비리디아나",
+      "creator": "Luis Buñuel",
+      "year": "1961"
+    },
+    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
       "year": "2023"
     },
     {
@@ -65,29 +75,24 @@
       "year": "2023"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "태풍 클럽",
       "creator": "Sômai Shinji",
       "year": "1985"
     },
     {
-      "title": "쿠바 리브레",
-      "creator": "Christian Petzold",
-      "year": "1996"
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -220,6 +225,11 @@
       "year": "2003"
     },
     {
+      "title": "쿠바 리브레",
+      "creator": "Christian Petzold",
+      "year": "1996"
+    },
+    {
       "title": "페트라",
       "creator": "Christian Petzold",
       "year": "1998"
@@ -248,16 +258,6 @@
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
-      "title": "비리디아나",
-      "creator": "Luis Buñuel",
-      "year": "1961"
     },
     {
       "title": "사형수 탈옥하다",
