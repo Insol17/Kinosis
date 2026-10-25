@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-24T21:39:44.531Z",
+  "updatedAt": "2026-10-25T21:52:59.387Z",
   "entries": [
     {
       "title": "행복한 라짜로",
@@ -55,14 +55,9 @@
       "year": "2024"
     },
     {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
-    },
-    {
-      "title": "라탈랑트",
-      "creator": "Jean Vigo",
-      "year": "1934"
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "어파이어",
@@ -75,24 +70,24 @@
       "year": "1973"
     },
     {
-      "title": "이제 다시 시작하려고 해",
-      "creator": "Jonas Trueba",
-      "year": "2024"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -185,11 +180,6 @@
       "year": "2020"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -250,6 +240,11 @@
       "year": "1972"
     },
     {
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
+    },
+    {
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
@@ -273,11 +268,6 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
@@ -328,6 +318,11 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
+    },
+    {
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "절멸의 천사",
