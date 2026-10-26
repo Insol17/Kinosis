@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-25T21:52:59.387Z",
+  "updatedAt": "2026-10-26T23:10:00.734Z",
   "entries": [
     {
       "title": "행복한 라짜로",
@@ -55,29 +55,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "태풍 클럽",
@@ -85,9 +65,34 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1985"
     },
     {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
+    },
+    {
+      "title": "휴머니티",
+      "creator": "Bruno Dumont",
+      "year": "1999"
+    },
+    {
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "노나",
@@ -175,14 +180,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1999"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
     },
     {
-      "title": "트랜짓",
+      "title": "피닉스",
       "creator": "Christian Petzold",
-      "year": "2018"
+      "year": "2014"
     },
     {
       "title": "바바라",
@@ -288,11 +298,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "더 원더스",
       "creator": "Alice Rohrwacher",
       "year": "2014"
-    },
-    {
-      "title": "휴머니티",
-      "creator": "Bruno Dumont",
-      "year": "1999"
     },
     {
       "title": "베로니카의 이중생활",
