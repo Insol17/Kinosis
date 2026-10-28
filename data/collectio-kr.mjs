@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-27T23:00:07.562Z",
+  "updatedAt": "2026-10-28T23:18:12.134Z",
   "entries": [
     {
       "title": "행복한 라짜로",
@@ -55,21 +55,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
-      "title": "결혼식을 위한 양복",
-      "creator": "Abbas Kiarostami",
-      "year": "1974"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
       "title": "어파이어",
       "creator": "Christian Petzold",
       "year": "2023"
@@ -78,6 +63,21 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "남쪽",
@@ -140,6 +140,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1973"
     },
     {
+      "title": "결혼식을 위한 양복",
+      "creator": "Abbas Kiarostami",
+      "year": "1974"
+    },
+    {
       "title": "여행자",
       "creator": "Abbas Kiarostami",
       "year": "1974"
@@ -173,11 +178,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -268,11 +268,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
