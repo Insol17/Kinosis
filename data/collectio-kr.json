@@ -2,8 +2,33 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-28T23:18:12.134Z",
+  "updatedAt": "2026-10-29T23:21:59.310Z",
   "entries": [
+    {
+      "title": "지하실의 멜로디",
+      "creator": "Henri Verneuil",
+      "year": "1963"
+    },
+    {
+      "title": "사형대의 엘리베이터",
+      "creator": "Louis Malle",
+      "year": "1958"
+    },
+    {
+      "title": "소매치기",
+      "creator": "Robert Bresson",
+      "year": "1960"
+    },
+    {
+      "title": "파리의 도적",
+      "creator": "Louis Malle",
+      "year": "1967"
+    },
+    {
+      "title": "게임의 규칙",
+      "creator": "Jean Renoir",
+      "year": "1939"
+    },
     {
       "title": "행복한 라짜로",
       "creator": "Alice Rohrwacher",
@@ -55,9 +80,44 @@
       "year": "2024"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
+      "title": "비텔로니",
+      "creator": "Federico Fellini",
+      "year": "1953"
+    },
+    {
+      "title": "녹색광선",
+      "creator": "Eric Rohmer",
+      "year": "1986"
+    },
+    {
+      "title": "세 가지 색: 블루",
+      "creator": "Krzysztof Kieslowski",
+      "year": "1993"
+    },
+    {
+      "title": "바람이 우리를 데려다 주리라",
+      "creator": "Abbas Kiarostami",
+      "year": "1999"
+    },
+    {
+      "title": "5월 이후",
+      "creator": "Olivier Assayas",
+      "year": "2012"
+    },
+    {
+      "title": "노 베어스",
+      "creator": "Jafar Panahi",
+      "year": "2022"
+    },
+    {
+      "title": "생토메르",
+      "creator": "Alice Diop",
+      "year": "2022"
+    },
+    {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
     },
     {
       "title": "벌집의 정령",
@@ -65,29 +125,29 @@
       "year": "1973"
     },
     {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
       "year": "2023"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
+      "title": "리버풀",
+      "creator": "Lisandro Alonso",
+      "year": "2008"
+    },
+    {
+      "title": "러브 라이프",
+      "creator": "Koji Fukada",
+      "year": "2022"
+    },
+    {
+      "title": "결혼식을 위한 양복",
+      "creator": "Abbas Kiarostami",
+      "year": "1974"
     },
     {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "노나",
@@ -140,19 +200,9 @@
       "year": "1973"
     },
     {
-      "title": "결혼식을 위한 양복",
-      "creator": "Abbas Kiarostami",
-      "year": "1974"
-    },
-    {
       "title": "여행자",
       "creator": "Abbas Kiarostami",
       "year": "1974"
-    },
-    {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
     },
     {
       "title": "그리고 삶은 계속된다",
@@ -170,14 +220,19 @@
       "year": "1997"
     },
     {
-      "title": "바람이 우리를 데려다 주리라",
-      "creator": "Abbas Kiarostami",
-      "year": "1999"
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -268,6 +323,16 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
