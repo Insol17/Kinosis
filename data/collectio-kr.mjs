@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-30T23:01:37.786Z",
+  "updatedAt": "2026-10-31T22:34:07.529Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,44 +80,24 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "리버풀",
-      "creator": "Lisandro Alonso",
-      "year": "2008"
-    },
-    {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
-      "title": "항해자",
-      "creator": "The Navigator",
-      "year": "1924"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
       "year": "1973"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "우리의 환대",
@@ -230,6 +210,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1991"
     },
     {
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
+    },
+    {
       "title": "바람이 우리를 데려다 주리라",
       "creator": "Abbas Kiarostami",
       "year": "1999"
@@ -265,9 +250,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -330,11 +335,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1972"
     },
     {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
-    },
-    {
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
@@ -353,16 +353,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
