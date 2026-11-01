@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-10-31T22:34:07.529Z",
+  "updatedAt": "2026-11-01T22:53:57.079Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,24 +80,44 @@
       "year": "2024"
     },
     {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
+      "title": "내가 속한 나라",
+      "creator": "Christian Petzold",
+      "year": "2000"
+    },
+    {
+      "title": "머스트 비 헤븐",
+      "creator": "Elia Suleiman",
+      "year": "2019"
+    },
+    {
+      "title": "너의 눈을 들여다보면",
+      "creator": "Shô Miyake",
+      "year": "2021"
+    },
+    {
+      "title": "그리고 삶은 계속된다",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
     },
     {
       "title": "우리의 환대",
@@ -128,11 +148,6 @@
       "title": "절멸의 천사",
       "creator": "Luis Buñuel",
       "year": "1962"
-    },
-    {
-      "title": "그리고 삶은 계속된다",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
     },
     {
       "title": "큐어",
@@ -260,6 +275,11 @@
       "year": "1983"
     },
     {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
       "title": "어파이어",
       "creator": "Christian Petzold",
       "year": "2023"
@@ -268,11 +288,6 @@
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -293,11 +308,6 @@
       "title": "열망",
       "creator": "Christian Petzold",
       "year": "2008"
-    },
-    {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
     },
     {
       "title": "유령",
@@ -355,6 +365,11 @@
       "year": "2012"
     },
     {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
+    },
+    {
       "title": "세 가지 색: 레드",
       "creator": "Krzysztof Kieslowski",
       "year": "1994"
@@ -393,11 +408,6 @@
       "title": "트웬티나인 팜스",
       "creator": "Bruno Dumont",
       "year": "2003"
-    },
-    {
-      "title": "머스트 비 헤븐",
-      "creator": "Elia Suleiman",
-      "year": "2019"
     },
     {
       "title": "그랜드 투어",
