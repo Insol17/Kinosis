@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-03T01:39:30.287Z",
+  "updatedAt": "2026-11-04T00:00:12.622Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,9 +80,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
+      "title": "어파이어",
+      "creator": "Christian Petzold",
       "year": "2023"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
       "title": "유령",
@@ -90,29 +100,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2005"
     },
     {
-      "title": "노 베어스",
-      "creator": "Jafar Panahi",
-      "year": "2022"
+      "title": "주말",
+      "creator": "Jean Luc Godard",
+      "year": "1967"
     },
     {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
-    },
-    {
-      "title": "사형수 탈옥하다",
-      "creator": "Robert Bresson",
-      "year": "1956"
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
     },
     {
       "title": "우리의 환대",
@@ -135,9 +130,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1950"
     },
     {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
+      "title": "사형수 탈옥하다",
+      "creator": "Robert Bresson",
+      "year": "1956"
     },
     {
       "title": "그리고 삶은 계속된다",
@@ -210,11 +205,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1974"
     },
     {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
-    },
-    {
       "title": "올리브 나무 사이로",
       "creator": "Abbas Kiarostami",
       "year": "1991"
@@ -250,9 +240,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2012"
     },
     {
+      "title": "노 베어스",
+      "creator": "Jafar Panahi",
+      "year": "2022"
+    },
+    {
       "title": "생토메르",
       "creator": "Alice Diop",
       "year": "2022"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -265,19 +265,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
     },
     {
-      "title": "피닉스",
+      "title": "트랜짓",
       "creator": "Christian Petzold",
-      "year": "2014"
+      "year": "2018"
     },
     {
       "title": "바바라",
@@ -293,6 +288,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "열망",
       "creator": "Christian Petzold",
       "year": "2008"
+    },
+    {
+      "title": "내가 속한 나라",
+      "creator": "Christian Petzold",
+      "year": "2000"
     },
     {
       "title": "볼프스부르크",
@@ -348,6 +348,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
