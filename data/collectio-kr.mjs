@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-04T00:00:12.622Z",
+  "updatedAt": "2026-11-05T00:24:58.514Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -28,6 +28,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "게임의 규칙",
       "creator": "Jean Renoir",
       "year": "1939"
+    },
+    {
+      "title": "콘티네탈 '25",
+      "creator": "Radu Jude",
+      "year": "2025"
     },
     {
       "title": "행복한 라짜로",
@@ -75,16 +80,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2002"
     },
     {
-      "title": "다이렉트 액션",
-      "creator": "Guillaume Cailleau,Ben Russell",
-      "year": "2024"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
@@ -95,19 +90,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1962"
     },
     {
-      "title": "유령",
-      "creator": "Christian Petzold",
-      "year": "2005"
-    },
-    {
-      "title": "주말",
-      "creator": "Jean Luc Godard",
-      "year": "1967"
-    },
-    {
       "title": "내 친구의 집은 어디인가",
       "creator": "Abbas Kiarostami",
       "year": "1987"
+    },
+    {
+      "title": "올리브 나무 사이로",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
+    },
+    {
+      "title": "그리고 삶은 계속된다",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
     },
     {
       "title": "우리의 환대",
@@ -133,11 +128,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
       "year": "1956"
-    },
-    {
-      "title": "그리고 삶은 계속된다",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
     },
     {
       "title": "큐어",
@@ -190,6 +180,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2024"
     },
     {
+      "title": "다이렉트 액션",
+      "creator": "Guillaume Cailleau,Ben Russell",
+      "year": "2024"
+    },
+    {
       "title": "경험",
       "creator": "Abbas Kiarostami",
       "year": "1973"
@@ -203,11 +198,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "여행자",
       "creator": "Abbas Kiarostami",
       "year": "1974"
-    },
-    {
-      "title": "올리브 나무 사이로",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
     },
     {
       "title": "체리 향기",
@@ -265,6 +255,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
@@ -293,6 +288,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "내가 속한 나라",
       "creator": "Christian Petzold",
       "year": "2000"
+    },
+    {
+      "title": "유령",
+      "creator": "Christian Petzold",
+      "year": "2005"
     },
     {
       "title": "볼프스부르크",
