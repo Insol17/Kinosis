@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-05T00:24:58.514Z",
+  "updatedAt": "2026-11-06T00:23:31.381Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -30,7 +30,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1939"
     },
     {
-      "title": "콘티네탈 '25",
+      "title": "콘티넨탈 '25",
       "creator": "Radu Jude",
       "year": "2025"
     },
@@ -80,29 +80,39 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2002"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
     },
     {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
-    },
-    {
-      "title": "내 친구의 집은 어디인가",
-      "creator": "Abbas Kiarostami",
-      "year": "1987"
-    },
-    {
-      "title": "올리브 나무 사이로",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
-    },
-    {
-      "title": "그리고 삶은 계속된다",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "우리의 환대",
@@ -128,6 +138,16 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
       "year": "1956"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
+    },
+    {
+      "title": "그리고 삶은 계속된다",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
     },
     {
       "title": "큐어",
@@ -200,6 +220,16 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1974"
     },
     {
+      "title": "내 친구의 집은 어디인가",
+      "creator": "Abbas Kiarostami",
+      "year": "1987"
+    },
+    {
+      "title": "올리브 나무 사이로",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
+    },
+    {
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
@@ -240,24 +270,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
     },
     {
       "title": "운디네",
@@ -335,11 +350,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1962"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -348,11 +358,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
     },
     {
       "title": "엄마와 창녀",
