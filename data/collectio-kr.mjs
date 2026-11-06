@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-06T00:23:31.381Z",
+  "updatedAt": "2026-11-06T23:44:19.793Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,34 +80,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2002"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
       "title": "키메라",
       "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "벌집의 정령",
@@ -230,11 +215,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1991"
     },
     {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
       "title": "바람이 우리를 데려다 주리라",
       "creator": "Abbas Kiarostami",
       "year": "1999"
@@ -275,9 +255,24 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1983"
     },
     {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -350,6 +345,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1962"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -408,11 +408,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
     },
     {
       "title": "마리아 브라운의 결혼",
