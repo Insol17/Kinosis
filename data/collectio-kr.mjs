@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-06T23:44:19.793Z",
+  "updatedAt": "2026-11-07T22:48:06.374Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -85,19 +85,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
+      "title": "볼프스부르크",
+      "creator": "Christian Petzold",
+      "year": "2003"
     },
     {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
+      "title": "사막의 시몬",
+      "creator": "Luis Buñuel",
+      "year": "1965"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
       "title": "벌집의 정령",
       "creator": "Victor Erice",
       "year": "1973"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
     },
     {
       "title": "우리의 환대",
@@ -215,6 +225,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1991"
     },
     {
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
+    },
+    {
       "title": "바람이 우리를 데려다 주리라",
       "creator": "Abbas Kiarostami",
       "year": "1999"
@@ -260,16 +275,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2023"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
@@ -303,11 +308,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "유령",
       "creator": "Christian Petzold",
       "year": "2005"
-    },
-    {
-      "title": "볼프스부르크",
-      "creator": "Christian Petzold",
-      "year": "2003"
     },
     {
       "title": "쿠바 리브레",
@@ -408,6 +408,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
+    },
+    {
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "마리아 브라운의 결혼",
