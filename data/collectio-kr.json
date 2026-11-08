@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-07T22:48:06.374Z",
+  "updatedAt": "2026-11-08T22:56:43.347Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,23 +80,18 @@
       "year": "2002"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
       "title": "볼프스부르크",
       "creator": "Christian Petzold",
       "year": "2003"
     },
     {
-      "title": "사막의 시몬",
-      "creator": "Luis Buñuel",
-      "year": "1965"
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
     },
     {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
       "year": "2023"
     },
     {
@@ -105,9 +100,14 @@
       "year": "1973"
     },
     {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
+      "title": "몽상가의 나흘 밤",
+      "creator": "Robert Bresson",
+      "year": "1971"
+    },
+    {
+      "title": "잇츠 낫 미",
+      "creator": "Leos Carax",
+      "year": "2024"
     },
     {
       "title": "우리의 환대",
@@ -225,11 +225,6 @@
       "year": "1991"
     },
     {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
       "title": "바람이 우리를 데려다 주리라",
       "creator": "Abbas Kiarostami",
       "year": "1999"
@@ -273,6 +268,16 @@
       "title": "클로즈 유어 아이즈",
       "creator": "Victor Erice",
       "year": "2023"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
     },
     {
       "title": "피닉스",
