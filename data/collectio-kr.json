@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-08T22:56:43.347Z",
+  "updatedAt": "2026-11-10T02:14:37.403Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,19 +80,14 @@
       "year": "2002"
     },
     {
-      "title": "볼프스부르크",
+      "title": "피닉스",
       "creator": "Christian Petzold",
-      "year": "2003"
+      "year": "2014"
     },
     {
-      "title": "체리 향기",
-      "creator": "Abbas Kiarostami",
-      "year": "1997"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "벌집의 정령",
@@ -100,14 +95,19 @@
       "year": "1973"
     },
     {
-      "title": "몽상가의 나흘 밤",
-      "creator": "Robert Bresson",
-      "year": "1971"
+      "title": "휴머니티",
+      "creator": "Bruno Dumont",
+      "year": "1999"
     },
     {
-      "title": "잇츠 낫 미",
-      "creator": "Leos Carax",
-      "year": "2024"
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
+    },
+    {
+      "title": "릴 퀸퀸(에피소드 1): 인간 짐승",
+      "creator": "Bruno Dumont",
+      "year": "2014"
     },
     {
       "title": "우리의 환대",
@@ -225,6 +225,11 @@
       "year": "1991"
     },
     {
+      "title": "체리 향기",
+      "creator": "Abbas Kiarostami",
+      "year": "1997"
+    },
+    {
       "title": "바람이 우리를 데려다 주리라",
       "creator": "Abbas Kiarostami",
       "year": "1999"
@@ -280,11 +285,6 @@
       "year": "2020"
     },
     {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
       "title": "트랜짓",
       "creator": "Christian Petzold",
       "year": "2018"
@@ -315,6 +315,11 @@
       "year": "2005"
     },
     {
+      "title": "볼프스부르크",
+      "creator": "Christian Petzold",
+      "year": "2003"
+    },
+    {
       "title": "쿠바 리브레",
       "creator": "Christian Petzold",
       "year": "1996"
@@ -340,11 +345,6 @@
       "year": "1972"
     },
     {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
-    },
-    {
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
@@ -365,6 +365,11 @@
       "year": "2012"
     },
     {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
       "title": "엄마와 창녀",
       "creator": "Jean Eustache",
       "year": "1973"
@@ -383,11 +388,6 @@
       "title": "더 원더스",
       "creator": "Alice Rohrwacher",
       "year": "2014"
-    },
-    {
-      "title": "휴머니티",
-      "creator": "Bruno Dumont",
-      "year": "1999"
     },
     {
       "title": "베로니카의 이중생활",
@@ -413,11 +413,6 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
     },
     {
       "title": "마리아 브라운의 결혼",
@@ -468,11 +463,6 @@
       "title": "퀴스터스 부인의 천국 여행",
       "creator": "Rainer Werner Fassbinder",
       "year": "1975"
-    },
-    {
-      "title": "릴 퀸퀸(에피소드 1): 인간 짐승",
-      "creator": "Bruno Dumont",
-      "year": "2014"
     },
     {
       "title": "릴 퀸퀸(에피소드 2): 악의 심장부",
