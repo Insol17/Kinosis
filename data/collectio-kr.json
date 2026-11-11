@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-10T02:14:37.403Z",
+  "updatedAt": "2026-11-11T00:05:24.041Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -80,14 +80,14 @@
       "year": "2002"
     },
     {
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
+    },
+    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
     },
     {
       "title": "벌집의 정령",
@@ -95,14 +95,9 @@
       "year": "1973"
     },
     {
-      "title": "휴머니티",
-      "creator": "Bruno Dumont",
-      "year": "1999"
-    },
-    {
-      "title": "프랑스",
-      "creator": "Bruno Dumont",
-      "year": "2021"
+      "title": "아마도 악마가",
+      "creator": "Robert Bresson",
+      "year": "1977"
     },
     {
       "title": "릴 퀸퀸(에피소드 1): 인간 짐승",
@@ -110,14 +105,19 @@
       "year": "2014"
     },
     {
-      "title": "우리의 환대",
-      "creator": "Our Hospitality",
-      "year": "1923"
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
       "title": "라탈랑트",
       "creator": "Jean Vigo",
       "year": "1934"
+    },
+    {
+      "title": "우리의 환대",
+      "creator": "Our Hospitality",
+      "year": "1923"
     },
     {
       "title": "토니",
@@ -133,11 +133,6 @@
       "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
       "year": "1956"
-    },
-    {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
     },
     {
       "title": "그리고 삶은 계속된다",
@@ -345,6 +340,11 @@
       "year": "1972"
     },
     {
+      "title": "프랑스",
+      "creator": "Bruno Dumont",
+      "year": "2021"
+    },
+    {
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
@@ -390,6 +390,11 @@
       "year": "2014"
     },
     {
+      "title": "휴머니티",
+      "creator": "Bruno Dumont",
+      "year": "1999"
+    },
+    {
       "title": "베로니카의 이중생활",
       "creator": "Krzysztof Kieslowski",
       "year": "1991"
@@ -413,6 +418,11 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
+    },
+    {
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "마리아 브라운의 결혼",
