@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-12T01:33:46.628Z",
+  "updatedAt": "2026-11-13T00:32:03.321Z",
   "entries": [
     {
       "title": "지하실의 멜로디",
@@ -85,24 +85,29 @@
       "year": "2023"
     },
     {
-      "title": "잇츠 낫 미",
-      "creator": "Leos Carax",
-      "year": "2024"
+      "title": "더 원더스",
+      "creator": "Alice Rohrwacher",
+      "year": "2014"
+    },
+    {
+      "title": "몽상가의 나흘 밤",
+      "creator": "Robert Bresson",
+      "year": "1971"
+    },
+    {
+      "title": "애프터워터",
+      "creator": "Dane Komljen",
+      "year": "2022"
+    },
+    {
+      "title": "R.M.N.",
+      "creator": "Cristian Mungiu",
+      "year": "2022"
     },
     {
       "title": "라탈랑트",
       "creator": "Jean Vigo",
       "year": "1934"
-    },
-    {
-      "title": "킹 오브 뉴욕",
-      "creator": "Abel Ferrara",
-      "year": "1990"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
     },
     {
       "title": "우리의 환대",
@@ -158,11 +163,6 @@
       "title": "아웃사이드 노이즈",
       "creator": "Ted FENDT",
       "year": "2021"
-    },
-    {
-      "title": "애프터워터",
-      "creator": "Dane Komljen",
-      "year": "2022"
     },
     {
       "title": "세탐정",
@@ -263,6 +263,11 @@
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
       "title": "어파이어",
@@ -373,16 +378,6 @@
       "title": "세 가지 색: 레드",
       "creator": "Krzysztof Kieslowski",
       "year": "1994"
-    },
-    {
-      "title": "R.M.N.",
-      "creator": "Cristian Mungiu",
-      "year": "2022"
-    },
-    {
-      "title": "더 원더스",
-      "creator": "Alice Rohrwacher",
-      "year": "2014"
     },
     {
       "title": "휴머니티",
