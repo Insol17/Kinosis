@@ -2,32 +2,32 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-13T00:32:03.321Z",
+  "updatedAt": "2026-11-14T00:21:57.492Z",
   "entries": [
     {
-      "title": "지하실의 멜로디",
-      "creator": "Henri Verneuil",
-      "year": "1963"
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
     },
     {
-      "title": "사형대의 엘리베이터",
-      "creator": "Louis Malle",
-      "year": "1958"
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
     },
     {
-      "title": "소매치기",
-      "creator": "Robert Bresson",
-      "year": "1960"
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
     },
     {
-      "title": "파리의 도적",
-      "creator": "Louis Malle",
-      "year": "1967"
+      "title": "노 베어스",
+      "creator": "Jafar Panahi",
+      "year": "2022"
     },
     {
-      "title": "게임의 규칙",
-      "creator": "Jean Renoir",
-      "year": "1939"
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
     },
     {
       "title": "콘티넨탈 '25",
@@ -80,14 +80,44 @@
       "year": "2002"
     },
     {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
+      "title": "지하실의 멜로디",
+      "creator": "Henri Verneuil",
+      "year": "1963"
     },
     {
-      "title": "더 원더스",
-      "creator": "Alice Rohrwacher",
+      "title": "사형대의 엘리베이터",
+      "creator": "Louis Malle",
+      "year": "1958"
+    },
+    {
+      "title": "소매치기",
+      "creator": "Robert Bresson",
+      "year": "1960"
+    },
+    {
+      "title": "파리의 도적",
+      "creator": "Louis Malle",
+      "year": "1967"
+    },
+    {
+      "title": "게임의 규칙",
+      "creator": "Jean Renoir",
+      "year": "1939"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
       "year": "2014"
+    },
+    {
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "몽상가의 나흘 밤",
@@ -95,24 +125,19 @@
       "year": "1971"
     },
     {
-      "title": "애프터워터",
-      "creator": "Dane Komljen",
-      "year": "2022"
-    },
-    {
-      "title": "R.M.N.",
-      "creator": "Cristian Mungiu",
-      "year": "2022"
-    },
-    {
-      "title": "라탈랑트",
-      "creator": "Jean Vigo",
-      "year": "1934"
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
     },
     {
       "title": "우리의 환대",
       "creator": "Our Hospitality",
       "year": "1923"
+    },
+    {
+      "title": "라탈랑트",
+      "creator": "Jean Vigo",
+      "year": "1934"
     },
     {
       "title": "토니",
@@ -163,6 +188,11 @@
       "title": "아웃사이드 노이즈",
       "creator": "Ted FENDT",
       "year": "2021"
+    },
+    {
+      "title": "애프터워터",
+      "creator": "Dane Komljen",
+      "year": "2022"
     },
     {
       "title": "세탐정",
@@ -245,19 +275,9 @@
       "year": "2012"
     },
     {
-      "title": "노 베어스",
-      "creator": "Jafar Panahi",
-      "year": "2022"
-    },
-    {
       "title": "생토메르",
       "creator": "Alice Diop",
       "year": "2022"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -265,24 +285,9 @@
       "year": "1983"
     },
     {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -355,11 +360,6 @@
       "year": "1962"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -378,6 +378,16 @@
       "title": "세 가지 색: 레드",
       "creator": "Krzysztof Kieslowski",
       "year": "1994"
+    },
+    {
+      "title": "R.M.N.",
+      "creator": "Cristian Mungiu",
+      "year": "2022"
+    },
+    {
+      "title": "더 원더스",
+      "creator": "Alice Rohrwacher",
+      "year": "2014"
     },
     {
       "title": "휴머니티",
@@ -408,11 +418,6 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
     },
     {
       "title": "마리아 브라운의 결혼",
