@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-14T00:21:57.492Z",
+  "updatedAt": "2026-11-14T23:02:55.803Z",
   "entries": [
     {
       "title": "어파이어",
@@ -110,24 +110,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2014"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "애프터워터",
+      "creator": "Dane Komljen",
+      "year": "2022"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
-      "title": "몽상가의 나흘 밤",
-      "creator": "Robert Bresson",
-      "year": "1971"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "우리의 환대",
@@ -153,11 +148,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
       "year": "1956"
-    },
-    {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
     },
     {
       "title": "그리고 삶은 계속된다",
@@ -188,11 +178,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "아웃사이드 노이즈",
       "creator": "Ted FENDT",
       "year": "2021"
-    },
-    {
-      "title": "애프터워터",
-      "creator": "Dane Komljen",
-      "year": "2022"
     },
     {
       "title": "세탐정",
@@ -280,9 +265,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "운디네",
@@ -358,6 +343,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
+    },
+    {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
     },
     {
       "title": "비리디아나",
