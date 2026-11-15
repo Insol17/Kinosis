@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-14T23:02:55.803Z",
+  "updatedAt": "2026-11-15T23:24:35.953Z",
   "entries": [
     {
       "title": "어파이어",
@@ -110,19 +110,19 @@
       "year": "2014"
     },
     {
-      "title": "애프터워터",
-      "creator": "Dane Komljen",
-      "year": "2022"
+      "title": "내가 속한 나라",
+      "creator": "Christian Petzold",
+      "year": "2000"
     },
     {
-      "title": "절멸의 천사",
-      "creator": "Luis Buñuel",
-      "year": "1962"
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "우리의 환대",
@@ -148,6 +148,11 @@
       "title": "사형수 탈옥하다",
       "creator": "Robert Bresson",
       "year": "1956"
+    },
+    {
+      "title": "절멸의 천사",
+      "creator": "Luis Buñuel",
+      "year": "1962"
     },
     {
       "title": "그리고 삶은 계속된다",
@@ -178,6 +183,11 @@
       "title": "아웃사이드 노이즈",
       "creator": "Ted FENDT",
       "year": "2021"
+    },
+    {
+      "title": "애프터워터",
+      "creator": "Dane Komljen",
+      "year": "2022"
     },
     {
       "title": "세탐정",
@@ -265,14 +275,9 @@
       "year": "2022"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
     },
     {
       "title": "트랜짓",
@@ -293,11 +298,6 @@
       "title": "열망",
       "creator": "Christian Petzold",
       "year": "2008"
-    },
-    {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
     },
     {
       "title": "유령",
