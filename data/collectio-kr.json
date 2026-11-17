@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-15T23:24:35.953Z",
+  "updatedAt": "2026-11-17T02:29:39.101Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,14 +105,24 @@
       "year": "1939"
     },
     {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
+    },
+    {
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
+    },
+    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
-    },
-    {
-      "title": "내가 속한 나라",
-      "creator": "Christian Petzold",
-      "year": "2000"
     },
     {
       "title": "운디네",
@@ -120,9 +130,14 @@
       "year": "2020"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "유령",
+      "creator": "Christian Petzold",
+      "year": "2005"
     },
     {
       "title": "우리의 환대",
@@ -280,11 +295,6 @@
       "year": "1983"
     },
     {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
-    },
-    {
       "title": "바바라",
       "creator": "Christian Petzold",
       "year": "2012"
@@ -300,9 +310,9 @@
       "year": "2008"
     },
     {
-      "title": "유령",
+      "title": "내가 속한 나라",
       "creator": "Christian Petzold",
-      "year": "2005"
+      "year": "2000"
     },
     {
       "title": "볼프스부르크",
@@ -343,11 +353,6 @@
       "title": "5시부터 7시까지 클레오",
       "creator": "Agnes Varda",
       "year": "1962"
-    },
-    {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
     },
     {
       "title": "비리디아나",
