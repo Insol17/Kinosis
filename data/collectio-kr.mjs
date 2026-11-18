@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-17T02:29:39.101Z",
+  "updatedAt": "2026-11-18T01:39:46.119Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,9 +105,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1939"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
     },
     {
       "title": "트랜짓",
@@ -115,39 +115,29 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2018"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
       "title": "불안은 영혼을 잠식한다",
       "creator": "Rainer Werner Fassbinder",
       "year": "1974"
     },
     {
-      "title": "유령",
-      "creator": "Christian Petzold",
-      "year": "2005"
+      "title": "라탈랑트",
+      "creator": "Jean Vigo",
+      "year": "1934"
+    },
+    {
+      "title": "남쪽",
+      "creator": "Víctor Erice",
+      "year": "1983"
+    },
+    {
+      "title": "아마도 악마가",
+      "creator": "Robert Bresson",
+      "year": "1977"
     },
     {
       "title": "우리의 환대",
       "creator": "Our Hospitality",
       "year": "1923"
-    },
-    {
-      "title": "라탈랑트",
-      "creator": "Jean Vigo",
-      "year": "1934"
     },
     {
       "title": "토니",
@@ -290,9 +280,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "남쪽",
-      "creator": "Víctor Erice",
-      "year": "1983"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "바바라",
@@ -313,6 +308,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "내가 속한 나라",
       "creator": "Christian Petzold",
       "year": "2000"
+    },
+    {
+      "title": "유령",
+      "creator": "Christian Petzold",
+      "year": "2005"
     },
     {
       "title": "볼프스부르크",
