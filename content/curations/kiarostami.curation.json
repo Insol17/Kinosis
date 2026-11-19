@@ -332,7 +332,7 @@
         "director": "아바스 키아로스타미",
         "directorId": "119294",
         "runtime": null,
-        "posterUrl": "https://image.tmdb.org/t/p/w500/iCDYGeKvRCyS0d2NUn8O5o9doZZ.jpg",
+        "posterUrl": "https://image.tmdb.org/t/p/w500/on3ixN2yz8ezSYP9QgmOytIIE5o.jpg",
         "backdropUrl": "https://image.tmdb.org/t/p/w1280/uonotYnbDrHXcMFA1AbembrrQ8N.jpg",
         "overview": "1995년 영화탄생 1백주년을 기념하기 위해 제작한 작품으로서 현재 활동중인 유명 감독들이 뤼미에르가 촬영했던 카메라를 들고 찍은 50초 분량의 단편영화 39편과 감독들의 인터뷰, 촬영장면 등이 함께 들어간 극영화 겸 다큐멘터리. 테오 앙겔로풀로스, 코스타 가브라스, 피터 그리너웨이, 압바스 키아로스타미, 스파 이크 리, 데이비드린치, 빔 벤더스, 마틴 스콜세지등 39명의 유명 감독들이 참가했다."
       },
@@ -649,7 +649,7 @@
         "overview": ""
       }
     ],
-    "snapshotGeneratedAt": "2026-11-12T02:23:47.478Z"
+    "snapshotGeneratedAt": "2026-11-19T02:43:48.062Z"
   },
   "kind": "director-archive",
   "movies": [

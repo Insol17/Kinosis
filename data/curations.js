@@ -256,7 +256,7 @@ window.KINOSIS_CURATIONS = {
             "director": "스티븐 스필버그",
             "directorId": "488",
             "runtime": 151,
-            "overview": "난생 처음 극장에서 스크린을 마주한 순간부터 영화와 사랑에 빠진 소년 새미. 아빠 버트의 8mm 카메라를 들고 일상의 모든 순간을 담기 위해 열중하던 새미는 우연히 필름에 포착된 가족의 비밀을 알게 되고 충격에 휩싸인다. 진실을 비추는 필름의 힘을 실감한 새미에게 크고 작은 삶의 변화가 일어나고 엄마 밋지의 응원으로 영화를 향한 열정은 더욱 뜨거워져만 가는데… 영원히 간직하고픈 기억, 영화의 모든 순간과 사랑에 빠진다!",
+            "overview": "부모와 함께 처음 극장에 간 소년 새미는 스크린에서 본 기차 충돌 장면을 잊지 못하고 장난감 기차로 그 순간을 되살리려 한다. 아버지의 카메라를 빌려 영상을 찍으면서, 두려웠던 장면도 자신의 손으로 다룰 수 있다는 즐거움을 발견한다. 자유로운 어머니 밋지는 그 열정을 응원하지만, 현실적인 아버지 버트에게 영화 만들기는 공부보다 앞설 수 없는 취미다. 가족을 찍고 친구들과 이야기를 꾸미며 자라던 새미는 어느 날 여행 영상을 편집하다가 눈으로는 보지 못했던 가족의 비밀을 발견한다. 이사와 새로운 학교, 첫사랑의 설렘 속에서도 카메라가 보여 준 진실은 그에게 어려운 질문으로 남는다. 아름답게 간직하고 싶은 순간과 외면할 수 없는 현실 사이에서, 새미는 다시 렌즈를 들여다본다.",
             "posterUrl": "https://image.tmdb.org/t/p/w500/zcpxI4YYFXd2aS1wffa5usKFFbq.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/xQyGkQ8ICa4lgifGr3oZjkm3AJ2.jpg",
             "source": "programme-snapshot",
@@ -505,7 +505,7 @@ window.KINOSIS_CURATIONS = {
             "runtime": 104,
             "overview": "지중해의 뜨거운 태양, 카프리섬의 푸른 바다. 극작가 폴은 영화 '오디세이'의 대본 일을 맡으며 자신의 아름다운 아내 카미유를 영화 제작자에게 소개한다.",
             "posterUrl": "https://image.tmdb.org/t/p/w500/2w6C65VGURrfKbUze8pwT5Kewil.jpg",
-            "backdropUrl": "https://image.tmdb.org/t/p/w1280/afxEiYxANGG88xXVYpNtAHFzTIV.jpg",
+            "backdropUrl": "https://image.tmdb.org/t/p/w1280/3CPo0qqDm2nGUS276iDyNbEWhKQ.jpg",
             "source": "programme-snapshot",
             "detailLoaded": false
           }
@@ -925,7 +925,7 @@ window.KINOSIS_CURATIONS = {
             "directorId": "119294",
             "runtime": 0,
             "overview": "1995년 영화탄생 1백주년을 기념하기 위해 제작한 작품으로서 현재 활동중인 유명 감독들이 뤼미에르가 촬영했던 카메라를 들고 찍은 50초 분량의 단편영화 39편과 감독들의 인터뷰, 촬영장면 등이 함께 들어간 극영화 겸 다큐멘터리. 테오 앙겔로풀로스, 코스타 가브라스, 피터 그리너웨이, 압바스 키아로스타미, 스파 이크 리, 데이비드린치, 빔 벤더스, 마틴 스콜세지등 39명의 유명 감독들이 참가했다.",
-            "posterUrl": "https://image.tmdb.org/t/p/w500/iCDYGeKvRCyS0d2NUn8O5o9doZZ.jpg",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/on3ixN2yz8ezSYP9QgmOytIIE5o.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/uonotYnbDrHXcMFA1AbembrrQ8N.jpg",
             "source": "director-snapshot",
             "detailLoaded": false
@@ -1291,7 +1291,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-12T02:23:47.478Z"
+        "snapshotGeneratedAt": "2026-11-19T02:43:48.062Z"
       },
       "movies": [
         {
@@ -1776,7 +1776,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-12T02:23:47.579Z"
+        "snapshotGeneratedAt": "2026-11-19T02:43:48.152Z"
       },
       "movies": [
         {
@@ -1883,7 +1883,7 @@ window.KINOSIS_CURATIONS = {
             "directorId": "64992",
             "runtime": 0,
             "overview": "",
-            "posterUrl": "https://image.tmdb.org/t/p/w500/nWgeEWh8pKatQIGYtS3GiQHrqZA.jpg",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/11EcNO9dT1wqsgmn49wQxC4ngWv.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/xm7ULWOA9MECQpXhcPowip7uyT4.jpg",
             "source": "director-snapshot",
             "detailLoaded": false
@@ -1942,7 +1942,7 @@ window.KINOSIS_CURATIONS = {
             "director": "허우샤오셴",
             "directorId": "64992",
             "runtime": 0,
-            "overview": "소년의 성장기를 통해 1950~60년대의 대만을 그려낸 작품. 중국에서 태어난 아하는 대만으로 이주하는 과정에서 비극적인 사건들을 잇달아 겪는다. 폐렴에 걸린 아버지와 중국으로 돌아가겠다는 할머니, 병에 걸린 어머니와 함께 살아가면서 아하는 삶의 슬픔과 세상의 폭력을 직접 목격한다.  (2015 영화의 전당 - 허우 샤오시엔 전작전)",
+            "overview": "중국에서 대만으로 이주한 가족의 소년 아효는 병약한 아버지와 집안을 돌보는 어머니, 고향을 그리워하는 할머니 곁에서 자란다. 할머니는 길을 따라 걸으면 중국의 옛집으로 돌아갈 수 있다고 믿지만, 어린 아효에게 대만의 골목은 놀이와 모험의 터전이다. 가족들이 지나온 세월을 다 헤아리지 못하는 소년은 학교에 다니고 친구들과 어울리며 자신만의 생활을 넓혀간다. 나이가 들수록 동네의 주먹다짐과 또래의 경쟁에 마음을 빼앗기고, 집안의 근심은 바깥세상에서 느끼는 자유와 자꾸 어긋난다. 첫사랑과 진학을 생각해야 할 때가 다가오자, 아효에게도 지금의 하루가 언제까지나 계속될 수 없다는 불안이 찾아온다. 서로 다른 고향을 품고 한집에 살아가는 가족 사이에서 소년의 어린 시절이 저물어간다.",
             "posterUrl": "https://image.tmdb.org/t/p/w500/cbZz1H7yuV5mimh0XkHC2QvWghl.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/6SO3WcfmoByOt0SBB7tOCmPtkVF.jpg",
             "source": "director-snapshot",
@@ -2032,7 +2032,7 @@ window.KINOSIS_CURATIONS = {
             "director": "허우샤오셴",
             "directorId": "64992",
             "runtime": 0,
-            "overview": "대만의 20대 중반 여성 리앙 칭은 4,50년대의 대만을 배경으로한 영화 의 주연을 맡게 되었지만, 사생활은 편치 않다. 꽃집을 운영하는 언니는 자신의 내연의 남편 아 시와 리앙 칭의 친근한 관계에 질투를 느낀다. 게다가 그녀의 비밀 일기장을 누군가가 훔쳐가서는 전화와 팩스로 귀찮게 괴롭히기 시작했다. 마음 속에는 헤어진 애인 아 웨이가 계속 떠오르는 리앙 칭. 마피아와 갈등이 있었던 아 웨이는 결국 그녀가 보고 있는 가운데 댄스 홀에서 총을 맞고 목숨을 잃는다.  1940년 대만. 두 연인 치앙 비유와 청 하오퉁은 간단히 결혼식을 치른 후, 중국 본토에서 일어난 전쟁에 참가하기 위해 대륙으로 떠난다. 그들은 광동의 한 군부대에 들어가게 되고, 산악부대를 조직하라는 명령과 함께 아들까지 다른 이에게 맡긴다. 전쟁이 승리로 끝난 후 두 사람은 대만으로 돌아와 평화로운 시간을 갖는다. 그렇지만 다시 2·28 사건이 일어나고, 1949년 가을, 두 사람이 체포된다. 그 후 치앙 비유는 석방되나 청 하오퉁은 1950년 10월에 총살당하고 만다.",
+            "overview": "대만의 배우 양정은 격동의 시대를 살아온 장벽옥을 연기할 준비를 하지만, 자신의 일상에서는 지워두고 싶은 기억에 시달린다. 도둑맞은 일기장의 내용이 익명의 팩스로 도착하면서, 세상을 떠난 연인 아위와 함께했던 시간들이 다시 떠오르기 시작한다. 사랑과 상실이 뒤엉킨 사적인 과거 사이로, 그녀가 맡은 인물의 삶은 다른 시대의 질문을 던진다. 1940년대의 장벽옥과 남편 종호동은 일본에 맞서 싸우겠다는 뜻을 품고 대만을 떠나 중국 본토로 향한다. 전쟁을 견디고 돌아갈 고향을 꿈꾸는 부부의 열망과, 이미 지나간 사랑에서 벗어나지 못하는 양정의 현재가 교차한다. 다른 여자의 기억을 따라가는 동안 양정은 연기를 위해 마주하는 역사와 외면할 수 없는 자신의 상처 사이에 놓인다.",
             "posterUrl": "https://image.tmdb.org/t/p/w500/izsQoXIg9akWytx7wxwFiBcOQuV.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/rvbNUvGvINOHiVJhVdn24GwXio8.jpg",
             "source": "director-snapshot",
@@ -2114,21 +2114,6 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           },
           {
-            "id": "1723322",
-            "title": "the electric princess house",
-            "originalTitle": "the electric princess house",
-            "year": "2007",
-            "releaseDate": "2007-05-21",
-            "director": "허우샤오셴",
-            "directorId": "64992",
-            "runtime": 0,
-            "overview": "",
-            "posterUrl": "https://image.tmdb.org/t/p/w500/loFHqwWM9Mjgy7oOnlIeU4nXhi8.jpg",
-            "backdropUrl": null,
-            "source": "director-snapshot",
-            "detailLoaded": false
-          },
-          {
             "id": "36108",
             "title": "그들 각자의 영화관",
             "originalTitle": "Chacun son cinema ou Ce petit coup au coeur quand la lumiere s'eteint et que le film commence",
@@ -2204,7 +2189,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-12T02:23:47.379Z"
+        "snapshotGeneratedAt": "2026-11-19T02:43:47.964Z"
       },
       "movies": [
         {
@@ -2628,7 +2613,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-12T02:23:47.274Z"
+        "snapshotGeneratedAt": "2026-11-19T02:43:47.859Z"
       },
       "movies": [
         {
