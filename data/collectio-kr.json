@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-21T00:50:47.109Z",
+  "updatedAt": "2026-11-21T23:50:06.944Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,24 +105,24 @@
       "year": "1939"
     },
     {
-      "title": "리버풀",
-      "creator": "Lisandro Alonso",
-      "year": "2008"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
+      "title": "우리의 최선",
+      "creator": "Alejandro Fernández ALMENDRAS",
+      "year": "2019"
+    },
+    {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
     },
     {
       "title": "우리의 환대",
@@ -167,11 +167,6 @@
     {
       "title": "노나",
       "creator": "Camila José DONOSO",
-      "year": "2019"
-    },
-    {
-      "title": "우리의 최선",
-      "creator": "Alejandro Fernández ALMENDRAS",
       "year": "2019"
     },
     {
@@ -280,6 +275,11 @@
       "year": "2022"
     },
     {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
@@ -360,6 +360,11 @@
       "year": "1962"
     },
     {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -368,11 +373,6 @@
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
