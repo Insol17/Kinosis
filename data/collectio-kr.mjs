@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-21T23:50:06.944Z",
+  "updatedAt": "2026-11-23T00:20:48.074Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,24 +105,24 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1939"
     },
     {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
       "title": "피닉스",
       "creator": "Christian Petzold",
       "year": "2014"
     },
     {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
     },
     {
-      "title": "우리의 최선",
-      "creator": "Alejandro Fernández ALMENDRAS",
-      "year": "2019"
-    },
-    {
-      "title": "엄마와 창녀",
-      "creator": "Jean Eustache",
-      "year": "1973"
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
     },
     {
       "title": "우리의 환대",
@@ -167,6 +167,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
     {
       "title": "노나",
       "creator": "Camila José DONOSO",
+      "year": "2019"
+    },
+    {
+      "title": "우리의 최선",
+      "creator": "Alejandro Fernández ALMENDRAS",
       "year": "2019"
     },
     {
@@ -275,11 +280,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
@@ -288,11 +288,6 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
     },
     {
       "title": "바바라",
@@ -373,6 +368,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "홀리 모터스",
       "creator": "Leos Carax",
       "year": "2012"
+    },
+    {
+      "title": "엄마와 창녀",
+      "creator": "Jean Eustache",
+      "year": "1973"
     },
     {
       "title": "세 가지 색: 레드",
