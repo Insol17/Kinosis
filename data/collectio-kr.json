@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-24T04:19:16.403Z",
+  "updatedAt": "2026-11-25T03:03:51.913Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,29 +105,29 @@
       "year": "1939"
     },
     {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
       "title": "국외자들",
       "creator": "Jean Luc Godard",
       "year": "1964"
     },
     {
-      "title": "올리브 나무 사이로",
-      "creator": "Abbas Kiarostami",
-      "year": "1991"
+      "title": "토니",
+      "creator": "Jean Renoir",
+      "year": "1935"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "태풍 클럽",
       "creator": "Sômai Shinji",
       "year": "1985"
+    },
+    {
+      "title": "마리아 브라운의 결혼",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1979"
     },
     {
       "title": "우리의 환대",
@@ -138,11 +138,6 @@
       "title": "라탈랑트",
       "creator": "Jean Vigo",
       "year": "1934"
-    },
-    {
-      "title": "토니",
-      "creator": "Jean Renoir",
-      "year": "1935"
     },
     {
       "title": "프란체스코, 신의 어릿광대",
@@ -240,6 +235,11 @@
       "year": "1987"
     },
     {
+      "title": "올리브 나무 사이로",
+      "creator": "Abbas Kiarostami",
+      "year": "1991"
+    },
+    {
       "title": "체리 향기",
       "creator": "Abbas Kiarostami",
       "year": "1997"
@@ -278,6 +278,11 @@
       "title": "생토메르",
       "creator": "Alice Diop",
       "year": "2022"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
     },
     {
       "title": "남쪽",
@@ -428,11 +433,6 @@
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
-    },
-    {
-      "title": "마리아 브라운의 결혼",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1979"
     },
     {
       "title": "중국식 룰렛",
