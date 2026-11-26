@@ -2,7 +2,7 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-25T03:03:51.913Z",
+  "updatedAt": "2026-11-26T02:16:13.487Z",
   "entries": [
     {
       "title": "어파이어",
@@ -28,6 +28,11 @@
       "title": "그랜드 투어",
       "creator": "Miguel Gomes",
       "year": "2024"
+    },
+    {
+      "title": "용암의 집",
+      "creator": "Pedro Costa",
+      "year": "1994"
     },
     {
       "title": "피",
@@ -75,11 +80,6 @@
       "year": "2010"
     },
     {
-      "title": "제자리에 있는 건 없다",
-      "creator": "Burak ÇEVIK",
-      "year": "2024"
-    },
-    {
       "title": "지하실의 멜로디",
       "creator": "Henri Verneuil",
       "year": "1963"
@@ -105,19 +105,14 @@
       "year": "1939"
     },
     {
-      "title": "국외자들",
-      "creator": "Jean Luc Godard",
-      "year": "1964"
+      "title": "마리아 브라운의 결혼",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1979"
     },
     {
-      "title": "토니",
-      "creator": "Jean Renoir",
-      "year": "1935"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
     },
     {
       "title": "태풍 클럽",
@@ -125,9 +120,9 @@
       "year": "1985"
     },
     {
-      "title": "마리아 브라운의 결혼",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1979"
+      "title": "더 원더스",
+      "creator": "Alice Rohrwacher",
+      "year": "2014"
     },
     {
       "title": "우리의 환대",
@@ -138,6 +133,11 @@
       "title": "라탈랑트",
       "creator": "Jean Vigo",
       "year": "1934"
+    },
+    {
+      "title": "토니",
+      "creator": "Jean Renoir",
+      "year": "1935"
     },
     {
       "title": "프란체스코, 신의 어릿광대",
@@ -212,6 +212,11 @@
     {
       "title": "다이렉트 액션",
       "creator": "Guillaume Cailleau,Ben Russell",
+      "year": "2024"
+    },
+    {
+      "title": "제자리에 있는 건 없다",
+      "creator": "Burak ÇEVIK",
       "year": "2024"
     },
     {
@@ -293,11 +298,6 @@
       "title": "운디네",
       "creator": "Christian Petzold",
       "year": "2020"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
     },
     {
       "title": "트랜짓",
@@ -398,11 +398,6 @@
       "title": "R.M.N.",
       "creator": "Cristian Mungiu",
       "year": "2022"
-    },
-    {
-      "title": "더 원더스",
-      "creator": "Alice Rohrwacher",
-      "year": "2014"
     },
     {
       "title": "휴머니티",
