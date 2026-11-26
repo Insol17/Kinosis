@@ -1,13 +1,13 @@
 {
   "status": "ok",
   "mode": "live",
-  "updatedAt": "2026-11-19T02:43:47.620Z",
+  "updatedAt": "2026-11-26T03:42:24.781Z",
   "region": "KR",
   "counts": {
     "boxOffice": 10,
     "upcoming": 30,
     "theatres": 72,
-    "trending": 19,
+    "trending": 20,
     "streaming": 20,
     "rated": 20,
     "art": 48

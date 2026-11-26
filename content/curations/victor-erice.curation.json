@@ -13,15 +13,15 @@
     "snapshot": [
       {
         "id": "1203755",
-        "title": "En la terraza",
-        "originalTitle": "En la terraza",
+        "title": "Y al final de la fiesta subieron a la terraza",
+        "originalTitle": "Y al final de la fiesta subieron a la terraza",
         "year": "1961",
         "releaseDate": "1961-01-01",
         "director": "빅토르 에리세",
         "directorId": "37833",
         "runtime": null,
-        "posterUrl": null,
-        "backdropUrl": null,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/v3JnnIVWDITdneV5Bw8AI4ngTKI.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/woKimPsznZsodd9n55iLwlbJVf1.jpg",
         "overview": ""
       },
       {
@@ -324,7 +324,7 @@
         "overview": "스페인의 유명 배우 훌리오 아레나스가 미스터리하게 실종된 지 몇 년이 지난 지금, 한 텔레비전 프로그램 덕분에 다시 뉴스에 등장했습니다."
       }
     ],
-    "snapshotGeneratedAt": "2026-11-19T02:43:48.152Z"
+    "snapshotGeneratedAt": "2026-11-26T03:42:25.082Z"
   },
   "kind": "director-archive",
   "movies": [

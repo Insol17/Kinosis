@@ -1291,7 +1291,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-19T02:43:48.062Z"
+        "snapshotGeneratedAt": "2026-11-26T03:42:25.071Z"
       },
       "movies": [
         {
@@ -1417,16 +1417,16 @@ window.KINOSIS_CURATIONS = {
         "snapshot": [
           {
             "id": "1203755",
-            "title": "En la terraza",
-            "originalTitle": "En la terraza",
+            "title": "Y al final de la fiesta subieron a la terraza",
+            "originalTitle": "Y al final de la fiesta subieron a la terraza",
             "year": "1961",
             "releaseDate": "1961-01-01",
             "director": "빅토르 에리세",
             "directorId": "37833",
             "runtime": 0,
             "overview": "",
-            "posterUrl": null,
-            "backdropUrl": null,
+            "posterUrl": "https://image.tmdb.org/t/p/w500/v3JnnIVWDITdneV5Bw8AI4ngTKI.jpg",
+            "backdropUrl": "https://image.tmdb.org/t/p/w1280/woKimPsznZsodd9n55iLwlbJVf1.jpg",
             "source": "director-snapshot",
             "detailLoaded": false
           },
@@ -1776,7 +1776,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-19T02:43:48.152Z"
+        "snapshotGeneratedAt": "2026-11-26T03:42:25.082Z"
       },
       "movies": [
         {
@@ -1912,7 +1912,7 @@ window.KINOSIS_CURATIONS = {
             "director": "허우샤오셴",
             "directorId": "64992",
             "runtime": 0,
-            "overview": "'샌드위치 맨'은 생계를 꾸려가기 위해 피에로 분장을 하고 몸 앞뒤에 포스터가 붙은 판자를 둘러메고 극장 홍보를 하는 한 가장과 그 가족의 이야기이다. 주인공에겐 아내와 어린 아기가 있으며, 일이 끝난 후에도 피에로 분장을 거의 지우지 않고 생활을 한다. 그런 어느날 극장 주인은 피에로 일을 그만 두는 대신 삼륜차를 타고 홍보 활동을 하라고 주인공에게 시키게 된다.  피에로 분장을 지우고 아내와 아기 앞에 선 남편. 그러나 아기는 아빠를 알아보지 못하고 낯선 사람인 양 울음을 터뜨린다.\r 아기가 자신을 알아보지 못한다는 사실을 안 주인공은 조용히 다시 피에로 분장을 하며, 이유를 묻는 아내에게 주인공은 환히 웃으며 '난 내 아들의 인형이잖아.'라고 말하면서 영화는 끝난다.",
+            "overview": "대만의 작은 마을에서 어린아이를 키우는 가장 곤수는 얼굴에 삐에로 분장을 하고 몸 앞뒤에 극장 광고판을 걸어 생계를 잇는다. 거리를 돌며 사람들의 웃음을 견디는 동안 집에서는 아이가 그 얼굴에 익숙해지고, 극장이 삼륜차로 광고 방식을 바꾸려 하자 곤수에게는 일과 집에서 쓰는 얼굴을 나눌 기회가 생긴다. 한편 어촌을 찾아온 두 청년은 일본에서 들여온 압력솥을 팔기 위해 마을 사람들 앞에서 직접 음식을 해 보이기로 한다. 타이베이에서는 일하러 가던 노동자가 미군 장교의 차에 치여, 가족이 한 번도 드나든 적 없는 병원으로 옮겨진다. 광고판 하나, 수입품 하나, 출근길의 사고 하나가 세 집안의 평범한 하루를 저마다 다른 방향으로 돌려놓는다.",
             "posterUrl": "https://image.tmdb.org/t/p/w500/blrgCifyBWvE2zQ5kN0zfEi45uw.jpg",
             "backdropUrl": "https://image.tmdb.org/t/p/w1280/h9hUKGyH9j3whepXrzva6vvJOxQ.jpg",
             "source": "director-snapshot",
@@ -2189,7 +2189,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-19T02:43:47.964Z"
+        "snapshotGeneratedAt": "2026-11-26T03:42:25.057Z"
       },
       "movies": [
         {
@@ -2613,7 +2613,7 @@ window.KINOSIS_CURATIONS = {
             "detailLoaded": false
           }
         ],
-        "snapshotGeneratedAt": "2026-11-19T02:43:47.859Z"
+        "snapshotGeneratedAt": "2026-11-26T03:42:25.038Z"
       },
       "movies": [
         {
