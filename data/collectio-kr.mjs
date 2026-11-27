@@ -2,7 +2,7 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-26T02:16:13.487Z",
+  "updatedAt": "2026-11-27T02:16:14.179Z",
   "entries": [
     {
       "title": "어파이어",
@@ -105,9 +105,14 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "1939"
     },
     {
-      "title": "마리아 브라운의 결혼",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1979"
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "도레미파 소녀의 피가 끓는다",
+      "creator": "Kiyoshi Kurosawa",
+      "year": "1985"
     },
     {
       "title": "피닉스",
@@ -115,14 +120,19 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2014"
     },
     {
-      "title": "태풍 클럽",
-      "creator": "Sômai Shinji",
-      "year": "1985"
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
     },
     {
-      "title": "더 원더스",
-      "creator": "Alice Rohrwacher",
-      "year": "2014"
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "휴머니티",
+      "creator": "Bruno Dumont",
+      "year": "1999"
     },
     {
       "title": "우리의 환대",
@@ -285,24 +295,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
       "title": "남쪽",
       "creator": "Víctor Erice",
       "year": "1983"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
     },
     {
       "title": "바바라",
@@ -400,9 +395,9 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "year": "2022"
     },
     {
-      "title": "휴머니티",
-      "creator": "Bruno Dumont",
-      "year": "1999"
+      "title": "더 원더스",
+      "creator": "Alice Rohrwacher",
+      "year": "2014"
     },
     {
       "title": "베로니카의 이중생활",
@@ -428,6 +423,11 @@ export const COLLECTIO_SNAPSHOT = Object.freeze({
       "title": "머스트 비 헤븐",
       "creator": "Elia Suleiman",
       "year": "2019"
+    },
+    {
+      "title": "마리아 브라운의 결혼",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1979"
     },
     {
       "title": "중국식 룰렛",
