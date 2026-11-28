@@ -2,33 +2,8 @@
   "version": "0.4.6.6",
   "scope": "homepage",
   "sourceUrl": "https://collectio.co.kr/main/index.jsp",
-  "updatedAt": "2026-11-27T02:16:14.179Z",
+  "updatedAt": "2026-11-28T02:01:46.009Z",
   "entries": [
-    {
-      "title": "어파이어",
-      "creator": "Christian Petzold",
-      "year": "2023"
-    },
-    {
-      "title": "클로즈 유어 아이즈",
-      "creator": "Victor Erice",
-      "year": "2023"
-    },
-    {
-      "title": "키메라",
-      "creator": "Alice Rohrwacher",
-      "year": "2023"
-    },
-    {
-      "title": "노 베어스",
-      "creator": "Jafar Panahi",
-      "year": "2022"
-    },
-    {
-      "title": "그랜드 투어",
-      "creator": "Miguel Gomes",
-      "year": "2024"
-    },
     {
       "title": "용암의 집",
       "creator": "Pedro Costa",
@@ -80,6 +55,86 @@
       "year": "2010"
     },
     {
+      "title": "주말",
+      "creator": "Jean Luc Godard",
+      "year": "1967"
+    },
+    {
+      "title": "사계절의 상인",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1972"
+    },
+    {
+      "title": "게임의 규칙",
+      "creator": "Jean Renoir",
+      "year": "1939"
+    },
+    {
+      "title": "벌집의 정령",
+      "creator": "Victor Erice",
+      "year": "1973"
+    },
+    {
+      "title": "태풍 클럽",
+      "creator": "Sômai Shinji",
+      "year": "1985"
+    },
+    {
+      "title": "운디네",
+      "creator": "Christian Petzold",
+      "year": "2020"
+    },
+    {
+      "title": "아마도 악마가",
+      "creator": "Robert Bresson",
+      "year": "1977"
+    },
+    {
+      "title": "자전거 도둑",
+      "creator": "Vittorio De Sica",
+      "year": "1948"
+    },
+    {
+      "title": "국외자들",
+      "creator": "Jean Luc Godard",
+      "year": "1964"
+    },
+    {
+      "title": "불안은 영혼을 잠식한다",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1974"
+    },
+    {
+      "title": "마리아 브라운의 결혼",
+      "creator": "Rainer Werner Fassbinder",
+      "year": "1979"
+    },
+    {
+      "title": "어파이어",
+      "creator": "Christian Petzold",
+      "year": "2023"
+    },
+    {
+      "title": "클로즈 유어 아이즈",
+      "creator": "Victor Erice",
+      "year": "2023"
+    },
+    {
+      "title": "키메라",
+      "creator": "Alice Rohrwacher",
+      "year": "2023"
+    },
+    {
+      "title": "노 베어스",
+      "creator": "Jafar Panahi",
+      "year": "2022"
+    },
+    {
+      "title": "그랜드 투어",
+      "creator": "Miguel Gomes",
+      "year": "2024"
+    },
+    {
       "title": "지하실의 멜로디",
       "creator": "Henri Verneuil",
       "year": "1963"
@@ -98,41 +153,6 @@
       "title": "파리의 도적",
       "creator": "Louis Malle",
       "year": "1967"
-    },
-    {
-      "title": "게임의 규칙",
-      "creator": "Jean Renoir",
-      "year": "1939"
-    },
-    {
-      "title": "벌집의 정령",
-      "creator": "Victor Erice",
-      "year": "1973"
-    },
-    {
-      "title": "도레미파 소녀의 피가 끓는다",
-      "creator": "Kiyoshi Kurosawa",
-      "year": "1985"
-    },
-    {
-      "title": "피닉스",
-      "creator": "Christian Petzold",
-      "year": "2014"
-    },
-    {
-      "title": "트랜짓",
-      "creator": "Christian Petzold",
-      "year": "2018"
-    },
-    {
-      "title": "운디네",
-      "creator": "Christian Petzold",
-      "year": "2020"
-    },
-    {
-      "title": "휴머니티",
-      "creator": "Bruno Dumont",
-      "year": "1999"
     },
     {
       "title": "우리의 환대",
@@ -300,6 +320,16 @@
       "year": "1983"
     },
     {
+      "title": "피닉스",
+      "creator": "Christian Petzold",
+      "year": "2014"
+    },
+    {
+      "title": "트랜짓",
+      "creator": "Christian Petzold",
+      "year": "2018"
+    },
+    {
       "title": "바바라",
       "creator": "Christian Petzold",
       "year": "2012"
@@ -365,11 +395,6 @@
       "year": "1962"
     },
     {
-      "title": "불안은 영혼을 잠식한다",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1974"
-    },
-    {
       "title": "비리디아나",
       "creator": "Luis Buñuel",
       "year": "1961"
@@ -400,6 +425,11 @@
       "year": "2014"
     },
     {
+      "title": "휴머니티",
+      "creator": "Bruno Dumont",
+      "year": "1999"
+    },
+    {
       "title": "베로니카의 이중생활",
       "creator": "Krzysztof Kieslowski",
       "year": "1991"
@@ -425,11 +455,6 @@
       "year": "2019"
     },
     {
-      "title": "마리아 브라운의 결혼",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1979"
-    },
-    {
       "title": "중국식 룰렛",
       "creator": "Rainer Werner Fassbinder",
       "year": "1976"
@@ -448,11 +473,6 @@
       "title": "페트라 폰 칸트의 쓰디쓴 눈물",
       "creator": "Rainer Werner Fassbinder",
       "year": "1971"
-    },
-    {
-      "title": "사계절의 상인",
-      "creator": "Rainer Werner Fassbinder",
-      "year": "1972"
     },
     {
       "title": "선 위의 세상(1부)",
